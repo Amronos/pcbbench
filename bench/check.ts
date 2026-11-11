@@ -1,55 +1,48 @@
-import { BunServices } from '@effect/platform-bun';
-import { Effect, Layer, ManagedRuntime } from 'effect';
+import { BunRuntime, BunServices } from '@effect/platform-bun';
+import { Effect, FileSystem, Layer, Schema } from 'effect';
+import { Argument, Command } from 'effect/cli';
 import {
 	byRef,
+	readMetrics,
 	readRun,
-	updateMetrics as writeMetrics,
+	updateMetrics,
+	type Copper,
 	type Footprint,
-	type JsonFields,
 	type Point
 } from './board.ts';
-import { isSamePart, parseCsv, readBom, splitRefs } from './bom.ts';
-import { Digikey } from './digikey.ts';
-import { Lcsc, type LcscProduct } from './lcsc.ts';
-import type { Fix } from './price.ts';
+import { isSamePart, parseCsv, readBom, splitRefs, type BomLine } from './bom.ts';
+import { Digikey, type DigikeyError } from './digikey.ts';
+import { Lcsc, type LcscError } from './lcsc.ts';
+import { Fix } from './price.ts';
 import { BATCH_BOARDS } from './runs.ts';
-
-const runtime = ManagedRuntime.make(Layer.mergeAll(BunServices.layer, Lcsc.layer, Digikey.layer));
-
-const [lcscService, digikeyService] = await runtime.runPromise(
-	Effect.all([Effect.service(Lcsc), Effect.service(Digikey)])
-);
-
-const productByCode = (code: string) => Effect.runPromise(lcscService.productByCode(code));
-
-const footprintPadNumbers = (product: LcscProduct) =>
-	Effect.runPromise(lcscService.footprintPadNumbers(product));
-
-const digikeyPart = (mpn: string) => Effect.runPromise(digikeyService.part(mpn));
-
-const isDigikeyNumberFor = (number: string, mpn: string) =>
-	Effect.runPromise(digikeyService.isNumberFor(number, mpn));
 
 const PLACEMENT_TOLERANCE_MM = 0.5;
 
 const SUPPLIERS: {
 	name: string;
 	column: RegExp;
-	isNumberFor: (number: string, mpn: string) => Promise<boolean>;
+	isNumberFor: (
+		number: string,
+		mpn: string
+	) => Effect.Effect<boolean, LcscError | DigikeyError, Lcsc | Digikey>;
 }[] = [
 	{
 		name: 'LCSC',
 		column: /lcsc/i,
-		isNumberFor: async (number, mpn) => {
+		isNumberFor: Effect.fnUntraced(function* (number: string, mpn: string) {
 			const code = number.match(/\bC\d+\b/)?.[0];
-			const product = code ? await productByCode(code) : null;
+			const product = code ? yield* Lcsc.use((lcsc) => lcsc.productByCode(code)) : null;
 
 			return !!product && isSamePart(mpn, product.productModel);
-		}
+		})
 	},
-	{ name: 'Digi-Key', column: /digi-?key/i, isNumberFor: isDigikeyNumberFor },
+	{
+		name: 'Digi-Key',
+		column: /digi-?key/i,
+		isNumberFor: (number, mpn) => Digikey.use((digikey) => digikey.isNumberFor(number, mpn))
+	},
 	// There's no Mouser lookup, so any Mouser number counts.
-	{ name: 'Mouser', column: /mouser/i, isNumberFor: async () => true }
+	{ name: 'Mouser', column: /mouser/i, isNumberFor: () => Effect.succeed(true) }
 ];
 
 // Matched against MPNs. Raspberry Pi also sells its chips under SC order codes.
@@ -71,28 +64,30 @@ const FUEL_GAUGES = /\b(MAX1704|MAX1720|BQ27\d|LC709203|STC3100|CW201)/i;
 const BATTERY_NET = /BAT|LIPO|CELL/i;
 
 // RP2350A (QFN-60) pins by pad number, from the RP2350 datasheet, for footprints whose pads don't name their pin functions.
-const RP2350A_PINS: Record<string, string> = {
-	1: 'IOVDD',
-	6: 'DVDD',
-	11: 'IOVDD',
-	20: 'IOVDD',
-	23: 'DVDD',
-	30: 'IOVDD',
-	38: 'IOVDD',
-	39: 'DVDD',
-	40: 'GPIO26/ADC0',
-	41: 'GPIO27/ADC1',
-	42: 'GPIO28/ADC2',
-	43: 'GPIO29/ADC3',
-	44: 'ADC_AVDD',
-	45: 'IOVDD',
-	46: 'VREG_AVDD',
-	49: 'VREG_VIN',
-	51: 'USB_DM',
-	52: 'USB_DP',
-	53: 'USB_OTP_VDD',
-	54: 'QSPI_IOVDD'
-};
+const RP2350A_PINS = new Map(
+	Object.entries({
+		1: 'IOVDD',
+		6: 'DVDD',
+		11: 'IOVDD',
+		20: 'IOVDD',
+		23: 'DVDD',
+		30: 'IOVDD',
+		38: 'IOVDD',
+		39: 'DVDD',
+		40: 'GPIO26/ADC0',
+		41: 'GPIO27/ADC1',
+		42: 'GPIO28/ADC2',
+		43: 'GPIO29/ADC3',
+		44: 'ADC_AVDD',
+		45: 'IOVDD',
+		46: 'VREG_AVDD',
+		49: 'VREG_VIN',
+		51: 'USB_DM',
+		52: 'USB_DP',
+		53: 'USB_OTP_VDD',
+		54: 'QSPI_IOVDD'
+	})
+);
 
 const POWER_PINS = [
 	'IOVDD',
@@ -116,44 +111,85 @@ const PAIR_GAP_MAX_MM = 2;
 // Tolerance for copper that only touches a keepout's edge.
 const EDGE_MM = 0.005;
 
-const [runId] = Bun.argv.slice(2);
+const CheckedMetrics = Schema.Struct({
+	fixes: Schema.Array(Fix),
+	drc: Schema.Struct({ errors: Schema.Number, unconnectedItems: Schema.Number }),
+	fab: Schema.Struct({
+		layersDiffering: Schema.Array(Schema.String),
+		layersMissing: Schema.Array(Schema.String)
+	})
+});
 
-if (!runId) throw new Error('Usage: bun bench/check.ts <run id>');
-
-const { runDir, info, board, footprints, parts, copper } = await runtime.runPromise(readRun(runId));
-const metrics = await Bun.file(`${runDir}/metrics.json`).json();
-
-const updateMetrics = (fields: JsonFields) => runtime.runPromise(writeMetrics(runId, fields));
-
-const output = `${runDir}/output`;
-const bom = await runtime.runPromise(readBom(`${output}/${info.bom}`));
-const fittedLines = bom.lines.filter((line) => line.fitted);
-const byReference = new Map(footprints.map((footprint) => [footprint.ref, footprint]));
-const percent = (count: number, total: number) => Math.round((count / total) * 1000) / 10;
-const round = (value: number, places = 2) => Math.round(value * 10 ** places) / 10 ** places;
-const hasValue = (cell = '') => /\w/.test(cell) && !/^(n\/?a|none|-)$/i.test(cell);
-const fixes: Fix[] = metrics.fixes;
-const fixedBomLines = new Set(fixes.filter((fix) => fix.area === 'bom').map((fix) => fix.refs));
-
-const refsMatching = (pattern: RegExp) =>
-	bom.lines.filter((line) => pattern.test(line.mpn)).flatMap((line) => splitRefs(line.refs));
-
-const rp2350s = refsMatching(FEATURES.rp2350).flatMap((ref) => byReference.get(ref) ?? []);
-
-const rp2350Pin = (pad: Footprint['pads'][number]) =>
-	pad.pinFunction.replace(/_\d+$/, '') || RP2350A_PINS[pad.number] || '';
-
-const adcNets = new Set(
-	footprints.flatMap((footprint) =>
-		footprint.pads
-			.filter((pad) =>
-				/ADC\d/i.test(rp2350s.includes(footprint) ? rp2350Pin(pad) : pad.pinFunction)
-			)
-			.map((pad) => pad.net)
+const PricedLines = Schema.fromJsonString(
+	Schema.Array(
+		Schema.Struct({
+			refs: Schema.String,
+			qty: Schema.Number,
+			mpn: Schema.String,
+			source: Schema.String
+		})
 	)
 );
 
-function checkBom() {
+class CheckError extends Schema.TaggedError<CheckError>()('CheckError', {
+	message: Schema.String
+}) {}
+
+const percent = (count: number, total: number) => Math.round((count / total) * 1000) / 10;
+const round = (value: number, places = 2) => Math.round(value * 10 ** places) / 10 ** places;
+const hasValue = (cell = '') => /\w/.test(cell) && !/^(n\/?a|none|-)$/i.test(cell);
+
+const refsMatching = (lines: ReadonlyArray<BomLine>, pattern: RegExp) =>
+	lines.filter((line) => pattern.test(line.mpn)).flatMap((line) => splitRefs(line.refs));
+
+const rp2350Pin = (pad: Footprint['pads'][number]) =>
+	pad.pinFunction.replace(/_\d+$/, '') || RP2350A_PINS.get(pad.number) || '';
+
+const readCheckedRun = Effect.fn('readCheckedRun')(function* (runId: string) {
+	const run = yield* readRun(runId);
+
+	const { fixes, drc, fab } = yield* readMetrics(runId, CheckedMetrics).pipe(
+		Effect.catchTag('SchemaError', () =>
+			Effect.fail(new CheckError({ message: `Run inspect.ts and price.ts on ${runId} first` }))
+		)
+	);
+
+	const output = `${run.runDir}/output`;
+	const bom = yield* readBom(`${output}/${run.info.bom}`);
+	const byReference = new Map(run.footprints.map((footprint) => [footprint.ref, footprint]));
+
+	const rp2350s = refsMatching(bom.lines, FEATURES.rp2350).flatMap(
+		(ref) => byReference.get(ref) ?? []
+	);
+
+	const adcNets = new Set(
+		run.footprints.flatMap((footprint) =>
+			footprint.pads.flatMap((pad) =>
+				/ADC\d/i.test(rp2350s.includes(footprint) ? rp2350Pin(pad) : pad.pinFunction)
+					? [pad.net]
+					: []
+			)
+		)
+	);
+
+	return {
+		...run,
+		output,
+		bom,
+		fittedLines: bom.lines.filter((line) => line.fitted),
+		byReference,
+		fixes,
+		fixedBomLines: new Set(fixes.flatMap((fix) => (fix.area === 'bom' ? [fix.refs] : []))),
+		drc,
+		fab,
+		rp2350s,
+		adcNets
+	};
+});
+
+type CheckedRun = Effect.Success<ReturnType<typeof readCheckedRun>>;
+
+function checkBom({ bom, parts, byReference, fixedBomLines }: CheckedRun) {
 	const bomRefs = new Set(bom.lines.flatMap((line) => splitRefs(line.refs)));
 
 	return {
@@ -168,7 +204,7 @@ function checkBom() {
 	};
 }
 
-async function checkSuppliers() {
+const checkSuppliers = Effect.fn('checkSuppliers')(function* ({ bom, fittedLines }: CheckedRun) {
 	const validBySupplier: Record<string, number> = Object.fromEntries(
 		SUPPLIERS.map(({ name }) => [name, 0])
 	);
@@ -184,7 +220,7 @@ async function checkSuppliers() {
 
 			if (!hasValue(number)) continue;
 
-			if (await isNumberFor(number, line.mpn)) {
+			if (yield* isNumberFor(number, line.mpn)) {
 				valid++;
 				validBySupplier[name] = (validBySupplier[name] ?? 0) + 1;
 			} else invalid.push({ refs: line.refs, mpn: line.mpn, supplier: name, number });
@@ -210,12 +246,15 @@ async function checkSuppliers() {
 		},
 		invalid
 	};
-}
+});
 
 type Placed = { ref: string; x: number; y: number; rotation: number; side: 'top' | 'bottom' };
 
-async function readPlacement(): Promise<Placed[]> {
-	const [header = [], ...rows] = parseCsv(await Bun.file(`${output}/${info.placement}`).text());
+const readPlacement = Effect.fn('readPlacement')(function* ({ output, info }: CheckedRun) {
+	const [header = [], ...rows] = parseCsv(
+		yield* (yield* FileSystem.FileSystem).readFileString(`${output}/${info.placement}`)
+	);
+
 	const column = (pattern: RegExp) => header.findIndex((name) => pattern.test(name));
 
 	const columns = {
@@ -227,7 +266,9 @@ async function readPlacement(): Promise<Placed[]> {
 	};
 
 	if (Object.values(columns).some((index) => index < 0))
-		throw new Error(`Unrecognized placement columns in ${info.placement}: ${header.join(',')}`);
+		return yield* new CheckError({
+			message: `Unrecognized placement columns in ${info.placement}: ${header.join(',')}`
+		});
 
 	const mmPer = /mil/i.test(header[columns.x]!)
 		? 0.0254
@@ -237,14 +278,14 @@ async function readPlacement(): Promise<Placed[]> {
 
 	const number = (cell = '') => parseFloat(cell.replace(/[^\d.eE+-]/g, ''));
 
-	return rows.map((row) => ({
+	return rows.map((row): Placed => ({
 		ref: row[columns.ref]!,
 		x: number(row[columns.x]) * (/mil/i.test(row[columns.x] ?? '') ? 0.0254 : mmPer),
 		y: number(row[columns.y]) * (/mil/i.test(row[columns.y] ?? '') ? 0.0254 : mmPer),
 		rotation: number(row[columns.rotation]),
 		side: /^(b|bot|bottom|back)$/i.test(row[columns.side] ?? '') ? 'bottom' : 'top'
 	}));
-}
+});
 
 const median = (values: number[]) =>
 	values.toSorted((a, b) => a - b)[Math.floor(values.length / 2)] ?? 0;
@@ -285,8 +326,9 @@ function fitSide(pairs: { placed: Placed; footprint: Footprint }[]) {
 	return best.deviations;
 }
 
-async function checkPlacement() {
-	const placed = await readPlacement();
+const checkPlacement = Effect.fn('checkPlacement')(function* (run: CheckedRun) {
+	const { parts, byReference } = run;
+	const placed = yield* readPlacement(run);
 	const placedRefs = placed.map((entry) => entry.ref);
 
 	const pairs = placed.flatMap((entry) => {
@@ -314,24 +356,26 @@ async function checkPlacement() {
 		wrongSide: pairs
 			.filter(({ placed, footprint }) => placed.side !== footprint.side)
 			.map(({ placed }) => placed.ref),
-		positionOffByMoreThanHalfMm: [...deviations]
-			.filter(([, mm]) => mm > PLACEMENT_TOLERANCE_MM)
-			.map(([ref, mm]) => ({ ref, mm: round(mm) })),
+		positionOffByMoreThanHalfMm: [...deviations].flatMap(([ref, mm]) =>
+			mm > PLACEMENT_TOLERANCE_MM ? [{ ref, mm: round(mm) }] : []
+		),
 		rotationDiffersFromBoard: pairs
 			.filter(
 				({ placed, footprint }) => normalize(placed.rotation) !== normalize(footprint.rotation)
 			)
 			.map(({ placed }) => placed.ref)
 	};
-}
+});
 
 // Libraries differ in whether repeated contacts share a number and whether thermal vias count as pads, so either count may match.
 const padCounts = (numbers: string[]) => ({ total: numbers.length, unique: new Set(numbers).size });
 
-async function checkParts() {
-	const priced: { refs: string; qty: number; mpn: string; source: string }[] = await Bun.file(
-		`${runDir}/components-pricing.json`
-	).json();
+const checkParts = Effect.fn('checkParts')(function* ({ runDir, byReference }: CheckedRun) {
+	const [lcsc, digikey] = [yield* Lcsc, yield* Digikey];
+
+	const priced = yield* Schema.decodeEffect(PricedLines)(
+		yield* (yield* FileSystem.FileSystem).readFileString(`${runDir}/components-pricing.json`)
+	);
 
 	const notStocked = [];
 	const discontinued = [];
@@ -340,32 +384,32 @@ async function checkParts() {
 	for (const line of priced) {
 		const needed = line.qty * BATCH_BOARDS;
 		const code = line.source.match(/^LCSC (C\d+)$/)?.[1];
-		const product = code ? await productByCode(code) : null;
+		const product = code ? yield* lcsc.productByCode(code) : null;
 
-		if (code && !product) throw new Error(`LCSC has no ${code}`);
+		if (code && !product) return yield* new CheckError({ message: `LCSC has no ${code}` });
 		const lcscStock = product?.stockNumber ?? 0;
-		const digikey = await digikeyPart(line.mpn);
+		const digikeyPart = yield* digikey.part(line.mpn);
 
-		if (lcscStock < needed && digikey.stock < needed)
+		if (lcscStock < needed && digikeyPart.stock < needed)
 			notStocked.push({
 				refs: line.refs,
 				mpn: line.mpn,
 				lcsc: code ?? null,
 				lcscStock,
-				digikeyStock: digikey.stock,
+				digikeyStock: digikeyPart.stock,
 				needed
 			});
 
 		const discontinuedAt = [
 			...(product?.productCycle === 'stop_product' ? ['LCSC'] : []),
-			...(digikey.discontinued ? ['Digi-Key'] : [])
+			...(digikeyPart.discontinued ? ['Digi-Key'] : [])
 		];
 
 		if (discontinuedAt.length)
 			discontinued.push({ refs: line.refs, mpn: line.mpn, lcsc: code ?? null, discontinuedAt });
 
 		if (!product) continue;
-		const supplierNumbers = await footprintPadNumbers(product);
+		const supplierNumbers = yield* lcsc.footprintPadNumbers(product);
 
 		if (!supplierNumbers.length) continue;
 		const supplierPads = padCounts(supplierNumbers);
@@ -402,26 +446,30 @@ async function checkParts() {
 		discontinued,
 		padCountMismatches
 	};
-}
+});
 
 type Checks = {
 	bom: ReturnType<typeof checkBom>;
-	placement: Awaited<ReturnType<typeof checkPlacement>>;
-	parts: Awaited<ReturnType<typeof checkParts>>;
+	placement: Effect.Success<ReturnType<typeof checkPlacement>>;
+	parts: Effect.Success<ReturnType<typeof checkParts>>;
 };
 
-function needsFixes({ bom: bomCheck, placement, parts: partsCheck }: Checks) {
-	const { drc, fab } = metrics;
-
-	if (!drc || !fab) throw new Error(`Run inspect.ts on ${runId} first`);
-
+function needsFixes(
+	{ bom, fittedLines, fixes, fixedBomLines, drc, fab }: CheckedRun,
+	{ bom: bomCheck, placement, parts: partsCheck }: Checks
+) {
 	const fixesIn = (...areas: Fix['area'][]) =>
-		fixes
-			.filter((fix) => areas.includes(fix.area))
-			.map((fix) => (fix.refs ? `${fix.refs}: ${fix.problem}` : fix.problem));
+		fixes.flatMap((fix) =>
+			areas.includes(fix.area) ? [fix.refs ? `${fix.refs}: ${fix.problem}` : fix.problem] : []
+		);
 
-	const listed = (label: string, refs: string[]) =>
+	const listed = (label: string, refs: ReadonlyArray<string>) =>
 		refs.length ? [`${label}: ${refs.join('; ')}`] : [];
+
+	const placementRefs = {
+		...placement,
+		positionOffByMoreThanHalfMm: placement.positionOffByMoreThanHalfMm.map(({ ref }) => ref)
+	};
 
 	const refsNeedingFixes = new Set([
 		...[...fixedBomLines].flatMap((refs) => splitRefs(refs ?? '')),
@@ -456,11 +504,8 @@ function needsFixes({ bom: bomCheck, placement, parts: partsCheck }: Checks) {
 			...listed('parts not in the BOM', bomCheck.partsNotInBom),
 			...(bomCheck.linesWithoutMpn ? [`${bomCheck.linesWithoutMpn} BOM lines without an MPN`] : []),
 			...listed('BOM lines with the wrong Qty', bomCheck.qtyMismatchLines),
-			...Object.entries(placement).flatMap(([problem, items]) =>
-				listed(
-					`placement ${problem}`,
-					items.map((item) => (typeof item === 'string' ? item : item.ref))
-				)
+			...Object.entries(placementRefs).flatMap(([problem, refs]) =>
+				listed(`placement ${problem}`, refs)
 			)
 		],
 		bomLines: {
@@ -472,7 +517,7 @@ function needsFixes({ bom: bomCheck, placement, parts: partsCheck }: Checks) {
 	};
 }
 
-function checkFeatures() {
+function checkFeatures({ bom, footprints, adcNets }: CheckedRun) {
 	const status = (refs: string[]) => ({ status: refs.length ? 'found' : 'needsReview', refs });
 
 	// A divider: a resistor from a battery net to an ADC input.
@@ -485,11 +530,16 @@ function checkFeatures() {
 
 	return {
 		...Object.fromEntries(
-			Object.entries(FEATURES).map(([name, pattern]) => [name, status(refsMatching(pattern))])
+			Object.entries(FEATURES).map(([name, pattern]) => [
+				name,
+				status(refsMatching(bom.lines, pattern))
+			])
 		),
-		chargerWithPowerPath: status(refsMatching(POWER_PATH_CHARGERS)),
+		chargerWithPowerPath: status(refsMatching(bom.lines, POWER_PATH_CHARGERS)),
 		batteryMonitoring: status(
-			[...refsMatching(FUEL_GAUGES), ...dividers.map((divider) => divider.ref)].sort(byRef)
+			[...refsMatching(bom.lines, FUEL_GAUGES), ...dividers.map((divider) => divider.ref)].sort(
+				byRef
+			)
 		)
 	};
 }
@@ -565,7 +615,7 @@ const boundingBox = (points: Point[]) => {
 };
 
 // An arc's radius is that of the circle through its three points.
-const trackLength = ({ start, mid, end }: (typeof copper.tracks)[number]) => {
+const trackLength = ({ start, mid, end }: Copper['tracks'][number]) => {
 	if (!mid) return distance(start, end);
 	const [a, b, c] = [distance(start, mid), distance(mid, end), distance(start, end)];
 	const radius = (a * b * c) / Math.abs(2 * cross(sub(mid, start), sub(end, start)));
@@ -588,7 +638,7 @@ const isResistor = (footprint: Footprint) => isTwoTerminal(footprint, 'R');
 const otherNet = (footprint: Footprint, net: string) =>
 	terminals(footprint).find((pad) => pad.net !== net)?.net ?? '';
 
-function checkDecoupling(rp2350: Footprint) {
+function checkDecoupling({ footprints }: CheckedRun, rp2350: Footprint) {
 	const capacitors = footprints.filter(
 		(footprint) =>
 			isTwoTerminal(footprint, 'C') && footprint.pads.some((pad) => GROUND_NET.test(pad.net))
@@ -622,18 +672,21 @@ function checkDecoupling(rp2350: Footprint) {
 	};
 }
 
-function parseOhms(value: string) {
+const parseOhms = Effect.fnUntraced(function* (value: string) {
 	const match = value.match(/^([\d.]+)\s*([RkKM]?)(\d*)/);
 
-	if (!match) throw new Error(`Can't read a resistance from "${value}"`);
+	if (!match) return yield* new CheckError({ message: `Can't read a resistance from "${value}"` });
 	const [, whole, unit = '', fraction] = match;
 
 	return (
 		Number(fraction ? `${whole}.${fraction}` : whole) * ({ k: 1e3, K: 1e3, M: 1e6 }[unit] ?? 1)
 	);
-}
+});
 
-function checkBatteryDivider(features: Features) {
+const checkBatteryDivider = Effect.fnUntraced(function* (
+	{ footprints, byReference, adcNets }: CheckedRun,
+	features: Features
+) {
 	const [gauges, found] = [
 		features.batteryMonitoring.refs.filter((ref) => !/^R\d/.test(ref)),
 		features.batteryMonitoring.refs.filter((ref) => /^R\d/.test(ref))
@@ -672,58 +725,70 @@ function checkBatteryDivider(features: Features) {
 		return top && bottom ? { top, bottom, source: otherNet(top, midpoint) } : null;
 	};
 
-	const dividers = found.map((ref) => {
-		const resistor = byReference.get(ref)!;
-		const adcNet = resistor.pads.find((pad) => adcNets.has(pad.net))?.net ?? '';
-		const direct = dividerAt(adcNet);
+	const dividers = yield* Effect.forEach(found, (ref) =>
+		Effect.gen(function* () {
+			const resistor = byReference.get(ref)!;
+			const adcNet = resistor.pads.find((pad) => adcNets.has(pad.net))?.net ?? '';
+			const direct = dividerAt(adcNet);
 
-		// Some boards buffer the divider with an op-amp, and the resistor checkFeatures finds is on its output.
-		const buffer = direct
-			? null
-			: footprints.find(
-					(footprint) =>
-						/^U\d/.test(footprint.ref) &&
-						footprint.pads.some((pad) => pad.net === otherNet(resistor, adcNet))
-				);
+			// Some boards buffer the divider with an op-amp, and the resistor checkFeatures finds is on its output.
+			const buffer = direct
+				? null
+				: footprints.find(
+						(footprint) =>
+							/^U\d/.test(footprint.ref) &&
+							footprint.pads.some((pad) => pad.net === otherNet(resistor, adcNet))
+					);
 
-		const divider =
-			direct ??
-			buffer?.pads
-				.map((pad) => (GROUND_NET.test(pad.net) ? null : dividerAt(pad.net)))
-				.find(Boolean);
+			const divider =
+				direct ??
+				buffer?.pads
+					.map((pad) => (GROUND_NET.test(pad.net) ? null : dividerAt(pad.net)))
+					.find(Boolean);
 
-		if (!divider) throw new Error(`No battery divider found around ${ref}`);
-		const [topOhms, bottomOhms] = [parseOhms(divider.top.value), parseOhms(divider.bottom.value)];
+			if (!divider)
+				return yield* new CheckError({ message: `No battery divider found around ${ref}` });
 
-		return {
-			top: divider.top.ref,
-			bottom: divider.bottom.ref,
-			topOhms,
-			bottomOhms,
-			bufferedBy: buffer?.ref ?? null,
-			microampsAtFullCharge: round((BATTERY_FULL_VOLTS / (topOhms + bottomOhms)) * 1e6),
-			switchedBy: batteryNets.has(divider.source) ? null : switchOf(divider.source)
-		};
-	});
+			const [topOhms, bottomOhms] = yield* Effect.all([
+				parseOhms(divider.top.value),
+				parseOhms(divider.bottom.value)
+			]);
+
+			return {
+				top: divider.top.ref,
+				bottom: divider.bottom.ref,
+				topOhms,
+				bottomOhms,
+				bufferedBy: buffer?.ref ?? null,
+				microampsAtFullCharge: round((BATTERY_FULL_VOLTS / (topOhms + bottomOhms)) * 1e6),
+				switchedBy: batteryNets.has(divider.source) ? null : switchOf(divider.source)
+			};
+		})
+	);
 
 	return { fuelGauges: gauges, dividers };
-}
+});
 
 // Edge-coupled differential impedance from the IPC-2141 closed forms, with h the dielectric to the nearest plane:
 // microstrip Z0 = 87/√(εr+1.41)·ln(5.98h/(0.8w+t)) and Zdiff = 2·Z0·(1−0.48·e^(−0.96s/h)); stripline, between planes b apart,
 // Z0 = 60/√εr·ln(4b/(0.67π(0.8w+t))) and Zdiff = 2·Z0·(1−0.347·e^(−2.9s/b)).
-function differentialImpedance(layer: string, width: number, gap: number) {
-	const index = copper.stackup.findIndex((entry) => entry.name === layer);
+function differentialImpedance(
+	stackup: Copper['stackup'],
+	layer: string,
+	width: number,
+	gap: number
+) {
+	const index = stackup.findIndex((entry) => entry.name === layer);
 
 	if (index < 0) return null;
-	const thickness = copper.stackup[index]!.thickness;
+	const thickness = stackup[index]!.thickness;
 
 	const dielectricToPlane = (step: number) => {
 		let h = 0;
 		let hTimesEr = 0;
 
-		for (let i = index + step; copper.stackup[i]; i += step) {
-			const entry = copper.stackup[i]!;
+		for (let i = index + step; stackup[i]; i += step) {
+			const entry = stackup[i]!;
 
 			if (entry.type === 'copper') return { h, er: hTimesEr / h };
 
@@ -765,11 +830,15 @@ function differentialImpedance(layer: string, width: number, gap: number) {
 	);
 }
 
-function checkUsb(rp2350: Footprint, connector: Footprint) {
+const checkUsb = Effect.fnUntraced(function* (
+	{ footprints, copper }: CheckedRun,
+	rp2350: Footprint,
+	connector: Footprint
+) {
 	const onConnector = (net: string) => connector.pads.some((pad) => pad.net === net);
 
 	// The nets from the RP2350 pin to the connector, through a series resistor if there is one.
-	const line = (pin: string) => {
+	const line = Effect.fnUntraced(function* (pin: string) {
 		const net = rp2350.pads.find((pad) => rp2350Pin(pad) === pin)?.net ?? '';
 
 		if (onConnector(net)) return [net];
@@ -781,12 +850,15 @@ function checkUsb(rp2350: Footprint, connector: Footprint) {
 				onConnector(otherNet(footprint, net))
 		);
 
-		if (!series) throw new Error(`No series resistor from ${net} to ${connector.ref}`);
+		if (!series)
+			return yield* new CheckError({
+				message: `No series resistor from ${net} to ${connector.ref}`
+			});
 
 		return [otherNet(series, net), net];
-	};
+	});
 
-	const [plus, minus] = [line('USB_DP'), line('USB_DM')];
+	const [plus, minus] = yield* Effect.all([line('USB_DP'), line('USB_DM')]);
 	const tracksOn = (nets: string[]) => copper.tracks.filter((track) => nets.includes(track.net));
 
 	const length = (nets: string[]) =>
@@ -835,14 +907,16 @@ function checkUsb(rp2350: Footprint, connector: Footprint) {
 		mismatchMm: round(Math.abs(plusMm - minusMm)),
 		vias: copper.vias.filter((via) => [...plus, ...minus].includes(via.net)).length,
 		pair: pair ? { ...pair, lengthMm: round(pair.lengthMm) } : null,
-		differentialOhms: pair ? differentialImpedance(pair.layer, pair.widthMm, pair.gapMm) : null,
+		differentialOhms: pair
+			? differentialImpedance(copper.stackup, pair.layer, pair.widthMm, pair.gapMm)
+			: null,
 		esd: footprints
 			.filter((footprint) => footprint !== rp2350 && footprint !== connector && onBoth(footprint))
 			.map((footprint) => footprint.ref)
 	};
-}
+});
 
-function checkAntennaKeepout(module: Footprint) {
+function checkAntennaKeepout({ footprints, copper }: CheckedRun, module: Footprint) {
 	const moduleArea = boundingBox(module.courtyard);
 
 	const keepouts = [
@@ -891,51 +965,75 @@ function checkAntennaKeepout(module: Footprint) {
 	};
 }
 
-function checkDesign(features: Features) {
+const checkDesign = Effect.fn('checkDesign')(function* (run: CheckedRun, features: Features) {
 	const [rp2350, connector, module] = [
-		rp2350s[0],
+		run.rp2350s[0],
 		...[FEATURES.usbC, FEATURES.wifiBle].map((pattern) =>
-			byReference.get(refsMatching(pattern)[0] ?? '')
+			run.byReference.get(refsMatching(run.bom.lines, pattern)[0] ?? '')
 		)
 	];
 
 	if (!rp2350 || !connector || !module)
-		throw new Error('The design checks need the RP2350, USB-C connector and Wi-Fi module');
+		return yield* new CheckError({
+			message: 'The design checks need the RP2350, USB-C connector and Wi-Fi module'
+		});
 
 	if (
 		!rp2350.pads.some((pad) => pad.pinFunction) &&
 		rp2350.pads.some((pad) => Number(pad.number) > 61)
 	)
-		throw new Error(`${rp2350.ref} names no pin functions and isn't an RP2350A`);
+		return yield* new CheckError({
+			message: `${rp2350.ref} names no pin functions and isn't an RP2350A`
+		});
 
 	return {
-		decoupling: checkDecoupling(rp2350),
-		battery: checkBatteryDivider(features),
-		usb: checkUsb(rp2350, connector),
-		antennaKeepout: checkAntennaKeepout(module)
+		decoupling: checkDecoupling(run, rp2350),
+		battery: yield* checkBatteryDivider(run, features),
+		usb: yield* checkUsb(run, rp2350, connector),
+		antennaKeepout: checkAntennaKeepout(run, module)
 	};
-}
-
-async function checkDeliverables() {
-	const exists = (path: string) => Bun.file(path).exists();
-	const project = board.replace(/\.kicad_pcb$/, '');
-
-	return {
-		readme: await exists(`${output}/README.md`),
-		schematic: await exists(`${project}.kicad_sch`),
-		projectFile: await exists(`${project}.kicad_pro`),
-		fabFolder: (await Array.fromAsync(new Bun.Glob('fab/**').scan({ cwd: output }))).length > 0
-	};
-}
-
-const checks = { bom: checkBom(), placement: await checkPlacement(), parts: await checkParts() };
-const features = checkFeatures();
-
-await updateMetrics({
-	...checks,
-	suppliers: await checkSuppliers(),
-	needsFixes: needsFixes(checks),
-	features,
-	design: checkDesign(features),
-	deliverables: await checkDeliverables()
 });
+
+const checkDeliverables = Effect.fn('checkDeliverables')(function* ({ board, output }: CheckedRun) {
+	const fs = yield* FileSystem.FileSystem;
+	const project = board.replace(/\.kicad_pcb$/, '');
+	const fabDir = `${output}/fab`;
+
+	return {
+		readme: yield* fs.exists(`${output}/README.md`),
+		schematic: yield* fs.exists(`${project}.kicad_sch`),
+		projectFile: yield* fs.exists(`${project}.kicad_pro`),
+		fabFolder:
+			(yield* fs.exists(fabDir)) &&
+			(yield* fs.readDirectory(fabDir, { recursive: true })).length > 0
+	};
+});
+
+const command = Command.make('check', { runId: Argument.String('run-id') }, ({ runId }) =>
+	Effect.gen(function* () {
+		const run = yield* readCheckedRun(runId);
+
+		const checks = {
+			bom: checkBom(run),
+			placement: yield* checkPlacement(run),
+			parts: yield* checkParts(run)
+		};
+
+		const features = checkFeatures(run);
+
+		yield* updateMetrics(runId, {
+			...checks,
+			suppliers: yield* checkSuppliers(run),
+			needsFixes: needsFixes(run, checks),
+			features,
+			design: yield* checkDesign(run, features),
+			deliverables: yield* checkDeliverables(run)
+		});
+	})
+);
+
+command.pipe(
+	Command.run({ version: '0.0.0' }),
+	Effect.provide(Layer.mergeAll(BunServices.layer, Lcsc.layer, Digikey.layer)),
+	BunRuntime.runMain
+);
