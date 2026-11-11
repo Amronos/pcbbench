@@ -1,5 +1,6 @@
-import { $ } from 'bun';
-import { mkdir } from 'node:fs/promises';
+import { Effect, FileSystem } from 'effect';
+import { ChildProcess } from 'effect/process';
+import { run } from './command.ts';
 
 // KiCad names each plotted file after its layer, as in board-F_Cu.gbr or board-PTH.drl.
 const LAYER_IN_FILE_NAME =
@@ -20,20 +21,22 @@ const layerName = (token: string) =>
 				.map((word) => word[0]!.toUpperCase() + word.slice(1))
 				.join('.');
 
-async function layerFiles(dir: string) {
-	const files = await Array.fromAsync(new Bun.Glob('**/*').scan({ cwd: dir, absolute: true }));
+const layerFiles = Effect.fn('layerFiles')(function* (dir: string) {
+	const files = yield* (yield* FileSystem.FileSystem).glob('**/*', { root: dir });
 
 	return new Map(
 		files.flatMap((file) => {
 			const token = file.match(LAYER_IN_FILE_NAME)?.[1];
 
-			return token ? [[layerName(token), file] as const] : [];
+			return token ? [[layerName(token), `${dir}/${file}`] as const] : [];
 		})
 	);
-}
+});
 
-const litPixels = async (...args: string[]) =>
-	Number(await $`convert ${args} -format ${'%[fx:mean*w*h]'} info:`.text());
+const litPixels = (...args: string[]) =>
+	run(ChildProcess.make`convert ${args} -format ${'%[fx:mean*w*h]'} info:`).pipe(
+		Effect.map(Number)
+	);
 
 // Pixels drawn in one image that the other doesn't cover, even after growing it by the tolerance.
 const uncovered = (image: string, other: string) =>
@@ -53,49 +56,71 @@ const uncovered = (image: string, other: string) =>
 // The layer is drawn green and the outline red, so each image is framed by its own board outline whatever origin the export used.
 // gerbv's PNG export paints clear-polarity objects (as in --subtract-soldermask) in the ink color; its SVG paints them white.
 // Pixels that are green but not red are the layer's ink.
-async function renderLayer(layer: string, edgeCuts: string, out: string) {
-	await $`gerbv -x svg -D ${DPI} -b ${'#000000'} -f ${'#00FF00FF'} -f ${'#FF0000FF'} -o ${out}.svg ${layer} ${edgeCuts}`.quiet();
-	await $`rsvg-convert -b black -o ${out} ${out}.svg`.quiet();
-	await $`convert ${out} -channel RG -separate +channel -compose Minus_Dst -composite -threshold 50% ${out}`.quiet();
+const renderLayer = Effect.fn('renderLayer')(function* (
+	layer: string,
+	edgeCuts: string,
+	out: string
+) {
+	yield* run(
+		ChildProcess.make`gerbv -x svg -D ${DPI} -b ${'#000000'} -f ${'#00FF00FF'} -f ${'#FF0000FF'} -o ${out}.svg ${layer} ${edgeCuts}`
+	);
+	yield* run(ChildProcess.make`rsvg-convert -b black -o ${out} ${out}.svg`);
+	yield* run(
+		ChildProcess.make`convert ${out} -channel RG -separate +channel -compose Minus_Dst -composite -threshold 50% ${out}`
+	);
 
-	const [width = 0, height = 0] = (await $`identify -format "%w %h" ${out}`.text())
+	const [width = 0, height = 0] = (yield* run(ChildProcess.make`identify -format "%w %h" ${out}`))
 		.split(' ')
 		.map(Number);
 
 	return { width, height };
-}
+});
 
-export async function matchFab(
+export const matchFab = Effect.fn('matchFab')(function* (
 	kicadCli: string,
 	board: string,
 	fabZip: string,
-	expectedLayers: string[],
+	expectedLayers: ReadonlyArray<string>,
 	work: string
 ) {
+	const fs = yield* FileSystem.FileSystem;
 	const [delivered, reexported] = [`${work}/delivered`, `${work}/reexported`];
-	await mkdir(reexported, { recursive: true });
-	await $`unzip -q -o ${fabZip} -d ${delivered}`;
-	const deliveredFiles = await layerFiles(delivered);
-	const useAuxOrigin = (await Bun.file(board).text()).includes('(useauxorigin yes)');
+	yield* fs.makeDirectory(reexported, { recursive: true });
+
+	yield* run(
+		ChildProcess.make({
+			stdout: 'inherit',
+			stderr: 'inherit'
+		})`unzip -q -o ${fabZip} -d ${delivered}`
+	);
+
+	const deliveredFiles = yield* layerFiles(delivered);
+	const useAuxOrigin = (yield* fs.readFileString(board)).includes('(useauxorigin yes)');
 	// The board's own plot settings, so options such as reference designators on silkscreen match the agent's export.
 	// Zones are refilled because saved fills can be stale, and the delivered files should match the design.
-	await $`${kicadCli} pcb export gerbers --board-plot-params --check-zones -o ${reexported}/ ${board}`.quiet();
+	yield* run(
+		ChildProcess.make`${kicadCli} pcb export gerbers --board-plot-params --check-zones -o ${reexported}/ ${board}`
+	);
 	// gerbv draws routed slots and G85 slots differently, so slots use the delivered file's format.
 	const deliveredPth = deliveredFiles.get('PTH');
 
 	const ovalFormat =
-		deliveredPth && /^M15$/m.test(await Bun.file(deliveredPth).text()) ? 'route' : 'alternate';
+		deliveredPth && /^M15$/m.test(yield* fs.readFileString(deliveredPth)) ? 'route' : 'alternate';
 
-	await $`${kicadCli} pcb export drill --excellon-separate-th --excellon-oval-format ${ovalFormat} --drill-origin ${useAuxOrigin ? 'plot' : 'absolute'} -u mm -o ${reexported}/ ${board}`.quiet();
-	let reexportedFiles = await layerFiles(reexported);
+	yield* run(
+		ChildProcess.make`${kicadCli} pcb export drill --excellon-separate-th --excellon-oval-format ${ovalFormat} --drill-origin ${useAuxOrigin ? 'plot' : 'absolute'} -u mm -o ${reexported}/ ${board}`
+	);
+	let reexportedFiles = yield* layerFiles(reexported);
 
 	const unplotted = [...new Set([...expectedLayers, ...deliveredFiles.keys()])].filter(
 		(layer) => !reexportedFiles.has(layer) && !layer.endsWith('PTH')
 	);
 
 	if (unplotted.length) {
-		await $`${kicadCli} pcb export gerbers --check-zones ${useAuxOrigin ? ['--use-drill-file-origin'] : []} -l ${unplotted.join(',')} -o ${reexported}/ ${board}`.quiet();
-		reexportedFiles = await layerFiles(reexported);
+		yield* run(
+			ChildProcess.make`${kicadCli} pcb export gerbers --check-zones ${useAuxOrigin ? ['--use-drill-file-origin'] : []} -l ${unplotted.join(',')} -o ${reexported}/ ${board}`
+		);
+		reexportedFiles = yield* layerFiles(reexported);
 	}
 
 	const diffPercentByLayer: Record<string, number> = {};
@@ -107,8 +132,8 @@ export async function matchFab(
 		if (!reference) continue;
 
 		const sizes = [
-			await renderLayer(file, deliveredFiles.get('Edge.Cuts')!, a),
-			await renderLayer(reference, reexportedFiles.get('Edge.Cuts')!, b)
+			yield* renderLayer(file, deliveredFiles.get('Edge.Cuts')!, a),
+			yield* renderLayer(reference, reexportedFiles.get('Edge.Cuts')!, b)
 		];
 
 		const extent = [
@@ -120,11 +145,11 @@ export async function matchFab(
 			`${Math.max(...sizes.map((size) => size.width))}x${Math.max(...sizes.map((size) => size.height))}`
 		];
 
-		await $`convert ${a} ${extent} ${a}`.quiet();
-		await $`convert ${b} ${extent} ${b}`.quiet();
-		const drawn = await litPixels(a, b, '-compose', 'Lighten', '-composite');
+		yield* run(ChildProcess.make`convert ${a} ${extent} ${a}`);
+		yield* run(ChildProcess.make`convert ${b} ${extent} ${b}`);
+		const drawn = yield* litPixels(a, b, '-compose', 'Lighten', '-composite');
 		diffPercentByLayer[layer] = drawn
-			? Math.round((((await uncovered(a, b)) + (await uncovered(b, a))) / drawn) * 10000) / 100
+			? Math.round((((yield* uncovered(a, b)) + (yield* uncovered(b, a))) / drawn) * 10000) / 100
 			: 0;
 	}
 
@@ -135,4 +160,4 @@ export async function matchFab(
 		),
 		layersMissing: expectedLayers.filter((layer) => !deliveredFiles.has(layer))
 	};
-}
+});

@@ -1,11 +1,11 @@
-import { BunServices } from '@effect/platform-bun';
-import { $ } from 'bun';
-import { ManagedRuntime } from 'effect';
-import { mkdtemp, rm } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
-import { join } from 'node:path';
-import { readRun, updateMetrics as writeMetrics, type JsonFields } from './board.ts';
+import { BunRuntime, BunServices } from '@effect/platform-bun';
+import { Effect, FileSystem, Schema } from 'effect';
+import { Argument, Command } from 'effect/cli';
+import { ChildProcess } from 'effect/process';
+import { readRun, updateMetrics } from './board.ts';
+import { exec, run } from './command.ts';
 import { matchFab } from './fab-match.ts';
+import { RUNS } from './runs.ts';
 
 const RENDERS = {
 	top: ['--side', 'top'],
@@ -13,40 +13,27 @@ const RENDERS = {
 	iso: ['--rotate', '-40,0,30', '--perspective', '--floor', '--zoom', '0.7']
 };
 
-const [runId, kicadCli] = Bun.argv.slice(2);
+const Violation = Schema.Struct({ severity: Schema.String, type: Schema.String });
 
-if (!runId || !kicadCli)
-	throw new Error(
-		'Usage: bun bench/inspect.ts <run id> <kicad-cli of the KiCad version the run used>'
-	);
+type Violation = typeof Violation.Type;
 
-const runtime = ManagedRuntime.make(BunServices.layer);
-
-const { runDir, info, board, footprints, parts, copperLayers } = await runtime.runPromise(
-	readRun(runId)
+const Drc = Schema.fromJsonString(
+	Schema.Struct({
+		violations: Schema.Array(Violation),
+		unconnected_items: Schema.Array(Schema.Unknown),
+		schematic_parity: Schema.Array(Schema.Unknown)
+	})
 );
 
-const updateMetrics = (fields: JsonFields) => runtime.runPromise(writeMetrics(runId, fields));
+const Erc = Schema.fromJsonString(
+	Schema.Struct({ sheets: Schema.Array(Schema.Struct({ violations: Schema.Array(Violation) })) })
+);
 
-// kicad-cli writes a local-settings .kicad_prl next to the board when there is none.
-const localSettings = board.replace(/\.kicad_pcb$/, '.kicad_prl');
-const hadLocalSettings = await Bun.file(localSettings).exists();
+class KicadVersionError extends Schema.TaggedError<KicadVersionError>()('KicadVersionError', {
+	message: Schema.String
+}) {}
 
-const cliVersion = (await $`${kicadCli} version --format about`.text()).match(
-	/^Version: ([^,]+)/m
-)?.[1];
-
-const runVersion = info.versions.kicad.split(' ')[0];
-
-// Backplane's fork calls itself 10.99.0-unknown-bp.4.
-if (cliVersion?.replace('-unknown-', '-') !== runVersion)
-	throw new Error(`${kicadCli} is KiCad ${cliVersion}, but the run used ${runVersion}`);
-
-const work = await mkdtemp(join(tmpdir(), 'pcbbench-inspect-'));
-
-type Violation = { severity: string; type: string };
-
-const bySeverity = (violations: Violation[]) => ({
+const bySeverity = (violations: ReadonlyArray<Violation>) => ({
 	errors: violations.filter((violation) => violation.severity === 'error').length,
 	warnings: violations.filter((violation) => violation.severity === 'warning').length
 });
@@ -57,16 +44,18 @@ const DRC_MANUFACTURING_ERRORS = ['connection_width'];
 // The footprint differs from its library copy. That's an edit to the footprint, not a design fault.
 const DRC_IGNORED = ['lib_footprint_mismatch'];
 
-const classifyDrc = (violations: Violation[]) =>
-	violations
-		.filter((violation) => !DRC_IGNORED.includes(violation.type))
-		.map((violation) =>
-			DRC_MANUFACTURING_ERRORS.includes(violation.type)
-				? { ...violation, severity: 'error' }
-				: violation
-		);
+const classifyDrc = (violations: ReadonlyArray<Violation>) =>
+	violations.flatMap((violation) =>
+		DRC_IGNORED.includes(violation.type)
+			? []
+			: [
+					DRC_MANUFACTURING_ERRORS.includes(violation.type)
+						? { ...violation, severity: 'error' }
+						: violation
+				]
+	);
 
-const countByType = (violations: Violation[]) =>
+const countByType = (violations: ReadonlyArray<Violation>) =>
 	Object.fromEntries(
 		[...Map.groupBy(violations, (violation) => violation.type)].map(([type, group]) => [
 			type,
@@ -74,12 +63,46 @@ const countByType = (violations: Violation[]) =>
 		])
 	);
 
-try {
+const inspect = Effect.fn('inspect')(function* ({
+	runId,
+	kicadCli
+}: {
+	readonly runId: string;
+	readonly kicadCli: string;
+}) {
+	const fs = yield* FileSystem.FileSystem;
+	const { runDir, info, board, footprints, parts, copperLayers } = yield* readRun(runId);
+
+	// kicad-cli writes a local-settings .kicad_prl next to the board when there is none.
+	const localSettings = board.replace(/\.kicad_pcb$/, '.kicad_prl');
+	const hadLocalSettings = yield* fs.exists(localSettings);
+
+	const cliVersion = (yield* run(ChildProcess.make`${kicadCli} version --format about`)).match(
+		/^Version: ([^,]+)/m
+	)?.[1];
+
+	const runVersion = info.versions.kicad.split(' ')[0];
+
+	// Backplane's fork calls itself 10.99.0-unknown-bp.4.
+	if (cliVersion?.replace('-unknown-', '-') !== runVersion)
+		return yield* new KicadVersionError({
+			message: `${kicadCli} is KiCad ${cliVersion}, but the run used ${runVersion}`
+		});
+
+	if (!hadLocalSettings)
+		yield* Effect.addFinalizer(() => fs.remove(localSettings, { force: true }).pipe(Effect.ignore));
+
+	const work = yield* fs.makeTempDirectoryScoped({ prefix: 'pcbbench-inspect-' });
+
 	// Saved zone fills can be stale; refilling checks the design as KiCad would plot it.
-	await $`${kicadCli} pcb drc --format json --severity-error --severity-warning --schematic-parity --refill-zones -o ${work}/drc.json ${board}`.quiet();
-	const drc = await Bun.file(`${work}/drc.json`).json();
-	await $`${kicadCli} sch erc --format json --severity-error --severity-warning -o ${work}/erc.json ${board.replace(/\.kicad_pcb$/, '.kicad_sch')}`.quiet();
-	const erc = await Bun.file(`${work}/erc.json`).json();
+	yield* run(
+		ChildProcess.make`${kicadCli} pcb drc --format json --severity-error --severity-warning --schematic-parity --refill-zones -o ${work}/drc.json ${board}`
+	);
+	const drc = yield* Schema.decodeEffect(Drc)(yield* fs.readFileString(`${work}/drc.json`));
+	yield* run(
+		ChildProcess.make`${kicadCli} sch erc --format json --severity-error --severity-warning -o ${work}/erc.json ${board.replace(/\.kicad_pcb$/, '.kicad_sch')}`
+	);
+	const erc = yield* Schema.decodeEffect(Erc)(yield* fs.readFileString(`${work}/erc.json`));
 
 	const smdSides = new Set(parts.filter((part) => part.smd).map((part) => part.side));
 
@@ -97,7 +120,7 @@ try {
 			: [])
 	];
 
-	const fab = await matchFab(
+	const fab = yield* matchFab(
 		kicadCli,
 		board,
 		`${runDir}/output/${info.fabZip}`,
@@ -106,9 +129,9 @@ try {
 	);
 
 	// KiCad reports each model it can't load while exporting a mesh, using its own path resolution.
-	const glb = await $`${kicadCli} pcb export glb --no-dnp -f -o ${work}/board.glb ${board}`
-		.quiet()
-		.nothrow();
+	const glb = yield* exec(
+		ChildProcess.make`${kicadCli} pcb export glb --no-dnp -f -o ${work}/board.glb ${board}`
+	);
 
 	const unloaded = new Set(
 		[...`${glb.stdout}${glb.stderr}`.matchAll(/Could not add 3D model for (\S+?)\.?$/gm)].map(
@@ -121,22 +144,34 @@ try {
 		.map((part) => part.ref);
 
 	for (const [name, args] of Object.entries(RENDERS)) {
-		await $`${kicadCli} pcb render --quality high --width 1600 --height 1200 ${args} -o ${runDir}/renders/${name}.png ${board}`.quiet();
+		yield* run(
+			ChildProcess.make`${kicadCli} pcb render --quality high --width 1600 --height 1200 ${args} -o ${runDir}/renders/${name}.png ${board}`
+		);
 	}
 
-	await updateMetrics({
+	yield* updateMetrics(runId, {
 		drc: {
 			...bySeverity(classifyDrc(drc.violations)),
 			unconnectedItems: drc.unconnected_items.length,
 			schematicParityIssues: drc.schematic_parity.length,
 			byType: countByType(drc.violations)
 		},
-		erc: bySeverity(erc.sheets.flatMap((sheet: { violations: Violation[] }) => sheet.violations)),
+		erc: bySeverity(erc.sheets.flatMap((sheet) => sheet.violations)),
 		fab,
 		missing3dModels: { count: missing3dModels.length, refs: missing3dModels }
 	});
-} finally {
-	await rm(work, { recursive: true, force: true });
+}, Effect.scoped);
 
-	if (!hadLocalSettings) await rm(localSettings, { force: true });
-}
+Command.make(
+	'inspect',
+	{
+		runId: Argument.Literals(
+			'run-id',
+			RUNS.map((run) => run.id)
+		),
+		kicadCli: Argument.String('kicad-cli').pipe(
+			Argument.withDescription('kicad-cli of the KiCad version the run used')
+		)
+	},
+	inspect
+).pipe(Command.run({ version: '0.0.0' }), Effect.provide(BunServices.layer), BunRuntime.runMain);

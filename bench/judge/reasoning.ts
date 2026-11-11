@@ -1,15 +1,31 @@
-import { Glob } from 'bun';
+import { BunRuntime, BunServices } from '@effect/platform-bun';
+import { Effect, FileSystem, Schema } from 'effect';
+import { Argument, Command } from 'effect/cli';
 import { runDirectory } from '../board.ts';
+import { MODELS, RUNS } from '../runs.ts';
 
-type Part = {
-	number: number;
-	createdAt: number;
-	kind: string;
-	prompt?: { text?: string };
-	completion?: { items: { type?: string; text?: string }[] };
-};
+const Part = Schema.fromJsonString(
+	Schema.Struct({
+		number: Schema.Number,
+		createdAt: Schema.Number,
+		kind: Schema.String,
+		prompt: Schema.optionalKey(Schema.Struct({ text: Schema.optionalKey(Schema.String) })),
+		completion: Schema.optionalKey(
+			Schema.Struct({
+				items: Schema.Array(
+					Schema.Struct({
+						type: Schema.optionalKey(Schema.String),
+						text: Schema.optionalKey(Schema.String)
+					})
+				)
+			})
+		)
+	})
+);
 
 const SYSTEM_PROMPTS = ['# Workspace instructions', '# Environment'];
+
+export const judgeStateDirectory = (runId: string) => `${import.meta.dir}/../.state/judge/${runId}`;
 
 // Headings become bold so they nest under this file's own, and the Sprocket account id in transcript paths is hidden.
 const clean = (text: string) =>
@@ -18,12 +34,13 @@ const clean = (text: string) =>
 		.replace(/^#{1,6} +(.+)$/gm, '**$1**')
 		.replace(/user_[0-9A-Z]{26}/g, '<user>');
 
-async function readThread(dir: string) {
-	const parts: Part[] = [];
+const readThread = Effect.fn('readThread')(function* (dir: string) {
+	const fs = yield* FileSystem.FileSystem;
+	const parts = [];
 
-	for await (const file of new Glob('parts/*.jsonl').scan(dir)) {
-		for (const line of (await Bun.file(`${dir}/${file}`).text()).split('\n').filter(Boolean))
-			parts.push(JSON.parse(line));
+	for (const file of yield* fs.glob('parts/*.jsonl', { root: dir })) {
+		for (const line of (yield* fs.readFileString(`${dir}/${file}`)).split('\n').filter(Boolean))
+			parts.push(yield* Schema.decodeEffect(Part)(line));
 	}
 
 	parts.sort((a, b) => a.number - b.number);
@@ -42,28 +59,32 @@ async function readThread(dir: string) {
 	);
 
 	return { start: parts[0]?.createdAt ?? 0, task, report: texts.at(-1) };
-}
+});
 
 // Writes each judge's final message and its subagents' final reports next to its review, from the logs `judge.ts` keeps.
-export async function writeReasoning(runId: string, models: string[]) {
+export const writeReasoning = Effect.fn('writeReasoning')(function* (
+	runId: string,
+	models: ReadonlyArray<string>
+) {
+	const fs = yield* FileSystem.FileSystem;
 	const runDir = runDirectory(runId);
-	const state = `${import.meta.dir}/../.state/judge/${runId}`;
+	const state = judgeStateDirectory(runId);
 
 	for (const model of models) {
-		const attempts = await Array.fromAsync(new Glob(`${model}/attempt-*/judge.out`).scan(state));
+		const attempts = yield* fs.glob(`${model}/attempt-*/judge.out`, { root: state });
 
 		const logs = `${state}/${attempts
 			.sort()
 			.at(-1)
 			?.replace(/\/judge\.out$/, '')}`;
 
-		const threadStates = await Array.fromAsync(new Glob('transcripts/*/*/state.json').scan(logs));
+		const threadStates = yield* fs.glob('transcripts/*/*/state.json', { root: logs });
 
-		const threads = (
-			await Promise.all(
-				threadStates.map((path) => readThread(`${logs}/${path.replace(/\/state\.json$/, '')}`))
-			)
-		).sort((a, b) => a.start - b.start);
+		const threads = (yield* Effect.forEach(
+			threadStates,
+			(path) => readThread(`${logs}/${path.replace(/\/state\.json$/, '')}`),
+			{ concurrency: 'unbounded' }
+		)).sort((a, b) => a.start - b.start);
 
 		const subagents = threads.filter(
 			({ task, report }) =>
@@ -73,21 +94,26 @@ export async function writeReasoning(runId: string, models: string[]) {
 		const sections = [
 			`# ${model}'s review`,
 			'## Final message',
-			clean(await Bun.file(`${logs}/judge.out`).text()),
+			clean(yield* fs.readFileString(`${logs}/judge.out`)),
 			...subagents.flatMap(({ task, report }) => [
 				`## Subagent: ${clean(task.split('\n')[0] ?? '')}`,
 				clean(report ?? '')
 			])
 		];
 
-		await Bun.write(`${runDir}/review/${model}.md`, `${sections.join('\n\n')}\n`);
+		yield* fs.writeFileString(`${runDir}/review/${model}.md`, `${sections.join('\n\n')}\n`);
 	}
-}
+});
 
-if (import.meta.main) {
-	const [runId, ...models] = Bun.argv.slice(2);
-
-	if (!runId || !models.length)
-		throw new Error('Usage: bun judge/reasoning.ts <run id> <judge models>');
-	await writeReasoning(runId, models);
-}
+if (import.meta.main)
+	Command.make(
+		'reasoning',
+		{
+			runId: Argument.Literals(
+				'run-id',
+				RUNS.map((run) => run.id)
+			),
+			models: Argument.Literals('judge-models', MODELS).pipe(Argument.atLeast(1))
+		},
+		({ runId, models }) => writeReasoning(runId, models)
+	).pipe(Command.run({ version: '0.0.0' }), Effect.provide(BunServices.layer), BunRuntime.runMain);
