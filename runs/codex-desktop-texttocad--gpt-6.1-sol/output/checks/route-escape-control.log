@@ -1,0 +1,30 @@
+route: NOT routed GPIO7: J5.7 to U1.10: U1.10 is walled in by GND, +1V1 and +3V3: no way out of the 3.3 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed GPIO8: J5.8 to U1.12: U1.12 is walled in by GND, SD_CLK and +1V1: no way out of the 3.3 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed GPIO9: J5.9 to U1.13: U1.13 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 5.4 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed SWCLK: J6.4 to U1.24: U1.24 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 8.2 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed RUN: R18.1 to U1.26: U1.26 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 8.2 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed USB_SUSPEND_EN: U4.5 to U1.28: U1.28 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 8.1 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed WIFI_RX: U1.33 to U6.6: U1.33 is walled in by GND, GPIO6 (routed first in this plan) and +1V1: no way out of the 5.1 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed WIFI_RTS: U1.35 to U6.4: U1.35 is walled in by GND, GPIO6 (routed first in this plan) and +1V1: no way out of the 5.2 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed I2C_SDA: J5.15 to U1.7: U1.7 is walled in by GND, +1V1 and +3V3: no way out of the 8.7 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed RGB_DATA: J5.12 to U1.18: U1.18 is walled in by SD_MOSI, SD_MISO and SD_CS: no way out of the 1.4 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+routed GPIO2: J5.4 to U1.4: 24.27 mm in 9 segments, 1 via
+routed GPIO3: J5.5 to U1.5: 24.67 mm in 12 segments, 2 vias
+routed GPIO6: J5.6 to U1.9: 35.85 mm in 17 segments
+NOT routed GPIO7: J5.7 to U1.10: U1.10 is walled in by GND, +1V1 and +3V3: no way out of the 3.3 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed GPIO8: J5.8 to U1.12: U1.12 is walled in by GND, SD_CLK and +1V1: no way out of the 3.3 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed GPIO9: J5.9 to U1.13: U1.13 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 5.4 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed GPIO29_ADC3: J5.14 to U1.43: 42.24 mm in 10 segments
+NOT routed SWCLK: J6.4 to U1.24: U1.24 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 8.2 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+NOT routed RUN: R18.1 to U1.26: U1.26 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 8.2 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed USB_500_EN: U4.6 to U1.27: 27.21 mm in 6 segments
+NOT routed USB_SUSPEND_EN: U4.5 to U1.28: U1.28 is walled in by GND, +1V1 and GPIO6 (routed first in this plan): no way out of the 8.1 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed CHARGE_N: R8.1 to U1.36: 15.33 mm in 5 segments, 1 via
+routed POWERGOOD_N: R9.1 to U1.37: 16.45 mm in 9 segments, 2 vias
+routed ESP_BOOT_CTRL: R23.1 to U1.31: 30.10 mm in 7 segments, 2 vias
+NOT routed WIFI_RX: U1.33 to U6.6: U1.33 is walled in by GND, GPIO6 (routed first in this plan) and +1V1: no way out of the 5.1 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed WIFI_CTS: U1.34 to U6.3: 44.40 mm in 7 segments, 1 via
+NOT routed WIFI_RTS: U1.35 to U6.4: U1.35 is walled in by GND, GPIO6 (routed first in this plan) and +1V1: no way out of the 5.2 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+NOT routed I2C_SDA: J5.15 to U1.7: U1.7 is walled in by GND, +1V1 and +3V3: no way out of the 8.7 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed RGB_DATA: J5.12 to U1.18: U1.18 is walled in by SD_MOSI, SD_MISO and SD_CS: no way out of the 1.4 mm² round it on F.Cu and B.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT ROUTED: 9 of 19 connection(s) routed, 82 segment(s), 9 via(s), 260.5 mm of track, in 12.2 s; 10 not routed, each said above

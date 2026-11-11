@@ -1,0 +1,24 @@
+routed MAIN_FB: R42.2 to R43.1: 0.98 mm in 1 segment
+routed MAIN_FB: R42.2 to U5.5: 4.73 mm in 2 segments
+routed MAIN_VAUX: C42.1 to U5.3: 2.68 mm in 2 segments
+routed CORE_FB: R34.2 to R35.1: 0.98 mm in 1 segment
+routed CORE_FB: R34.2 to U7.4: 5.30 mm in 6 segments
+routed ADC_AVDD: C10.1 to C37.1: 2.47 mm in 4 segments
+routed ADC_AVDD: C10.1 to U1.44: 2.87 mm in 4 segments
+routed ADC_AVDD: C37.1 to FB1.2: 2.91 mm in 2 segments
+routed BAT_SENSE: C19.1 to R11.1: 2.01 mm in 2 segments
+routed BAT_SENSE: R11.1 to R10.2: 2.42 mm in 2 segments
+routed BAT_SENSE: R10.2 to U9.3: 1.60 mm in 2 segments
+routed BAT_BUF: R38.1 to U9.4: 2.75 mm in 2 segments
+routed BAT_BUF: U9.4 to U9.1: 3.06 mm in 2 segments
+routed BAT_ADC: C41.1 to R38.2: 1.01 mm in 1 segment
+routed BAT_ADC: R38.2 to U1.40: 26.33 mm in 4 segments
+routed BAT_TS: C18.1 to TP10.1: 1.51 mm in 2 segments
+routed BAT_TS: C18.1 to U4.1: 5.42 mm in 6 segments
+routed BAT_TS: C18.1 to J2.3: 6.11 mm in 2 segments
+routed CHG_ISET: R5.1 to U4.16: 5.93 mm in 6 segments, 2 vias
+routed CHG_ILIM: R6.1 to U4.12: 7.41 mm in 5 segments
+routed VBUS_ADC: C20.1 to R13.1: 2.01 mm in 2 segments
+routed VBUS_ADC: R13.1 to R12.2: 2.42 mm in 2 segments
+routed VBUS_ADC: R13.1 to U1.41: 20.44 mm in 5 segments, 1 via
+OK: 23 of 23 connection(s) routed, 67 segment(s), 3 via(s), 113.4 mm of track, in 0.5 s

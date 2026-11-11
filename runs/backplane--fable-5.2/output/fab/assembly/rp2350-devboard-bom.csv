@@ -1,0 +1,37 @@
+Item #,Designator,Qty,Manufacturer,Mfg Part #,Description / Value,Package/Footprint,Type,LCSC Part # (reference),Your Instructions / Notes
+1,C1,1,Samsung,CL10A475KA8NQNC,Capacitor 4.7uF 25V X5R 0603,C_0603_1608Metric,SMD,,
+2,"C2, C3, C4, C28, C30",5,Samsung,CL10A106MA8NRNC,Capacitor 10uF 25V X5R 0603,C_0603_1608Metric,SMD,,
+3,C5,1,Samsung,CL05A105KA5NQNC,Capacitor 1uF 25V X5R 0402,C_0402_1005Metric,SMD,,
+4,"C6, C7, C8, C9, C10, C11, C12, C13, C15, C16, C17, C18, C25, C26, C27, C29, C31, C32",18,Samsung,CL05B104KO5NNNC,Capacitor 100nF 16V X7R 0402,C_0402_1005Metric,SMD,,
+5,"C19, C20, C21",3,Samsung,CL05A475MP5NRNC,Capacitor 4.7uF 10V X5R 0402,C_0402_1005Metric,SMD,,
+6,"C23, C24",2,Samsung,CL05C150JB5NNNC,Capacitor 15pF 50V C0G 0402,C_0402_1005Metric,SMD,,
+7,D1,1,Worldsemi,WS2812B-2020,"Addressable RGB LED 2020 (V6, 3.3-5.3V supply)",LED_WS2812B-2020_PLCC4_2.0x2.0mm,SMD,C52917434,Pin 1 (DOUT) marked on silkscreen
+8,D2,1,XINGLIGHT,XL-1608UOC-06,LED orange 0603 (charging),LED_0603_1608Metric,SMD,C965800,
+9,D3,1,XINGLIGHT,XL-1608SYGC-06,"LED yellow-green 0603, Vf 2.2V (user LED on RM2 GPIO0)",LED_0603_1608Metric,SMD,C965805,
+10,J1,1,Korean Hroparts Elec,TYPE-C-31-M-12,"USB Type-C receptacle, USB 2.0, 16 pin, SMD mid-mount shell THT",USB_C_Receptacle_HRO_TYPE-C-31-M-12,SMD,C165948,USB-C receptacle at board edge
+11,J2,1,JST,S2B-PH-SM4-TB(LF)(SN),"JST PH 2-pin side-entry SMD, single-cell LiPo",JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal,SMD,C295747,
+12,J3,1,JST,SM04B-SRSS-TB(LF)(SN),JST SH 4-pin 1mm side-entry (Qwiic / STEMMA QT),JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal,SMD,C160404,
+13,J4,1,Molex,104031-0811,microSD push-pull socket with card detect,microSD_HC_Molex_104031-0811,SMD,C585350,
+14,L1,1,Abracon,AOTA-B201610S3R3-101-T,"3.3uH polarised inductor for RP2350 core SMPS, 2016",L_Murata_DFE201610P,SMD,C42411119,"POLARISED: marking dot must sit on pad 1 (+1V1 net), see assembly drawing"
+15,"R1, R2",2,Yageo,RC0402FR-075K1L,Resistor 5.1k 1% 0402,R_0402_1005Metric,SMD,,
+16,"R3, R4",2,Yageo,RC0402FR-0727RL,Resistor 27R 1% 0402,R_0402_1005Metric,SMD,,
+17,"R5, R17, R19, R26",4,Yageo,RC0402FR-0710KL,Resistor 10k 1% 0402,R_0402_1005Metric,SMD,,
+18,R6,1,Yageo,RC0402FR-071K5L,Resistor 1.5k 1% 0402,R_0402_1005Metric,SMD,,
+19,R7,1,Yageo,RC0402FR-073KL,Resistor 3.0k 1% 0402,R_0402_1005Metric,SMD,,
+20,"R8, R11",2,Yageo,RC0402FR-07100KL,Resistor 100k 1% 0402,R_0402_1005Metric,SMD,,
+21,R9,1,Yageo,RC0402FR-07150KL,Resistor 150k 1% 0402,R_0402_1005Metric,SMD,,
+22,"R10, R28, R29",3,Yageo,RC0402FR-072K2L,Resistor 2.2k 1% 0402,R_0402_1005Metric,SMD,,
+23,"R12, R13",2,Yageo,RC0402FR-07200KL,Resistor 200k 1% 0402,R_0402_1005Metric,SMD,,
+24,R14,1,Yageo,RC0402FR-0733RL,Resistor 33R 1% 0402,R_0402_1005Metric,SMD,,
+25,"R15, R18, R27",3,Yageo,RC0402FR-071KL,Resistor 1k 1% 0402,R_0402_1005Metric,SMD,,
+26,R25,1,Yageo,RC0402FR-07470RL,Resistor 470R 1% 0402,R_0402_1005Metric,SMD,,
+27,SW1,1,Omron,B3U-1000P,Tactile switch 3x2.5mm SMD,SW_SPST_B3U-1000P,SMD,C231329,
+28,SW2,1,Omron,B3U-1000P,Tactile switch 3x2.5mm SMD,SW_SPST_B3U-1000P,SMD,C231329,
+29,U1,1,Raspberry Pi,RP2350A0A4,"Dual Cortex-M33 / RISC-V MCU, QFN-60 (A4 stepping)",QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm,SMD,C42411118,RP2350A0A4 (A4 stepping)
+30,U2,1,Winbond,W25Q128JVPIQ,"128Mbit QSPI NOR flash, WSON-8 6x5",WSON-8-1EP_6x5mm_P1.27mm_EP3.4x4.3mm,SMD,C190862,
+31,U3,1,AP Memory,APS6404L-3SQR-ZR,"64Mbit QSPI PSRAM, USON-8 3x2",Winbond_USON-8-1EP_3x2mm_P0.5mm_EP0.2x1.6mm,SMD,C3040877,
+32,U4,1,Texas Instruments,BQ24074RGTR,"1.5A single-cell Li-ion charger with power path, VQFN-16",VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm,SMD,C54313,
+33,U5,1,Texas Instruments,TLV75733PDBVR,"3.3V 1A LDO, SOT-23-5",SOT-23-5,SMD,C485517,
+34,U6,1,STMicroelectronics,USBLC6-2SC6,"USB ESD protection, SOT-23-6",SOT-23-6,SMD,C7519,
+35,U7,1,Raspberry Pi,RMC20452T,"Raspberry Pi Radio Module 2 (CYW43439), 2.4GHz Wi-Fi 4 + Bluetooth 5.2",RMC20452T,SMD,C49451547,"Castellated module, antenna end overhangs towards the board edge (no copper underneath the antenna)"
+36,Y1,1,Abracon,ABM8-272-T3,12MHz crystal 10pF 3225,Crystal_SMD_3225-4Pin_3.2x2.5mm,SMD,C20625731,

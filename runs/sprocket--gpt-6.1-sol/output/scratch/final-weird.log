@@ -1,0 +1,27 @@
+Loading PCB file: sprocket2350.kicad_pcb
+Checking 75 nets (2397 segments, 279 vias)...
+
+NO WEIRD THINGS FOUND!
+
+  advisory, not counted: off-centre-via-end x58
+      net /+3V3 (F.Cu) at (73.000, 62.825): track end 0.0250mm off the centre of the via at (73.0000, 62.8500); also on pad R26.1
+      net /+3V3 (F.Cu) at (52.000, 47.975): track end 0.2016mm off the centre of the via at (52.2000, 48.0000); also on pad C16.1
+      net /+3V3 (F.Cu) at (39.000, 63.325): track end 0.0250mm off the centre of the via at (39.0000, 63.3500); also on pad R20.1
+      net /+3V3 (F.Cu) at (75.000, 39.325): track end 0.0250mm off the centre of the via at (75.0000, 39.3500); also on pad R25.1
+      net /+3V3 (F.Cu) at (91.000, 38.475): track end 0.0250mm off the centre of the via at (91.0000, 38.4500); also on pad C32.1
+      net /UART_CTS (B.Cu) at (53.000, 57.300): track end 0.1000mm off the centre of the via at (53.0000, 57.2000)
+      net /UART_RTS (B.Cu) at (78.550, 25.300): track end 0.0707mm off the centre of the via at (78.5000, 25.3500)
+      net /UART_RTS (In2.Cu) at (53.250, 55.500): track end 0.1500mm off the centre of the via at (53.4000, 55.5000)
+      net /UART_TX (B.Cu) at (50.700, 58.500): track end 0.0500mm off the centre of the via at (50.7000, 58.4500)
+      net /UART_TX (B.Cu) at (80.450, 40.200): track end 0.1000mm off the centre of the via at (80.4500, 40.3000)
+      net /GND (F.Cu) at (28.000, 57.000): track end 0.0500mm off the centre of the via at (28.0500, 57.0000)
+      net /GND (F.Cu) at (27.980, 57.020): track end 0.0728mm off the centre of the via at (28.0500, 57.0000)
+      net /GND (F.Cu) at (41.119, 71.941): track end 0.2025mm off the centre of the via at (41.3000, 71.8500)
+      net /GND (F.Cu) at (27.420, 58.540): track end 0.0922mm off the centre of the via at (27.3500, 58.6000)
+      net /GND (F.Cu) at (44.051, 73.010): track end 0.2025mm off the centre of the via at (44.2500, 73.0500)
+      net /GND (B.Cu) at (35.053, 69.000): track end 0.2025mm off the centre of the via at (34.8500, 69.0000)
+      net /I2C_SCL (In2.Cu) at (50.800, 51.850): track end 0.0500mm off the centre of the via at (50.8000, 51.8000)
+      net /VBUS (B.Cu) at (29.250, 40.500): track end 0.0707mm off the centre of the via at (29.3000, 40.5500)
+      net /USB_500_EN (B.Cu) at (50.400, 50.700): track end 0.1000mm off the centre of the via at (50.3000, 50.7000)
+      net /CORE_1V1 (F.Cu) at (49.975, 52.000): track end 0.0559mm off the centre of the via at (50.0000, 51.9500); also on pad C18.1
+      ... and 38 more (use --max-print 0 to show all)

@@ -1,0 +1,38 @@
+ENV KNOBS: KICAD_CLI_PATH=/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli
+--clearance not given; escaping at the board Default net-class clearance 0.127mm.
+--board-edge-clearance not given; using the board min_copper_edge_clearance 0.3mm.
+--via-size not given; using the board Default net-class 0.6mm.
+--via-drill not given; using the board Default net-class 0.3mm.
+Parsing scratch/usb2.kicad_pcb...
+
+Found U1: Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm
+  Position: (55.00, 53.00)
+  Rotation: 0.0deg
+  Pads: 70
+  Layer: F.Cu (from footprint)
+  Netclass clearances for 12 net(s), honoured in full (no --clearance-ceiling) (mm: [0.127]); escape copper spaced at KiCad's pairwise max(A, B).
+QFN/QFP Layout Analysis for U1:
+  Center: (0.00, 0.00)
+  Bounding box: X[-3.45, 3.45], Y[-3.45, 3.45]
+  Size: 6.90 x 6.90 mm
+  Detected pad pitch: 0.40 mm
+  Edge tolerance: 0.69 mm
+  Stub length: pad_width / 2 + extension (clears pad before bend)
+  Layer: F.Cu
+  Found 60 pads to fanout:
+    bottom: 15 pads
+    left: 15 pads
+    right: 15 pads
+    top: 15 pads
+  Sample pad geometry: 0.20 x 0.80 mm
+  Pad-clearance: shortened 15 fan(s), 0 straight escape(s) near the board edge (#513); dropped 2 stub(s) grazing a foreign pad (issue #123)
+  Same-net pads: 4 stub(s) end on a same-net pad they reach (#1332): /+3V3 at C9.1, /+3V3 at C12.1, /+3V3 at C14.1, /+3V3 at C14.1
+  Generated 112 track segments (58 stubs x 2 segments)
+  NOTE: 0.40 mm pitch keeps adjacent fan stubs only 0.283 mm apart (pitch/sqrt2).
+  Routing these nets needs clearance below 0.13 mm (with 0.15 mm track) plus grid-quantization margin; the default 0.25 clearance / 0.1 grid will fail to escape.
+  Suggested: route.py --grid-step 0.05 --clearance 0.05 --track-width 0.15 for this component's nets.
+  Validated: No endpoint collisions
+
+Writing 112 tracks and 0 vias to scratch/fanout.kicad_pcb...
+Done!
+JSON_SUMMARY: {"component": "U1", "requested": 48, "escaped": 47, "failed": 1, "unescaped_nets": ["/CORE_1V1"], "flagged_escaped_nets": ["/+3V3"], "skipped_nc": 0, "clearance": 0.127, "track_width": 0.15, "escape_method": "stub", "via_size": 0.6, "via_drill": 0.3, "layer": "F.Cu", "drc_grazes": {"scope": "copper this step laid", "pad_via": 0, "via_segment": 0, "pad_segment": 0, "segment_segment": 0, "segment_crossing": 0, "other": 0, "total": 0}, "min_clearance_used": 0.127, "escalated": [], "allow_via_in_pad": false, "env_knobs": {"KICAD_CLI_PATH": "/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli"}}

@@ -1,0 +1,28 @@
+route: NOT routed WIFI_RX: U1.33 to U6.6: U1.33 is walled in by +3V3, +1V1 and WIFI_TX (routed first in this plan): no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed WIFI_CTS: U1.34 to U6.3: U1.34 is walled in by +1V1, +3V3 and WIFI_RX: no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed WIFI_RTS: U1.35 to U6.4: U1.35 is walled in by +3V3, WIFI_CTS and CHARGE_N: no way out of the 0.4 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed ESP_BOOT_CTRL: R23.1 to U1.31: U1.31 is walled in by +3V3 and WIFI_TX (routed first in this plan): no way out of the 0.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed WIFI_TX: U1.32 to U6.5: 43.30 mm in 6 segments, 2 vias
+NOT routed WIFI_RX: U1.33 to U6.6: U1.33 is walled in by +3V3, +1V1 and WIFI_TX (routed first in this plan): no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+NOT routed WIFI_CTS: U1.34 to U6.3: U1.34 is walled in by +1V1, +3V3 and WIFI_RX: no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed WIFI_RTS: U1.35 to U6.4: U1.35 is walled in by +3V3, WIFI_CTS and CHARGE_N: no way out of the 0.4 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+routed ESP_EN: C21.1 to R20.1: 2.40 mm in 4 segments
+routed ESP_EN: R20.1 to U6.2: 8.28 mm in 6 segments, 2 vias
+routed ESP_EN: R20.1 to R22.2: 7.70 mm in 2 segments
+routed ESP_EN: R22.2 to SW4.1: 15.00 mm in 4 segments
+routed ESP_EN: SW4.1 to SW4.1: 6.30 mm in 1 segment
+routed ESP_EN: SW4.1 to J7.6: 13.08 mm in 4 segments, 1 via
+routed ESP_BOOT: J7.5 to SW3.1: 7.06 mm in 6 segments, 2 vias
+routed ESP_BOOT: SW3.1 to SW3.1: 6.16 mm in 2 segments
+routed ESP_BOOT: J7.5 to R23.2: 15.86 mm in 4 segments, 1 via
+routed ESP_BOOT: R23.2 to R21.1: 5.45 mm in 4 segments
+routed ESP_BOOT: R21.1 to U6.8: 4.90 mm in 8 segments, 2 vias
+routed ESP_EN_CTRL: R22.1 to U1.29: 33.74 mm in 7 segments, 2 vias
+NOT routed ESP_BOOT_CTRL: R23.1 to U1.31: U1.31 is walled in by +3V3 and WIFI_TX (routed first in this plan): no way out of the 0.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed ESP_STRAP2: R37.1 to U6.16: 3.45 mm in 2 segments
+routed ESP_STRAP8: R36.1 to U6.7: 7.27 mm in 7 segments, 2 vias
+routed ESP_PROG_TX: J7.3 to TP9.1: 13.58 mm in 2 segments
+routed ESP_PROG_TX: TP9.1 to U6.12: 10.96 mm in 4 segments
+routed ESP_PROG_RX: J7.4 to TP8.1: 15.26 mm in 5 segments
+routed ESP_PROG_RX: TP8.1 to U6.11: 6.24 mm in 4 segments
+NOT ROUTED: 19 of 23 connection(s) routed, 82 segment(s), 14 via(s), 226.0 mm of track, in 2.4 s; 4 not routed, each said above

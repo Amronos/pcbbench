@@ -1,0 +1,9 @@
+Packaged 115 real components in 53 BOM groups; 458 pinout rows
+Output: /Users/ec2-user/pcbbench-run/fab/assembly
+parts.csv
+bom.csv
+placement.csv
+assembly-pinout.csv
+top-assembly-orientation.svg
+assembly-orientation.md
+manifest.json

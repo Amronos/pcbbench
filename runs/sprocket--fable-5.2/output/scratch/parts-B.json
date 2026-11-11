@@ -1,0 +1,192 @@
+{
+  "xtal": {
+    "Manufacturer": "Abracon",
+    "MPN": "ABM8-272-T3",
+    "Digikey Part #": "535-ABM8-272-T3CT-ND",
+    "Mouser Part #": "815-ABM8-272-T3",
+    "LCSC Part #": "C20625731",
+    "ds": "https://abracon.com/datasheets/ABM8-272-T3.pdf",
+    "desc": "Crystal 12 MHz ±30 ppm, CL 10 pF, ESR 50 ohm max, 3.2x2.5 mm 4-SMD",
+    "notes": "Checked 2026-11-10. DigiKey: Active, 23,471 in stock (constrained supply, no backorders). Mouser: 8,620 in stock. LCSC: 1,455 in stock. Datasheet rev B: load capacitance 10 pF, ESR (R1) 50 ohm max, C0 3.0 pF max, drive level 10 uW typ / 200 uW max, tolerance and stability ±30 ppm, -40 to +85 C. Pad mapping (datasheet top view): pads 1 and 3 are the crystal, pads 2 and 4 are GND (lid). Pad 1 bottom-left, 2 bottom-right, 3 top-right, 4 top-left, which is the same numbering and position as KiCad Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm (pad 1 at -1.1,+0.85; 2 at +1.1,+0.85; 3 at +1.1,-0.85; 4 at -1.1,-0.85). The footprint matches with no remapping. The crystal is symmetric, so 180 degree rotation is harmless. Datasheet says the body chamfer can sit on pin 1, 3 or 4, so it is not a reliable orientation mark."
+  },
+  "ind": {
+    "Manufacturer": "Abracon",
+    "MPN": "AOTA-B201610S3R3-101-T",
+    "Digikey Part #": "535-AOTA-B201610S3R3-101-TCT-ND",
+    "Mouser Part #": "815-AB201610S3R3101T",
+    "LCSC Part #": "C42411119",
+    "ds": "https://abracon.com/datasheets/AOTA-B201610S3R3-101-T.pdf",
+    "desc": "Inductor 3.3 uH ±20%, Isat 2.4 A, Irms 2.1 A, DCR 140 mohm max, shielded molded, polarity dot, 2016 (0806)",
+    "notes": "Checked 2026-11-10. DigiKey: Active, 3,426 in stock. Mouser: 18,018 in stock. LCSC: only 10 in stock (1,328 more via 'other suppliers', 3-5 days), so buy from Mouser or DigiKey. Polarity: confirmed. Datasheet rev A has a 'Marking (White Ink polarity dot)' section; the dot is on the top face in the corner next to one terminal, and the datasheet labels that terminal '+' (current drawn entering there). Parts are taped with the dot aligned the same way. The datasheet does not number the terminals. KiCad footprint Inductor_SMD:L_Abracon_AOTA-B201610S has two identical pads (1 at x=-0.75, 2 at x=+0.75, 0.8x1.6 mm) and NO polarity mark on silk or fab, so the board needs its own dot mark and the assembler needs an explicit note. Datasheet land pattern is 1.0x1.6 mm pads with a 1.0 mm gap; the KiCad pads are 0.8 mm wide with a 0.7 mm gap. Raspberry Pi hardware design guide, Figure 4 (PCB layout of the regulator, page 6): L1 pad 2 is on net VREG_LX and pad 1 is on +1V1, and the polarity dot is drawn at the pad 1 end. So Raspberry Pi puts the dot end on the 1V1 output (C7 side) and the non-dot end on VREG_LX. The guide's text does not state this in words; it comes from the figure only, so check against Raspberry Pi's minimal-design KiCad files before release. No drop-in replacement: this is the only polarity-marked part Raspberry Pi names."
+  },
+  "led_g": {
+    "Manufacturer": "Wurth Elektronik",
+    "MPN": "150060GS75000",
+    "Digikey Part #": "732-4971-1-ND",
+    "Mouser Part #": "710-150060GS75000",
+    "LCSC Part #": "",
+    "ds": "https://www.we-online.com/components/products/datasheet/150060GS75000.pdf",
+    "desc": "LED green 525 nm InGaN, 430 mcd typ and Vf 3.2 V typ at 20 mA, 140 deg, water clear, 0603",
+    "notes": "Checked 2026-11-10. DigiKey: Active, 198,792 in stock. Mouser: 537,909 in stock. LCSC: not carried (search returns 0 results). Well stocked, no replacement needed. Datasheet: Vf 3.2 V typ / 3.5 V max at 20 mA, 220 mcd min / 430 mcd typ at 20 mA, 30 mA max continuous, MSL 3, pad 1 cathode (polarity mark), pad 2 anode. Low-current figures are ESTIMATES scaled from the 20 mA values, because the datasheet curves could not be read as numbers: about 2.6 to 2.8 V and roughly 10 to 20 mcd at 0.5 to 1 mA. That is clearly visible indoors. On a 3.3 V rail the headroom is only about 0.5 V, so use about 1 k (roughly 0.5 mA); from 5 V use 2.2 k to 4.7 k."
+  },
+  "led_a": {
+    "Manufacturer": "Wurth Elektronik",
+    "MPN": "150060AS75000",
+    "Digikey Part #": "732-150060AS75000CT-ND",
+    "Mouser Part #": "710-150060AS75000",
+    "LCSC Part #": "",
+    "ds": "https://www.we-online.com/components/products/datasheet/150060AS75000.pdf",
+    "desc": "LED amber 605 nm AlInGaP, 130 mcd typ and Vf 2.0 V typ at 20 mA, 140 deg, water clear, 0603",
+    "notes": "Checked 2026-11-10. DigiKey: Active, 35,751 in stock. Mouser (mouser.co.uk page): 97,451 in stock. LCSC: not carried (search returns 0 results). Well stocked, no replacement needed. Datasheet: Vf 2.0 V typ / 2.4 V max at 20 mA, 70 mcd min / 130 mcd typ at 20 mA, 30 mA max continuous, MSL 3, pad 1 cathode (polarity mark), pad 2 anode. Low-current figures are ESTIMATES scaled from the 20 mA values, because the datasheet curves could not be read as numbers: about 1.8 V and roughly 3 to 6 mcd at 0.5 to 1 mA. That is 3 to 4 times dimmer than the green LED at the same current. To look balanced next to the green one, run amber near 1 mA or more (1.5 k from 3.3 V gives about 1 mA; 2.2 k to 3.3 k from 5 V) and green near 0.5 mA."
+  },
+  "r5k1": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-075K1L",
+    "Digikey Part #": "311-5.10KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C105872",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 5.1k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 417,255 in stock. LCSC: 4,401,300 in stock. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r27": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-0727RL",
+    "Digikey Part #": "YAG3086CT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C138021",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 27R 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 459,607 in stock. The DigiKey number is YAG3086CT-ND, not a 311- number. LCSC: listed as C138021 but 0 in stock, so source from DigiKey. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r33": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-0733RL",
+    "Digikey Part #": "311-33.0LRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C138002",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 33R 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 568,273 in stock. LCSC: C138002 has 5,028,500 in stock; a second LCSC listing C2935238 is marked not recommended for new designs, do not use it. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r470": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-07470RL",
+    "Digikey Part #": "311-470LRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C114877",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 470R 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 54,777 in stock. LCSC: 708,700 in stock. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r1k": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-071KL",
+    "Digikey Part #": "311-1.00KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C106235",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 1k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 2,715,933 in stock. LCSC: C106235 has 790,600 in stock; a second LCSC listing C2935237 is marked not recommended for new designs, do not use it. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r1k5": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-071K5L",
+    "Digikey Part #": "311-1.50KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C114759",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 1.5k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active but 0 in stock, backorder only (10,000 past due, estimated 09-Nov-2026). LCSC: 3,094,400 in stock. Mouser not confirmed: anti-bot wall. Same-footprint 0402 1% drop-ins seen in stock at DigiKey, not checked elsewhere: Panasonic ERJ-2RKF1501X (980,306) or Vishay CRCW04021K50FKED (1,001,907)."
+  },
+  "r1k8": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-071K8L",
+    "Digikey Part #": "311-1.80KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C163481",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 1.8k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 187,575 in stock. LCSC: 206,300 in stock. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r2k2": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-072K2L",
+    "Digikey Part #": "311-2.20KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C114762",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 2.2k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 6,075 in stock, low for this series but enough for prototypes. LCSC: 387,500 in stock. Mouser number not confirmed: Mouser served an anti-bot wall. An aggregator (thepartsdirect.com) lists Mouser 603-RC0402FR-072K2L; unconfirmed, so left out of the field."
+  },
+  "r10k": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-0710KL",
+    "Digikey Part #": "311-10.0KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C60490",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 10k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 6,619,783 in stock. LCSC: 1,888,200 in stock. Mouser number not confirmed: Mouser served an anti-bot wall."
+  },
+  "r100k": {
+    "Manufacturer": "YAGEO",
+    "MPN": "RC0402FR-07100KL",
+    "Digikey Part #": "311-100KLRCT-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C60491",
+    "ds": "https://yageogroup.com/content/datasheet/asset/file/PYU-RC_GROUP_51_ROHS_L",
+    "desc": "RES 100k 1% 1/16W 50V thick film 0402",
+    "notes": "DigiKey: Active, 4,532,396 in stock. LCSC: 14,465,300 in stock. Mouser number not confirmed: Mouser served an anti-bot wall. An aggregator (thepartsdirect.com) lists Mouser 603-RC0402FR-07100KL; unconfirmed, so left out of the field."
+  },
+  "c15p": {
+    "Manufacturer": "Murata",
+    "MPN": "GRM1555C1H150JA01D",
+    "Digikey Part #": "490-5888-1-ND",
+    "Mouser Part #": "81-GRM1555C1H150JA1D",
+    "LCSC Part #": "C76950",
+    "ds": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM1555C1H150JA01-01A-EN_PDF_CERAMICCAPACITORSMD",
+    "desc": "15 pF ±5% C0G/NP0 50 V 0402 MLCC",
+    "notes": "Checked 2026-11-10. DigiKey: Active, 405,009 in stock. Mouser: 454,014 in stock. LCSC: 122,800 in stock. No lifecycle concern seen. Murata's own production status could not be read (JavaScript page)."
+  },
+  "c100n": {
+    "Manufacturer": "Murata",
+    "MPN": "GRM155R71C104KA88D",
+    "Digikey Part #": "490-3261-1-ND",
+    "Mouser Part #": "81-GRM155R71C104KA88",
+    "LCSC Part #": "C71629",
+    "ds": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM155R71C104KA88-01A-EN_PDF_CERAMICCAPACITORSMD",
+    "desc": "100 nF ±10% X7R 16 V 0402 MLCC",
+    "notes": "Checked 2026-11-10. Mouser (mouser.co.uk search row): 5,860,694 in stock. LCSC: 989,700 in stock. DigiKey: Active but 0 in stock (10,000 expected 16-Dec-2026). LIFECYCLE NOT SETTLED: DigiKey says Active, but Octopart and datasheets.com tag this MPN NRND, and neither Mouser's lifecycle flag nor Murata's live status could be read. Orderable today from Mouser and LCSC. Possible drop-in seen in DigiKey's substitute table: GRM155R71C104JA88D (same series, ±5%, 302,397 in stock), not verified further."
+  },
+  "c1u": {
+    "Manufacturer": "Murata",
+    "MPN": "GRM155R61C105KA12D",
+    "Digikey Part #": "490-10694-1-ND",
+    "Mouser Part #": "81-GRM155R61C105KA2D",
+    "LCSC Part #": "C77006",
+    "ds": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM155R61C105KA12-01A-EN_PDF_CERAMICCAPACITORSMD",
+    "desc": "1 uF ±10% X5R 16 V 0402 MLCC",
+    "notes": "REPLACEMENT. The candidate GRM155R61A105KE15D (1 uF X5R 10 V 0402) is OBSOLETE: DigiKey 'Obsolete and no longer manufactured', Mouser lifecycle 'Obsolete' with a product withdrawal notice; LCSC C76999 still shows 197,950 of remaining stock. GRM155R61A105KE01D is also obsolete at DigiKey. This entry is the same-footprint 16 V drop-in GRM155R61C105KA12D, checked 2026-11-10: DigiKey Active, 91,783 in stock (constrained supply, no backorders). Mouser: 0 in stock, first delivery expected 05-Feb-2027, 53 week lead time. LCSC: 49,200 in stock. Buy from DigiKey or LCSC. DC bias of the replacement was not checked."
+  },
+  "c4u7": {
+    "Manufacturer": "Murata",
+    "MPN": "GRM155R60J475ME47D",
+    "Digikey Part #": "490-5915-1-ND",
+    "Mouser Part #": "",
+    "LCSC Part #": "C82453",
+    "ds": "https://pim.murata.com/en-us/pim/details/?partNum=GRM155R60J475ME47%23",
+    "desc": "4.7 uF ±20% X5R 6.3 V 0402 MLCC",
+    "notes": "Checked 2026-11-10. DigiKey: Active but 0 in stock (10,000 expected 20-Nov-2026, backorder allowed). LCSC: 328,100 in stock, the only confirmed source that ships today. Mouser number and stock not confirmed: anti-bot wall on every attempt. ds is Murata's product page (returns HTTP 200; the direct PDF link returned 403). Sister part GRM155R60J475ME87D (490-5408-1-ND) is also at 0 stock at DigiKey. Effective capacitance at 3.3 V and 1.1 V DC bias was not found in any source fetched (Murata publishes it only in SimSurfing and a JavaScript chart). No estimate given."
+  },
+  "c10u25": {
+    "Manufacturer": "Murata",
+    "MPN": "GRM188R61E106MA73D",
+    "Digikey Part #": "490-7202-1-ND",
+    "Mouser Part #": "81-GRM188R61E106MA3D",
+    "LCSC Part #": "C91606",
+    "ds": "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GRM188R61E106MA73-01A-EN_PDF_CERAMICCAPACITORSMD",
+    "desc": "10 uF ±20% X5R 25 V 0603 MLCC",
+    "notes": "Checked 2026-11-10. DigiKey: Active but 0 in stock (4,000 estimated 15-Feb-2027). Mouser: 0 in stock (1,031,265 expected 26-Nov-2026), 53 week lead time. LCSC: 249,075 in stock, the only source that ships today. The ±10% sister part GRM188R61E106KA73D (490-18214-1-ND) is also at 0 at DigiKey, so no in-stock Murata drop-in was found; a 10 uF 25 V X5R 0603 from another vendor would need its own check. Effective capacitance at 5 V DC bias: NOT found as a published number. The Murata PDF linked here is the 33-page specification sheet and has no DC bias curve; Murata publishes the curve only in SimSurfing and a JavaScript chart, which could not be read. No estimate given."
+  }
+}

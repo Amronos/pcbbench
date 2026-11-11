@@ -1,0 +1,1964 @@
+TLV758P 500-mA, High-Accuracy, Adjustable LDO in a Small Size Package
+1 Features
+• Input voltage range: 1.5 V to 6.0 V
+• Adjustable output voltage:
+– 0.55 V to 5.5 V
+• Low dropout:
+– 130 mV (max) at 500 mA (3.3 VOUT)
+• High output accuracy: 0.7% (typical) and 1% 
+(maximum over temperature)
+• IQ: 25 μA (typical)
+• Built-in soft-start with monotonic VOUT rise
+• Packages:
+– 2-mm × 2-mm WSON-6 (DRV)
+– SOT23-5 (DBV)
+• Active output discharge
+2 Applications
+• Gaming consoles
+• Home theaters and entertainment
+• PC and notebooks
+• Connected peripherals and printers
+• Rack and server power
+• Thermostats
+• Retail automation and payment
+3 Description
+The TLV758P is an adjustable 500-mA low-dropout 
+(LDO) regulator . This device is available in a small, 
+6-pin, 2-mm × 2-mm WSON package and a 5-pin 
+SOT23 package and consumes very low quiescent 
+current and provides fast line and load transient 
+performance. The TLV758P features an ultra-low 
+dropout of 130 mV at 500 mA that can help improve 
+the power efficiency of the system.
+The TLV758P is optimized for a wide variety of 
+applications by supporting an input voltage range 
+from 1.5 V to 6.0 V and an externally adjustable 
+output range of 0.55 V to 5.5 V. The low output 
+voltage enables this LDO to power the modern 
+microcontrollers with lower core voltages.
+The TLV758P is stable with small ceramic output 
+capacitors, allowing for a small overall solution size. A 
+precision band-gap and error amplifier provides high 
+accuracy of 0.7% (max) at 25°C and 1% (max) over 
+temperature (85°C). This device includes integrated 
+thermal shutdown, current limit, and undervoltage 
+lockout (UVLO) features. The TLV758P has an 
+internal foldback current limit that helps reduce the 
+thermal dissipation during short-circuit events.
+Package Information
+PART NUMBER PACKAGE(1) PACKAGE SIZE(2)
+TLV758P
+DRV (WSON, 6) 2 mm × 2 mm
+DBV (SOT-23, 5) 2.9 mm × 2.8 mm
+(1) For all available packages, see the orderable addendum at 
+the end of the data sheet.
+(2) The package size (length × width) is a nominal value and 
+includes pins, where applicable.
+ 
+ 
+ 
+IN OUT
+GND
+EN DNC
+TLV758P
+VOUTVIN
+FB
+CIN COUT
+VEN
+R2
+R1
+Typical Application
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+An IMPORTANT NOTICE at the end of this data sheet addresses availability, warranty, changes, use in safety-critical applications, 
+intellectual property matters and other important disclaimers. PRODUCTION DATA.
+Table of Contents
+1 Features............................................................................1
+2 Applications.....................................................................1
+3 Description.......................................................................1
+4 Pin Configuration and Functions...................................3
+5 Specifications.................................................................. 4
+5.1 Absolute Maximum Ratings........................................ 4
+5.2 ESD Ratings............................................................... 4
+5.3 Recommended Operating Conditions.........................5
+5.4 Thermal Information....................................................5
+5.5 Electrical Characteristics.............................................6
+5.6 Typical Characteristics................................................7
+6 Detailed Description......................................................13
+6.1 Overview...................................................................13
+6.2 Functional Block Diagram.........................................13
+6.3 Feature Description...................................................13
+6.4 Device Functional Modes..........................................15
+7 Application and Implementation..................................16
+7.1 Application Information............................................. 16
+7.2 Typical Application.................................................... 21
+7.3 Power Supply Recommendations.............................22
+7.4 Layout....................................................................... 22
+8 Device and Documentation Support............................24
+8.1 Documentation Support............................................ 24
+8.2 Receiving Notification of Documentation Updates....24
+8.3 Support Resources................................................... 24
+8.4 Trademarks...............................................................24
+8.5 Electrostatic Discharge Caution................................24
+8.6 Glossary....................................................................24
+9 Revision History............................................................ 25
+10 Mechanical, Packaging, and Orderable 
+Information.................................................................... 25
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+2 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+4 Pin Configuration and Functions
+1OUT 6  IN
+2FB 5  DNC
+3GND 4  EN
+Not to scale
+Thermal
+pad
+Figure 4-1. DRV Package, 6-Pin Adjustable WSON 
+(Top View) 
+1IN
+2GND
+3EN 4 FB
+5 OUT
+Not to scale
+Figure 4-2. DBV Package, 5-Pin Adjustable SOT-23 
+(Top View) 
+Table 4-1. Pin Functions
+PIN
+I/O DESCRIPTION
+NAME NO.
+DNC 5 — Do not connect
+EN 4 Input Enable pin. Drive EN greater than VEN(HI) to turn on the regulator. Drive EN less than VEN(LO) to put the LDO into shutdown mode.
+FB 2 — This pin is used as an input to the control loop error amplifier and is used to set the output voltage of the LDO.
+GND 3 — Ground pin
+IN 6 Input
+Input pin. For best transient response and to minimize input impedance, use the 
+recommended value or larger ceramic capacitor from IN to ground as listed in the 
+Recommended Operating Conditions table and the Input and Output Capacitor Selection 
+section. Place the input capacitor as close to the output of the device as possible.
+OUT 1 Output
+Regulated output voltage pin. A capacitor is required from OUT to ground for stability. For 
+best transient response, use the nominal recommended value or larger ceramic capacitor 
+from OUT to ground; see the Recommended Operating Conditions table and the Input and 
+Output Capacitor Selection section. Place the output capacitor as close to output of the 
+device as possible.
+Thermal pad Pad — Connect the thermal pad to a large area GND plane for improved thermal performance.
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 3
+Product Folder Links: TLV758P
+5 Specifications
+5.1 Absolute Maximum Ratings
+over operating free-air temperature range (unless otherwise noted)(1)
+MIN MAX UNIT
+Voltage
+Supply, VIN –0.3 6.5
+V
+Enable, VEN –0.3 6.5
+Feedback, VFB –0.3 2
+Output, VOUT –0.3 VIN + 0.3(2)
+Temperature
+Operating junction, TJ –40 150 °C
+Storage, Tstg –65 150
+(1) Stresses beyond those listed under Absolute Maximum Ratings may cause permanent damage to the device. These are stress 
+ratings only, which do not imply functional operation of the device at these or any other conditions beyond those indicated under 
+Recommended Operating Conditions. Exposure to absolute-maximum-rated conditions for extended periods may affect device 
+reliability.
+(2) The absolute maximum rating is VIN + 0.3V or 6.5 V, whichever is smaller.
+5.2 ESD Ratings
+VALUE UNIT
+V(ESD) Electrostatic discharge
+Human-body model (HBM), per ANSI/ESDA/JEDEC JS-001(1) ±2000
+V
+Charged-device model (CDM), per JEDEC specification JESD22-C101(2) ±500
+(1) JEDEC document JEP155 states that 500-V HBM allows safe manufacturing with a standard ESD control process. Manufacturing with 
+less than 500-V HBM is possible with the necessary precautions.
+(2) JEDEC document JEP157 states that 250-V CDM allows safe manufacturing with a standard ESD control process. Manufacturing with 
+less than 250-V CDM is possible with the necessary precautions.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+4 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+5.3 Recommended Operating Conditions
+over operating free-air temperature range (unless otherwise noted)
+MIN NOM MAX UNIT
+VIN Input voltage 1.5 6.0 V
+VOUT Output voltage 0.55 5.5 V
+IOUT Output current 0 500 mA
+CIN Input capacitor 1 µF
+COUT Output capacitor(1) 1 220 µF
+VEN Enable voltage(2) 0 6.0 V
+fEN Enable toggle frequency 10 kHz
+TJ Junction temperature –40 125 °C
+(1) Minimum derated capacitance of 0.47 µF is required for stability.
+(2) If VEN  > VIN,  when VEN > VUVLO rising (min), the input pin (IN) must sink 1 mA of current to avoid the device being turn on with floating 
+input pin. 
+5.4 Thermal Information
+THERMAL METRIC(1)
+TLV758P
+UNITDBV (SOT-23) DRV (WSON)
+5 PINS 6 PINS
+RθJA Junction-to-ambient thermal resistance 176.9 80.3 °C/W
+RθJC(top) Junction-to-case (top) thermal resistance 95.3 98.7 °C/W
+RθJB Junction-to-board thermal resistance 45.0 44.8 °C/W
+ψJT Junction-to-top characterization parameter 21.0 6.1 °C/W
+ψJB Junction-to-board characterization parameter 44.8 45.0 °C/W
+RθJC(bot) Junction-to-case (bottom) thermal resistance N/A 20.8 °C/W
+(1) For more information about traditional and new thermal metrics, see the Semiconductor and IC Package Thermal Metrics application 
+note.
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 5
+Product Folder Links: TLV758P
+5.5 Electrical Characteristics
+at operating temperature range (TJ = –40°C to +125°C),VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, 
+VEN = VIN, and CIN = COUT = 1 μF (unless otherwise noted); all typical values are at TJ = 25°C
+PARAMETER TEST CONDITIONS MIN TYP MAX UNIT
+VFB Feedback voltage TJ = 25°C 0.55 V
+Output accuracy(1)
+TJ = 25°C –0.7% 0.7%
+–40°C ≤ TJ ≤ +85°C –1% 1%
+–40°C ≤ TJ ≤ +125°C –1.5% 1.5%
+Line regulation VOUT(NOM) + 0.5 V(2) ≤ VI N ≤ 6.0 V 2 7.5 mV
+Load regulation 0.1 mA ≤ IOUT ≤ 500 mA, VIN ≥ 2.0 V 0.030 V/A
+IGND Ground current IOUT = 0 mA TJ = 25°C 10 25 31 µA IGND Ground current –40°C ≤ TJ ≤ +125°C 35 µA
+ISHDN Shutdown current VEN ≤ 0.3 V, 1.5 V ≤ VIN ≤ 6.0 V 0.1 1 µA
+IFB Feedback pin current 0.01 0.1 µA
+ICL Output current limit VIN = VOUT(NOM) + 1.0 V
+VOUT = VOUT(NOM) – 0.2 V,
+VOUT < 1.5 V 530 720 865 mA
+VOUT = 0.9 V × VOUT(NOM),
+VOUT ≥ 1.5 V 530 720 865
+ISC Short-circuit current limit VIN = VOUT(NOM) + 1.0 V VOUT = 0 V 350 mA
+VDO Dropout voltage
+IOUT = 500 mA,
+–40°C ≤ TJ ≤ +125°C,
+VOUT = 0.95 × VOUT(NOM)
+0.65 V ≤ VOUT < 0.8 V 720 880
+mV
+0.8 V ≤ VOUT < 1.0 V 585 750
+1.0 V ≤ VOUT < 1.2 V 420 570
+1.2 V ≤ VOUT < 1.5 V 285 400
+1.5 V ≤ VOUT < 1.8 V 180 235
+1.8 V ≤ VOUT < 2.5 V 140 185
+2.5 V ≤ VOUT < 3.3 V 102 140
+3.3 V ≤ VOUT ≤ 5.5 V 95 130
+PSRR Power-supply rejection ratio VIN = VOUT(NOM) + 1.0 V, IOUT = 50 mA
+f = 1 kHz 50
+dBf = 100 kHz 45
+f = 1 MHz 30
+Vn Output noise voltage BW = 10 Hz to 100 kHz, VOUT = 0.9 V 53 µVRMS
+VUVLO Undervoltage lockout
+VIN rising 1.21 1.33 1.47 V
+VIN falling 1.17 1.29 1.42 V
+VUVLO, 
+HYST
+Undervoltage lockout hysteresis VIN Hysteresis 40 mV
+tSTR Start-up time From EN low-to-high transition to VOUT = VOUT(NOM) × 95% 500 µs
+VEN(HI) EN pin high voltage 1.0 V
+VEN(LO) EN pin low voltage 0.3 V
+IEN Enable pin current VIN = EN = 6.0 V 10 nA
+RPULL 
+DOWN
+Pulldown resistance VIN = 6.0 V 95 Ω
+TSD Thermal shutdown
+Shutdown, temperature increasing 170
+°C
+Reset, temperature decreasing 155
+(1) When the device is connected to external feedback resistors at the FB pin, external resistor tolerances are not included
+(2) VIN = 1.5 V for VOUT < 1.0 V.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+6 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+5.6 Typical Characteristics
+at operating temperature range TJ = 25°C, VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, VEN = VIN, 
+and CIN = COUT = 1 µF (unless otherwise noted)
+Input Voltage (V)
+Output Voltage Accuracy (%)
+3.8 4 4.2 4.4 4.6 4.8 5 5.2 5.4 5.6 5.8 6
+-0.6
+-0.45
+-0.3
+-0.15
+0
+0.15
+0.3
+0.45
+0.6
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VOUT = 3.3 V, IOUT = 1 mA
+Figure 5-1. 3.3-V Line Regulation vs VIN 
+Input Voltage (V)
+Output Voltage Accuracy (%)
+1.5 2 2.5 3 3.5 4 4.5 5 5.5 6
+-0.6
+-0.45
+-0.3
+-0.15
+0
+0.15
+0.3
+0.45
+0.6
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VOUT = 0.55 V, IOUT = 1 mA
+Figure 5-2. 0.55-V Line Regulation vs VIN 
+Input Voltage (V)
+Output Voltage Accuracy (%)
+5.5 5.6 5.7 5.8 5.9 6
+-0.3
+-0.2
+-0.1
+0
+0.1
+0.2
+0.3
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VOUT = 5.5 V, IOUT = 1 mA
+Figure 5-3. 5.5-V Line Regulation vs VIN 
+Output Current (A)
+Dropout Voltage (mV)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+0
+20
+40
+60
+80
+100
+120
+140
+160
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+ 
+Figure 5-4. 3.3-V Dropout Voltage vs IOUT 
+Output Current (A)
+Dropout Voltage (mV)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+660
+690
+720
+750
+780
+810
+840
+870
+900
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+ 
+Figure 5-5. 0.55-V Dropout Voltage vs IOUT 
+Output Current (A)
+Dropout Voltage (mV)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+0
+20
+40
+60
+80
+100
+120
+140
+160
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+ 
+Figure 5-6. 5.5-V Dropout Voltage vs IOUT 
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 7
+Product Folder Links: TLV758P
+5.6 Typical Characteristics (continued)
+at operating temperature range TJ = 25°C, VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, VEN = VIN, 
+and CIN = COUT = 1 µF (unless otherwise noted)
+Output Voltage (V)
+Dropout Voltage (mV)
+0.5 1 1.5 2 2.5 3 3.5 4 4.5 5
+0
+100
+200
+300
+400
+500
+600
+700
+800
+900
+1,000
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+IOUT = 500 mA
+Figure 5-7. VDO vs VOUT 
+Output Current (A)
+Ground Pin Current (PA)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+0
+100
+200
+300
+400
+500
+600
+700
+800
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+ 
+Figure 5-8. IGND vs IOUT 
+Input Voltage (V)
+Shutdown Current (nA)
+0 0.6 1.2 1.8 2.4 3 3.6 4.2 4.8 5.4 6
+-300
+0
+300
+600
+900
+1,200
+1,500
+1,800
+2,100
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VEN = 0 V
+Figure 5-9. ISHDN vs VIN 
+Input Voltage (V)
+Ground Pin Current (PA)
+0 0.6 1.2 1.8 2.4 3 3.6 4.2 4.8 5.4 6
+-80
+0
+80
+160
+240
+320
+400
+480
+560
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VOUT = 3.3 V, IOUT = 0 mA
+Figure 5-10. IQ vs VIN 
+Output Current (A)
+Change in VOUT (%)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+-1
+-0.75
+-0.5
+-0.25
+0
+0.25
+0.5
+0.75
+1
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VIN = 3.8 V, VOUT = 3.3 V
+Figure 5-11. 3.3-V Load Regulation vs IOUT 
+Output Current (A)
+Change in VOUT (%)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+-0.6
+-0.45
+-0.3
+-0.15
+0
+0.15
+0.3
+0.45
+0.6
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VIN = 2 V, VOUT = 0.55 V
+Figure 5-12. 0.55-V Load Regulation vs IOUT 
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+8 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+5.6 Typical Characteristics (continued)
+at operating temperature range TJ = 25°C, VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, VEN = VIN, 
+and CIN = COUT = 1 µF (unless otherwise noted)
+Output Current (A)
+Change in VOUT (%)
+0 0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5
+-1
+-0.75
+-0.5
+-0.25
+0
+0.25
+0.5
+0.75
+1
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+VIN = 6 V, VOUT = 5.5 V
+Figure 5-13. 5.5-V Load Regulation vs IOUT 
+Pulldown Current (mA)
+Output Voltage (mV)
+0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5
+0
+80
+160
+240
+320
+400
+480
+560
+640
+TJ
+–qC
+–qC
+–qC
+0qC
+25qC
+85qC
+125qC
+150qC
+ 
+Figure 5-14. VOUT vs IOUT Pulldown Resistor
+Temperature (qC)
+Enable Threshold (mV)
+-50 -25 0 25 50 75 100 125 150
+440
+480
+520
+560
+600
+640
+680
+720
+760
+800
+840
+VEN(LO) VEN(HI)
+ 
+Figure 5-15. VEN(HI) and VEN(LO) vs Temperature
+Input Voltage (V)
+Enable Pin Current (PA)
+0 0.5 1 1.5 2 2.5 3 3.5 4 4.5 5 5.5
+-50
+0
+50
+100
+150
+200
+250
+300
+TJ
+–qC
+–qC
+–qC
+0qC
+125qC
+85qC
+125qC
+150qC
+VEN = 5.5 V
+Figure 5-16. IEN vs VIN 
+Output Current (mA)
+Output Voltage (V)
+0 100 200 300 400 500 600 700
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+TJ
+-50qC
+-40qC
+-20qC
+0qC
+25qC
+85qC
+125qC
+ 
+Figure 5-17. 3.3-V Foldback Current Limit vs IOUT 
+Time (ms)
+Input Voltage (V)
+AC-coupled Output Voltage (mV)
+0 0.5 1 1.5 2
+0 -45
+1 -40
+2 -35
+3 -30
+4 -25
+5 -20
+6 -15
+7 -10
+8 -5
+9 0
+10 5
+11 10
+12 15
+13 20
+14 25
+Vin
+Vout
+VOUT = 0.55 V, IOUT = 1 mA, VIN slew rate = 1 V/µs
+Figure 5-18. 0.55-V Line Transient
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 9
+Product Folder Links: TLV758P
+5.6 Typical Characteristics (continued)
+at operating temperature range TJ = 25°C, VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, VEN = VIN, 
+and CIN = COUT = 1 µF (unless otherwise noted)
+Time (ms)
+Input Voltage (V)
+AC-coupled Output Voltage (mV)
+0 0.2 0.4 0.6 0.8 1 1.2 1.4 1.6 1.8 2
+3 -160
+3.5 -140
+4 -120
+4.5 -100
+5 -80
+5.5 -60
+6 -40
+6.5 -20
+7 0
+7.5 20
+8 40
+8.5 60
+9 80
+9.5 100
+10 120
+Vin
+Vout
+VOUT = 3.3 V, IOUT = 1 mA, VIN slew rate = 1 V/µs
+Figure 5-19. 3.3-V Line Transient
+Time (us)
+Output Current (A)
+AC-coupled Output Voltage (mV)
+0 50 100 150 200 250 300 350 400 450 500
+-1 -300
+-0.5 -250
+0 -200
+0.5 -150
+1 -100
+1.5 -50
+2 0
+2.5 50
+3 100
+3.5 150
+4 200
+Iout
+Vout
+VIN = 3.8 V, VOUT = 3.3 V, IOUT slew rate = 1 A/µs
+Figure 5-20. 3.3-V, 1-mA to 500-mA Load Transient
+Time (us)
+Output Current (A)
+AC-coupled Output Voltage (mV)
+0 50 100 150 200 250 300 350 400 450 500
+-1 -300
+-0.5 -250
+0 -200
+0.5 -150
+1 -100
+1.5 -50
+2 0
+2.5 50
+3 100
+3.5 150
+4 200
+Iout
+Vout
+VIN = 2 V, VOUT = 0.55 V, IOUT slew rate = 1 A/µs
+Figure 5-21. 0.55-V, 1-mA to 500-mA Load Transient
+Time (us)
+Output Current (A)
+AC-coupled Output Voltage (mV)
+0 50 100 150 200 250 300 350 400 450 500
+-1 -300
+-0.5 -250
+0 -200
+0.5 -150
+1 -100
+1.5 -50
+2 0
+2.5 50
+3 100
+3.5 150
+4 200
+Iout
+Vout
+VIN = 5.5 V, VOUT = 5 V, IOUT slew rate = 1 A/µs
+Figure 5-22. 5-V, 1-mA to 500-mA Load Transient
+Time (us)
+Voltage (V)
+0 200 400 600 800 1,000
+-1
+-0.5
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+Vout
+Vin
+VIN = 3.8 V, VOUT = 3.3 V, IOUT = 1 mA
+Figure 5-23. VIN Power-Up
+Time (us)
+Voltage (V)
+0 200 400 600 800 1,000
+-1
+0
+1
+2
+3
+4
+5
+Vout
+Venable
+Vin
+VIN = 3.8 V, VOUT = 3.3 V, IOUT = 1 mA
+Figure 5-24. Start-Up With EN
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+10 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+5.6 Typical Characteristics (continued)
+at operating temperature range TJ = 25°C, VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, VEN = VIN, 
+and CIN = COUT = 1 µF (unless otherwise noted)
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+D001
+VIN = 3.5 V
+VIN = 3.6 V
+VIN = 3.7 V
+VIN = 3.8 V
+VOUT = 3.3 V, IOUT = 500 mA, COUT = 2.2 µF
+Figure 5-25. PSRR vs Frequency and VIN 
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+VIN = 3.9 V
+VIN = 4.0 V
+VIN = 4.1 V
+VIN = 4.2 V
+VIN = 4.3 V
+VOUT = 3.3 V, IOUT = 500 mA, COUT = 2.2 µF
+Figure 5-26. PSRR vs Frequency and VIN 
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+VIN = 3.5 V
+VIN = 3.6 V
+VIN = 3.7 V
+VIN = 3.8 V
+VOUT = 3.3 V, IOUT = 250 mA, COUT = 2.2 µF
+Figure 5-27. PSRR vs Frequency and VIN 
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+VIN = 3.9 V
+VIN = 4.0 V
+VIN = 4.1 V
+VIN = 4.2 V
+VIN = 4.3 V
+VOUT = 3.3 V, IOUT = 250 mA, COUT = 2.2 µF
+Figure 5-28. PSRR vs Frequency and VIN 
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+VIN = 1.9 V, VOUT = 0.9 V
+VIN = 2.8 V, VOUT = 1.8 V
+VIN = 4.3 V, VOUT = 3.3 V
+IOUT = 500 mA, COUT = 2.2 µF
+Figure 5-29. PSRR vs Frequency
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+COUT = 1 PF
+COUT = 2.2 PF
+COUT = 4.7 PF
+COUT = 47 PF
+VIN = 3.8 V, VOUT = 3.3 V, IOUT = 500 mA
+Figure 5-30. PSRR vs Frequency and COUT 
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 11
+Product Folder Links: TLV758P
+5.6 Typical Characteristics (continued)
+at operating temperature range TJ = 25°C, VIN = VOUT(NOM) + 0.5 V or 1.5 V (whichever is greater), IOUT = 1 mA, VEN = VIN, 
+and CIN = COUT = 1 µF (unless otherwise noted)
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+CFF = 0 nF
+CFF = 1 nF
+CFF = 10 nF
+CFF = 100 nF
+VIN = 3.8 V, VOUT = 3.3 V, IOUT = 500 mA
+Figure 5-31. PSRR vs Frequency and CFF 
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+ILOAD = 10 mA
+ILOAD = 100 mA
+ILOAD = 250 mA
+ILOAD = 500 mA
+VIN = 3.8 V, VOUT = 3.3 V, COUT = 2.2 µF
+Figure 5-32. PSRR vs Frequency and ILOAD 
+Frequency (Hz)
+Noise (PV/Hz)
+0.005
+0.01
+0.02
+0.05
+0.1
+0.2
+0.5
+1
+2
+5
+10
+20 20
+10 100 1k 10k 100k 1M 10M
+IOUT= 10mA, 159PVRMS
+IOUT= 100mA, 160PVRMS
+IOUT= 500mA, 160PVRMS
+VIN = 3.8 V, VOUT = 3.3 V, COUT = 2.2 µF, VRMS BW = 10 Hz to 
+100 kHz
+Figure 5-33. Output Spectral Noise Density
+Frequency (Hz)
+Noise (PV/Hz)
+0.005
+0.01
+0.02
+0.05
+0.1
+0.2
+0.5
+1
+2
+5
+10
+20 20
+10 100 1k 10k 100k 1M 10M
+CFF = 0 nF, 160 PVRMS
+CFF = 1 nF, 108 PVRMS
+CFF = 10 nF, 74 PVRMS
+CFF = 100 nF, 44 PVRMS
+VIN = 3.8 V, VOUT = 3.3 V, IOUT = 500 mA, COUT = 2.2 µF, VRMS 
+BW = 10 Hz to 100 kHz
+Figure 5-34. Output Spectral Noise Density vs Frequency and 
+CFF 
+Frequency (Hz)
+Noise (PV/Hz)
+0.005
+0.01
+0.02
+0.05
+0.1
+0.2
+0.5
+1
+2
+5
+10
+20 20
+10 100 1k 10k 100k 1M 10M
+COUT = 2.2PF, 160 PVRMS
+COUT = 4.7PF, 170 PVRMS
+COUT = 47PF, 138 PVRMS
+VIN = 3.8 V, VOUT = 3.3 V, IOUT = 100 mA, CFF = 0 µF, VRMS 
+BW = 10 Hz to 100 kHz
+Figure 5-35. Output Spectral Noise Density vs Frequency and 
+COUT 
+Frequency (Hz)
+Noise (PV/Hz)
+0.005
+0.01
+0.02
+0.05
+0.1
+0.2
+0.5
+1
+2
+5
+10
+20 20
+10 100 1k 10k 100k 1M 10M
+VIN=1.9V, VOUT=0.9V, 53PVRMS
+VIN=2.8V, VOUT=1.8V, 96PVRMS
+VIN=3.8V, VOUT=3.3V, 160PVRMS
+IOUT = 500 mA, COUT = 2.2 µF, VRMS BW = 10 Hz to 100 kHz
+ 
+Figure 5-36. Output Spectral Noise Density vs Frequency
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+12 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+6 Detailed Description
+6.1 Overview
+The TLV758P low-dropout regulators (LDO) consumes low quiescent current and delivers excellent line and 
+load transient performance. These characteristics, combined with low noise and good PSRR with low dropout 
+voltage, make this device designed for portable consumer applications.
+This regulator offers foldback current limit, shutdown, and thermal protection. The operating junction temperature 
+for this device is –40°C to +125°C.
+6.2 Functional Block Diagram
++–
+Band Gap
+Thermal
+Shutdown
+UVLO
+Logic
+Current
+Limit
+95 
+IN
+EN GND
+OUT
+FB
+6.3 Feature Description
+6.3.1 Undervoltage Lockout (UVLO)
+The TLV758P uses an undervoltage lockout (UVLO) circuit that disables the output until the input voltage 
+is greater than the rising UVLO voltage (V UVLO). This circuit ensures that the device does not exhibit any 
+unpredictable behavior when the supply voltage is lower than the operational range of the internal circuitry. 
+When VIN is less than VUVLO, the output is connected to ground with a pulldown resistor (RPULLDOWN).
+6.3.2 Shutdown
+The enable pin (EN) is active high. Enable the device by forcing the EN pin to exceed V EN(HI). Turn off the device 
+by forcing the EN pin to drop below VEN(LO). If shutdown capability is not required, connect EN to IN.
+The TLV758P has an internal pulldown MOSFET that connects an R PULLDOWN resistor to ground when the 
+device is disabled. The discharge time after disabling depends on the output capacitance (C OUT) and the load 
+resistance (RL) in parallel with the pulldown resistor (RPULLDOWN). Equation 1 calculates the time constant:
+τ = ( RPULLDOWN × RL) / (RPULLDOWN + RL) (1)
+6.3.3 Foldback Current Limit
+The device has an internal current limit circuit that protects the regulator during transient high-load current faults 
+or shorting events. The current limit is a hybrid brick-wall-foldback scheme. The current limit transitions from a 
+brick-wall scheme to a foldback scheme at the foldback voltage (V FOLDBACK). In a high-load current fault with 
+the output voltage above V FOLDBACK, the brick-wall scheme limits the output current to the current limit (I CL). 
+When the voltage drops below V FOLDBACK, a foldback current limit activates that scales back the current as the 
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 13
+Product Folder Links: TLV758P
+output voltage approaches GND. When the output is shorted, the device supplies a typical current called the 
+short-circuit current limit (ISC). ICL and ISC are listed in the Electrical Characteristics table.
+For this device, VFOLDBACK = 0.4 V × VOUT(NOM).
+The output voltage is not regulated when the device is in current limit. When a current limit event occurs, the 
+device begins to heat up because of the increase in power dissipation. When the device is in brick-wall current 
+limit, the pass transistor dissipates power [(V IN – VOUT) × ICL]. When the device output is shorted and the output 
+is below V FOLDBACK, the pass transistor dissipates power [(V IN – V OUT) × I SC]. If thermal shutdown is triggered, 
+the device turns off. After the device cools down, the internal thermal shutdown circuit turns the device back on. 
+If the output current fault condition continues, the device cycles between current limit and thermal shutdown. For 
+more information on current limits, see the Know Your Limits application note.
+Figure 6-1 shows a diagram of the foldback current limit.
+VOUT(NOM)
+0 V
+0 mA
+VOUT
+VFOLDBACK
+ICLISC IRATED
+IOUT
+Brickwall
+Foldback
+Figure 6-1. Foldback Current Limit
+6.3.4 Thermal Shutdown
+Thermal shutdown protection disables the output when the junction temperature rises to approximately 170°C. 
+Disabling the device eliminates the power dissipated by the device, allowing the device to cool. When the 
+junction temperature cools to approximately 155°C, the output circuitry is again enabled. Depending on power 
+dissipation, thermal resistance, and ambient temperature, the thermal protection circuit can cycle on and off. 
+This cycling limits regulator dissipation, protecting the LDO from damage as a result of overheating.
+Activating the thermal shutdown feature usually indicates excessive power dissipation as a result of the product 
+of the (V IN – V OUT) voltage and the load current. For reliable operation, limit junction temperature to 125°C 
+maximum. To estimate the margin of safety in a complete design, increase the ambient temperature until the 
+thermal protection is triggered; use worst-case loads and signal conditions.
+The TLV758P internal protection circuitry protects against overload conditions but is not intended to be activated 
+in normal operation. Continuously running the TLV758P into thermal shutdown degrades device reliability.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+14 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+6.4 Device Functional Modes
+6.4.1 Device Functional Mode Comparison
+Table 6-1 shows the conditions that lead to the different modes of operation. See the Electrical Characteristics 
+table for parameter values.
+Table 6-1. Device Functional Mode Comparison
+OPERATING MODE
+PARAMETER
+VIN VEN IOUT TJ
+Normal operation VIN > VOUT(nom) + VDO and VIN > VIN(min) VEN > VEN(HI) IOUT < IOUT(max) TJ < TSD(shutdown)
+Dropout operation VIN(min) < VIN < VOUT(nom) + VDO VEN > VEN(HI) IOUT < IOUT(max) TJ < TSD(shutdown)
+Disabled
+(any true condition 
+disables the device)
+VIN < VUVLO VEN < VEN(LOW) Not applicable TJ > TSD(shutdown)
+6.4.2 Normal Operation
+The device regulates to the nominal output voltage when the following conditions are met:
+• The input voltage is greater than the nominal output voltage plus the dropout voltage (VOUT(nom) + VDO)
+• The output current is less than the current limit (IOUT < ICL)
+• The device junction temperature is less than the thermal shutdown temperature (TJ < TSD)
+• The enable voltage has previously exceeded the enable rising threshold voltage and has not yet decreased 
+to less than the enable falling threshold
+6.4.3 Dropout Operation
+If the input voltage is lower than the nominal output voltage plus the specified dropout voltage, but all other 
+conditions are met for normal operation, the device operates in dropout mode. In this mode, the output voltage 
+tracks the input voltage. During this mode, the transient performance of the device becomes significantly 
+degraded because the pass transistor is in the ohmic or triode region, and acts as a switch. Line or load 
+transients in dropout can result in large output-voltage deviations.
+When the device is in a steady dropout state (defined as when the device is in dropout, V IN < VOUT(NOM) + VDO, 
+directly after being in a normal regulation state, but not during start-up), the pass transistor is driven into the 
+ohmic or triode region. When the input voltage returns to a value greater than or equal to the nominal output 
+voltage plus the dropout voltage (V OUT(NOM) + V DO), the output voltage can overshoot for a short period of time 
+while the device pulls the pass transistor back into the linear region.
+6.4.4 Disabled
+The output of the device can be shutdown by forcing the voltage of the enable pin to less than the maximum 
+EN pin low-level input voltage (see the Electrical Characteristics table). When disabled, the pass transistor is 
+turned off, internal circuits are shutdown, and the output voltage is actively discharged to ground by an internal 
+discharge circuit from the output to ground.
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 15
+Product Folder Links: TLV758P
+7 Application and Implementation
+Note
+Information in the following applications sections is not part of the TI component specification, 
+and TI does not warrant its accuracy or completeness. TI’s customers are responsible for 
+determining suitability of components for their purposes, as well as validating and testing their design 
+implementation to confirm system functionality.
+7.1 Application Information
+7.1.1 Adjustable Device Feedback Resistors
+Figure 7-1  shows that the output voltage of the TLV758P can be adjusted from 0.55 V to 5.5 V by using a 
+resistor divider network.
+IN OUT
+GND
+EN DNC
+TLV758P
+VOUTVIN
+FB
+CIN COUT
+VEN
+R2
+R1
+Figure 7-1. Adjustable Operation
+The adjustable-version device requires external feedback divider resistors to set the output voltage. V OUT is set 
+using the feedback divider resistors, R1 and R2, according to the following equation:
+VOUT = VFB × (1 + R1 / R2) (2)
+For this device, VFB = 0.55 V.
+To ignore the FB pin current error term in the V OUT equation, set the feedback divider current to 100 times the 
+FB pin current listed in the Electrical Characteristics table. This setting provides the maximum feedback divider 
+series resistance, as shown in the following equation:
+R1 + R2 ≤ VOUT / (IFB × 100) (3)
+For this device, IFB = 10 nA.
+7.1.2 Input and Output Capacitor Selection
+The TLV758P requires an output capacitance of 0.47 µF or larger for stability. Use X5R- and X7R-type 
+ceramic capacitors because these capacitors have minimal variation in value and equivalent series resistance 
+(ESR) over temperature. When choosing a capacitor for a specific application, pay attention to the dc bias 
+characteristics for the capacitor. Higher output voltages cause a significant derating of the capacitor. For best 
+performance, the maximum recommended output capacitance is 220 µF.
+Although an input capacitor is not required for stability, good analog design practice is to connect a capacitor 
+from IN to GND. Some input supplies have a high impedance, thus placing the input capacitor on the input 
+supply helps reduce the input impedance. This capacitor counteracts reactive input sources and improves 
+transient response, input ripple, and PSRR. If the input supply has a high impedance over a large range of 
+frequencies, several input capacitors can be used in parallel to lower the impedance over frequency. Use a 
+higher-value capacitor if large, fast, rise-time load transients are anticipated, or if the device is located several 
+inches from the input power source.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+16 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+7.1.3 Dropout Voltage
+The TLV758P uses a PMOS pass transistor to achieve low dropout. When (V IN – VOUT) is less than the dropout 
+voltage (VDO), the PMOS pass transistor is in the linear region of operation and the input-to-output resistance is 
+the RDS(ON) of the PMOS pass transistor. VDO scales approximately with output current because the PMOS pass 
+transistor behaves like a resistor in dropout mode. As with any linear regulator, PSRR and transient response 
+degrade as (VIN – VOUT) approaches dropout operation.
+7.1.4 Exiting Dropout
+Some applications have transients that place the LDO into dropout, such as slower ramps on V IN during start-up. 
+As with other LDOs, the output may overshoot on recovery from these conditions. A ramping input supply 
+causes an LDO to overshoot on start-up, as shown in Figure 7-2, when the slew rate and voltage levels are in 
+the correct range. Use an enable signal to avoid this condition.
+Input Voltage
+Output Voltage
+Output Voltage in 
+normal regulation.
+Dropout 
+VOUT = VIN - VDO
+VIN = VOUT(nom) + VDO
+Response time for 
+LDO to get back into 
+regulation. Load current discharges 
+output voltage.
+Voltage
+Time
+Figure 7-2. Start-Up Into Dropout
+Line transients out of dropout can also cause overshoot on the output of the regulator. These overshoots are 
+caused by the error amplifier having to drive the gate capacitance of the pass transistor and bring the gate 
+back to the correct voltage for proper regulation. Figure 7-3  illustrates what is happening internally with the 
+gate voltage and how overshoot can be caused during operation. When the LDO is placed in dropout, the gate 
+voltage (VGS) is pulled all the way down to ground to give the pass transistor the lowest on-resistance as 
+possible. However, if a line transient occurs when the device is in dropout, the loop is not in regulation and can 
+cause the output to overshoot until the loop responds and the output current pulls the output voltage back down 
+into regulation. If these transients are not acceptable, then continue to add input capacitance in the system until 
+the transient is slow enough to reduce the overshoot.
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 17
+Product Folder Links: TLV758P
+Figure 7-3. Line Transients From Dropout
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+18 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+7.1.5 Reverse Current
+As with most LDOs, excessive reverse current can damage this device.
+Reverse current flows through the body diode on the pass transistor instead of the normal conducting channel. 
+At high magnitudes, this current flow degrades the long-term reliability of the device, as a result of one of the 
+following conditions:
+• Degradation caused by electromigration
+• Excessive heat dissipation
+• Potential for a latch-up condition
+Conditions where reverse current can occur are outlined in this section, all of which can exceed the absolute 
+maximum rating of VOUT > VIN + 0.3 V:
+• If the device has a large COUT and the input supply collapses with little or no load current
+• The output is biased when the input supply is not established
+• The output is biased above the input supply
+If reverse current flow is expected in the application, external protection must be used to protect the device. 
+Figure 7-4 shows one approach of protecting the device.
+Device
+IN OUT
+GND
+ 
+COUT
+ 
+CIN
+Schottky Diode
+Internal Body Diode
+Figure 7-4. Example Circuit for Reverse Current Protection Using a Schottky Diode
+7.1.6 Power Dissipation (PD)
+Circuit reliability requires consideration of the device power dissipation, location of the circuit on the printed 
+circuit board (PCB), and correct sizing of the thermal plane. The PCB area around the regulator must have few 
+or no other heat-generating devices that cause added thermal stress.
+To first-order approximation, power dissipation in the regulator depends on the input-to-output voltage difference 
+and load conditions. Equation 4 calculates power dissipation (PD).
+PD = (VIN – VOUT) × IOUT (4)
+Note
+Power dissipation can be minimized, and therefore greater efficiency can be achieved, by correct 
+selection of the system voltage rails. For the lowest power dissipation use the minimum input voltage 
+required for correct output regulation.
+For devices with a thermal pad, the primary heat conduction path for the device package is through the thermal 
+pad to the PCB. Solder the thermal pad to a copper pad area under the device. This pad area must contain an 
+array of plated vias that conduct heat to additional copper planes for increased heat dissipation.
+The maximum power dissipation determines the maximum allowable ambient temperature (T A) for the device. 
+According to Equation 5, power dissipation and junction temperature are most often related by the junction-to-
+ambient thermal resistance (RθJA) of the combined PCB and device package and the temperature of the ambient 
+air (TA).
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 19
+Product Folder Links: TLV758P
+TJ = TA + (RθJA × PD) (5)
+Thermal resistance (R θJA) is highly dependent on the heat-spreading capability built into the particular PCB 
+design, and therefore varies according to the total copper area, copper weight, and location of the planes. 
+The junction-to-ambient thermal resistance listed in the Thermal Information table is determined by the JEDEC 
+standard PCB and copper-spreading area, and is used as a relative measure of package thermal performance.
+7.1.7 Feed-Forward Capacitor (CFF)
+For the adjustable-voltage version device, a feed-forward capacitor (C FF) can be connected from the OUT pin 
+to the FB pin. C FF improves transient, noise, and PSRR performance, but is not required for regulator stability. 
+Recommended C FF values are listed in the Recommended Operating Conditions  table. A higher capacitance 
+CFF can be used; however, the start-up time increases. For a detailed description of C FF tradeoffs, see the Pros 
+and Cons of Using a Feedforward Capacitor with a Low-Dropout Regulator application note.
+7.1.8 Start-Up Sequencing
+If VEN is greater than V UVLO rising (min), then the input pin (IN) must sink 1 mA of current to avoid the device 
+being turn on with a floating input pin.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+20 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+7.2 Typical Application
+Figure 7-5 shows the typical application circuit for the TLV758P. Input and output capacitances must be at least 
+1 µF.
+IN OUT
+GND
+EN DNC
+TLV758P
+VOUTVIN
+FB
+CIN COUT
+VEN
+R2
+R1
+Figure 7-5. TLV758P Typical Application
+7.2.1 Design Requirements
+Use the parameters listed in Table 7-1 for typical linear regulator applications.
+Table 7-1. Design Parameters
+PARAMETER DESIGN REQUIREMENT
+Input voltage 3.8 V
+Output voltage 3.3 V, ±1%
+Input current 500 mA (maximum)
+Output load 500-mA DC
+Maximum ambient temperature 70°C
+7.2.2 Detailed Design Procedure
+Input and output capacitors are required to achieve the output voltage transient requirements. Capacitance 
+values of 2.2 µF are selected to give the maximum output capacitance in a small, low-cost package; see the 
+Input and Output Capacitor Selection section for details.
+Figure 7-1 illustrates the output voltage of the TLV758P; set the output voltage using the resistor divider.
+7.2.2.1 Input Current
+During normal operation, the input current to the LDO is approximately equal to the output current of the LDO. 
+During start-up, the input current is higher as a result of the inrush current charging the output capacitor. Use 
+Equation 6 to calculate the current through the input.
+I =OUT(t)
+COUT OUT/c180 dV (t)
+dt
+VOUT(t)
+RLOAD
++
+(6)
+where:
+• VOUT(t) is the instantaneous output voltage of the turn-on ramp
+• dVOUT(t) / dt is the slope of the VOUT ramp
+• RLOAD is the resistive load impedance
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 21
+Product Folder Links: TLV758P
+7.2.2.2 Thermal Dissipation
+The junction temperature can be determined using the junction-to-ambient thermal resistance (R θJA) and the 
+total power dissipation (P D). Use Equation 7 to calculate the power dissipation. Multiply P D by RθJA as Equation 
+8 shows and add the ambient temperature (TA) to calculate the junction temperature (TJ).
+PD = (IGND+ IOUT) × (VIN – VOUT) (7)
+TJ = RθJA × PD + TA (8)
+Calculate the maximum ambient temperature as Equation 9 shows if the (TJ(MAX)) value does not exceed 125°C. 
+Equation 10 calculates the maximum ambient temperature with a value of 104.93°C.
+TA(MAX) = TJ(MAX) – RθJA × PD (9)
+TA(MAX) = 125°C – 80.3°C/W × (3.8 V – 3.3 V) × (0.5 A) = 104.93°C (10)
+7.2.3 Application Curve
+Frequency (Hz)
+Power-Supply Rejection Ratio (dB)
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+10 100 1k 10k 100k 1M 10M
+ILOAD = 10 mA
+ILOAD = 100 mA
+ILOAD = 250 mA
+ILOAD = 500 mA
+VIN = 3.8 V, VOUT = 3.3 V, COUT = 2.2 µF
+Figure 7-6. PSRR vs Frequency and ILOAD 
+7.3 Power Supply Recommendations
+Connect a low output impedance power supply directly to the IN pin of the TLV758P.
+7.4 Layout
+7.4.1 Layout Guidelines
+• Place input and output capacitors as close to the device as possible.
+• Use copper planes for device connections, in order to optimize thermal performance.
+• Place thermal vias around the device to distribute the heat.
+• Do not place a thermal via directly beneath the thermal pad of the DRV package. A via can wick solder or 
+solder paste away from the thermal pad joint during the soldering process, leading to a compromised solder 
+joint on the thermal pad.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+22 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+7.4.2 Layout Examples
+EN
+VOUTVIN
+GND 
+PLANE
+COUT
+GND 
+PLANE
+R1 R2
+CIN
+Figure 7-7. DBV Package Layout Example
+1
+2
+3
+6
+5
+4
+GND PLANE
+R1CFF
+COUT CIN
+R2
+Figure 7-8. DRV Package Layout Example
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 23
+Product Folder Links: TLV758P
+8 Device and Documentation Support
+8.1 Documentation Support
+8.1.1 Device Nomenclature
+Table 8-1. Device Nomenclature(1) 
+PRODUCT VOUT
+TLV758 xx(x)Pyyyz
+xx(x) is the nominal output voltage. For output voltages with a resolution of 100 mV, two digits are used 
+in the ordering number; otherwise, three digits are used (for example, 28 = 2.8 V; 125 = 1.25 V). 01 is for 
+adjustable version.
+P indicates an active output discharge feature. All members of the TLV758P family actively discharge 
+the output when the device is disabled.
+yyy is the package designator.
+z is the package quantity. R is for reel (3000 pieces), T is for tape (250 pieces).
+(1) For the most current package and ordering information see the Package Option Addendum at the end of this document, or visit the 
+device product folder on www.ti.com.
+8.1.2 Related Documentation
+For related documentation see the following:
+Texas Instruments, Pros and cons of using a feedforward capacitor with a low-dropout regulator application note
+8.2 Receiving Notification of Documentation Updates
+To receive notification of documentation updates, navigate to the device product folder on ti.com. Click on 
+Subscribe to updates  to register and receive a weekly digest of any product information that has changed. For 
+change details, review the revision history included in any revised document.
+8.3 Support Resources
+TI E2E ™ support forums  are an engineer's go-to source for fast, verified answers and design help — straight 
+from the experts. Search existing answers or ask your own question to get the quick design help you need.
+Linked content is provided "AS IS" by the respective contributors. They do not constitute TI specifications and do 
+not necessarily reflect TI's views; see TI's Terms of Use.
+8.4 Trademarks
+TI E2E™ is a trademark of Texas Instruments.
+All trademarks are the property of their respective owners.
+8.5 Electrostatic Discharge Caution
+This integrated circuit can be damaged by ESD. Texas Instruments recommends that all integrated circuits be handled 
+with appropriate precautions. Failure to observe proper handling and installation procedures can cause damage.
+ESD damage can range from subtle performance degradation to complete device failure. Precision integrated circuits may 
+be more susceptible to damage because very small parametric changes could cause the device not to meet its published 
+specifications.
+8.6 Glossary
+TI Glossary This glossary lists and explains terms, acronyms, and definitions.
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+ www.ti.com
+24 Submit Document Feedback Copyright © 2023 Texas Instruments Incorporated
+Product Folder Links: TLV758P
+9 Revision History
+NOTE: Page numbers for previous revisions may differ from page numbers in the current version.
+Changes from Revision C (March 2019) to Revision D (October 2023) Page
+• Changed DBV package from Advance Information to Production Data ............................................................1
+• Added links to Applications section.................................................................................................................... 1
+• Changed 5-V to 5.5-V in title of 5.5-V Load Regulation vs IOUT figure............................................................... 7
+• Added Startup Sequencing section.................................................................................................................. 20
+• Added Device Nomenclature section .............................................................................................................. 24
+Changes from Revision B (March 2019) to Revision C (March 2019) Page
+• Deleted thermal pad from DBV pin out drawing ................................................................................................ 3
+10 Mechanical, Packaging, and Orderable Information
+The following pages include mechanical, packaging, and orderable information. This information is the most 
+current data available for the designated devices. This data is subject to change without notice and revision of 
+this document. For browser-based versions of this data sheet, refer to the left-hand navigation.
+www.ti.com
+TLV758P
+SBVS351D – APRIL 2018 – REVISED OCTOBER 2023
+Copyright © 2023 Texas Instruments Incorporated Submit Document Feedback 25
+Product Folder Links: TLV758P
+PACKAGE OPTION ADDENDUM
+www.ti.com 15-Jul-2026
+PACKAGING INFORMATION
+Orderable part number Status
+(1)
+Material type
+(2)
+Package | Pins Package qty | Carrier RoHS
+(3)
+Lead finish/
+Ball material
+(4)
+MSL rating/
+Peak reflow
+(5)
+Op temp (°C) Part marking
+(6)
+TLV75801PDBVJ Active Production SOT-23 (DBV) | 5 8000 | JUMBO T&R Yes SN Level-1-260C-UNLIM -40 to 125 1UDF
+TLV75801PDBVJ.A Active Production SOT-23 (DBV) | 5 8000 | JUMBO T&R Yes SN Level-1-260C-UNLIM -40 to 125 1UDF
+TLV75801PDBVR Active Production SOT-23 (DBV) | 5 3000 | LARGE T&R Yes NIPDAU | SN Level-1-260C-UNLIM -40 to 125 1UDF
+TLV75801PDBVR.A Active Production SOT-23 (DBV) | 5 3000 | LARGE T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1UDF
+TLV75801PDBVT Active Production SOT-23 (DBV) | 5 250 | SMALL T&R Yes NIPDAU | SN Level-1-260C-UNLIM -40 to 125 1UDF
+TLV75801PDBVT.A Active Production SOT-23 (DBV) | 5 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1UDF
+TLV75801PDRVR Active Production WSON (DRV) | 6 3000 | LARGE T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1MHH
+TLV75801PDRVR.A Active Production WSON (DRV) | 6 3000 | LARGE T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1MHH
+TLV75801PDRVRG4 Active Production WSON (DRV) | 6 3000 | LARGE T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1MHH
+TLV75801PDRVRG4.A Active Production WSON (DRV) | 6 3000 | LARGE T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1MHH
+TLV75801PDRVT Active Production WSON (DRV) | 6 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1MHH
+TLV75801PDRVT.A Active Production WSON (DRV) | 6 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1MHH
+ 
+(1) Status:  For more details on status, see our product life cycle.
+ 
+(2) Material type:  When designated, preproduction parts are prototypes/experimental devices, and are not yet approved or released for full production. Testing and final process, including without limitation quality assurance,
+reliability performance testing, and/or process qualification, may not yet be complete, and this item is subject to further changes or possible discontinuation. If available for ordering, purchases will be subject to an additional
+waiver at checkout, and are intended for early internal evaluation purposes only. These items are sold without warranties of any kind.
+ 
+(3) RoHS values:  Yes, No, RoHS Exempt. See the TI RoHS Statement for additional information and value definition.
+ 
+(4) Lead finish/Ball material:  Parts may have multiple material finish options. Finish options are separated by a vertical ruled line. Lead finish/Ball material values may wrap to two lines if the finish value exceeds the maximum
+column width.
+ 
+(5) MSL rating/Peak reflow:  The moisture sensitivity level ratings and peak solder (reflow) temperatures. In the event that a part has multiple moisture sensitivity ratings, only the lowest level per JEDEC standards is shown.
+Refer to the shipping label for the actual reflow temperature that will be used to mount the part to the printed circuit board.
+ 
+(6) Part marking:  There may be an additional marking, which relates to the logo, the lot trace code information, or the environmental category of the part.
+ 
+Multiple part markings will be inside parentheses. Only one part marking contained in parentheses and separated by a "~" will appear on a part. If a line is indented then it is a continuation of the previous line and the two
+combined represent the entire part marking for that device.
+Addendum-Page 1
+PACKAGE OPTION ADDENDUM
+www.ti.com 15-Jul-2026
+ 
+Important Information and Disclaimer:The information provided on this page represents TI's knowledge and belief as of the date that it is provided. TI bases its knowledge and belief on information provided by third parties, and
+makes no representation or warranty as to the accuracy of such information. Efforts are underway to better integrate information from third parties. TI has taken and continues to take reasonable steps to provide representative
+and accurate information but may not have conducted destructive testing or chemical analysis on incoming materials and chemicals. TI and TI suppliers consider certain information to be proprietary, and thus CAS numbers
+and other limited information may not be available for release.
+ 
+In no event shall TI's liability arising out of such information exceed the total purchase price of the TI part(s) at issue in this document sold by TI to Customer on an annual basis.
+ 
+Addendum-Page 2
+PACKAGE MATERIALS INFORMATION
+  
+www.ti.com 3-Sep-2026
+TAPE AND REEL INFORMATION
+Reel Width (W1)
+REEL DIMENSIONS
+A0
+B0
+K0
+W
+Dimension designed to accommodate the component length
+Dimension designed to accommodate the component thickness
+Overall width of the carrier tape
+Pitch between successive cavity centers
+Dimension designed to accommodate the component width
+TAPE DIMENSIONS
+K0  P1
+B0 W
+A0Cavity
+QUADRANT ASSIGNMENTS FOR PIN 1 ORIENTATION IN TAPE
+Pocket Quadrants
+Sprocket Holes
+Q1 Q1Q2 Q2
+Q3 Q3Q4 Q4 User Direction of Feed
+P1
+Reel
+Diameter
+ 
+*All dimensions are nominal
+Device Package
+Type
+Package
+Drawing
+Pins SPQ Reel
+Diameter
+(mm)
+Reel
+Width
+W1 (mm)
+A0
+(mm)
+B0
+(mm)
+K0
+(mm)
+P1
+(mm)
+W
+(mm)
+Pin1
+Quadrant
+TLV75801PDBVJ SOT-23 DBV 5 8000 330.0 8.4 3.2 3.2 1.4 4.0 8.0 Q3
+TLV75801PDBVR SOT-23 DBV 5 3000 178.0 8.4 3.2 3.2 1.4 4.0 8.0 Q3
+TLV75801PDBVT SOT-23 DBV 5 250 180.0 8.4 3.2 3.2 1.4 4.0 8.0 Q3
+TLV75801PDRVR WSON DRV 6 3000 178.0 8.4 2.25 2.25 1.0 4.0 8.0 Q2
+TLV75801PDRVR WSON DRV 6 3000 180.0 8.4 2.3 2.3 1.15 4.0 8.0 Q2
+TLV75801PDRVRG4 WSON DRV 6 3000 180.0 8.4 2.3 2.3 1.15 4.0 8.0 Q2
+TLV75801PDRVT WSON DRV 6 250 180.0 8.4 2.3 2.3 1.15 4.0 8.0 Q2
+Pack Materials-Page 1
+PACKAGE MATERIALS INFORMATION
+  
+www.ti.com 3-Sep-2026
+TAPE AND REEL BOX DIMENSIONS
+Width (mm)
+W L
+H
+ 
+*All dimensions are nominal
+Device Package Type Package Drawing Pins SPQ Length (mm) Width (mm) Height (mm)
+TLV75801PDBVJ SOT-23 DBV 5 8000 360.0 360.0 36.0
+TLV75801PDBVR SOT-23 DBV 5 3000 208.0 191.0 35.0
+TLV75801PDBVT SOT-23 DBV 5 250 210.0 185.0 35.0
+TLV75801PDRVR WSON DRV 6 3000 205.0 200.0 33.0
+TLV75801PDRVR WSON DRV 6 3000 210.0 185.0 35.0
+TLV75801PDRVRG4 WSON DRV 6 3000 210.0 185.0 35.0
+TLV75801PDRVT WSON DRV 6 250 210.0 185.0 35.0
+Pack Materials-Page 2
+www.ti.com
+PACKAGE OUTLINE
+C
+0.22
+0.08 TYP
+0.25
+3.0
+2.6
+2X 0.95
+1.9
+1.45
+0.90
+0.15
+0.00 TYP
+5X 0.5 0.3
+0.6
+0.3 TYP
+8
+0  TYP
+1.9
+(0.1)
+(0.15)
+4X 0 -15
+4X 4 -15
+A
+3.05
+2.75
+B1.75 1.45
+(1.1)
+SOT-23 - 1.45 mm max heightDBV0005A
+SMALL OUTLINE TRANSISTOR
+4214839/K   08/2024
+NOTES: 
+ 
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+    per ASME Y14.5M.
+2. This drawing is subject to change without notice.
+3. Refernce JEDEC MO-178.
+4. Body dimensions do not include mold flash, protrusions, or gate burrs. Mold flash, protrusions, or gate burrs shall not
+    exceed 0.25 mm per side.
+5. Support pin may differ or may not be present.
+0.2 C A B
+1
+3
+4
+5
+2
+INDEX AREA
+PIN 1
+ NOTE 5
+GAGE PLANE
+SEATING PLANE
+0.1 C
+SCALE  4.000
+www.ti.com
+EXAMPLE BOARD LAYOUT
+0.07 MAX
+ARROUND
+0.07 MIN
+ARROUND
+5X (1.1)
+5X (0.6)
+(2.6)
+(1.9)
+2X (0.95)
+(R0.05) TYP
+4214839/K   08/2024
+SOT-23 - 1.45 mm max heightDBV0005A
+SMALL OUTLINE TRANSISTOR
+NOTES: (continued)
+ 
+6. Publication IPC-7351 may have alternate designs. 
+7. Solder mask tolerances between and around signal pads can vary based on board fabrication site.
+ 
+SYMM
+LAND PATTERN EXAMPLE
+EXPOSED METAL SHOWN
+SCALE:15X
+PKG
+1
+3 4
+5
+2
+SOLDER MASK
+OPENINGMETAL UNDER SOLDER MASK
+SOLDER MASK
+DEFINED
+EXPOSED METAL
+METALSOLDER MASK OPENING
+NON SOLDER MASK
+DEFINED
+(PREFERRED)
+SOLDER MASK DETAILS
+EXPOSED METAL
+www.ti.com
+EXAMPLE STENCIL DESIGN
+(2.6)
+(1.9)
+2X(0.95)
+5X (1.1)
+5X (0.6)
+(R0.05) TYP
+SOT-23 - 1.45 mm max heightDBV0005A
+SMALL OUTLINE TRANSISTOR
+4214839/K   08/2024
+NOTES: (continued)
+ 
+8. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+     design recommendations. 
+9. Board assembly site may have different recommendations for stencil design.
+ 
+SOLDER PASTE EXAMPLE
+BASED ON 0.125 mm THICK STENCIL
+SCALE:15X
+SYMM
+PKG
+1
+3 4
+5
+2
+GENERIC PACKAGE VIEW
+Images above are just a representation of the package family, actual package may vary.
+Refer to the product data sheet for package details.
+DRV 6 WSON - 0.8 mm max height
+PLASTIC SMALL OUTLINE - NO LEAD
+4206925/F
+www.ti.com
+PACKAGE OUTLINE
+C
+6X 0.35 0.25
+1.6 0.1
+6X 0.3 0.2
+2X
+1.3
+1 0.1
+4X 0.65
+0.8
+0.7
+0.05
+0.00
+B 2.1 1.9 A
+2.1
+1.9 0.1 MIN
+0.08 MAX
+(0.2) TYP
+WSON - 0.8 mm max heightDRV0006A
+PLASTIC SMALL OUTLINE - NO LEAD
+4222173/C   11/2025
+PIN 1 INDEX AREA
+SEATING PLANE
+0.08 C
+1
+3 4
+6
+(OPTIONAL)
+PIN 1 ID
+0.1 C A B
+0.05 C
+THERMAL PAD
+EXPOSED
+7
+NOTES:
+ 
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+    per ASME Y14.5M. 
+2. This drawing is subject to change without notice. 
+3. The package thermal pad must be soldered to the printed circuit board for thermal and mechanical performance.
+4.  Minimum 0.1 mm solder wetting on pin side wall. Available for wettable flank version only.
+SCALE  5.500
+OPTIONAL: SIDE WALL PIN DETAIL
+NOTE 4
+www.ti.com
+EXAMPLE BOARD LAYOUT
+0.07 MIN
+ALL AROUND
+0.07 MAX
+ALL AROUND
+(1)
+4X (0.65)
+(1.95)
+6X (0.3)
+6X (0.45)
+(1.6)
+(R0.05) TYP
+( 0.2) VIA
+TYP
+(1.1)
+WSON - 0.8 mm max heightDRV0006A
+PLASTIC SMALL OUTLINE - NO LEAD
+4222173/C   11/2025
+SYMM
+1
+3 4
+6
+SYMM
+LAND PATTERN EXAMPLE
+SCALE:25X
+7
+NOTES: (continued)
+ 
+5. This package is designed to be soldered to a thermal pad on the board. For more information, see Texas Instruments literature
+    number SLUA271 (www.ti.com/lit/slua271).
+6. Vias are optional depending on application, refer to device data sheet. If some or all are implemented, recommended via locations
+    are shown.
+ 
+ 
+SOLDER MASK
+OPENINGSOLDER MASK
+METAL UNDER
+SOLDER MASK
+DEFINED
+METALSOLDER MASK
+OPENING
+SOLDER MASK DETAILS
+NON SOLDER MASK
+DEFINED
+(PREFERRED)
+www.ti.com
+EXAMPLE STENCIL DESIGN
+6X (0.3)
+6X (0.45)
+4X (0.65)
+(0.7)
+(1)
+(1.95)
+(R0.05) TYP
+(0.45)
+WSON - 0.8 mm max heightDRV0006A
+PLASTIC SMALL OUTLINE - NO LEAD
+4222173/C   11/2025
+NOTES: (continued)
+ 
+7. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+    design recommendations. 
+ 
+SOLDER PASTE EXAMPLE
+BASED ON 0.125 mm THICK STENCIL
+ 
+EXPOSED PAD #7
+ 88% PRINTED SOLDER COVERAGE BY AREA UNDER PACKAGE
+SCALE:30X
+SYMM
+1
+3 4
+6
+SYMM
+METAL
+7
+IMPORTANT NOTICE AND DISCLAIMER
+TI PROVIDES TECHNICAL AND RELIABILITY DATA (INCLUDING DATASHEETS), DESIGN RESOURCES (INCLUDING REFERENCE 
+DESIGNS), APPLICATION OR OTHER DESIGN ADVICE, WEB TOOLS, SAFETY INFORMATION, AND OTHER RESOURCES “AS IS” 
+AND WITH ALL FAULTS, AND DISCLAIMS ALL WARRANTIES, EXPRESS AND IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
+IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD 
+PARTY INTELLECTUAL PROPERTY RIGHTS.
+These resources are intended for skilled developers designing with TI products. You are solely responsible for (1) selecting the appropriate 
+TI products for your application, (2) designing, validating and testing your application, and (3) ensuring your application meets applicable 
+standards, and any other safety, security, regulatory or other requirements.
+These resources are subject to change without notice. TI grants you permission to use these resources only for development of an 
+application that uses the TI products described in the resource. Other reproduction and display of these resources is prohibited. No license 
+is granted to any other TI intellectual property right or to any third party intellectual property right. TI disclaims responsibility for, and you fully 
+indemnify TI and its representatives against any claims, damages, costs, losses, and liabilities arising out of your use of these resources.
+TI’s products are provided subject to TI’s Terms of Sale, TI’s General Quality Guidelines, or other applicable terms available either on 
+ti.com or provided in conjunction with such TI products. TI’s provision of these resources does not expand or otherwise alter TI’s applicable 
+warranties or warranty disclaimers for TI products. Unless TI explicitly designates a product as custom or customer-specified, TI products 
+are standard, catalog, general purpose devices.
+TI objects to and rejects any additional or different terms you may propose.
+IMPORTANT NOTICE
+Copyright © 2026, Texas Instruments Incorporated
+Last updated 10/2025

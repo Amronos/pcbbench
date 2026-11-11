@@ -1,0 +1,63 @@
+{
+  "board": "Aster2350",
+  "revision": "A",
+  "design_date": "2026-11-09",
+  "release_date": "2026-11-10",
+  "physical_validation": false,
+  "purchased_components": 121,
+  "bom_lines": 51,
+  "top_smt": 118,
+  "top_tht": 3,
+  "schematic_pad_net_mismatches": [],
+  "grounded_connector_mount_pads": [
+    [
+      "J5",
+      "MP"
+    ],
+    [
+      "J5",
+      "MP"
+    ],
+    [
+      "J4",
+      "MP"
+    ],
+    [
+      "J4",
+      "MP"
+    ]
+  ],
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_items": 0,
+  "schematic_parity": [],
+  "in1_non_ground_segments": 0,
+  "layers": [
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu",
+    "B.Cu"
+  ],
+  "antenna_copper_items": 0,
+  "antenna_copper_pours": 0,
+  "via_drill_open_smd_pad_intersections": [],
+  "width_mm": 80,
+  "height_mm": 65,
+  "minimum_track_mm": 0.1,
+  "via_sizes": [
+    [
+      0.5,
+      0.2
+    ],
+    [
+      0.6,
+      0.3
+    ]
+  ],
+  "assembly_origin": "Lower-left board corner (KiCad X100 Y165); X right, Y up; mm; top rotation CCW",
+  "limitations": [
+    "Unbuilt prototype: first article and DFM approval required.",
+    "USB impedance requires the fabricator-approved stack and coupon.",
+    "No functional/programming firmware included; see README.md and ASSEMBLY.md."
+  ]
+}

@@ -1,0 +1,946 @@
+[
+  {
+    "ref": "U1",
+    "symbol_source": "MCU_RaspberryPi:RP2350A",
+    "footprint_source": "Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm",
+    "footprint_sha256": "bafa4556bcac8dac4d85cd15285969f92300d2769a65040cae38ee357a58011f",
+    "initial_footprint_sha256": "bafa4556bcac8dac4d85cd15285969f92300d2769a65040cae38ee357a58011f",
+    "final_local_footprint": "connect:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm"
+  },
+  {
+    "ref": "U2",
+    "symbol_source": "Memory_Flash:W25Q128JVS",
+    "footprint_source": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
+    "footprint_sha256": "7edbfd22d564c19e0a199dcd87ca70ac887340b7e05fa9b61c04976739412e92",
+    "initial_footprint_sha256": "7edbfd22d564c19e0a199dcd87ca70ac887340b7e05fa9b61c04976739412e92",
+    "final_local_footprint": "connect:SOIC-8_5.3x5.3mm_P1.27mm"
+  },
+  {
+    "ref": "U3",
+    "symbol_source": "Memory_RAM:APS6404L-3SQRx-SN",
+    "footprint_source": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+    "footprint_sha256": "9b1613eeff511441c4e421a6139985704b601956e445fbd634a9a178162f7883",
+    "initial_footprint_sha256": "9b1613eeff511441c4e421a6139985704b601956e445fbd634a9a178162f7883",
+    "final_local_footprint": "connect:SOIC-8_3.9x4.9mm_P1.27mm"
+  },
+  {
+    "ref": "R1",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R2",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C1",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "C2",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "U4",
+    "symbol_source": "Regulator_Switching:TPS62823DLC",
+    "footprint_source": "Package_SON:Texas_VSON-HR-8_1.5x2mm_P0.5mm",
+    "footprint_sha256": "4da44b24087b36f78d12642a3619f18d8b51535a4dd759b512a0e61cdf34678f",
+    "initial_footprint_sha256": "4da44b24087b36f78d12642a3619f18d8b51535a4dd759b512a0e61cdf34678f",
+    "final_local_footprint": "connect:Texas_VSON-HR-8_1.5x2mm_P0.5mm"
+  },
+  {
+    "ref": "L1",
+    "symbol_source": "Device:L",
+    "footprint_source": "Inductor_SMD:L_Murata_DFE201610P",
+    "footprint_sha256": "95ecfe4632b96287514d1ef9ab4c45be74165405166689ab97260c118c5ff1e3",
+    "initial_footprint_sha256": "95ecfe4632b96287514d1ef9ab4c45be74165405166689ab97260c118c5ff1e3",
+    "final_local_footprint": "connect:L_Murata_DFE201610P"
+  },
+  {
+    "ref": "C3",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C4",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "R3",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R4",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C5",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R5",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C6",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C7",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C8",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C9",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C10",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C11",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C12",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C13",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C14",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C15",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C16",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C17",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R6",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "Y1",
+    "symbol_source": "Device:Crystal_GND24",
+    "footprint_source": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+    "footprint_sha256": "a40e8cd00143c794bab51693a90e314fba442c113033a238e03e05d168105ab7",
+    "initial_footprint_sha256": "a40e8cd00143c794bab51693a90e314fba442c113033a238e03e05d168105ab7",
+    "final_local_footprint": "connect:Crystal_SMD_3225-4Pin_3.2x2.5mm"
+  },
+  {
+    "ref": "R7",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C18",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "C19",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0402_1005Metric",
+    "footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "initial_footprint_sha256": "0b3e99e8cbbe8bf0d488f76891de1d4656b0ff1f65be6cdb39363073f1ad7dd4",
+    "final_local_footprint": "connect:C_0402_1005Metric"
+  },
+  {
+    "ref": "R8",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C20",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "SW1",
+    "symbol_source": "Switch:SW_Push",
+    "footprint_source": "Button_Switch_SMD:SW_SPST_PTS810",
+    "footprint_sha256": "e61a78a59d4c23e473eea96cb5a51a92afac7071ffc1b245f20bb63c38b43df0",
+    "initial_footprint_sha256": "e61a78a59d4c23e473eea96cb5a51a92afac7071ffc1b245f20bb63c38b43df0",
+    "final_local_footprint": "connect:SW_SPST_PTS810"
+  },
+  {
+    "ref": "R9",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "SW2",
+    "symbol_source": "Switch:SW_Push",
+    "footprint_source": "Button_Switch_SMD:SW_SPST_PTS810",
+    "footprint_sha256": "e61a78a59d4c23e473eea96cb5a51a92afac7071ffc1b245f20bb63c38b43df0",
+    "initial_footprint_sha256": "e61a78a59d4c23e473eea96cb5a51a92afac7071ffc1b245f20bb63c38b43df0",
+    "final_local_footprint": "connect:SW_SPST_PTS810"
+  },
+  {
+    "ref": "J1",
+    "symbol_source": "Connector:USB_C_Receptacle_USB2.0_16P",
+    "footprint_source": "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+    "footprint_sha256": "a7156485790f628a2a3774f69399f9d5f3d9dc7e244b45a09067da9355bb663c",
+    "initial_footprint_sha256": "a7156485790f628a2a3774f69399f9d5f3d9dc7e244b45a09067da9355bb663c",
+    "final_local_footprint": "connect:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
+  },
+  {
+    "ref": "R10",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R11",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "U5",
+    "symbol_source": "Power_Protection:USBLC6-2SC6",
+    "footprint_source": "Package_TO_SOT_SMD:SOT-23-6",
+    "footprint_sha256": "123869a35529b9bda41e6ac8227052b6964a82cdb54a73b184e82383c4499797",
+    "initial_footprint_sha256": "123869a35529b9bda41e6ac8227052b6964a82cdb54a73b184e82383c4499797",
+    "final_local_footprint": "connect:SOT-23-6"
+  },
+  {
+    "ref": "R12",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R13",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "F1",
+    "symbol_source": "Device:Polyfuse",
+    "footprint_source": "Fuse:Fuse_1812_4532Metric",
+    "footprint_sha256": "cfa84a7101c319d8c639cb4515324f0b5e91bfa3669b2438b4a4bb713423dde8",
+    "initial_footprint_sha256": "cfa84a7101c319d8c639cb4515324f0b5e91bfa3669b2438b4a4bb713423dde8",
+    "final_local_footprint": "connect:Fuse_1812_4532Metric"
+  },
+  {
+    "ref": "D1",
+    "symbol_source": "Device:D_TVS",
+    "footprint_source": "Diode_SMD:D_SOD-123F",
+    "footprint_sha256": "9e651bccace1692bc03af0a861bb929e480ccd21b4ddd9899e6238402cbe5408",
+    "initial_footprint_sha256": "9e651bccace1692bc03af0a861bb929e480ccd21b4ddd9899e6238402cbe5408",
+    "final_local_footprint": "connect:D_SOD-123F"
+  },
+  {
+    "ref": "C21",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "U6",
+    "symbol_source": "Battery_Management:BQ24074RGT",
+    "footprint_source": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm",
+    "footprint_sha256": "74e38e4de0c207d1215bf3dcd3bb95881a8c17b817cf631c217e0b25af2fa53c",
+    "initial_footprint_sha256": "74e38e4de0c207d1215bf3dcd3bb95881a8c17b817cf631c217e0b25af2fa53c",
+    "final_local_footprint": "connect:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm"
+  },
+  {
+    "ref": "J2",
+    "symbol_source": "Connector_Generic:Conn_01x03",
+    "footprint_source": "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical",
+    "footprint_sha256": "169a665f7a02547f673197623e37525086102dae45f26e9d0e38370158812613",
+    "initial_footprint_sha256": "169a665f7a02547f673197623e37525086102dae45f26e9d0e38370158812613",
+    "final_local_footprint": "connect:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+  },
+  {
+    "ref": "C22",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C23",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C24",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "R14",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R15",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R16",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R17",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R18",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R19",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R20",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R21",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C25",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "U7",
+    "symbol_source": "Regulator_Switching:TPS63060",
+    "footprint_source": "Package_SON:Texas_S-PWSON-N10",
+    "footprint_sha256": "bc13face282a8510e5b1afad4264e1f5eafb14bd74ef4deafc3badb3f60c7d08",
+    "initial_footprint_sha256": "0ade4abfe9766f96e0ae5b21eb126e4d9dd5b8217125356aaf46a066f2753b4f",
+    "final_local_footprint": "connect:Texas_S-PWSON-N10"
+  },
+  {
+    "ref": "L2",
+    "symbol_source": "Device:L",
+    "footprint_source": "Inductor_SMD:L_Murata_DFE201610P",
+    "footprint_sha256": "95ecfe4632b96287514d1ef9ab4c45be74165405166689ab97260c118c5ff1e3",
+    "initial_footprint_sha256": "95ecfe4632b96287514d1ef9ab4c45be74165405166689ab97260c118c5ff1e3",
+    "final_local_footprint": "connect:L_Murata_DFE201610P"
+  },
+  {
+    "ref": "C26",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C27",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C28",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_1206_3216Metric",
+    "footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "initial_footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "final_local_footprint": "connect:C_1206_3216Metric"
+  },
+  {
+    "ref": "C29",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_1206_3216Metric",
+    "footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "initial_footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "final_local_footprint": "connect:C_1206_3216Metric"
+  },
+  {
+    "ref": "C30",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_1206_3216Metric",
+    "footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "initial_footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "final_local_footprint": "connect:C_1206_3216Metric"
+  },
+  {
+    "ref": "C31",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R22",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R23",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C32",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R24",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R25",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R26",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C33",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "U8",
+    "symbol_source": "RF_Module:ESP32-C3-WROOM-02",
+    "footprint_source": "RF_Module:ESP32-C3-WROOM-02",
+    "footprint_sha256": "c2d39b7d014f701f48627ce9bb6f9337040650497b0850b7fe4730c12f75e61c",
+    "initial_footprint_sha256": "9a6492dbe18fa0acb482d146ad1a6f6561118b51edceffc37f1735d21b41751d",
+    "final_local_footprint": "connect:ESP32-C3-WROOM-02"
+  },
+  {
+    "ref": "C34",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_1206_3216Metric",
+    "footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "initial_footprint_sha256": "8dfe057c79c64dc787e73b76c21a78ad0eca77c17d9f225982ef1822decb17c8",
+    "final_local_footprint": "connect:C_1206_3216Metric"
+  },
+  {
+    "ref": "C35",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R27",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C36",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R28",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R29",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R30",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "SW3",
+    "symbol_source": "Switch:SW_Push",
+    "footprint_source": "Button_Switch_SMD:SW_SPST_PTS810",
+    "footprint_sha256": "e61a78a59d4c23e473eea96cb5a51a92afac7071ffc1b245f20bb63c38b43df0",
+    "initial_footprint_sha256": "e61a78a59d4c23e473eea96cb5a51a92afac7071ffc1b245f20bb63c38b43df0",
+    "final_local_footprint": "connect:SW_SPST_PTS810"
+  },
+  {
+    "ref": "J3",
+    "symbol_source": "Connector_Generic:Conn_01x06",
+    "footprint_source": "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical",
+    "footprint_sha256": "16b8f38aea1d511f813e378d37850d5be35d3920e7c98700008aa8f4a52c69f5",
+    "initial_footprint_sha256": "16b8f38aea1d511f813e378d37850d5be35d3920e7c98700008aa8f4a52c69f5",
+    "final_local_footprint": "connect:PinSocket_1x06_P2.54mm_Vertical"
+  },
+  {
+    "ref": "J4",
+    "symbol_source": "Connector:Micro_SD_Card_Det_Hirose_DM3AT",
+    "footprint_source": "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5",
+    "footprint_sha256": "9fa3f666f54bd729d5738c1c07e9d28241280dfbafd7da19f6fcc6e352bf383b",
+    "initial_footprint_sha256": "fcebc7a7bce80725f8db8222feb8b499d7efe5d13a64b9ee646209919e03e2e9",
+    "final_local_footprint": "connect:microSD_HC_Hirose_DM3AT-SF-PEJM5"
+  },
+  {
+    "ref": "R31",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R32",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R33",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R34",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R35",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R36",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R37",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C37",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C38",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "J5",
+    "symbol_source": "Connector_Generic:Conn_01x04",
+    "footprint_source": "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+    "footprint_sha256": "0403fa31c193e2ed7e314943a77248a68c1b132d3c5878bd9a650e3474c2164c",
+    "initial_footprint_sha256": "0403fa31c193e2ed7e314943a77248a68c1b132d3c5878bd9a650e3474c2164c",
+    "final_local_footprint": "connect:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+  },
+  {
+    "ref": "R38",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R39",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C39",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "U9",
+    "symbol_source": "Regulator_Switching:MCP1640x-xCHY",
+    "footprint_source": "Package_TO_SOT_SMD:SOT-23-6",
+    "footprint_sha256": "b886fc28ab7ac440712c9b447886bd1d09cce724d29caae7030516e1d8ca9e94",
+    "initial_footprint_sha256": "123869a35529b9bda41e6ac8227052b6964a82cdb54a73b184e82383c4499797",
+    "final_local_footprint": "connect:SOT-23-6_LED"
+  },
+  {
+    "ref": "L3",
+    "symbol_source": "Device:L",
+    "footprint_source": "Inductor_SMD:L_Murata_DFE201610P",
+    "footprint_sha256": "95ecfe4632b96287514d1ef9ab4c45be74165405166689ab97260c118c5ff1e3",
+    "initial_footprint_sha256": "95ecfe4632b96287514d1ef9ab4c45be74165405166689ab97260c118c5ff1e3",
+    "final_local_footprint": "connect:L_Murata_DFE201610P"
+  },
+  {
+    "ref": "C40",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "C41",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0805_2012Metric",
+    "footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "initial_footprint_sha256": "0b46feb43068a6049a055fcadfdaa18946f0b52e9b97cd23fdc01f8a824564aa",
+    "final_local_footprint": "connect:C_0805_2012Metric"
+  },
+  {
+    "ref": "R40",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R41",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "U10",
+    "symbol_source": "74xGxx:74AHCT1G125",
+    "footprint_source": "Package_TO_SOT_SMD:SOT-23-5",
+    "footprint_sha256": "5e4d13140e32320ed8b514887b364d54ceacc9d51ee8821bd90d36bd534a564a",
+    "initial_footprint_sha256": "5e4d13140e32320ed8b514887b364d54ceacc9d51ee8821bd90d36bd534a564a",
+    "final_local_footprint": "connect:SOT-23-5"
+  },
+  {
+    "ref": "C42",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "R42",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R43",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "D2",
+    "symbol_source": "LED:SK6812MINI",
+    "footprint_source": "LED_SMD:LED_SK6812MINI_PLCC4_3.5x3.5mm_P1.75mm",
+    "footprint_sha256": "33bc54bc9765c9e3006515ef3c73651720fd0cf100c5bbb697bab70c0ee82976",
+    "initial_footprint_sha256": "33bc54bc9765c9e3006515ef3c73651720fd0cf100c5bbb697bab70c0ee82976",
+    "final_local_footprint": "connect:LED_SK6812MINI_PLCC4_3.5x3.5mm_P1.75mm"
+  },
+  {
+    "ref": "C43",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  },
+  {
+    "ref": "J6",
+    "symbol_source": "Connector_Generic:Conn_01x12",
+    "footprint_source": "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical",
+    "footprint_sha256": "cd3b6c11f0ab9f5246f5121784d4342ef29cc69df6da13d0c678429b5b0efdfa",
+    "initial_footprint_sha256": "cd3b6c11f0ab9f5246f5121784d4342ef29cc69df6da13d0c678429b5b0efdfa",
+    "final_local_footprint": "connect:PinSocket_1x12_P2.54mm_Vertical"
+  },
+  {
+    "ref": "J7",
+    "symbol_source": "Connector_Generic:Conn_01x12",
+    "footprint_source": "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical",
+    "footprint_sha256": "cd3b6c11f0ab9f5246f5121784d4342ef29cc69df6da13d0c678429b5b0efdfa",
+    "initial_footprint_sha256": "cd3b6c11f0ab9f5246f5121784d4342ef29cc69df6da13d0c678429b5b0efdfa",
+    "final_local_footprint": "connect:PinSocket_1x12_P2.54mm_Vertical"
+  },
+  {
+    "ref": "J8",
+    "symbol_source": "Connector_Generic:Conn_02x05_Odd_Even",
+    "footprint_source": "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical",
+    "footprint_sha256": "91e3e8b6030f8e70e4840c13027f98e2ace8ba627e431dc4e28cf7031b89ecec",
+    "initial_footprint_sha256": "91e3e8b6030f8e70e4840c13027f98e2ace8ba627e431dc4e28cf7031b89ecec",
+    "final_local_footprint": "connect:PinHeader_2x05_P1.27mm_Vertical"
+  },
+  {
+    "ref": "U11",
+    "symbol_source": "Power_Management:TPS22919DCK",
+    "footprint_source": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+    "footprint_sha256": "4b694422c16f850f8d253b18341d80c43b23935e7f694cec71cbbb08f583636b",
+    "initial_footprint_sha256": "4b694422c16f850f8d253b18341d80c43b23935e7f694cec71cbbb08f583636b",
+    "final_local_footprint": "connect:SOT-363_SC-70-6"
+  },
+  {
+    "ref": "R44",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "R45",
+    "symbol_source": "Device:R",
+    "footprint_source": "Resistor_SMD:R_0603_1608Metric",
+    "footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "initial_footprint_sha256": "e2ed1d1a505fff8be9779076abbe7459d8d775394fe244ddaaec00b165cd2c16",
+    "final_local_footprint": "connect:R_0603_1608Metric"
+  },
+  {
+    "ref": "C44",
+    "symbol_source": "Device:C",
+    "footprint_source": "Capacitor_SMD:C_0603_1608Metric",
+    "footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "initial_footprint_sha256": "16b5a877412fcd47fabd79eab643e334bdf3312287d334fd1987da388bc964a8",
+    "final_local_footprint": "connect:C_0603_1608Metric"
+  }
+]

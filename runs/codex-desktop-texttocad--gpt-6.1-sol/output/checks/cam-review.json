@@ -1,0 +1,171 @@
+{
+  "reviewed_utc": "2026-11-10T02:12:07.582347+00:00",
+  "status": "PASS",
+  "errors": [],
+  "gerbers": [
+    {
+      "file": "gerbers/Atlas2350-B_Cu.gbr",
+      "objects": 718,
+      "bounds_mm": [
+        [
+          0.2505,
+          -74.7495
+        ],
+        [
+          79.7495,
+          -0.2505
+        ]
+      ],
+      "sha256": "3e4d100f6839235b5fad3379dc731655bda9a90039c8fe18c721a66759a90642"
+    },
+    {
+      "file": "gerbers/Atlas2350-B_Mask.gbr",
+      "objects": 47,
+      "bounds_mm": [
+        [
+          1.025,
+          -72.71
+        ],
+        [
+          70.55,
+          -2.65
+        ]
+      ],
+      "sha256": "e8fbdda5cab3704a88bd0ee286ca703155fb9a2a0e52c2d5153800a1bbb3cd86"
+    },
+    {
+      "file": "gerbers/Atlas2350-B_Silkscreen.gbr",
+      "objects": 47,
+      "bounds_mm": [
+        [
+          1.025,
+          -72.71
+        ],
+        [
+          70.55,
+          -2.65
+        ]
+      ],
+      "sha256": "10bd7e985ecc3901767999a9f8a68294cbf209e7a3d8bdfa8594b4d8720a7fa3"
+    },
+    {
+      "file": "gerbers/Atlas2350-Edge_Cuts.gbr",
+      "objects": 8,
+      "bounds_mm": [
+        [
+          -0.025,
+          -75.025
+        ],
+        [
+          80.025,
+          0.025
+        ]
+      ],
+      "sha256": "1b9f64c4b30c7b7dba60d205bfd1083f87e098707ec9a0daac8758fd78525bf4"
+    },
+    {
+      "file": "gerbers/Atlas2350-F_Cu.gbr",
+      "objects": 1710,
+      "bounds_mm": [
+        [
+          0.2505,
+          -74.7495
+        ],
+        [
+          79.7495,
+          -0.2505
+        ]
+      ],
+      "sha256": "4675020d923cf273d1bd6e281b34c58b8e8ef67fc8cc8eb0c16c4061d2d189db"
+    },
+    {
+      "file": "gerbers/Atlas2350-F_Mask.gbr",
+      "objects": 471,
+      "bounds_mm": [
+        [
+          1.025,
+          -72.71
+        ],
+        [
+          78.775,
+          -0.55
+        ]
+      ],
+      "sha256": "9b12953cca62793c6905336988aaeb71d9a48c1eac9346a29134a55d443ce33b"
+    },
+    {
+      "file": "gerbers/Atlas2350-F_Paste.gbr",
+      "objects": 425,
+      "bounds_mm": [
+        [
+          1.025,
+          -70.325
+        ],
+        [
+          78.775,
+          -0.55
+        ]
+      ],
+      "sha256": "61c8cd57ef9f22fdbeefba4c50c4ab9e808164bdb1d68094b79d3fcde642afe2"
+    },
+    {
+      "file": "gerbers/Atlas2350-F_Silkscreen.gbr",
+      "objects": 2037,
+      "bounds_mm": [
+        [
+          1.025,
+          -73.3
+        ],
+        [
+          78.775,
+          -0.55
+        ]
+      ],
+      "sha256": "5212796646162a2a6fd882d8f16557c20b47bbf741841739177da09fdfa3f404"
+    },
+    {
+      "file": "gerbers/Atlas2350-In1_Cu.gbr",
+      "objects": 561,
+      "bounds_mm": [
+        [
+          0.2505,
+          -74.7495
+        ],
+        [
+          79.7495,
+          -0.2505
+        ]
+      ],
+      "sha256": "26641db252dd5c8b79c4c84ec8ce059e213edc5e2653ffe0cc97e92aed8f5630"
+    },
+    {
+      "file": "gerbers/Atlas2350-In2_Cu.gbr",
+      "objects": 493,
+      "bounds_mm": [
+        [
+          0.2505,
+          -74.7495
+        ],
+        [
+          79.7495,
+          -0.2505
+        ]
+      ],
+      "sha256": "7090960ce063c6f1b40e08370a4b239b4e56c0666cfebf3b8fb68181268b9bfa"
+    }
+  ],
+  "plated_drill_objects": 374,
+  "nonplated_drill_objects": 7,
+  "fill_cap_registration_matches": 334,
+  "drill_coordinate_tolerance_mm": 0.00051,
+  "parser_notices": [
+    "/Users/ec2-user/pcbbench-run/checks/cam/Atlas2350-NPTH.drl:16 \"G90\": G90 header statement found after end of header",
+    "/Users/ec2-user/pcbbench-run/checks/cam/Atlas2350-PTH.drl:20 \"G90\": G90 header statement found after end of header",
+    "/Users/ec2-user/pcbbench-run/fab/drill/Atlas2350-NPTH.drl:16 \"G90\": G90 header statement found after end of header",
+    "/Users/ec2-user/pcbbench-run/fab/drill/Atlas2350-PTH.drl:20 \"G90\": G90 header statement found after end of header",
+    "Aperture definition using macro RoundRect has more parameters than the macro uses.",
+    "Layer \"bottom paste\" not found. Found layers: top copper, top mask, top silk, top paste, bottom copper, bottom mask, bottom silk, inner_2 copper, inner_1 copper, mechanical outline"
+  ],
+  "notice_disposition": "KiCad aperture macro unused-parameter notices and Excellon G90 header ordering are accepted by the parser; bottom paste is absent because all assembled parts are top-side. Gerber job is metadata, not a plotted layer.",
+  "limits": "CAM parsing and registration checks do not establish electrical performance, impedance, supplier DFM approval or physical first-article acceptance."
+}

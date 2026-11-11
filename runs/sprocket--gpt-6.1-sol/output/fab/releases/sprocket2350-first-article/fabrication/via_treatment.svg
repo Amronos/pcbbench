@@ -1,0 +1,1467 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="18.000000000 18.000000000 90.000000000 76.000000000">
+<title>Via treatment map, absolute board coordinates in mm, +Y down</title>
+<g fill="none" stroke="#222" stroke-width="0.12">
+<path d="M 20.000000000,20.000000000 L 100.000000000,20.000000000"/>
+<path d="M 20.000000000,85.000000000 L 20.000000000,20.000000000"/>
+<path d="M 100.000000000,20.000000000 L 100.000000000,85.000000000"/>
+<path d="M 100.000000000,85.000000000 L 20.000000000,85.000000000"/>
+</g>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0001; uuid=037d6c68-7b85-4612-99a2-782d0357fc5a; type=via; net=/GPIO24; x_mm=60.650000; y_mm=56.550000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="60.650000000" cy="56.550000000" r="0.075000000"/>
+</g>
+<text x="60.875000000" y="56.550000000" font-size="0.55" fill="#1769aa">H0001</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0002; uuid=044fb984-336a-48a2-88f1-e1e1d7232993; type=via; net=/GPIO25; x_mm=57.500000; y_mm=53.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.500000000" cy="53.600000000" r="0.075000000"/>
+</g>
+<text x="57.725000000" y="53.600000000" font-size="0.55" fill="#1769aa">H0002</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0003; uuid=04f39013-067c-40aa-bb24-da9c852afb00; type=via; net=/GND; x_mm=27.350000; y_mm=58.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="27.350000000" cy="58.600000000" r="0.075000000"/>
+</g>
+<text x="27.575000000" y="58.600000000" font-size="0.55" fill="#1769aa">H0003</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0004; uuid=05b640fb-ea7a-49cb-929c-12872b452380; type=via; net=/GPIO23; x_mm=53.650000; y_mm=73.550000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.650000000" cy="73.550000000" r="0.075000000"/>
+</g>
+<text x="53.875000000" y="73.550000000" font-size="0.55" fill="#1769aa">H0004</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0005; uuid=060c66d0-dc85-49db-a843-020ce9d69970; type=via; net=/XIN; x_mm=54.200000; y_mm=55.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.200000000" cy="55.500000000" r="0.075000000"/>
+</g>
+<text x="54.425000000" y="55.500000000" font-size="0.55" fill="#1769aa">H0005</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0006; uuid=06e57a90-e2b4-4291-b70f-db75a14d33a3; type=via; net=/SD_MISO; x_mm=56.650000; y_mm=34.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.650000000" cy="34.600000000" r="0.075000000"/>
+</g>
+<text x="56.875000000" y="34.600000000" font-size="0.55" fill="#1769aa">H0006</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0007; uuid=06eace68-2645-411c-a943-b7e84d34d96c; type=via; net=/+3V3; x_mm=75.000000; y_mm=62.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="75.000000000" cy="62.800000000" r="0.075000000"/>
+</g>
+<text x="75.225000000" y="62.800000000" font-size="0.55" fill="#1769aa">H0007</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0008; uuid=078c0351-43cc-4b2b-8577-08e74751117b; type=via; net=/ADC2; x_mm=53.300000; y_mm=74.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.300000000" cy="74.350000000" r="0.075000000"/>
+</g>
+<text x="53.525000000" y="74.350000000" font-size="0.55" fill="#1769aa">H0008</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0009; uuid=07b72ee4-2968-4c47-8f42-021e4a552485; type=via; net=/USB_500_EN; x_mm=52.500000; y_mm=55.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="55.400000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="55.400000000" font-size="0.55" fill="#1769aa">H0009</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0010; uuid=07df57df-b5df-49ac-b2ab-0cb4e58bc5dc; type=via; net=/BUCK_L2; x_mm=26.800000; y_mm=55.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="26.800000000" cy="55.700000000" r="0.075000000"/>
+</g>
+<text x="27.025000000" y="55.700000000" font-size="0.55" fill="#1769aa">H0010</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0011; uuid=086a46be-452a-4510-a909-b038aa709457; type=via; net=/+3V3; x_mm=57.800000; y_mm=57.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.800000000" cy="57.400000000" r="0.075000000"/>
+</g>
+<text x="58.025000000" y="57.400000000" font-size="0.55" fill="#1769aa">H0011</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0012; uuid=0893e85b-f6dd-43ab-9d6b-e373d66e3052; type=via; net=/UART_CTS; x_mm=55.350000; y_mm=36.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.350000000" cy="36.500000000" r="0.075000000"/>
+</g>
+<text x="55.575000000" y="36.500000000" font-size="0.55" fill="#1769aa">H0012</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0013; uuid=0933802a-fc69-43c0-976b-a8799a3c783f; type=via; net=/GND; x_mm=61.500000; y_mm=49.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.500000000" cy="49.400000000" r="0.075000000"/>
+</g>
+<text x="61.725000000" y="49.400000000" font-size="0.55" fill="#1769aa">H0013</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0014; uuid=09450439-366c-4114-a05d-2d18571b4380; type=via; net=/GND; x_mm=24.950000; y_mm=48.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="24.950000000" cy="48.000000000" r="0.075000000"/>
+</g>
+<text x="25.175000000" y="48.000000000" font-size="0.55" fill="#1769aa">H0014</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0015; uuid=0b47a9f1-5f33-4ddc-96fe-38027d93199f; type=via; net=/GND; x_mm=37.500000; y_mm=69.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="37.500000000" cy="69.000000000" r="0.075000000"/>
+</g>
+<text x="37.725000000" y="69.000000000" font-size="0.55" fill="#1769aa">H0015</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0016; uuid=0c3d24cc-7b5b-4514-8faa-d7118b689c1a; type=via; net=/QSPI_D2; x_mm=51.400000; y_mm=39.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="51.400000000" cy="39.250000000" r="0.075000000"/>
+</g>
+<text x="51.625000000" y="39.250000000" font-size="0.55" fill="#1769aa">H0016</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0017; uuid=113a7e1f-9dc2-48cd-bc49-27577efdc904; type=via; net=/QSPI_D2; x_mm=49.550000; y_mm=47.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.550000000" cy="47.600000000" r="0.075000000"/>
+</g>
+<text x="49.775000000" y="47.600000000" font-size="0.55" fill="#1769aa">H0017</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0018; uuid=11a697ab-d7f9-4fb1-8fc2-9dc8afceb950; type=via; net=/CORE_1V1; x_mm=52.500000; y_mm=52.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="52.200000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="52.200000000" font-size="0.55" fill="#1769aa">H0018</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0019; uuid=12c28b6c-10e7-4797-b1a2-8a8342fa14e1; type=via; net=/RADIO_EN; x_mm=76.750000; y_mm=27.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="76.750000000" cy="27.450000000" r="0.075000000"/>
+</g>
+<text x="76.975000000" y="27.450000000" font-size="0.55" fill="#1769aa">H0019</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0020; uuid=13f4ee3c-eb6f-459f-b2af-9206b0723431; type=via; net=/+3V3; x_mm=81.000000; y_mm=62.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="81.000000000" cy="62.800000000" r="0.075000000"/>
+</g>
+<text x="81.225000000" y="62.800000000" font-size="0.55" fill="#1769aa">H0020</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0021; uuid=13fd714c-86e4-4190-89ac-575b9bddbd25; type=via; net=/GND; x_mm=68.000000; y_mm=57.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="68.000000000" cy="57.500000000" r="0.075000000"/>
+</g>
+<text x="68.225000000" y="57.500000000" font-size="0.55" fill="#1769aa">H0021</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0022; uuid=14bc6736-7476-41b0-b826-58c508f478e7; type=via; net=/GND; x_mm=64.400000; y_mm=54.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="64.400000000" cy="54.050000000" r="0.075000000"/>
+</g>
+<text x="64.625000000" y="54.050000000" font-size="0.55" fill="#1769aa">H0022</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0023; uuid=16536486-0866-4e65-bb66-620b0f042544; type=via; net=/UART_TX; x_mm=80.450000; y_mm=40.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="80.450000000" cy="40.300000000" r="0.075000000"/>
+</g>
+<text x="80.675000000" y="40.300000000" font-size="0.55" fill="#1769aa">H0023</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0024; uuid=16673dd4-46da-4ea0-812b-07620dd0ae71; type=via; net=/+3V3; x_mm=71.000000; y_mm=74.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="71.000000000" cy="74.300000000" r="0.075000000"/>
+</g>
+<text x="71.225000000" y="74.300000000" font-size="0.55" fill="#1769aa">H0024</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0025; uuid=16f4979a-28f7-41d6-b789-624b652ab88a; type=via; net=/XTAL_OUT; x_mm=46.350000; y_mm=63.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="46.350000000" cy="63.300000000" r="0.075000000"/>
+</g>
+<text x="46.575000000" y="63.300000000" font-size="0.55" fill="#1769aa">H0025</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0026; uuid=172f0fc0-614a-4a3c-b7dc-c0ca0b2c699a; type=via; net=/SD_MOSI; x_mm=74.650000; y_mm=60.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="74.650000000" cy="60.800000000" r="0.075000000"/>
+</g>
+<text x="74.875000000" y="60.800000000" font-size="0.55" fill="#1769aa">H0026</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0027; uuid=176932bd-1727-4967-a91a-afedd5105e8c; type=via; net=/+3V3; x_mm=29.500000; y_mm=48.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.500000000" cy="48.300000000" r="0.075000000"/>
+</g>
+<text x="29.725000000" y="48.300000000" font-size="0.55" fill="#1769aa">H0027</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0028; uuid=17d79cdc-49f1-4a55-884d-cb98e67a5636; type=via; net=/GPIO25; x_mm=60.950000; y_mm=54.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="60.950000000" cy="54.500000000" r="0.075000000"/>
+</g>
+<text x="61.175000000" y="54.500000000" font-size="0.55" fill="#1769aa">H0028</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0029; uuid=17dbb32e-7447-4b46-9aeb-4892cc9604f3; type=via; net=/+3V3; x_mm=67.000000; y_mm=62.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="67.000000000" cy="62.800000000" r="0.075000000"/>
+</g>
+<text x="67.225000000" y="62.800000000" font-size="0.55" fill="#1769aa">H0029</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0030; uuid=17e3ad93-3c7f-4b44-aae6-695631a7e7fb; type=via; net=/+3V3; x_mm=50.600000; y_mm=50.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.600000000" cy="50.200000000" r="0.075000000"/>
+</g>
+<text x="50.825000000" y="50.200000000" font-size="0.55" fill="#1769aa">H0030</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0031; uuid=17e6c279-d4da-4289-9c4b-e79a2fc0f94e; type=via; net=/+3V3; x_mm=36.000000; y_mm=43.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="36.000000000" cy="43.800000000" r="0.075000000"/>
+</g>
+<text x="36.225000000" y="43.800000000" font-size="0.55" fill="#1769aa">H0031</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0032; uuid=19dad578-8303-411c-9521-8eecbb944d35; type=via; net=/GND; x_mm=71.500000; y_mm=23.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="71.500000000" cy="23.000000000" r="0.075000000"/>
+</g>
+<text x="71.725000000" y="23.000000000" font-size="0.55" fill="#1769aa">H0032</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0033; uuid=19de7db9-210d-4833-9697-a85d794a0c48; type=via; net=/PSRAM_CS; x_mm=66.700000; y_mm=38.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="66.700000000" cy="38.200000000" r="0.075000000"/>
+</g>
+<text x="66.925000000" y="38.200000000" font-size="0.55" fill="#1769aa">H0033</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0034; uuid=1a10e440-4f0b-4fbf-a0e7-5b35d9e3fee5; type=via; net=/GND; x_mm=67.000000; y_mm=61.225000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="67.000000000" cy="61.225000000" r="0.075000000"/>
+</g>
+<text x="67.225000000" y="61.225000000" font-size="0.55" fill="#1769aa">H0034</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0035; uuid=1f0302ea-548e-4508-976c-f22713693542; type=via; net=/RADIO_BOOT; x_mm=74.100000; y_mm=61.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="74.100000000" cy="61.000000000" r="0.075000000"/>
+</g>
+<text x="74.325000000" y="61.000000000" font-size="0.55" fill="#1769aa">H0035</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0036; uuid=20fcf1ee-d4a7-4efd-a8a2-0556e44c8c74; type=via; net=/FLASH_CS; x_mm=42.450000; y_mm=41.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="42.450000000" cy="41.250000000" r="0.075000000"/>
+</g>
+<text x="42.675000000" y="41.250000000" font-size="0.55" fill="#1769aa">H0036</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0037; uuid=2137f899-3b17-4726-bcba-56ccfa320e8c; type=via; net=/GND; x_mm=68.150000; y_mm=34.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="68.150000000" cy="34.200000000" r="0.075000000"/>
+</g>
+<text x="68.375000000" y="34.200000000" font-size="0.55" fill="#1769aa">H0037</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0038; uuid=21802dd9-3b8e-4fc0-b1c9-b8b8664d7554; type=via; net=/GND; x_mm=36.862500; y_mm=34.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="36.862500000" cy="34.000000000" r="0.075000000"/>
+</g>
+<text x="37.087500000" y="34.000000000" font-size="0.55" fill="#1769aa">H0038</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0039; uuid=2536d257-87fc-4bdb-be4b-a030c1b2f6f8; type=via; net=/ADC1; x_mm=62.400000; y_mm=67.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="62.400000000" cy="67.850000000" r="0.075000000"/>
+</g>
+<text x="62.625000000" y="67.850000000" font-size="0.55" fill="#1769aa">H0039</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0040; uuid=25dbec93-d288-4548-adbf-683f888299ff; type=via; net=/RGB_DATA; x_mm=53.800000; y_mm=65.150000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.800000000" cy="65.150000000" r="0.075000000"/>
+</g>
+<text x="54.025000000" y="65.150000000" font-size="0.55" fill="#1769aa">H0040</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0041; uuid=26f5a956-9d1e-40b8-ae0c-82d04b7867ad; type=via; net=/GND; x_mm=47.900000; y_mm=54.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.900000000" cy="54.500000000" r="0.075000000"/>
+</g>
+<text x="48.125000000" y="54.500000000" font-size="0.55" fill="#1769aa">H0041</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0042; uuid=27a42902-9794-450c-b3ef-15019fcd9071; type=via; net=/QSPI_CLK; x_mm=53.800000; y_mm=50.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.800000000" cy="50.500000000" r="0.075000000"/>
+</g>
+<text x="54.025000000" y="50.500000000" font-size="0.55" fill="#1769aa">H0042</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0043; uuid=28bf4e1a-2add-4663-89b0-e57a5e8fdc76; type=via; net=/UART_RX; x_mm=51.450000; y_mm=57.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="51.450000000" cy="57.450000000" r="0.075000000"/>
+</g>
+<text x="51.675000000" y="57.450000000" font-size="0.55" fill="#1769aa">H0043</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0044; uuid=28f30db0-7417-4c94-8095-9b03c102fd2d; type=via; net=/+3V3; x_mm=68.000000; y_mm=35.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="68.000000000" cy="35.800000000" r="0.075000000"/>
+</g>
+<text x="68.225000000" y="35.800000000" font-size="0.55" fill="#1769aa">H0044</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0045; uuid=2949be22-64c2-4b4d-8a6f-61c437030fc2; type=via; net=/SD_CS; x_mm=74.000000; y_mm=62.150000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="74.000000000" cy="62.150000000" r="0.075000000"/>
+</g>
+<text x="74.225000000" y="62.150000000" font-size="0.55" fill="#1769aa">H0045</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0046; uuid=2a44adeb-9c16-43be-9f05-63a0ac16fa85; type=via; net=/ADC2; x_mm=61.300000; y_mm=51.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.300000000" cy="51.200000000" r="0.075000000"/>
+</g>
+<text x="61.525000000" y="51.200000000" font-size="0.55" fill="#1769aa">H0046</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0047; uuid=2ab2660d-3fce-40e6-8811-84bed8b9ff6a; type=via; net=/+3V3; x_mm=83.500000; y_mm=68.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="83.500000000" cy="68.300000000" r="0.075000000"/>
+</g>
+<text x="83.725000000" y="68.300000000" font-size="0.55" fill="#1769aa">H0047</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0048; uuid=2ba5f0d2-20a2-4347-9976-50b3c896acd7; type=via; net=/GPIO25; x_mm=59.500000; y_mm=61.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.500000000" cy="61.950000000" r="0.075000000"/>
+</g>
+<text x="59.725000000" y="61.950000000" font-size="0.55" fill="#1769aa">H0048</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0049; uuid=2c252fae-6da6-49b9-96b1-0ba197104649; type=via; net=/SD_CLK; x_mm=52.850000; y_mm=65.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.850000000" cy="65.300000000" r="0.075000000"/>
+</g>
+<text x="53.075000000" y="65.300000000" font-size="0.55" fill="#1769aa">H0049</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0050; uuid=2cbec91a-cbe5-4a01-9d21-3937c3bf440e; type=via; net=/SWCLK; x_mm=56.100000; y_mm=66.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.100000000" cy="66.600000000" r="0.075000000"/>
+</g>
+<text x="56.325000000" y="66.600000000" font-size="0.55" fill="#1769aa">H0050</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0051; uuid=2d6c1c87-a017-4d7e-9db5-43907b80291b; type=via; net=/+3V3; x_mm=54.600000; y_mm=50.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.600000000" cy="50.500000000" r="0.075000000"/>
+</g>
+<text x="54.825000000" y="50.500000000" font-size="0.55" fill="#1769aa">H0051</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0052; uuid=2ee7e207-eb0d-440b-96aa-6638e00704b4; type=via; net=/GND; x_mm=54.450000; y_mm=62.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.450000000" cy="62.050000000" r="0.075000000"/>
+</g>
+<text x="54.675000000" y="62.050000000" font-size="0.55" fill="#1769aa">H0052</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0053; uuid=300dd1cb-1f2b-4c1b-b5f9-f2a40be7c203; type=via; net=/CORE_1V1; x_mm=54.300000; y_mm=63.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.300000000" cy="63.950000000" r="0.075000000"/>
+</g>
+<text x="54.525000000" y="63.950000000" font-size="0.55" fill="#1769aa">H0053</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0054; uuid=308339c2-a3f7-4deb-9698-e4bb470c5e01; type=via; net=/+3V3; x_mm=58.800000; y_mm=57.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.800000000" cy="57.800000000" r="0.075000000"/>
+</g>
+<text x="59.025000000" y="57.800000000" font-size="0.55" fill="#1769aa">H0054</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0055; uuid=351a6e65-ad1c-456f-ba47-3b19aade148b; type=via; net=/I2C_SCL; x_mm=50.800000; y_mm=51.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.800000000" cy="51.800000000" r="0.075000000"/>
+</g>
+<text x="51.025000000" y="51.800000000" font-size="0.55" fill="#1769aa">H0055</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0056; uuid=3542e3ab-b713-45a5-a7a2-340324930a10; type=via; net=/+3V3; x_mm=47.000000; y_mm=59.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.000000000" cy="59.800000000" r="0.075000000"/>
+</g>
+<text x="47.225000000" y="59.800000000" font-size="0.55" fill="#1769aa">H0056</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0057; uuid=357bea0c-9140-4fad-8fc9-d33b534c5b00; type=via; net=/GND; x_mm=40.800000; y_mm=50.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="40.800000000" cy="50.000000000" r="0.075000000"/>
+</g>
+<text x="41.025000000" y="50.000000000" font-size="0.55" fill="#1769aa">H0057</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0058; uuid=35b37ada-89ce-4595-8047-49e4f1f78bf3; type=via; net=/USB_PGOOD_N; x_mm=31.050000; y_mm=45.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="31.050000000" cy="45.650000000" r="0.075000000"/>
+</g>
+<text x="31.275000000" y="45.650000000" font-size="0.55" fill="#1769aa">H0058</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0059; uuid=36b2b114-d31a-46ca-8859-a60ed66b96ef; type=via; net=/GND; x_mm=35.800000; y_mm=47.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="35.800000000" cy="47.500000000" r="0.075000000"/>
+</g>
+<text x="36.025000000" y="47.500000000" font-size="0.55" fill="#1769aa">H0059</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0060; uuid=37dfce90-65c5-4f55-ac84-d5888ae6e6c9; type=via; net=/SD_MISO; x_mm=50.800000; y_mm=52.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.800000000" cy="52.600000000" r="0.075000000"/>
+</g>
+<text x="51.025000000" y="52.600000000" font-size="0.55" fill="#1769aa">H0060</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0061; uuid=384462a2-0153-4910-af9d-e9eeca347b2c; type=via; net=/GND; x_mm=34.825000; y_mm=30.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="34.825000000" cy="30.000000000" r="0.075000000"/>
+</g>
+<text x="35.050000000" y="30.000000000" font-size="0.55" fill="#1769aa">H0061</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0062; uuid=387b3536-0da9-4c0c-9e17-14d4df42f667; type=via; net=/GAUGE_SDA; x_mm=59.400000; y_mm=55.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.400000000" cy="55.400000000" r="0.075000000"/>
+</g>
+<text x="59.625000000" y="55.400000000" font-size="0.55" fill="#1769aa">H0062</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0063; uuid=38ad1ecf-8b55-4746-9ef7-cab24bc4b846; type=via; net=/+3V3; x_mm=64.000000; y_mm=76.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="64.000000000" cy="76.300000000" r="0.075000000"/>
+</g>
+<text x="64.225000000" y="76.300000000" font-size="0.55" fill="#1769aa">H0063</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0064; uuid=396393a9-6e98-435f-ae9c-f36a6cc85ce9; type=via; net=/FLASH_CS; x_mm=42.750000; y_mm=37.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="42.750000000" cy="37.450000000" r="0.075000000"/>
+</g>
+<text x="42.975000000" y="37.450000000" font-size="0.55" fill="#1769aa">H0064</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0065; uuid=39f8c49f-655f-4491-9d9e-a195dba20485; type=via; net=/+3V3; x_mm=78.750000; y_mm=62.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.750000000" cy="62.800000000" r="0.075000000"/>
+</g>
+<text x="78.975000000" y="62.800000000" font-size="0.55" fill="#1769aa">H0065</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0066; uuid=3a51cbfc-89dc-44aa-a8e1-82271db79c1b; type=via; net=/QSPI_D3; x_mm=51.550000; y_mm=41.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="51.550000000" cy="41.000000000" r="0.075000000"/>
+</g>
+<text x="51.775000000" y="41.000000000" font-size="0.55" fill="#1769aa">H0066</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0067; uuid=3b943b80-f983-4338-ba65-dfe874e7d40a; type=via; net=/GAUGE_SDA; x_mm=38.550000; y_mm=62.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="38.550000000" cy="62.200000000" r="0.075000000"/>
+</g>
+<text x="38.775000000" y="62.200000000" font-size="0.55" fill="#1769aa">H0067</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0068; uuid=3bf0132d-b8cd-4494-a646-462bc6a8ea53; type=via; net=/GND; x_mm=33.000000; y_mm=39.175000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="33.000000000" cy="39.175000000" r="0.075000000"/>
+</g>
+<text x="33.225000000" y="39.175000000" font-size="0.55" fill="#1769aa">H0068</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0069; uuid=3c062668-c092-444d-ac68-a90b5631d0cf; type=via; net=/VBUS; x_mm=29.300000; y_mm=40.550000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.300000000" cy="40.550000000" r="0.075000000"/>
+</g>
+<text x="29.525000000" y="40.550000000" font-size="0.55" fill="#1769aa">H0069</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0070; uuid=3d4a5a87-e7a2-4b96-b0d0-8a0b7f22b5f4; type=via; net=/+3V3; x_mm=68.000000; y_mm=39.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="68.000000000" cy="39.800000000" r="0.075000000"/>
+</g>
+<text x="68.225000000" y="39.800000000" font-size="0.55" fill="#1769aa">H0070</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0071; uuid=3e3aa2ad-01ba-49c7-bc6e-110ee5090d56; type=via; net=/XTAL_OUT; x_mm=47.250000; y_mm=63.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.250000000" cy="63.300000000" r="0.075000000"/>
+</g>
+<text x="47.475000000" y="63.300000000" font-size="0.55" fill="#1769aa">H0071</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0072; uuid=3fb36f29-a719-4f11-9d39-48aabb78ebac; type=via; net=/GND; x_mm=68.000000; y_mm=59.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="68.000000000" cy="59.600000000" r="0.075000000"/>
+</g>
+<text x="68.225000000" y="59.600000000" font-size="0.55" fill="#1769aa">H0072</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0073; uuid=401bd8db-3093-45b2-a9ee-6886d636f2ac; type=via; net=/GPIO25; x_mm=64.000000; y_mm=57.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="64.000000000" cy="57.800000000" r="0.075000000"/>
+</g>
+<text x="64.225000000" y="57.800000000" font-size="0.55" fill="#1769aa">H0073</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0074; uuid=4023e2c4-5d19-4738-bb2b-a9fe5ab6840e; type=via; net=/RUN; x_mm=50.450000; y_mm=76.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.450000000" cy="76.200000000" r="0.075000000"/>
+</g>
+<text x="50.675000000" y="76.200000000" font-size="0.55" fill="#1769aa">H0074</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0075; uuid=407b4d35-b3ae-40c3-a776-4bdaa86495b2; type=via; net=/+3V3; x_mm=50.600000; y_mm=54.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.600000000" cy="54.200000000" r="0.075000000"/>
+</g>
+<text x="50.825000000" y="54.200000000" font-size="0.55" fill="#1769aa">H0075</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0076; uuid=4092310a-96bc-4062-ace7-6b35acb06834; type=via; net=/QSPI_D2; x_mm=47.350000; y_mm=38.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.350000000" cy="38.800000000" r="0.075000000"/>
+</g>
+<text x="47.575000000" y="38.800000000" font-size="0.55" fill="#1769aa">H0076</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0077; uuid=4121a064-0dc6-4f59-a327-eb398565955f; type=via; net=/CORE_1V1; x_mm=50.000000; y_mm=51.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.000000000" cy="51.950000000" r="0.075000000"/>
+</g>
+<text x="50.225000000" y="51.950000000" font-size="0.55" fill="#1769aa">H0077</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0078; uuid=42da043d-20f9-4144-a960-efe39a14ed6b; type=via; net=/SWDIO; x_mm=55.800000; y_mm=55.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.800000000" cy="55.500000000" r="0.075000000"/>
+</g>
+<text x="56.025000000" y="55.500000000" font-size="0.55" fill="#1769aa">H0078</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0079; uuid=43be9ac3-de86-4851-904e-5fe4e2a15d86; type=via; net=/UART_TX; x_mm=50.700000; y_mm=58.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.700000000" cy="58.450000000" r="0.075000000"/>
+</g>
+<text x="50.925000000" y="58.450000000" font-size="0.55" fill="#1769aa">H0079</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0080; uuid=43ca723d-3f3f-457b-a0cf-21d8407de97f; type=via; net=/VBUS; x_mm=39.400000; y_mm=27.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="39.400000000" cy="27.600000000" r="0.075000000"/>
+</g>
+<text x="39.625000000" y="27.600000000" font-size="0.55" fill="#1769aa">H0080</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0081; uuid=442309de-502f-41f8-b2e3-b3a0f1ea0386; type=via; net=/GND; x_mm=60.400000; y_mm=60.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="60.400000000" cy="60.950000000" r="0.075000000"/>
+</g>
+<text x="60.625000000" y="60.950000000" font-size="0.55" fill="#1769aa">H0081</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0082; uuid=44347876-6f16-4c6d-b4c6-2f15cac1d580; type=via; net=/SD_MISO; x_mm=50.200000; y_mm=39.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.200000000" cy="39.700000000" r="0.075000000"/>
+</g>
+<text x="50.425000000" y="39.700000000" font-size="0.55" fill="#1769aa">H0082</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0083; uuid=452b1001-3760-435e-ba5d-ebb17f1edee4; type=via; net=/SYS; x_mm=30.400000; y_mm=58.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="30.400000000" cy="58.000000000" r="0.075000000"/>
+</g>
+<text x="30.625000000" y="58.000000000" font-size="0.55" fill="#1769aa">H0083</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0084; uuid=497c066b-f9ea-42da-956f-2307d71b545d; type=via; net=/GND; x_mm=74.800000; y_mm=34.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="74.800000000" cy="34.000000000" r="0.075000000"/>
+</g>
+<text x="75.025000000" y="34.000000000" font-size="0.55" fill="#1769aa">H0084</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0085; uuid=4a3d83d6-a625-47c6-b3b5-001dcc1360c8; type=via; net=/RADIO_BOOT; x_mm=80.800000; y_mm=39.150000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="80.800000000" cy="39.150000000" r="0.075000000"/>
+</g>
+<text x="81.025000000" y="39.150000000" font-size="0.55" fill="#1769aa">H0085</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0086; uuid=4bfd4baa-984e-4b50-bd17-82722c5d4528; type=via; net=/GND; x_mm=55.000000; y_mm=53.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.000000000" cy="53.000000000" r="0.075000000"/>
+</g>
+<text x="55.225000000" y="53.000000000" font-size="0.55" fill="#1769aa">H0086</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0087; uuid=4daea0cf-c29a-43a9-aeb5-2dfddfc37696; type=via; net=/SD_DETECT; x_mm=62.050000; y_mm=54.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="62.050000000" cy="54.450000000" r="0.075000000"/>
+</g>
+<text x="62.275000000" y="54.450000000" font-size="0.55" fill="#1769aa">H0087</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0088; uuid=4df8d697-efaf-4f38-9c81-bed8710bd6ef; type=via; net=/CORE_1V1; x_mm=56.550000; y_mm=62.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.550000000" cy="62.450000000" r="0.075000000"/>
+</g>
+<text x="56.775000000" y="62.450000000" font-size="0.55" fill="#1769aa">H0088</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0089; uuid=4e3cb47b-3de8-413d-9e93-f91e616fc248; type=via; net=/GAUGE_SCL; x_mm=36.900000; y_mm=63.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="36.900000000" cy="63.750000000" r="0.075000000"/>
+</g>
+<text x="37.125000000" y="63.750000000" font-size="0.55" fill="#1769aa">H0089</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0090; uuid=5065728a-9f42-4078-8f55-e2fa17b48a19; type=via; net=/SD_DETECT; x_mm=73.000000; y_mm=63.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="73.000000000" cy="63.650000000" r="0.075000000"/>
+</g>
+<text x="73.225000000" y="63.650000000" font-size="0.55" fill="#1769aa">H0090</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0091; uuid=51affcf5-bab5-4bd6-8f08-f77a627320c2; type=via; net=/CORE_1V1; x_mm=57.500000; y_mm=52.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.500000000" cy="52.600000000" r="0.075000000"/>
+</g>
+<text x="57.725000000" y="52.600000000" font-size="0.55" fill="#1769aa">H0091</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0092; uuid=54c73969-a397-459e-8b01-2027609e308d; type=via; net=/USB_D_N; x_mm=37.800000; y_mm=33.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="37.800000000" cy="33.050000000" r="0.075000000"/>
+</g>
+<text x="38.025000000" y="33.050000000" font-size="0.55" fill="#1769aa">H0092</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0093; uuid=54d03663-9956-499b-9df4-5fb3fb51cf68; type=via; net=/UART_RTS; x_mm=78.500000; y_mm=25.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.500000000" cy="25.350000000" r="0.075000000"/>
+</g>
+<text x="78.725000000" y="25.350000000" font-size="0.55" fill="#1769aa">H0093</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0094; uuid=55f5ca33-d289-40c7-8460-80a78215e4a8; type=via; net=/GND; x_mm=77.175000; y_mm=78.775000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="77.175000000" cy="78.775000000" r="0.075000000"/>
+</g>
+<text x="77.400000000" y="78.775000000" font-size="0.55" fill="#1769aa">H0094</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0095; uuid=569476c8-3965-4c1b-a4ee-ee6494bf66b3; type=via; net=/GND; x_mm=81.275000; y_mm=68.275000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="81.275000000" cy="68.275000000" r="0.075000000"/>
+</g>
+<text x="81.500000000" y="68.275000000" font-size="0.55" fill="#1769aa">H0095</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0096; uuid=5724e434-73d0-4385-a26a-690ba563a5cc; type=via; net=/VBUS; x_mm=29.250000; y_mm=38.900000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.250000000" cy="38.900000000" r="0.075000000"/>
+</g>
+<text x="29.475000000" y="38.900000000" font-size="0.55" fill="#1769aa">H0096</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0097; uuid=57bea267-9a57-4452-9d22-95e01c564100; type=via; net=/SD_MISO; x_mm=79.850000; y_mm=67.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="79.850000000" cy="67.950000000" r="0.075000000"/>
+</g>
+<text x="80.075000000" y="67.950000000" font-size="0.55" fill="#1769aa">H0097</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0098; uuid=58998a5c-7d52-426e-9b33-59205a117ae1; type=via; net=/GPIO23; x_mm=61.200000; y_mm=68.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.200000000" cy="68.750000000" r="0.075000000"/>
+</g>
+<text x="61.425000000" y="68.750000000" font-size="0.55" fill="#1769aa">H0098</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0099; uuid=5a5f4b7b-c552-4d03-a3d3-a0f69285103d; type=via; net=/ADC0; x_mm=60.350000; y_mm=51.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="60.350000000" cy="51.850000000" r="0.075000000"/>
+</g>
+<text x="60.575000000" y="51.850000000" font-size="0.55" fill="#1769aa">H0099</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0100; uuid=5a6f0f11-d147-43a8-8685-3419b9daf27e; type=via; net=/GND; x_mm=28.050000; y_mm=57.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="28.050000000" cy="57.000000000" r="0.075000000"/>
+</g>
+<text x="28.275000000" y="57.000000000" font-size="0.55" fill="#1769aa">H0100</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0101; uuid=5c47dd6f-a6eb-4a44-9d77-b7d01e7fc950; type=via; net=/SD_MISO; x_mm=78.550000; y_mm=66.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.550000000" cy="66.650000000" r="0.075000000"/>
+</g>
+<text x="78.775000000" y="66.650000000" font-size="0.55" fill="#1769aa">H0101</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0102; uuid=5daef8f8-880a-4fc6-97cd-9012c111e373; type=via; net=/RUN; x_mm=45.500000; y_mm=56.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="45.500000000" cy="56.700000000" r="0.075000000"/>
+</g>
+<text x="45.725000000" y="56.700000000" font-size="0.55" fill="#1769aa">H0102</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0103; uuid=5eb2a399-0a99-489c-ada5-ae8f6e720f7c; type=via; net=/CHARGE_DISABLE; x_mm=49.150000; y_mm=51.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.150000000" cy="51.100000000" r="0.075000000"/>
+</g>
+<text x="49.375000000" y="51.100000000" font-size="0.55" fill="#1769aa">H0103</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0104; uuid=5f839b1c-35f7-46ba-9ab3-44c3d741717a; type=via; net=/MCU_USB_N; x_mm=57.350000; y_mm=48.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.350000000" cy="48.200000000" r="0.075000000"/>
+</g>
+<text x="57.575000000" y="48.200000000" font-size="0.55" fill="#1769aa">H0104</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0105; uuid=604bf4d5-7ce0-456e-a3a3-7c9947076292; type=via; net=/GND; x_mm=24.000000; y_mm=44.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="24.000000000" cy="44.950000000" r="0.075000000"/>
+</g>
+<text x="24.225000000" y="44.950000000" font-size="0.55" fill="#1769aa">H0105</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0106; uuid=605e7ac4-f9f4-4515-a22f-2039a92a7df7; type=via; net=/GND; x_mm=52.300000; y_mm=46.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.300000000" cy="46.850000000" r="0.075000000"/>
+</g>
+<text x="52.525000000" y="46.850000000" font-size="0.55" fill="#1769aa">H0106</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0107; uuid=611200f3-27fd-4a6a-987a-27ce68e7833d; type=via; net=/GND; x_mm=31.050000; y_mm=52.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="31.050000000" cy="52.850000000" r="0.075000000"/>
+</g>
+<text x="31.275000000" y="52.850000000" font-size="0.55" fill="#1769aa">H0107</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0108; uuid=63706b74-bd46-4a89-a4d7-8f0008325fb2; type=via; net=/RGB_DATA; x_mm=58.000000; y_mm=66.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.000000000" cy="66.050000000" r="0.075000000"/>
+</g>
+<text x="58.225000000" y="66.050000000" font-size="0.55" fill="#1769aa">H0108</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0109; uuid=64ae2d76-c3cc-4e14-a858-4cac754cadc3; type=via; net=/GND; x_mm=90.675000; y_mm=83.375000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="90.675000000" cy="83.375000000" r="0.075000000"/>
+</g>
+<text x="90.900000000" y="83.375000000" font-size="0.55" fill="#1769aa">H0109</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0110; uuid=65829a02-e69e-4a52-a57c-5e1622916d53; type=via; net=/+3V3; x_mm=52.600000; y_mm=35.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.600000000" cy="35.100000000" r="0.075000000"/>
+</g>
+<text x="52.825000000" y="35.100000000" font-size="0.55" fill="#1769aa">H0110</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0111; uuid=65daba2f-ad7f-410b-8c5a-652a400ebecf; type=via; net=/RUN; x_mm=56.200000; y_mm=57.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.200000000" cy="57.200000000" r="0.075000000"/>
+</g>
+<text x="56.425000000" y="57.200000000" font-size="0.55" fill="#1769aa">H0111</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0112; uuid=674bfc44-69c6-4840-b922-39aa351a257e; type=via; net=/UART_RTS; x_mm=77.100000; y_mm=21.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="77.100000000" cy="21.500000000" r="0.075000000"/>
+</g>
+<text x="77.325000000" y="21.500000000" font-size="0.55" fill="#1769aa">H0112</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0113; uuid=676c9844-e502-41a7-9e94-6cf7caad3b4c; type=via; net=/PSRAM_CS; x_mm=57.350000; y_mm=35.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.350000000" cy="35.100000000" r="0.075000000"/>
+</g>
+<text x="57.575000000" y="35.100000000" font-size="0.55" fill="#1769aa">H0113</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0114; uuid=682afad2-b146-47b3-873c-16cf58838217; type=via; net=/QSPI_D1; x_mm=57.150000; y_mm=34.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.150000000" cy="34.100000000" r="0.075000000"/>
+</g>
+<text x="57.375000000" y="34.100000000" font-size="0.55" fill="#1769aa">H0114</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0115; uuid=6862e1cd-ad20-476b-9813-0745ab3ca829; type=via; net=/GND; x_mm=41.000000; y_mm=61.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="41.000000000" cy="61.250000000" r="0.075000000"/>
+</g>
+<text x="41.225000000" y="61.250000000" font-size="0.55" fill="#1769aa">H0115</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0116; uuid=686e5887-8338-4b36-9f6f-2ffffec58fef; type=via; net=/GND; x_mm=77.175000; y_mm=72.575000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="77.175000000" cy="72.575000000" r="0.075000000"/>
+</g>
+<text x="77.400000000" y="72.575000000" font-size="0.55" fill="#1769aa">H0116</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0117; uuid=69463f65-cff7-4496-80b5-2d66ea7421f4; type=via; net=/RUN; x_mm=48.500000; y_mm=69.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="48.500000000" cy="69.300000000" r="0.075000000"/>
+</g>
+<text x="48.725000000" y="69.300000000" font-size="0.55" fill="#1769aa">H0117</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0118; uuid=6a14263b-b949-40c8-9940-374c84170ee1; type=via; net=/GND; x_mm=78.600000; y_mm=32.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.600000000" cy="32.800000000" r="0.075000000"/>
+</g>
+<text x="78.825000000" y="32.800000000" font-size="0.55" fill="#1769aa">H0118</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0119; uuid=6b53a1d2-11f3-4c75-bac0-7c5a39b14d38; type=via; net=/SD_MISO; x_mm=51.000000; y_mm=48.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="51.000000000" cy="48.350000000" r="0.075000000"/>
+</g>
+<text x="51.225000000" y="48.350000000" font-size="0.55" fill="#1769aa">H0119</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0120; uuid=6c356724-fd51-4b11-945d-55294f89da64; type=via; net=/RUN; x_mm=44.950000; y_mm=56.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="44.950000000" cy="56.000000000" r="0.075000000"/>
+</g>
+<text x="45.175000000" y="56.000000000" font-size="0.55" fill="#1769aa">H0120</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0121; uuid=6c972ab4-48fa-4f50-95fa-cda3257e28da; type=via; net=/I2C_SDA; x_mm=64.450000; y_mm=70.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="64.450000000" cy="70.000000000" r="0.075000000"/>
+</g>
+<text x="64.675000000" y="70.000000000" font-size="0.55" fill="#1769aa">H0121</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0122; uuid=6f3bc5ff-427d-4409-9c45-c6982b451ed6; type=via; net=/BUCK_L1; x_mm=27.600000; y_mm=57.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="27.600000000" cy="57.500000000" r="0.075000000"/>
+</g>
+<text x="27.825000000" y="57.500000000" font-size="0.55" fill="#1769aa">H0122</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0123; uuid=700abfdf-eac5-4919-a30f-fd3aa3f8f4a6; type=via; net=/RADIO_CTRL; x_mm=56.600000; y_mm=55.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.600000000" cy="55.500000000" r="0.075000000"/>
+</g>
+<text x="56.825000000" y="55.500000000" font-size="0.55" fill="#1769aa">H0123</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0124; uuid=71173f3d-c0af-4447-a25a-0f7dd4163e50; type=via; net=/RADIO_CTRL; x_mm=58.000000; y_mm=61.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.000000000" cy="61.100000000" r="0.075000000"/>
+</g>
+<text x="58.225000000" y="61.100000000" font-size="0.55" fill="#1769aa">H0124</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0125; uuid=7150bfd5-1f3a-4033-89fa-af6597fefd46; type=via; net=/+3V3; x_mm=59.400000; y_mm=53.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.400000000" cy="53.000000000" r="0.075000000"/>
+</g>
+<text x="59.625000000" y="53.000000000" font-size="0.55" fill="#1769aa">H0125</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0126; uuid=717ac5c5-81b7-4575-a275-c057236d62da; type=via; net=/XIN; x_mm=50.700000; y_mm=56.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.700000000" cy="56.400000000" r="0.075000000"/>
+</g>
+<text x="50.925000000" y="56.400000000" font-size="0.55" fill="#1769aa">H0126</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0127; uuid=71a5550a-36eb-4a43-b7e3-29e3ca227d6c; type=via; net=/GND; x_mm=21.050000; y_mm=55.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="21.050000000" cy="55.450000000" r="0.075000000"/>
+</g>
+<text x="21.275000000" y="55.450000000" font-size="0.55" fill="#1769aa">H0127</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0128; uuid=741668a5-55b1-49f9-abdd-bfce3e09a42a; type=via; net=/GND; x_mm=29.300000; y_mm=43.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.300000000" cy="43.400000000" r="0.075000000"/>
+</g>
+<text x="29.525000000" y="43.400000000" font-size="0.55" fill="#1769aa">H0128</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0129; uuid=751621de-48fb-49a7-8564-0982c5ad1289; type=via; net=/GND; x_mm=45.100000; y_mm=64.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="45.100000000" cy="64.850000000" r="0.075000000"/>
+</g>
+<text x="45.325000000" y="64.850000000" font-size="0.55" fill="#1769aa">H0129</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0130; uuid=75fb6923-5ce0-4079-b831-2b9c7cd7e792; type=via; net=/+3V3; x_mm=59.400000; y_mm=50.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.400000000" cy="50.600000000" r="0.075000000"/>
+</g>
+<text x="59.625000000" y="50.600000000" font-size="0.55" fill="#1769aa">H0130</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0131; uuid=76a1abf7-2e38-4494-a74c-d2658d432d54; type=via; net=/RADIO_BOOT; x_mm=78.900000; y_mm=32.150000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.900000000" cy="32.150000000" r="0.075000000"/>
+</g>
+<text x="79.125000000" y="32.150000000" font-size="0.55" fill="#1769aa">H0131</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0132; uuid=7941e78b-41ca-4f57-a68f-65a8f6c2fc9d; type=via; net=/SD_CLK; x_mm=49.000000; y_mm=57.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.000000000" cy="57.500000000" r="0.075000000"/>
+</g>
+<text x="49.225000000" y="57.500000000" font-size="0.55" fill="#1769aa">H0132</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0133; uuid=79b1d8ff-4aea-4996-9529-b0c7f2e287d3; type=via; net=/SD_CS; x_mm=52.500000; y_mm=53.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="53.000000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="53.000000000" font-size="0.55" fill="#1769aa">H0133</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0134; uuid=79b4eafe-7563-4044-b252-09d7636eb434; type=via; net=/GND; x_mm=47.950000; y_mm=49.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.950000000" cy="49.250000000" r="0.075000000"/>
+</g>
+<text x="48.175000000" y="49.250000000" font-size="0.55" fill="#1769aa">H0134</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0135; uuid=7a317068-fd73-4118-80b0-53b0a2f0ae63; type=via; net=/ADC3; x_mm=58.700000; y_mm=75.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.700000000" cy="75.750000000" r="0.075000000"/>
+</g>
+<text x="58.925000000" y="75.750000000" font-size="0.55" fill="#1769aa">H0135</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0136; uuid=7d3ca67b-293d-417c-9948-c5cbbbf46d32; type=via; net=/QSPI_D3; x_mm=52.750000; y_mm=43.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.750000000" cy="43.750000000" r="0.075000000"/>
+</g>
+<text x="52.975000000" y="43.750000000" font-size="0.55" fill="#1769aa">H0136</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0137; uuid=7dab4f94-a9c2-47ea-a1b4-1ddb2723fef6; type=via; net=/UART_RTS; x_mm=53.400000; y_mm=55.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.400000000" cy="55.500000000" r="0.075000000"/>
+</g>
+<text x="53.625000000" y="55.500000000" font-size="0.55" fill="#1769aa">H0137</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0138; uuid=7dadf3c3-b20c-4698-afb8-f406b571f0e6; type=via; net=/GAUGE_SDA; x_mm=49.950000; y_mm=72.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.950000000" cy="72.650000000" r="0.075000000"/>
+</g>
+<text x="50.175000000" y="72.650000000" font-size="0.55" fill="#1769aa">H0138</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0139; uuid=7e29b398-462b-47f6-b830-8ec3602bb277; type=via; net=/+3V3; x_mm=56.600000; y_mm=50.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.600000000" cy="50.200000000" r="0.075000000"/>
+</g>
+<text x="56.825000000" y="50.200000000" font-size="0.55" fill="#1769aa">H0139</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0140; uuid=7e77eb5c-8e79-4bc0-81c0-6f20f51391d3; type=via; net=/PSRAM_CS; x_mm=52.500000; y_mm=50.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="50.600000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="50.600000000" font-size="0.55" fill="#1769aa">H0140</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0141; uuid=7e89424e-244d-4c4e-a3c1-d2ced039a139; type=via; net=/+3V3; x_mm=73.000000; y_mm=62.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="73.000000000" cy="62.850000000" r="0.075000000"/>
+</g>
+<text x="73.225000000" y="62.850000000" font-size="0.55" fill="#1769aa">H0141</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0142; uuid=7f2e6833-a989-4d5d-ad95-3ed76a0b6f6f; type=via; net=/PSRAM_CS; x_mm=61.050000; y_mm=35.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.050000000" cy="35.500000000" r="0.075000000"/>
+</g>
+<text x="61.275000000" y="35.500000000" font-size="0.55" fill="#1769aa">H0142</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0143; uuid=7fc62341-6d22-4eb2-8d8a-f29305d6bd37; type=via; net=/GND; x_mm=35.200000; y_mm=64.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="35.200000000" cy="64.950000000" r="0.075000000"/>
+</g>
+<text x="35.425000000" y="64.950000000" font-size="0.55" fill="#1769aa">H0143</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0144; uuid=8165bb2a-c8a3-486b-b36b-e89525fba9f4; type=via; net=/QSPI_D3; x_mm=58.850000; y_mm=33.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.850000000" cy="33.600000000" r="0.075000000"/>
+</g>
+<text x="59.075000000" y="33.600000000" font-size="0.55" fill="#1769aa">H0144</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0145; uuid=82635ebf-3697-4de7-8538-e011c0188a5b; type=via; net=/GND; x_mm=53.350000; y_mm=46.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.350000000" cy="46.200000000" r="0.075000000"/>
+</g>
+<text x="53.575000000" y="46.200000000" font-size="0.55" fill="#1769aa">H0145</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0146; uuid=8268d46d-cc1f-4356-a0cb-37538a75afce; type=via; net=/CHARGE_DISABLE; x_mm=50.600000; y_mm=55.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.600000000" cy="55.800000000" r="0.075000000"/>
+</g>
+<text x="50.825000000" y="55.800000000" font-size="0.55" fill="#1769aa">H0146</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0147; uuid=8496e4d9-481d-4ca4-b317-be8299c61f7f; type=via; net=/GAUGE_SCL; x_mm=38.750000; y_mm=64.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="38.750000000" cy="64.950000000" r="0.075000000"/>
+</g>
+<text x="38.975000000" y="64.950000000" font-size="0.55" fill="#1769aa">H0147</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0148; uuid=849d4c05-8e73-4378-b73e-3cb0da92a3dd; type=via; net=/CORE_1V1; x_mm=56.000000; y_mm=50.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.000000000" cy="50.750000000" r="0.075000000"/>
+</g>
+<text x="56.225000000" y="50.750000000" font-size="0.55" fill="#1769aa">H0148</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0149; uuid=861c11d1-2f1f-4804-bf36-d0ffad6d0055; type=via; net=/GAUGE_SCL; x_mm=57.050000; y_mm=55.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.050000000" cy="55.000000000" r="0.075000000"/>
+</g>
+<text x="57.275000000" y="55.000000000" font-size="0.55" fill="#1769aa">H0149</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0150; uuid=86fa3972-5b27-4743-9b05-c2ff394f3a81; type=via; net=/QSPI_CLK; x_mm=61.900000; y_mm=37.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.900000000" cy="37.650000000" r="0.075000000"/>
+</g>
+<text x="62.125000000" y="37.650000000" font-size="0.55" fill="#1769aa">H0150</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0151; uuid=86fe89a3-4116-4453-a91d-1438ab60aca6; type=via; net=/QSPI_CLK; x_mm=54.550000; y_mm=37.900000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.550000000" cy="37.900000000" r="0.075000000"/>
+</g>
+<text x="54.775000000" y="37.900000000" font-size="0.55" fill="#1769aa">H0151</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0152; uuid=87766b50-7118-499a-acbe-bf25181df051; type=via; net=/GND; x_mm=28.550000; y_mm=37.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="28.550000000" cy="37.300000000" r="0.075000000"/>
+</g>
+<text x="28.775000000" y="37.300000000" font-size="0.55" fill="#1769aa">H0152</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0153; uuid=878cf1b0-50fc-418b-beb7-3a430d8ee891; type=via; net=/SD_MISO; x_mm=77.000000; y_mm=61.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="77.000000000" cy="61.200000000" r="0.075000000"/>
+</g>
+<text x="77.225000000" y="61.200000000" font-size="0.55" fill="#1769aa">H0153</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0154; uuid=89ce5ece-00bd-47d5-88e6-248018eb2745; type=via; net=/GND; x_mm=31.150000; y_mm=57.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="31.150000000" cy="57.750000000" r="0.075000000"/>
+</g>
+<text x="31.375000000" y="57.750000000" font-size="0.55" fill="#1769aa">H0154</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0155; uuid=8b095ca5-195f-4312-a608-a6e3034343b3; type=via; net=/GND; x_mm=77.175000; y_mm=82.925000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="77.175000000" cy="82.925000000" r="0.075000000"/>
+</g>
+<text x="77.400000000" y="82.925000000" font-size="0.55" fill="#1769aa">H0155</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0156; uuid=8b690017-2cb5-478a-a4f3-1edc5fff26d1; type=via; net=/USB_D_N; x_mm=38.700000; y_mm=33.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="38.700000000" cy="33.050000000" r="0.075000000"/>
+</g>
+<text x="38.925000000" y="33.050000000" font-size="0.55" fill="#1769aa">H0156</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0157; uuid=8cb837a2-3025-460d-990b-9e3e907353f3; type=via; net=/GND; x_mm=29.000000; y_mm=67.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.000000000" cy="67.000000000" r="0.075000000"/>
+</g>
+<text x="29.225000000" y="67.000000000" font-size="0.55" fill="#1769aa">H0157</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0158; uuid=8e7ad355-9af3-44fd-8a12-8cb9931f0149; type=via; net=/SD_CS; x_mm=81.050000; y_mm=63.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="81.050000000" cy="63.650000000" r="0.075000000"/>
+</g>
+<text x="81.275000000" y="63.650000000" font-size="0.55" fill="#1769aa">H0158</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0159; uuid=8f97b0b9-4f2b-4cca-bce6-2b9fc559f4d7; type=via; net=/I2C_SCL; x_mm=36.150000; y_mm=62.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="36.150000000" cy="62.700000000" r="0.075000000"/>
+</g>
+<text x="36.375000000" y="62.700000000" font-size="0.55" fill="#1769aa">H0159</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0160; uuid=900eb2c1-6904-4236-80d7-749be8ea8805; type=via; net=/GND; x_mm=49.200000; y_mm=60.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.200000000" cy="60.600000000" r="0.075000000"/>
+</g>
+<text x="49.425000000" y="60.600000000" font-size="0.55" fill="#1769aa">H0160</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0161; uuid=90c2e225-e8e9-43b0-bab6-0a3de636ae64; type=via; net=/GND; x_mm=45.275000; y_mm=67.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="45.275000000" cy="67.000000000" r="0.075000000"/>
+</g>
+<text x="45.500000000" y="67.000000000" font-size="0.55" fill="#1769aa">H0161</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0162; uuid=953fd1ce-94a5-4a05-be54-17b04de674f0; type=via; net=/GND; x_mm=61.150000; y_mm=52.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.150000000" cy="52.800000000" r="0.075000000"/>
+</g>
+<text x="61.375000000" y="52.800000000" font-size="0.55" fill="#1769aa">H0162</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0163; uuid=96857e3d-4381-4687-a2ac-5812730035c1; type=via; net=/I2C_SDA; x_mm=63.375000; y_mm=55.150000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="63.375000000" cy="55.150000000" r="0.075000000"/>
+</g>
+<text x="63.600000000" y="55.150000000" font-size="0.55" fill="#1769aa">H0163</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0164; uuid=96e76c7e-289c-4add-9d7e-91b2e73290dc; type=via; net=/GPIO25; x_mm=62.200000; y_mm=55.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="62.200000000" cy="55.700000000" r="0.075000000"/>
+</g>
+<text x="62.425000000" y="55.700000000" font-size="0.55" fill="#1769aa">H0164</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0165; uuid=97134b52-8d03-47c5-a687-c4cb7ee5606a; type=via; net=/SD_MOSI; x_mm=52.500000; y_mm=53.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="53.800000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="53.800000000" font-size="0.55" fill="#1769aa">H0165</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0166; uuid=97555627-2c38-424f-a0db-efbf94767489; type=via; net=/QSPI_D3; x_mm=51.250000; y_mm=43.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="51.250000000" cy="43.800000000" r="0.075000000"/>
+</g>
+<text x="51.475000000" y="43.800000000" font-size="0.55" fill="#1769aa">H0166</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0167; uuid=98616f3a-e21e-44f5-b62e-8d27884a6eda; type=via; net=/SD_DETECT; x_mm=52.500000; y_mm=54.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="54.600000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="54.600000000" font-size="0.55" fill="#1769aa">H0167</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0168; uuid=9866bc85-5517-481e-a409-30d12a7b8a58; type=via; net=/ADC2; x_mm=61.900000; y_mm=68.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.900000000" cy="68.750000000" r="0.075000000"/>
+</g>
+<text x="62.125000000" y="68.750000000" font-size="0.55" fill="#1769aa">H0168</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0169; uuid=98a94a40-183d-4810-93b4-4469080ae4a9; type=via; net=/GND; x_mm=35.500000; y_mm=52.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="35.500000000" cy="52.700000000" r="0.075000000"/>
+</g>
+<text x="35.725000000" y="52.700000000" font-size="0.55" fill="#1769aa">H0169</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0170; uuid=99243ed6-1578-4308-8d9c-34c4f498a4d7; type=via; net=/GND; x_mm=59.250000; y_mm=59.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.250000000" cy="59.850000000" r="0.075000000"/>
+</g>
+<text x="59.475000000" y="59.850000000" font-size="0.55" fill="#1769aa">H0170</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0171; uuid=99debcc3-679c-4dc0-8572-f5ea1878e0e6; type=via; net=/USB_D_P; x_mm=38.650000; y_mm=34.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="38.650000000" cy="34.950000000" r="0.075000000"/>
+</g>
+<text x="38.875000000" y="34.950000000" font-size="0.55" fill="#1769aa">H0171</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0172; uuid=9b116186-e1b3-48fd-84e9-e86e7a861e14; type=via; net=/GND; x_mm=38.200000; y_mm=25.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="38.200000000" cy="25.700000000" r="0.075000000"/>
+</g>
+<text x="38.425000000" y="25.700000000" font-size="0.55" fill="#1769aa">H0172</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0173; uuid=9ba606f0-a4a7-43d0-84a2-891eb60e1bca; type=via; net=/QSPI_D3; x_mm=54.200000; y_mm=48.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.200000000" cy="48.800000000" r="0.075000000"/>
+</g>
+<text x="54.425000000" y="48.800000000" font-size="0.55" fill="#1769aa">H0173</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0174; uuid=9bde9e03-6702-48a8-a670-633309e5ac8b; type=via; net=/GND; x_mm=37.450000; y_mm=32.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="37.450000000" cy="32.350000000" r="0.075000000"/>
+</g>
+<text x="37.675000000" y="32.350000000" font-size="0.55" fill="#1769aa">H0174</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0175; uuid=9c67a56b-2356-4058-98e0-abc55a6020a2; type=via; net=/GND; x_mm=71.500000; y_mm=25.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="71.500000000" cy="25.300000000" r="0.075000000"/>
+</g>
+<text x="71.725000000" y="25.300000000" font-size="0.55" fill="#1769aa">H0175</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0176; uuid=9e3f3c6d-81e4-4d6d-a781-20f1c6fc792e; type=via; net=/I2C_SCL; x_mm=47.900000; y_mm=53.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.900000000" cy="53.050000000" r="0.075000000"/>
+</g>
+<text x="48.125000000" y="53.050000000" font-size="0.55" fill="#1769aa">H0176</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0177; uuid=9fbc59bc-d5a6-49a7-ba20-a0ed8b3d7a76; type=via; net=/GND; x_mm=33.775000; y_mm=58.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="33.775000000" cy="58.000000000" r="0.075000000"/>
+</g>
+<text x="34.000000000" y="58.000000000" font-size="0.55" fill="#1769aa">H0177</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0178; uuid=a023b901-1aca-4937-a47e-1c707ef0587f; type=via; net=/RADIO_CTRL; x_mm=59.600000; y_mm=61.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.600000000" cy="61.100000000" r="0.075000000"/>
+</g>
+<text x="59.825000000" y="61.100000000" font-size="0.55" fill="#1769aa">H0178</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0179; uuid=a275c59e-fe83-4caf-882d-d6bdef03c5f9; type=via; net=/GPIO25; x_mm=58.400000; y_mm=64.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.400000000" cy="64.650000000" r="0.075000000"/>
+</g>
+<text x="58.625000000" y="64.650000000" font-size="0.55" fill="#1769aa">H0179</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0180; uuid=a30034fe-99f3-49e2-b2dd-65bad20b31ed; type=via; net=/PSRAM_CS; x_mm=51.100000; y_mm=47.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="51.100000000" cy="47.700000000" r="0.075000000"/>
+</g>
+<text x="51.325000000" y="47.700000000" font-size="0.55" fill="#1769aa">H0180</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0181; uuid=a3b76102-a04d-4523-921d-fb9e5629f110; type=via; net=/SD_DETECT; x_mm=73.600000; y_mm=64.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="73.600000000" cy="64.250000000" r="0.075000000"/>
+</g>
+<text x="73.825000000" y="64.250000000" font-size="0.55" fill="#1769aa">H0181</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0182; uuid=a494b3ee-253a-4680-b5b9-76947c8afce6; type=via; net=/BUCK_L1; x_mm=26.800000; y_mm=58.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="26.800000000" cy="58.000000000" r="0.075000000"/>
+</g>
+<text x="27.025000000" y="58.000000000" font-size="0.55" fill="#1769aa">H0182</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0183; uuid=a732c6d2-7073-4332-926d-0c6db58e81eb; type=via; net=/+3V3; x_mm=81.650000; y_mm=29.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="81.650000000" cy="29.700000000" r="0.075000000"/>
+</g>
+<text x="81.875000000" y="29.700000000" font-size="0.55" fill="#1769aa">H0183</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0184; uuid=a9322d7a-5dac-4949-8cd9-8c0e600df692; type=via; net=/RADIO_BOOT; x_mm=80.800000; y_mm=38.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="80.800000000" cy="38.250000000" r="0.075000000"/>
+</g>
+<text x="81.025000000" y="38.250000000" font-size="0.55" fill="#1769aa">H0184</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0185; uuid=a992b5b6-cbea-4a56-8dd9-d0463412f427; type=via; net=/RUN; x_mm=45.500000; y_mm=61.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="45.500000000" cy="61.250000000" r="0.075000000"/>
+</g>
+<text x="45.725000000" y="61.250000000" font-size="0.55" fill="#1769aa">H0185</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0186; uuid=aa058952-2497-42ad-9d66-a2515300cdbb; type=via; net=/UART_RTS; x_mm=46.700000; y_mm=36.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="46.700000000" cy="36.950000000" r="0.075000000"/>
+</g>
+<text x="46.925000000" y="36.950000000" font-size="0.55" fill="#1769aa">H0186</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0187; uuid=aa3423ab-2053-4a89-8f71-1fff2583bcd9; type=via; net=/CHG_N; x_mm=29.800000; y_mm=42.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.800000000" cy="42.950000000" r="0.075000000"/>
+</g>
+<text x="30.025000000" y="42.950000000" font-size="0.55" fill="#1769aa">H0187</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0188; uuid=aba22d39-c360-4cbd-865c-ef7b014e41cb; type=via; net=/SWCLK; x_mm=55.400000; y_mm=57.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.400000000" cy="57.200000000" r="0.075000000"/>
+</g>
+<text x="55.625000000" y="57.200000000" font-size="0.55" fill="#1769aa">H0188</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0189; uuid=abf9b02b-30dc-497b-b32d-7dfdb4d1859c; type=via; net=/+3V3; x_mm=53.150000; y_mm=48.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.150000000" cy="48.000000000" r="0.075000000"/>
+</g>
+<text x="53.375000000" y="48.000000000" font-size="0.55" fill="#1769aa">H0189</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0190; uuid=ac224cfd-fa1b-496c-ae47-cdec781e7cc6; type=via; net=/+3V3; x_mm=81.650000; y_mm=30.900000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="81.650000000" cy="30.900000000" r="0.075000000"/>
+</g>
+<text x="81.875000000" y="30.900000000" font-size="0.55" fill="#1769aa">H0190</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0191; uuid=ae6cd0c9-e280-4f70-ac6f-60277636f053; type=via; net=/+3V3; x_mm=39.000000; y_mm=63.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="39.000000000" cy="63.350000000" r="0.075000000"/>
+</g>
+<text x="39.225000000" y="63.350000000" font-size="0.55" fill="#1769aa">H0191</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0192; uuid=aeba6a73-b6df-4890-b5c3-c1fed65b145f; type=via; net=/RADIO_EN; x_mm=78.050000; y_mm=22.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.050000000" cy="22.700000000" r="0.075000000"/>
+</g>
+<text x="78.275000000" y="22.700000000" font-size="0.55" fill="#1769aa">H0192</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0193; uuid=b01b5cc4-5fe8-4c47-87b9-73b0eb85cdad; type=via; net=/RADIO_CTRL; x_mm=56.600000; y_mm=61.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.600000000" cy="61.100000000" r="0.075000000"/>
+</g>
+<text x="56.825000000" y="61.100000000" font-size="0.55" fill="#1769aa">H0193</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0194; uuid=b1c89820-612e-479d-8b71-d7c6e66227c8; type=via; net=/GND; x_mm=71.000000; y_mm=69.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="71.000000000" cy="69.050000000" r="0.075000000"/>
+</g>
+<text x="71.225000000" y="69.050000000" font-size="0.55" fill="#1769aa">H0194</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0195; uuid=b1d87ed5-fe2c-46ab-8652-f7bc83072cee; type=via; net=/I2C_SCL; x_mm=36.150000; y_mm=65.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="36.150000000" cy="65.250000000" r="0.075000000"/>
+</g>
+<text x="36.375000000" y="65.250000000" font-size="0.55" fill="#1769aa">H0195</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0196; uuid=b216713a-5fcd-47a1-afc0-0b6c0ca52963; type=via; net=/PSRAM_CS; x_mm=50.500000; y_mm=42.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.500000000" cy="42.250000000" r="0.075000000"/>
+</g>
+<text x="50.725000000" y="42.250000000" font-size="0.55" fill="#1769aa">H0196</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0197; uuid=b2205e6d-d5cc-4f72-911a-78586c949d7f; type=via; net=/GND; x_mm=66.600000; y_mm=81.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="66.600000000" cy="81.250000000" r="0.075000000"/>
+</g>
+<text x="66.825000000" y="81.250000000" font-size="0.55" fill="#1769aa">H0197</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0198; uuid=b2b64877-c387-431e-9af6-02744dd6f78c; type=via; net=/I2C_SDA; x_mm=52.500000; y_mm=51.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.500000000" cy="51.400000000" r="0.075000000"/>
+</g>
+<text x="52.725000000" y="51.400000000" font-size="0.55" fill="#1769aa">H0198</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0199; uuid=b36b58e4-de51-4523-acf6-1346bb97ba07; type=via; net=/+3V3; x_mm=65.600000; y_mm=55.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="65.600000000" cy="55.350000000" r="0.075000000"/>
+</g>
+<text x="65.825000000" y="55.350000000" font-size="0.55" fill="#1769aa">H0199</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0200; uuid=b3733d09-5348-457f-aba2-5d533f266d43; type=via; net=/+3V3; x_mm=32.000000; y_mm=64.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="32.000000000" cy="64.000000000" r="0.075000000"/>
+</g>
+<text x="32.225000000" y="64.000000000" font-size="0.55" fill="#1769aa">H0200</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0201; uuid=b39e6088-8090-44aa-beda-3e8ad6934375; type=via; net=/UART_CTS; x_mm=53.000000; y_mm=57.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.000000000" cy="57.200000000" r="0.075000000"/>
+</g>
+<text x="53.225000000" y="57.200000000" font-size="0.55" fill="#1769aa">H0201</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0202; uuid=b613f874-b629-455c-ab37-e895ba9f4759; type=via; net=/UART_RX; x_mm=48.650000; y_mm=56.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="48.650000000" cy="56.500000000" r="0.075000000"/>
+</g>
+<text x="48.875000000" y="56.500000000" font-size="0.55" fill="#1769aa">H0202</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0203; uuid=b631a080-de19-4540-8ec7-c2affd27b2e2; type=via; net=/SYS; x_mm=30.400000; y_mm=42.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="30.400000000" cy="42.100000000" r="0.075000000"/>
+</g>
+<text x="30.625000000" y="42.100000000" font-size="0.55" fill="#1769aa">H0203</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0204; uuid=b6a81845-f3dd-481f-9486-a0f4ca98188a; type=via; net=/RGB_DATA; x_mm=59.600000; y_mm=64.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.600000000" cy="64.350000000" r="0.075000000"/>
+</g>
+<text x="59.825000000" y="64.350000000" font-size="0.55" fill="#1769aa">H0204</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0205; uuid=b7171675-8473-4f1d-a3e4-c56df2079806; type=via; net=/GND; x_mm=31.500000; y_mm=35.675000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="31.500000000" cy="35.675000000" r="0.075000000"/>
+</g>
+<text x="31.725000000" y="35.675000000" font-size="0.55" fill="#1769aa">H0205</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0206; uuid=ba90e58a-dab7-46cf-a5a6-0d8ac17f8726; type=via; net=/SD_CLK; x_mm=59.150000; y_mm=67.900000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.150000000" cy="67.900000000" r="0.075000000"/>
+</g>
+<text x="59.375000000" y="67.900000000" font-size="0.55" fill="#1769aa">H0206</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0207; uuid=bcb21677-19d5-499a-84f3-f51326b16cef; type=via; net=/GND; x_mm=81.900000; y_mm=44.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="81.900000000" cy="44.850000000" r="0.075000000"/>
+</g>
+<text x="82.125000000" y="44.850000000" font-size="0.55" fill="#1769aa">H0207</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0208; uuid=bfbf324d-d699-40d6-b5a5-f90561e2a2fc; type=via; net=/GND; x_mm=45.500000; y_mm=47.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="45.500000000" cy="47.500000000" r="0.075000000"/>
+</g>
+<text x="45.725000000" y="47.500000000" font-size="0.55" fill="#1769aa">H0208</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0209; uuid=c1ef08f8-2755-45e0-9810-35af194f31a5; type=via; net=/UART_TX; x_mm=53.000000; y_mm=64.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.000000000" cy="64.650000000" r="0.075000000"/>
+</g>
+<text x="53.225000000" y="64.650000000" font-size="0.55" fill="#1769aa">H0209</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0210; uuid=c2785dd3-8e9e-46f4-afb1-f19f6ae18a4a; type=via; net=/GND; x_mm=27.750000; y_mm=44.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="27.750000000" cy="44.000000000" r="0.075000000"/>
+</g>
+<text x="27.975000000" y="44.000000000" font-size="0.55" fill="#1769aa">H0210</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0211; uuid=c27bb4c3-0cb8-468d-b55c-65ff0bfa778b; type=via; net=/UART_RX; x_mm=78.250000; y_mm=28.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="78.250000000" cy="28.500000000" r="0.075000000"/>
+</g>
+<text x="78.475000000" y="28.500000000" font-size="0.55" fill="#1769aa">H0211</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0212; uuid=c2dff8ae-2317-497f-92fc-cbb0d0b8038e; type=via; net=/GND; x_mm=57.400000; y_mm=50.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.400000000" cy="50.200000000" r="0.075000000"/>
+</g>
+<text x="57.625000000" y="50.200000000" font-size="0.55" fill="#1769aa">H0212</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0213; uuid=c40d8075-3288-432e-8cb3-553e3faa77bd; type=via; net=/+3V3; x_mm=52.200000; y_mm=48.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.200000000" cy="48.000000000" r="0.075000000"/>
+</g>
+<text x="52.425000000" y="48.000000000" font-size="0.55" fill="#1769aa">H0213</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0214; uuid=c54a955c-0690-4358-a334-2c48e4baf2be; type=via; net=/RUN; x_mm=47.000000; y_mm=58.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="47.000000000" cy="58.400000000" r="0.075000000"/>
+</g>
+<text x="47.225000000" y="58.400000000" font-size="0.55" fill="#1769aa">H0214</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0215; uuid=c8657f35-1218-4936-b0e8-cdaa3d8af950; type=via; net=/RADIO_BOOT; x_mm=74.100000; y_mm=59.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="74.100000000" cy="59.800000000" r="0.075000000"/>
+</g>
+<text x="74.325000000" y="59.800000000" font-size="0.55" fill="#1769aa">H0215</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0216; uuid=c8aaf3a7-eec0-48ce-a888-61c2c6370c26; type=via; net=/GND; x_mm=33.950000; y_mm=63.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="33.950000000" cy="63.200000000" r="0.075000000"/>
+</g>
+<text x="34.175000000" y="63.200000000" font-size="0.55" fill="#1769aa">H0216</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0217; uuid=c941e04f-c132-428f-81b2-1516a0d70443; type=via; net=/+3V3; x_mm=62.600000; y_mm=46.825000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="62.600000000" cy="46.825000000" r="0.075000000"/>
+</g>
+<text x="62.825000000" y="46.825000000" font-size="0.55" fill="#1769aa">H0217</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0218; uuid=cb09fa37-df8e-4076-a2a2-d884071d2ad3; type=via; net=/VBUS; x_mm=34.600000; y_mm=27.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="34.600000000" cy="27.200000000" r="0.075000000"/>
+</g>
+<text x="34.825000000" y="27.200000000" font-size="0.55" fill="#1769aa">H0218</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0219; uuid=ccdfaed2-236a-4ff2-90fe-101b3779ac91; type=via; net=/QSPI_D1; x_mm=58.200000; y_mm=34.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.200000000" cy="34.250000000" r="0.075000000"/>
+</g>
+<text x="58.425000000" y="34.250000000" font-size="0.55" fill="#1769aa">H0219</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0220; uuid=cd2ae9e6-e389-4eeb-b9c9-e5ddc6b312e9; type=via; net=/GND; x_mm=60.580000; y_mm=45.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="60.580000000" cy="45.250000000" r="0.075000000"/>
+</g>
+<text x="60.805000000" y="45.250000000" font-size="0.55" fill="#1769aa">H0220</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0221; uuid=cd2e1d00-7897-4747-b088-b36af3c51038; type=via; net=/RUN; x_mm=48.450000; y_mm=65.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="48.450000000" cy="65.400000000" r="0.075000000"/>
+</g>
+<text x="48.675000000" y="65.400000000" font-size="0.55" fill="#1769aa">H0221</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0222; uuid=cdc6a9d4-96f1-4e54-a31d-957cf7894457; type=via; net=/SD_CLK; x_mm=49.400000; y_mm=58.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.400000000" cy="58.300000000" r="0.075000000"/>
+</g>
+<text x="49.625000000" y="58.300000000" font-size="0.55" fill="#1769aa">H0222</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0223; uuid=d017614b-9792-426b-a743-77af3a1857e7; type=via; net=/MCU_USB_N; x_mm=56.150000; y_mm=45.150000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.150000000" cy="45.150000000" r="0.075000000"/>
+</g>
+<text x="56.375000000" y="45.150000000" font-size="0.55" fill="#1769aa">H0223</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0224; uuid=d07a59e8-2563-4b64-81f6-87d457be70d6; type=via; net=/+3V3; x_mm=27.500000; y_mm=53.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="27.500000000" cy="53.400000000" r="0.075000000"/>
+</g>
+<text x="27.725000000" y="53.400000000" font-size="0.55" fill="#1769aa">H0224</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0225; uuid=d0e60f3f-6a8c-49f9-9847-ea5021b9c338; type=via; net=/GND; x_mm=41.300000; y_mm=71.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="41.300000000" cy="71.850000000" r="0.075000000"/>
+</g>
+<text x="41.525000000" y="71.850000000" font-size="0.55" fill="#1769aa">H0225</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0226; uuid=d11cce8c-ef59-4450-9b77-d513be05eedb; type=via; net=/GND; x_mm=45.650000; y_mm=38.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="45.650000000" cy="38.850000000" r="0.075000000"/>
+</g>
+<text x="45.875000000" y="38.850000000" font-size="0.55" fill="#1769aa">H0226</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0227; uuid=d1bcb22d-7f0f-40df-8193-8c65cae4d7d0; type=via; net=/GPIO19; x_mm=58.300000; y_mm=57.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.300000000" cy="57.000000000" r="0.075000000"/>
+</g>
+<text x="58.525000000" y="57.000000000" font-size="0.55" fill="#1769aa">H0227</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0228; uuid=d49c0942-12a3-4656-9617-016bd4fe7374; type=via; net=/QSPI_D0; x_mm=53.400000; y_mm=48.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.400000000" cy="48.800000000" r="0.075000000"/>
+</g>
+<text x="53.625000000" y="48.800000000" font-size="0.55" fill="#1769aa">H0228</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0229; uuid=d4fb2545-aa8f-498f-9667-1aa997cbd9cc; type=via; net=/SD_MISO; x_mm=50.000000; y_mm=41.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.000000000" cy="41.750000000" r="0.075000000"/>
+</g>
+<text x="50.225000000" y="41.750000000" font-size="0.55" fill="#1769aa">H0229</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0230; uuid=d8692a72-f9ea-4be0-ae3e-a11d819ca13a; type=via; net=/+3V3; x_mm=75.000000; y_mm=39.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="75.000000000" cy="39.350000000" r="0.075000000"/>
+</g>
+<text x="75.225000000" y="39.350000000" font-size="0.55" fill="#1769aa">H0230</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0231; uuid=d8fa30db-c306-4308-bfa9-dbf7b4837ab5; type=via; net=/CORE_1V1; x_mm=58.500000; y_mm=46.900000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.500000000" cy="46.900000000" r="0.075000000"/>
+</g>
+<text x="58.725000000" y="46.900000000" font-size="0.55" fill="#1769aa">H0231</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0232; uuid=dcb5a20d-7136-45d2-b4a8-6bd9b1fcc4ef; type=via; net=/GND; x_mm=44.250000; y_mm=73.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="44.250000000" cy="73.050000000" r="0.075000000"/>
+</g>
+<text x="44.475000000" y="73.050000000" font-size="0.55" fill="#1769aa">H0232</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0233; uuid=dd07c36d-c8d3-45e9-9589-abb8ef33c562; type=via; net=/VBUS; x_mm=38.850000; y_mm=34.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="38.850000000" cy="34.000000000" r="0.075000000"/>
+</g>
+<text x="39.075000000" y="34.000000000" font-size="0.55" fill="#1769aa">H0233</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0234; uuid=de32788b-5fc7-4ee4-ba8d-09437cdadaac; type=via; net=/GND; x_mm=37.800000; y_mm=58.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="37.800000000" cy="58.850000000" r="0.075000000"/>
+</g>
+<text x="38.025000000" y="58.850000000" font-size="0.55" fill="#1769aa">H0234</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0235; uuid=de65a175-acf7-47f2-a8da-3abc92c73251; type=via; net=/GND; x_mm=33.950000; y_mm=64.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="33.950000000" cy="64.800000000" r="0.075000000"/>
+</g>
+<text x="34.175000000" y="64.800000000" font-size="0.55" fill="#1769aa">H0235</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0236; uuid=de6cd37b-c097-49ea-9821-f858a293f296; type=via; net=/+3V3; x_mm=43.000000; y_mm=35.800000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="43.000000000" cy="35.800000000" r="0.075000000"/>
+</g>
+<text x="43.225000000" y="35.800000000" font-size="0.55" fill="#1769aa">H0236</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0237; uuid=def9bb29-eba3-4a2e-85e8-fc02e4403db3; type=via; net=/GND; x_mm=61.000000; y_mm=48.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="61.000000000" cy="48.050000000" r="0.075000000"/>
+</g>
+<text x="61.225000000" y="48.050000000" font-size="0.55" fill="#1769aa">H0237</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0238; uuid=df377c0d-a5de-49d6-94d0-c3c9c09ccd65; type=via; net=/GPIO23; x_mm=57.500000; y_mm=54.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.500000000" cy="54.200000000" r="0.075000000"/>
+</g>
+<text x="57.725000000" y="54.200000000" font-size="0.55" fill="#1769aa">H0238</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0239; uuid=e041503e-7ada-484b-b36c-d9d2790b7f80; type=via; net=/GND; x_mm=88.150000; y_mm=44.900000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="88.150000000" cy="44.900000000" r="0.075000000"/>
+</g>
+<text x="88.375000000" y="44.900000000" font-size="0.55" fill="#1769aa">H0239</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0240; uuid=e062241e-5305-4f5b-b11a-d59f8e2798f0; type=via; net=/UART_RTS; x_mm=46.100000; y_mm=53.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="46.100000000" cy="53.750000000" r="0.075000000"/>
+</g>
+<text x="46.325000000" y="53.750000000" font-size="0.55" fill="#1769aa">H0240</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0241; uuid=e0a799b5-cef6-49a1-a998-2cce7665073a; type=via; net=/QSPI_D2; x_mm=53.000000; y_mm=50.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.000000000" cy="50.950000000" r="0.075000000"/>
+</g>
+<text x="53.225000000" y="50.950000000" font-size="0.55" fill="#1769aa">H0241</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0242; uuid=e0ee8a17-6e93-41bc-888c-01268caaa702; type=via; net=/+3V3; x_mm=58.450000; y_mm=50.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.450000000" cy="50.200000000" r="0.075000000"/>
+</g>
+<text x="58.675000000" y="50.200000000" font-size="0.55" fill="#1769aa">H0242</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0243; uuid=e0f45073-1742-4729-9ae1-c898eb93f1e8; type=via; net=/GND; x_mm=62.800000; y_mm=51.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="62.800000000" cy="51.750000000" r="0.075000000"/>
+</g>
+<text x="63.025000000" y="51.750000000" font-size="0.55" fill="#1769aa">H0243</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0244; uuid=e18a8d51-5a94-44c9-b9e8-43110ddde6d2; type=via; net=/+3V3; x_mm=91.000000; y_mm=38.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="91.000000000" cy="38.450000000" r="0.075000000"/>
+</g>
+<text x="91.225000000" y="38.450000000" font-size="0.55" fill="#1769aa">H0244</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0245; uuid=e1e7f940-27a6-44a8-9dad-0c495c0811fb; type=via; net=/GAUGE_SCL; x_mm=43.800000; y_mm=70.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="43.800000000" cy="70.050000000" r="0.075000000"/>
+</g>
+<text x="44.025000000" y="70.050000000" font-size="0.55" fill="#1769aa">H0245</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0246; uuid=e2cd8004-0da3-405f-bf9a-6f208665bfd0; type=via; net=/VBUS; x_mm=24.250000; y_mm=35.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="24.250000000" cy="35.000000000" r="0.075000000"/>
+</g>
+<text x="24.475000000" y="35.000000000" font-size="0.55" fill="#1769aa">H0246</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0247; uuid=e37933ba-fe81-4bf9-8535-390cab0cb3bb; type=via; net=/UART_TX; x_mm=56.600000; y_mm=64.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="56.600000000" cy="64.300000000" r="0.075000000"/>
+</g>
+<text x="56.825000000" y="64.300000000" font-size="0.55" fill="#1769aa">H0247</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0248; uuid=e3d61dfb-75de-4631-85f8-6963cf026601; type=via; net=/USB_D_P; x_mm=37.450000; y_mm=34.950000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="37.450000000" cy="34.950000000" r="0.075000000"/>
+</g>
+<text x="37.675000000" y="34.950000000" font-size="0.55" fill="#1769aa">H0248</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0249; uuid=e533fbf9-da2b-4067-8e55-887194297897; type=via; net=/GPIO25; x_mm=58.900000; y_mm=65.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.900000000" cy="65.650000000" r="0.075000000"/>
+</g>
+<text x="59.125000000" y="65.650000000" font-size="0.55" fill="#1769aa">H0249</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0250; uuid=e5eca4e7-ce6c-43ae-a6ec-a9a9dc8a3695; type=via; net=/+3V3; x_mm=55.000000; y_mm=50.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.000000000" cy="50.500000000" r="0.075000000"/>
+</g>
+<text x="55.225000000" y="50.500000000" font-size="0.55" fill="#1769aa">H0250</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0251; uuid=e65273af-ae17-4a7d-bfc8-b2fb1fcd5f54; type=via; net=/GND; x_mm=34.850000; y_mm=69.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="34.850000000" cy="69.000000000" r="0.075000000"/>
+</g>
+<text x="35.075000000" y="69.000000000" font-size="0.55" fill="#1769aa">H0251</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0252; uuid=e780be9c-db78-4c08-a200-24e920d05ee3; type=via; net=/GND; x_mm=55.350000; y_mm=51.300000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.350000000" cy="51.300000000" r="0.075000000"/>
+</g>
+<text x="55.575000000" y="51.300000000" font-size="0.55" fill="#1769aa">H0252</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0253; uuid=e808940a-8b9b-47a2-86ea-b7a99837e2ff; type=via; net=/QSPI_D2; x_mm=48.200000; y_mm=41.250000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="48.200000000" cy="41.250000000" r="0.075000000"/>
+</g>
+<text x="48.425000000" y="41.250000000" font-size="0.55" fill="#1769aa">H0253</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0254; uuid=e881d586-769d-4657-9ee4-ad9cb69df556; type=via; net=/UART_TX; x_mm=60.700000; y_mm=63.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="60.700000000" cy="63.850000000" r="0.075000000"/>
+</g>
+<text x="60.925000000" y="63.850000000" font-size="0.55" fill="#1769aa">H0254</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0255; uuid=eac5f21b-8f18-42fc-9b7b-c720db4783c2; type=via; net=/SYS; x_mm=31.500000; y_mm=43.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="31.500000000" cy="43.000000000" r="0.075000000"/>
+</g>
+<text x="31.725000000" y="43.000000000" font-size="0.55" fill="#1769aa">H0255</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0256; uuid=eb8cdb7e-4d0f-4453-8267-4839a09ee7b1; type=via; net=/QSPI_D0; x_mm=53.400000; y_mm=40.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.400000000" cy="40.700000000" r="0.075000000"/>
+</g>
+<text x="53.625000000" y="40.700000000" font-size="0.55" fill="#1769aa">H0256</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0257; uuid=ec6b9b78-4110-4001-9984-f87d7f736d6a; type=via; net=/UART_TX; x_mm=79.000000; y_mm=27.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="79.000000000" cy="27.050000000" r="0.075000000"/>
+</g>
+<text x="79.225000000" y="27.050000000" font-size="0.55" fill="#1769aa">H0257</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0258; uuid=ed8a1372-9a0e-45d6-8d45-06e257eed4df; type=via; net=/ADC0; x_mm=59.400000; y_mm=52.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="59.400000000" cy="52.200000000" r="0.075000000"/>
+</g>
+<text x="59.625000000" y="52.200000000" font-size="0.55" fill="#1769aa">H0258</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0259; uuid=eecc72ea-a871-49ec-9c65-6866a704f1ba; type=via; net=/RGB_DATA; x_mm=49.500000; y_mm=57.000000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.500000000" cy="57.000000000" r="0.075000000"/>
+</g>
+<text x="49.725000000" y="57.000000000" font-size="0.55" fill="#1769aa">H0259</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0260; uuid=ef1bcd0d-2249-474b-8524-efd989a0629e; type=via; net=/USB_500_EN; x_mm=50.300000; y_mm=50.700000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.300000000" cy="50.700000000" r="0.075000000"/>
+</g>
+<text x="50.525000000" y="50.700000000" font-size="0.55" fill="#1769aa">H0260</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0261; uuid=f03cccfd-407a-498d-8a90-e6e4a9d96ea8; type=via; net=/QSPI_D3; x_mm=54.450000; y_mm=36.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="54.450000000" cy="36.100000000" r="0.075000000"/>
+</g>
+<text x="54.675000000" y="36.100000000" font-size="0.55" fill="#1769aa">H0261</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0262; uuid=f087d242-8482-4842-ac1c-a191917bfe7a; type=via; net=/CHG_ILIM; x_mm=27.200000; y_mm=43.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="27.200000000" cy="43.750000000" r="0.075000000"/>
+</g>
+<text x="27.425000000" y="43.750000000" font-size="0.55" fill="#1769aa">H0262</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0263; uuid=f09bb506-f436-4f4c-9d0e-33f315638dff; type=via; net=/GND; x_mm=57.050000; y_mm=53.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="57.050000000" cy="53.200000000" r="0.075000000"/>
+</g>
+<text x="57.275000000" y="53.200000000" font-size="0.55" fill="#1769aa">H0263</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0264; uuid=f1f64653-c102-4272-91ec-6315c658d872; type=via; net=/SD_CLK; x_mm=50.750000; y_mm=63.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="50.750000000" cy="63.100000000" r="0.075000000"/>
+</g>
+<text x="50.975000000" y="63.100000000" font-size="0.55" fill="#1769aa">H0264</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0265; uuid=f2595c27-7ce2-4406-9a73-0cd04b718a92; type=via; net=/ADC3; x_mm=63.100000; y_mm=56.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="63.100000000" cy="56.400000000" r="0.075000000"/>
+</g>
+<text x="63.325000000" y="56.400000000" font-size="0.55" fill="#1769aa">H0265</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0266; uuid=f36f6277-02cb-4b39-b81d-3a9132a9b007; type=via; net=/SD_CLK; x_mm=58.000000; y_mm=66.750000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="58.000000000" cy="66.750000000" r="0.075000000"/>
+</g>
+<text x="58.225000000" y="66.750000000" font-size="0.55" fill="#1769aa">H0266</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0267; uuid=f46b40c7-421d-4384-a291-9323662fa6d9; type=via; net=/+3V3; x_mm=53.800000; y_mm=57.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="53.800000000" cy="57.400000000" r="0.075000000"/>
+</g>
+<text x="54.025000000" y="57.400000000" font-size="0.55" fill="#1769aa">H0267</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0268; uuid=f4899e50-fdaf-4fa6-bcf7-0b77e9774a0e; type=via; net=/CHG_N; x_mm=29.750000; y_mm=46.450000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.750000000" cy="46.450000000" r="0.075000000"/>
+</g>
+<text x="29.975000000" y="46.450000000" font-size="0.55" fill="#1769aa">H0268</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0269; uuid=f8630636-356a-472f-a1ac-8713e7aa06c6; type=via; net=/CHG_ILIM; x_mm=29.750000; y_mm=41.200000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="29.750000000" cy="41.200000000" r="0.075000000"/>
+</g>
+<text x="29.975000000" y="41.200000000" font-size="0.55" fill="#1769aa">H0269</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0270; uuid=fa312b0f-729f-448a-850a-53dd2f5a7faa; type=via; net=/CORE_1V1; x_mm=55.000000; y_mm=55.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="55.000000000" cy="55.500000000" r="0.075000000"/>
+</g>
+<text x="55.225000000" y="55.500000000" font-size="0.55" fill="#1769aa">H0270</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0271; uuid=fa63df6b-4230-494e-83f5-2227a430f7fb; type=via; net=/SYS; x_mm=30.400000; y_mm=58.600000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="30.400000000" cy="58.600000000" r="0.075000000"/>
+</g>
+<text x="30.625000000" y="58.600000000" font-size="0.55" fill="#1769aa">H0271</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0272; uuid=fa943332-af0a-4b5a-9f1b-8ff96a92276a; type=via; net=/UART_RX; x_mm=46.500000; y_mm=55.650000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="46.500000000" cy="55.650000000" r="0.075000000"/>
+</g>
+<text x="46.725000000" y="55.650000000" font-size="0.55" fill="#1769aa">H0272</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0273; uuid=fd19b0c4-89ee-4501-b99c-02526481bff4; type=via; net=/FLASH_CS; x_mm=43.850000; y_mm=36.350000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="43.850000000" cy="36.350000000" r="0.075000000"/>
+</g>
+<text x="44.075000000" y="36.350000000" font-size="0.55" fill="#1769aa">H0273</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0274; uuid=fdb3cf67-e65c-4748-a0e5-16b72b29343e; type=via; net=/BUCK_L2; x_mm=27.600000; y_mm=56.500000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="27.600000000" cy="56.500000000" r="0.075000000"/>
+</g>
+<text x="27.825000000" y="56.500000000" font-size="0.55" fill="#1769aa">H0274</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0275; uuid=fdbbd280-22c1-4dde-ad80-847e2019b95e; type=via; net=/ADC0; x_mm=62.650000; y_mm=56.850000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="62.650000000" cy="56.850000000" r="0.075000000"/>
+</g>
+<text x="62.875000000" y="56.850000000" font-size="0.55" fill="#1769aa">H0275</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0276; uuid=fec48401-2447-46cf-b638-ab139c4d8963; type=via; net=/USB_PGOOD_N; x_mm=33.150000; y_mm=43.100000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="33.150000000" cy="43.100000000" r="0.075000000"/>
+</g>
+<text x="33.375000000" y="43.100000000" font-size="0.55" fill="#1769aa">H0276</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0277; uuid=feea1c05-e923-47b3-9585-30682aad519b; type=via; net=/GND; x_mm=88.325000; y_mm=68.275000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="88.325000000" cy="68.275000000" r="0.075000000"/>
+</g>
+<text x="88.550000000" y="68.275000000" font-size="0.55" fill="#1769aa">H0277</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0278; uuid=ff101c80-ebe2-4001-b597-95504531b6ed; type=via; net=/UART_TX; x_mm=52.600000; y_mm=63.050000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="52.600000000" cy="63.050000000" r="0.075000000"/>
+</g>
+<text x="52.825000000" y="63.050000000" font-size="0.55" fill="#1769aa">H0278</text>
+<g fill="#1769aa" stroke="#1769aa" stroke-width="0.04">
+<title>id=H0279; uuid=ff8a5f37-713c-41f1-b5e1-87d595bd812c; type=via; net=/GPIO23; x_mm=49.950000; y_mm=74.400000; drill_x_mm=0.150000; drill_y_mm=0.150000; rotation_deg=0.000000; diameter_mm=0.450000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_CAPPED; saved_filling=VDFM_FILLED; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="49.950000000" cy="74.400000000" r="0.075000000"/>
+</g>
+<text x="50.175000000" y="74.400000000" font-size="0.55" fill="#1769aa">H0279</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0280; uuid=0d405d6f-61ef-4fb8-88a4-450ef8dd62ef; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=86.860000; y_mm=27.750000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="86.860000000" cy="27.750000000" r="0.100000000"/>
+</g>
+<text x="87.110000000" y="27.750000000" font-size="0.55" fill="#b34b00">H0280</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0281; uuid=17d6c12e-8941-4737-966d-c839b6997809; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=89.060000; y_mm=26.650000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="89.060000000" cy="26.650000000" r="0.100000000"/>
+</g>
+<text x="89.310000000" y="26.650000000" font-size="0.55" fill="#b34b00">H0281</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0282; uuid=2b792418-a16e-49d1-ae18-7f34764cad88; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=87.960000; y_mm=26.650000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="87.960000000" cy="26.650000000" r="0.100000000"/>
+</g>
+<text x="88.210000000" y="26.650000000" font-size="0.55" fill="#b34b00">H0282</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0283; uuid=4c8e028a-7540-4423-8373-47e95f98b2dd; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=89.060000; y_mm=27.750000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="89.060000000" cy="27.750000000" r="0.100000000"/>
+</g>
+<text x="89.310000000" y="27.750000000" font-size="0.55" fill="#b34b00">H0283</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0284; uuid=6940f5f2-90a3-4af2-98aa-383fe6047fd9; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=87.410000; y_mm=27.200000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="87.410000000" cy="27.200000000" r="0.100000000"/>
+</g>
+<text x="87.660000000" y="27.200000000" font-size="0.55" fill="#b34b00">H0284</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0285; uuid=72dcc0a4-7c03-437c-8c5f-d24cf45168c9; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=87.410000; y_mm=26.100000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="87.410000000" cy="26.100000000" r="0.100000000"/>
+</g>
+<text x="87.660000000" y="26.100000000" font-size="0.55" fill="#b34b00">H0285</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0286; uuid=765170ce-9165-4075-880a-783462bb0407; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=88.510000; y_mm=27.200000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="88.510000000" cy="27.200000000" r="0.100000000"/>
+</g>
+<text x="88.760000000" y="27.200000000" font-size="0.55" fill="#b34b00">H0286</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0287; uuid=77570a6c-dde6-4577-90a1-690e4a17e8a0; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=86.860000; y_mm=26.650000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="86.860000000" cy="26.650000000" r="0.100000000"/>
+</g>
+<text x="87.110000000" y="26.650000000" font-size="0.55" fill="#b34b00">H0287</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0288; uuid=84e62db8-f37d-42ed-b23d-058ea2b7b088; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=88.510000; y_mm=26.100000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="88.510000000" cy="26.100000000" r="0.100000000"/>
+</g>
+<text x="88.760000000" y="26.100000000" font-size="0.55" fill="#b34b00">H0288</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0289; uuid=9a260da4-937c-4d99-a199-40dc62f3380f; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=87.410000; y_mm=28.300000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="87.410000000" cy="28.300000000" r="0.100000000"/>
+</g>
+<text x="87.660000000" y="28.300000000" font-size="0.55" fill="#b34b00">H0289</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0290; uuid=9ad2f358-e213-4ad9-aba7-3da9ee77a3d9; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=88.510000; y_mm=28.300000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="88.510000000" cy="28.300000000" r="0.100000000"/>
+</g>
+<text x="88.760000000" y="28.300000000" font-size="0.55" fill="#b34b00">H0290</text>
+<g fill="#b34b00" stroke="#b34b00" stroke-width="0.04">
+<title>id=H0291; uuid=e451ecc5-79c2-40ba-b434-0d3892bd9b8d; type=plated thermal hole; reference=U7; pad=19; exposed_smd_pads=19@F.Cu; net=/GND; x_mm=87.960000; y_mm=27.750000; drill_x_mm=0.200000; drill_y_mm=0.200000; rotation_deg=0.000000; start_layer=BL_F_Cu; end_layer=BL_B_Cu; saved_capping=VDCM_UNKNOWN; saved_filling=VDFM_UNKNOWN; treatment=IPC4761 Type VII; resin filled; copper capped; planar</title>
+<circle cx="87.960000000" cy="27.750000000" r="0.100000000"/>
+</g>
+<text x="88.210000000" y="27.750000000" font-size="0.55" fill="#b34b00">H0291</text>
+<text x="18.000000000" y="89.000000000" font-size="0.8">IPC4761 Type VII; resin filled; copper capped; planar required for every listed hole.</text>
+<text x="18.000000000" y="90.400000000" font-size="0.8">Blue: actual vias. Orange: footprint plated thermal holes.</text>
+<text x="18.000000000" y="91.800000000" font-size="0.8">IDs match via_treatment.csv. mm, +Y down. Not release approval.</text>
+</svg>

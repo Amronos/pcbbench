@@ -1,0 +1,239 @@
+{
+  "release": "Atlas2350 Rev A",
+  "packaged_utc": "2026-11-10T02:14:13.284604+00:00",
+  "status": "Prototype manufacturing and complete-population assembly package; supplier quote/DFM and physical qualification pending",
+  "assembled_components_per_board": 115,
+  "bom_groups": 53,
+  "surface_centroids": 112,
+  "schematic_pin_assignments_checked": 432,
+  "erc_findings": 0,
+  "drc_findings": 0,
+  "native_pcb_format": "20261031; compatible KiCad11 development/nightly required",
+  "pdf_pages": {
+    "assembly/assembly-orientation.pdf": 4,
+    "assembly/top-assembly-kicad.pdf": 1,
+    "drill/Atlas2350-NPTH-drl_map.pdf": 1,
+    "drill/Atlas2350-PTH-drl_map.pdf": 1,
+    "fabrication-and-assembly.pdf": 1,
+    "schematic.pdf": 6
+  },
+  "source_sha256": {
+    "Atlas2350.kicad_pcb": "d566adf81f6cd3687b7653f3ec31e04d1cb71c4ed3aec2fcd21980b33ea612a8",
+    "Atlas2350.kicad_pro": "ca28388910100c81f10d4bddb19110c5f81dd62e8f0d421f00de31673bd176a6",
+    "Atlas2350.kicad_sch": "a63fe27c34266d2b7ce8c131aedf51c47f44575fa3f4961be7a965c6a459538b",
+    "design.json": "034becacead4e3af18e2a4714a5044d900750504287446704dac06bbb4c6c2d6",
+    "fp-lib-table": "4294ca58d23f244620e7065b4d9eb18c8bbbbe329b7bdd3ddb75fd8e704b8f6f",
+    "interfaces.kicad_sch": "119a723f5a3abe30bc251d1766852923d43f18870dc11f4ad3c59a78a29bf9e1",
+    "libraries/Atlas.kicad_sym": "d88527edaf94466e093b2c9bc529024d609a5dd319de0a0c5a23f7f987ede2e1",
+    "libraries/Atlas.pretty/Button_Switch_SMD_SW_SPDT_CK_JS102011SAQN.kicad_mod": "0cf284befc7f3de558f3ebb0d05948c519c1f2747f9add0971ed0137874f379d",
+    "libraries/Atlas.pretty/Button_Switch_SMD_SW_SPST_TL3342.kicad_mod": "f9c5c86ba1c70e56fb78ce16775994fb4fa53dfb09ad065a397b35e66b0a82aa",
+    "libraries/Atlas.pretty/Capacitor_SMD_C_0402_1005Metric.kicad_mod": "429443ca65d2ee691020ee2c5852e55213103bf1a66f0572637b829bbd09d977",
+    "libraries/Atlas.pretty/Capacitor_SMD_C_0603_1608Metric.kicad_mod": "13cbb9494c96fea6fa66c7a46f6dc7c63e974c1096f25a8d715fc0fce1538268",
+    "libraries/Atlas.pretty/Capacitor_SMD_C_0805_2012Metric.kicad_mod": "d99e21158c1706e9263edba8f88157f31aa9783957bdad9a3b92dc7761732b0e",
+    "libraries/Atlas.pretty/Capacitor_SMD_C_1206_3216Metric.kicad_mod": "b5732b8a065825f6f3361190bf190c8b93a8fc873eff3376b9662072dea9957e",
+    "libraries/Atlas.pretty/Connector_Card_microSD_HC_Hirose_DM3AT-SF-PEJM5.kicad_mod": "aa1ce09a5517e9518fcfcdaa422a67bb9185b6700d9eed048c771e068099979b",
+    "libraries/Atlas.pretty/Connector_JST_JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal.kicad_mod": "a543a0d716403a08a7bcbdc4ec1960a66a037ca692101069355c1e68fe23e86a",
+    "libraries/Atlas.pretty/Connector_JST_JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal.kicad_mod": "d65bfedeaeb21508bd8456724c393ca8f6142a3cd8fcb35e2bd48416932a0feb",
+    "libraries/Atlas.pretty/Connector_PinHeader_1.27mm_PinHeader_2x05_P1.27mm_Vertical.kicad_mod": "d0ca3549034c24b2064db8325447b52b2e1bc801603b9c974c50b48000018c1b",
+    "libraries/Atlas.pretty/Connector_PinHeader_1.27mm_PinHeader_2x05_P1.27mm_Vertical_SMD.kicad_mod": "4b7591a9e914383c420ca74c20c7cc3b9d2acabb7c9d8a76e77781593705c38a",
+    "libraries/Atlas.pretty/Connector_PinHeader_2.54mm_PinHeader_1x06_P2.54mm_Vertical.kicad_mod": "b461bfc17f1149a120739efc3896eba704ce102ec1557929b43133c1c055cd4c",
+    "libraries/Atlas.pretty/Connector_PinHeader_2.54mm_PinHeader_2x10_P2.54mm_Vertical.kicad_mod": "c99d0e5a83792218bbfd20b6551430afe5a5db94452020945d6ffeda23c127f2",
+    "libraries/Atlas.pretty/Connector_USB_USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal.kicad_mod": "2252fb3e093c8af7d6877389f2fc78530696d73d30a4da061928274e4ae3a32b",
+    "libraries/Atlas.pretty/Crystal_Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm.kicad_mod": "4ac817a641b627c0a0be5fa971da08d38af0ddff20ef1624342e0bfadec5525d",
+    "libraries/Atlas.pretty/Custom_TPS63070_RNM0015A.kicad_mod": "c01f3e24e70ea62cb69350c8f42439663e0cc3bbfa096e7d4448fefa25232e88",
+    "libraries/Atlas.pretty/Fuse_Fuse_1812_4532Metric.kicad_mod": "5f3abcecb3783c01931c63741b7c17026a82d65e6b923f5fdc3075d0ddd04d63",
+    "libraries/Atlas.pretty/Inductor_SMD_L_0402_1005Metric.kicad_mod": "275b8aed10f0121d34cebf5c8f279e46006b278df73b69985d15d06d7f663ce4",
+    "libraries/Atlas.pretty/Inductor_SMD_L_Coilcraft_LPS4018.kicad_mod": "be3437351f06a5290a39b23a2519be29c9d066fa35eb63f01a6aa75f28a32aa5",
+    "libraries/Atlas.pretty/Inductor_SMD_L_Coilcraft_XAL4020-XXX.kicad_mod": "97a50ba3aeb2b2ba36e0aa94759b40cd469c84913a45d90e89d0e83aefe6ae15",
+    "libraries/Atlas.pretty/Inductor_SMD_L_Coilcraft_XAL4030-XXX.kicad_mod": "97cb0970e93cb8ec361144f4fba10d17cf9c0cdf274b0165c6efc01201162d97",
+    "libraries/Atlas.pretty/LED_SMD_LED_WS2812B-2020_PLCC4_2.0x2.0mm.kicad_mod": "df38240f87cdf778fc7a16238f3a310ff426a58825f9c5f89fef133e4670033d",
+    "libraries/Atlas.pretty/MountingHole_MountingHole_2.7mm_M2.5.kicad_mod": "5af15ffd8857beaa6805585459e37bbf103594459e8f09e37d42c046314faa32",
+    "libraries/Atlas.pretty/Package_DFN_QFN_QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm.kicad_mod": "f771d660cd7dc9751edd8b75f5c1d0f1f70e4ae9c3babbb72eb744a896a70392",
+    "libraries/Atlas.pretty/Package_DFN_QFN_VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm.kicad_mod": "994a8b6561c27334db1b6ba2f024f06f78b8a6c1f503eb9bf1e833d01d64c4fa",
+    "libraries/Atlas.pretty/Package_SON_WSON-10-1EP_2.5x2.5mm_P0.5mm_EP1.2x2mm.kicad_mod": "7fe0473609d4601f8beef39e9aa3b5bc7350cccbf61f0dc413faf8dec9732373",
+    "libraries/Atlas.pretty/Package_SO_SOIC-8_3.9x4.9mm_P1.27mm.kicad_mod": "3fd29eed2b0588fbde49d6f7742e9e3478806452a7283663f20d8a2ebcaddb16",
+    "libraries/Atlas.pretty/Package_SO_SOIC-8_5.3x5.3mm_P1.27mm.kicad_mod": "a73776ec58c46f99e1d4d4ffb0e7fe4595f95be1f9f88a07fefe5ced28fedde6",
+    "libraries/Atlas.pretty/Package_TO_SOT_SMD_SOT-23-5.kicad_mod": "594a6b0a17efa750c46e2ff99f2b1b592927f884df2d5e3c393fd5882ac58200",
+    "libraries/Atlas.pretty/Package_TO_SOT_SMD_SOT-23-6.kicad_mod": "1f484e11cc7cb1618018546c261f041c5232b0456bc392774785d0faba55ad05",
+    "libraries/Atlas.pretty/Package_TO_SOT_SMD_SOT-363_SC-70-6.kicad_mod": "123512a741509745d12e73d408bbbd56cdd2a00de012305ee1699d9e08cefb6c",
+    "libraries/Atlas.pretty/RF_Module_ESP32-C3-WROOM-02.kicad_mod": "55625422ca63632be32752f0654e9cca142e96a7b0531bbb65f3ca87df57990a",
+    "libraries/Atlas.pretty/Resistor_SMD_R_0402_1005Metric.kicad_mod": "cfbbb48957a91978fa0f74bd8b459f5889c6fb45041a0195fd88e53f8b367c0c",
+    "libraries/Atlas.pretty/TestPoint_TestPoint_Pad_D1.0mm.kicad_mod": "94de5252d58b2467e21978c4874d9a5ca872e26080c11ee69f45dea880469633",
+    "libraries/Custom.pretty/TPS63070_RNM0015A.kicad_mod": "9933fddf34a35643fa3636dbb9b11cd74bb4686c77eee969249b1874b9c4f605",
+    "mcu.kicad_sch": "6c8c5fa2b2a3453675572f2bd0c987cf60a44bbd6def0538e99657258284aa12",
+    "memory.kicad_sch": "ea47c86c886856a027aa886f172209cc29b006be31e5e5547735dfec300560f7",
+    "power.kicad_sch": "1d26d9cdbe55e68ee7e93047b9ba076a7c415b59d3b9c862d552e843ebc1d06c",
+    "sym-lib-table": "ff6ac2b7686dbb6aada2a0cc2d63c0263a4a3c34dae0d91012b7a1fe141a5b2f",
+    "wireless.kicad_sch": "7b38cc4873870ce4fc67a87a8890b3336be9b8cb0da80ebb38a704c3b5b8a5b8"
+  },
+  "files": {
+    "Atlas2350.ipc": {
+      "bytes": 66258,
+      "sha256": "fa2a4584088a0a202dd8c14e7d66520706dffa6987a4cd1f31a79f84857f7b45"
+    },
+    "README.md": {
+      "bytes": 4515,
+      "sha256": "eec5ce502ceb74247f83e69088b632a4ee4adfd3a1ac3048463998d97f0bb90f"
+    },
+    "assembly/assembly-orientation.md": {
+      "bytes": 14954,
+      "sha256": "b2824fb7dc1298b25b446332c7cbbdd9d45cbf879a980384704f2aae1b34ed18"
+    },
+    "assembly/assembly-orientation.pdf": {
+      "bytes": 28876,
+      "sha256": "cc15b9ca84b7ff1a3761a2a839e97d3d0402a31b79cbdfd071a030c8cd673f15"
+    },
+    "assembly/assembly-pinout.csv": {
+      "bytes": 298410,
+      "sha256": "3046f308c886a154ad073752f6d9b169f83d5f54a4a748a10270d967533ceb23"
+    },
+    "assembly/bom.csv": {
+      "bytes": 5280,
+      "sha256": "39491a52fef9ceb27fe14966fe78d10ea7c93a922de855ada380d30fb7fdd81b"
+    },
+    "assembly/centroid-source.csv": {
+      "bytes": 57638,
+      "sha256": "a36d6d9bbd14b58c48c4ef562e01a112b30ec4a61ab5b95c38bb4f4bfe5faf80"
+    },
+    "assembly/centroid-units.txt": {
+      "bytes": 2544,
+      "sha256": "164301afafb5b28386f0104f4086cdf755644c4f964c0b91debb92c885d0fe97"
+    },
+    "assembly/kicad-native-position.csv": {
+      "bytes": 10268,
+      "sha256": "8cce0aed26c3a18c4d1e419fc41465e467848421159d560041c735c1fbeda143"
+    },
+    "assembly/manifest.json": {
+      "bytes": 1886,
+      "sha256": "4a208ed32fe30a623ddb782d1294a990ee751bc69b1fe4d852338299991f1f1c"
+    },
+    "assembly/parts.csv": {
+      "bytes": 27518,
+      "sha256": "2e007c313fd7ac452bc629996e6e221e9ad379d319cb3a1c71451854572f0fde"
+    },
+    "assembly/pcbway-centroids.csv": {
+      "bytes": 6217,
+      "sha256": "1a4ce1263bcce7322fe44412b0b611d1528368ee9fcd74085916b1610662cc5d"
+    },
+    "assembly/placement.csv": {
+      "bytes": 25327,
+      "sha256": "bbf2448b8afe105abab01e412b45b379d37d838eb615b6e69a969b413e50c14c"
+    },
+    "assembly/top-assembly-kicad.pdf": {
+      "bytes": 284458,
+      "sha256": "d4695b3c6c602675ecb2aac3e47cdb35d63f0c796f8176c184bc7e82f8f26ad7"
+    },
+    "assembly/top-assembly-orientation.svg": {
+      "bytes": 86235,
+      "sha256": "843531c7a3711d88b626c018718ec223af0fd9b017a0d34a4f8bbf212ff615a5"
+    },
+    "assembly-notes.md": {
+      "bytes": 23823,
+      "sha256": "b93db5c43bd0c11fffa579c9f07fb39586a6be1644ef876bc8f3d71dcc49dbca"
+    },
+    "cam-review.json": {
+      "bytes": 4532,
+      "sha256": "5e99aa0edc5378882d61e73f1b4a58a53755e08a05d5e4316771e3a5fee572b1"
+    },
+    "drc-final.json": {
+      "bytes": 171,
+      "sha256": "6b9485cbfe7b89c87640396b19aaf0619d1059d57cfe7a39c614aa70a8121745"
+    },
+    "drill/Atlas2350-NPTH-drl_map.pdf": {
+      "bytes": 13822,
+      "sha256": "623e6df9da4a59852950bcbec8cc0a93954e1b74f76f9700842fd70099548611"
+    },
+    "drill/Atlas2350-NPTH.drl": {
+      "bytes": 575,
+      "sha256": "0d62e26c18c5e6be9721ffa994721d41412b20eb4da72b43748cd2c7c1281b34"
+    },
+    "drill/Atlas2350-PTH-drl_map.pdf": {
+      "bytes": 27053,
+      "sha256": "b58a1dc321f20398159b85c030e053ffe45ed29dccb76bc5d4e6b82427c249ce"
+    },
+    "drill/Atlas2350-PTH.drl": {
+      "bytes": 5834,
+      "sha256": "3aaeb733ddcaa7d107c20f3bf2cdd5c95718e6b5b371ec67495d67ba9d0a5260"
+    },
+    "drill/drill-report.txt": {
+      "bytes": 975,
+      "sha256": "d66e862106c1b05cb761f7d280710a723d7f419a931e2d931906f87542e9729f"
+    },
+    "drill/filled-capped-hole-schedule.csv": {
+      "bytes": 36756,
+      "sha256": "cd0ff8943a3de181314ef60b8409df5f614dacb3a0dee563c000bfa48a5c9be1"
+    },
+    "erc-final.json": {
+      "bytes": 163,
+      "sha256": "f13d81f4f4eef83811d13e5f36f5f1d3c5615fe690cdf9874bd05f64f4889519"
+    },
+    "fabrication-and-assembly.pdf": {
+      "bytes": 4319,
+      "sha256": "9ee66d5b2c9f7589f545d51eb64c0aa94b23438ee520102cf87ad90627a344bb"
+    },
+    "fabrication-notes.md": {
+      "bytes": 16992,
+      "sha256": "3a21b9a765a0e56869dcabe6be863253649e10ad34e51c72aecb7113c08d2142"
+    },
+    "gerbers/Atlas2350-B_Cu.gbr": {
+      "bytes": 232827,
+      "sha256": "3e4d100f6839235b5fad3379dc731655bda9a90039c8fe18c721a66759a90642"
+    },
+    "gerbers/Atlas2350-B_Mask.gbr": {
+      "bytes": 2028,
+      "sha256": "e8fbdda5cab3704a88bd0ee286ca703155fb9a2a0e52c2d5153800a1bbb3cd86"
+    },
+    "gerbers/Atlas2350-B_Silkscreen.gbr": {
+      "bytes": 2038,
+      "sha256": "10bd7e985ecc3901767999a9f8a68294cbf209e7a3d8bdfa8594b4d8720a7fa3"
+    },
+    "gerbers/Atlas2350-Edge_Cuts.gbr": {
+      "bytes": 833,
+      "sha256": "1b9f64c4b30c7b7dba60d205bfd1083f87e098707ec9a0daac8758fd78525bf4"
+    },
+    "gerbers/Atlas2350-F_Cu.gbr": {
+      "bytes": 374273,
+      "sha256": "4675020d923cf273d1bd6e281b34c58b8e8ef67fc8cc8eb0c16c4061d2d189db"
+    },
+    "gerbers/Atlas2350-F_Mask.gbr": {
+      "bytes": 19710,
+      "sha256": "9b12953cca62793c6905336988aaeb71d9a48c1eac9346a29134a55d443ce33b"
+    },
+    "gerbers/Atlas2350-F_Paste.gbr": {
+      "bytes": 18060,
+      "sha256": "61c8cd57ef9f22fdbeefba4c50c4ab9e808164bdb1d68094b79d3fcde642afe2"
+    },
+    "gerbers/Atlas2350-F_Silkscreen.gbr": {
+      "bytes": 96272,
+      "sha256": "5212796646162a2a6fd882d8f16557c20b47bbf741841739177da09fdfa3f404"
+    },
+    "gerbers/Atlas2350-In1_Cu.gbr": {
+      "bytes": 230281,
+      "sha256": "26641db252dd5c8b79c4c84ec8ce059e213edc5e2653ffe0cc97e92aed8f5630"
+    },
+    "gerbers/Atlas2350-In2_Cu.gbr": {
+      "bytes": 240661,
+      "sha256": "7090960ce063c6f1b40e08370a4b239b4e56c0666cfebf3b8fb68181268b9bfa"
+    },
+    "gerbers/Atlas2350-job.gbrjob": {
+      "bytes": 3366,
+      "sha256": "61fd5b979281dcdd91a9da39291ff679d88d53ce9b2d761dcf3260ca7c13e68e"
+    },
+    "order-instructions.md": {
+      "bytes": 2908,
+      "sha256": "e053ce980b86c8483cedefda94ca4fa66ce75be47e241c7c277c274c873aff01"
+    },
+    "schematic.pdf": {
+      "bytes": 505320,
+      "sha256": "cfa648993591c6602fdec40d154db2c2ea2b08c892de274c5fe6139ff1fca067"
+    },
+    "test-plan.md": {
+      "bytes": 23714,
+      "sha256": "cce3b8e259fe00f23ad3a0674b6ca4f90ba8d6aac56af552da91945fe97d4656"
+    },
+    "verification.json": {
+      "bytes": 2476,
+      "sha256": "e4a28ddccc5b9ce2435f6248d639e5f5b39de487fe06993e37ebb831a82e1605"
+    }
+  }
+}

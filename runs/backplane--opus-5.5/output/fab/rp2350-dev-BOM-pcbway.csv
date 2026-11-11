@@ -1,0 +1,39 @@
+Item #,Designator,Qty,Manufacturer,Mfg Part #,Description / Value,Package/Footprint,Type,Side,LCSC Part #,Your Instructions / Notes
+1,C1,1,Samsung Electro-Mechanics,CL10A475KA8NQNC,4.7u - 4.7uF 25V X5R 0603,0603,SMD,top,C69335,
+2,"C2,C3,C5,C6,C7,C21,C26,C29",8,Samsung Electro-Mechanics,CL10A106MA8NRNC,10u - 10uF 25V X5R 0603,0603,SMD,top,C96446,
+3,"C4,C11,C12,C13,C14,C15,C16,C17,C18,C19,C20,C24,C25,C27,C30,C31",16,Samsung Electro-Mechanics,CL05B104KO5NNNC,100n - 100nF 16V X7R 0402,0402,SMD,top,C1525,
+4,"C8,C9,C10",3,Samsung Electro-Mechanics,CL05A475MP5NRNC,4.7u - 4.7uF 10V X5R 0402,0402,SMD,top,C23733,
+5,"C22,C23",2,FH (Fenghua),0402CG150J500NT,15p - 15pF 50V C0G 0402,0402,SMD,top,C1548,
+6,C28,1,Samsung Electro-Mechanics,CL05A105KA5NQNC,1u - 1uF 25V X5R 0402,0402,SMD,top,C52923,
+7,D1,1,Hubei KENTO Elec,KT-0603R,RED - LED red 0603 (charging),LED_0603_1608Metric,SMD,top,C2286,Polarity: cathode = pin 1
+8,D2,1,Worldsemi,WS2812B-2020-V6,WS2812B-2020 - Addressable RGB LED 2.0x2.0mm,LED_WS2812B-2020_PLCC4_2.0x2.0mm,SMD,top,C52917434,
+9,D3,1,Foshan NationStar,NCD0603Y2,"YELLOW - LED yellow 0603 (user, GPIO25)",LED_0603_1608Metric,SMD,top,C89811,Polarity: cathode = pin 1
+10,J1,1,GCT,USB4105-GF-A,"USB4105-GF-A - USB Type-C receptacle, USB 2.0, 16P, SMD + THT shell",USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal,SMD,top,C3020560,
+11,J2,1,JST,S2B-PH-SM4-TB(LF)(SN),"BATT - JST PH 2-pin right-angle SMD, Li-Po battery (pin1 = GND, pin2 = +)",JST_PH_S2B-PH-SM4-TB_1x02-1MP_P2.00mm_Horizontal,SMD,top,C295747,
+12,J3,1,JST,SM03B-SRSS-TB(LF)(SN),"SWD - JST SH 3-pin, Raspberry Pi Debug Connector pinout (SWCLK/GND/SWDIO)",JST_SH_SM03B-SRSS-TB_1x03-1MP_P1.00mm_Horizontal,SMD,top,C160403,
+13,J4,1,Hirose,DM3AT-SF-PEJM5,DM3AT-SF-PEJM5 - microSD push-push socket with card detect,microSD_HC_Hirose_DM3AT-SF-PEJM5,SMD,top,C114218,
+14,J5,1,JST,SM04B-SRSS-TB(LF)(SN),QWIIC - JST SH 4-pin (Qwiic / STEMMA QT),JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal,SMD,top,C160404,
+15,J6,1,XFCN,PZ254V-11-12P,"PWR/ADC - 1x12 2.54mm male header, THT (fit on bottom side)",PinHeader_1x12_P2.54mm_Vertical,THT,bottom,C2840012,"THT: insert from BOTTOM side (plastic body under the board), solder on top side"
+16,J7,1,XFCN,PZ254V-11-12P,"GPIO - 1x12 2.54mm male header, THT (fit on bottom side)",PinHeader_1x12_P2.54mm_Vertical,THT,bottom,C2840012,"THT: insert from BOTTOM side (plastic body under the board), solder on top side"
+17,L1,1,Abracon,AOTA-B201610S3R3-101-T,"3.3uH - 3.3uH 2016 polarity-marked inductor (RP2350 VREG, orientation critical)",L_Abracon_AOTA-B201610,SMD,top,C42411119,Polarity-marked inductor: dot must match footprint pin 1 marking (RP2350 VREG requirement)
+18,"R1,R2",2,UNI-ROYAL,0402WGF5101TCE,5.1k - Thick-film resistor 5.1k 1% 62.5mW 0402,0402,SMD,top,C25905,
+19,"R3,R16,R19,R21,R22,R23,R24,R25,R26,R27,R28,R29",12,UNI-ROYAL,0402WGF1002TCE,10k - Thick-film resistor 10k 1% 62.5mW 0402,0402,SMD,top,C25744,
+20,R4,1,UNI-ROYAL,0402WGF1501TCE,1.5k - Thick-film resistor 1.5k 1% 62.5mW 0402,0402,SMD,top,C25867,
+21,R5,1,UNI-ROYAL,0402WGF2001TCE,2k - Thick-film resistor 2k 1% 62.5mW 0402,0402,SMD,top,C4109,
+22,"R6,R7,R10,R11",4,UNI-ROYAL,0402WGF1003TCE,100k - Thick-film resistor 100k 1% 62.5mW 0402,0402,SMD,top,C25741,
+23,"R8,R15,R18,R20,R32",5,UNI-ROYAL,0402WGF1001TCE,1k - Thick-film resistor 1k 1% 62.5mW 0402,0402,SMD,top,C11702,
+24,R9,1,UNI-ROYAL,0402WGF2003TCE,200k - Thick-film resistor 200k 1% 62.5mW 0402,0402,SMD,top,C25764,
+25,R12,1,UNI-ROYAL,0402WGF330JTCE,33R - Thick-film resistor 33R 1% 62.5mW 0402,0402,SMD,top,C25105,
+26,"R13,R14",2,UNI-ROYAL,0402WGF270JTCE,27R - Thick-film resistor 27R 1% 62.5mW 0402,0402,SMD,top,C25100,
+27,R17,1,UNI-ROYAL,0402WGF0000TCE,0R - Thick-film resistor 0R 1% 62.5mW 0402,0402,SMD,top,C17168,
+28,"R30,R31",2,UNI-ROYAL,0402WGF4701TCE,4.7k - Thick-film resistor 4.7k 1% 62.5mW 0402,0402,SMD,top,C25900,
+29,SW1,1,C&K,PTS810 SJM 250 SMTR LFS,BOOT - Tactile switch 4.2x3.2mm SMD (BOOTSEL),SW_SPST_PTS810,SMD,top,C116501,
+30,SW2,1,C&K,PTS810 SJM 250 SMTR LFS,RESET - Tactile switch 4.2x3.2mm SMD (RESET),SW_SPST_PTS810,SMD,top,C116501,
+31,U1,1,STMicroelectronics,USBLC6-2SC6,"USBLC6-2SC6 - USB 2.0 ESD protection, SOT-23-6",SOT-23-6,SMD,top,C7519,
+32,U2,1,Texas Instruments,BQ24074RGTR,"BQ24074RGTR - 1.5A single-cell Li-ion charger with DPPM power-path, VQFN-16",VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm,SMD,top,C54313,
+33,U3,1,Texas Instruments,TLV75733PDBVR,"TLV75733PDBVR - 1A 3.3V LDO, SOT-23-5",SOT-23-5,SMD,top,C485517,
+34,U4,1,Raspberry Pi,RP2350A,"RP2350A - RP2350A dual Cortex-M33/Hazard3 MCU, QFN-60 7x7",RP2350A_QFN60_RPi,SMD,top,C42411118,
+35,U5,1,Winbond,W25Q128JVSIQ,"W25Q128JVSIQ - 128Mbit (16MB) QSPI NOR flash, SOIC-8 208mil",SOIC-8_5.3mm_RPi,SMD,top,C97521,
+36,U6,1,AP Memory,APS6404L-3SQR-SN,"APS6404L-3SQR-SN - 64Mbit (8MB) QSPI PSRAM 3.3V, SOP-8",SOIC-8_3.9x4.9mm_P1.27mm,SMD,top,C5333729,
+37,U7,1,Espressif,ESP32-C6-MINI-1-N4,"ESP32-C6-MINI-1-N4 - Wi-Fi 6 / BLE 5 / 802.15.4 module, PCB antenna, 4MB flash",ESP32-C6-MINI-1_BoardEdge,SMD,top,C5736265,Module: no copper/parts under antenna; antenna overhangs board edge region
+38,Y1,1,Abracon,ABM8-272-T3,12MHz - 12MHz crystal 10pF 3.2x2.5 (RPi recommended),Crystal_3225_RPi,SMD,top,C20625731,

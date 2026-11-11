@@ -1,0 +1,26 @@
+model_provider = "vercel"
+model = "__MODEL__"
+model_reasoning_effort = "__EFFORT__"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+check_for_update_on_startup = false
+
+[model_providers.vercel]
+name = "Vercel AI Gateway"
+base_url = "https://ai-gateway.vercel.sh/codex/v1"
+env_key = "AI_GATEWAY_API_KEY"
+wire_api = "responses"
+http_headers = { "ai-reporting-tags" = "__RUN_ID__" }
+
+[agents]
+default_subagent_model = "__MODEL__"
+default_subagent_reasoning_effort = "__EFFORT__"
+
+[computer_use]
+default_app_access = "allow"
+
+[notice]
+hide_full_access_warning = true
+
+[projects."/Users/ec2-user/pcbbench-run"]
+trust_level = "trusted"

@@ -1,0 +1,2404 @@
+CMD: python /home/ubuntu/.sprocket/connectors/kicad/v0.2.0/routing-tools/py_router/route.py scratch/plane-escape.kicad_pcb scratch/plane-trial.kicad_pcb --quick 2 --layers F.Cu In1.Cu In2.Cu B.Cu --layer-costs 1 -1 -1 2 --grid-step .05 --via-size .5 --via-drill .2 --power-nets /CORE_1V1 /+3V3 --power-nets-widths .127 .127 --escalation off --strict-sizes --no-fix-drc-settings
+ENV KNOBS: KICAD_CLI=/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli
+--track-width not given; using the board Default net-class 0.127mm.
+--clearance not given; honoring net classes with base = the board Default net-class clearance 0.127mm.
+--hole-to-hole-clearance not given; using 0.25mm [board constraint].
+--board-edge-clearance not given; using 0.3mm [board constraint].
+Loading scratch/plane-escape.kicad_pcb to expand net patterns...
+Pattern '*' matched 75 nets
+Routing 75 nets: ['/+3V3', '/ADC0', '/ADC1', '/ADC2', '/ADC3']...
+Netclass clearances for 12 net(s), honored in full (no --clearance-ceiling) (mm: [0.127]); cross-class max(A,B) respected.
+Loading scratch/plane-escape.kicad_pcb...
+Auto-read netclass track widths for 12 non-Default net(s) (#435 single-ended companion).
+Using 4 routing layers: ['F.Cu', 'In1.Cu', 'In2.Cu', 'B.Cu']
+  Layer costs: F.Cu=1.0x, In1.Cu=-1.0x, In2.Cu=-1.0x, B.Cu=2.0x
+  Reapplying stored 90 ohm differential impedance widths to 4 net(s), coplanar gap 0.3mm (recorded in .kicad_pro by an earlier --impedance step)
+No BGA components detected - no exclusion zones needed
+
+Power net width assignments (2 nets):
+  0.127mm: /+3V3, /CORE_1V1
+
+Skipping 2 already-routed net(s): Already fully connected
+
+Using MPS ordering strategy...
+MPS: Using segment intersection method (no nets on BGA chips)
+MPS: 73 nets with 458 crossing conflicts detected
+MPS Round 1: 29 units: /VREG_LX, /XTAL_OUT, /BUCK_VINA, /CHG_ISET, /BUCK_L1, /BUCK_L2, /CHG_N, /CHG_TMR, /CC2, /RADIO_IO8, /BAT_TS, /BOOT_SWITCH, /VREG_AVDD, /SD_DAT1, /CORE_1V1, /RGB_DIN, /XOUT, /SD_DAT2, /CHG_ILIM, /USB_D_N, /PROG_TX, /USB_D_P, /PROG_RX, /QSPI_D0, /QSPI_D1, /RADIO_IO2, /GPIO24, /GPIO17, /GPIO18
+MPS Round 2: 12 units: /CC1, /VBUS, /QSPI_D2, /SYS, /RADIO_EN, /FLASH_CS, /SWDIO, /GPIO23, /GPIO22, /RADIO_CTRL, /GPIO1, /ADC0
+MPS Round 3: 8 units: /BAT, /QSPI_CLK, /SWCLK, /XIN, /USB_500_EN, /SD_DETECT, /SD_CS, /SD_CLK
+MPS Round 4: 6 units: /USB_PGOOD_N, /RUN, /QSPI_D3, /ADC3, /UART_RX, /UART_TX
+MPS Round 5: 5 units: /PSRAM_CS, /CHARGE_DISABLE, /ADC2, /ADC1, /UART_RTS
+MPS Round 6: 2 units: /+3V3, /SD_MISO
+MPS Round 7: 2 units: /RADIO_BOOT, /UART_CTS
+MPS Round 8: 2 units: /RGB_DATA, /SD_MOSI
+MPS Round 9: 1 units: /GND
+MPS Round 10: 1 units: /GAUGE_SDA
+MPS Round 11: 1 units: /GAUGE_SCL
+MPS Round 12: 1 units: /GPIO25
+MPS Round 13: 1 units: /GPIO19
+MPS Round 14: 1 units: /I2C_SDA
+MPS Round 15: 1 units: /I2C_SCL
+
+Routing 73 single-ended net(s)...
+============================================================
+Building base obstacle map...
+2 unprotected pre-existing net(s) registered as main-pass rip candidates (<=30 seg/<=6 via, custody-backed; KICAD_RIP_PREEXISTING=0 disables)
+Base obstacle map built in 0.04s
+Found 75 unrouted nets in PCB for stub proximity
+Pre-computing net obstacle cache...
+Net obstacle cache built in 0.12s (75 nets)
+History congestion (#590) armed: +0.1mm-equiv per contest, cap 0.5, escalate 0.0, rip weight 1.0 (radius +0.25mm), frontier weight 0.25
+
+[1/73] Routing /VREG_LX (id=69)
+Neck-down at 0.1270mm rejected: path 4.2mm exceeds the 2mm pad-entry allowance
+Neck-down refused (--escalation off): the edge spans 1.91mm and only a 0.1270mm track reaches it, but no route keeps 0.5000mm outside the 2mm pad-entry allowance
+forward stuck (4 < 5000), backward=5000  [x2]
+  forward cell (1140, 982, layer=0): ok, 8/8 neighbors blocked (margin=7)  [x2]
+    Blocking obstacles: /MCU_USB_N(2 track), /+3V3(1 track, 1 pad), /GND(1 track, 1 pad), /VREG_AVDD(1 track)  [x2]
+forward stuck (18 < 5000), backward=5000
+  forward cell (1140, 982, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_N(2 track), /+3V3(1 track, 1 pad), /GND(1 track, 1 pad)
+No route found after 16304 iterations (both directions)
+  FAILED: Could not find route (0.16s)
+  Forward direction failed fastest (4 iterations, 22 blocked cells)
+  Frontier blocked by 1 nets (3 cells, 3 unique; near: 3 src, 3 tgt)
+  Coverage: 3/22 frontier cells attributed to routed nets; 19 static/unrippable
+  Top blockers:
+    1. /MCU_USB_N: 3 (100.0%), 3 uniq (100%), near: 3 src, 3 tgt
+  Via-in-pad decline blamed PRE-EXISTING net(s) '/+3V3' - not rippable this run; retry with --rip-existing-nets to authorize
+  Ripping up /MCU_USB_N to retry...
+      PRE-EXISTING rip: '/MCU_USB_N' (earlier-step copper) removed -- queued for reroute this run; original restored if the reroute fails
+    Ripped /MCU_USB_N
+forward stuck (4 < 5000), backward=5000
+  forward cell (1140, 982, layer=0): ok, 8/8 neighbors blocked (margin=7)
+    Blocking obstacles: /+3V3(1 track, 1 pad), /GND(1 track, 1 pad), /VREG_AVDD(1 track)
+Neck-down at 0.2500mm rejected: path 2.1mm exceeds the 2mm pad-entry allowance
+Neck-down at 0.1270mm rejected: path 2.1mm exceeds the 2mm pad-entry allowance
+forward stuck (4 < 5000), backward=5000
+  forward cell (1140, 982, layer=0): ok, 8/8 neighbors blocked (margin=7)
+    Blocking obstacles: /+3V3(1 track, 1 pad), /GND(1 track, 1 pad), /VREG_AVDD(1 track)
+Wide power route blocked - kept at 0.5000mm with a pad-entry neck to 0.1270mm (at most the 2mm pad-entry allowance, --escalation off)
+Route found in 10344 iterations, path length: 41
+  RETRY SUCCESS (N=1): 16 segments, 0 vias, length=2.37mm
+
+[2/73 (1 ripped)] Routing /XTAL_OUT (id=53)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=5.23mm)
+  Phase 1 routed in 319 iterations, 19 segments
+  SUCCESS: 19 segments, 0 vias, 319 iterations, length=4.95mm (stubs=0.00mm) (0.01s)
+
+[3/73 (1 ripped)] Routing /BUCK_VINA (id=48)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 2, length=2.83mm)
+  Phase 1 routed in 37 iterations, 4 segments
+  SUCCESS: 4 segments, 0 vias, 37 iterations, length=2.24mm (stubs=0.00mm) (0.01s)
+
+[4/73 (1 ripped)] Routing /CHG_ISET (id=37)
+  SUCCESS: 5 segments, 0 vias, 119 iterations, length=3.39mm (stubs=0.00mm) (0.01s)
+
+[5/73 (1 ripped)] Routing /BUCK_L1 (id=47)
+Wide power route blocked - kept at 0.5000mm with a pad-entry neck to 0.1270mm (at most the 2mm pad-entry allowance, --escalation off)
+  SUCCESS: 10 segments, 0 vias, 10086 iterations, length=3.72mm (stubs=0.00mm) (0.06s)
+
+[6/73 (1 ripped)] Routing /BUCK_L2 (id=46)
+Wide power route blocked - kept at 0.5000mm with a pad-entry neck to 0.1270mm (at most the 2mm pad-entry allowance, --escalation off)
+  SUCCESS: 11 segments, 0 vias, 10088 iterations, length=3.89mm (stubs=0.00mm) (0.06s)
+
+[7/73 (1 ripped)] Routing /CHG_N (id=33)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=12.81mm)
+  Phase 1 routed in 169 iterations, 9 segments
+  SUCCESS: 9 segments, 0 vias, 169 iterations, length=10.18mm (stubs=0.00mm) (0.01s)
+
+[8/73 (1 ripped)] Routing /CHG_TMR (id=35)
+  SUCCESS: 6 segments, 0 vias, 80 iterations, length=4.43mm (stubs=0.00mm) (0.01s)
+
+[9/73 (1 ripped)] Routing /CC2 (id=84)
+  SUCCESS: 17 segments, 0 vias, 32759 iterations, length=13.83mm (stubs=0.00mm) (0.01s)
+
+[10/73 (1 ripped)] Routing /RADIO_IO8 (id=7)
+  SUCCESS: 5 segments, 0 vias, 106 iterations, length=5.77mm (stubs=0.00mm) (0.01s)
+
+[11/73 (1 ripped)] Routing /BAT_TS (id=20)
+  SUCCESS: 16 segments, 0 vias, 43661 iterations, length=18.46mm (stubs=0.00mm) (0.02s)
+
+[12/73 (1 ripped)] Routing /BOOT_SWITCH (id=86)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 2, length=6.30mm)
+  Phase 1 routed in 127 iterations, 1 segments
+  SUCCESS: 1 segments, 0 vias, 127 iterations, length=6.30mm (stubs=0.00mm) (0.01s)
+
+[13/73 (1 ripped)] Routing /VREG_AVDD (id=19)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=7.78mm)
+  Phase 1 routed in 101 iterations, 9 segments
+  SUCCESS: 9 segments, 0 vias, 101 iterations, length=6.76mm (stubs=0.80mm) (0.01s)
+
+[14/73 (1 ripped)] Routing /SD_DAT1 (id=44)
+  SUCCESS: 8 segments, 0 vias, 409 iterations, length=7.78mm (stubs=0.00mm) (0.01s)
+
+[15/73 (1 ripped)] Routing /CORE_1V1 (id=24)
+  Detected multi-point net with 11 pads (Phase 1: main route only)
+  Existing copper joins 11 terminals into 9 group(s)
+  POUR-LAUNCH v3: +96 region-laddered target(s) across 1 component(s) (phase 1)
+  Multi-point net Phase 1: routing longest MST edge (pads 7 and 10, length=6.73mm)
+  Phase 1 routed in 978 iterations, 3 segments
+  SUCCESS: 3 segments, 1 vias, 978 iterations, length=7.33mm (stubs=5.18mm) (0.05s)
+
+[16/73 (1 ripped)] Routing /RGB_DIN (id=51)
+  SUCCESS: 4 segments, 0 vias, 159 iterations, length=8.66mm (stubs=0.00mm) (0.01s)
+
+[17/73 (1 ripped)] Routing /XOUT (id=78)
+  SUCCESS: 6 segments, 0 vias, 198 iterations, length=9.94mm (stubs=1.05mm) (0.01s)
+    stub-debris trim: 0 unused stub segment(s), 1 dangling via(s) freed
+
+[18/73 (1 ripped)] Routing /SD_DAT2 (id=41)
+  SUCCESS: 8 segments, 0 vias, 143 iterations, length=9.56mm (stubs=0.00mm) (0.01s)
+
+[19/73 (1 ripped)] Routing /CHG_ILIM (id=34)
+  SUCCESS: 7 segments, 2 vias, 20235 iterations, length=12.97mm (stubs=0.00mm) (0.01s)
+
+[20/73 (1 ripped)] Routing /USB_D_N (id=25)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=6.76mm)
+  Phase 1 routed in 225 iterations, 4 segments
+  SUCCESS: 4 segments, 0 vias, 225 iterations, length=28.99mm (stubs=27.35mm) (0.01s)
+
+[21/73 (1 ripped)] Routing /PROG_TX (id=12)
+  SUCCESS: 25 segments, 0 vias, 2517 iterations, length=12.31mm (stubs=0.00mm) (0.01s)
+
+[22/73 (1 ripped)] Routing /USB_D_P (id=26)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=8.16mm)
+  Phase 1 routed in 445 iterations, 8 segments
+  SUCCESS: 8 segments, 0 vias, 445 iterations, length=29.87mm (stubs=27.30mm) (0.02s)
+
+[23/73 (1 ripped)] Routing /PROG_RX (id=11)
+  SUCCESS: 49 segments, 0 vias, 1366 iterations, length=13.87mm (stubs=0.00mm) (0.01s)
+
+[24/73 (1 ripped)] Routing /QSPI_D0 (id=73)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 2, length=12.89mm)
+  Phase 1 routed in 346 iterations, 8 segments
+  SUCCESS: 8 segments, 0 vias, 346 iterations, length=14.44mm (stubs=1.05mm) (0.01s)
+
+[25/73 (1 ripped)] Routing /QSPI_D1 (id=71)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=19.57mm)
+  Phase 1 routed in 22476 iterations, 35 segments
+  SUCCESS: 35 segments, 0 vias, 22476 iterations, length=22.94mm (stubs=0.80mm) (0.01s)
+
+[26/73 (1 ripped)] Routing /RADIO_IO2 (id=16)
+  SUCCESS: 12 segments, 0 vias, 504 iterations, length=27.21mm (stubs=0.00mm) (0.01s)
+
+[27/73 (1 ripped)] Routing /GPIO24 (id=63)
+  SUCCESS: 29 segments, 0 vias, 22753 iterations, length=29.34mm (stubs=1.05mm) (0.01s)
+
+[28/73 (1 ripped)] Routing /GPIO17 (id=58)
+  SUCCESS: 11 segments, 0 vias, 590 iterations, length=26.85mm (stubs=1.05mm) (0.01s)
+    stub-debris trim: 0 unused stub segment(s), 1 dangling via(s) freed
+
+[29/73 (1 ripped)] Routing /GPIO18 (id=59)
+  SUCCESS: 59 segments, 0 vias, 647 iterations, length=30.58mm (stubs=1.05mm) (0.01s)
+    stub-debris trim: 0 unused stub segment(s), 1 dangling via(s) freed
+
+[30/73 (1 ripped)] Routing /CC1 (id=49)
+  SUCCESS: 10 segments, 0 vias, 73153 iterations, length=16.70mm (stubs=0.00mm) (0.03s)
+
+[31/73 (1 ripped)] Routing /VBUS (id=22)
+  Detected multi-point net with 8 pads (Phase 1: main route only)
+  Existing copper joins 8 terminals into 6 group(s)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 5, length=15.61mm)
+  Phase 1 routed in 44942 iterations, 7 segments
+  SUCCESS: 7 segments, 2 vias, 44942 iterations, length=15.96mm (stubs=0.00mm) (0.29s)
+
+[32/73 (1 ripped)] Routing /QSPI_D2 (id=72)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 2 and 1, length=18.99mm)
+  Phase 1 routed in 186375 iterations, 47 segments
+  SUCCESS: 47 segments, 2 vias, 186375 iterations, length=26.18mm (stubs=0.45mm) (0.06s)
+
+[33/73 (1 ripped)] Routing /SYS (id=29)
+  Detected multi-point net with 8 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 5 and 4, length=16.21mm)
+  Neck-down refused (--escalation off): the edge spans 15.76mm and only a 0.1270mm track reaches it, but no route keeps 0.5000mm outside the 2mm pad-entry allowance
+  Via-in-pad unblock: dropped 2 fab-floor via(s) to reach a boxed endpoint
+  Phase 1 routed in 1865 iterations, 4 segments
+  SUCCESS: 4 segments, 2 vias, 1865 iterations, length=19.37mm (stubs=0.00mm) (0.17s)
+
+[34/73 (1 ripped)] Routing /RADIO_EN (id=2)
+  Detected multi-point net with 5 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 2 and 4, length=34.40mm)
+  Phase 1 routed in 17276 iterations, 7 segments
+  SUCCESS: 7 segments, 0 vias, 17276 iterations, length=29.38mm (stubs=0.00mm) (0.02s)
+
+[35/73 (1 ripped)] Routing /FLASH_CS (id=27)
+  Detected multi-point net with 4 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 3, length=16.77mm)
+  Phase 1 routed in 193 iterations, 3 segments
+  SUCCESS: 3 segments, 0 vias, 193 iterations, length=13.64mm (stubs=1.05mm) (0.01s)
+
+[36/73 (1 ripped)] Routing /SWDIO (id=76)
+  SUCCESS: 5 segments, 0 vias, 2199 iterations, length=18.33mm (stubs=1.05mm) (0.01s)
+
+[37/73 (1 ripped)] Routing /GPIO23 (id=62)
+  SUCCESS: 66 segments, 0 vias, 969 iterations, length=32.31mm (stubs=3.75mm) (0.01s)
+    stub-debris trim: 0 unused stub segment(s), 1 dangling via(s) freed
+
+[38/73 (1 ripped)] Routing /GPIO22 (id=61)
+  SUCCESS: 22 segments, 0 vias, 88726 iterations, length=36.37mm (stubs=1.05mm) (0.03s)
+
+[39/73 (1 ripped)] Routing /RADIO_CTRL (id=79)
+  SUCCESS: 18 segments, 1 vias, 19804 iterations, length=34.17mm (stubs=1.05mm) (0.01s)
+
+[40/73 (1 ripped)] Routing /GPIO1 (id=56)
+  SUCCESS: 45 segments, 0 vias, 1302 iterations, length=35.69mm (stubs=1.05mm) (0.01s)
+    stub-debris trim: 0 unused stub segment(s), 1 dangling via(s) freed
+
+[41/73 (1 ripped)] Routing /ADC0 (id=57)
+  SUCCESS: 71 segments, 1 vias, 68914 iterations, length=43.40mm (stubs=1.05mm) (0.03s)
+
+[42/73 (1 ripped)] Routing /BAT (id=28)
+  Detected multi-point net with 8 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=27.45mm)
+  Phase 1 routed in 5734 iterations, 50 segments
+  SUCCESS: 50 segments, 0 vias, 5734 iterations, length=27.48mm (stubs=0.00mm) (0.04s)
+
+[43/73 (1 ripped)] Routing /QSPI_CLK (id=74)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 2, length=12.89mm)
+  Phase 1 routed in 341 iterations, 8 segments
+  SUCCESS: 8 segments, 0 vias, 341 iterations, length=14.35mm (stubs=0.94mm) (0.01s)
+
+[44/73 (1 ripped)] Routing /SWCLK (id=77)
+  SUCCESS: 10 segments, 1 vias, 147591 iterations, length=25.37mm (stubs=0.80mm) (0.05s)
+    stub-debris trim: 0 unused stub segment(s), 1 dangling via(s) freed
+
+[45/73 (1 ripped)] Routing /XIN (id=52)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 2, length=20.58mm)
+  Phase 1 routed in 6364 iterations, 15 segments
+  SUCCESS: 15 segments, 1 vias, 6364 iterations, length=19.21mm (stubs=1.05mm) (0.01s)
+
+[46/73 (1 ripped)] Routing /USB_500_EN (id=23)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=26.33mm)
+  Phase 1 routed in 206429 iterations, 18 segments
+  SUCCESS: 18 segments, 1 vias, 206429 iterations, length=29.10mm (stubs=1.05mm) (0.06s)
+
+[47/73 (1 ripped)] Routing /SD_DETECT (id=45)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=28.97mm)
+  Phase 1 routed in 41009 iterations, 27 segments
+  SUCCESS: 27 segments, 1 vias, 41009 iterations, length=40.10mm (stubs=1.05mm) (0.02s)
+
+[48/73 (1 ripped)] Routing /SD_CS (id=40)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=28.57mm)
+  Phase 1 routed in 34795 iterations, 36 segments
+  SUCCESS: 36 segments, 1 vias, 34795 iterations, length=37.41mm (stubs=1.05mm) (0.02s)
+
+[49/73 (1 ripped)] Routing /SD_CLK (id=43)
+  SUCCESS: 35 segments, 1 vias, 1014362 iterations, length=55.28mm (stubs=1.05mm) (0.35s)
+
+[50/73 (1 ripped)] Routing /USB_PGOOD_N (id=32)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=13.69mm)
+  Phase 1 routed in 25328 iterations, 21 segments
+  SUCCESS: 21 segments, 0 vias, 25328 iterations, length=19.36mm (stubs=0.00mm) (0.02s)
+
+[51/73 (1 ripped)] Routing /RUN (id=68)
+  Detected multi-point net with 5 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 4 and 3, length=20.19mm)
+  Phase 1 edge (pads 4,3) failed after 5510 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/4) (pads 2 and 4, length=10.22mm)
+  Phase 1 edge (pads 2,4) failed after 5502 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (3/4) (pads 0 and 1, length=6.30mm)
+  Phase 1 routed in 11139 iterations, 6 segments
+  SUCCESS: 6 segments, 0 vias, 11139 iterations, length=7.87mm (stubs=1.08mm) (0.05s)
+
+[52/73 (1 ripped)] Routing /QSPI_D3 (id=75)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=15.85mm)
+  Phase 1 edge (pads 0,1) failed after 615383 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/2) (pads 0 and 2, length=12.89mm)
+  Phase 1 routed in 615731 iterations, 10 segments
+  SUCCESS: 10 segments, 0 vias, 615731 iterations, length=14.45mm (stubs=1.05mm) (0.18s)
+
+[53/73 (1 ripped)] Routing /ADC3 (id=67)
+  SUCCESS: 21 segments, 0 vias, 22669 iterations, length=31.16mm (stubs=1.05mm) (0.02s)
+
+[54/73 (1 ripped)] Routing /UART_RX (id=6)
+forward stuck (228 < 5000), backward=5000
+  forward cell (1050, 1141, layer=0): ok, 6/8 neighbors blocked
+    Blocking obstacles: /UART_TX(2 track, 1 pad), /UART_CTS(1 track)
+No route found after 5228 iterations (both directions)
+  FAILED: Could not find route (0.03s)
+  Forward direction failed fastest (228 iterations, 115 blocked cells)
+  Frontier blocked by 1 nets (15 cells, 15 unique; near: 15 src, 0 tgt)
+  Coverage: 15/115 frontier cells attributed to routed nets; 100 static/unrippable
+  Top blockers:
+    1. /USB_500_EN: 15 (100.0%), 15 uniq (100%), near: 15 src, 0 tgt
+  Via-in-pad decline blamed PRE-EXISTING net(s) '/UART_CTS' - not rippable this run; retry with --rip-existing-nets to authorize
+  Ripping up /USB_500_EN to retry...
+    Ripped /USB_500_EN
+forward stuck (228 < 5000), backward=5000
+  forward cell (1050, 1141, layer=0): ok, 6/8 neighbors blocked
+    Blocking obstacles: /UART_TX(2 track, 1 pad), /UART_CTS(1 track)
+No route found after 5228 iterations (both directions)
+  RETRY FAILED (N=1)
+    Retry had 522 blocked cells
+  Re-analyzing 522 blocked cells from N=1 retry:
+    Frontier blocked by 3 nets (129 cells, 129 unique)
+    Coverage: 129/522 frontier cells attributed to routed nets; 393 static/unrippable
+    Top blockers:
+      1. /SD_CLK: 73 (56.6%), 73 uniq (100%)
+      2. /VREG_AVDD: 45 (34.9%), 45 uniq (100%)
+      3. /RADIO_CTRL: 11 (8.5%), 11 uniq (100%)
+  Slot-0 guard: re-analysis refutes /USB_500_EN -> retrying /SD_CLK ALONE first
+  Ripping up /SD_CLK to retry...
+    Ripped /SD_CLK
+forward stuck (228 < 5000), backward=5000
+  forward cell (1050, 1141, layer=0): ok, 6/8 neighbors blocked
+    Blocking obstacles: /UART_TX(2 track, 1 pad), /UART_CTS(1 track)
+No route found after 5228 iterations (both directions)
+  RETRY FAILED (N=1)
+    Retry had 528 blocked cells
+  Re-analyzing 528 blocked cells from N=1 retry:
+    Frontier blocked by 4 nets (151 cells, 151 unique; near: 15 src, 0 tgt)
+    Coverage: 151/528 frontier cells attributed to routed nets; 377 static/unrippable
+    Top blockers:
+      1. /SD_CS: 66 (43.7%), 66 uniq (100%)
+      2. /VREG_AVDD: 59 (39.1%), 59 uniq (100%)
+      3. /USB_500_EN: 15 (9.9%), 15 uniq (100%), near: 15 src, 0 tgt
+      4. /RADIO_CTRL: 11 (7.3%), 11 uniq (100%)
+  Extending to N=2: ripping /SD_CS...
+    Ripped /SD_CS
+forward stuck (228 < 5000), backward=5000
+  forward cell (1050, 1141, layer=0): ok, 6/8 neighbors blocked
+    Blocking obstacles: /UART_TX(2 track, 1 pad), /UART_CTS(1 track)
+No route found after 5228 iterations (both directions)
+  RETRY FAILED (N=2)
+    Retry had 532 blocked cells
+  Re-analyzing 532 blocked cells from N=2 retry:
+    Frontier blocked by 4 nets (146 cells, 146 unique; near: 15 src, 0 tgt)
+    Coverage: 146/532 frontier cells attributed to routed nets; 386 static/unrippable
+    Top blockers:
+      1. /VREG_AVDD: 81 (55.5%), 81 uniq (100%)
+      2. /SD_DETECT: 39 (26.7%), 39 uniq (100%)
+      3. /USB_500_EN: 15 (10.3%), 15 uniq (100%), near: 15 src, 0 tgt
+      4. /RADIO_CTRL: 11 (7.5%), 11 uniq (100%)
+  Extending to N=3: ripping /VREG_AVDD...
+    Ripped /VREG_AVDD
+forward stuck (228 < 5000), backward=5000
+  forward cell (1050, 1141, layer=0): ok, 6/8 neighbors blocked
+    Blocking obstacles: /UART_TX(2 track, 1 pad), /UART_CTS(1 track)
+No route found after 5228 iterations (both directions)
+  RETRY FAILED (N=3)
+    Retry had 461 blocked cells
+  All rip-up attempts failed: Restoring 3 net(s)
+  ROUTE FAILED - ripping 3 blocker net(s) (/SD_CLK, /SD_CS, /VREG_AVDD) did not free a path
+  Hint: the blocking copper belongs to 3 pre-existing net(s) committed by an earlier run/step; 3 of them this run may not rip. Retry with --rip-existing-nets '/UART_CTS' '/UART_TX' '/UART_RTS' to rip and re-route them in this run (issue #103) -- the decisive blocker may be any of them, so start with the full set (each ripped net is re-routed and the run reports honestly if one cannot be), then bisect if you want a minimal rip. A rip lifts their tracks and vias only; their pads stay. If pads wall the failed pad, no rip frees it: check the pad first with py_tools/check_reachability.py <board> --pad <REF.PAD>, which sets the routing aside -- CAGED there is placement, not copper.
+
+[55/73 (1 failed) (1 ripped)] Routing /UART_TX (id=5)
+  SUCCESS: 8 segments, 1 vias, 156089 iterations, length=51.85mm (stubs=1.05mm) (0.05s)
+
+[56/73 (1 failed) (1 ripped)] Routing /PSRAM_CS (id=70)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=23.43mm)
+  Phase 1 routed in 136260 iterations, 11 segments
+  SUCCESS: 11 segments, 2 vias, 136260 iterations, length=26.91mm (stubs=1.05mm) (0.04s)
+
+[57/73 (1 failed) (1 ripped)] Routing /CHARGE_DISABLE (id=31)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=28.12mm)
+  Phase 1 routed in 165930 iterations, 25 segments
+  SUCCESS: 25 segments, 2 vias, 165930 iterations, length=29.54mm (stubs=1.05mm) (0.06s)
+
+[58/73 (1 failed) (1 ripped)] Routing /ADC2 (id=66)
+  SUCCESS: 8 segments, 1 vias, 83334 iterations, length=30.74mm (stubs=1.05mm) (0.03s)
+
+[59/73 (1 failed) (1 ripped)] Routing /ADC1 (id=65)
+forward stuck (2103 < 5000), backward=5000
+  forward cell (1148, 1036, layer=0): ok, 0/8 neighbors blocked
+No route found after 7103 iterations (both directions)
+  FAILED: Could not find route (0.04s)
+  Forward direction failed fastest (2103 iterations, 576 blocked cells)
+  Frontier blocked by 7 nets (292 cells, 292 unique; near: 292 src, 0 tgt)
+  Coverage: 292/576 frontier cells attributed to routed nets; 284 static/unrippable
+  Top blockers:
+    1. /ADC3: 76 (26.0%), 76 uniq (100%), near: 76 src, 0 tgt
+    2. /CORE_1V1: 66 (22.6%), 66 uniq (100%), near: 66 src, 0 tgt
+    3. /RADIO_CTRL: 59 (20.2%), 59 uniq (100%), near: 59 src, 0 tgt
+    4. /GPIO22: 31 (10.6%), 31 uniq (100%), near: 31 src, 0 tgt
+    5. /GPIO24: 24 (8.2%), 24 uniq (100%), near: 24 src, 0 tgt
+    6. /ADC0: 18 (6.2%), 18 uniq (100%), near: 18 src, 0 tgt
+    7. /ADC2: 18 (6.2%), 18 uniq (100%), near: 18 src, 0 tgt
+  Ripping up /ADC3 to retry...
+    Ripped /ADC3
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 23769 iterations, path length: 525
+  RETRY SUCCESS (N=1): 9 segments, 0 vias, length=29.45mm
+
+[60/73 (1 failed) (2 ripped)] Routing /UART_RTS (id=4)
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 7395 iterations (forward), trying backward...
+dynamic iterations (#529): search extended to 600000 (base 200000)
+No route found after 617395 iterations (both directions)
+  FAILED: Could not find route (0.21s)
+  Forward direction failed fastest (12395 iterations, 701 blocked cells)
+  Frontier blocked by 6 nets (384 cells, 384 unique; near: 228 src, 0 tgt)
+  Coverage: 384/701 frontier cells attributed to routed nets; 317 static/unrippable
+  Top blockers:
+    1. /SD_DETECT: 139 (36.2%), 139 uniq (100%), near: 77 src, 0 tgt
+    2. /RADIO_CTRL: 105 (27.3%), 105 uniq (100%), near: 11 src, 0 tgt
+    3. /XIN: 59 (15.4%), 59 uniq (100%), near: 59 src, 0 tgt
+    4. /CORE_1V1: 28 (7.3%), 28 uniq (100%), near: 28 src, 0 tgt
+    5. /SWDIO: 28 (7.3%), 28 uniq (100%), near: 28 src, 0 tgt
+    6. /USB_500_EN: 25 (6.5%), 25 uniq (100%), near: 25 src, 0 tgt
+  Ripping up /SD_DETECT to retry...
+    Ripped /SD_DETECT
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 36568 iterations, path length: 778
+  RETRY SUCCESS (N=1): 58 segments, 1 vias, length=50.65mm
+
+[61/73 (1 failed) (3 ripped)] Routing /+3V3 (id=1)
+  Detected multi-point net with 62 pads (Phase 1: main route only)
+  Existing copper joins 62 terminals into 49 group(s)
+  POUR-LAUNCH v3: +563 region-laddered target(s) across 1 component(s) (phase 1)
+  Multi-point net Phase 1: routing longest MST edge (pads 54 and 53, length=15.88mm)
+  Phase 1 routed in 91461 iterations, 29 segments
+  SUCCESS: 29 segments, 2 vias, 91461 iterations, length=32.46mm (stubs=8.40mm) (0.21s)
+
+[62/73 (1 failed) (3 ripped)] Routing /SD_MISO (id=38)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=34.82mm)
+  Phase 1 edge (pads 0,1) failed after 410000 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/2) (pads 1 and 2, length=10.28mm)
+  Phase 1 routed in 486299 iterations, 12 segments
+  SUCCESS: 12 segments, 2 vias, 486299 iterations, length=12.69mm (stubs=0.80mm) (0.16s)
+
+[63/73 (1 failed) (3 ripped)] Routing /RADIO_BOOT (id=8)
+  Detected multi-point net with 5 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 3, length=79.67mm)
+  Phase 1 routed in 479065 iterations, 75 segments
+  SUCCESS: 75 segments, 2 vias, 479065 iterations, length=74.46mm (stubs=0.00mm) (0.15s)
+
+[64/73 (1 failed) (3 ripped)] Routing /UART_CTS (id=3)
+  SUCCESS: 26 segments, 2 vias, 161876 iterations, length=61.71mm (stubs=0.98mm) (0.05s)
+    stub-debris trim: 1 unused stub segment(s), 0 dangling via(s) freed
+
+[65/73 (1 failed) (3 ripped)] Routing /RGB_DATA (id=50)
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 200000 iterations (forward), trying backward...
+dynamic iterations (#529): search extended to 400000 (base 200000)
+No route found after 610000 iterations (both directions)
+  FAILED: Could not find route (0.20s)
+  Forward direction failed fastest (205000 iterations, 7222 blocked cells)
+  Frontier blocked by 19 nets (5093 cells, 5093 unique; near: 973 src, 0 tgt)
+  Coverage: 5093/7222 frontier cells attributed to routed nets; 2129 static/unrippable
+  Top blockers:
+    1. /XIN: 653 (12.8%), 653 uniq (100%), near: 187 src, 0 tgt
+    2. /GPIO1: 645 (12.7%), 645 uniq (100%), near: 54 src, 0 tgt
+    3. /UART_CTS: 441 (8.7%), 441 uniq (100%), near: 140 src, 0 tgt
+    4. /GPIO18: 429 (8.4%), 429 uniq (100%)
+    5. /USB_500_EN: 407 (8.0%), 407 uniq (100%), near: 92 src, 0 tgt
+    6. /GPIO17: 402 (7.9%), 402 uniq (100%)
+    7. /SWCLK: 335 (6.6%), 335 uniq (100%)
+    8. /SWDIO: 320 (6.3%), 320 uniq (100%)
+    9. /XOUT: 309 (6.1%), 309 uniq (100%)
+    10. /CHARGE_DISABLE: 294 (5.8%), 294 uniq (100%), near: 140 src, 0 tgt
+    ... and 9 more nets (858 cells)
+  Ripping up /XIN to retry...
+    Ripped /XIN
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 200000 iterations (forward), trying backward...
+dynamic iterations (#529): search extended to 400000 (base 200000)
+No route found after 610000 iterations (both directions)
+  RETRY FAILED (N=1)
+    Retry had 17211 blocked cells
+  Re-analyzing 17211 blocked cells from N=1 retry:
+    Frontier blocked by 28 nets (11248 cells, 11248 unique; near: 854 src, 252 tgt)
+    Coverage: 11248/17211 frontier cells attributed to routed nets; 5963 static/unrippable
+    Top blockers:
+      1. /RADIO_BOOT: 1120 (10.0%), 1120 uniq (100%), near: 0 src, 85 tgt
+      2. /ADC2: 1115 (9.9%), 1115 uniq (100%), near: 0 src, 113 tgt
+      3. /SD_CS: 822 (7.3%), 822 uniq (100%)
+      4. /ADC1: 798 (7.1%), 798 uniq (100%)
+      5. /GPIO1: 670 (6.0%), 670 uniq (100%), near: 54 src, 0 tgt
+      6. /SD_CLK: 600 (5.3%), 600 uniq (100%), near: 70 src, 0 tgt
+      7. /GPIO17: 568 (5.0%), 568 uniq (100%)
+      8. /SWDIO: 523 (4.6%), 523 uniq (100%)
+      9. /GPIO18: 465 (4.1%), 465 uniq (100%)
+      10. /SWCLK: 461 (4.1%), 461 uniq (100%)
+      ... and 18 more nets (4106 cells)
+  Slot-0 guard: re-analysis refutes /XIN -> retrying /RADIO_BOOT ALONE first
+  Ripping up /RADIO_BOOT to retry...
+    Ripped /RADIO_BOOT
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 200000 iterations (forward), trying backward...
+No route found after 410000 iterations (both directions)
+  RETRY FAILED (N=1)
+    Retry had 12239 blocked cells
+  Re-analyzing 12239 blocked cells from N=1 retry:
+    Frontier blocked by 27 nets (8298 cells, 8298 unique; near: 973 src, 184 tgt)
+    Coverage: 8298/12239 frontier cells attributed to routed nets; 3941 static/unrippable
+    Top blockers:
+      1. /ADC2: 757 (9.1%), 757 uniq (100%), near: 0 src, 126 tgt
+      2. /XIN: 653 (7.9%), 653 uniq (100%), near: 187 src, 0 tgt
+      3. /GPIO1: 643 (7.7%), 643 uniq (100%), near: 54 src, 0 tgt
+      4. /ADC1: 535 (6.4%), 535 uniq (100%)
+      5. /ADC0: 465 (5.6%), 465 uniq (100%)
+      6. /SWDIO: 457 (5.5%), 457 uniq (100%)
+      7. /UART_CTS: 441 (5.3%), 441 uniq (100%), near: 140 src, 0 tgt
+      8. /GPIO18: 429 (5.2%), 429 uniq (100%)
+      9. /USB_500_EN: 407 (4.9%), 407 uniq (100%), near: 92 src, 0 tgt
+      10. /GPIO17: 402 (4.8%), 402 uniq (100%)
+      ... and 17 more nets (3109 cells)
+  Extending to N=2: ripping /ADC2...
+    Ripped /ADC2
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 200000 iterations (forward), trying backward...
+No route found after 410000 iterations (both directions)
+  RETRY FAILED (N=2)
+    Retry had 11569 blocked cells
+  Re-analyzing 11569 blocked cells from N=2 retry:
+    Frontier blocked by 26 nets (7636 cells, 7636 unique; near: 973 src, 58 tgt)
+    Coverage: 7636/11569 frontier cells attributed to routed nets; 3933 static/unrippable
+    Top blockers:
+      1. /XIN: 653 (8.6%), 653 uniq (100%), near: 187 src, 0 tgt
+      2. /GPIO1: 643 (8.4%), 643 uniq (100%), near: 54 src, 0 tgt
+      3. /ADC0: 587 (7.7%), 587 uniq (100%)
+      4. /ADC1: 535 (7.0%), 535 uniq (100%)
+      5. /SWDIO: 453 (5.9%), 453 uniq (100%)
+      6. /UART_CTS: 441 (5.8%), 441 uniq (100%), near: 140 src, 0 tgt
+      7. /GPIO18: 429 (5.6%), 429 uniq (100%)
+      8. /USB_500_EN: 407 (5.3%), 407 uniq (100%), near: 92 src, 0 tgt
+      9. /GPIO17: 402 (5.3%), 402 uniq (100%)
+      10. /GPIO23: 390 (5.1%), 390 uniq (100%)
+      ... and 16 more nets (2696 cells)
+  Extending to N=3: ripping /XIN...
+    Ripped /XIN
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 200000 iterations (forward), trying backward...
+No route found after 410000 iterations (both directions)
+  RETRY FAILED (N=3)
+    Retry had 11469 blocked cells
+  All rip-up attempts failed: Restoring 3 net(s)
+  ROUTE FAILED - ripping 3 blocker net(s) (/RADIO_BOOT, /ADC2, /XIN) did not free a path
+  Hint: the blocking copper belongs to 1 pre-existing net(s) committed by an earlier run/step; 1 of them this run may not rip. Retry with --rip-existing-nets '/SD_DETECT' to rip and re-route them in this run (issue #103) -- the decisive blocker may be any of them, so start with the full set (each ripped net is re-routed and the run reports honestly if one cannot be), then bisect if you want a minimal rip.  [rationale as above]
+
+[66/73 (2 failed) (3 ripped)] Routing /SD_MOSI (id=42)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=29.77mm)
+  Phase 1 edge (pads 0,1) failed after 216424 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/2) (pads 1 and 2, length=16.68mm)
+  Phase 1 routed in 304465 iterations, 18 segments
+  SUCCESS: 18 segments, 2 vias, 304465 iterations, length=17.73mm (stubs=1.05mm) (0.11s)
+
+[67/73 (2 failed) (3 ripped)] Routing /GND (id=9)
+  Detected multi-point net with 103 pads (Phase 1: main route only)
+  Existing copper joins 103 terminals into 15 group(s)
+  POUR-LAUNCH v3: +2715 region-laddered target(s) across 14 component(s) (phase 1)
+  Multi-point net Phase 1: routing longest MST edge (pads 78 and 77, length=7.32mm)
+      barrel-in-fill: weld complete at via (77.05,28.35); trimmed 1 tail node(s)
+  Phase 1 routed in 34399 iterations, 4 segments
+  SUCCESS: 4 segments, 2 vias, 34399 iterations, length=5.65mm (stubs=0.45mm) (2.94s)
+
+[68/73 (2 failed) (3 ripped)] Routing /GAUGE_SDA (id=55)
+  Detected multi-point net with 4 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 3, length=26.22mm)
+  Phase 1 edge (pads 1,3) failed after 5541 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/3) (pads 1 and 2, length=21.48mm)
+  Phase 1 routed in 30119 iterations, 28 segments
+  SUCCESS: 28 segments, 1 vias, 30119 iterations, length=20.99mm (stubs=0.63mm) (0.05s)
+
+[69/73 (2 failed) (3 ripped)] Routing /GAUGE_SCL (id=30)
+  Detected multi-point net with 4 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 3, length=30.67mm)
+  Phase 1 routed in 487704 iterations, 23 segments
+  SUCCESS: 23 segments, 3 vias, 487704 iterations, length=44.06mm (stubs=1.05mm) (0.16s)
+
+[70/73 (2 failed) (3 ripped)] Routing /GPIO25 (id=64)
+forward stuck (742 < 5000), backward=5000
+  forward cell (1169, 1068, layer=0): ok, 0/8 neighbors blocked
+No route found after 5742 iterations (both directions)
+  FAILED: Could not find route (0.04s)
+  Forward direction failed fastest (742 iterations, 328 blocked cells)
+  Frontier blocked by 6 nets (113 cells, 113 unique; near: 113 src, 0 tgt)
+  Coverage: 113/328 frontier cells attributed to routed nets; 215 static/unrippable
+  Top blockers:
+    1. /GPIO24: 36 (31.9%), 36 uniq (100%), near: 36 src, 0 tgt
+    2. /CORE_1V1: 24 (21.2%), 24 uniq (100%), near: 24 src, 0 tgt
+    3. /+3V3: 24 (21.2%), 24 uniq (100%), near: 24 src, 0 tgt
+    4. /ADC1: 14 (12.4%), 14 uniq (100%), near: 14 src, 0 tgt
+    5. /GPIO23: 8 (7.1%), 8 uniq (100%), near: 8 src, 0 tgt
+    6. /GPIO22: 7 (6.2%), 7 uniq (100%), near: 7 src, 0 tgt
+  Ripping up /GPIO24 to retry...
+    Ripped /GPIO24
+forward stuck (742 < 5000), backward=5000
+  forward cell (1169, 1068, layer=0): ok, 0/8 neighbors blocked
+No route found after 5742 iterations (both directions)
+  RETRY FAILED (N=1)
+    Retry had 707 blocked cells
+  Re-analyzing 707 blocked cells from N=1 retry:
+    Frontier blocked by 8 nets (340 cells, 340 unique; near: 139 src, 6 tgt)
+    Coverage: 340/707 frontier cells attributed to routed nets; 367 static/unrippable
+    Top blockers:
+      1. /GPIO23: 106 (31.2%), 106 uniq (100%), near: 70 src, 0 tgt
+      2. /RADIO_BOOT: 102 (30.0%), 102 uniq (100%)
+      3. /GAUGE_SCL: 49 (14.4%), 49 uniq (100%), near: 0 src, 6 tgt
+      4. /CORE_1V1: 24 (7.1%), 24 uniq (100%), near: 24 src, 0 tgt
+      5. /+3V3: 24 (7.1%), 24 uniq (100%), near: 24 src, 0 tgt
+      6. /ADC1: 14 (4.1%), 14 uniq (100%), near: 14 src, 0 tgt
+      7. /ADC0: 14 (4.1%), 14 uniq (100%)
+      8. /GPIO22: 7 (2.1%), 7 uniq (100%), near: 7 src, 0 tgt
+  Slot-0 guard: re-analysis refutes /GPIO24 -> retrying /GPIO23 ALONE first
+  Ripping up /GPIO23 to retry...
+    Ripped /GPIO23
+forward stuck (768 < 5000), backward=5000
+  forward cell (1169, 1068, layer=0): ok, 0/8 neighbors blocked
+No route found after 5768 iterations (both directions)
+  RETRY FAILED (N=1)
+    Retry had 700 blocked cells
+  Re-analyzing 700 blocked cells from N=1 retry:
+    Frontier blocked by 8 nets (281 cells, 281 unique; near: 121 src, 6 tgt)
+    Coverage: 281/700 frontier cells attributed to routed nets; 419 static/unrippable
+    Top blockers:
+      1. /RADIO_BOOT: 102 (36.3%), 102 uniq (100%)
+      2. /GAUGE_SCL: 65 (23.1%), 65 uniq (100%), near: 16 src, 6 tgt
+      3. /GPIO24: 36 (12.8%), 36 uniq (100%), near: 36 src, 0 tgt
+      4. /CORE_1V1: 24 (8.5%), 24 uniq (100%), near: 24 src, 0 tgt
+      5. /+3V3: 24 (8.5%), 24 uniq (100%), near: 24 src, 0 tgt
+      6. /ADC1: 14 (5.0%), 14 uniq (100%), near: 14 src, 0 tgt
+      7. /ADC0: 9 (3.2%), 9 uniq (100%)
+      8. /GPIO22: 7 (2.5%), 7 uniq (100%), near: 7 src, 0 tgt
+  Extending to N=2: ripping /RADIO_BOOT...
+    Ripped /RADIO_BOOT
+forward stuck (768 < 5000), backward=5000
+  forward cell (1169, 1068, layer=0): ok, 0/8 neighbors blocked
+No route found after 5768 iterations (both directions)
+  RETRY FAILED (N=2)
+    Retry had 574 blocked cells
+  Re-analyzing 574 blocked cells from N=2 retry:
+    Frontier blocked by 7 nets (188 cells, 188 unique; near: 110 src, 6 tgt)
+    Coverage: 188/574 frontier cells attributed to routed nets; 386 static/unrippable
+    Top blockers:
+      1. /GAUGE_SCL: 61 (32.4%), 61 uniq (100%), near: 5 src, 6 tgt
+      2. /GPIO24: 36 (19.1%), 36 uniq (100%), near: 36 src, 0 tgt
+      3. /CORE_1V1: 24 (12.8%), 24 uniq (100%), near: 24 src, 0 tgt
+      4. /+3V3: 24 (12.8%), 24 uniq (100%), near: 24 src, 0 tgt
+      5. /ADC0: 22 (11.7%), 22 uniq (100%)
+      6. /ADC1: 14 (7.4%), 14 uniq (100%), near: 14 src, 0 tgt
+      7. /GPIO22: 7 (3.7%), 7 uniq (100%), near: 7 src, 0 tgt
+  Extending to N=3: ripping /GAUGE_SCL...
+    Ripped /GAUGE_SCL
+forward stuck (768 < 5000), backward=5000
+  forward cell (1169, 1068, layer=0): ok, 0/8 neighbors blocked
+No route found after 5768 iterations (both directions)
+  RETRY FAILED (N=3)
+    Retry had 432 blocked cells
+  All rip-up attempts failed: Restoring 3 net(s)
+  ROUTE FAILED - ripping 3 blocker net(s) (/GPIO23, /RADIO_BOOT, /GAUGE_SCL) did not free a path
+
+[71/73 (3 failed) (3 ripped)] Routing /GPIO19 (id=60)
+  SUCCESS: 47 segments, 2 vias, 99447 iterations, length=43.54mm (stubs=1.05mm) (0.04s)
+
+[72/73 (3 failed) (3 ripped)] Routing /I2C_SDA (id=39)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=31.38mm)
+  Phase 1 edge (pads 0,1) failed after 1017019 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/2) (pads 1 and 2, length=14.45mm)
+  Phase 1 routed in 1017218 iterations, 4 segments
+  SUCCESS: 4 segments, 0 vias, 1017218 iterations, length=12.86mm (stubs=1.05mm) (0.37s)
+
+[73/73 (3 failed) (3 ripped)] Routing /I2C_SCL (id=21)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=36.47mm)
+  Phase 1 edge (pads 0,1) failed after 5321 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/2) (pads 1 and 2, length=12.15mm)
+  Phase 1 routed in 28208 iterations, 16 segments
+  SUCCESS: 16 segments, 0 vias, 28208 iterations, length=13.99mm (stubs=0.94mm) (0.05s)
+
+[REROUTE 74/76 (3 failed)] Re-routing ripped net /MCU_USB_N
+Both directions stuck (forward=15, backward=1402 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_P(2 track, 1 pad), /CORE_1V1(1 pad)
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=15, backward=876 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_P(2 track, 1 pad), /CORE_1V1(1 pad)
+  backward cell (1059, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=1402, backward=322 < 5000)
+  forward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+  backward cell (1109, 1005, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /+3V3(2 track, 1 pad), /MCU_USB_P(1 pad)
+Both directions stuck (forward=1115, backward=1909 < 5000)
+  forward cell (1116, 991, layer=0): ok, 0/8 neighbors blocked
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked
+No route found after 7056 iterations (both directions)
+  REROUTE FAILED: (0.08s) - attempting rip-up and retry...
+  Frontier blocked by 4 nets (76 cells, 76 unique; near: 76 src, 0 tgt)
+  Coverage: 76/357 frontier cells attributed to routed nets; 281 static/unrippable
+  Top blockers:
+    1. /+3V3: 41 (53.9%), 41 uniq (100%), near: 41 src, 0 tgt
+    2. /MCU_USB_P: 14 (18.4%), 14 uniq (100%), near: 14 src, 0 tgt
+    3. /QSPI_D3: 14 (18.4%), 14 uniq (100%), near: 14 src, 0 tgt
+    4. /QSPI_D0: 7 (9.2%), 7 uniq (100%), near: 7 src, 0 tgt
+  Ripping up /+3V3 to retry reroute...
+Both directions stuck (forward=15, backward=1402 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_P(2 track, 1 pad), /CORE_1V1(1 pad)
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=15, backward=876 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_P(2 track, 1 pad), /CORE_1V1(1 pad)
+  backward cell (1059, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=1402, backward=322 < 5000)
+  forward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+  backward cell (1109, 1005, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /+3V3(2 track, 1 pad), /MCU_USB_P(1 pad)
+Both directions stuck (forward=1103, backward=1909 < 5000)
+  forward cell (1116, 991, layer=0): ok, 0/8 neighbors blocked
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked
+No route found after 7044 iterations (both directions)
+  REROUTE RETRY FAILED (N=1)
+    Retry had 667 blocked cells
+  Re-analyzing 667 blocked cells from N=1 retry:
+    Frontier blocked by 5 nets (141 cells, 141 unique; near: 35 src, 106 tgt)
+    Coverage: 141/667 frontier cells attributed to routed nets; 526 static/unrippable
+    Top blockers:
+      1. /MCU_USB_P: 54 (38.3%), 54 uniq (100%), near: 14 src, 40 tgt
+      2. /QSPI_D1: 35 (24.8%), 35 uniq (100%), near: 0 src, 35 tgt
+      3. /QSPI_D2: 31 (22.0%), 31 uniq (100%), near: 0 src, 31 tgt
+      4. /QSPI_D3: 14 (9.9%), 14 uniq (100%), near: 14 src, 0 tgt
+      5. /QSPI_D0: 7 (5.0%), 7 uniq (100%), near: 7 src, 0 tgt
+  Extending to N=2: ripping /MCU_USB_P...
+      PRE-EXISTING rip: '/MCU_USB_P' (earlier-step copper) removed -- queued for reroute this run; original restored if the reroute fails
+Both directions stuck (forward=15, backward=2042 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /CORE_1V1(1 pad), /MCU_USB_P(1 pad)
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=15, backward=1595 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /CORE_1V1(1 pad), /MCU_USB_P(1 pad)
+  backward cell (1059, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+forward stuck (2030 < 5000), backward=5000
+  forward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Neck-down refused (--escalation off): the edge spans 5.08mm and only a 0.1270mm track reaches it, but no route keeps 0.2337mm outside the 2mm pad-entry allowance
+No route found after 14484 iterations (both directions)
+  REROUTE RETRY FAILED (N=2)
+    Retry had 244 blocked cells
+  Re-analyzing 244 blocked cells from N=2 retry:
+    No previously-routed nets blocking (likely blocked by pads/stubs/zones)
+  No additional rippable blockers from retry analysis
+  All rip-up attempts failed: Restoring 2 net(s)
+  RIP-RESTORE (#468): /MCU_USB_N remains UNROUTED -- kept only its escape stub (1 seg(s), 0 via(s)) so the pads keep their landing sites; full restore would short against copper routed since the rip
+
+[REROUTE 75/76 (4 failed)] Re-routing ripped net /ADC3
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 57001 iterations, path length: 606
+  REROUTE SUCCESS: 55 segments, 1 vias, length=39.91mm (stubs=1.05mm) (0.03s)
+
+[REROUTE 76/76 (4 failed)] Re-routing ripped net /SD_DETECT
+  Multi-point net with 3 pads - routing main + taps
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=28.97mm)
+  Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+  No route found after 6644 iterations (forward), trying backward...
+  Phase 1 edge (pads 0,1) failed after 216644 iterations - trying next MST edge
+  Multi-point net Phase 1: retrying with next MST edge (2/2) (pads 1 and 2, length=10.23mm)
+  Phase 1 routed in 216767 iterations, 4 segments
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [1/0] Routing MST edge: pad 1 -> pad 0 (length=28.97mm) target=(52.60, 54.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 216582 iterations (0.06s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [2/0] (1 failed) Routing MST edge: pad 1 -> pad 0 (length=28.97mm) target=(52.60, 54.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 216582 iterations (0.06s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 4 total segments, 0 total vias
+    Tap routing: 0 segments, 0 vias
+    NOT CONNECTED (so far): /SD_DETECT - ? pad  at (52.60, 54.60) - may still be recovered; final verdict in the end-of-run summary
+  REROUTE SUCCESS: 4 segments, 0 vias, length=8.91mm (stubs=1.05mm) (0.20s)
+
+Sync pcb_data: 1548 -> 173 (kept stubs) -> 1548 (after adding 1375)
+
+============================================================
+Multi-point Phase 3: Routing 120 tap connections
+============================================================
+Phase 3 order (boxed-in risk first): /GND, /QSPI_CLK, /SD_MISO, /GAUGE_SCL, /CORE_1V1, /BAT, /RUN, /GAUGE_SDA, /I2C_SCL, /VBUS, /CHARGE_DISABLE, /+3V3, /QSPI_D0, /SYS, /USB_500_EN, /I2C_SDA, /USB_D_N, /USB_D_P, /QSPI_D3, /SD_MOSI, /XTAL_OUT, /BUCK_VINA, /CHG_N, /BOOT_SWITCH, /VREG_AVDD, /QSPI_D1, /QSPI_D2, /RADIO_EN, /FLASH_CS, /XIN, /SD_CS, /USB_PGOOD_N, /PSRAM_CS, /RADIO_BOOT
+
+/GND (net 9):
+  POUR-LAUNCH v3: +2445 region-laddered target(s) across 12 component(s) (phase 3)
+  Multi-point net Phase 3: routing 13 remaining MST edges (longest first)
+    [1/120] Routing MST edge: pad 76 -> pad 71 (length=7.00mm) target=(68.00, 34.23)
+      Routed in 80192 iterations (0.04s)
+    [2/120] Routing MST edge: pad 78 -> pad 75 (length=2.68mm) target=(73.00, 24.18)
+      Routed in 2 iterations (0.00s)
+    [3/120] Routing MST edge: pad 26 -> pad 32 (length=6.04mm) target=(36.86, 34.00)
+      Routed in 75275 iterations (0.03s)
+      barrel-in-fill: weld complete at via (37.75,32.45); trimmed 27 tail node(s)
+    [4/120] Routing MST edge: pad 64 -> pad 60 (length=4.58mm) target=(57.40, 49.10)
+      Routed in 5889 iterations (0.00s)
+      barrel-in-fill: weld complete at via (57.40,50.25); trimmed 1 tail node(s)
+    [5/120] Routing MST edge: pad 60 -> pad 56 (length=6.30mm) target=(55.00, 53.00)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 225740 iterations (0.18s)
+    [6/120] (1 failed) Routing MST edge: pad 60 -> pad 58 (length=4.25mm) target=(56.20, 46.05)
+      Routed in 98293 iterations (0.04s)
+      barrel-in-fill: weld complete at via (56.20,44.45); trimmed 32 tail node(s)
+    [7/120] (1 failed) Routing MST edge: pad 49 -> pad 48 (length=2.50mm) target=(48.42, 49.50)
+      Routed in 5872 iterations (0.00s)
+      barrel-in-fill: weld complete at via (49.25,50.55); trimmed 2 tail node(s)
+    [8/120] (1 failed) Routing MST edge: pad 49 -> pad 50 (length=2.50mm) target=(48.42, 54.50)
+      Routed in 99877 iterations (0.04s)
+      barrel-in-fill: weld complete at via (41.00,61.25); trimmed 8 tail node(s)
+    [9/120] (1 failed) Routing MST edge: pad 53 -> pad 57 (length=3.00mm) target=(56.00, 59.58)
+      Routed in 38621 iterations (0.02s)
+    [10/120] (1 failed) Routing MST edge: pad 57 -> pad 62 (length=3.00mm) target=(59.00, 59.58)
+      Routed in 7377 iterations (0.00s)
+      barrel-in-fill: weld complete at via (59.25,59.50); trimmed 3 tail node(s)
+    [11/120] (1 failed) Routing MST edge: pad 54 -> pad 51 (length=2.00mm) target=(52.00, 46.42)
+      backward stuck (544 < 5000), forward=5000
+        backward cell (1040, 928, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5544 iterations (0.04s)
+    [12/120] (2 failed) Routing MST edge: pad 12 -> pad 9 (length=1.90mm) target=(29.00, 57.00)
+      Routed in 22 iterations (0.00s)
+    [13/120] (2 failed) Routing MST edge: pad 9 -> pad 4 (length=1.40mm) target=(27.60, 57.00)
+      Routed in 66 iterations (0.00s)
+    Fallback: attempting orphaned pad 51 directly from connected copper
+    [14/120] (2 failed) Routing MST edge: pad 58 -> pad 51 (length=4.58mm) target=(52.00, 46.42)
+      backward stuck (544 < 5000), forward=5000
+        backward cell (1040, 928, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5544 iterations (0.04s)
+    Fallback: attempting orphaned pad 56 directly from connected copper
+    [15/120] (3 failed) Routing MST edge: pad 60 -> pad 56 (length=6.30mm) target=(55.00, 53.00)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 225740 iterations (0.18s)
+  Warning: 2 pad(s) not connected (3 MST edge(s) failed)
+  Phase 3 routing complete: 11 edges, 23 total segments, 9 total vias
+    Ripping /UART_RTS (net 4) to retry tap route...
+  POUR-LAUNCH v3: +2281 region-laddered target(s) across 11 component(s) (phase 3)
+  Multi-point net Phase 3: routing 13 remaining MST edges (longest first)
+    [15/120] (3 failed) Routing MST edge: pad 76 -> pad 71 (length=7.00mm) target=(68.00, 34.23)
+      Routed in 1 iterations (0.00s)
+    [16/120] (3 failed) Routing MST edge: pad 78 -> pad 75 (length=2.68mm) target=(73.00, 24.18)
+      Routed in 1 iterations (0.00s)
+    [17/120] (3 failed) Routing MST edge: pad 26 -> pad 32 (length=6.04mm) target=(36.86, 34.00)
+      Routed in 75275 iterations (0.03s)
+      barrel-in-fill: weld complete at via (37.75,32.45); trimmed 27 tail node(s)
+    [18/120] (3 failed) Routing MST edge: pad 64 -> pad 60 (length=4.58mm) target=(57.40, 49.10)
+      Routed in 5889 iterations (0.00s)
+      barrel-in-fill: weld complete at via (57.40,50.25); trimmed 1 tail node(s)
+    [19/120] (3 failed) Routing MST edge: pad 60 -> pad 56 (length=6.30mm) target=(55.00, 53.00)
+      Routed in 23740 iterations (0.01s)
+    [20/120] (3 failed) Routing MST edge: pad 60 -> pad 58 (length=4.25mm) target=(56.20, 46.05)
+      Routed in 131681 iterations (0.06s)
+      barrel-in-fill: weld complete at via (56.20,44.45); trimmed 32 tail node(s)
+    [21/120] (3 failed) Routing MST edge: pad 49 -> pad 48 (length=2.50mm) target=(48.42, 49.50)
+      Routed in 5872 iterations (0.00s)
+      barrel-in-fill: weld complete at via (49.25,50.55); trimmed 2 tail node(s)
+    [22/120] (3 failed) Routing MST edge: pad 49 -> pad 50 (length=2.50mm) target=(48.42, 54.50)
+      Routed in 111721 iterations (0.04s)
+      barrel-in-fill: weld complete at via (41.00,61.25); trimmed 8 tail node(s)
+    [23/120] (3 failed) Routing MST edge: pad 53 -> pad 57 (length=3.00mm) target=(56.00, 59.58)
+      Routed in 38621 iterations (0.02s)
+    [24/120] (3 failed) Routing MST edge: pad 57 -> pad 62 (length=3.00mm) target=(59.00, 59.58)
+      Routed in 7377 iterations (0.00s)
+      barrel-in-fill: weld complete at via (59.25,59.50); trimmed 3 tail node(s)
+    [25/120] (3 failed) Routing MST edge: pad 54 -> pad 51 (length=2.00mm) target=(52.00, 46.42)
+      backward stuck (544 < 5000), forward=5000
+        backward cell (1040, 928, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5544 iterations (0.03s)
+    [26/120] (4 failed) Routing MST edge: pad 12 -> pad 9 (length=1.90mm) target=(29.00, 57.00)
+      Routed in 22 iterations (0.00s)
+    [27/120] (4 failed) Routing MST edge: pad 9 -> pad 4 (length=1.40mm) target=(27.60, 57.00)
+      Routed in 66 iterations (0.00s)
+    Fallback: attempting orphaned pad 51 directly from connected copper
+    [28/120] (4 failed) Routing MST edge: pad 58 -> pad 51 (length=4.58mm) target=(52.00, 46.42)
+      backward stuck (544 < 5000), forward=5000
+        backward cell (1040, 928, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5544 iterations (0.03s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 12 edges, 31 total segments, 8 total vias
+    /GND: Retry SUCCESS (N=1): 3 -> 2 failed edges
+    Adding 27 tap segments, 6 tap vias to obstacles before re-routing...
+    Re-routing 1 ripped net(s)...
+
+  Re-routing /UART_RTS (net 4)...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 13325 iterations (forward), trying backward...
+No route found after 223325 iterations (both directions)
+    /UART_RTS: main re-route blocked, ripping /RADIO_CTRL (N=1) to retry...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 50953 iterations, path length: 726
+    /UART_RTS: main re-route rip-up SUCCESS (N=1)
+    Re-routed main path: 46 segments, 1 vias
+    Re-routing 1 net(s) ripped for /UART_RTS's main route...
+
+  Re-routing /RADIO_CTRL (net 79)...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 7739 iterations (forward), trying backward...
+dynamic iterations (#529): search extended to 400000 (base 200000)
+No route found after 417739 iterations (both directions)
+    /RADIO_CTRL: main re-route blocked, ripping /GPIO22 (N=1) to retry...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+No route found after 200000 iterations (forward), trying backward...
+dynamic iterations (#529): search extended to 400000 (base 200000)
+No route found after 610000 iterations (both directions)
+    /RADIO_CTRL: main re-route blocked, ripping /SWDIO (N=2) to retry...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 204107 iterations, path length: 807
+    /RADIO_CTRL: main re-route rip-up SUCCESS (N=2)
+    Re-routed main path: 16 segments, 1 vias
+    Re-routing 2 net(s) ripped for /RADIO_CTRL's main route...
+
+  Re-routing /GPIO22 (net 61)...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 118895 iterations, path length: 471
+    Re-routed main path: 13 segments, 0 vias
+
+  Re-routing /SWDIO (net 76)...
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 138028 iterations, path length: 414
+    Re-routed main path: 34 segments, 3 vias
+  NOT CONNECTED (so far): /GND - C16 pad 2 at (52.00, 46.42) - may still be recovered; final verdict in the end-of-run summary
+  Added 27 tap segments, 6 tap vias
+  Net total time: 7.45s, 1319807 iterations
+
+/QSPI_CLK (net 74):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [15/120] (3 failed) Routing MST edge: pad 0 -> pad 1 (length=12.03mm) target=(53.60, 48.65)
+      Routed in 261295 iterations (0.07s)
+  Phase 3 routing complete: 1 edges, 35 total segments, 4 total vias
+  Added 27 tap segments, 4 tap vias
+  Net total time: 0.11s, 261636 iterations
+
+/SD_MISO (net 38):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [16/120] (3 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 410000 iterations (0.12s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [17/120] (4 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 410000 iterations (0.11s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 12 total segments, 2 total vias
+    Ripping /SD_CS (net 40) to retry tap route...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [17/120] (4 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 1000000 (base 200000)
+      No route found after 1000000 iterations (forward), trying backward...
+      Failed to route MST edge after 1210000 iterations (0.36s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [18/120] (5 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 1000000 (base 200000)
+      No route found after 1000000 iterations (forward), trying backward...
+      Failed to route MST edge after 1210000 iterations (0.36s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 12 total segments, 2 total vias
+    /SD_MISO: Retry FAILED (N=1): still 1 failed edges
+      Retry had 16807 blocked cells
+    Re-analyzing 16807 blocked cells from N=1 retry:
+      Frontier blocked by 40 nets (9670 cells, 9135 unique; near: 0 src, 672 tgt)
+      Coverage: 9402/16807 frontier cells attributed to routed nets; 7405 static/unrippable
+      Top blockers:
+        1. /SD_CLK: 1326 (13.7%), 1326 uniq (100%), near: 0 src, 165 tgt
+        2. /RADIO_BOOT: 613 (6.3%), 613 uniq (100%)
+        3. /XIN: 604 (6.2%), 604 uniq (100%)
+        4. /GPIO1: 603 (6.2%), 603 uniq (100%), near: 0 src, 81 tgt
+        5. /USB_500_EN: 505 (5.2%), 505 uniq (100%), near: 0 src, 196 tgt
+        6. /ADC2: 421 (4.4%), 421 uniq (100%)
+        7. /ADC1: 365 (3.8%), 365 uniq (100%)
+        8. /UART_TX: 330 (3.4%), 330 uniq (100%), near: 0 src, 55 tgt
+        9. /SD_MOSI: 260 (2.7%), 260 uniq (100%)
+        10. /CHARGE_DISABLE: 247 (2.6%), 247 uniq (100%), near: 0 src, 11 tgt
+        ... and 30 more nets (4396 cells)
+    Extending to N=2: ripping /ADC3 (net 67)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [17/120] (4 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 1200000 (base 200000)
+      No route found after 1200000 iterations (forward), trying backward...
+      Failed to route MST edge after 1410000 iterations (0.44s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [18/120] (5 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 1200000 (base 200000)
+      No route found after 1200000 iterations (forward), trying backward...
+      Failed to route MST edge after 1410000 iterations (0.44s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 12 total segments, 2 total vias
+    /SD_MISO: Retry FAILED (N=2): still 1 failed edges
+      Retry had 16807 blocked cells
+    Re-analyzing 16807 blocked cells from N=2 retry:
+      Frontier blocked by 42 nets (9905 cells, 9000 unique; near: 0 src, 669 tgt)
+      Coverage: 9452/16807 frontier cells attributed to routed nets; 7355 static/unrippable
+      Top blockers:
+        1. /SD_CLK: 1111 (11.2%), 1111 uniq (100%), near: 0 src, 171 tgt
+        2. /RADIO_BOOT: 718 (7.2%), 718 uniq (100%)
+        3. /XIN: 610 (6.2%), 610 uniq (100%)
+        4. /ADC2: 605 (6.1%), 605 uniq (100%)
+        5. /GPIO1: 603 (6.1%), 603 uniq (100%), near: 0 src, 81 tgt
+        6. /USB_500_EN: 498 (5.0%), 498 uniq (100%), near: 0 src, 189 tgt
+        7. /UART_TX: 333 (3.4%), 333 uniq (100%), near: 0 src, 55 tgt
+        8. /GPIO19: 305 (3.1%), 305 uniq (100%)
+        9. /GPIO17: 248 (2.5%), 248 uniq (100%)
+        10. /CHARGE_DISABLE: 247 (2.5%), 247 uniq (100%), near: 0 src, 11 tgt
+        ... and 32 more nets (4627 cells)
+    Extending to N=3: ripping /RADIO_BOOT (net 8)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [17/120] (4 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 810000 iterations (0.24s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [18/120] (5 failed) Routing MST edge: pad 1 -> pad 0 (length=34.82mm) target=(50.75, 52.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 810000 iterations (0.24s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 12 total segments, 2 total vias
+    /SD_MISO: Retry FAILED (N=3): still 1 failed edges
+      Retry had 15151 blocked cells
+    /SD_MISO: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /SD_MISO - ? pad  at (50.75, 52.60) - may still be recovered; final verdict in the end-of-run summary
+  Net total time: 3.01s, 1306299 iterations
+
+/GAUGE_SCL (net 30):
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [17/120] (4 failed) Routing MST edge: pad 1 -> pad 2 (length=15.44mm) target=(44.16, 75.46)
+      Routed in 46691 iterations (0.02s)
+    [18/120] (4 failed) Routing MST edge: pad 1 -> pad 0 (length=4.44mm) target=(35.99, 63.75)
+      Routed in 57947 iterations (0.02s)
+  Phase 3 routing complete: 2 edges, 34 total segments, 6 total vias
+  Added 11 tap segments, 3 tap vias
+  Net total time: 0.12s, 592342 iterations
+
+/CORE_1V1 (net 24):
+  POUR-LAUNCH v3: +311 region-laddered target(s) across 6 component(s) (phase 3)
+  Multi-point net Phase 3: routing 7 remaining MST edges (longest first)
+    [19/120] (4 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (620 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5620 iterations (0.05s)
+    [20/120] (5 failed) Routing MST edge: pad 3 -> pad 4 (length=3.62mm) target=(56.00, 58.02)
+      Routed in 288001 iterations (0.09s)
+    [21/120] (5 failed) Routing MST edge: pad 4 -> pad 6 (length=4.98mm) target=(57.00, 62.00)
+      Routed in 1181 iterations (0.00s)
+    [22/120] (5 failed) Routing MST edge: pad 6 -> pad 2 (length=4.45mm) target=(54.50, 63.95)
+      Routed in 265 iterations (0.00s)
+    [23/120] (5 failed) Routing MST edge: pad 1 -> pad 0 (length=2.83mm) target=(49.98, 52.00)
+      Routed in 346 iterations (0.00s)
+    Fallback: attempting orphaned pad 5 directly from connected copper
+    [24/120] (5 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (620 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5620 iterations (0.04s)
+    Fallback: attempting orphaned pad 9 directly from connected copper
+    [24/120] (5 failed) Routing MST edge: pad 7 -> pad 9 (length=7.45mm) target=(58.50, 46.25)
+      Routed in 58563 iterations (0.02s)
+    [25/120] (5 failed) Routing MST edge: pad 9 -> pad 5 (length=5.60mm) target=(56.20, 49.55)
+      backward stuck (602 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5602 iterations (0.04s)
+    [26/120] (6 failed) Routing MST edge: pad 9 -> pad 8 (length=1.50mm) target=(58.50, 44.75)
+      Routed in 7022 iterations (0.00s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 6 edges, 52 total segments, 5 total vias
+    Ripping /+3V3 (net 1) to retry tap route...
+  POUR-LAUNCH v3: +311 region-laddered target(s) across 6 component(s) (phase 3)
+  Multi-point net Phase 3: routing 7 remaining MST edges (longest first)
+    [27/120] (6 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (620 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5620 iterations (0.03s)
+    [28/120] (7 failed) Routing MST edge: pad 3 -> pad 4 (length=3.62mm) target=(56.00, 58.02)
+      Routed in 288001 iterations (0.09s)
+    [29/120] (7 failed) Routing MST edge: pad 4 -> pad 6 (length=4.98mm) target=(57.00, 62.00)
+      Routed in 1181 iterations (0.00s)
+    [30/120] (7 failed) Routing MST edge: pad 6 -> pad 2 (length=4.45mm) target=(54.50, 63.95)
+      Routed in 265 iterations (0.00s)
+    [31/120] (7 failed) Routing MST edge: pad 1 -> pad 0 (length=2.83mm) target=(49.98, 52.00)
+      Routed in 346 iterations (0.00s)
+    Fallback: attempting orphaned pad 5 directly from connected copper
+    [32/120] (7 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (620 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5620 iterations (0.03s)
+    Fallback: attempting orphaned pad 9 directly from connected copper
+    [32/120] (7 failed) Routing MST edge: pad 7 -> pad 9 (length=7.45mm) target=(58.50, 46.25)
+      Routed in 58563 iterations (0.02s)
+    [33/120] (7 failed) Routing MST edge: pad 9 -> pad 5 (length=5.60mm) target=(56.20, 49.55)
+      backward stuck (602 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5602 iterations (0.03s)
+    [34/120] (8 failed) Routing MST edge: pad 9 -> pad 8 (length=1.50mm) target=(58.50, 44.75)
+      Routed in 7022 iterations (0.00s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 6 edges, 52 total segments, 5 total vias
+    /CORE_1V1: Retry FAILED (N=1): still 2 failed edges
+      Retry had 2269 blocked cells
+    Re-analyzing 2269 blocked cells from N=1 retry:
+      Frontier blocked by 24 nets (518 cells, 490 unique; near: 0 src, 80 tgt)
+      Coverage: 504/1502 frontier cells attributed to routed nets; 998 static/unrippable
+      Top blockers:
+        1. /GPIO1: 39 (7.5%), 39 uniq (100%)
+        2. /I2C_SCL: 35 (6.8%), 35 uniq (100%)
+        3. /SD_MISO: 27 (5.2%), 27 uniq (100%)
+        4. /VREG_AVDD: 25 (4.8%), 25 uniq (100%)
+        5. /ADC1: 24 (4.6%), 24 uniq (100%), near: 0 src, 24 tgt
+        6. /XIN: 24 (4.6%), 24 uniq (100%)
+        7. /GPIO24: 24 (4.6%), 24 uniq (100%)
+        8. /SWDIO: 24 (4.6%), 24 uniq (100%)
+        9. /SD_CS: 24 (4.6%), 24 uniq (100%)
+        10. /ADC0: 23 (4.4%), 23 uniq (100%)
+        ... and 14 more nets (249 cells)
+    Extending to N=2: ripping /QSPI_D3 (net 75)...
+  POUR-LAUNCH v3: +311 region-laddered target(s) across 6 component(s) (phase 3)
+  Multi-point net Phase 3: routing 7 remaining MST edges (longest first)
+    [27/120] (6 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (620 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5620 iterations (0.03s)
+    [28/120] (7 failed) Routing MST edge: pad 3 -> pad 4 (length=3.62mm) target=(56.00, 58.02)
+      Routed in 288001 iterations (0.10s)
+    [29/120] (7 failed) Routing MST edge: pad 4 -> pad 6 (length=4.98mm) target=(57.00, 62.00)
+      Routed in 1181 iterations (0.00s)
+    [30/120] (7 failed) Routing MST edge: pad 6 -> pad 2 (length=4.45mm) target=(54.50, 63.95)
+      Routed in 265 iterations (0.00s)
+    [31/120] (7 failed) Routing MST edge: pad 1 -> pad 0 (length=2.83mm) target=(49.98, 52.00)
+      Routed in 346 iterations (0.00s)
+    Fallback: attempting orphaned pad 5 directly from connected copper
+    [32/120] (7 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (620 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5620 iterations (0.03s)
+    Fallback: attempting orphaned pad 9 directly from connected copper
+    [32/120] (7 failed) Routing MST edge: pad 7 -> pad 9 (length=7.45mm) target=(58.50, 46.25)
+      Routed in 58568 iterations (0.02s)
+    [33/120] (7 failed) Routing MST edge: pad 9 -> pad 5 (length=5.60mm) target=(56.20, 49.55)
+      backward stuck (602 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5602 iterations (0.03s)
+    [34/120] (8 failed) Routing MST edge: pad 9 -> pad 8 (length=1.50mm) target=(58.50, 44.75)
+      Routed in 7022 iterations (0.00s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 6 edges, 52 total segments, 5 total vias
+    /CORE_1V1: Retry FAILED (N=2): still 2 failed edges
+      Retry had 2269 blocked cells
+    Re-analyzing 2269 blocked cells from N=2 retry:
+      Frontier blocked by 23 nets (504 cells, 476 unique; near: 0 src, 66 tgt)
+      Coverage: 490/1502 frontier cells attributed to routed nets; 1012 static/unrippable
+      Top blockers:
+        1. /GPIO1: 39 (7.7%), 39 uniq (100%)
+        2. /I2C_SCL: 35 (6.9%), 35 uniq (100%)
+        3. /SD_MISO: 27 (5.4%), 27 uniq (100%)
+        4. /VREG_AVDD: 25 (5.0%), 25 uniq (100%)
+        5. /ADC1: 24 (4.8%), 24 uniq (100%), near: 0 src, 24 tgt
+        6. /XIN: 24 (4.8%), 24 uniq (100%)
+        7. /GPIO24: 24 (4.8%), 24 uniq (100%)
+        8. /SWDIO: 24 (4.8%), 24 uniq (100%)
+        9. /SD_CS: 24 (4.8%), 24 uniq (100%)
+        10. /ADC0: 23 (4.6%), 23 uniq (100%)
+        ... and 13 more nets (235 cells)
+    Extending to N=3: ripping /VREG_LX (net 69)...
+  POUR-LAUNCH v3: +311 region-laddered target(s) across 6 component(s) (phase 3)
+  Multi-point net Phase 3: routing 7 remaining MST edges (longest first)
+    [27/120] (6 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (854 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5854 iterations (0.03s)
+    [28/120] (7 failed) Routing MST edge: pad 3 -> pad 4 (length=3.62mm) target=(56.00, 58.02)
+      Routed in 288001 iterations (0.09s)
+    [29/120] (7 failed) Routing MST edge: pad 4 -> pad 6 (length=4.98mm) target=(57.00, 62.00)
+      Routed in 1181 iterations (0.00s)
+    [30/120] (7 failed) Routing MST edge: pad 6 -> pad 2 (length=4.45mm) target=(54.50, 63.95)
+      Routed in 265 iterations (0.00s)
+    [31/120] (7 failed) Routing MST edge: pad 1 -> pad 0 (length=2.83mm) target=(49.98, 52.00)
+      Routed in 346 iterations (0.00s)
+    Fallback: attempting orphaned pad 5 directly from connected copper
+    [32/120] (7 failed) Routing MST edge: pad 7 -> pad 5 (length=4.25mm) target=(56.20, 49.55)
+      backward stuck (854 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5854 iterations (0.03s)
+    Fallback: attempting orphaned pad 9 directly from connected copper
+    [32/120] (7 failed) Routing MST edge: pad 7 -> pad 9 (length=7.45mm) target=(58.50, 46.25)
+      Routed in 58558 iterations (0.02s)
+    [33/120] (7 failed) Routing MST edge: pad 9 -> pad 5 (length=5.60mm) target=(56.20, 49.55)
+      backward stuck (821 < 5000), forward=5000
+        backward cell (1124, 991, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5821 iterations (0.03s)
+    [34/120] (8 failed) Routing MST edge: pad 9 -> pad 8 (length=1.50mm) target=(58.50, 44.75)
+      Routed in 7022 iterations (0.00s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 6 edges, 52 total segments, 5 total vias
+    /CORE_1V1: Retry FAILED (N=3): still 2 failed edges
+      Retry had 2423 blocked cells
+    /CORE_1V1: All rip-up attempts failed, restoring 3 net(s)...
+    Hint: the blocking copper belongs to pre-existing net(s) committed by an earlier run/step. 1 blocking net(s) ('/MCU_USB_N') this run could already rip, and ripped 1 (automatic candidacy or --rip-existing-nets): granting the flag adds no authority over them.
+  NOT CONNECTED (so far): /CORE_1V1 - U1 pad 50 at (56.20, 49.55) - may still be recovered; final verdict in the end-of-run summary
+  Added 49 tap segments, 4 tap vias
+  Net total time: 2.31s, 373198 iterations
+
+/BAT (net 28):
+  Multi-point net Phase 3: routing 6 remaining MST edges (longest first)
+    [27/120] (6 failed) Routing MST edge: pad 0 -> pad 7 (length=15.08mm) target=(35.00, 66.42)
+      Routed in 261 iterations (0.00s)
+    [28/120] (6 failed) Routing MST edge: pad 1 -> pad 4 (length=3.86mm) target=(27.06, 42.25)
+      Wide power route blocked - kept at 0.5000mm with a pad-entry neck to 0.1270mm (at most the 2mm pad-entry allowance, --escalation off)
+      Routed in 5084 iterations (0.04s)
+    [29/120] (6 failed) Routing MST edge: pad 7 -> pad 6 (length=3.16mm) target=(34.01, 64.25)
+      Neck-down at 0.2500mm rejected: path 2.5mm exceeds the 2mm pad-entry allowance
+      Neck-down at 0.1270mm rejected: path 2.4mm exceeds the 2mm pad-entry allowance
+      Wide power route blocked - kept at 0.5000mm with a pad-entry neck to 0.1270mm (at most the 2mm pad-entry allowance, --escalation off)
+      Routed in 5651 iterations (0.04s)
+    [30/120] (6 failed) Routing MST edge: pad 4 -> pad 3 (length=0.50mm) target=(27.06, 41.75)
+      Wide power route blocked - routed short edge at 0.2500mm (down from 0.5000)
+      Routed in 5012 iterations (0.04s)
+    [31/120] (6 failed) Routing MST edge: pad 3 -> pad 2 (length=11.96mm) target=(25.00, 31.85)
+      Routed in 1515 iterations (0.01s)
+    [32/120] (6 failed) Routing MST edge: pad 6 -> pad 5 (length=0.50mm) target=(34.01, 63.75)
+      Wide power route blocked - routed short edge at 0.2500mm (down from 0.5000)
+      Routed in 5012 iterations (0.04s)
+  Phase 3 routing complete: 6 edges, 99 total segments, 0 total vias
+  Added 49 tap segments, 0 tap vias
+  Net total time: 0.24s, 28269 iterations
+
+/RUN (net 68):
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [33/120] (6 failed) Routing MST edge: pad 1 -> pad 2 (length=5.92mm) target=(47.00, 58.17)
+      Routed in 45861 iterations (0.01s)
+    [34/120] (6 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+    Fallback: attempting orphaned pad 4 directly from connected copper
+    [35/120] (7 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [35/120] (7 failed) Routing MST edge: pad 2 -> pad 3 (length=24.60mm) target=(54.32, 75.46)
+      Routed in 628249 iterations (0.19s)
+    [36/120] (7 failed) Routing MST edge: pad 3 -> pad 4 (length=20.19mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 2 edges, 35 total segments, 4 total vias
+    Ripping /RADIO_CTRL (net 79) to retry tap route...
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [37/120] (8 failed) Routing MST edge: pad 1 -> pad 2 (length=5.92mm) target=(47.00, 58.17)
+      Routed in 45861 iterations (0.01s)
+    [38/120] (8 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+    Fallback: attempting orphaned pad 4 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 2 -> pad 3 (length=24.60mm) target=(54.32, 75.46)
+      Routed in 633619 iterations (0.20s)
+    [40/120] (9 failed) Routing MST edge: pad 3 -> pad 4 (length=20.19mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 2 edges, 35 total segments, 4 total vias
+    /RUN: Retry FAILED (N=1): still 2 failed edges
+      Retry had 590 blocked cells
+    Re-analyzing 590 blocked cells from N=1 retry:
+      Frontier blocked by 5 nets (186 cells, 186 unique; near: 0 src, 41 tgt)
+      Coverage: 186/295 frontier cells attributed to routed nets; 109 static/unrippable
+      Top blockers:
+        1. /XIN: 104 (55.9%), 104 uniq (100%)
+        2. /CHARGE_DISABLE: 41 (22.0%), 41 uniq (100%)
+        3. /SWDIO: 18 (9.7%), 18 uniq (100%), near: 0 src, 18 tgt
+        4. /GPIO17: 14 (7.5%), 14 uniq (100%), near: 0 src, 14 tgt
+        5. /SWCLK: 9 (4.8%), 9 uniq (100%), near: 0 src, 9 tgt
+    Extending to N=2: ripping /SWDIO (net 76)...
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [37/120] (8 failed) Routing MST edge: pad 1 -> pad 2 (length=5.92mm) target=(47.00, 58.17)
+      Routed in 45861 iterations (0.01s)
+    [38/120] (8 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+    Fallback: attempting orphaned pad 4 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (489 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad), /GPIO17(1 track)
+      Failed to route MST edge after 5489 iterations (0.01s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 2 -> pad 3 (length=24.60mm) target=(54.32, 75.46)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 810000 iterations (0.26s)
+  Warning: 2 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 1 edges, 12 total segments, 2 total vias
+    /RUN: Retry FAILED (N=2): still 2 failed edges
+      Retry had 15153 blocked cells
+    Re-analyzing 15153 blocked cells from N=2 retry:
+      Frontier blocked by 34 nets (8520 cells, 8518 unique; near: 0 src, 103 tgt)
+      Coverage: 8519/15041 frontier cells attributed to routed nets; 6522 static/unrippable
+      Top blockers:
+        1. /GAUGE_SCL: 801 (9.4%), 801 uniq (100%), near: 0 src, 25 tgt
+        2. /GPIO1: 658 (7.7%), 658 uniq (100%)
+        3. /GPIO17: 521 (6.1%), 521 uniq (100%), near: 0 src, 14 tgt
+        4. /ADC2: 503 (5.9%), 503 uniq (100%)
+        5. /USB_500_EN: 466 (5.5%), 466 uniq (100%)
+        6. /ADC1: 435 (5.1%), 435 uniq (100%)
+        7. /XIN: 419 (4.9%), 419 uniq (100%), near: 0 src, 12 tgt
+        8. /GPIO18: 404 (4.7%), 404 uniq (100%)
+        9. /GAUGE_SDA: 401 (4.7%), 401 uniq (100%)
+        10. /SWCLK: 371 (4.4%), 371 uniq (100%), near: 0 src, 9 tgt
+        ... and 24 more nets (3541 cells)
+    Extending to N=3: ripping /GPIO17 (net 58)...
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [37/120] (8 failed) Routing MST edge: pad 1 -> pad 2 (length=5.92mm) target=(47.00, 58.17)
+      Routed in 45861 iterations (0.01s)
+    [38/120] (8 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (650 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad)
+      Failed to route MST edge after 5650 iterations (0.01s)
+    Fallback: attempting orphaned pad 4 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 2 -> pad 4 (length=10.22mm) target=(56.50, 57.45)
+      backward stuck (650 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad)
+      Failed to route MST edge after 5650 iterations (0.01s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 2 -> pad 3 (length=24.60mm) target=(54.32, 75.46)
+      Routed in 557447 iterations (0.18s)
+    [40/120] (9 failed) Routing MST edge: pad 3 -> pad 4 (length=20.19mm) target=(56.50, 57.45)
+      backward stuck (650 < 5000), forward=5000
+        backward cell (1130, 1149, layer=0): ok, 4/8 neighbors blocked
+          Blocking obstacles: /CORE_1V1(1 pad)
+      Failed to route MST edge after 5650 iterations (0.01s)
+  Warning: 1 pad(s) not connected (2 MST edge(s) failed)
+  Phase 3 routing complete: 2 edges, 64 total segments, 4 total vias
+    /RUN: Retry FAILED (N=3): still 2 failed edges
+      Retry had 790 blocked cells
+    /RUN: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /RUN - ? pad  at (56.50, 57.45) - may still be recovered; final verdict in the end-of-run summary
+  Added 29 tap segments, 4 tap vias
+  Net total time: 1.36s, 701716 iterations
+
+/GAUGE_SDA (net 55):
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [37/120] (8 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (540 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5540 iterations (0.01s)
+    [38/120] (9 failed) Routing MST edge: pad 1 -> pad 0 (length=4.59mm) target=(35.99, 63.25)
+      Routed in 61 iterations (0.00s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [39/120] (9 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (540 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5540 iterations (0.01s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 1 edges, 30 total segments, 1 total vias
+    Ripping /ADC1 (net 65) to retry tap route...
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [39/120] (9 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (540 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5540 iterations (0.01s)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=4.59mm) target=(35.99, 63.25)
+      Routed in 61 iterations (0.00s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [41/120] (10 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (540 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5540 iterations (0.01s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 1 edges, 30 total segments, 1 total vias
+    /GAUGE_SDA: Retry FAILED (N=1): still 1 failed edges
+      Retry had 454 blocked cells
+    Re-analyzing 454 blocked cells from N=1 retry:
+      Frontier blocked by 7 nets (346 cells, 346 unique; near: 0 src, 108 tgt)
+      Coverage: 346/454 frontier cells attributed to routed nets; 108 static/unrippable
+      Top blockers:
+        1. /GPIO1: 174 (50.3%), 174 uniq (100%)
+        2. /RUN: 64 (18.5%), 64 uniq (100%)
+        3. /GPIO18: 38 (11.0%), 38 uniq (100%), near: 0 src, 38 tgt
+        4. /GAUGE_SCL: 18 (5.2%), 18 uniq (100%), near: 0 src, 18 tgt
+        5. /GPIO19: 18 (5.2%), 18 uniq (100%), near: 0 src, 18 tgt
+        6. /GPIO22: 17 (4.9%), 17 uniq (100%), near: 0 src, 17 tgt
+        7. /RADIO_CTRL: 17 (4.9%), 17 uniq (100%), near: 0 src, 17 tgt
+    Extending to N=2: ripping /GPIO18 (net 59)...
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [39/120] (9 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (542 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5542 iterations (0.01s)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=4.59mm) target=(35.99, 63.25)
+      Routed in 61 iterations (0.00s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [41/120] (10 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (542 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5542 iterations (0.01s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 1 edges, 30 total segments, 1 total vias
+    /GAUGE_SDA: Retry FAILED (N=2): still 1 failed edges
+      Retry had 454 blocked cells
+    Re-analyzing 454 blocked cells from N=2 retry:
+      Frontier blocked by 6 nets (308 cells, 308 unique; near: 0 src, 70 tgt)
+      Coverage: 308/454 frontier cells attributed to routed nets; 146 static/unrippable
+      Top blockers:
+        1. /GPIO1: 174 (56.5%), 174 uniq (100%)
+        2. /RUN: 64 (20.8%), 64 uniq (100%)
+        3. /GAUGE_SCL: 18 (5.8%), 18 uniq (100%), near: 0 src, 18 tgt
+        4. /GPIO19: 18 (5.8%), 18 uniq (100%), near: 0 src, 18 tgt
+        5. /GPIO22: 17 (5.5%), 17 uniq (100%), near: 0 src, 17 tgt
+        6. /RADIO_CTRL: 17 (5.5%), 17 uniq (100%), near: 0 src, 17 tgt
+    Extending to N=3: ripping /GAUGE_SCL (net 30)...
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [39/120] (9 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (542 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5542 iterations (0.01s)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=4.59mm) target=(35.99, 63.25)
+      Routed in 86 iterations (0.00s)
+    Fallback: attempting orphaned pad 3 directly from connected copper
+    [41/120] (10 failed) Routing MST edge: pad 1 -> pad 3 (length=26.22mm) target=(59.05, 55.50)
+      backward stuck (540 < 5000), forward=5000
+        backward cell (1181, 1110, layer=0): ok, 3/8 neighbors blocked
+          Blocking obstacles: /GPIO19(2 track, 1 pad)
+      Failed to route MST edge after 5540 iterations (0.01s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 1 edges, 30 total segments, 1 total vias
+    /GAUGE_SDA: Retry FAILED (N=3): still 1 failed edges
+      Retry had 455 blocked cells
+    /GAUGE_SDA: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /GAUGE_SDA - ? pad  at (59.05, 55.50) - may still be recovered; final verdict in the end-of-run summary
+  Added 3 tap segments, 0 tap vias
+  Net total time: 0.45s, 41260 iterations
+
+/I2C_SCL (net 21):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [39/120] (9 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (331 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5331 iterations (0.00s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (331 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5331 iterations (0.00s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 16 total segments, 0 total vias
+    Ripping /I2C_SDA (net 39) to retry tap route...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (327 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5327 iterations (0.00s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [41/120] (11 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (327 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5327 iterations (0.00s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 16 total segments, 0 total vias
+    /I2C_SCL: Retry FAILED (N=1): still 1 failed edges
+      Retry had 421 blocked cells
+    Re-analyzing 421 blocked cells from N=1 retry:
+      Frontier blocked by 3 nets (364 cells, 364 unique; near: 0 src, 55 tgt)
+      Coverage: 364/421 frontier cells attributed to routed nets; 57 static/unrippable
+      Top blockers:
+        1. /ADC3: 309 (84.9%), 309 uniq (100%)
+        2. /CORE_1V1: 42 (11.5%), 42 uniq (100%), near: 0 src, 42 tgt
+        3. /GPIO1: 13 (3.6%), 13 uniq (100%), near: 0 src, 13 tgt
+    Extending to N=2: ripping /CORE_1V1 (net 24)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (380 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5380 iterations (0.00s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [41/120] (11 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (380 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5380 iterations (0.00s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 16 total segments, 0 total vias
+    /I2C_SCL: Retry FAILED (N=2): still 1 failed edges
+      Retry had 421 blocked cells
+    Re-analyzing 421 blocked cells from N=2 retry:
+      Frontier blocked by 2 nets (322 cells, 322 unique; near: 0 src, 13 tgt)
+      Coverage: 322/421 frontier cells attributed to routed nets; 99 static/unrippable
+      Top blockers:
+        1. /ADC3: 309 (96.0%), 309 uniq (100%)
+        2. /GPIO1: 13 (4.0%), 13 uniq (100%), near: 0 src, 13 tgt
+    Extending to N=3: ripping /GPIO1 (net 56)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (597 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5597 iterations (0.00s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [41/120] (11 failed) Routing MST edge: pad 1 -> pad 0 (length=36.47mm) target=(50.75, 51.45)
+      backward stuck (597 < 5000), forward=5000
+        backward cell (1015, 1029, layer=0): ok, 0/8 neighbors blocked
+      Failed to route MST edge after 5597 iterations (0.00s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 16 total segments, 0 total vias
+    /I2C_SCL: Retry FAILED (N=3): still 1 failed edges
+      Retry had 491 blocked cells
+    /I2C_SCL: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /I2C_SCL - ? pad  at (50.75, 51.45) - may still be recovered; final verdict in the end-of-run summary
+  Net total time: 0.34s, 38870 iterations
+
+/VBUS (net 22):
+  Multi-point net Phase 3: routing 4 remaining MST edges (longest first)
+    [40/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=10.48mm) target=(22.00, 35.00)
+      Routed in 25044 iterations (0.15s)
+    [41/120] (10 failed) Routing MST edge: pad 5 -> pad 6 (length=7.08mm) target=(39.40, 27.18)
+      Routed in 5463 iterations (0.03s)
+    [42/120] (10 failed) Routing MST edge: pad 6 -> pad 3 (length=4.80mm) target=(34.60, 27.18)
+      Routed in 16459 iterations (0.12s)
+    [43/120] (10 failed) Routing MST edge: pad 1 -> pad 2 (length=2.34mm) target=(29.25, 40.56)
+      Wide power route blocked - routed short edge at 0.2500mm (down from 0.5000)
+      Routed in 22830 iterations (0.07s)
+  Phase 3 routing complete: 4 edges, 27 total segments, 6 total vias
+  Added 20 tap segments, 4 tap vias
+  Net total time: 0.43s, 114738 iterations
+
+/CHARGE_DISABLE (net 31):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [44/120] (10 failed) Routing MST edge: pad 1 -> pad 0 (length=9.51mm) target=(27.06, 42.75)
+      Routed in 77273 iterations (0.02s)
+  Phase 3 routing complete: 1 edges, 41 total segments, 2 total vias
+  Added 16 tap segments, 0 tap vias
+  Net total time: 0.06s, 243203 iterations
+
+/+3V3 (net 1):
+  POUR-LAUNCH v3: +546 region-laddered target(s) across 1 component(s) (phase 3)
+  Multi-point net Phase 3: routing 47 remaining MST edges (longest first)
+    [45/120] (10 failed) Routing MST edge: pad 54 -> pad 51 (length=4.50mm) target=(75.00, 39.33)
+      Routed in 18576 iterations (0.01s)
+    [46/120] (10 failed) Routing MST edge: pad 51 -> pad 45 (length=7.50mm) target=(68.00, 39.83)
+      Routed in 2 iterations (0.00s)
+    [47/120] (10 failed) Routing MST edge: pad 53 -> pad 56 (length=4.20mm) target=(78.25, 21.00)
+      Routed in 2632 iterations (0.00s)
+    [48/120] (10 failed) Routing MST edge: pad 45 -> pad 44 (length=4.05mm) target=(68.00, 35.77)
+      Routed in 27562 iterations (0.01s)
+    [49/120] (10 failed) Routing MST edge: pad 44 -> pad 40 (length=3.21mm) target=(65.47, 35.09)
+      Routed in 51 iterations (0.00s)
+    [50/120] (10 failed) Routing MST edge: pad 40 -> pad 20 (length=12.89mm) target=(52.59, 35.09)
+      Routed in 2 iterations (0.00s)
+    [51/120] (10 failed) Routing MST edge: pad 20 -> pad 11 (length=10.27mm) target=(43.00, 35.77)
+      Routed in 2 iterations (0.00s)
+    [52/120] (10 failed) Routing MST edge: pad 11 -> pad 12 (length=3.05mm) target=(43.00, 38.83)
+      Routed in 253 iterations (0.00s)
+    [53/120] (10 failed) Routing MST edge: pad 12 -> pad 8 (length=12.00mm) target=(36.00, 43.83)
+      Routed in 2 iterations (0.00s)
+    [54/120] (10 failed) Routing MST edge: pad 8 -> pad 3 (length=11.00mm) target=(29.50, 48.33)
+      Routed in 2 iterations (0.00s)
+    [55/120] (10 failed) Routing MST edge: pad 53 -> pad 49 (length=2.68mm) target=(73.00, 22.62)
+      Routed in 19307 iterations (0.01s)
+    [56/120] (10 failed) Routing MST edge: pad 3 -> pad 0 (length=2.50mm) target=(27.00, 48.33)
+      Routed in 51 iterations (0.00s)
+    [57/120] (10 failed) Routing MST edge: pad 0 -> pad 1 (length=5.60mm) target=(27.52, 53.40)
+      Routed in 103 iterations (0.00s)
+    [58/120] (10 failed) Routing MST edge: pad 1 -> pad 2 (length=2.68mm) target=(27.60, 56.00)
+      Routed in 53 iterations (0.00s)
+    [59/120] (10 failed) Routing MST edge: pad 2 -> pad 4 (length=2.80mm) target=(30.40, 56.00)
+      Routed in 196 iterations (0.00s)
+    [60/120] (10 failed) Routing MST edge: pad 4 -> pad 5 (length=9.60mm) target=(32.00, 64.00)
+      Routed in 2 iterations (0.00s)
+    [61/120] (10 failed) Routing MST edge: pad 5 -> pad 9 (length=7.67mm) target=(39.00, 63.33)
+      Routed in 27521 iterations (0.01s)
+    [62/120] (10 failed) Routing MST edge: pad 4 -> pad 7 (length=5.43mm) target=(35.50, 55.67)
+      Routed in 103 iterations (0.00s)
+    [63/120] (10 failed) Routing MST edge: pad 9 -> pad 10 (length=3.50mm) target=(39.00, 66.83)
+      Routed in 42930 iterations (0.01s)
+    [64/120] (10 failed) Routing MST edge: pad 10 -> pad 14 (length=11.17mm) target=(47.00, 70.00)
+      Routed in 244 iterations (0.00s)
+    [65/120] (10 failed) Routing MST edge: pad 28 -> pad 39 (length=8.81mm) target=(64.00, 76.33)
+      Routed in 2 iterations (0.00s)
+    [66/120] (10 failed) Routing MST edge: pad 39 -> pad 43 (length=8.50mm) target=(67.50, 81.33)
+      Routed in 24801 iterations (0.01s)
+    [67/120] (10 failed) Routing MST edge: pad 35 -> pad 41 (length=7.38mm) target=(65.55, 55.35)
+      Routed in 537 iterations (0.00s)
+    [68/120] (10 failed) Routing MST edge: pad 39 -> pad 38 (length=3.30mm) target=(64.00, 73.03)
+      Routed in 237 iterations (0.00s)
+    [69/120] (10 failed) Routing MST edge: pad 38 -> pad 47 (length=8.25mm) target=(71.00, 74.28)
+      Routed in 2 iterations (0.00s)
+    [70/120] (10 failed) Routing MST edge: pad 47 -> pad 46 (length=3.33mm) target=(71.00, 70.95)
+      Routed in 250 iterations (0.00s)
+    [71/120] (10 failed) Routing MST edge: pad 46 -> pad 48 (length=6.12mm) target=(72.00, 65.83)
+      Routed in 104 iterations (0.00s)
+    [72/120] (10 failed) Routing MST edge: pad 48 -> pad 50 (length=4.00mm) target=(73.00, 62.83)
+      Routed in 830 iterations (0.00s)
+    [73/120] (10 failed) Routing MST edge: pad 50 -> pad 42 (length=6.05mm) target=(67.00, 62.77)
+      Routed in 87 iterations (0.00s)
+    [74/120] (10 failed) Routing MST edge: pad 54 -> pad 58 (length=2.35mm) target=(79.17, 37.00)
+      Routed in 32 iterations (0.00s)
+    [75/120] (10 failed) Routing MST edge: pad 58 -> pad 61 (length=13.30mm) target=(91.00, 38.48)
+      Routed in 3 iterations (0.00s)
+    [76/120] (10 failed) Routing MST edge: pad 50 -> pad 52 (length=2.00mm) target=(75.00, 62.83)
+      Routed in 41 iterations (0.00s)
+    [77/120] (10 failed) Routing MST edge: pad 52 -> pad 55 (length=2.00mm) target=(77.00, 62.83)
+      Routed in 41 iterations (0.00s)
+    [78/120] (10 failed) Routing MST edge: pad 55 -> pad 57 (length=2.00mm) target=(79.00, 62.83)
+      Routed in 25342 iterations (0.01s)
+    [79/120] (10 failed) Routing MST edge: pad 57 -> pad 59 (length=2.00mm) target=(81.00, 62.83)
+      Routed in 26234 iterations (0.01s)
+    [80/120] (10 failed) Routing MST edge: pad 59 -> pad 60 (length=7.92mm) target=(83.47, 68.28)
+      Routed in 23932 iterations (0.01s)
+    [81/120] (10 failed) Routing MST edge: pad 29 -> pad 31 (length=1.73mm) target=(59.00, 58.02)
+      Routed in 16159 iterations (0.01s)
+    [82/120] (10 failed) Routing MST edge: pad 32 -> pad 34 (length=1.62mm) target=(60.02, 49.50)
+      Routed in 23 iterations (0.00s)
+    [83/120] (10 failed) Routing MST edge: pad 34 -> pad 37 (length=3.20mm) target=(63.23, 49.50)
+      Routed in 33085 iterations (0.01s)
+    [84/120] (10 failed) Routing MST edge: pad 37 -> pad 36 (length=3.90mm) target=(62.00, 46.83)
+      Routed in 27976 iterations (0.01s)
+    [85/120] (10 failed) Routing MST edge: pad 25 -> pad 24 (length=1.45mm) target=(54.60, 49.55)
+      Routed in 9 iterations (0.00s)
+    [86/120] (10 failed) Routing MST edge: pad 24 -> pad 23 (length=2.17mm) target=(54.00, 47.98)
+      Routed in 32 iterations (0.00s)
+    [87/120] (10 failed) Routing MST edge: pad 23 -> pad 26 (length=2.23mm) target=(56.20, 47.95)
+      Routed in 40 iterations (0.00s)
+    [88/120] (10 failed) Routing MST edge: pad 23 -> pad 19 (length=2.00mm) target=(52.00, 47.98)
+      Routed in 21562 iterations (0.01s)
+    [89/120] (10 failed) Routing MST edge: pad 22 -> pad 21 (length=1.32mm) target=(53.00, 58.02)
+      Routed in 17 iterations (0.00s)
+    [90/120] (10 failed) Routing MST edge: pad 21 -> pad 13 (length=7.80mm) target=(47.00, 59.83)
+      Routed in 21963 iterations (0.01s)
+    [91/120] (10 failed) Routing MST edge: pad 17 -> pad 15 (length=1.23mm) target=(49.98, 49.50)
+      Routed in 15 iterations (0.00s)
+  Phase 3 routing complete: 47 edges, 215 total segments, 22 total vias
+  Added 186 tap segments, 20 tap vias
+  Net total time: 0.62s, 454411 iterations
+
+/QSPI_D0 (net 73):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [92/120] (10 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217775 iterations (0.06s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [93/120] (11 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217775 iterations (0.06s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 8 total segments, 0 total vias
+    Ripping /+3V3 (net 1) to retry tap route...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [93/120] (11 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217667 iterations (0.06s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [94/120] (12 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217667 iterations (0.06s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 8 total segments, 0 total vias
+    /QSPI_D0: Retry FAILED (N=1): still 1 failed edges
+      Retry had 7007 blocked cells
+    Re-analyzing 7007 blocked cells from N=1 retry:
+      Frontier blocked by 22 nets (5157 cells, 5151 unique; near: 0 src, 411 tgt)
+      Coverage: 5154/7007 frontier cells attributed to routed nets; 1853 static/unrippable
+      Top blockers:
+        1. /QSPI_CLK: 649 (12.6%), 649 uniq (100%), near: 0 src, 35 tgt
+        2. /QSPI_D2: 473 (9.2%), 473 uniq (100%), near: 0 src, 14 tgt
+        3. /RADIO_CTRL: 470 (9.1%), 470 uniq (100%)
+        4. /PSRAM_CS: 439 (8.5%), 439 uniq (100%), near: 0 src, 32 tgt
+        5. /UART_CTS: 428 (8.3%), 428 uniq (100%)
+        6. /UART_TX: 321 (6.2%), 321 uniq (100%)
+        7. /QSPI_D1: 280 (5.4%), 280 uniq (100%)
+        8. /SD_CLK: 271 (5.3%), 271 uniq (100%)
+        9. /CORE_1V1: 168 (3.3%), 168 uniq (100%), near: 0 src, 14 tgt
+        10. /FLASH_CS: 155 (3.0%), 155 uniq (100%)
+        ... and 12 more nets (1503 cells)
+    Extending to N=2: ripping /QSPI_D3 (net 75)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [93/120] (11 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217880 iterations (0.06s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [94/120] (12 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217880 iterations (0.06s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 8 total segments, 0 total vias
+    /QSPI_D0: Retry FAILED (N=2): still 1 failed edges
+      Retry had 7003 blocked cells
+    Re-analyzing 7003 blocked cells from N=2 retry:
+      Frontier blocked by 21 nets (5099 cells, 5093 unique; near: 0 src, 355 tgt)
+      Coverage: 5096/7003 frontier cells attributed to routed nets; 1907 static/unrippable
+      Top blockers:
+        1. /QSPI_CLK: 647 (12.7%), 647 uniq (100%), near: 0 src, 35 tgt
+        2. /QSPI_D2: 473 (9.3%), 473 uniq (100%), near: 0 src, 14 tgt
+        3. /RADIO_CTRL: 470 (9.2%), 470 uniq (100%)
+        4. /PSRAM_CS: 439 (8.6%), 439 uniq (100%), near: 0 src, 32 tgt
+        5. /UART_CTS: 428 (8.4%), 428 uniq (100%)
+        6. /UART_TX: 321 (6.3%), 321 uniq (100%)
+        7. /QSPI_D1: 280 (5.5%), 280 uniq (100%)
+        8. /SD_CLK: 271 (5.3%), 271 uniq (100%)
+        9. /CORE_1V1: 168 (3.3%), 168 uniq (100%), near: 0 src, 14 tgt
+        10. /FLASH_CS: 155 (3.0%), 155 uniq (100%)
+        ... and 11 more nets (1447 cells)
+    Extending to N=3: ripping /PSRAM_CS (net 70)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [93/120] (11 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217880 iterations (0.06s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [94/120] (12 failed) Routing MST edge: pad 0 -> pad 1 (length=12.51mm) target=(53.40, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217880 iterations (0.06s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 8 total segments, 0 total vias
+    /QSPI_D0: Retry FAILED (N=3): still 1 failed edges
+      Retry had 7048 blocked cells
+    /QSPI_D0: All rip-up attempts failed, restoring 3 net(s)...
+    Hint: the box also includes PROTECTED net(s) '/USB_D_N' (diff-pair) within 3mm of the failing endpoint(s). The router will NEVER rip these (#521). If one is the decisive wall, the fixes are plan-level: reorder so this net routes BEFORE them, or override deliberately by naming the net EXACTLY (no glob) in --rip-existing-nets.
+  NOT CONNECTED (so far): /QSPI_D0 - ? pad  at (53.40, 50.60) - may still be recovered; final verdict in the end-of-run summary
+  Net total time: 1.76s, 435896 iterations
+
+/SYS (net 29):
+  Multi-point net Phase 3: routing 6 remaining MST edges (longest first)
+    [93/120] (11 failed) Routing MST edge: pad 5 -> pad 7 (length=5.43mm) target=(32.00, 61.83)
+      Routed in 82 iterations (0.00s)
+    [94/120] (11 failed) Routing MST edge: pad 4 -> pad 6 (length=2.86mm) target=(32.00, 43.05)
+      Routed in 37 iterations (0.00s)
+    [95/120] (11 failed) Routing MST edge: pad 5 -> pad 1 (length=2.80mm) target=(27.60, 58.00)
+      Wide power route blocked - kept at 0.5000mm with a pad-entry neck to 0.1270mm (at most the 2mm pad-entry allowance, --escalation off)
+      Routed in 5102 iterations (0.05s)
+    [96/120] (11 failed) Routing MST edge: pad 1 -> pad 2 (length=2.65mm) target=(28.00, 60.25)
+      Routed in 22 iterations (0.00s)
+    [97/120] (11 failed) Routing MST edge: pad 2 -> pad 0 (length=7.75mm) target=(22.00, 62.00)
+      Routed in 121 iterations (0.00s)
+    [98/120] (11 failed) Routing MST edge: pad 4 -> pad 3 (length=0.50mm) target=(29.94, 41.75)
+      Wide power route blocked - routed short edge at 0.2500mm (down from 0.5000)
+      Routed in 5011 iterations (0.04s)
+  Phase 3 routing complete: 6 edges, 37 total segments, 4 total vias
+  Added 33 tap segments, 2 tap vias
+  Net total time: 0.16s, 12240 iterations
+
+/USB_500_EN (net 23):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [99/120] (11 failed) Routing MST edge: pad 1 -> pad 0 (length=9.99mm) target=(28.25, 43.44)
+      Routed in 88248 iterations (0.02s)
+  Phase 3 routing complete: 1 edges, 35 total segments, 3 total vias
+  Added 17 tap segments, 2 tap vias
+  Net total time: 0.06s, 294677 iterations
+
+/I2C_SDA (net 39):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [100/120] (11 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 217991 iterations (0.07s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [101/120] (12 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 817975 iterations (0.27s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 4 total segments, 0 total vias
+    Ripping /CORE_1V1 (net 24) to retry tap route...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [101/120] (12 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 218090 iterations (0.07s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [102/120] (13 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 218090 iterations (0.06s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 4 total segments, 0 total vias
+    /I2C_SDA: Retry FAILED (N=1): still 1 failed edges
+      Retry had 3718 blocked cells
+    Re-analyzing 3718 blocked cells from N=1 retry:
+      Frontier blocked by 19 nets (2543 cells, 2537 unique; near: 0 src, 411 tgt)
+      Coverage: 2540/3718 frontier cells attributed to routed nets; 1178 static/unrippable
+      Top blockers:
+        1. /ADC3: 575 (22.6%), 575 uniq (100%)
+        2. /ADC2: 352 (13.8%), 352 uniq (100%)
+        3. /+3V3: 235 (9.2%), 235 uniq (100%), near: 0 src, 32 tgt
+        4. /RGB_DIN: 200 (7.9%), 200 uniq (100%)
+        5. /ADC1: 199 (7.8%), 199 uniq (100%)
+        6. /RADIO_BOOT: 147 (5.8%), 147 uniq (100%)
+        7. /GPIO19: 106 (4.2%), 106 uniq (100%)
+        8. /GAUGE_SCL: 105 (4.1%), 105 uniq (100%)
+        9. /QSPI_D0: 35 (1.4%), 35 uniq (100%), near: 0 src, 35 tgt
+        10. /PSRAM_CS: 31 (1.2%), 31 uniq (100%), near: 0 src, 31 tgt
+        ... and 9 more nets (558 cells)
+    Extending to N=2: ripping /QSPI_D0 (net 73)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [101/120] (12 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 218090 iterations (0.07s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [102/120] (13 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      No route found after 200000 iterations (forward), trying backward...
+      Failed to route MST edge after 218090 iterations (0.07s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 4 total segments, 0 total vias
+    /I2C_SDA: Retry FAILED (N=2): still 1 failed edges
+      Retry had 3718 blocked cells
+    Re-analyzing 3718 blocked cells from N=2 retry:
+      Frontier blocked by 18 nets (2508 cells, 2502 unique; near: 0 src, 376 tgt)
+      Coverage: 2505/3718 frontier cells attributed to routed nets; 1213 static/unrippable
+      Top blockers:
+        1. /ADC3: 575 (22.9%), 575 uniq (100%)
+        2. /ADC2: 352 (14.0%), 352 uniq (100%)
+        3. /+3V3: 235 (9.4%), 235 uniq (100%), near: 0 src, 32 tgt
+        4. /RGB_DIN: 200 (8.0%), 200 uniq (100%)
+        5. /ADC1: 199 (7.9%), 199 uniq (100%)
+        6. /RADIO_BOOT: 147 (5.9%), 147 uniq (100%)
+        7. /GPIO19: 106 (4.2%), 106 uniq (100%)
+        8. /GAUGE_SCL: 105 (4.2%), 105 uniq (100%)
+        9. /PSRAM_CS: 31 (1.2%), 31 uniq (100%), near: 0 src, 31 tgt
+        10. /SD_MOSI: 28 (1.1%), 28 uniq (100%), near: 0 src, 28 tgt
+        ... and 8 more nets (530 cells)
+    Extending to N=3: ripping /+3V3 (net 1)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [101/120] (12 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 618093 iterations (0.22s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [102/120] (13 failed) Routing MST edge: pad 1 -> pad 0 (length=31.38mm) target=(52.60, 51.40)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 618093 iterations (0.22s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 4 total segments, 0 total vias
+    /I2C_SDA: Retry FAILED (N=3): still 1 failed edges
+      Retry had 11075 blocked cells
+    /I2C_SDA: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /I2C_SDA - ? pad  at (52.60, 51.40) - may still be recovered; final verdict in the end-of-run summary
+  Net total time: 2.47s, 2053184 iterations
+
+/USB_D_N (net 25):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [101/120] (12 failed) Routing MST edge: pad 0 -> pad 2 (length=2.28mm) target=(39.14, 33.05)
+      Routed in 4986 iterations (0.01s)
+  Phase 3 routing complete: 1 edges, 9 total segments, 2 total vias
+  Added 5 tap segments, 2 tap vias
+  (seam re-ask skipped: /USB_D_N is protected)
+  Net total time: 0.05s, 5211 iterations
+
+/USB_D_P (net 26):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [102/120] (12 failed) Routing MST edge: pad 0 -> pad 2 (length=2.28mm) target=(39.14, 34.95)
+      Routed in 48151 iterations (0.08s)
+  Phase 3 routing complete: 1 edges, 12 total segments, 2 total vias
+  Added 4 tap segments, 2 tap vias
+  (seam re-ask skipped: /USB_D_P is protected)
+  Net total time: 0.12s, 48596 iterations
+
+/QSPI_D3 (net 75):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [103/120] (12 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 818229 iterations (0.28s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [104/120] (13 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 818229 iterations (0.29s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 10 total segments, 0 total vias
+    Ripping /+3V3 (net 1) to retry tap route...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [104/120] (13 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 818303 iterations (0.29s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [105/120] (14 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 818303 iterations (0.29s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 10 total segments, 0 total vias
+    /QSPI_D3: Retry FAILED (N=1): still 1 failed edges
+      Retry had 11096 blocked cells
+    Re-analyzing 11096 blocked cells from N=1 retry:
+      Frontier blocked by 29 nets (7350 cells, 7344 unique; near: 0 src, 388 tgt)
+      Coverage: 7347/11096 frontier cells attributed to routed nets; 3749 static/unrippable
+      Top blockers:
+        1. /RADIO_CTRL: 853 (11.6%), 853 uniq (100%)
+        2. /QSPI_CLK: 609 (8.3%), 609 uniq (100%), near: 0 src, 30 tgt
+        3. /UART_CTS: 543 (7.4%), 543 uniq (100%)
+        4. /CORE_1V1: 412 (5.6%), 412 uniq (100%), near: 0 src, 14 tgt
+        5. /UART_TX: 400 (5.4%), 400 uniq (100%)
+        6. /FLASH_CS: 395 (5.4%), 395 uniq (100%)
+        7. /SD_CLK: 364 (5.0%), 364 uniq (100%)
+        8. /PSRAM_CS: 357 (4.9%), 357 uniq (100%), near: 0 src, 12 tgt
+        9. /QSPI_D1: 341 (4.6%), 341 uniq (100%)
+        10. /CHARGE_DISABLE: 270 (3.7%), 270 uniq (100%)
+        ... and 19 more nets (2806 cells)
+    Extending to N=2: ripping /QSPI_D0 (net 73)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [104/120] (13 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 400000 (base 200000)
+      No route found after 400000 iterations (forward), trying backward...
+      Failed to route MST edge after 418303 iterations (0.13s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [105/120] (14 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 400000 (base 200000)
+      No route found after 400000 iterations (forward), trying backward...
+      Failed to route MST edge after 418303 iterations (0.13s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 10 total segments, 0 total vias
+    /QSPI_D3: Retry FAILED (N=2): still 1 failed edges
+      Retry had 9923 blocked cells
+    Re-analyzing 9923 blocked cells from N=2 retry:
+      Frontier blocked by 21 nets (6410 cells, 6404 unique; near: 0 src, 357 tgt)
+      Coverage: 6407/9923 frontier cells attributed to routed nets; 3516 static/unrippable
+      Top blockers:
+        1. /QSPI_CLK: 825 (12.9%), 825 uniq (100%), near: 0 src, 38 tgt
+        2. /RADIO_CTRL: 690 (10.8%), 690 uniq (100%)
+        3. /UART_CTS: 633 (9.9%), 633 uniq (100%)
+        4. /QSPI_D1: 490 (7.6%), 490 uniq (100%)
+        5. /PSRAM_CS: 482 (7.5%), 482 uniq (100%), near: 0 src, 12 tgt
+        6. /UART_TX: 469 (7.3%), 469 uniq (100%)
+        7. /QSPI_D2: 401 (6.3%), 401 uniq (100%)
+        8. /SD_CLK: 271 (4.2%), 271 uniq (100%)
+        9. /CORE_1V1: 222 (3.5%), 222 uniq (100%), near: 0 src, 14 tgt
+        10. /FLASH_CS: 211 (3.3%), 211 uniq (100%)
+        ... and 11 more nets (1716 cells)
+    Extending to N=3: ripping /I2C_SDA (net 39)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [104/120] (13 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 400000 (base 200000)
+      No route found after 400000 iterations (forward), trying backward...
+      Failed to route MST edge after 418303 iterations (0.13s)
+    Fallback: attempting orphaned pad 1 directly from connected copper
+    [105/120] (14 failed) Routing MST edge: pad 0 -> pad 1 (length=15.85mm) target=(54.20, 50.60)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 400000 (base 200000)
+      No route found after 400000 iterations (forward), trying backward...
+      Failed to route MST edge after 418303 iterations (0.13s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 10 total segments, 0 total vias
+    /QSPI_D3: Retry FAILED (N=3): still 1 failed edges
+      Retry had 9923 blocked cells
+    /QSPI_D3: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /QSPI_D3 - ? pad  at (54.20, 50.60) - may still be recovered; final verdict in the end-of-run summary
+  Net total time: 2.99s, 2252189 iterations
+
+/SD_MOSI (net 42):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [104/120] (13 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 819410 iterations (0.23s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [105/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 800000 (base 200000)
+      No route found after 800000 iterations (forward), trying backward...
+      Failed to route MST edge after 819410 iterations (0.23s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 18 total segments, 2 total vias
+    Ripping /+3V3 (net 1) to retry tap route...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [105/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 619530 iterations (0.19s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [106/120] (15 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 619530 iterations (0.19s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 18 total segments, 2 total vias
+    /SD_MOSI: Retry FAILED (N=1): still 1 failed edges
+      Retry had 10738 blocked cells
+    Re-analyzing 10738 blocked cells from N=1 retry:
+      Frontier blocked by 22 nets (7056 cells, 7048 unique; near: 0 src, 286 tgt)
+      Coverage: 7052/10738 frontier cells attributed to routed nets; 3686 static/unrippable
+      Top blockers:
+        1. /SD_CLK: 1018 (14.4%), 1018 uniq (100%), near: 0 src, 18 tgt
+        2. /RADIO_BOOT: 684 (9.7%), 684 uniq (100%)
+        3. /CORE_1V1: 534 (7.6%), 534 uniq (100%), near: 0 src, 28 tgt
+        4. /ADC2: 521 (7.4%), 521 uniq (100%)
+        5. /RGB_DIN: 295 (4.2%), 295 uniq (100%)
+        6. /SD_DETECT: 253 (3.6%), 253 uniq (100%), near: 0 src, 37 tgt
+        7. /ADC1: 203 (2.9%), 203 uniq (100%)
+        8. /SD_MISO: 166 (2.4%), 166 uniq (100%)
+        9. /GPIO23: 161 (2.3%), 161 uniq (100%)
+        10. /VREG_AVDD: 159 (2.3%), 159 uniq (100%)
+        ... and 12 more nets (3062 cells)
+    Extending to N=2: ripping /SD_DETECT (net 45)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [105/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 619530 iterations (0.19s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [106/120] (15 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 600000 (base 200000)
+      No route found after 600000 iterations (forward), trying backward...
+      Failed to route MST edge after 619530 iterations (0.19s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 18 total segments, 2 total vias
+    /SD_MOSI: Retry FAILED (N=2): still 1 failed edges
+      Retry had 10436 blocked cells
+    Re-analyzing 10436 blocked cells from N=2 retry:
+      Frontier blocked by 21 nets (6654 cells, 6646 unique; near: 0 src, 249 tgt)
+      Coverage: 6650/10436 frontier cells attributed to routed nets; 3786 static/unrippable
+      Top blockers:
+        1. /SD_CLK: 971 (14.6%), 971 uniq (100%), near: 0 src, 18 tgt
+        2. /RADIO_BOOT: 664 (10.0%), 664 uniq (100%)
+        3. /CORE_1V1: 532 (8.0%), 532 uniq (100%), near: 0 src, 28 tgt
+        4. /ADC2: 502 (7.5%), 502 uniq (100%)
+        5. /RGB_DIN: 295 (4.4%), 295 uniq (100%)
+        6. /ADC1: 191 (2.9%), 191 uniq (100%)
+        7. /GPIO23: 161 (2.4%), 161 uniq (100%)
+        8. /VREG_AVDD: 159 (2.4%), 159 uniq (100%)
+        9. /SD_MISO: 149 (2.2%), 149 uniq (100%)
+        10. /GAUGE_SCL: 105 (1.6%), 105 uniq (100%)
+        ... and 11 more nets (2925 cells)
+    Extending to N=3: ripping /CORE_1V1 (net 24)...
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [105/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 400000 (base 200000)
+      No route found after 400000 iterations (forward), trying backward...
+      Failed to route MST edge after 419361 iterations (0.14s)
+    Fallback: attempting orphaned pad 0 directly from connected copper
+    [106/120] (15 failed) Routing MST edge: pad 1 -> pad 0 (length=29.77mm) target=(52.60, 53.80)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      dynamic iterations (#529): search extended to 400000 (base 200000)
+      No route found after 400000 iterations (forward), trying backward...
+      Failed to route MST edge after 419361 iterations (0.14s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 0 edges, 18 total segments, 2 total vias
+    /SD_MOSI: Retry FAILED (N=3): still 1 failed edges
+      Retry had 8259 blocked cells
+    /SD_MOSI: All rip-up attempts failed, restoring 3 net(s)...
+  NOT CONNECTED (so far): /SD_MOSI - ? pad  at (52.60, 53.80) - may still be recovered; final verdict in the end-of-run summary
+  Net total time: 2.91s, 1943285 iterations
+
+/XTAL_OUT (net 53):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [105/120] (14 failed) Routing MST edge: pad 1 -> pad 2 (length=2.58mm) target=(47.50, 63.33)
+      Routed in 49 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 21 total segments, 0 total vias
+  Added 2 tap segments, 0 tap vias
+  Net total time: 0.03s, 368 iterations
+
+/BUCK_VINA (net 48):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [106/120] (14 failed) Routing MST edge: pad 2 -> pad 1 (length=2.40mm) target=(32.00, 60.17)
+      Routed in 45 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 7 total segments, 0 total vias
+  Added 3 tap segments, 0 tap vias
+  Net total time: 0.02s, 82 iterations
+
+/CHG_N (net 33):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [107/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=4.36mm) target=(29.50, 46.67)
+      Routed in 57893 iterations (0.01s)
+  Phase 3 routing complete: 1 edges, 18 total segments, 2 total vias
+  Added 9 tap segments, 2 tap vias
+  Net total time: 0.04s, 58062 iterations
+
+/BOOT_SWITCH (net 86):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [108/120] (14 failed) Routing MST edge: pad 2 -> pad 1 (length=4.92mm) target=(43.83, 41.50)
+      Routed in 66876 iterations (0.02s)
+  Phase 3 routing complete: 1 edges, 11 total segments, 2 total vias
+  Added 10 tap segments, 2 tap vias
+  Net total time: 0.05s, 67003 iterations
+
+/VREG_AVDD (net 19):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [109/120] (14 failed) Routing MST edge: pad 1 -> pad 2 (length=2.72mm) target=(63.55, 44.00)
+      Routed in 20657 iterations (0.01s)
+  Phase 3 routing complete: 1 edges, 14 total segments, 2 total vias
+  Added 5 tap segments, 2 tap vias
+  Net total time: 0.03s, 20758 iterations
+
+/QSPI_D1 (net 71):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [110/120] (14 failed) Routing MST edge: pad 0 -> pad 2 (length=15.11mm) target=(60.52, 36.37)
+      Routed in 4684 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 53 total segments, 0 total vias
+  Added 18 tap segments, 0 tap vias
+  Net total time: 0.03s, 27160 iterations
+
+/QSPI_D2 (net 72):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [111/120] (14 failed) Routing MST edge: pad 2 -> pad 0 (length=15.11mm) target=(45.41, 37.63)
+      Routed in 39825 iterations (0.01s)
+  Phase 3 routing complete: 1 edges, 67 total segments, 4 total vias
+  Added 20 tap segments, 2 tap vias
+  Net total time: 0.05s, 226200 iterations
+
+/RADIO_EN (net 2):
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [112/120] (14 failed) Routing MST edge: pad 2 -> pad 1 (length=3.05mm) target=(73.17, 31.00)
+      Routed in 89358 iterations (0.03s)
+    [113/120] (14 failed) Routing MST edge: pad 1 -> pad 3 (length=13.58mm) target=(78.25, 22.50)
+      Routed in 147389 iterations (0.04s)
+    [114/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=1.35mm) target=(71.83, 31.00)
+      Routed in 29 iterations (0.00s)
+  Phase 3 routing complete: 3 edges, 16 total segments, 3 total vias
+  Added 9 tap segments, 3 tap vias
+  Net total time: 0.11s, 254052 iterations
+
+/FLASH_CS (net 27):
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [115/120] (14 failed) Routing MST edge: pad 0 -> pad 1 (length=5.15mm) target=(43.00, 37.17)
+      Routed in 5967 iterations (0.00s)
+    [116/120] (14 failed) Routing MST edge: pad 1 -> pad 2 (length=4.49mm) target=(45.41, 35.09)
+      Routed in 31964 iterations (0.01s)
+  Phase 3 routing complete: 2 edges, 14 total segments, 3 total vias
+  Added 11 tap segments, 3 tap vias
+  Net total time: 0.04s, 38124 iterations
+
+/XIN (net 52):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [117/120] (14 failed) Routing MST edge: pad 0 -> pad 1 (length=3.97mm) target=(42.90, 64.85)
+      Routed in 83 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 17 total segments, 1 total vias
+  Added 2 tap segments, 0 tap vias
+  Net total time: 0.03s, 6447 iterations
+
+/SD_CS (net 40):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [118/120] (14 failed) Routing MST edge: pad 1 -> pad 2 (length=19.78mm) target=(85.67, 68.28)
+      Routed in 55551 iterations (0.02s)
+  Phase 3 routing complete: 1 edges, 56 total segments, 3 total vias
+  Added 20 tap segments, 2 tap vias
+  Net total time: 0.05s, 90346 iterations
+
+/USB_PGOOD_N (net 32):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [119/120] (14 failed) Routing MST edge: pad 1 -> pad 0 (length=4.99mm) target=(27.00, 46.67)
+      Routed in 118915 iterations (0.03s)
+  Phase 3 routing complete: 1 edges, 32 total segments, 2 total vias
+  Added 11 tap segments, 2 tap vias
+  Net total time: 0.07s, 144243 iterations
+
+/PSRAM_CS (net 70):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [120/120] (14 failed) Routing MST edge: pad 1 -> pad 2 (length=10.55mm) target=(68.00, 38.17)
+      Routed in 73745 iterations (0.02s)
+  Phase 3 routing complete: 1 edges, 19 total segments, 3 total vias
+  Added 8 tap segments, 1 tap vias
+  Net total time: 0.05s, 210005 iterations
+
+/RADIO_BOOT (net 8):
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [121/120] (14 failed) Routing MST edge: pad 3 -> pad 4 (length=6.30mm) target=(88.15, 41.10)
+      Routed in 153 iterations (0.00s)
+    [122/120] (14 failed) Routing MST edge: pad 3 -> pad 2 (length=5.12mm) target=(80.83, 37.00)
+      Routed in 124258 iterations (0.04s)
+    [123/120] (14 failed) Routing MST edge: pad 2 -> pad 1 (length=8.08mm) target=(78.25, 31.50)
+      Routed in 150950 iterations (0.04s)
+  Phase 3 routing complete: 3 edges, 88 total segments, 5 total vias
+  Added 13 tap segments, 3 tap vias
+  Net total time: 0.18s, 754426 iterations
+
+============================================================
+Final reconciliation (casualties-only, depth 1): 1 net(s)/pair(s) ripped during routing never re-routed
+============================================================
+      restore skipped (net 80): saved copper would short other-net copper; left ripped (#134)
+Both directions stuck (forward=326, backward=1402 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_P(2 track, 1 pad), /CORE_1V1(1 pad)
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=326, backward=876 < 5000)
+  forward cell (1116, 991, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /MCU_USB_P(2 track, 1 pad), /CORE_1V1(1 pad)
+  backward cell (1059, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+Both directions stuck (forward=1402, backward=220 < 5000)
+  forward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked (margin=3)
+  backward cell (1108, 1020, layer=0): ok, 8/8 neighbors blocked (margin=3)
+    Blocking obstacles: /+3V3(2 track), /GND(1 pad)
+Both directions stuck (forward=876, backward=1856 < 5000)
+  forward cell (1116, 991, layer=0): ok, 0/8 neighbors blocked
+  backward cell (1080, 896, layer=0): ok, 0/8 neighbors blocked
+No route found after 7284 iterations (both directions)
+  PARTIAL /MCU_USB_N: reroute failed; restored 3 segment(s) + 0 via(s) of its pre-rip route (dropped 17 colliding piece(s)); net remains PARTIAL for a later pass
+
+Pre-existing rip outcome(s) (2 net(s)):
+  '/MCU_USB_N' (was blocking '/VREG_LX'): NOT RECOVERED (still open; see terminal_restores/reconciliation)
+  '/MCU_USB_P' (was blocking '/MCU_USB_N'): original copper restored
+Dropped 1 superseded rip-reroute result(s) from the write-list
+Closed 1 stub gap(s) to same-net copper
+Dead-end sweep: trimmed 2 dead-end segment(s) and 0 unsupported via(s)
+Bridged 5 same-net soft joint(s) with a tiny connector
+Merged 34 collinear joint(s) on 25 net(s): -34 redundant segment(s) (#811)
+Stripped 40 stale input segment(s) of ripped/re-routed nets not on the final board (#220)
+Stripping 7 stale input via(s) of ripped/re-routed nets not on the final board
+COVERAGE GATE: /MCU_USB_N was disturbed by this run (ripped/stripped) and ships with 1 disconnected pad(s) -- reporting as failed and queuing for the final reconciliation
+
+============================================================
+Routing complete
+============================================================
+  Single-ended:  59/73 routed (3 FAILED)
+  Multi-point:   254/300 pads connected (46 FAILED)
+  Total vias:    120
+  Search time:   7.38s (net search only, not the whole run)
+  Iterations:    8,617,168
+  History congestion (#590): 49 contest + 48 rip + 50 blocked-frontier event(s) over 307247 cell(s), peak 0.50mm-equiv (inc 0.1mm, cap 0.5, escalate 0.0, rip weight 1.0, frontier weight 0.25), 0.34s of field upkeep
+
+Failed single-ended nets:
+  /UART_RX
+  /RGB_DATA
+  /GPIO25
+
+Failed multi-point connections:
+  /RUN: U1 pad 26 at (56.20, 56.45) not connected
+  /SD_MISO: U1 pad 7 at (51.55, 52.60) not connected
+  /SD_MOSI: U1 pad 10 at (51.55, 53.80) not connected
+  /GND: U7 pad 9 at (78.25, 33.00) not connected
+  /GND: C16 pad 2 at (52.00, 46.42) not connected
+  /GND: C5 pad 2 at (65.45, 44.00) not connected
+  /GND: R16 pad 2 at (35.83, 47.50) not connected
+  /GND: C19 pad 2 at (56.00, 59.58) not connected
+  /GND: U4 pad 2 at (36.86, 34.00) not connected
+  /GND: C22 pad 2 at (24.00, 44.95) not connected
+  /GND: U5 pad 5 at (27.75, 43.44) not connected
+  /GND: U5 pad 8 at (29.25, 43.44) not connected
+  /GND: U5 pad 17 at (28.50, 42.00) not connected
+  /GND: C14 pad 2 at (61.58, 49.50) not connected
+  /GND: C20 pad 2 at (64.78, 53.50) not connected
+  /GND: J5 pad 1 at (66.50, 81.33) not connected
+  /GND: U6 pad 3 at (27.60, 57.00) not connected
+  /GND: U6 pad 7 at (30.40, 57.50) not connected
+  /GND: U6 pad 11 at (29.00, 57.00) not connected
+  /GND: C8 pad 2 at (54.50, 62.05) not connected
+  /GND: Y1 pad 4 at (42.90, 63.15) not connected
+  /GND: C18 pad 2 at (48.42, 52.00) not connected
+  /GND: C23 pad 2 at (32.00, 44.95) not connected
+  /GND: C11 pad 2 at (53.00, 59.58) not connected
+  /GND: C13 pad 2 at (61.58, 53.50) not connected
+  /GND: U1 pad 61 at (55.00, 53.00) not connected
+  /GND: C29 pad 2 at (74.78, 34.00) not connected
+  /GND: R12 pad 2 at (24.82, 48.00) not connected
+  /GND: SW1 pad 2 at (37.85, 49.90) not connected
+  /GND: SW1 pad 2 at (44.15, 49.90) not connected
+  /GND: C17 pad 2 at (64.78, 49.50) not connected
+  /GND: R22 pad 2 at (74.83, 31.00) not connected
+  /GAUGE_SDA: U1 pad 32 at (58.45, 55.40) not connected
+  /I2C_SCL: U1 pad 5 at (51.55, 51.80) not connected
+  /QSPI_D3: U1 pad 55 at (54.20, 49.55) not connected
+  /I2C_SDA: U1 pad 4 at (51.55, 51.40) not connected
+  /QSPI_D0: U1 pad 57 at (53.40, 49.55) not connected
+  /CORE_1V1: C20 pad 1 at (63.23, 53.50) not connected
+  /CORE_1V1: C8 pad 1 at (54.50, 63.95) not connected
+  /CORE_1V1: C18 pad 1 at (49.98, 52.00) not connected
+  /CORE_1V1: L1 pad 1 at (58.50, 46.25) not connected
+  /CORE_1V1: C7 pad 1 at (58.50, 44.75) not connected
+  /CORE_1V1: U1 pad 6 at (51.55, 52.20) not connected
+  /CORE_1V1: U1 pad 50 at (56.20, 49.55) not connected
+  /CORE_1V1: TP8 pad 1 at (57.00, 62.00) not connected
+  /SD_DETECT: U1 pad 12 at (51.55, 54.60) not connected
+  /MCU_USB_N: R10 pad 2 at (54.00, 44.83) not connected
+
+============================================================
+FAILED NET HISTORIES
+============================================================
+
+/UART_RX:
+  [0] blocked_by
+  [0] Re-route FAILED: all rip-up attempts failed
+         Blocked by: /SD_CLK, /SD_CS, /VREG_AVDD
+  [0] Blocked by pre-existing copper: /UART_CTS, /UART_TX, /UART_RTS
+         Hint: the blocking copper belongs to 3 pre-existing net(s) committed by an earlier run/step; 3 of them this run may not rip. Retry with --rip-existing-nets '/UART_CTS' '/UART_TX' '/UART_RTS' to rip and re-route them in this run (issue #103) -- the decisive blocker may be any of them, so start with the full set (each ripped net is re-routed and the run reports honestly if one cannot be), then bisect if you want a minimal rip. A rip lifts their tracks and vias only; their pads stay. If pads wall the failed pad, no rip frees it: check the pad first with py_tools/check_reachability.py <board> --pad <REF.PAD>, which sets the routing aside -- CAGED there is placement, not copper.
+
+/RGB_DATA:
+  [0] blocked_by
+  [0] Re-route FAILED: all rip-up attempts failed
+         Blocked by: /RADIO_BOOT, /ADC2, /XIN
+  [0] Blocked by pre-existing copper: /SD_DETECT
+         Hint: the blocking copper belongs to 1 pre-existing net(s) committed by an earlier run/step; 1 of them this run may not rip. Retry with --rip-existing-nets '/SD_DETECT' to rip and re-route them in this run (issue #103) -- the decisive blocker may be any of them, so start with the full set (each ripped net is re-routed and the run reports honestly if one cannot be), then bisect if you want a minimal rip. A rip lifts their tracks and vias only; their pads stay. If pads wall the failed pad, no rip frees it: check the pad first with py_tools/check_reachability.py <board> --pad <REF.PAD>, which sets the routing aside -- CAGED there is placement, not copper.
+
+/GPIO25:
+  [0] blocked_by
+  [0] Re-route FAILED: all rip-up attempts failed
+         Blocked by: /GPIO23, /RADIO_BOOT, /GAUGE_SCL
+
+Power trace ampacity (bottleneck segment, IPC-2152):
+  /+3V3: 0.54A max (0.127mm on F.Cu (1 oz copper, 10°C rise), IPC-2221: 0.54A)
+  /CORE_1V1: 0.54A max (0.127mm on F.Cu (1 oz copper, 10°C rise), IPC-2221: 0.54A)
+JSON_SUMMARY: {"routed_single": ["/VREG_LX", "/XTAL_OUT", "/BUCK_VINA", "/CHG_ISET", "/BUCK_L1", "/BUCK_L2", "/CHG_N", "/CHG_TMR", "/CC2", "/RADIO_IO8", "/BAT_TS", "/BOOT_SWITCH", "/VREG_AVDD", "/SD_DAT1", "/RGB_DIN", "/XOUT", "/SD_DAT2", "/CHG_ILIM", "/USB_D_N", "/PROG_TX", "/USB_D_P", "/PROG_RX", "/QSPI_D1", "/RADIO_IO2", "/GPIO24", "/GPIO17", "/GPIO18", "/CC1", "/VBUS", "/QSPI_D2", "/SYS", "/RADIO_EN", "/FLASH_CS", "/SWDIO", "/GPIO23", "/GPIO22", "/RADIO_CTRL", "/GPIO1", "/ADC0", "/BAT", "/QSPI_CLK", "/SWCLK", "/XIN", "/USB_500_EN", "/SD_CS", "/SD_CLK", "/USB_PGOOD_N", "/ADC3", "/UART_TX", "/PSRAM_CS", "/CHARGE_DISABLE", "/ADC2", "/ADC1", "/UART_RTS", "/+3V3", "/RADIO_BOOT", "/UART_CTS", "/GAUGE_SCL", "/GPIO19"], "failed_single": ["/UART_RX", "/RGB_DATA", "/GPIO25"], "open_single": [], "failed_multipoint": [{"net_name": "/RUN", "failed_pads": [{"component_ref": "U1", "pad_number": "26", "x": 56.2, "y": 56.45}]}, {"net_name": "/SD_MISO", "failed_pads": [{"component_ref": "U1", "pad_number": "7", "x": 51.55, "y": 52.6}]}, {"net_name": "/SD_MOSI", "failed_pads": [{"component_ref": "U1", "pad_number": "10", "x": 51.55, "y": 53.8}]}, {"net_name": "/GND", "failed_pads": [{"component_ref": "U7", "pad_number": "9", "x": 78.25, "y": 33.0}, {"component_ref": "C16", "pad_number": "2", "x": 52.0, "y": 46.425}, {"component_ref": "C5", "pad_number": "2", "x": 65.45, "y": 44.0}, {"component_ref": "R16", "pad_number": "2", "x": 35.825, "y": 47.5}, {"component_ref": "C19", "pad_number": "2", "x": 56.0, "y": 59.575}, {"component_ref": "U4", "pad_number": "2", "x": 36.8625, "y": 34.0}, {"component_ref": "C22", "pad_number": "2", "x": 24.0, "y": 44.95}, {"component_ref": "U5", "pad_number": "5", "x": 27.75, "y": 43.4375}, {"component_ref": "U5", "pad_number": "8", "x": 29.25, "y": 43.4375}, {"component_ref": "U5", "pad_number": "17", "x": 28.5, "y": 42.0}, {"component_ref": "C14", "pad_number": "2", "x": 61.575, "y": 49.5}, {"component_ref": "C20", "pad_number": "2", "x": 64.775, "y": 53.5}, {"component_ref": "J5", "pad_number": "1", "x": 66.5, "y": 81.325}, {"component_ref": "U6", "pad_number": "3", "x": 27.6, "y": 57.0}, {"component_ref": "U6", "pad_number": "7", "x": 30.4, "y": 57.5}, {"component_ref": "U6", "pad_number": "11", "x": 29.0, "y": 57.0}, {"component_ref": "C8", "pad_number": "2", "x": 54.5, "y": 62.05}, {"component_ref": "Y1", "pad_number": "4", "x": 42.9, "y": 63.15}, {"component_ref": "C18", "pad_number": "2", "x": 48.425, "y": 52.0}, {"component_ref": "C23", "pad_number": "2", "x": 32.0, "y": 44.95}, {"component_ref": "C11", "pad_number": "2", "x": 53.0, "y": 59.575}, {"component_ref": "C13", "pad_number": "2", "x": 61.575, "y": 53.5}, {"component_ref": "U1", "pad_number": "61", "x": 55.0, "y": 53.0}, {"component_ref": "C29", "pad_number": "2", "x": 74.775, "y": 34.0}, {"component_ref": "R12", "pad_number": "2", "x": 24.825, "y": 48.0}, {"component_ref": "SW1", "pad_number": "2", "x": 37.85, "y": 49.9}, {"component_ref": "SW1", "pad_number": "2", "x": 44.15, "y": 49.9}, {"component_ref": "C17", "pad_number": "2", "x": 64.775, "y": 49.5}, {"component_ref": "R22", "pad_number": "2", "x": 74.825, "y": 31.0}]}, {"net_name": "/GAUGE_SDA", "failed_pads": [{"component_ref": "U1", "pad_number": "32", "x": 58.45, "y": 55.4}]}, {"net_name": "/I2C_SCL", "failed_pads": [{"component_ref": "U1", "pad_number": "5", "x": 51.55, "y": 51.8}]}, {"net_name": "/QSPI_D3", "failed_pads": [{"component_ref": "U1", "pad_number": "55", "x": 54.2, "y": 49.55}]}, {"net_name": "/I2C_SDA", "failed_pads": [{"component_ref": "U1", "pad_number": "4", "x": 51.55, "y": 51.4}]}, {"net_name": "/QSPI_D0", "failed_pads": [{"component_ref": "U1", "pad_number": "57", "x": 53.4, "y": 49.55}]}, {"net_name": "/CORE_1V1", "failed_pads": [{"component_ref": "C20", "pad_number": "1", "x": 63.225, "y": 53.5}, {"component_ref": "C8", "pad_number": "1", "x": 54.5, "y": 63.95}, {"component_ref": "C18", "pad_number": "1", "x": 49.975, "y": 52.0}, {"component_ref": "L1", "pad_number": "1", "x": 58.5, "y": 46.25}, {"component_ref": "C7", "pad_number": "1", "x": 58.5, "y": 44.75}, {"component_ref": "U1", "pad_number": "6", "x": 51.55, "y": 52.2}, {"component_ref": "U1", "pad_number": "50", "x": 56.2, "y": 49.55}, {"component_ref": "TP8", "pad_number": "1", "x": 57.0, "y": 62.0}]}, {"net_name": "/SD_DETECT", "failed_pads": [{"component_ref": "U1", "pad_number": "12", "x": 51.55, "y": 54.6}]}, {"net_name": "/MCU_USB_N", "failed_pads": [{"component_ref": "R10", "pad_number": "2", "x": 54.0, "y": 44.825}]}], "multipoint_nets": 35, "multipoint_pads_connected": 254, "multipoint_pads_total": 300, "multipoint_edges_routed": 145, "multipoint_edges_failed": 14, "ripup_success_pairs": [], "rerouted_pairs": [], "single_ended_target_swaps": [], "layer_swaps": 0, "successful": 59, "failed": 14, "total_time": 7.38, "total_iterations": 8617168, "total_vias": 120, "cleanup_disconnected": [], "min_clearance_used": 0.127, "design_rules": {"escalation_policy": "off", "fab_tier": "auto", "board_floors": {"clearance": 0.127, "track_width": 0.127, "via_diameter": 0.5, "via_drill": 0.2, "hole_to_hole": 0.25, "annular": 0.15, "board_edge": 0.3}, "count": 0, "nets": [], "narrowed": [], "min_delivered": {}, "fab_tier_escalations": 0, "fab_tier_contexts": [], "fab_tier_target": "advanced", "unsupported_rules": []}, "plane_fragility": {"source": "none", "islands": 0, "refill_status": null, "why": "--quick 2", "machine_dependent": false}, "quick": {"level": 2, "skipped": ["net_rescue", "terminal_escalation", "plane_finalize", "reconciliation", "seam_reask", "plane_fragility", "cleanup_polish", "smoothing", "late_collapse", "late_sweeps", "final_regrade", "improvement_gate", "via_protection_stamp"], "why": "the seed judge: rank placements by what routes, then route the chosen one again to ship"}, "preexisting_rips": {"/MCU_USB_N": "NOT RECOVERED (still open; see terminal_restores/reconciliation) [was blocking '/VREG_LX']", "/MCU_USB_P": "original copper restored [was blocking '/MCU_USB_N']"}, "casualty_reconcile": {"attempted": 1, "restored": [], "rerouted": [], "partial": ["/MCU_USB_N"], "unrecovered": []}, "coverage_gate_nets": ["/MCU_USB_N"], "terminal_restores": {"/MCU_USB_N": "stub"}, "oracle_check": "disabled", "ripped_open": ["/MCU_USB_N"], "ripped_open_uncounted": ["/MCU_USB_N"], "ripped_open_note": "ripped_open nets are OUTSIDE this run's --nets scope, so they move neither failed_single nor open_single. Those listed in ripped_open_uncounted are additionally not in either scoped term: if they are also outside the multipoint pad deficit, the run's open-net verdict is understated by that many.", "blockers": [{"net": "/UART_RX", "stage": "single_ended", "blocked_by": [{"net": "/VREG_AVDD", "blocked_count": 81, "unique_cells": 81, "track_cells": 81, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SD_DETECT", "blocked_count": 39, "unique_cells": 39, "track_cells": 39, "via_cells": 1, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/USB_500_EN", "blocked_count": 15, "unique_cells": 15, "track_cells": 3, "via_cells": 13, "near_target_cells": 0, "near_source_cells": 15}, {"net": "/RADIO_CTRL", "blocked_count": 11, "unique_cells": 11, "track_cells": 11, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}]}, {"net": "/UART_RX", "stage": "preexisting", "blocked_by": [{"net": "/UART_CTS", "preexisting": true}, {"net": "/UART_TX", "preexisting": true}, {"net": "/UART_RTS", "preexisting": true}]}, {"net": "/RGB_DATA", "stage": "single_ended", "blocked_by": [{"net": "/XIN", "blocked_count": 653, "unique_cells": 653, "track_cells": 615, "via_cells": 38, "near_target_cells": 0, "near_source_cells": 187}, {"net": "/GPIO1", "blocked_count": 643, "unique_cells": 643, "track_cells": 643, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 54}, {"net": "/ADC0", "blocked_count": 587, "unique_cells": 587, "track_cells": 504, "via_cells": 88, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC1", "blocked_count": 535, "unique_cells": 535, "track_cells": 535, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SWDIO", "blocked_count": 453, "unique_cells": 453, "track_cells": 450, "via_cells": 4, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/UART_CTS", "blocked_count": 441, "unique_cells": 441, "track_cells": 419, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 140}, {"net": "/GPIO18", "blocked_count": 429, "unique_cells": 429, "track_cells": 429, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/USB_500_EN", "blocked_count": 407, "unique_cells": 407, "track_cells": 402, "via_cells": 6, "near_target_cells": 0, "near_source_cells": 92}, {"net": "/GPIO17", "blocked_count": 402, "unique_cells": 402, "track_cells": 402, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO23", "blocked_count": 390, "unique_cells": 390, "track_cells": 390, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}], "more": 16}, {"net": "/RGB_DATA", "stage": "preexisting", "blocked_by": [{"net": "/SD_DETECT", "preexisting": true}]}, {"net": "/GPIO25", "stage": "single_ended", "blocked_by": [{"net": "/GAUGE_SCL", "blocked_count": 61, "unique_cells": 61, "track_cells": 32, "via_cells": 29, "near_target_cells": 6, "near_source_cells": 5}, {"net": "/GPIO24", "blocked_count": 36, "unique_cells": 36, "track_cells": 15, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 36}, {"net": "/CORE_1V1", "blocked_count": 24, "unique_cells": 24, "track_cells": 3, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 24}, {"net": "/+3V3", "blocked_count": 24, "unique_cells": 24, "track_cells": 15, "via_cells": 10, "near_target_cells": 0, "near_source_cells": 24}, {"net": "/ADC0", "blocked_count": 22, "unique_cells": 22, "track_cells": 22, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC1", "blocked_count": 14, "unique_cells": 14, "track_cells": 0, "via_cells": 14, "near_target_cells": 0, "near_source_cells": 14}, {"net": "/GPIO22", "blocked_count": 7, "unique_cells": 7, "track_cells": 0, "via_cells": 7, "near_target_cells": 0, "near_source_cells": 7}]}, {"net": "/RUN", "stage": "phase3", "blocked_by": [{"net": "/GAUGE_SCL", "blocked_count": 801, "unique_cells": 801, "track_cells": 669, "via_cells": 134, "near_target_cells": 25, "near_source_cells": 0}, {"net": "/GPIO1", "blocked_count": 658, "unique_cells": 658, "track_cells": 658, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO17", "blocked_count": 521, "unique_cells": 521, "track_cells": 521, "via_cells": 0, "near_target_cells": 14, "near_source_cells": 0}, {"net": "/ADC2", "blocked_count": 503, "unique_cells": 503, "track_cells": 467, "via_cells": 36, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/USB_500_EN", "blocked_count": 466, "unique_cells": 466, "track_cells": 466, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC1", "blocked_count": 435, "unique_cells": 435, "track_cells": 435, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/XIN", "blocked_count": 419, "unique_cells": 419, "track_cells": 392, "via_cells": 27, "near_target_cells": 12, "near_source_cells": 0}, {"net": "/GPIO18", "blocked_count": 404, "unique_cells": 404, "track_cells": 404, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GAUGE_SDA", "blocked_count": 401, "unique_cells": 401, "track_cells": 380, "via_cells": 21, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SWCLK", "blocked_count": 371, "unique_cells": 371, "track_cells": 350, "via_cells": 21, "near_target_cells": 9, "near_source_cells": 0}], "more": 24}, {"net": "/SD_MISO", "stage": "phase3", "blocked_by": [{"net": "/SD_CLK", "blocked_count": 1111, "unique_cells": 1111, "track_cells": 1045, "via_cells": 68, "near_target_cells": 171, "near_source_cells": 0}, {"net": "/RADIO_BOOT", "blocked_count": 718, "unique_cells": 718, "track_cells": 672, "via_cells": 46, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/XIN", "blocked_count": 610, "unique_cells": 610, "track_cells": 573, "via_cells": 37, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC2", "blocked_count": 605, "unique_cells": 605, "track_cells": 558, "via_cells": 47, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO1", "blocked_count": 603, "unique_cells": 603, "track_cells": 603, "via_cells": 0, "near_target_cells": 81, "near_source_cells": 0}, {"net": "/USB_500_EN", "blocked_count": 498, "unique_cells": 498, "track_cells": 494, "via_cells": 7, "near_target_cells": 189, "near_source_cells": 0}, {"net": "/UART_TX", "blocked_count": 333, "unique_cells": 333, "track_cells": 333, "via_cells": 0, "near_target_cells": 55, "near_source_cells": 0}, {"net": "/GPIO19", "blocked_count": 305, "unique_cells": 305, "track_cells": 287, "via_cells": 20, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO17", "blocked_count": 248, "unique_cells": 248, "track_cells": 248, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/CHARGE_DISABLE", "blocked_count": 247, "unique_cells": 247, "track_cells": 173, "via_cells": 79, "near_target_cells": 11, "near_source_cells": 0}], "more": 32}, {"net": "/SD_MOSI", "stage": "phase3", "blocked_by": [{"net": "/SD_CLK", "blocked_count": 971, "unique_cells": 971, "track_cells": 938, "via_cells": 34, "near_target_cells": 18, "near_source_cells": 0}, {"net": "/RADIO_BOOT", "blocked_count": 664, "unique_cells": 664, "track_cells": 599, "via_cells": 66, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/CORE_1V1", "blocked_count": 532, "unique_cells": 532, "track_cells": 425, "via_cells": 110, "near_target_cells": 28, "near_source_cells": 0}, {"net": "/ADC2", "blocked_count": 502, "unique_cells": 502, "track_cells": 444, "via_cells": 59, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/RGB_DIN", "blocked_count": 295, "unique_cells": 295, "track_cells": 295, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC1", "blocked_count": 191, "unique_cells": 191, "track_cells": 191, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO23", "blocked_count": 161, "unique_cells": 161, "track_cells": 161, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/VREG_AVDD", "blocked_count": 159, "unique_cells": 159, "track_cells": 154, "via_cells": 5, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SD_MISO", "blocked_count": 149, "unique_cells": 149, "track_cells": 123, "via_cells": 27, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GAUGE_SCL", "blocked_count": 105, "unique_cells": 105, "track_cells": 86, "via_cells": 20, "near_target_cells": 0, "near_source_cells": 0}], "more": 11}, {"net": "/GND", "stage": "phase3", "blocked_by": [{"net": "/UART_RTS", "blocked_count": 258, "unique_cells": 258, "track_cells": 237, "via_cells": 22, "near_target_cells": 258, "near_source_cells": 0}, {"net": "/RADIO_CTRL", "blocked_count": 149, "unique_cells": 149, "track_cells": 124, "via_cells": 27, "near_target_cells": 138, "near_source_cells": 0}, {"net": "/CORE_1V1", "blocked_count": 94, "unique_cells": 94, "track_cells": 3, "via_cells": 92, "near_target_cells": 94, "near_source_cells": 0}, {"net": "/+3V3", "blocked_count": 71, "unique_cells": 71, "track_cells": 7, "via_cells": 66, "near_target_cells": 67, "near_source_cells": 0}, {"net": "/QSPI_D1", "blocked_count": 65, "unique_cells": 65, "track_cells": 65, "via_cells": 0, "near_target_cells": 65, "near_source_cells": 0}, {"net": "/GPIO18", "blocked_count": 38, "unique_cells": 38, "track_cells": 38, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO22", "blocked_count": 35, "unique_cells": 35, "track_cells": 14, "via_cells": 22, "near_target_cells": 25, "near_source_cells": 0}, {"net": "/SD_DETECT", "blocked_count": 29, "unique_cells": 29, "track_cells": 0, "via_cells": 29, "near_target_cells": 29, "near_source_cells": 0}, {"net": "/QSPI_D0", "blocked_count": 28, "unique_cells": 28, "track_cells": 0, "via_cells": 28, "near_target_cells": 28, "near_source_cells": 0}, {"net": "/SWDIO", "blocked_count": 28, "unique_cells": 28, "track_cells": 0, "via_cells": 28, "near_target_cells": 28, "near_source_cells": 0}], "more": 12}, {"net": "/GAUGE_SDA", "stage": "phase3", "blocked_by": [{"net": "/GPIO1", "blocked_count": 174, "unique_cells": 174, "track_cells": 174, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/RUN", "blocked_count": 64, "unique_cells": 64, "track_cells": 56, "via_cells": 8, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GAUGE_SCL", "blocked_count": 18, "unique_cells": 18, "track_cells": 15, "via_cells": 4, "near_target_cells": 18, "near_source_cells": 0}, {"net": "/GPIO19", "blocked_count": 18, "unique_cells": 18, "track_cells": 15, "via_cells": 4, "near_target_cells": 18, "near_source_cells": 0}, {"net": "/GPIO22", "blocked_count": 17, "unique_cells": 17, "track_cells": 3, "via_cells": 15, "near_target_cells": 17, "near_source_cells": 0}, {"net": "/RADIO_CTRL", "blocked_count": 17, "unique_cells": 17, "track_cells": 3, "via_cells": 15, "near_target_cells": 17, "near_source_cells": 0}]}, {"net": "/I2C_SCL", "stage": "phase3", "blocked_by": [{"net": "/ADC3", "blocked_count": 309, "unique_cells": 309, "track_cells": 309, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO1", "blocked_count": 13, "unique_cells": 13, "track_cells": 13, "via_cells": 0, "near_target_cells": 13, "near_source_cells": 0}]}, {"net": "/QSPI_D3", "stage": "phase3", "blocked_by": [{"net": "/QSPI_CLK", "blocked_count": 825, "unique_cells": 825, "track_cells": 724, "via_cells": 105, "near_target_cells": 38, "near_source_cells": 0}, {"net": "/RADIO_CTRL", "blocked_count": 690, "unique_cells": 690, "track_cells": 690, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/UART_CTS", "blocked_count": 633, "unique_cells": 633, "track_cells": 593, "via_cells": 40, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/QSPI_D1", "blocked_count": 490, "unique_cells": 490, "track_cells": 490, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/PSRAM_CS", "blocked_count": 482, "unique_cells": 482, "track_cells": 430, "via_cells": 53, "near_target_cells": 12, "near_source_cells": 0}, {"net": "/UART_TX", "blocked_count": 469, "unique_cells": 469, "track_cells": 429, "via_cells": 40, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/QSPI_D2", "blocked_count": 401, "unique_cells": 401, "track_cells": 399, "via_cells": 2, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SD_CLK", "blocked_count": 271, "unique_cells": 271, "track_cells": 249, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/CORE_1V1", "blocked_count": 222, "unique_cells": 222, "track_cells": 181, "via_cells": 43, "near_target_cells": 14, "near_source_cells": 0}, {"net": "/FLASH_CS", "blocked_count": 211, "unique_cells": 211, "track_cells": 211, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}], "more": 11}, {"net": "/QSPI_D3", "stage": "preexisting", "blocked_by": [{"net": "/MCU_USB_N", "preexisting": true}]}, {"net": "/I2C_SDA", "stage": "phase3", "blocked_by": [{"net": "/ADC3", "blocked_count": 575, "unique_cells": 575, "track_cells": 571, "via_cells": 4, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC2", "blocked_count": 352, "unique_cells": 352, "track_cells": 325, "via_cells": 27, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/+3V3", "blocked_count": 235, "unique_cells": 235, "track_cells": 203, "via_cells": 32, "near_target_cells": 32, "near_source_cells": 0}, {"net": "/RGB_DIN", "blocked_count": 200, "unique_cells": 200, "track_cells": 200, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC1", "blocked_count": 199, "unique_cells": 199, "track_cells": 199, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/RADIO_BOOT", "blocked_count": 147, "unique_cells": 147, "track_cells": 136, "via_cells": 11, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO19", "blocked_count": 106, "unique_cells": 106, "track_cells": 87, "via_cells": 21, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GAUGE_SCL", "blocked_count": 105, "unique_cells": 105, "track_cells": 86, "via_cells": 20, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/PSRAM_CS", "blocked_count": 31, "unique_cells": 31, "track_cells": 3, "via_cells": 29, "near_target_cells": 31, "near_source_cells": 0}, {"net": "/SD_MOSI", "blocked_count": 28, "unique_cells": 28, "track_cells": 0, "via_cells": 28, "near_target_cells": 28, "near_source_cells": 0}], "more": 8}, {"net": "/QSPI_D0", "stage": "phase3", "blocked_by": [{"net": "/QSPI_CLK", "blocked_count": 647, "unique_cells": 647, "track_cells": 545, "via_cells": 106, "near_target_cells": 35, "near_source_cells": 0}, {"net": "/QSPI_D2", "blocked_count": 473, "unique_cells": 473, "track_cells": 471, "via_cells": 2, "near_target_cells": 14, "near_source_cells": 0}, {"net": "/RADIO_CTRL", "blocked_count": 470, "unique_cells": 470, "track_cells": 470, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/PSRAM_CS", "blocked_count": 439, "unique_cells": 439, "track_cells": 402, "via_cells": 38, "near_target_cells": 32, "near_source_cells": 0}, {"net": "/UART_CTS", "blocked_count": 428, "unique_cells": 428, "track_cells": 428, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/UART_TX", "blocked_count": 321, "unique_cells": 321, "track_cells": 321, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/QSPI_D1", "blocked_count": 280, "unique_cells": 280, "track_cells": 280, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SD_CLK", "blocked_count": 271, "unique_cells": 271, "track_cells": 249, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/CORE_1V1", "blocked_count": 168, "unique_cells": 168, "track_cells": 127, "via_cells": 43, "near_target_cells": 14, "near_source_cells": 0}, {"net": "/FLASH_CS", "blocked_count": 155, "unique_cells": 155, "track_cells": 155, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}], "more": 11}, {"net": "/QSPI_D0", "stage": "preexisting", "blocked_by": [{"net": "/MCU_USB_N", "preexisting": true}]}, {"net": "/CORE_1V1", "stage": "phase3", "blocked_by": [{"net": "/GPIO1", "blocked_count": 39, "unique_cells": 39, "track_cells": 39, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/I2C_SCL", "blocked_count": 35, "unique_cells": 35, "track_cells": 35, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SD_MISO", "blocked_count": 27, "unique_cells": 27, "track_cells": 9, "via_cells": 18, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/VREG_AVDD", "blocked_count": 25, "unique_cells": 25, "track_cells": 25, "via_cells": 0, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC1", "blocked_count": 24, "unique_cells": 24, "track_cells": 3, "via_cells": 22, "near_target_cells": 24, "near_source_cells": 0}, {"net": "/XIN", "blocked_count": 24, "unique_cells": 24, "track_cells": 3, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/GPIO24", "blocked_count": 24, "unique_cells": 24, "track_cells": 3, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SWDIO", "blocked_count": 24, "unique_cells": 24, "track_cells": 3, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/SD_CS", "blocked_count": 24, "unique_cells": 24, "track_cells": 3, "via_cells": 22, "near_target_cells": 0, "near_source_cells": 0}, {"net": "/ADC0", "blocked_count": 23, "unique_cells": 23, "track_cells": 15, "via_cells": 9, "near_target_cells": 0, "near_source_cells": 0}], "more": 13}, {"net": "/CORE_1V1", "stage": "preexisting", "blocked_by": [{"net": "/MCU_USB_N", "preexisting": true}]}, {"net": "/MCU_USB_N", "stage": "reroute", "blocked_by": [{"net": "/MCU_USB_P", "blocked_count": 54, "unique_cells": 54, "track_cells": 49, "via_cells": 5, "near_target_cells": 40, "near_source_cells": 14}, {"net": "/QSPI_D1", "blocked_count": 35, "unique_cells": 35, "track_cells": 35, "via_cells": 0, "near_target_cells": 35, "near_source_cells": 0}, {"net": "/QSPI_D2", "blocked_count": 31, "unique_cells": 31, "track_cells": 23, "via_cells": 11, "near_target_cells": 31, "near_source_cells": 0}, {"net": "/QSPI_D3", "blocked_count": 14, "unique_cells": 14, "track_cells": 0, "via_cells": 14, "near_target_cells": 0, "near_source_cells": 14}, {"net": "/QSPI_D0", "blocked_count": 7, "unique_cells": 7, "track_cells": 0, "via_cells": 7, "near_target_cells": 0, "near_source_cells": 7}]}], "pad_pairs_connected": 268, "pad_pairs_total": 305, "pad_pairs_open": [{"net": "/CORE_1V1", "pairs_connected": 4, "pairs_total": 10, "outcome": "open", "open_subtype": "partial"}, {"net": "/GAUGE_SDA", "pairs_connected": 2, "pairs_total": 3, "outcome": "open", "open_subtype": "partial"}, {"net": "/GND", "pairs_connected": 84, "pairs_total": 102, "outcome": "open", "open_subtype": "partial"}, {"net": "/GPIO25", "pairs_connected": 0, "pairs_total": 1, "outcome": "open", "open_subtype": "unrouted"}, {"net": "/I2C_SCL", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/I2C_SDA", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/MCU_USB_N", "pairs_connected": 0, "pairs_total": 1, "outcome": "open", "open_subtype": "collision_refused"}, {"net": "/QSPI_D0", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/QSPI_D3", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/RGB_DATA", "pairs_connected": 0, "pairs_total": 1, "outcome": "open", "open_subtype": "unrouted"}, {"net": "/RUN", "pairs_connected": 3, "pairs_total": 4, "outcome": "open", "open_subtype": "partial"}, {"net": "/SD_DETECT", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/SD_MISO", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/SD_MOSI", "pairs_connected": 1, "pairs_total": 2, "outcome": "open", "open_subtype": "partial"}, {"net": "/UART_RX", "pairs_connected": 0, "pairs_total": 1, "outcome": "open", "open_subtype": "unrouted"}], "power_trace_ampacity": [{"net": "/+3V3", "bottleneck_width_mm": 0.127, "bottleneck_layer": "F.Cu", "copper_oz": 1.0000000000000002, "max_current_a": 0.54, "max_current_ipc2152_a": 0.54, "temp_rise_c": 10.0, "trace_length_mm": 130.4}, {"net": "/CORE_1V1", "bottleneck_width_mm": 0.127, "bottleneck_layer": "F.Cu", "copper_oz": 1.0000000000000002, "max_current_a": 0.54, "max_current_ipc2152_a": 0.54, "temp_rise_c": 10.0, "trace_length_mm": 46.6}], "scope": "run", "env_knobs": {"KICAD_CLI": "/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli"}}
+
+Writing output to scratch/plane-trial.kicad_pcb...
+Removed 53 dead-end input segment(s) from the output
+Removed 7 stale input via(s) from the output
+Successfully wrote scratch/plane-trial.kicad_pcb
+JSON_SHIPPED_RULES: {"min_clearance_used": 0.127, "design_rules": {"escalation_policy": "off", "fab_tier": "auto", "board_floors": {"clearance": 0.127, "track_width": 0.127, "via_diameter": 0.5, "via_drill": 0.2, "hole_to_hole": 0.25, "annular": 0.15, "board_edge": 0.3}, "count": 6, "nets": [22, 28, 29, 46, 47, 69], "narrowed": [{"net": 47, "net_name": "/BUCK_L1", "kind": "track_width", "requested": 0.5, "delivered": 0.127, "site": "class-width copper shipped under width", "count": 1, "length_mm": 1.5}, {"net": 46, "net_name": "/BUCK_L2", "kind": "track_width", "requested": 0.5, "delivered": 0.127, "site": "class-width copper shipped under width", "count": 1, "length_mm": 1.5}, {"net": 69, "net_name": "/VREG_LX", "kind": "track_width", "requested": 0.5, "delivered": 0.127, "site": "class-width copper shipped under width", "count": 1, "length_mm": 1.16}, {"net": 28, "net_name": "/BAT", "kind": "track_width", "requested": 0.5, "delivered": 0.25, "site": "class-width copper shipped under width", "count": 1, "length_mm": 4.03}, {"net": 22, "net_name": "/VBUS", "kind": "track_width", "requested": 0.5, "delivered": 0.25, "site": "class-width copper shipped under width", "count": 1, "length_mm": 1.58}, {"net": 29, "net_name": "/SYS", "kind": "track_width", "requested": 0.5, "delivered": 0.24, "site": "class-width copper shipped under width", "count": 1, "length_mm": 1.98}], "min_delivered": {"track_width": 0.127}, "fab_tier_escalations": 0, "fab_tier_contexts": [], "fab_tier_target": "advanced"}}
+  Design rules [--escalation off, --fab-tier auto]: 6 feature(s) on 6 net(s) delivered below the requested size (smallest track width 0.127 mm). Details: JSON_SUMMARY design_rules.
+JSON_SUMMARY_MIN: {"escalations": 6, "failed": 14, "failed_single": ["/UART_RX", "/RGB_DATA", "/GPIO25"], "main_loop_time_s": 7.38, "min_clearance_used": 0.127, "multipoint_deficit": 47, "open_single": [], "pad_pairs_open": {"count": 15, "nets": ["/CORE_1V1", "/GAUGE_SDA", "/GND", "/GPIO25", "/I2C_SCL", "/I2C_SDA", "/MCU_USB_N", "/QSPI_D0", "/QSPI_D3", "/RGB_DATA", "/RUN", "/SD_DETECT", "/SD_MISO", "/SD_MOSI", "/UART_RX"]}, "routed": 59, "scope": "merged", "terminal_restores_broken": ["/MCU_USB_N"], "vias": 120}
+  Power-net widths (measured by board_score): 2 recorded in plane-trial.kicad_pro (+2 this step)
+  --strict-sizes: Design rules [--escalation off, --fab-tier auto]: 6 feature(s) on 6 net(s) delivered below the requested size (smallest track width 0.127 mm). Details: JSON_SUMMARY design_rules.
+Wall time: 43.1s (whole run)
+EXIT=3

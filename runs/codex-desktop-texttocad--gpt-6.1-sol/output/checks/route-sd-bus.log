@@ -1,0 +1,7 @@
+routed SD_MISO: R28.1 to U1.16: 31.77 mm in 12 segments, 1 via
+routed SD_CS: J3.2 to R26.1: 13.99 mm in 7 segments, 2 vias
+routed SD_CS: R26.1 to U1.17: 33.17 mm in 15 segments, 3 vias
+routed SD_MOSI: J3.3 to R27.1: 14.68 mm in 8 segments, 2 vias
+routed SD_MOSI: R27.1 to U1.15: 31.94 mm in 15 segments, 3 vias
+routed +1V1: U1.23 to C11.1: 24.99 mm in 13 segments, 2 vias
+OK: 6 of 6 connection(s) routed, 70 segment(s), 13 via(s), 150.5 mm of track, in 2.0 s

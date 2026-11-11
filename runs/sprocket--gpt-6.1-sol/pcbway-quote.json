@@ -1,0 +1,64 @@
+{
+	"one": {
+		"pcbQty": 5,
+		"pcbUsd": 525.98,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"five": {
+		"pcbUsd": 525.98,
+		"assemblyUsd": 95.34,
+		"assemblyPromoUsd": null
+	},
+	"pcbItems": {
+		"base (HASL LF, 6/6mil, 0.3mm, tented)": 32.2,
+		"ENIG 1u\" surcharge": 29.84,
+		"track/space 5/5mil surcharge": 0.0,
+		"min hole 0.15mm surcharge": 317.72,
+		"All vias resin filled + capped surcharge": 145.09,
+		"Impedance control surcharge": 1.13,
+		"total_standard_build": 525.98,
+		"express_options": {},
+		"S1000H_TG150_alternative_total": 524.55,
+		"via_in_pad_instead_of_all_vias_total": 525.98,
+		"same_board_with_0.2mm_min_hole_total": 196.33
+	},
+	"options": {
+		"quoteTimeUtc": "2026-11-10T09:12:21+00:00",
+		"pcbBuildTime": "8-9 days",
+		"assemblyBuildTime": "5-6 days",
+		"pcbQtyMinimum": "5 (smallest quantity on orderonline.aspx; GetDeliveryDays returns [] for 1-4)",
+		"boardType": "Single pieces",
+		"size_mm": "80 x 65",
+		"layers": 4,
+		"material": "FR-4",
+		"FR4TG": "TG 150-160",
+		"thickness_mm": 1.6,
+		"minTrackSpace": "5/5mil",
+		"minHole_mm": 0.15,
+		"solderMask": "Green",
+		"silkscreen": "White",
+		"surfaceFinish": "Immersion gold (ENIG), 1u\"",
+		"outerCopper": "1 oz Cu",
+		"innerCopper": "1 oz",
+		"viaProcess": "Tenting vias",
+		"viaInPad": false,
+		"allViasResinFilledCapped": true,
+		"impedanceControl": true,
+		"assembly": {
+			"type": "Turnkey",
+			"boardType": "Single pieces",
+			"side": "Both sides",
+			"qty": {
+				"one": 1,
+				"five": 5
+			},
+			"uniqueParts": 43,
+			"smdParts": 89,
+			"bgaQfpParts": 0,
+			"thtParts": 3
+		},
+		"method": "POST https://www.pcbway.com/Quote/GetDeliveryDays/ (body captured from orderonline.aspx and quotesmt.aspx with agent-browser, replayed with curl; anonymous; partVias=1 turnkey, hidAssemblySide=5 both sides). Recipe: /tmp/pcbway-quote-recipe.md"
+	},
+	"notes": "PCB cost: the 0.15 mm minimum drill is the main cost driver. It adds $317.72 and moves the build from 4-5 days to 8-9 days, the only build option. With 0.2 mm holes the same board would be $196.33. Surcharges are incremental in the order listed and interact: resin fill + cap costs $94.73 on a 0.2 mm board but $145.09 here, and impedance adds $48.45 on its own but $1.13 on top of the other options. Via fill: picked 'All vias filled with resin and capped' because the spec requires Type VII treatment of ALL vias. PCBWay's 'Via in pad' tooltip covers only vias inside SMD pads. Both options price the same here ($525.98). 100% e-test has no form field; PCBWay flying-probe tests every PCB (https://www.pcbway.com/blog/Engineering_Technical/What_is_Electronic_test_probe_test.html). No V-score: single routed pieces. FABRICATION.md asks PCBWay to panelise with rails; quoted as single pieces like the other runs. Assembly, both sides: normal price = max($88, $25.27 + $0.1523 x 92 parts x qty), so $88 for 1 board and $95.34 for 5. Both sides costs the same as top only at these quantities. $29 promo: one board qualifies (92 parts, 43 unique, 28 THT joints). Five boards do not, because 28 x 5 = 140 THT joints exceeds the 100-joint order limit; the instant quote can't check joints and still shows $29. Struck-through 'list' prices next to $29: $311.14 (qty 1) and $318.74 (qty 5), from the qty >= 11 formula, not charged here. The form has no IPC-4761 Type VII choice or 90 ohm target field; those go in the order notes and are confirmed at file review."
+}

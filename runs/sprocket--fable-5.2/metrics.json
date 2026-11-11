@@ -1,0 +1,429 @@
+{
+	"startedAt": "2026-11-10T10:26:04.291Z",
+	"finishedAt": "2026-11-10T16:57:30.000Z",
+	"minutes": 270.49,
+	"endedBy": "done",
+	"tokens": {
+		"input": 1900,
+		"cacheRead": 97220000,
+		"cacheWrite": 2080000,
+		"output": 1100000,
+		"reasoning": 600800
+	},
+	"costUsd": 87.61,
+	"costSource": "Sprocket thread usage in the web UI",
+	"boardCost": {
+		"afterFixes": false,
+		"oneBoard": {
+			"pcbQty": 5,
+			"pcbUsd": 62.04,
+			"assemblyUsd": 88,
+			"componentsUsd": 39.73,
+			"totalUsd": 189.77
+		},
+		"fiveBoards": {
+			"pcbUsd": 62.04,
+			"assemblyUsd": 88.5,
+			"componentsUsd": 131.16,
+			"totalUsd": 281.7,
+			"perBoardUsd": 56.34
+		},
+		"pricedAt": "2026-11-10T17:55:37.910Z",
+		"source": "PCB and assembly from PCBWay's instant quote (pcbway-quote.json) with the options in the run's fab notes, standard build, shipping excluded, no new-customer promo. PCBWay makes at least 5 bare PCBs, so one board means 5 PCBs with 1 assembled. Components at distributor list prices (components-pricing.json) for max(needed, minimum order): bench/part-prices.json where listed, else LCSC. When afterFixes is true, the design couldn't be ordered as delivered, and these are the prices after the changes listed in fixes."
+	},
+	"costByModel": {
+		"fable-5.2": {
+			"tokens": 2340000,
+			"costUsd": 73.83
+		},
+		"opus-5.5": {
+			"tokens": 740000,
+			"costUsd": 13.57
+		},
+		"gpt-6.1-terra": {
+			"tokens": 93600,
+			"costUsd": 0.2
+		},
+		"gpt-6-luna": {
+			"tokens": 71500,
+			"costUsd": 0.01
+		}
+	},
+	"fixes": [],
+	"boardSizeMm": {
+		"width": 76.2,
+		"height": 25.4
+	},
+	"missing3dModels": {
+		"count": 2,
+		"refs": [
+			"U1",
+			"U4"
+		]
+	},
+	"bom": {
+		"lines": 37,
+		"partsNotInBom": [],
+		"refsNotOnBoard": [],
+		"qtyMismatchLines": [],
+		"linesWithoutMpn": 0,
+		"linesFixed": 0
+	},
+	"placement": {
+		"smdPartsMissing": [],
+		"refsNotOnBoard": [],
+		"duplicateRefs": [],
+		"wrongSide": [],
+		"positionOffByMoreThanHalfMm": [],
+		"rotationDiffersFromBoard": []
+	},
+	"parts": {
+		"lines": 37,
+		"inStockPercent": 100,
+		"notStocked": [],
+		"discontinued": [],
+		"padCountMismatches": []
+	},
+	"features": {
+		"rp2350": {
+			"status": "found",
+			"refs": [
+				"U1"
+			]
+		},
+		"qspiFlash": {
+			"status": "found",
+			"refs": [
+				"U2"
+			]
+		},
+		"psram": {
+			"status": "found",
+			"refs": [
+				"U3"
+			]
+		},
+		"usbC": {
+			"status": "found",
+			"refs": [
+				"J1"
+			]
+		},
+		"wifiBle": {
+			"status": "found",
+			"refs": [
+				"U7"
+			]
+		},
+		"microSd": {
+			"status": "found",
+			"refs": [
+				"J5"
+			]
+		},
+		"qwiic": {
+			"status": "found",
+			"refs": [
+				"J3"
+			]
+		},
+		"rgbLed": {
+			"status": "found",
+			"refs": [
+				"D1"
+			]
+		},
+		"chargerWithPowerPath": {
+			"status": "found",
+			"refs": [
+				"U4"
+			]
+		},
+		"batteryMonitoring": {
+			"status": "found",
+			"refs": [
+				"R13"
+			]
+		}
+	},
+	"deliverables": {
+		"readme": true,
+		"schematic": true,
+		"projectFile": true,
+		"fabFolder": true
+	},
+	"drc": {
+		"errors": 0,
+		"warnings": 0,
+		"unconnectedItems": 0,
+		"schematicParityIssues": 0,
+		"byType": {}
+	},
+	"erc": {
+		"errors": 0,
+		"warnings": 0
+	},
+	"fab": {
+		"diffPercentByLayer": {
+			"F.Mask": 0,
+			"F.Paste": 0,
+			"NPTH": 0,
+			"In1.Cu": 0,
+			"Edge.Cuts": 0,
+			"B.Silkscreen": 0,
+			"B.Cu": 0,
+			"B.Paste": 0,
+			"PTH": 0,
+			"F.Silkscreen": 0,
+			"F.Cu": 0,
+			"B.Mask": 0,
+			"In2.Cu": 0
+		},
+		"layersDiffering": [],
+		"layersMissing": []
+	},
+	"needsFixes": {
+		"pcbManufacturing": [],
+		"assembly": [],
+		"bomLines": {
+			"total": 37,
+			"needingFixes": []
+		}
+	},
+	"design": {
+		"decoupling": {
+			"maxMm": 3.2,
+			"pinsWithin": 14,
+			"powerPins": 14,
+			"pins": [
+				{
+					"pin": "IOVDD",
+					"pad": "1",
+					"net": "+3V3",
+					"capacitor": "C9",
+					"mm": 1.23
+				},
+				{
+					"pin": "DVDD",
+					"pad": "6",
+					"net": "+1V1",
+					"capacitor": "C15",
+					"mm": 1.27
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "11",
+					"net": "+3V3",
+					"capacitor": "C10",
+					"mm": 1.16
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "20",
+					"net": "+3V3",
+					"capacitor": "C11",
+					"mm": 1.34
+				},
+				{
+					"pin": "DVDD",
+					"pad": "23",
+					"net": "+1V1",
+					"capacitor": "C16",
+					"mm": 1.14
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "30",
+					"net": "+3V3",
+					"capacitor": "C14",
+					"mm": 1.17
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "38",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 2.19
+				},
+				{
+					"pin": "DVDD",
+					"pad": "39",
+					"net": "+1V1",
+					"capacitor": "C17",
+					"mm": 1.14
+				},
+				{
+					"pin": "ADC_AVDD",
+					"pad": "44",
+					"net": "+3V3",
+					"capacitor": "C13",
+					"mm": 1.13
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "45",
+					"net": "+3V3",
+					"capacitor": "C13",
+					"mm": 1.17
+				},
+				{
+					"pin": "VREG_AVDD",
+					"pad": "46",
+					"net": "Net-(U1-VREG_AVDD)",
+					"capacitor": "C8",
+					"mm": 1.5
+				},
+				{
+					"pin": "VREG_VIN",
+					"pad": "49",
+					"net": "+3V3",
+					"capacitor": "C6",
+					"mm": 1.35
+				},
+				{
+					"pin": "USB_OTP_VDD",
+					"pad": "53",
+					"net": "+3V3",
+					"capacitor": "C18",
+					"mm": 1.2
+				},
+				{
+					"pin": "QSPI_IOVDD",
+					"pad": "54",
+					"net": "+3V3",
+					"capacitor": "C18",
+					"mm": 1.18
+				}
+			]
+		},
+		"battery": {
+			"fuelGauges": [],
+			"dividers": [
+				{
+					"top": "R13",
+					"bottom": "R14",
+					"topOhms": 100000,
+					"bottomOhms": 100000,
+					"bufferedBy": null,
+					"microampsAtFullCharge": 21,
+					"switchedBy": null
+				}
+			]
+		},
+		"usb": {
+			"dPlusNets": [
+				"/USB_CONN_DP",
+				"/USB_DP"
+			],
+			"dMinusNets": [
+				"/USB_CONN_DN",
+				"/USB_DM"
+			],
+			"dPlusMm": 29.55,
+			"dMinusMm": 29.6,
+			"mismatchMm": 0.05,
+			"vias": 4,
+			"pair": {
+				"layer": "F.Cu",
+				"widthMm": 0.22,
+				"gapMm": 0.15,
+				"lengthMm": 12.04
+			},
+			"differentialOhms": 90.7,
+			"esd": [
+				"U6"
+			]
+		},
+		"antennaKeepout": {
+			"module": "U7",
+			"keepouts": [
+				{
+					"owner": "U7",
+					"name": "RM2 antenna keep-out",
+					"layers": [
+						"F.Cu",
+						"B.Cu",
+						"In1.Cu",
+						"In2.Cu"
+					],
+					"notAllowed": [
+						"tracks",
+						"vias",
+						"pads",
+						"copperpour",
+						"footprints"
+					],
+					"copperInside": {
+						"tracks": 0,
+						"vias": 0,
+						"zoneFills": [],
+						"pads": []
+					}
+				},
+				{
+					"owner": "board",
+					"name": "GEN_ANTENNA",
+					"layers": [
+						"F.Cu",
+						"B.Cu",
+						"In1.Cu",
+						"In2.Cu"
+					],
+					"notAllowed": [
+						"tracks",
+						"vias",
+						"copperpour"
+					],
+					"copperInside": {
+						"tracks": 0,
+						"vias": 0,
+						"zoneFills": [],
+						"pads": []
+					}
+				}
+			]
+		}
+	},
+	"review": {
+		"judges": [
+			"opus-5.5",
+			"gpt-6.1-sol"
+		],
+		"yesVotes": {
+			"crystal": 2,
+			"buttons": 2,
+			"powerPath": 1
+		},
+		"meanScores": {
+			"thermal": 4.5,
+			"grounding": 6.5,
+			"layout": 7,
+			"routing": 5.5,
+			"silkscreen": 6
+		}
+	},
+	"suppliers": {
+		"lines": 37,
+		"validPercent": {
+			"LCSC": 91.9,
+			"Digi-Key": 94.6,
+			"Mouser": 32.4
+		},
+		"linesWithValidNumbers": {
+			"fromOne": 37,
+			"fromTwo": 35,
+			"fromAllThree": 9
+		},
+		"invalid": []
+	},
+	"score": {
+		"total": 82.6,
+		"groups": {
+			"designReview": 33.2,
+			"circuitChecks": 20,
+			"orderable": 20,
+			"partsData": 9.4
+		},
+		"missingFeatures": []
+	}
+}

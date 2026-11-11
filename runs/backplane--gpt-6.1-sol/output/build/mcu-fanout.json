@@ -1,0 +1,287 @@
+[
+  {
+    "pin": "1",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "2",
+    "net": "/PSRAM_CS",
+    "success": true
+  },
+  {
+    "pin": "3",
+    "net": "/SD_PWR_EN",
+    "success": false
+  },
+  {
+    "pin": "4",
+    "net": "/I2C_SDA",
+    "success": true
+  },
+  {
+    "pin": "5",
+    "net": "/I2C_SCL",
+    "success": true
+  },
+  {
+    "pin": "6",
+    "net": "/1V1",
+    "success": true
+  },
+  {
+    "pin": "7",
+    "net": "/ESP_AT_RX",
+    "success": false
+  },
+  {
+    "pin": "8",
+    "net": "/ESP_AT_TX",
+    "success": false
+  },
+  {
+    "pin": "9",
+    "net": "/ESP_AT_RTS",
+    "success": false
+  },
+  {
+    "pin": "10",
+    "net": "/ESP_AT_CTS",
+    "success": false
+  },
+  {
+    "pin": "11",
+    "net": "/3V3",
+    "success": false
+  },
+  {
+    "pin": "12",
+    "net": "/SD_MISO",
+    "success": false
+  },
+  {
+    "pin": "13",
+    "net": "/SD_CS",
+    "success": false
+  },
+  {
+    "pin": "14",
+    "net": "/SD_CLK_DRV",
+    "success": false
+  },
+  {
+    "pin": "15",
+    "net": "/SD_MOSI",
+    "success": false
+  },
+  {
+    "pin": "16",
+    "net": "/GP12",
+    "success": false
+  },
+  {
+    "pin": "17",
+    "net": "/GP13",
+    "success": false
+  },
+  {
+    "pin": "18",
+    "net": "/GP14",
+    "success": false
+  },
+  {
+    "pin": "19",
+    "net": "/GP15",
+    "success": false
+  },
+  {
+    "pin": "20",
+    "net": "/3V3",
+    "success": false
+  },
+  {
+    "pin": "21",
+    "net": "/XIN",
+    "success": false
+  },
+  {
+    "pin": "22",
+    "net": "/XOUT_DRV",
+    "success": false
+  },
+  {
+    "pin": "23",
+    "net": "/1V1",
+    "success": true
+  },
+  {
+    "pin": "24",
+    "net": "/SWCLK",
+    "success": true
+  },
+  {
+    "pin": "25",
+    "net": "/SWDIO",
+    "success": false
+  },
+  {
+    "pin": "26",
+    "net": "/RUN",
+    "success": true
+  },
+  {
+    "pin": "27",
+    "net": "/ESP_EN",
+    "success": true
+  },
+  {
+    "pin": "28",
+    "net": "/ESP_BOOT",
+    "success": false
+  },
+  {
+    "pin": "29",
+    "net": "/USB_EN1",
+    "success": true
+  },
+  {
+    "pin": "30",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "31",
+    "net": "/CHG_DISABLE",
+    "success": true
+  },
+  {
+    "pin": "32",
+    "net": "/USB_EN2",
+    "success": true
+  },
+  {
+    "pin": "33",
+    "net": "/CHG_N",
+    "success": false
+  },
+  {
+    "pin": "34",
+    "net": "/USB_PGOOD_N",
+    "success": true
+  },
+  {
+    "pin": "35",
+    "net": "/RGB_DATA",
+    "success": true
+  },
+  {
+    "pin": "36",
+    "net": "/SD_DET_N",
+    "success": false
+  },
+  {
+    "pin": "37",
+    "net": "/GP25",
+    "success": true
+  },
+  {
+    "pin": "38",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "39",
+    "net": "/1V1",
+    "success": false
+  },
+  {
+    "pin": "40",
+    "net": "/VBAT_ADC",
+    "success": false
+  },
+  {
+    "pin": "41",
+    "net": "/GP27",
+    "success": false
+  },
+  {
+    "pin": "42",
+    "net": "/GP28",
+    "success": false
+  },
+  {
+    "pin": "43",
+    "net": "/GP29",
+    "success": false
+  },
+  {
+    "pin": "44",
+    "net": "/ADC_3V3",
+    "success": false
+  },
+  {
+    "pin": "45",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "46",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "49",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "51",
+    "net": "/USB_DM_MCU",
+    "success": true
+  },
+  {
+    "pin": "52",
+    "net": "/USB_DP_MCU",
+    "success": true
+  },
+  {
+    "pin": "53",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "54",
+    "net": "/3V3",
+    "success": true
+  },
+  {
+    "pin": "55",
+    "net": "/QSPI_D3",
+    "success": true
+  },
+  {
+    "pin": "56",
+    "net": "/QSPI_CLK",
+    "success": false
+  },
+  {
+    "pin": "57",
+    "net": "/QSPI_D0",
+    "success": false
+  },
+  {
+    "pin": "58",
+    "net": "/QSPI_D2",
+    "success": true
+  },
+  {
+    "pin": "59",
+    "net": "/QSPI_D1",
+    "success": true
+  },
+  {
+    "pin": "60",
+    "net": "/FLASH_CS",
+    "success": true
+  }
+]

@@ -1,0 +1,14 @@
+{
+	"name": "@pcbbench/bench",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"check": "tsc"
+	},
+	"devDependencies": {
+		"@pcbbench/typescript-config": "workspace:*",
+		"@types/bun": "catalog:",
+		"typescript": "catalog:"
+	}
+}

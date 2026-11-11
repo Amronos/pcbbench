@@ -1,0 +1,1672 @@
+          MCP1640/B/C/D
+
+          0.65V Start-Up Synchronous Boost Regulator
+   with True Output Disconnect or Input/Output Bypass Option
+
+
+Features                                   General Description
+
+• Up to 96% Typical Efficiency                         The MCP1640/B/C/D  is a compact, high-efficiency,
+• 800 mA Typical Peak Input Current Limit:                     fixed frequency, synchronous step-up DC-DC con-
+                                                                       verter. It provides an easy-to-use power supply solution   - IOUT > 100 mA @ 1.2V VIN, 3.3V VOUT
+                                                                        for applications powered by either single-cell, two-cell,
+   - IOUT > 350 mA @ 2.4V VIN, 3.3V VOUT                                                               or three-cell alkaline, NiCd, NiMH, and single-cell Li-Ion
+   - IOUT > 350 mA @ 3.3V VIN, 5.0V VOUT                    or Li-Polymer batteries.
+• Low Start-Up Voltage: 0.65V, typical 3.3V VOUT                                                         Low-voltage technology allows the regulator to start-up
+ @ 1 mA                                                              without high inrush current or output voltage overshoot
+• Low Operating Input Voltage: 0.35V, typical                                                        from a low 0.65V input. High efficiency is accomplished
+  3.3VOUT @ 1 mA                                     by integrating the low resistance N-Channel Boost
+• Adjustable Output Voltage Range: 2.0V to 5.5V             switch  and  synchronous  P-Channel  switch.   All
+• Maximum Input Voltage  VOUT < 5.5V                   compensation and protection circuitry is integrated to
+• Automatic PFM/PWM Operation (MCP1640/C):            minimize the number of external components. For
+                                                        standby applications, the MCP1640 consumes only
+   - PFM Operation Disabled (MCP1640B/D)
+                                                  19 µA while operating at no load, and provides a true
+   - PWM Operation: 500 kHz                                                           disconnect from input to output while in Shutdown
+• Low Device Quiescent Current: 19 µA, typical            (EN = GND). Additional device options are available by
+ PFM Mode (not switching)                                 operating in PWM-Only mode and connecting input to
+•  Internal Synchronous Rectifier                              output while the device is in Shutdown.
+•  Internal Compensation                              The “true” load disconnect mode provides input-to-out-
+• Inrush Current Limiting and Internal Soft Start               put isolation while the device is disabled by removing
+• Selectable, Logic Controlled Shutdown States:              the normal boost regulator diode path from input-to-
+                                                                output. The Input-to-Output Bypass mode option con-   - True Load Disconnect Option (MCP1640/B)
+                                                           nects the input to the output using the integrated low
+   -  Input to Output Bypass Option (MCP1640C/D)
+                                                              resistance P-Channel MOSFET, which provides a low
+• Shutdown Current (All States): < 1 µA                                                             bias voltage for circuits operating in Deep Sleep mode.
+• Low Noise, Anti-Ringing Control                         Both options consume less than 1 µA of input current.
+• Overtemperature Protection                                                        Output voltage  is set by a small external  resistor
+• Available Packages:                                              divider. Two package options are available, 6-Lead
+   - 6-Lead SOT-23                                 SOT-23 and 8-Lead 2 x 3 mm DFN.
+   - 8-Lead 2 x 3 mm DFN
+                                        Package Types
+Applications                                                  MCP1640           MCP1640
+• One, Two and Three Cell Alkaline and NiMH/NiCd               6-Lead SOT-23       8-Lead 2 x 3 DFN*
+  Portable Products
+• Single-Cell Li-Ion to 5V Converters                     SW 1           6 VIN     VFB 1         8 VIN
+•  Li Coin Cell Powered Devices                         GND 2           5 VOUT  SGND 2   EP   7 VOUTS
+• Personal Medical Products                                                  PGND 3    9    6 VOUTP
+                                                      EN 3           4 VFB• Wireless Sensors                                                     EN 4         5 SW
+• Handheld Instruments
+• GPS Receivers                                                               * Includes Exposed Thermal Pad (EP); see Table 3-1.
+• Bluetooth Headsets
+• +3.3V to +5.0V Distributed Power Supply
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                      DS20002234D-page 1
+MCP1640/B/C/D
+
+
+Typical Application
+
+                                            L1
+                                              4.7 µH
+
+
+                                                               VOUT
+                        VIN                                          3.3V @ 100 mA                              SW
+                   0.9V to 1.7V                   VOUT
+                                               VIN
+                                                           976 k
+                    +      CIN                                    COUT
+                               4.7 µF        EN      VFB                 10 µF
+
+                                                           562 k                                                                                                       ALKALINE
+                                    -                GND
+
+
+
+                                             L1
+                                              4.7 µH
+
+
+                                                               VOUT
+                         VIN                                          5.0V @ 300 mA                              SW                    3.0V to 4.2V                    VOUTS
+                                                VIN                                              VOUTP      976 k
+                    +      CIN                                    COUT
+                                4.7 µF        EN      VFB                 10 µF
+
+                                                           309 k                                                                                LI-ION
+                                     -                  PGND SGND
+
+
+
+                           Efficiency vs. IOUT for 3.3VOUT
+
+
+                  100.0
+                                                                                        VIN = 2.5V
+
+
+                    (%)  80.0
+
+
+                                               VIN = 0.8V                              VIN = 1.2V                                                                  Efficiency  60.0
+
+
+
+
+                    40.0
+                         0.1           1.0          10.0         100.0        1000.0
+
+                                      Output Current (mA)
+
+
+
+
+
+DS20002234D-page 2                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+1.0   ELECTRICAL                            † Notice: Stresses above those listed under “Maximum
+     CHARACTERISTICS                        Ratings” may cause permanent damage to the device.
+                                                           This is a stress rating only and functional operation of
+                                                             the device at those or any other conditions above those
+Absolute Maximum Ratings †                         indicated   in  the   operational  sections   of   this
+                                                                  specification is not intended. Exposure to maximumEN, VFB, VIN, VSW, VOUT - GND .........................+6.5V
+                                                                   rating  conditions  for extended periods may  affect
+EN, VFB....<maximum of VOUT or VIN > (GND – 0.3V)                                                          device reliability.
+Output Short-Circuit Current ...................... Continuous
+Output Current Bypass Mode...........................400 mA
+Power Dissipation  ............................ Internally Limited
+Storage Temperature .........................-65°C to +150°C
+Ambient Temp. with Power Applied......-40°C to +85°C
+Operating Junction Temperature........-40°C to +125°C
+ESD Protection On All Pins:
+             HBM........................................................ 3 kV
+             MM.........................................................300V
+
+DC CHARACTERISTICS
+ Electrical Characteristics: Unless otherwise indicated, VIN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V,
+ IOUT = 15 mA, TA = +25°C. Boldface specifications apply over the TA range of -40°C to +85°C.
+        Parameters            Sym.       Min.    Typ.    Max.    Units          Conditions
+
+ Input Characteristics
+ Minimum Start-Up Voltage           VIN    —     0.65      0.8     V    Note 1
+ Minimum Input Voltage After         VIN    —     0.35   —     V    Note 1
+ Start-Up
+ Output Voltage Adjust Range      VOUT        2.0               5.5     V    VOUT  VIN; Note 2
+ Maximum Output Current            IOUT    —     150   —    mA    1.2V VIN, 2.0V VOUT
+                       —     150   —    mA    1.5V VIN, 3.3V VOUT
+                       —     350   —    mA    3.3V VIN, 5.0V VOUT
+ Feedback Voltage                VFB       1.175    1.21    1.245    V
+ Feedback Input Bias Current         IVFB    —     10   —     pA
+ Quiescent Current – PFM          IQPFM    —     19      30     µA    Measured at VOUT = 4.0V;
+ Mode                                                    EN = VIN, IOUT = 0 mA;
+                                                                          Note 3
+ Quiescent Current – PWM        IQPWM    —     220   —     µA    Measured at VOUT = 4.0V;
+ Mode                                                    EN = VIN, IOUT = 0 mA;
+                                                                          Note 3
+ Quiescent Current – Shutdown     IQSHDN   —      0.7      2.3     µA   VOUT = EN = GND;
+                                                                                    Includes N-Channel and
+                                                                          P-Channel Switch Leakage
+NMOS Switch Leakage              INLK    —      0.3   —     µA    VIN = VSW = 5V;
+                                                                  VOUT = 5.5V
+                                                                  VEN = VFB = GND
+PMOS Switch Leakage               IPLK    —     0.05   —     µA    VIN = VSW = GND;
+                                                                  VOUT = 5.5V
+ Note 1:  3.3 k resistive load, 3.3VOUT (1 mA).
+       2:  For VIN > VOUT, VOUT will not remain in regulation.
+       3:  IQOUT is measured at VOUT; VOUT is externally supplied with a voltage higher than the nominal 3.3V output
+           (device is not switching); no load; VIN quiescent current will vary with boost ratio. VIN quiescent current
+          can be estimated by: (IQPFM * (VOUT/VIN)), (IQPWM * (VOUT/VIN)).
+       4:  Peak current limit determined by characterization, not production tested.
+       5:  220 resistive load, 3.3VOUT (15 mA).
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                      DS20002234D-page 3
+MCP1640/B/C/D
+
+
+DC CHARACTERISTICS (CONTINUED)
+ Electrical Characteristics: Unless otherwise indicated, VIN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V,
+ IOUT = 15 mA, TA = +25°C. Boldface specifications apply over the TA range of -40°C to +85°C.
+        Parameters            Sym.       Min.    Typ.    Max.    Units          Conditions
+NMOS Switch On Resistance     RDS(ON)N   —      0.6   —         VIN = 3.3V, ISW = 100 mA
+PMOS Switch On Resistance      RDS(ON)P   —      0.9   —         VIN = 3.3V, ISW = 100 mA
+NMOS Peak Switch Current         IN(MAX)      600    850   —    mA   Note 4
+ Limit
+ VOUT Accuracy               VOUT%        -3   —      +3    %     Includes Line and Load
+                                                                                     Regulation; VIN = 1.5V
+ Line Regulation               VOUT/VOUT)    -1     0.01      1     %/V   VIN = 1.5V to 3V
+                                       /VIN|                                        IOUT = 25 mA
+ Load Regulation               VOUT/VOUT|     -1     0.01     1    %    IOUT = 25 mA to 100 mA;
+                                                                                VIN = 1.5V
+ Maximum Duty Cycle           DCMAX      88     90   —    %
+ Switching Frequency               fSW       425    500     575     kHz
+EN Input Logic High                 VIH        90   —   —    %of VIN  IOUT = 1 mA
+EN Input Logic Low                   VIL    —   —      20    %of VIN  IOUT = 1 mA
+EN Input Leakage Current           IENLK    —     0.005   —     µA   VEN = 5V
+ Soft-Start Time                        tSS    —     750   —     µS   EN Low-to-High,
+                                                          90% of VOUT; Note 5
+ Thermal Shutdown Die            TSD    —     150   —      C
+ Temperature
+ Die Temperature Hysteresis       TSDHYS   —     10   —      C
+ Note 1:  3.3 k resistive load, 3.3VOUT (1 mA).
+       2:  For VIN > VOUT, VOUT will not remain in regulation.
+       3:  IQOUT is measured at VOUT; VOUT is externally supplied with a voltage higher than the nominal 3.3V output
+           (device is not switching); no load; VIN quiescent current will vary with boost ratio. VIN quiescent current
+          can be estimated by: (IQPFM * (VOUT/VIN)), (IQPWM * (VOUT/VIN)).
+       4:  Peak current limit determined by characterization, not production tested.
+       5:  220 resistive load, 3.3VOUT (15 mA).
+
+TEMPERATURE SPECIFICATIONS
+ Electrical Specifications: Unless otherwise indicated, VIN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V, IOUT = 15 mA.
+          Parameters           Sym.    Min.     Typ.     Max.    Units          Conditions
+
+ Temperature Ranges
+ Operating Junction Temperature       TJ      -40   —      +125     °C   Steady State
+ Range
+ Storage Temperature Range          TA      -65   —      +150     °C
+ Maximum Junction Temperature       TJ   —   —      +150     °C    Transient
+ Package Thermal Resistances
+ Thermal Resistance, 6LD-SOT-23     JA   —     190.5   —     °C/W
+ Thermal Resistance, 8LD-2x3 DFN    JA   —      75    —     °C/W
+
+
+
+
+
+DS20002234D-page 4                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+2.0   TYPICAL PERFORMANCE CURVES
+
+  Note:   The graphs and tables provided following this note are a statistical summary based on a limited number of
+         samples and are provided for informational purposes only. The performance characteristics listed herein
+          are not tested or guaranteed. In some graphs or tables, the data presented may be outside the specified
+           operating range (e.g., outside specified power supply range) and therefore outside the warranted range.
+
+Note: Unless otherwise indicated, VIN = EN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V, ILOAD = 15 mA, TA = +25°C.
+
+
+      27.5                                                            100
+                  VIN = 1.2V                                                                        VOUT = 2.0V                                     VIN = 1.6V
+      25.0                                   VOUT = 5.0V                          90
+
+
+                                                                                                                = 0.8V      (µA) 22.5                                                                                                  (%) 8070                                    VIN
+
+                                                                                                                                                              VIN = 1.2V      Mode 20.0                                                             6050
+      17.5                                 VOUT = 3.3V
+                                                                       40    PFM                                                                                                                                                                                                                                                                                                                                                                Efficiency
+   IQ 15.0           VOUT = 2.0V                                             30
+                                                                       20
+      12.5                                                                               PWM / PFM                                                                       10
+      10.0                                                              0                           PWM Only
+           -40   -25   -10   5   20   35   50   65   80                         0.01      0.1       1       10      100     1000
+                  Ambient Temperature (°C)                                                                   IOUT (mA)
+FIGURE 2-1:     VOUT IQ vs. Ambient           FIGURE 2-4:      2.0V VOUT PFM/PWM Mode
+Temperature in PFM Mode.                               Efficiency vs. IOUT.
+
+      300                                                             100   VOUT = 3.3V                                     VIN = 2.5V
+                 VIN = 1.2V                                                     90
+      275                              VOUT = 5.0V                               80
+      (µA)                                                                                                                 (%)  70                                                                                                                                                   VIN = 0.8V      250
+                                                                       60                                                    VIN = 1.2V      Mode
+      225                               VOUT = 3.3V                               50                                                                                                                                                                                                                                                                                                                                                                                        Efficiency  40    PWM 200
+   IQ                                                                  30
+      175                                                              20
+                                                                                       PWM / PFM
+                                                                       10
+                                                                                       PWM Only
+      150                                                               0
+          -40   -25   -10   5   20   35   50   65   80                         0.01      0.1      1       10      100     1000
+                   Ambient Temperature (°C)                                                                 IOUT (mA)
+FIGURE 2-2:     VOUT IQ vs. Ambient           FIGURE 2-5:      3.3V VOUT PFM/PWM Mode
+Temperature in PWM Mode.                              Efficiency vs. IOUT.
+
+
+      600                                                           100
+                                                                                               VOUT = 5.0V                VIN = 3.6V
+                                                VOUT = 5.0V                         90
+      500                    VOUT = 3.3V                                     80
+                                                                                                              (%) 70                                      VIN = 1.2V    VIN = 1.8V      400
+      (mA)                                                                 60
+      300       VOUT = 2.0V                                               50     IOUT
+                                                                     40      200                                                                                                                                                                                                                                                                                                                                Efficiency
+                                                                     30
+      100                                                            20
+                                                                                      PWM / PFM
+                                                                     10                            PWM Only        0
+          0   0.5  1   1.5  2   2.5  3   3.5  4   4.5  5                   0
+                                                                                 0.01      0.1       1       10      100     1000
+                                   VIN (V)                                                                            IOUT (mA)
+FIGURE 2-3:     Maximum IOUT vs. VIN After      FIGURE 2-6:      5.0V VOUT PFM/PWM Mode
+Start-Up, VOUT 10% Below Regulation Point.             Efficiency vs. IOUT.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                      DS20002234D-page 5
+MCP1640/B/C/D
+
+
+Note: Unless otherwise indicated, VIN = EN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V, ILOAD = 15 mA, TA = +25°C.
+
+
+       3.33                                                                     1.00
+                    IOUT = 15 mA                         VIN = 1.2V                                         VOUT = 3.3V
+      3.325
+       3.32                                                                     0.85
+                                      VIN = 1.8V
+      3.315                                                                                                   Startup
+     (V)                                                                                                          (V) 0.70       3.31
+     VOUT 3.305                                                                                  VIN
+                                                                                 0.55
+         3.3                   VIN = 0.8V                                                                      Shutdown
+      3.295                                                                     0.40
+       3.29
+
+      3.285                                                                     0.25
+            -40   -25   -10   5   20   35   50   65   80                        0       20      40      60      80      100
+                    Ambient Temperature (°C)                                                                  IOUT (mA)
+FIGURE 2-7:      3.3V VOUT vs. Ambient          FIGURE 2-10:     Minimum Start-Up and
+Temperature.                                   Shutdown VIN into Resistive Load vs. IOUT.
+
+
+       3.38                                                             525
+                  VIN = 1.5V                                                                                             VOUT = 3.3V
+                                                                       520       3.36                                                                                                                                                                  (kHz)
+                                                                       515
+    (V)  3.34          IOUT = 5 mA                                               510
+     VOUT 3.32                                                                                                                                                                                                                                                                                                    Frequency 505500
+
+       3.30                                                             495
+                     IOUT = 15 mA                                                 490
+       3.28                                    IOUT = 50 mA                                                                                                                                                                                     Switching 485
+
+       3.26                                                             480
+           -40   -25   -10   5   20   35   50   65   80                           -40   -25   -10   5   20   35   50   65   80
+                    Ambient Temperature (°C)                                          Ambient Temperature (°C)
+FIGURE 2-8:      3.3V VOUT vs. Ambient          FIGURE 2-11:     FOSC vs. Ambient
+Temperature.                                       Temperature.
+
+
+       3.40                                                                          4.5
+                                                                     IOUT = 5 mA                     4                         VOUT = 5.0V                TA = +85°C
+       3.36                                                                          3.5
+
+                                                                        3
+                                                                                                                     VOUT = 3.3V     (V) 3.32      TA = +25°C                                                                             (V)  2.5
+     VOUT                                                                                          VIN   2                                                                                                                            VOUT = 2.0V
+       3.28           TA = -40°C
+                                                                                     1.5
+
+                                                                        1
+       3.24
+                                                                                     0.5
+
+       3.20                                                               0
+           0.8      1.2      1.6      2       2.4      2.8                         0   1   2   3   4   5   6   7   8   9   10
+                                    VIN (V)                                                                             IOUT (mA)
+FIGURE 2-9:      3.3V VOUT vs. VIN.             FIGURE 2-12:   PWM Pulse-Skipping Mode
+                                                   Threshold vs. IOUT.
+
+
+
+
+
+DS20002234D-page 6                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+Note: Unless otherwise indicated, VIN = EN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V, ILOAD = 15 mA, TA = +25°C.
+
+
+
+    10000
+                                   PWM / PFM
+                                   PWM Only
+
+
+     1000                                          VOUT = 5.0V
+      (µA)
+                                              VOUT = 3.3V
+    IIN                        VOUT = 2.0V
+
+      100
+
+
+                                                      VOUT = 5.0V
+                       VOUT = 2.0V    VOUT = 3.3V
+
+       10
+           0.8  1.1  1.4  1.7   2   2.3  2.6  2.9  3.2  3.5
+                                    VIN (V)
+FIGURE 2-13:      Input No Load Current vs.        FIGURE 2-16:    MCP1640 3.3V VOUT PFM
+VIN.                                      Mode Waveforms.
+
+
+      5
+
+                                                                                                                                                               IOUT = 1 mA
+                                                                                               VOUT
+      4                                                                               20 mV/DIV         (Ohms)                                                                AC
+           P - Channel                                                              Coupled
+
+      3
+                                                                                     VSW
+                                                                                             2V/DIV               Resistance 2
+
+
+      1         Switch                                                                                                                                      IL
+             N - Channel                                                                   0.05 mA/DIV
+      0
+        1    1.5    2    2.5    3    3.5    4    4.5    5                                                        1 µs/DIV
+                       > VIN or VOUT
+FIGURE 2-14:     N-Channel and P-Channel       FIGURE 2-17:    MCP1640B 3.3V VOUT
+RDSON vs. > of VIN or VOUT.                PWM Mode Waveforms.
+
+
+
+      60
+
+      50                                VOUT = 3.3V     VOUT = 5.0V
+
+
+      40
+                            VOUT = 2.0V      (mA)
+      30
+     IOUT
+      20
+
+
+      10
+
+
+       0
+         0   0.5   1   1.5   2   2.5   3   3.5   4   4.5   5
+                                           VIN (V)
+
+FIGURE 2-15:     Average of PFM/PWM          FIGURE 2-18:    MCP1640/B High Load
+Threshold Current vs. VIN.                          Waveforms.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                      DS20002234D-page 7
+MCP1640/B/C/D
+
+
+Note: Unless otherwise indicated, VIN = EN = 1.2V, COUT = CIN = 10 µF, L = 4.7 µH, VOUT = 3.3V, ILOAD = 15 mA, TA = +25°C.
+
+
+
+
+
+                                                                                                  MCP1640B PWM
+                                                                                                 Mode Only
+                                                                                               VOUT
+                                                                                        100 mV/DIV
+    VOUT                                                              AC
+    1V/DIV                                                                             Coupled
+
+
+
+                                                                                                                                                                                           ISTEP = 1 mA to 75 mA
+
+     VIN
+    1V/DIV                                                                                                        IOUT
+                                                                                        50 mA/DIV
+    VEN
+    1V/DIV
+
+
+                                     500 µs/DIV                                                                              100 µs/DIV
+
+FIGURE 2-19:     3.3V Start-Up After Enable.       FIGURE 2-22:    MCP1640B 3.3V VOUT Load
+                                                       Transient Waveforms.
+
+
+
+
+
+                                                                                                        MCP1640B PWM
+                                                                                                       Mode Only
+
+     VOUT
+     1V/DIV
+
+                                                                                               VOUT
+                                                                                         50 mV/DIV
+                                                                     AC
+                                                                                       Coupled
+                                                                                                                                                                                           ISTEP = 1 mA to 50 mA
+      VIN
+     1V/DIV
+                                                                                                                     IOUT
+     VEN                                                                                 50 mA/DIV
+     1V/DIV
+
+
+                                      500 µs/DIV                                                                            100 µs/DIV
+
+FIGURE 2-20:     3.3V Start-Up when            FIGURE 2-23:    MCP1640B 2.0V VOUT Load
+VIN = VENABLE.                                         Transient Waveforms.
+
+
+
+
+
+                                             PFM
+                       PWM              MODE
+                        MODE
+                                                                                                VOUT
+   VOUT                                                                                   50 mV/DIV
+   100 mV/DIV                                                           AC
+  AC                                                                                  Coupled
+   Coupled
+
+
+                                                                     ISTEP = 1 mA to 75 mA
+
+
+                                                                                                                VIN                                      VSTEP from    IOUT
+                                                                                              1V/DIV                           1V to 2.5V   50 mA/DIV
+
+
+
+                                     100 µs/DIV                                                                              200 µs/DIV
+
+FIGURE 2-21:    MCP1640 3.3V VOUT Load       FIGURE 2-24:     3.3V VOUT Line Transient
+Transient Waveforms.                             Waveforms.
+
+
+
+
+
+DS20002234D-page 8                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+3.0   PIN DESCRIPTIONS
+
+The descriptions of the pins are listed in Table 3-1.
+
+TABLE 3-1:   PIN FUNCTION TABLE
+
+ MCP1640/B/C/D  MCP1640/B/C/D
+                             Symbol                          Description
+    2x3 DFN        SOT-23
+
+       1              4          VFB   Feedback Voltage Pin
+       2        —        SGND   Signal Ground Pin
+       3        —        PGND   Power Ground Pin
+       4              3        EN    Enable Control Input Pin
+       5              1       SW    Switch Node, Boost Inductor Input Pin
+       6        —        VOUTP   Output Voltage Power Pin
+       7        —        VOUTS   Output Voltage Sense Pin
+       8              6           VIN     Input Voltage Pin
+       9        —        EP    Exposed Thermal Pad (EP); must be connected to VSS
+    —              2       GND   Ground Pin
+    —              5         VOUT   Output Voltage Pin
+
+3.1   Feedback Voltage Pin (VFB)               3.6   Output Voltage Power Pin (VOUTP)
+The VFB pin is used to provide output voltage regulation       The output voltage power pin connects the output
+by using a resistor divider. Feedback voltage will be         voltage to the switch node. High current flows through
+1.21V typical with the output voltage in regulation.             the integrated P-Channel and out of this pin to the
+                                                             output capacitor and the  output.  In the 2x3 DFN
+                                                        package, VOUTP and VOUTS are connected externally.3.2    Signal Ground Pin (SGND)
+                                                  3.7   Output Voltage Sense Pin (VOUTS)The signal ground pin  is used as a return for the
+integrated VREF and error amplifier. In the 2x3 DFN       The output voltage sense pin connects the regulated
+package, the SGND and power ground (PGND) pins are         output voltage  to the  internal bias  circuits.  In the
+connected externally.                                   2x3 DFN package, the VOUTS and output  voltage
+                                                    power (VOUTP) pins are connected externally.
+3.3   Power Ground Pin (PGND)                                                    3.8   Power Supply Input Voltage Pin (VIN)
+The power ground pin  is used as a return for the
+                                                     Connect the input voltage source to VIN. The inputhigh-current  N-Channel  switch.  In  the  2x3 DFN                                                        source should be decoupled to GND with a 4.7 µF
+package, the PGND and SGND pins are connected                                                minimum capacitor.
+externally.
+                                                  3.9   Exposed Thermal Pad (EP)
+3.4   Enable Pin (EN)                                                      There is no internal electrical connection between the
+The EN pin is a logic-level input used to enable or       Exposed Thermal Pad (EP) and the SGND and PGND
+                                                                   pins. They must be connected to the same potential ondisable device switching and lower quiescent current
+                                                             the Printed Circuit Board (PCB).while disabled. A logic high (>90% of VIN) will enable
+the regulator output. A logic low (<20% of VIN) will                                               3.10  Ground Pin (GND)ensure that the regulator is disabled.
+                                                 The ground or return pin is used for circuit ground
+3.5    Switch Node Pin (SW)                        connection. Length of trace from input cap return,
+                                                             output cap return, and GND pin should be made as
+Connect the inductor from the input voltage to the SW         short as possible to minimize noise on the GND pin. In
+pin. The SW pin carries inductor current and can be as         the SOT-23-6 package, a single ground pin is used.
+high as 800 mA peak. The integrated N-Channel switch
+drain and integrated P-Channel switch source are       3.11   Output Voltage Pin (VOUT)
+internally connected at the SW node.
+                                                 The  output  voltage  pin  connects  the  integrated
+                                                     P-Channel MOSFET to the output capacitor. The FB
+                                                             voltage divider is also connected to the VOUT pin for
+                                                             voltage regulation.
+
+
+ 2010-2015 Microchip Technology Inc.                                                      DS20002234D-page 9
+MCP1640/B/C/D
+
+
+NOTES:
+
+
+
+
+
+DS20002234D-page 10                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+4.0   DETAILED DESCRIPTION                For noise immunity, the N-Channel MOSFET current
+                                                     sense is blanked for approximately 100 ns. With a typ-
+                                                                           ical minimum duty cycle of 100 ns, the MCP1640B/D4.1    Device Option Overview
+                                                           continues to switch at a constant frequency under light
+The MCP1640/B/C/D family of devices is capable of        load conditions. Figure 2-12 represents the input volt-
+low start-up voltage and delivers high efficiency over a       age versus load current for the pulse skipping threshold
+wide load range for single-cell, two-cell, or three-cell          in PWM-Only mode. At lighter loads, the MCP1640B/D
+alkaline, NiCd, NiMH and single-cell Li-Ion battery        devices begin to skip pulses.
+inputs. A high level of integration lowers total system
+cost, eases implementation and reduces board area.          4.1.3    TRUE OUTPUT DISCONNECT
+                                        MODE OPTION
+The devices feature low start-up voltage, adjustable
+output voltage, PWM/PFM mode operation, low IQ,       The MCP1640/B devices incorporate a true output
+integrated synchronous switch, internal compensation,        disconnect feature. With the EN pin pulled low, the
+low noise anti-ring control, inrush current limit, and soft         output of the MCP1640/B is isolated or disconnected
+start.                                                    from the input by turning off the integrated P-Channel
+                                                             switch and removing the switch bulk diode connection.
+There are two options for the MCP1640/B/C/D family:
+                                                           This removes the DC path that is typical in boost con-
+• PWM/PFM mode or PWM-Only mode                         verters, which allows the output to be disconnected
+• “True Output Disconnect” mode or Input-to-Output          from the input. During this mode, less than 1 µA of cur-
+  Bypass mode                                                 rent is consumed from the input (battery). True output
+                                                           disconnect does not discharge the output; the output
+4.1.1    PWM/PFM MODE OPTION                    voltage is held up by the external COUT capacitance.
+The MCP1640/C devices use an automatic switchover
+                                                         4.1.4    INPUT BYPASS MODE OPTIONfrom PWM to PFM mode for light load conditions to
+maximize  efficiency over a wide range  of  output       The MCP1640C/D  devices  incorporate  the  Input
+current. During PFM mode, higher peak current is used       Bypass shutdown option. With the EN input pulled low,
+to pump the output up to the threshold limit. While         the output is connected to the input using the internal
+operating in PFM or PWM mode, the P-Channel switch        P-Channel MOSFET. In this mode, the current draw
+is used as a synchronous rectifier, turning off when the        from the input (battery) is less than 1 µA with no load.
+inductor current reaches 0 mA to maximize efficiency.          Input Bypass mode is used when the input voltage
+                                                       range is high enough for the load to operate in Sleep orIn PFM mode, a comparator  is used to terminate
+                                              Low IQ mode. When a higher regulated output voltageswitching when the output voltage reaches the upper
+                                                                               is necessary to operate the application, the EN input isthreshold  limit. Once switching has terminated, the
+                                                               pulled high, enabling the boost converter.output voltage will decay or coast down. During this
+period, very low IQ is consumed from the device and      TABLE 4-1:   PART NUMBER SELECTION
+input source, which keeps power efficiency high at light
+load.                                                                                               Input
+                                                              Part   PWM/ PWM     True         -to-
+The disadvantages of PWM/PFM mode are higher out-
+                                              Number   PFM  -Only  Disconnect  Outputput ripple voltage and variable PFM mode frequency.
+                                                                                  Bypass
+The PFM mode frequency is a function of input voltage,
+output voltage and load. While in PFM mode, the boost       MCP1640    X            X
+converter pumps the output up at a switching frequency                                            MCP1640B        X      X
+of 500 kHz.
+                                            MCP1640C   X                    X
+4.1.2    PWM-ONLY MODE OPTION              MCP1640D        X               X
+
+The  MCP1640B/D  devices  disable PFM  mode
+switching, and operate only in PWM mode over the
+entire load range. During periods of light load opera-
+tion, the MCP1640B/D continues to operate at a con-
+stant 500 kHz switching frequency, keeping the output
+ripple voltage lower than PFM mode.
+During PWM-Only mode, the MCP1640B/D P-Channel
+switch acts as a synchronous rectifier by turning off (to
+prevent reverse current flow from the output cap back
+to the input) in order to keep efficiency high.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 11
+MCP1640/B/C/D
+
+
+4.2    Functional Description                       Figure 4-1 depicts the functional block diagram of the
+                                                   MCP1640/B/C/D.
+The MCP1640/B/C/D  is a compact, high-efficiency,
+fixed  frequency,  step-up  DC-DC  converter  that
+provides an easy-to-use power supply solution  for
+applications powered by either single-cell, two-cell, or
+three-cell alkaline, NiCd, NiMH, and single-cell Li-Ion or
+Li-Polymer batteries.
+
+
+                                     VOUT
+
+
+
+                                                 Internal
+        VIN                             Bias
+                                                                                  IZERO
+
+                                                                           Direction
+                                                                         Control
+
+
+     SW                                                             Soft Start
+                                                               .3V
+
+                                                    0V
+                                    Gate Drive                                               ILIMIT
+                                      and
+      EN                        Shutdown
+                                            Control
+                                            Logic
+                                                                                  ISENSE
+
+
+
+
+
+                                                                  Slope      GND                               Oscillator                        S                                                         Comp.
+
+
+
+
+
+                            PWM/PFM
+                                           Logic
+
+                                                                                            1.21V
+
+                                                                                    FB
+
+                                                       EA
+
+FIGURE 4-1:      MCP1640/B/C/D Block Diagram.
+
+4.2.1    LOW-VOLTAGE START-UP                    current is limited to 50% of its nominal value. Once the
+                                                             output voltage reaches 1.6V, normal closed-loop PWMThe MCP1640/B/C/D is capable of starting from a low
+                                                             operation is initiated.input voltage. Start-up voltage is typically 0.65V for a
+3.3V output and 1 mA resistive load.                     The MCP1640/B/C/D charges an internal capacitor
+                                                               with a very weak current source. The voltage on thisWhen enabled, the internal start-up logic turns the
+                                                                  capacitor, in turn, slowly ramps the current limit of therectifying  P-Channel  switch  on  until  the  output
+                                                         boost  switch  to  its  nominal  value. The  soft-startcapacitor  is charged to a value close to the input
+                                                              capacitor is completely discharged in the event of avoltage. The  rectifying switch  is  current-limited  to
+                                              commanded shutdown or a thermal shutdown.approximately 100 mA during this time. This will affect
+the start-up under higher load currents, and the device        There  is no undervoltage  lockout  feature  for  the
+may not start to the nominal value. After charging the       MCP1640/B/C/D. The device will start-up at the lowest
+output capacitor to the input voltage, the device starts         possible voltage and run down to the lowest possible
+switching. If the input voltage is below 1.6V, the device         voltage. For typical battery applications, this may result
+runs open-loop with a fixed duty cycle of 70% until the          in “motor-boating” (emitting a low-frequency tone) for
+output reaches 1.6V. During this time, the boost switch        deeply discharged batteries.
+
+
+DS20002234D-page 12                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+4.2.2    PWM-ONLY MODE OPERATION             4.2.5    ENABLE PIN
+
+In  normal PWM  operation,  the  MCP1640/B/C/D       The enable pin is used to turn the boost converter on
+operates as a fixed frequency, synchronous boost       and off. The enable threshold voltage varies with input
+converter.  The  switching  frequency   is  internally         voltage. To enable the boost converter, the EN voltage
+maintained with a precision oscillator typically set to          level must be greater than 90% of the VIN voltage. To
+500 kHz. The MCP1640B/D devices  will operate in         disable the boost converter, the EN voltage must be
+PWM-Only mode even during periods of  light load         less than 20% of the VIN voltage.
+operation. By operating in PWM-Only mode, the output
+ripple remains low and the frequency  is constant.        4.2.6    INTERNAL BIAS
+Operating  in  fixed PWM mode  results  in  lower       The MCP1640/B/C/D gets its start-up bias from VIN.
+efficiency during light load operation (when compared       Once the output exceeds the input, bias comes from
+to PFM mode (MCP1640/C)).                                 the  output.  Therefore, once  started,  operation  is
+Lossless current sensing converts the peak current sig-        completely independent  of  VIN. Operation  is  only
+nal to a voltage to sum with the internal slope compen-          limited by the output power level and the input source
+sation. This summed signal is compared to the voltage         series resistance. When started, the output will remain
+error amplifier output to provide a peak current control          in regulation down to 0.35V typical with 1 mA output
+command   for   the  PWM   signal.  The   slope         current for low source impedance inputs.
+compensation  is adaptive  to the input and output
+voltage. Therefore, the converter provides the proper        4.2.7    INTERNAL COMPENSATION
+amount of slope compensation to ensure stability, but is       The error amplifier, with its associated compensation
+not excessive, which causes a loss of phase margin.        network,  completes  the  closed-loop  system  by
+The peak current limit is set to 800 mA typical.               comparing the output voltage to a reference at the
+                                                                 input of the error amplifier, and feeding the amplified
+4.2.3    PFM MODE OPERATION                                                   and inverted signal to the control input of the inner
+The MCP1640/C devices are capable of operating in         current  loop. The compensation network provides
+normal PWM mode and PFM mode to maintain high       phase leads and lags at appropriate frequencies to
+efficiency at all loads. In PFM mode, the output ripple        cancel excessive phase lags and leads of the power
+has a variable frequency component that changes with           circuit. All necessary compensation components and
+the input voltage and output current. The value of the        slope compensation are integrated.
+output capacitor changes the low-frequency compo-
+nent ripple. Output ripple peak-to-peak values are not        4.2.8    SHORT CIRCUIT PROTECTION
+affected by the output capacitor. With no load, the qui-         Unlike most boost converters, the MCP1640/B/C/D
+escent current draw from the output is typically 19 µA.         allows its output to be shorted during normal operation.
+This is not a switching current and is not dependent on       The   internal  current   limit  and  overtemperature
+the input and output parameters. The no-load input cur-         protection limit excessive stress and protect the device
+rent drawn from the battery depends on the above         during periods of short circuit, overcurrent and over-
+parameters. Its variation is shown in Figure 2-13. The        temperature. While operating in Bypass mode, the
+PFM mode can be disabled in selected device options.        P-Channel  current  limit  is  inhibited  to  minimize
+PFM operation is initiated if the output load current falls        quiescent current.
+below an internally programmed threshold. The output
+                                                         4.2.9   LOW NOISE OPERATIONvoltage is continuously monitored. When the output
+voltage drops below its nominal value, PFM operation       The MCP1640/B/C/D integrates a low noise anti-ring
+pulses one or several times to bring the output back         switch that damps the oscillations typically observed at
+into regulation. If the output load current rises above         the switch node of a boost converter when operating in
+the  upper  threshold,  the MCP1640/C  transitions         the  Discontinuous  Inductor  Current  mode.  This
+smoothly into PWM mode.                              removes the high-frequency radiated noise.
+
+4.2.4    ADJUSTABLE OUTPUT VOLTAGE          4.2.10   OVERTEMPERATURE
+The MCP1640/B/C/D output voltage is adjustable with             PROTECTION
+a  resistor  divider over a 2.0V minimum  to 5.5V        Overtemperature protection circuitry is integrated into
+maximum range. High-value resistors can be used to         the MCP1640/B/C/D. This circuitry monitors the device
+minimize quiescent current to keep efficiency high at         junction temperature and shuts the device off  if the
+light loads.                                                      junction  temperature exceeds  the  typical +150°C
+                                                                threshold. If this threshold is exceeded, the device will
+                                                               automatically restart when the junction temperature
+                                                        drops by 10°C. The  soft  start  is reset during an
+                                                         overtemperature condition.
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 13
+MCP1640/B/C/D
+
+
+NOTES:
+
+
+
+
+
+DS20002234D-page 14                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+5.0   APPLICATION INFORMATION          For boost converters, the removal of the feedback
+                                                                   resistors during operation must be avoided. In this
+                                                           case,  the  output  voltage  will  increase above  the5.1    Typical Applications
+                                                           absolute maximum output limits of the MCP1640/B/C/D
+The MCP1640/B/C/D synchronous boost  regulator       and damage the device.
+operates over a wide input and output voltage range.                                                 The maximum device output current is dependent upon
+The power efficiency is high for several decades of load                                                             the input and output voltage. For example, to ensure a
+range. Output current capability increases with input                                                   100 mA load current for VOUT = 3.3V, a minimum of
+voltage and decreases with increasing output voltage.        1.0-1.1V input voltage is necessary. If an application is
+The maximum  output  current  is  based  on  the       powered by one Li-Ion battery (VIN from 3.0V to 4.2V),
+N-Channel peak current limit. Typical characterization         the minimum load current the MCP1640/B/C/D can
+curves in this data sheet are presented to display the          deliver  is close  to 300 mA  at 5.0V output and a
+typical output current capability.                       maximum of 500 mA (Figure 2-3).
+
+5.2    Adjustable Output Voltage                  5.2.1     VIN > VOUT SITUATION
+       Calculations and                             For VIN > VOUT, the output voltage will not remain in
+     Maximum Output Current                      regulation. VIN > VOUT is an unusual situation for a
+                                                         boost converter, and there is a common issue when
+To  calculate  the  resistor  divider  values  for  the                                                      two Alkaline cells (2 x 1.6V typical) are used to boost to
+MCP1640/B/C/D, the following equation can be used,                                                       3.0V output. The Input-to-Output Bypass option  is
+where RTOP is connected to VOUT, RBOT is connected       recommended to be used in this situation until the
+to GND and both are connected to the FB input pin.                                                                     batteries’ voltages go down to a safe headroom. A
+                                                minimum headroom of approximately 150 to 200 mV
+EQUATION 5-1:                                     between VOUT and VIN must be ensured, unless a low-
+                                                             frequency, high-amplitude output ripple on VOUT  is
+                                    VOUT                        expected. The ripple and its frequency is VIN and load                                                                                ----------------                                  – 1        RTOP = RBOT                                                                                                      dependent. The higher the VIN, the higher the ripple                      VFB
+                                                   and the lower its frequency.
+
+EXAMPLE 1:                                      5.3    Input Capacitor Selection
+
+  VOUT  =  3.3V                                   The boost input current is smoothed by the boost induc-
+   VFB  =  1.21V                                                  tor reducing the amount of filtering necessary at the
+                                                                      input. Some capacitance is recommended to provide
+  RBOT  =  309 k                                                           decoupling from the source. Low ESR X5R or X7R are
+  RTOP  =  533.7 k (Standard Value = 536 k)              well suited since they have a low temperature coefficient
+                                                   and small size. For most applications, 4.7 µF of capaci-
+EXAMPLE 2:                                             tance is sufficient at the input. For high-power applica-
+                                                                    tions that have high source impedance or long leads,
+  VOUT  =  5.0V                                          connecting the battery to the input 10 µF of capacitance
+   VFB  =  1.21V                                                      is recommended. Additional input capacitance can be
+                                                   added to provide a stable input voltage.  RBOT  =  309 k
+  RTOP  =  967.9 k (Standard Value = 976 k)            Table 5-1 contains the recommended range for the
+                                                                 input capacitor value.
+The internal error amplifier is of transconductance type; its
+gain is not related to the resistors' value. There are some       5.4   Output Capacitor Selection
+potential issues with higher-value resistors. For small
+surface-mount resistors, environment contamination can       The output capacitor helps provide a stable output
+create leakage paths that significantly change the resistor         voltage during sudden load transients and reduces the
+divider ratio and modify the output voltage tolerance.             output voltage ripple. As with the input capacitor, X5R
+                                                   and X7R ceramic capacitors are well suited for this appli-Smaller feedback  resistor values  will increase the
+                                                                     cation. Using other capacitor types (aluminum or tanta-
+current drained from the battery by a few µA, but will
+                                                           lum) with large ESR has an impact on the converter's
+result in good regulation over the entire temperature
+                                                                      efficiency and maximum output power (see AN1337).range and environment conditions. The feedback input
+leakage current can also impact the divider and change
+the output voltage tolerance.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 15
+MCP1640/B/C/D
+
+
+The MCP1640/B/C/D  is internally compensated, so       5.5    Inductor Selection
+output capacitance range is limited (see Table 5-1 for
+                                                 The MCP1640/B/C/D is designed to be used with smallthe recommended output capacitor range). An output
+                                                         surface-mount inductors; the inductance value can
+capacitance higher than 10 µF adds a better load-step
+                                                       range from 2.2 µH to 10 µH. An inductance value of
+response and high-frequency noise attenuation, espe-
+                                                             4.7 µH is recommended to achieve a good balancecially while stepping from  light current loads (PFM
+                                                    between  inductor  size,  converter  load  transient
+mode) to heavy current loads (PWM mode). Over-
+                                                       response and minimized noise.
+shoots and undershoots during pulse load application
+are reduced by adding a zero in the compensation      TABLE 5-2:   MCP1640/B/C/D
+loop. A small capacitance (for example 100 pF) in par-                                            RECOMMENDED INDUCTORS
+allel with an upper feedback resistor will reduce output
+spikes, especially in PFM mode.                                                                    Size
+                                                            Part Number                                                                                                                         (A)  WxLxH                                                                                                                                                                                                                              (typ.)    ISATWhile the N-Channel switch is on, the output current is                                                                                                                                                                      Value (µH)  DCR                                           (mm)
+supplied by the output capacitor COUT. The amount of
+output capacitance and equivalent series resistance          Coilcraft
+will have a  significant  effect on the output  ripple         EPL2014-472         4.7    0.23    1.06   2.0x2.0x1.4
+voltage. While COUT provides load current, a voltage         EPL3012-472         4.7    0.165    1.1    3.0x3.0x1.3
+drop also appears across its internal ESR that results
+                                                       MSS4020-472        4.7    0.115    1.5    4.0x4.0x2.0in ripple voltage.
+                                                         LPS6225-472         4.7    0.065    3.2    6.0x6.0x2.4
+EQUATION 5-2:                                          Coiltronics®
+                                       dV                        SD3110              4.7    0.285   0.68   3.1x3.1x1.0
+          IOUT = COUT  ------dt                        SD3112              4.7    0.246   0.80   3.1x3.1x1.2
+   Where:                                             SD3114              4.7    0.251   1.14   3.1x3.1x1.4
+    dV = ripple voltage                                 SD3118              4.7    0.162   1.31   3.8x3.8x1.2
+      dt = On time of the N-Channel switch                 SD3812              4.7    0.256   1.13   3.8x3.8x1.2
+          (D x 1/FSW)                                 SD25                 4.7   0.0467   1.83   5.0x5.0x2.5
+                                                 Würth Elektronik®
+Table 5-1 contains the recommended range for the       WE-TPC Type TH     4.7    0.200    0.8   2.8x2.8x1.35
+input and output capacitor value.                                                 WE-TPC Type S      4.7    0.105   0.90  3.8x3.8x1.65
+TABLE 5-1:   CAPACITOR VALUE RANGE         WE-TPC Type M      4.7    0.082   1.65   4.8x4.8x1.8
+                                                 WE-TPC Type X      4.7    0.046   2.00   6.8x6.8x2.3
+                      CIN          COUT
+                                               Sumida Corporation
+      Min.            4.7 µF         10 µF
+                                               CMH23               4.7    0.537   0.70   2.3x2.3x1.0
+     Max.      —           100 µF
+                                                CMD4D06            4.7    0.216   0.75   3.5x4.3x0.8
+                                              CDRH4D             4.7    0.09   0.800  4.6x4.6x1.5
+                                           TDK-EPCOS
+                                                      B82462A2472M000   4.7    0.084   2.00   6.0x6.0x2.5
+                                                     B82462G4472M      4.7    0.04     1.8    6.3x6.3x3.0
+
+                                                          Several parameters are used to select the correct
+                                                                  inductor: maximum rated current, saturation current
+                                                   and copper resistance (ESR). For boost converters, the
+                                                               inductor current is much higher than the output current;
+                                                             the average of the inductor current is equal to the input
+                                                               current drawn from the input. The lower the inductor
+                                                ESR, the higher the efficiency of the converter. This is
+                                                  a common trade-off in size versus efficiency.
+                                                 Peak  current  is  the maximum  or  the  limit, and
+                                                                saturation current typically specifies a point at which
+                                                             the inductance has rolled off a percentage of the rated
+                                                               value. This can range from a 20% to 40% reduction in
+                                                             inductance. As inductance rolls off, the inductor ripple
+                                                               current increases; as does the peak switch current. It is
+                                                             important to keep the inductance from rolling off too
+                                                    much, causing switch current to reach the peak limit.
+
+
+DS20002234D-page 16                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+5.6   Thermal Calculations                          estimate, assuming that most of the power lost  is
+                                                                    internal to the MCP1640/B/C/D and not CIN, COUT and
+The MCP1640/B/C/D  is  available  in two  different         the inductor. There is some percentage of power lost in
+packages: 6-Lead SOT-23 and 8-Lead 2 x 3 DFN. The         the boost inductor, with very little loss in the input and
+junction temperature is estimated by calculating the         output capacitors. For a more accurate estimation of
+power dissipation and applying the package thermal          internal power dissipation, subtract the IINRMS2 x LESR
+resistance (JA). The maximum continuous junction       power dissipation.
+temperature rating for the MCP1640/B/C/D is +125°C.
+To quickly estimate the internal power dissipation for       5.7   PCB Layout Information
+the switching boost regulator, an empirical calculation
+                                              Good  printed  circuit board  layout  techniques  areusing measured efficiency can be used. Given the
+                                                             important  to any switching  circuitry, and switchingmeasured efficiency, the internal power dissipation is
+                                                    power supplies are no  different. When  wiring theestimated by Equation 5-3.
+                                                             switching high-current paths, short and wide traces
+                                                         should be used. Therefore, it is important that the inputEQUATION 5-3:
+                                                   and output capacitors be placed as close as possible to
+                                                             the MCP1640/B/C/D to minimize the loop area.
+             VOUT  IOUT                                The feedback resistors and feedback signal should be                 -------------------------------------                          –  VOUT IOUT  = PDis              routed away from the switching node and the switching        Efficiency  
+                                                               current loop. When possible, ground planes and traces
+                                                         should be used to help shield the feedback signal and
+                                                         minimize noise and magnetic interference.
+The difference between the first term – input power,
+and the second term – power delivered, is the internal
+MCP1640/B/C/D  power   dissipation.  This   is  an
+
+
+                                                    Via to GND Plane
+
+                                              RBOT RTOP
+            +VIN                        +VOUT
+
+                          L         CIN     MCP1640   COUT
+
+                                           1
+                              GND
+
+        GND                                   Via for Enable
+
+
+FIGURE 5-1:      MCP1640/B/C/D SOT-23-6 Recommended Layout.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 17
+MCP1640/B/C/D
+
+
+
+
+
+                                                               Wired on Bottom
+                                           L                                                                 Plane
+
+       +VIN
+                                          +VOUT
+
+                           CIN                           COUT
+     GND
+                                  MCP1640                       RTOP
+
+
+                                  1
+                                                                  RBOT
+                                                       Enable
+
+
+                                  GND
+
+
+
+FIGURE 5-2:      MCP1640/B/C/D DFN-8 Recommended Layout.
+
+
+
+
+
+DS20002234D-page 18                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+6.0   TYPICAL APPLICATION CIRCUITS
+
+
+                                                  L1
+                                                    4.7 µH
+
+
+                                                                    VOUT
+            Manganese Lithium                                                                          5.0V @ 5 mA              Dioxide Button Cell               SW
+                                                  VOUT
+                                                     VIN
+                         +                                      976 k
+             2.0V to 3.2V             CIN                                    COUT
+                                      4.7 µF        EN      VFB                 10 µF                                           -
+                                                                 309 k
+           From PIC® MCU I/O                GND
+
+
+       Note:   For applications that can operate directly from the battery input voltage during Sleep mode and
+                 require a higher voltage during Normal Run mode, the MCP1640C device provides Input to
+               Output Bypass when disabled. The PIC® microcontroller is powered by the output of the
+             MCP1640C. One of its I/O pins is used to enable and disable the MCP1640C. While operating
+                    in Sleep mode, the MCP1640C input quiescent current is typically less than 1 µA.
+
+
+FIGURE 6-1:     Manganese Lithium Coin Cell Application Using Bypass Mode.
+
+
+                                             L1
+                                      10 µH
+
+
+                                                                VOUT
+                         VIN                                          5.0V @ 350 mA                               SW                   3.3V To 4.2V                    VOUTS
+                                               VIN                                              VOUTP      976 k
+                     +      CIN                                    COUT
+                           10 µF        EN      VFB                 10 µF
+
+                                                           309 k                                                                                 LI-ION
+                                     -                  PGND SGND
+
+
+
+FIGURE 6-2:     USB On-The-Go Powered by Li-Ion.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 19
+MCP1640/B/C/D
+
+
+NOTES:
+
+
+
+
+
+DS20002234D-page 20                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+7.0  PACKAGING INFORMATION
+
+7.1   Package Marking Information
+
+
+           6-Lead SOT-23                                            Example
+
+
+                                         Part Number       Code
+
+                                MCP1640T-I/CHY      BZNN
+                               MCP1640BT-I/CHY    BWNN              BZ25
+                               MCP1640CT-I/CHY    BXNN
+                               MCP1640DT-I/CHY    BYNN
+
+
+
+
+
+            8-Lead DFN                                             Example                                         Part Number       Code
+
+                               MCP1640-I/MC       AHM
+                               MCP1640T-I/MC      AHM
+                                                        AHM
+                               MCP1640B-I/MC       AHP                 340
+                               MCP1640BT-I/MC      AHP                  25
+                               MCP1640C-I/MC      AHQ
+                               MCP1640CT-I/MC      AHQ
+                               MCP1640D-I/MC      AHR
+                               MCP1640DT-I/MC      AHR
+
+
+
+
+
+            Legend:  XX...X  Customer-specific information
+                  Y       Year code (last digit of calendar year)
+                 YY     Year code (last 2 digits of calendar year)
+            WW   Week code (week of January 1 is week ‘01’)
+                NNN    Alphanumeric traceability code
+                    e 3     Pb-free JEDEC® designator for Matte Tin (Sn)
+                              *        This package is Pb-free. The Pb-free JEDEC designator ( e 3)
+                             can be found on the outer packaging for this package.
+
+              Note:   In the event the full Microchip part number cannot be marked on one line, it will
+                   be  carried over  to the next  line, thus  limiting the number  of available
+                       characters for customer-specific information.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 21
+MCP1640/B/C/D
+
+
+
+6-Lead Plastic Small Outline Transistor (CHY) [SOT-23]
+
+  Note:   For the most current package drawings, please see the Microchip Packaging Specification located at
+           http://www.microchip.com/packaging
+
+
+
+                                          b
+
+
+                   N             4
+
+
+
+                                           E
+
+                                           E1
+
+
+           PIN 1 ID BY
+        LASER MARK
+                        1      2      3
+
+                               e
+
+                                   e1
+
+                         D
+
+
+
+             A                             A2    c                                   φ
+
+
+
+                                                                                L
+              A1
+                                                                                L1
+
+
+                                                               Units           MILLIMETERS
+
+                                             Dimension Limits    MIN     NOM      MAX
+
+               Number of Pins                   N                   6
+
+                    Pitch                                 e                  0.95 BSC
+
+                  Outside Lead Pitch                     e1                 1.90 BSC
+
+                    Overall Height                     A       0.90         –          1.45
+
+                Molded Package Thickness             A2       0.89         –          1.30
+
+                    Standoff                           A1       0.00         –          0.15
+
+                    Overall Width                      E       2.20         –          3.20
+
+                Molded Package Width                E1       1.30         –          1.80
+
+                    Overall Length                   D       2.70         –          3.10
+
+                  Foot Length                           L       0.10         –          0.60
+
+                    Footprint                             L1       0.35         –          0.80
+                  Foot Angle                              I         0°          –           30°
+                Lead Thickness                           c       0.08         –          0.26
+
+                Lead Width                            b       0.20         –          0.51
+Notes:
+
+1. Dimensions D and E1 do not include mold flash or protrusions. Mold flash or protrusions shall not exceed 0.127 mm per side.
+2. Dimensioning and tolerancing per ASME Y14.5M.
+      BSC: Basic Dimension. Theoretically exact value shown without tolerances.
+
+                                                                                    Microchip Technology Drawing C04-028B
+
+
+
+
+
+DS20002234D-page 22                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+
+6-Lead Plastic Small Outline Transistor (CHY) [SOT-23]
+
+  Note:   For the most current package drawings, please see the Microchip Packaging Specification located at
+           http://www.microchip.com/packaging
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 23
+MCP1640/B/C/D
+
+
+
+D3dêÜè nóÜ§•îé V¶Üó ^óÜ•2 f† dêÜè nÜéñÜíê .eU/  >Ø?Ø64E ûû T†è∞ ÄV^fÇ
+
+  f†•êF   ^†£ •ìê û†§• é¶££êü• °ÜéñÜíê è£ÜÆîüí§2 °óêÜ§ê §êê •ìê eîé£†éìî° nÜéñÜíîüí q°êéîëîéÜ•î†ü ó†éÜ•êè Ü•
+           ì••°F55ÆÆÆ4ûîé£†éìî°4é†û5°ÜéñÜíîüí
+
+
+                      D                                              e
+                                                                  b
+                 N                                            N
+
+                                                       L
+
+
+
+                                                K
+
+                                    E                                     E2
+
+
+
+                                      EXPOSED PAD
+
+         NOTE 1
+                                                                     NOTE 1
+                        1   2                                             2   1
+
+                                                               D2
+                     TOP VIEW                         BOTTOM VIEW
+
+
+
+
+
+                                    A
+
+
+
+                                     NOTE 2          A3                     A1
+
+
+                                                              süî•§           eaddae]r]pq
+
+                                            Vîûêü§î†ü dîûî•§    eaf     fme      eSv
+
+              f¶ûáê£ †ë nîü§                   f                   D
+
+                   nî•éì                                 ê                  64A6 TqU
+
+                   mßê£Üóó `êîíì•                     S       64D6         64E6         =466
+
+                   q•Üüè†ëë                           S=       6466         646>         646A
+
+                 U†ü•Üé• rìîéñüê§§                   S?                  64>6 p]^
+
+                   mßê£Üóó dêüí•ì                   V                  >466 TqU
+
+                   mßê£Üóó uîè•ì                      ]                  ?466 TqU
+
+               ]Ø°†§êè nÜè dêüí•ì                 V>       =4?6         j          =4AA
+
+               ]Ø°†§êè nÜè uîè•ì                  ]>       =4A6         j          =4CA
+
+                 U†ü•Üé• uîè•ì                          á       64>6         64>A         64?6
+
+                 U†ü•Üé• dêüí•ì                         d       64?6         64@6         64A6
+
+                 U†ü•Üé•3•†3]Ø°†§êè nÜè              c       64>6         j          j
+f†•ê§F
+
+=4 nîü = ßî§¶Üó îüèêØ ëêÜ•¶£ê ûÜ∞ ßÜ£∞2 á¶• û¶§• áê ó†éÜ•êè Æî•ìîü •ìê ìÜ•éìêè Ü£êÜ4
+>4 nÜéñÜíê ûÜ∞ ìÜßê †üê †£ û†£ê êØ°†§êè •îê áÜ£§ Ü• êüè§4
+?4 nÜéñÜíê î§ §ÜÆ §îüí¶óÜ•êè4
+@4 Vîûêü§î†üîüí Üüè •†óê£Üüéîüí °ê£ Sqe] }=@4Ae4
+      TqUF TÜ§îé Vîûêü§î†ü4 rìê†£ê•îéÜóó∞ êØÜé• ßÜó¶ê §ì†Æü Æî•ì†¶• •†óê£Üüéê§4
+      p]^F pêëê£êüéê Vîûêü§î†ü2 ¶§¶Üóó∞ Æî•ì†¶• •†óê£Üüéê2 ë†£ îüë†£ûÜ•î†ü °¶£°†§ê§ †üó∞4
+
+                                                                                     eîé£†éìî° rêéìü†ó†í∞V£ÜÆîüí U6@3=>?U
+
+
+
+
+
+DS20002234D-page 24                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+
+
+
+  Note:   For the most current package drawings, please see the Microchip Packaging Specification located at
+           http://www.microchip.com/packaging
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 25
+MCP1640/B/C/D
+
+
+NOTES:
+
+
+
+
+
+DS20002234D-page 26                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+APPENDIX A:  REVISION HISTORY
+
+Revision D (September 2015)
+
+The following is the list of modifications:
+1.  Deleted maximum values  for NMOS Switch
+    Leakage and PMOS Switch Leakage parame-
+     ters in DC Characteristics table.
+2.  Updated Figure 2-15 in Section 2.0 “Typical
+    Performance Curves”.
+3.  Minor typographical corrections.
+
+Revision C (November 2014)
+
+The following is the list of modifications:
+1.  Updated Features list.
+2.  Updated values in the DC Characteristics and
+    Temperature Specifications tables.
+3.  Updated Figures 2-6 and 2-15.
+4.  Updated Section 4.2.1 “Low-Voltage  Start-
+    Up”.
+5.  Updated  Section 5.2  “Adjustable  Output
+    Voltage Calculations and Maximum Output
+    Current”.
+6.  Updated  Section 5.4  “Output  Capacitor
+    Selection”.
+7.  Updated markings and SOT-23 package specifi-
+     cation  drawings   for  CHY  designator   in
+    Section 7.0 “Packaging Information”.
+8.  Minor editorial corrections.
+
+Revision B (March 2011)
+
+The following is the list of modifications:
+1.  Updated Table 5-2.
+2.  Added  the  package  markings  tables   in
+    Section 7.0 “Packaging Information”.
+
+Revision A (February 2010)
+
+Original release of this document.
+
+
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 27
+MCP1640/B/C/D
+
+
+NOTES:
+
+
+
+
+
+DS20002234D-page 28                                        2010-2015 Microchip Technology Inc.
+                        MCP1640/B/C/D
+
+
+PRODUCT IDENTIFICATION SYSTEM
+
+To order or obtain information, e.g., on pricing or delivery, contact your local Microchip representative or sales office.
+    PART NO.     [X](1)       X          /XX                   Examples:
+                                                                                   a)   MCP1640-I/MC:     0.65V, PWM/PFM
+      Device    Tape     Temperature   Package                                            True Disconnect
+             and Reel     Range                                                      Sync Reg.,
+                                                                                 8LD-DFN pkg.
+                                                                                   b)   MCP1640T-I/MC:    0.65V, PWM/PFM
+  Device             MCP1640:    0.65V, PWM/PFM True Disconnect,                                   True Disconnect
+                                 Sync Boost Regulator                                         Sync Reg.,
+                    MCP1640B:  0.65V, PWM Only True Disconnect,
+                                                                                 8LD-DFN pkg.                                 Sync Boost Regulator
+                    MCP1640C:  0.65V, PWM/PFM Input to Output Bypass,                           Tape and Reel
+                                 Sync Boost Regulator
+                    MCP1640D:  0.65V, PWM Only Input to Output Bypass,      c)   MCP1640B-I/MC:    0.65V, PWM-Only
+                                 Sync Boost Regulator                                              True Disconnect
+                                                                                        Sync Reg.,
+                                                                       (1)                                            8LD-DFN pkg.  Tape and Reel Option  T      = Tape and Reel
+                         blank   = DFN only                                        d)   MCP1640BT-I/MC:   0.65V, PWM-Only
+                                                                                                  True Disconnect
+                                                                                        Sync Reg.,
+  Temperature Range      I      = -40C to +85C (Industrial)                                      8LD-DFN pkg.
+                                                                                          Tape and Reel
+  Package           CHY*  =Plastic Small Outline Transistor (SOT-23), 6-lead    e)   MCP1640C-I/MC:    0.65V, PWM/PFM
+               MC     =Plastic Dual Flat, No Lead (2x3 DFN), 8-lead                                   Input-to-Output Bypass
+                      *Y = Nickel palladium gold manufacturing designator.                             Sync Reg.,
+                                                                                 8LD-DFN pkg.
+                                                                                                                           f)   MCP1640CT-I/MC:   0.65V, PWM/PFM
+                                                                                                             Input-to-Output Bypass
+                                                                                        Sync Reg.,
+                                                                                 8LD-DFN pkg.
+                                                                                          Tape and Reel
+
+                                                                                   g)   MCP1640D-I/MC:    0.65V, PWM-Only
+                                                                                                             Input-to-Output Bypass
+                                                                                        Sync Reg.,
+                                                                                 8LD-DFN pkg.
+                                                                                   h)   MCP1640DT-I/MC:   0.65V, PWM-Only
+                                                                                                             Input-to-Output Bypass
+                                                                                        Sync Reg.,
+                                                                                 8LD-DFN pkg.
+                                                                                          Tape and Reel
+
+                                                                                                                                    i)   MCP1640T-I/CHY:   0.65V, PWM/PFM
+                                                                                                  True Disconnect
+                                                                                        Sync Reg.,
+                                                                                6LD SOT-23 pkg.
+                                                                                          Tape and Reel
+                                                                                                                                     j)   MCP1640BT-I/CHY:  0.65V, PWM-Only
+                                                                                                  True Disconnect
+                                                                                        Sync Reg.,
+                                                                                6LD SOT-23 pkg.
+                                                                                          Tape and Reel
+                                                                                         k)   MCP1640CT-I/CHY: 0.65V, PWM/PFM
+                                                                                                             Input-to-Output Bypass
+                                                                                        Sync Reg.,
+                                                                                6LD SOT-23 pkg.
+                                                                                          Tape and Reel
+                                                                                                                                     l)   MCP1640DT-I/CHY:  0.65V, PWM-Only
+                                                                                                             Input-to-Output Bypass
+                                                                                        Sync Reg.,
+                                                                                6LD SOT-23 pkg.
+                                                                                          Tape and Reel
+                                                                          Note 1:   Tape and Reel identifier only appears in the
+                                                                                                     catalog part number description. This identi-
+                                                                                                                                      fier is used for ordering purposes and is not
+                                                                                                          printed on the device package. Check with
+                                                                                               your Microchip Sales Office for package
+                                                                                                                         availability with the Tape and Reel option.
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 29
+MCP1640/B/C/D
+
+
+NOTES:
+
+
+
+
+
+DS20002234D-page 30                                        2010-2015 Microchip Technology Inc.
+Note the following details of the code protection feature on Microchip devices:
+•    Microchip products meet the specification contained in their particular Microchip Data Sheet.
+
+•    Microchip believes that its family of products is one of the most secure families of its kind on the market today, when used in the
+     intended manner and under normal conditions.
+
+•    There are dishonest and possibly illegal methods used to breach the code protection feature. All of these methods, to our
+     knowledge, require using the Microchip products in a manner outside the operating specifications contained in Microchip’s Data
+     Sheets. Most likely, the person doing so is engaged in theft of intellectual property.
+
+•    Microchip is willing to work with the customer who is concerned about the integrity of their code.
+
+•    Neither Microchip nor any other semiconductor manufacturer can guarantee the security of their code. Code protection does not
+    mean that we are guaranteeing the product as “unbreakable.”
+
+Code protection is constantly evolving. We at Microchip are committed to continuously improving the code protection features of our
+products. Attempts to break Microchip’s code protection feature may be a violation of the Digital Millennium Copyright Act. If such acts
+allow unauthorized access to your software or other copyrighted work, you may have a right to sue for relief under that Act.
+
+
+
+Information contained  in  this  publication regarding device        Trademarks
+applications and the like is provided only for your convenience                                                       The Microchip name and logo, the Microchip logo, dsPIC,
+and may be superseded by updates. It is your responsibility to                                                                    FlashFlex, flexPWR, JukeBlox, KEELOQ, KEELOQ logo, Kleer,
+ensure that your application meets with your specifications.                                                        LANCheck, MediaLB, MOST, MOST logo, MPLAB,
+MICROCHIP  MAKES  NO  REPRESENTATIONS  OR                                                                  OptoLyzer, PIC, PICSTART, PIC32 logo, RightTouch, SpyNIC,
+WARRANTIES OF ANY KIND WHETHER EXPRESS OR                                                            SST, SST Logo, SuperFlash and UNI/O are registered
+IMPLIED,  WRITTEN  OR  ORAL,  STATUTORY  OR                                                               trademarks of Microchip Technology Incorporated in the
+OTHERWISE,  RELATED  TO  THE  INFORMATION,                                                                  U.S.A. and other countries.
+INCLUDING BUT NOT LIMITED TO  ITS CONDITION,
+QUALITY,  PERFORMANCE,  MERCHANTABILITY  OR        The Embedded Control Solutions Company and mTouch are
+FITNESS FOR PURPOSE. Microchip disclaims  all  liability          registered trademarks of Microchip Technology Incorporated
+arising from this information and  its use. Use of Microchip            in the U.S.A.
+devices in life support and/or safety applications is entirely at          Analog-for-the-Digital Age, BodyCom, chipKIT, chipKIT logo,
+the buyer’s risk, and the buyer agrees to defend, indemnify and        CodeGuard, dsPICDEM, dsPICDEM.net, ECAN, In-Circuit
+hold harmless Microchip from any and all damages, claims,           Serial Programming, ICSP, Inter-Chip Connectivity, KleerNet,
+suits, or expenses resulting from such use. No licenses are         KleerNet logo, MiWi, motorBench, MPASM, MPF, MPLAB
+conveyed,  implicitly  or  otherwise,  under  any  Microchip           Certified logo, MPLIB, MPLINK, MultiTRAK, NetDetach,
+intellectual property rights unless otherwise stated.                   Omniscient Code Generation, PICDEM, PICDEM.net, PICkit,
+                                                                               PICtail, RightTouch logo, REAL ICE, SQI, Serial Quad I/O,
+                                                                           Total Endurance, TSHARC, USBCheck, VariSense,
+                                                            ViewSpan, WiperLock, Wireless DNA, and ZENA are
+                                                               trademarks of Microchip Technology Incorporated in the
+                                                                  U.S.A. and other countries.
+
+                                              SQTP is a service mark of Microchip Technology Incorporated
+                                                                                 in the U.S.A.
+
+                                                                           Silicon Storage Technology is a registered trademark of
+                                                                  Microchip Technology Inc. in other countries.
+
+                                                             GestIC is a registered trademark of Microchip Technology
+                                                      Germany II GmbH & Co. KG, a subsidiary of Microchip
+                                                              Technology Inc., in other countries.
+
+                                                                                     All other trademarks mentioned herein are property of their
+                                                                     respective companies.
+
+                                           © 2010-2015, Microchip Technology Incorporated, Printed in
+                                                                     the U.S.A., All Rights Reserved.
+
+                                                             ISBN: 978-1-63277-829-1
+QUALITY MANAGEMENT SYSTEM           Microchip received ISO/TS-16949:2009 certification for its worldwide
+                                                                            headquarters, design and wafer fabrication facilities in Chandler and
+                                                                  Tempe, Arizona; Gresham, Oregon and design centers in California      CERTIFIED BY DNV                                                                 and India. The Company’s quality system processes and procedures
+                                                                           are for its PIC® MCUs and dsPIC® DSCs, KEELOQ® code hopping
+                                                                               devices, Serial EEPROMs, microperipherals, nonvolatile memory and   == ISO/TS 16949 ==                  analog products. In addition, Microchip’s quality system for the design
+                                                                 and manufacture of development systems is ISO 9001:2000 certified.
+
+
+
+ 2010-2015 Microchip Technology Inc.                                                     DS20002234D-page 31
+             Worldwide Sales and Service
+
+
+AMERICAS            ASIA/PACIFIC          ASIA/PACIFIC        EUROPE
+Corporate Office              Asia Pacific Office            China - Xiamen                Austria - Wels
+2355 West Chandler Blvd.        Suites 3707-14, 37th Floor         Tel: 86-592-2388138               Tel: 43-7242-2244-39
+Chandler, AZ 85224-6199       Tower 6, The Gateway           Fax: 86-592-2388130            Fax: 43-7242-2244-393
+Tel: 480-792-7200              Harbour City, Kowloon                                                       China - Zhuhai              Denmark - Copenhagen
+Fax: 480-792-7277                        Hong Kong                         Tel: 86-756-3210040               Tel: 45-4450-2828
+Technical Support:                  Tel: 852-2943-5100              Fax: 86-756-3210049            Fax: 45-4485-2829
+http://www.microchip.com/       Fax: 852-2401-3431                                                                 India - Bangalore             France - Paris
+support
+                                Australia - Sydney                 Tel: 91-80-3090-4444               Tel: 33-1-69-53-63-20
+Web Address:                                       Tel: 61-2-9868-6733             Fax: 91-80-3090-4123           Fax: 33-1-69-30-90-79
+www.microchip.com                               Fax: 61-2-9868-6755                                                                 India - New Delhi            Germany - Dusseldorf
+Atlanta                           China - Beijing                     Tel: 91-11-4160-8631               Tel: 49-2129-3766400
+Duluth, GA                                       Tel: 86-10-8569-7000            Fax: 91-11-4160-8632
+Tel: 678-957-9614                                                             Germany - Karlsruhe                               Fax: 86-10-8528-2104                                                                 India - Pune                        Tel: 49-721-625370Fax: 678-957-1455
+                           China - Chengdu                   Tel: 91-20-3019-1500         Germany - MunichAustin, TX                                       Tel: 86-28-8665-5511                                                     Japan - Osaka                      Tel: 49-89-627-144-0Tel: 512-257-3370
+                               Fax: 86-28-8665-7889              Tel: 81-6-6152-7160             Fax: 49-89-627-144-44
+Boston
+                           China - Chongqing             Fax: 81-6-6152-9310               Italy - MilanWestborough, MA                                       Tel: 86-23-8980-9588                                                     Japan - Tokyo                      Tel: 39-0331-742611Tel: 774-760-0087
+                               Fax: 86-23-8980-9500              Tel: 81-3-6880- 3770            Fax: 39-0331-466781Fax: 774-760-0088
+                           China - Dongguan              Fax: 81-3-6880-3771               Italy - VeniceChicago                                       Tel: 86-769-8702-9880                                                      Korea - Daegu                      Tel: 39-049-7625286Itasca, IL
+Tel: 630-285-0071             China - Hangzhou                 Tel: 82-53-744-4301            Netherlands - Drunen
+                                       Tel: 86-571-8792-8115           Fax: 82-53-744-4302               Tel: 31-416-690399Fax: 630-285-0075
+                               Fax: 86-571-8792-8116                                                      Korea - Seoul                  Fax: 31-416-690340Cleveland
+Independence, OH            China - Hong Kong SAR          Tel: 82-2-554-7200            Poland - Warsaw
+                                       Tel: 852-2943-5100              Fax: 82-2-558-5932 or             Tel: 48-22-3325737Tel: 216-447-0464
+                               Fax: 852-2401-3431            82-2-558-5934
+Fax: 216-447-0643                                                                     Spain - Madrid
+                           China - Nanjing               Malaysia - Kuala Lumpur         Tel: 34-91-708-08-90Dallas
+                                       Tel: 86-25-8473-2460               Tel: 60-3-6201-9857             Fax: 34-91-708-08-91Addison, TX
+                               Fax: 86-25-8473-2470           Fax: 60-3-6201-9859
+Tel: 972-818-7423                                                            Sweden - Stockholm
+Fax: 972-818-2924            China - Qingdao              Malaysia - Penang                 Tel: 46-8-5090-4654
+                                       Tel: 86-532-8502-7355             Tel: 60-4-227-8870
+Detroit                                                          UK - Wokingham
+                               Fax: 86-532-8502-7205          Fax: 60-4-227-4068Novi, MI                                                                                                           Tel: 44-118-921-5800
+Tel: 248-848-4000             China - Shanghai               Philippines - Manila            Fax: 44-118-921-5820
+                                       Tel: 86-21-5407-5533               Tel: 63-2-634-9065
+Houston, TX
+                               Fax: 86-21-5407-5066           Fax: 63-2-634-9069Tel: 281-894-5983
+                           China - Shenyang            SingaporeIndianapolis
+                                       Tel: 86-24-2334-2829               Tel: 65-6334-8870Noblesville, IN
+                               Fax: 86-24-2334-2393           Fax: 65-6334-8850Tel: 317-773-8323
+Fax: 317-773-5453            China - Shenzhen            Taiwan - Hsin Chu
+                                       Tel: 86-755-8864-2200             Tel: 886-3-5778-366
+Los Angeles
+                               Fax: 86-755-8203-1760          Fax: 886-3-5770-955Mission Viejo, CA
+Tel: 949-462-9523             China - Wuhan               Taiwan - Kaohsiung
+Fax: 949-462-9608                 Tel: 86-27-5980-5300               Tel: 886-7-213-7828
+                               Fax: 86-27-5980-5118          Taiwan - TaipeiNew York, NY
+Tel: 631-435-6000             China - Xian                        Tel: 886-2-2508-8600
+                                       Tel: 86-29-8833-7252            Fax: 886-2-2508-0102
+San Jose, CA
+                               Fax: 86-29-8833-7256Tel: 408-735-9110                                            Thailand - Bangkok
+                                                                              Tel: 66-2-694-1351
+Canada - Toronto
+                                                               Fax: 66-2-694-1350Tel: 905-673-0699
+Fax: 905-673-6509
+
+                                                                                                                              07/14/15
+
+
+
+DS20002234D-page 32                                        2010-2015 Microchip Technology Inc.

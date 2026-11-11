@@ -1,0 +1,76 @@
+{
+	"150060AS75000": {
+		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150060AS75000/10468254",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 0.15 },
+			{ "ladder": 50, "usd": 0.142 },
+			{ "ladder": 100, "usd": 0.1239 }
+		]
+	},
+	"150060GS75000": {
+		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/150060GS75000/4489898",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 0.15 },
+			{ "ladder": 50, "usd": 0.142 },
+			{ "ladder": 100, "usd": 0.1239 }
+		]
+	},
+	"61300811121": {
+		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61300811121/4846839",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 0.38 },
+			{ "ladder": 10, "usd": 0.319 },
+			{ "ladder": 25, "usd": 0.266 }
+		]
+	},
+	"61301211121": {
+		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61301211121/4846844",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 0.54 },
+			{ "ladder": 10, "usd": 0.46 },
+			{ "ladder": 25, "usd": 0.384 },
+			{ "ladder": 50, "usd": 0.3202 },
+			{ "ladder": 100, "usd": 0.2907 }
+		]
+	},
+	"LPS3010-103MLC": {
+		"buyMpn": "LPS3010-103MRC",
+		"fixes": [{ "area": "bom", "problem": "Legacy part: Coilcraft sells the ML termination only to existing customers", "fix": "Priced LPS3010-103MRC, its halogen-free replacement with the same footprint" }],
+		"source": "https://www.coilcraft.com/en-us/products/power/shielded-inductors/ferrite-drum/lps/lps3010/",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 0.91 },
+			{ "ladder": 250, "usd": 0.76 }
+		]
+	},
+	"SK6812MINI": {
+		"buyMpn": "Adafruit 2686 (SK6812MINI, pack of 10)",
+		"source": "https://www.digikey.com/en/products/detail/adafruit-industries-llc/2686/5804107",
+		"minBuy": 10,
+		"tiers": [{ "ladder": 10, "usd": 0.495 }]
+	},
+	"RC0603FR-0783K5L": {
+		"buyMpn": "RN73R1JTTD8352B25",
+		"fixes": [{ "area": "bom", "problem": "Invalid MPN: 83.5k is not an E96 value, so Yageo's 1% RC series doesn't make it", "fix": "Priced KOA RN73R1JTTD8352B25, an 83.5k 0.1% 0603" }],
+		"source": "https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RN73R1JTTD8352B25",
+		"minBuy": 1,
+		"tiers": [{ "ladder": 1, "usd": 0.1 }]
+	},
+	"GRM188R61A225KE15D": {
+		"buyMpn": "GRM188R61A225KE34D",
+		"fixes": [{ "area": "bom", "problem": "Invalid MPN: Murata makes no GRM188R61A225KE15D", "fix": "Priced GRM188R61A225KE34D, the 2.2uF 10V X5R 0603" }],
+		"lcsc": "C86013"
+	},
+	"RT0402BRD07312KL": {
+		"buyMpn": "RT0603BRD07312KL",
+		"fixes": [
+			{ "area": "bom", "problem": "Unavailable part: no 312k 0.1% 0402 is sold by LCSC, DigiKey or Mouser", "fix": "Priced RT0603BRD07312KL, the same series in 0603" },
+			{ "area": "pcb", "problem": "The 0402 footprint doesn't fit the 0603 substitute", "fix": "Assumed a 0603 footprint; not re-quoted, since the PCB is at PCBWay's minimum price and the part count is unchanged" }
+		],
+		"lcsc": "C861315"
+	}
+}

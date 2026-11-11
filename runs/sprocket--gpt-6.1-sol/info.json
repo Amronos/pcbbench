@@ -1,0 +1,17 @@
+{
+	"runId": "sprocket--gpt-6.1-sol",
+	"harness": "sprocket",
+	"model": "gpt-6.1-sol",
+	"reasoning": "medium",
+	"machine": "linux",
+	"versions": {
+		"sprocket": "sprocket 0.5.0",
+		"kicadConnector": "v0.2.0",
+		"kicad": "10.99.0-6344-g8c85ac1452"
+	},
+	"skippedLargeFiles": [],
+	"board": "sprocket2350.kicad_pcb",
+	"bom": "fab/releases/sprocket2350-rev-a/assembly/BOM.csv",
+	"placement": "fab/releases/sprocket2350-rev-a/assembly/placement.csv",
+	"fabZip": "fab/releases/sprocket2350-rev-a/sprocket2350-FIRST_ARTICLE.zip"
+}

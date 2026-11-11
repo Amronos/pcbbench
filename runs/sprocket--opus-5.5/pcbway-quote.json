@@ -1,0 +1,67 @@
+{
+	"one": {
+		"pcbQty": 5,
+		"pcbUsd": 156.77,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"five": {
+		"pcbUsd": 156.77,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"pcbItems": {
+		"base (HASL LF, 6/6mil, 0.3mm, tented)": 32.2,
+		"ENIG 1u\" surcharge": 29.84,
+		"track/space 5/5mil surcharge": 0.0,
+		"min hole 0.2mm surcharge": 0.0,
+		"Via in pad (resin filled + capped) surcharge": 94.73,
+		"total_standard_build": 156.77,
+		"express_options": {
+			"express 48hours": 256.83,
+			"express 72hours": 207.96
+		},
+		"S1000H_TG150_alternative_total": 156.77,
+		"pcbOnly_qty5_with_via_in_pad": 156.77,
+		"pcbOnly_qty5_without_via_in_pad_tented": 62.04,
+		"pcbOnly_qty1": "not quotable (minimum 5), with or without via-in-pad"
+	},
+	"options": {
+		"quoteTimeUtc": "2026-11-10T08:03:36+00:00",
+		"pcbBuildTime": "4-5 days",
+		"assemblyBuildTime": "5-6 days",
+		"pcbQtyMinimum": "5 (smallest quantity on orderonline.aspx; GetDeliveryDays returns [] for 1-4)",
+		"boardType": "Single pieces",
+		"size_mm": "30.5 x 70",
+		"layers": 4,
+		"material": "FR-4",
+		"FR4TG": "TG 150-160",
+		"thickness_mm": 1.6,
+		"minTrackSpace": "5/5mil",
+		"minHole_mm": 0.2,
+		"solderMask": "Green",
+		"silkscreen": "White",
+		"surfaceFinish": "Immersion gold (ENIG), 1u\"",
+		"outerCopper": "1 oz Cu",
+		"innerCopper": "1 oz",
+		"viaProcess": "Tenting vias",
+		"viaInPad": true,
+		"allViasResinFilledCapped": false,
+		"impedanceControl": false,
+		"assembly": {
+			"type": "Turnkey",
+			"boardType": "Single pieces",
+			"side": "Top side",
+			"qty": {
+				"one": 1,
+				"five": 5
+			},
+			"uniqueParts": 32,
+			"smdParts": 77,
+			"bgaQfpParts": 0,
+			"thtParts": 0
+		},
+		"method": "POST https://www.pcbway.com/Quote/GetDeliveryDays/ (body captured from orderonline.aspx and quotesmt.aspx with agent-browser, replayed with curl; anonymous). Recipe: /tmp/pcbway-quote-recipe.md"
+	},
+	"notes": "PCB cost: $32.20 4-layer minimum price (the same as for the 80x38 and 80x75 boards, so the small 30.5x70 area saves nothing) + $29.84 ENIG + $94.73 via-in-pad = $156.77. Via-in-pad is 60% of the PCB price; tented it would be $62.04. Assembly: 77 parts x 5 = 385 gives a formula price of $83.91, below the $88 minimum, so normal = $88 for both 1 and 5 boards. It meets every $29 promo limit at both quantities (0 THT joints, 32 unique, 385 parts)."
+}

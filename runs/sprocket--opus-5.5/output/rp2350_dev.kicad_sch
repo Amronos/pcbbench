@@ -1,0 +1,255 @@
+(kicad_sch
+	(version 20261106)
+	(generator "eeschema")
+	(generator_version "10.99")
+	(uuid "42c10a07-f65a-453f-91dc-62a51c63d46e")
+	(paper "A3")
+	(title_block
+		(title "RP2350 Wi-Fi/BLE LiPo dev board")
+		(rev "A")
+		(comment 1 "Top level")
+	)
+	(lib_symbols)
+	(text "RP2350A, core regulator, crystal, QSPI flash + PSRAM, buttons"
+		(exclude_from_sim no)
+		(at 139.7 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "271e3976-32f8-4fb6-9bfe-d8b3b55c5d9a")
+	)
+	(text "RP2350 Wi-Fi/BLE LiPo development board"
+		(exclude_from_sim no)
+		(at 38.1 25.4 0)
+		(effects
+			(font
+				(size 3 3)
+				(bold yes)
+			)
+			(justify left top)
+		)
+		(uuid "4fd6102f-3123-44d5-91b6-35108d93e613")
+	)
+	(text "microSD, Qwiic, RGB LED, 0.1 in headers"
+		(exclude_from_sim no)
+		(at 139.7 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "86f56a12-39a5-4c07-9d93-4ca99fc597fa")
+	)
+	(text "Wi-Fi / Bluetooth LE: Raspberry Pi RM2 (CYW43439)"
+		(exclude_from_sim no)
+		(at 38.1 129.54 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "96629617-2d42-4f37-af99-ec1e734b6163")
+	)
+	(text "Power: USB-C, LiPo charger with power path, 3.3 V LDO, sensing"
+		(exclude_from_sim no)
+		(at 38.1 78.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "96c363cb-fcd0-4fbc-98e5-62094e5f0e8f")
+	)
+	(sheet
+		(at 139.7 101.6)
+		(size 76.2 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "2d5b0517-c146-4c77-86fa-b16644e7ab81")
+		(property "Sheetname" "io"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sheetfile" "io.kicad_sch"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "rp2350_dev"
+				(path "/42c10a07-f65a-453f-91dc-62a51c63d46e"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 38.1 50.8)
+		(size 76.2 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "7170e810-c7e8-46d7-9ade-0bccb53dd352")
+		(property "Sheetname" "power"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "rp2350_dev"
+				(path "/42c10a07-f65a-453f-91dc-62a51c63d46e"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 139.7 50.8)
+		(size 76.2 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "b7fac9cf-9775-4dbe-8209-848b90ad395f")
+		(property "Sheetname" "mcu"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sheetfile" "mcu.kicad_sch"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "rp2350_dev"
+				(path "/42c10a07-f65a-453f-91dc-62a51c63d46e"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 38.1 101.6)
+		(size 76.2 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(stroke
+			(width 0)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "df75e21c-e562-4075-83ee-acdd70679894")
+		(property "Sheetname" "wireless"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sheetfile" "wireless.kicad_sch"
+			(at 0 0 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(instances
+			(project "rp2350_dev"
+				(path "/42c10a07-f65a-453f-91dc-62a51c63d46e"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

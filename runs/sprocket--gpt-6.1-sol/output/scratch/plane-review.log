@@ -1,0 +1,45 @@
+route_review: 15 open net(s), 2 of them poured; 3 congested area(s), 0 turned part(s); signal layers B.Cu, F.Cu, pitch 0.254 mm
+== open nets
+   /UART_RX: disconnected at U1; on U1, U7
+   /GND (poured): disconnected at C11, C13, C14, C16, C17, C18, C19, C20, C22, C23, C29, C5, C8, J5, R12, R16, R22, SW1, U1, U4, U5, U6, U7, Y1; on C1, C10, C11, C12, C13, C14, C15, C16
+   /I2C_SCL: disconnected at U1; on J5, R33, U1
+   /CORE_1V1 (poured): disconnected at C18, C20, C7, C8, L1, TP8, U1; on C18, C19, C20, C7, C8, L1, TP8, U1
+   /SD_MISO: disconnected at U1; on J4, R28, U1
+   /I2C_SDA: disconnected at U1; on J5, R32, U1
+   /SD_MOSI: disconnected at U1; on J4, R27, U1
+   /SD_DETECT: disconnected at U1; on J4, R31, U1
+   /RGB_DATA: disconnected at U1; on R34, U1
+   /GAUGE_SDA: disconnected at U1; on J6, R20, U1, U8
+   /GPIO25: disconnected at U1; on J6, U1
+   /RUN: disconnected at U1; on J6, R4, SW2, U1
+   /QSPI_D0: disconnected at U1; on U1, U2, U3
+   /QSPI_D3: disconnected at U1; on U1, U2, U3
+   /MCU_USB_N: disconnected at R10; on R10, U1
+== most vias (signal nets)
+   /GAUGE_SCL                           vias  7  routed   47.8 mm  tree   36.8  J6, R21, U1, U8
+   /VBUS                                vias  6  routed   36.1 mm  tree   32.7  C21, J1, TP1, U4, U5
+   /RADIO_BOOT                          vias  5  routed   90.0 mm  tree   73.5  J6, R24, SW3, U7
+   /PSRAM_CS                            vias  4  routed   33.1 mm  tree   26.0  R2, U1, U3
+   /QSPI_CLK                            vias  4  routed   29.1 mm  tree   24.9  U1, U2, U3
+   /QSPI_D2                             vias  4  routed   34.3 mm  tree   28.2  U1, U2, U3
+   /RUN                                 vias  4  routed   47.9 mm  tree   38.6  J6, R4, SW2, U1
+   /SD_CS                               vias  4  routed   52.5 mm  tree   37.5  J4, R26, U1
+== longest detours (routed / tree, tree > 3 mm)
+   /BAT_TS                              x 3.1  routed   18.5 mm  tree    6.0  vias 0  R13, U5
+   /CC1                                 x 2.9  routed   16.7 mm  tree    5.8  vias 0  J1, R7
+   /CC2                                 x 2.9  routed   13.8 mm  tree    4.8  vias 0  J1, R8
+   /USB_PGOOD_N                         x 2.1  routed   29.2 mm  tree   13.6  vias 2  R18, TP7, U5
+   /RADIO_CTRL                          x 1.8  routed   50.8 mm  tree   28.8  vias 2  R35, U1
+   /SWCLK                               x 1.8  routed   23.8 mm  tree   13.6  vias 1  J7, U1
+   /SWDIO                               x 1.7  routed   26.0 mm  tree   14.9  vias 4  J7, U1
+   /CHARGE_DISABLE                      x 1.7  routed   50.4 mm  tree   29.6  vias 3  R17, U1, U5
+== congested areas (occupancy >= 0.5 on 2.0 mm cells)
+   box [58.0, 54.0, 62.0, 58.0]  cells 2  mean 0.53  peak 0.56  vias 5
+      parts: U1
+      nets:  /GPIO23, /CORE_1V1, /ADC3, /GAUGE_SCL, /ADC1, /RADIO_BOOT, /ADC2, /GPIO19
+   box [52.0, 48.0, 54.0, 50.0]  cells 1  mean 0.54  peak 0.54  vias 3
+      parts: U1
+      nets:  /QSPI_CLK, /QSPI_D1, /QSPI_D2, /SD_CS, /FLASH_CS, /QSPI_D0
+   box [52.0, 54.0, 54.0, 56.0]  cells 1  mean 0.54  peak 0.54  vias 3
+      parts: U1
+      nets:  /UART_RTS, /USB_500_EN, /XIN, /SD_DETECT

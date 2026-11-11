@@ -1,0 +1,10 @@
+{
+	"crystal": true,
+	"buttons": true,
+	"powerPath": false,
+	"thermal": 5,
+	"grounding": 7,
+	"layout": 8,
+	"routing": 6,
+	"silkscreen": 5
+}

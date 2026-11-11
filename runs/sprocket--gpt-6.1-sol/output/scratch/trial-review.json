@@ -1,0 +1,704 @@
+{
+ "board": "scratch/trial.kicad_pcb",
+ "layers_with_signal": [
+  "B.Cu",
+  "F.Cu",
+  "In2.Cu"
+ ],
+ "pitch_mm": 0.327,
+ "cell_mm": 2.0,
+ "hot": 0.5,
+ "open_nets": [
+  {
+   "net": "/ADC0",
+   "poured": false,
+   "copper": false,
+   "disconnected_pad_parts": [
+    "J6",
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "U1"
+   ]
+  },
+  {
+   "net": "/GPIO18",
+   "poured": false,
+   "copper": false,
+   "disconnected_pad_parts": [
+    "J6",
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "U1"
+   ]
+  },
+  {
+   "net": "/GPIO19",
+   "poured": false,
+   "copper": false,
+   "disconnected_pad_parts": [
+    "J6",
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "U1"
+   ]
+  },
+  {
+   "net": "/GPIO22",
+   "poured": false,
+   "copper": false,
+   "disconnected_pad_parts": [
+    "J6",
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "U1"
+   ]
+  },
+  {
+   "net": "/GPIO24",
+   "poured": false,
+   "copper": false,
+   "disconnected_pad_parts": [
+    "J6",
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "U1"
+   ]
+  },
+  {
+   "net": "/SWCLK",
+   "poured": false,
+   "copper": false,
+   "disconnected_pad_parts": [
+    "J7",
+    "U1"
+   ],
+   "parts": [
+    "J7",
+    "U1"
+   ]
+  },
+  {
+   "net": "/+3V3",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "C1",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C2",
+    "C26",
+    "C27",
+    "C30",
+    "C31",
+    "C32",
+    "C33",
+    "C34",
+    "C35",
+    "C6",
+    "C9",
+    "D1",
+    "J4",
+    "J5",
+    "J6",
+    "J7",
+    "R1",
+    "R17",
+    "R18",
+    "R19",
+    "R2",
+    "R20",
+    "R21",
+    "R23",
+    "R24",
+    "R25",
+    "R26",
+    "R27",
+    "R28",
+    "R29",
+    "R30",
+    "R31",
+    "R32",
+    "R33",
+    "R4",
+    "R6",
+    "TP3",
+    "U1",
+    "U2",
+    "U3",
+    "U6",
+    "U7"
+   ]
+  },
+  {
+   "net": "/GND",
+   "poured": true,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "C18",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C24",
+    "C25",
+    "C30",
+    "C31",
+    "C8",
+    "C9",
+    "D1",
+    "J2",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R22",
+    "R7",
+    "R8",
+    "U1",
+    "U2",
+    "U3",
+    "U4",
+    "U5",
+    "U6"
+   ],
+   "parts": [
+    "C1",
+    "C10",
+    "C11",
+    "C12",
+    "C13",
+    "C14",
+    "C15",
+    "C16",
+    "C17",
+    "C18",
+    "C19",
+    "C2",
+    "C20",
+    "C21",
+    "C22",
+    "C23",
+    "C24",
+    "C25",
+    "C26",
+    "C27",
+    "C28",
+    "C29",
+    "C3",
+    "C30",
+    "C31",
+    "C32",
+    "C33",
+    "C34",
+    "C35",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "D1",
+    "J1",
+    "J2",
+    "J3",
+    "J4",
+    "J5",
+    "J6",
+    "J7",
+    "R11",
+    "R12",
+    "R13",
+    "R14",
+    "R16",
+    "R22",
+    "R7",
+    "R8",
+    "SW1",
+    "SW2",
+    "SW3",
+    "TP4",
+    "U1",
+    "U2",
+    "U3",
+    "U4",
+    "U5",
+    "U6",
+    "U7",
+    "U8",
+    "Y1"
+   ]
+  },
+  {
+   "net": "/I2C_SCL",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "J5",
+    "R33",
+    "U1"
+   ]
+  },
+  {
+   "net": "/USB_500_EN",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "R16",
+    "U1",
+    "U5"
+   ]
+  },
+  {
+   "net": "/CORE_1V1",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "C20",
+    "U1"
+   ],
+   "parts": [
+    "C18",
+    "C19",
+    "C20",
+    "C7",
+    "C8",
+    "L1",
+    "TP8",
+    "U1"
+   ]
+  },
+  {
+   "net": "/FLASH_CS",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "R1",
+    "R3",
+    "U1",
+    "U2"
+   ]
+  },
+  {
+   "net": "/GAUGE_SCL",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "R21",
+    "U1",
+    "U8"
+   ]
+  },
+  {
+   "net": "/SD_CS",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "J4",
+    "R26",
+    "U1"
+   ]
+  },
+  {
+   "net": "/GAUGE_SDA",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "R20",
+    "U1",
+    "U8"
+   ]
+  },
+  {
+   "net": "/RUN",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "J6",
+    "R4",
+    "SW2",
+    "U1"
+   ]
+  },
+  {
+   "net": "/QSPI_CLK",
+   "poured": false,
+   "copper": true,
+   "disconnected_pad_parts": [
+    "U1"
+   ],
+   "parts": [
+    "U1",
+    "U2",
+    "U3"
+   ]
+  }
+ ],
+ "most_vias": [
+  {
+   "net": "/CORE_1V1",
+   "pads": 11,
+   "vias": 6,
+   "routed_mm": 44.7,
+   "tree_mm": 35.4,
+   "detour": 1.26,
+   "parts": [
+    "C18",
+    "C19",
+    "C20",
+    "C7",
+    "C8",
+    "L1",
+    "TP8",
+    "U1"
+   ]
+  },
+  {
+   "net": "/SD_MISO",
+   "pads": 3,
+   "vias": 6,
+   "routed_mm": 39.5,
+   "tree_mm": 34.6,
+   "detour": 1.14,
+   "parts": [
+    "J4",
+    "R28",
+    "U1"
+   ]
+  },
+  {
+   "net": "/SYS",
+   "pads": 8,
+   "vias": 6,
+   "routed_mm": 35.7,
+   "tree_mm": 33.2,
+   "detour": 1.08,
+   "parts": [
+    "C23",
+    "C24",
+    "R36",
+    "TP2",
+    "U5",
+    "U6"
+   ]
+  },
+  {
+   "net": "/CHARGE_DISABLE",
+   "pads": 3,
+   "vias": 5,
+   "routed_mm": 39.7,
+   "tree_mm": 29.6,
+   "detour": 1.34,
+   "parts": [
+    "R17",
+    "U1",
+    "U5"
+   ]
+  },
+  {
+   "net": "/RADIO_BOOT",
+   "pads": 5,
+   "vias": 5,
+   "routed_mm": 94.4,
+   "tree_mm": 73.5,
+   "detour": 1.29,
+   "parts": [
+    "J6",
+    "R24",
+    "SW3",
+    "U7"
+   ]
+  },
+  {
+   "net": "/SD_MOSI",
+   "pads": 3,
+   "vias": 5,
+   "routed_mm": 52.0,
+   "tree_mm": 36.5,
+   "detour": 1.43,
+   "parts": [
+    "J4",
+    "R27",
+    "U1"
+   ]
+  },
+  {
+   "net": "/UART_RTS",
+   "pads": 2,
+   "vias": 5,
+   "routed_mm": 60.5,
+   "tree_mm": 39.7,
+   "detour": 1.52,
+   "parts": [
+    "U1",
+    "U7"
+   ]
+  },
+  {
+   "net": "/I2C_SDA",
+   "pads": 3,
+   "vias": 4,
+   "routed_mm": 42.2,
+   "tree_mm": 34.5,
+   "detour": 1.23,
+   "parts": [
+    "J5",
+    "R32",
+    "U1"
+   ]
+  }
+ ],
+ "longest_detours": [
+  {
+   "net": "/BAT_TS",
+   "pads": 2,
+   "vias": 0,
+   "routed_mm": 19.2,
+   "tree_mm": 6.0,
+   "detour": 3.22,
+   "parts": [
+    "R13",
+    "U5"
+   ]
+  },
+  {
+   "net": "/USB_PGOOD_N",
+   "pads": 3,
+   "vias": 2,
+   "routed_mm": 34.7,
+   "tree_mm": 13.6,
+   "detour": 2.55,
+   "parts": [
+    "R18",
+    "TP7",
+    "U5"
+   ]
+  },
+  {
+   "net": "/RGB_DATA",
+   "pads": 2,
+   "vias": 2,
+   "routed_mm": 24.6,
+   "tree_mm": 12.4,
+   "detour": 1.98,
+   "parts": [
+    "R34",
+    "U1"
+   ]
+  },
+  {
+   "net": "/CC1",
+   "pads": 2,
+   "vias": 0,
+   "routed_mm": 11.3,
+   "tree_mm": 5.8,
+   "detour": 1.95,
+   "parts": [
+    "J1",
+    "R7"
+   ]
+  },
+  {
+   "net": "/VBUS",
+   "pads": 8,
+   "vias": 3,
+   "routed_mm": 63.3,
+   "tree_mm": 32.7,
+   "detour": 1.93,
+   "parts": [
+    "C21",
+    "J1",
+    "TP1",
+    "U4",
+    "U5"
+   ]
+  },
+  {
+   "net": "/USB_D_N",
+   "pads": 5,
+   "vias": 0,
+   "routed_mm": 51.1,
+   "tree_mm": 26.6,
+   "detour": 1.92,
+   "parts": [
+    "J1",
+    "R10",
+    "U4"
+   ]
+  },
+  {
+   "net": "/RADIO_CTRL",
+   "pads": 2,
+   "vias": 2,
+   "routed_mm": 46.9,
+   "tree_mm": 28.8,
+   "detour": 1.63,
+   "parts": [
+    "R35",
+    "U1"
+   ]
+  },
+  {
+   "net": "/UART_RTS",
+   "pads": 2,
+   "vias": 5,
+   "routed_mm": 60.5,
+   "tree_mm": 39.7,
+   "detour": 1.52,
+   "parts": [
+    "U1",
+    "U7"
+   ]
+  }
+ ],
+ "congested_areas": [
+  {
+   "box": [
+    52.0,
+    50.0,
+    54.0,
+    52.0
+   ],
+   "cells": 1,
+   "peak": 0.66,
+   "mean": 0.66,
+   "vias": 4,
+   "parts": [
+    "U1"
+   ],
+   "nets": [
+    "/SD_MOSI",
+    "/QSPI_D1",
+    "/QSPI_D0",
+    "/SD_MISO"
+   ]
+  },
+  {
+   "box": [
+    50.0,
+    40.0,
+    52.0,
+    42.0
+   ],
+   "cells": 1,
+   "peak": 0.57,
+   "mean": 0.57,
+   "vias": 3,
+   "parts": [],
+   "nets": [
+    "/UART_RTS",
+    "/QSPI_D1",
+    "/USB_D_P",
+    "/QSPI_D2"
+   ]
+  },
+  {
+   "box": [
+    56.0,
+    54.0,
+    58.0,
+    56.0
+   ],
+   "cells": 1,
+   "peak": 0.5,
+   "mean": 0.5,
+   "vias": 2,
+   "parts": [
+    "U1"
+   ],
+   "nets": [
+    "/RGB_DATA",
+    "/GPIO23",
+    "/SD_MISO",
+    "/UART_CTS",
+    "/UART_TX"
+   ]
+  }
+ ],
+ "turned_parts": [
+  {
+   "ref": "R9",
+   "x": 54.0,
+   "y": 44.0,
+   "rot": 90.0,
+   "saves_mm": 2.5,
+   "swap_pose": [
+    54.0,
+    44.0,
+    270.0
+   ]
+  },
+  {
+   "ref": "R10",
+   "x": 52.0,
+   "y": 44.0,
+   "rot": 90.0,
+   "saves_mm": 2.4,
+   "swap_pose": [
+    52.0,
+    44.0,
+    270.0
+   ]
+  },
+  {
+   "ref": "R5",
+   "x": 47.5,
+   "y": 62.5,
+   "rot": 90.0,
+   "saves_mm": 1.5,
+   "swap_pose": [
+    47.5,
+    62.5,
+    270.0
+   ]
+  }
+ ],
+ "counts": {
+  "open": 17,
+  "open_signal": 16,
+  "congested_areas": 3,
+  "turned_parts": 3
+ }
+}

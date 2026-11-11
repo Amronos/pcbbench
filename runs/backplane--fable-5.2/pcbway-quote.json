@@ -1,0 +1,71 @@
+{
+	"one": {
+		"pcbQty": 5,
+		"pcbUsd": 62.04,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"five": {
+		"pcbUsd": 62.04,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"pcbItems": {
+		"base (HASL LF, 6/6mil, 0.3mm, tented)": 32.2,
+		"ENIG 1u\" surcharge": 29.84,
+		"track/space 4/4mil surcharge": 0.0,
+		"min hole 0.3mm surcharge": 0.0,
+		"total_standard_build": 62.04,
+		"express_options": {
+			"express 48hours": 173.07,
+			"express 72hours": 122.93
+		},
+		"S1000H_TG150_alternative_total": 62.04,
+		"same_board_with_3/3mil_total": 308.85
+	},
+	"options": {
+		"quoteTimeUtc": "2026-11-10T15:15:13+00:00",
+		"pcbBuildTime": "4-5 days",
+		"assemblyBuildTime": "5-6 days",
+		"pcbQtyMinimum": "5 (smallest quantity on orderonline.aspx; GetDeliveryDays returns [] for 1-4)",
+		"boardType": "Single pieces",
+		"size_mm": "76.2 x 22.86",
+		"layers": 4,
+		"material": "FR-4",
+		"FR4TG": "TG 150-160",
+		"thickness_mm": 1.6,
+		"minTrackSpace": "4/4mil",
+		"minHole_mm": 0.3,
+		"solderMask": "Green",
+		"silkscreen": "White",
+		"surfaceFinish": "Immersion gold (ENIG), 1u\"",
+		"outerCopper": "1 oz Cu",
+		"innerCopper": "1 oz",
+		"viaProcess": "Tenting vias",
+		"viaInPad": false,
+		"allViasResinFilledCapped": false,
+		"impedanceControl": false,
+		"assembly": {
+			"type": "Turnkey",
+			"boardType": "Single pieces",
+			"side": "Top side",
+			"qty": {
+				"one": 1,
+				"five": 5
+			},
+			"uniqueParts": 36,
+			"smdParts": 71,
+			"bgaQfpParts": 0,
+			"thtParts": 0
+		},
+		"method": "POST https://www.pcbway.com/Quote/GetDeliveryDays/ (body captured from orderonline.aspx and quotesmt.aspx with agent-browser, replayed with curl; anonymous; partVias=1 turnkey). Recipe: /tmp/pcbway-quote-recipe.md"
+	},
+	"notes": "Inner copper 0.5 oz not offered -> 1 oz. Track/space 0.15/0.10 mm -> '4/4mil': PCBWay's capabilities page treats 4 mil as 0.1 mm (https://www.pcbway.com/capabilities.html). Choosing 3/3mil would cost $308.85 with an 8-9 day build. BGA/QFP count entered as 0, like the other runs (the QFN-60 and RM2 module are counted as SMD parts). Assembly: 71 parts x qty gives a formula price below the $88 minimum (max($88, $25.27 + $0.1523 x 71 x qty)), so normal = $88 for 1 and 5 boards. $29 promo applies at both quantities: 71 parts/board, 355 parts for 5, 36 unique, 0 THT joints. The struck-through 'list' price next to $29 ($236.33 at qty 1, $239.88 at qty 5) is the qty >= 11 formula and is not charged at these quantities.",
+	"fixes": [
+		{
+			"area": "fabSpec",
+			"problem": "The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+			"fix": "Quoted 1 oz inner copper"
+		}
+	]
+}

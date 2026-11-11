@@ -1,0 +1,22 @@
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-F_Cu.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-In1_Cu.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-In2_Cu.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-B_Cu.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-F_Paste.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-F_Silkscreen.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-B_Silkscreen.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-F_Mask.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-B_Mask.gbr'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/gerbers/Atlas2350-Edge_Cuts.gbr'.
+Created file '/Users/ec2-user/pcbbench-run/fab/drill/Atlas2350-PTH.drl'
+Created file '/Users/ec2-user/pcbbench-run/fab/drill/Atlas2350-NPTH.drl'
+Created file '/Users/ec2-user/pcbbench-run/fab/drill/Atlas2350-PTH-drl_map.pdf'.
+Created file '/Users/ec2-user/pcbbench-run/fab/drill/Atlas2350-NPTH-drl_map.pdf'.
+Done.
+Successfully created IPC-D-356 file
+Wrote position data to '/Users/ec2-user/pcbbench-run/fab/assembly/kicad-native-position.csv'.
+Plotted to '/Users/ec2-user/pcbbench-run/fab/assembly/top-assembly-kicad.pdf'.
+Done.
+Fontconfig error: Cannot load default config file: File not found
+Plotted to '/Users/ec2-user/pcbbench-run/fab/schematic.pdf'.
+Done.

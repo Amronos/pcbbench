@@ -1,0 +1,231 @@
+CMD: python /home/ubuntu/.sprocket/connectors/kicad/v0.2.0/routing-tools/py_router/route_diff.py sprocket2350.kicad_pcb scratch/usb2.kicad_pcb --nets "/USB_D_*" "/MCU_USB_*" --layers F.Cu In1.Cu In2.Cu B.Cu --layer-costs 1 -1 -1 -1 --impedance 90 --coplanar-gap 0.3 --diff-pair-gap 0.15 --grid-step 0.05 --escalation off --strict-sizes --keep-input-copper --no-fix-drc-settings
+ENV KNOBS: KICAD_CLI_PATH=/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli KICAD_FINALIZE_RIP=0 KICAD_RIP_PREEXISTING=0
+--track-width not given; using the board Default net-class diff-pair-width 0.2mm.
+--via-size not given; using the board Default net-class 0.6mm.
+--via-drill not given; using the board Default net-class 0.3mm.
+--clearance not given; honoring net classes with base = the board Default net-class clearance 0.127mm.
+--hole-to-hole-clearance not given; using 0.25mm [board constraint].
+--board-edge-clearance not given; using 0.3mm [board constraint].
+Loading sprocket2350.kicad_pcb to expand net patterns...
+Pattern '/USB_D_*' matched 2 nets
+Pattern '/MCU_USB_*' matched 2 nets
+Pattern '/USB_D_*' matched 2 nets
+Pattern '/MCU_USB_*' matched 2 nets
+Routing 4 nets as differential pairs: ['/USB_D_N', '/USB_D_P', '/MCU_USB_N', '/MCU_USB_P']
+Netclass clearances for 12 net(s), honored in full (no --clearance-ceiling) (mm: [0.127]); diff-pair routing respects cross-class max(A,B). Override with --net-clearances.
+Loading sprocket2350.kicad_pcb...
+Using 4 routing layers: ['F.Cu', 'In1.Cu', 'In2.Cu', 'B.Cu']
+  Layer costs: F.Cu=1.0x, In1.Cu=-1.0x, In2.Cu=-1.0x, B.Cu=-1.0x
+
+Calculating trace widths for 90.0Ω differential impedance...
+Using diff pair spacing: 0.15mm (5.91 mil)
+  --track-width not given: solved widths floor at the fab-tier track minimum 0.0889mm, not the default pair width (#610)
+
+Impedance-Controlled Routing Plan: 90.0Ω differential
+Differential pair spacing: 0.15mm (5.91 mil)
+Coplanar ground gap: 0.3mm (11.81 mil) -- outer layers use the CPW-over-ground model
+  NOTE: pour the plane layers with a matching zone clearance (route_planes --zone-clearance 0.3), then verify with check_impedance.py --coplanar-gap 0.3
+================================================================================
+Layer        Type         Width(mm)    Width(mil)   Verified Z     
+--------------------------------------------------------------------------------
+F.Cu         CPW-on-GND   0.2337       9.20         90.3 Ω diff
+In1.Cu       Stripline    0.2240       8.82         90.3 Ω diff
+In2.Cu       Stripline    0.2240       8.82         90.3 Ω diff
+B.Cu         CPW-on-GND   0.2337       9.20         90.3 Ω diff
+================================================================================
+No BGA components detected - no exclusion zones needed
+Found 2 differential pair(s)
+  Polarity swaps disabled (no --polarity-swap-nets; pass '*' to allow all pairs)
+
+Analyzing layer swaps for 2 diff pair(s)...
+
+Using MPS ordering strategy...
+MPS: Using segment intersection method (no nets on BGA chips)
+MPS: 2 diff pairs + 0 single nets = 2 units with 0 crossing conflicts
+MPS Round 1: 2 units: /USB_D, /MCU_USB
+
+Routing 2 differential pair(s)...
+============================================================
+Building base obstacle map...
+Base obstacle map built in 0.11s
+Building diff pair obstacle map (extra clearance: 0.175mm)...
+Diff pair obstacle map built in 0.10s
+Blocking connector regions for 2 diff pair(s)...
+Found 75 unrouted nets in PCB for stub proximity
+GND net: '/GND' (id 9) (GND vias will be added as obstacles)
+Pre-computing net obstacle cache...
+Net obstacle cache built in 0.09s (75 nets)
+Plane fragility: exact fill unavailable (no python with pcbnew found; set KICAD_PYTHON to KiCad's bundled interpreter); using zone outlines
+Plane fragility field: 453760 cells near the edges of 4 pour(s) (KICAD_PLANE_FRAGILITY_COST=2.0mm-equiv, static)
+History congestion (#590) armed: +0.1mm-equiv per contest, cap 0.5, escalate 0.0, rip weight 1.0 (radius +0.25mm), frontier weight 0.25
+
+[1/2] Routing diff pair /USB_D
+  P: /USB_D_P (id=26)
+  N: /USB_D_N (id=25)
+  Multi-point pair: 5 terminals, 4 legs
+  Chain: J1:A6/B7 -> J1:B6/A7 -> U4:3/1 -> U4:4/6 -> R9:1/1
+  Leg 1/4: J1:A6/B7 -> J1:B6/A7
+    electrically short (< 3.5mm coupled) - deferring leg to single-ended
+  Leg 2/4: J1:B6/A7 -> U4:3/1
+  Error: target - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Error: target - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Error: source - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Error: source - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Both directions stuck (forward=0, backward=0 < 5000)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (725, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_N(1 pad), unconnected-(J1-SBU1-PadA8)(1 pad)
+        backward cell (727, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (731, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (735, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_P(2 pad)
+        backward cell (735, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (739, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (725, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_N(1 pad), unconnected-(J1-SBU1-PadA8)(1 pad)
+        backward cell (727, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (731, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (735, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_P(2 pad)
+        backward cell (735, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (739, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      leg couple: best plan still ships 1.8mm uncoupled leg copper
+      #444 seam re-ask: joint whole-connection A* replaces composed pair (score 22.7 -> 21.0)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (725, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_N(1 pad), unconnected-(J1-SBU1-PadA8)(1 pad)
+        backward cell (735, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (739, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (735, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_P(2 pad)
+        backward cell (727, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (731, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (725, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_N(1 pad), unconnected-(J1-SBU1-PadA8)(1 pad)
+        backward cell (735, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      backward stuck (1 < 5000), forward=5000
+        backward cell (739, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Both directions stuck (forward=1, backward=1 < 5000)
+        forward cell (735, 544, layer=0): ok, 8/8 neighbors blocked (margin=5)
+          Blocking obstacles: /USB_D_P(2 pad)
+        backward cell (727, 571, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (731, 639, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      leg couple: best plan still ships 1.8mm uncoupled leg copper
+      #444 seam re-ask: joint whole-connection A* replaces composed pair (score 25.8 -> 21.3)
+  DIRECT HYBRID: coupled middle on F.Cu + 42 leg seg(s) (6375 iters)
+  Leg 2 via hybrid (coupled middle + single-ended escapes)
+  Leg 3/4: U4:3/1 -> U4:4/6
+    electrically short (< 3.5mm coupled) - deferring leg to single-ended
+  Leg 4/4: U4:4/6 -> R9:1/1
+  Error: source - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Error: source - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Error: target - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Error: target - no valid position at any setback/direction (ladder 0.23, 0.83mm x full sweep)
+  Both directions stuck (forward=0, backward=0 < 5000)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (809, 702, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1021, 843, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (815, 696, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1027, 837, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (809, 702, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1021, 843, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (815, 696, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1027, 837, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      leg couple: best plan still ships 5.0mm uncoupled leg copper
+      backward stuck (1 < 5000), forward=5000
+        backward cell (815, 696, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1027, 837, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (809, 702, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1021, 843, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      backward stuck (1 < 5000), forward=5000
+        backward cell (815, 696, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1027, 837, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (809, 702, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1021, 843, layer=0): ok, 8/8 neighbors blocked (margin=5)
+      Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+      leg couple: best plan still ships 3.5mm uncoupled leg copper
+  DIRECT HYBRID: coupled middle on F.Cu + 20 leg seg(s) (16207 iters)
+  Leg 4 via hybrid (coupled middle + single-ended escapes)
+  SUCCESS: 2 legs, 88 segments, 22582 iterations (1.65s)
+
+[2/2] Routing diff pair /MCU_USB
+  P: /MCU_USB_P (id=81)
+  N: /MCU_USB_N (id=80)
+      source: setback 0.40mm blocked, using 0.80mm
+      target: setback 0.40mm blocked, using 0.80mm
+  Probe backward blocked at target after 414 iterations
+  Probe backward blocked at target but no rippable blockers found
+  FAILED: Could not find route (0.05s)
+  HYBRID failed (/MCU_USB_P): 1 layer-combo(s) rejected -- no clear diff-pair-wide launch swath at a terminal
+  ROUTE FAILED - no rippable blockers found
+  Deferring /MCU_USB to the single-ended follow-up pass
+
+============================================================
+4 net(s) have far-apart terminal pads peeled from the coupled chain - route them single-ended next:
+  /MCU_USB_N
+  /MCU_USB_P
+  /USB_D_N
+  /USB_D_P
+  e.g.  route.py <this_output> <out2> --nets '/MCU_USB_N' '/MCU_USB_P' '/USB_D_N' ...
+============================================================
+
+============================================================
+Single-ended member fallback: 1 non-coupled pair(s) - attempting BOTH members P->P / N->N (no rip-up)
+============================================================
+Route found in 117 iterations, path length: 112
+  SE FALLBACK ROUTED /MCU_USB_P (/MCU_USB P member)
+Route found in 537 iterations, path length: 130
+  SE FALLBACK ROUTED /MCU_USB_N (/MCU_USB N member)
+
+Sync pcb_data: 128 -> 0 (kept stubs) -> 128 (after adding 128)
+Diff-pair Strict collapse: removed 7 redundant segment(s) (superseded parallel/buried/in-pad copper)
+
+============================================================
+Routing complete
+============================================================
+  Diff pairs:    1/2 routed
+  Member-incomplete: 1 pair(s) with disconnected member pads at this step (/USB_D) — JSON_SUMMARY.member_incomplete_pairs
+  Hybrid escape: 1 pair(s) routed as a coupled middle + point-to-point terminal legs (terminals NOT coupled): /USB_D — JSON_SUMMARY.pair_reports[].coupled_terminals
+  Single-ended:  1 (deferred to single-ended routing: 1 no escape path)
+  SE fallback:   2/2 member net(s) routed
+  Total vias:    0
+  Search time:   1.70s (net search only, not the whole run)
+  Iterations:    27,996
+JSON_SUMMARY: {"routed_diff_pairs": ["/USB_D"], "failed_diff_pairs": [], "partial_diff_pairs": [], "member_incomplete_pairs": ["/USB_D"], "uncoupled_diff_pairs": [], "single_ended_diff_pairs": ["/MCU_USB"], "ripup_success_pairs": [], "rerouted_pairs": [], "polarity_swapped_pairs": [], "polarity_swap_denied_pairs": [], "single_ended_followup_nets": ["/MCU_USB_N", "/MCU_USB_P", "/USB_D_N", "/USB_D_P"], "skipped_bad_fanout": [], "target_swaps": [], "layer_swaps": 0, "intra_pair_matching": [], "successful": 1, "failed": 0, "total_time": 1.7, "total_iterations": 27996, "total_vias": 0, "min_clearance_used": 0.127, "pair_reports": [{"pair": "/MCU_USB", "p_net": "/MCU_USB_P", "n_net": "/MCU_USB_N", "outcome": "deferred", "failure_reason": "no-escape-path", "failure_stage": "initial-route", "incomplete_members": [], "member_audit_mismatch": false, "no_coupled_trunk": false, "se_fallback": {"p": "routed", "n": "routed"}}, {"pair": "/USB_D", "p_net": "/USB_D_P", "n_net": "/USB_D_N", "outcome": "partial", "failure_reason": null, "failure_stage": null, "incomplete_members": ["/USB_D_P", "/USB_D_N"], "member_audit_mismatch": false, "no_coupled_trunk": false, "copper": {"coupled_mm": 17.6197, "length_p_mm": 27.3036, "length_n_mm": 27.35, "uncoupled_mm": 9.7303, "coupled_by_layer": {"F.Cu": 17.6197}, "layers_p": ["F.Cu"], "layers_n": ["F.Cu"], "arc_chords": 0, "match_p_mm": null, "match_n_mm": null, "skew_mm": null, "gap_mm": 0.15, "gap_window_mm": [null, 0.225], "coupled_floor_mm": 0.35, "coupled_share": 0.6442, "coupled_share_floor": 0.1, "coupled": true}, "coupled_terminals": false, "escape": "hybrid"}], "casualty_reconcile": {"attempted": 0, "restored": [], "rerouted": [], "partial": [], "unrecovered": []}, "single_ended_fallback": {"attempted": ["/MCU_USB_P", "/MCU_USB_N"], "routed": ["/MCU_USB_P", "/MCU_USB_N"], "partial": [], "failed": []}, "gnd_vias_not_placed": [], "plane_fragility": {"source": "zone_outlines", "islands": 0, "refill_status": "no_kicad_python", "why": "no python with pcbnew found; set KICAD_PYTHON to KiCad's bundled interpreter", "machine_dependent": false}, "env_knobs": {"KICAD_CLI_PATH": "/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli", "KICAD_FINALIZE_RIP": "0", "KICAD_RIP_PREEXISTING": "0"}}
+
+Writing output to scratch/usb2.kicad_pcb...
+Successfully wrote scratch/usb2.kicad_pcb
+  Protected nets (not ripped by later steps): 2 recorded in usb2.kicad_pro (+2 this step)
+  Net impedance specs (reapplied on redo): 4 recorded in usb2.kicad_pro (+4 this step)
+Wall time: 3.8s (whole run)
+EXIT=0

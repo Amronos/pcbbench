@@ -1,0 +1,304 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-10T07:08:28",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.99.0",
+    "schematic_parity": [],
+    "source": "stitched.kicad_pcb",
+    "unconnected_items": [
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [/+3V3] on F.Cu, length 0.9500 mm",
+                    "pos": {
+                        "x": 58.45,
+                        "y": 50.6
+                    },
+                    "uuid": "fd9672eb-8775-4d6b-ad98-799121c455f1"
+                },
+                {
+                    "description": "Track [/+3V3] on F.Cu, length 0.9500 mm",
+                    "pos": {
+                        "x": 58.45,
+                        "y": 53.0
+                    },
+                    "uuid": "1a4bfc28-ae64-4d7d-ab0f-9b9de9225c69"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [/GND] on B.Cu, priority 0",
+                    "pos": {
+                        "x": 20.3,
+                        "y": 20.3
+                    },
+                    "uuid": "e0c3e4b0-fb9f-4e68-8190-c8329afd678e"
+                },
+                {
+                    "description": "Zone [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 20.3,
+                        "y": 20.3
+                    },
+                    "uuid": "5391e6a2-4d07-4081-8d79-26704c46fc1f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Zone [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 20.3,
+                        "y": 20.3
+                    },
+                    "uuid": "5391e6a2-4d07-4081-8d79-26704c46fc1f"
+                },
+                {
+                    "description": "Zone [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 20.3,
+                        "y": 20.3
+                    },
+                    "uuid": "5391e6a2-4d07-4081-8d79-26704c46fc1f"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [/CORE_1V1] on B.Cu, length 0.0283 mm",
+                    "pos": {
+                        "x": 58.5,
+                        "y": 46.9
+                    },
+                    "uuid": "8dbb03c9-33cb-447c-9a44-d8d7e46937d3"
+                },
+                {
+                    "description": "Track [/CORE_1V1] on F.Cu, length 0.1414 mm",
+                    "pos": {
+                        "x": 56.2,
+                        "y": 49.55
+                    },
+                    "uuid": "d05c47a7-12df-4c74-ae5a-907525b75a1a"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        }
+    ],
+    "violations": [
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [/ADC3] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 57.5,
+                        "y": 51.0
+                    },
+                    "uuid": "2ecd6c25-6c9c-411e-b59f-c0d8cd86303a"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [/GPIO22] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 59.4,
+                        "y": 54.6
+                    },
+                    "uuid": "c4b86b5a-79cd-4041-a229-949f231728b7"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [/FLASH_CS] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 52.2,
+                        "y": 48.8
+                    },
+                    "uuid": "c129309d-c8b7-491e-8d68-3c939421cc68"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [/MCU_USB_P] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 55.4,
+                        "y": 48.8
+                    },
+                    "uuid": "7d4f721e-f882-4347-8d45-8d928c9dc008"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Via is not connected or connected on only one layer",
+            "items": [
+                {
+                    "description": "Via [/VREG_AVDD] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 57.8,
+                        "y": 48.6
+                    },
+                    "uuid": "76437f68-5db6-4c4d-9239-5cfd08e80749"
+                }
+            ],
+            "severity": "warning",
+            "type": "via_dangling"
+        },
+        {
+            "description": "Copper connection too narrow (board setup constraints minimum connection width 0.1270 mm; actual 0.1099 mm) (F.Cu)",
+            "items": [
+                {
+                    "description": "Track [/GND] on F.Cu, length 0.0224 mm",
+                    "pos": {
+                        "x": 46.0,
+                        "y": 68.95
+                    },
+                    "uuid": "f87c0310-a05b-49ff-bca1-3116da65010a"
+                },
+                {
+                    "description": "Zone [/GND] on F.Cu, priority 0",
+                    "pos": {
+                        "x": 20.3,
+                        "y": 20.3
+                    },
+                    "uuid": "5391e6a2-4d07-4081-8d79-26704c46fc1f"
+                }
+            ],
+            "severity": "warning",
+            "type": "connection_width"
+        },
+        {
+            "description": "Copper connection too narrow (board setup constraints minimum connection width 0.1270 mm; actual 0.1020 mm) (In2.Cu)",
+            "items": [
+                {
+                    "description": "Zone [/+3V3] on In2.Cu, priority 0",
+                    "pos": {
+                        "x": 20.3,
+                        "y": 20.3
+                    },
+                    "uuid": "5cf9f05a-e720-4ca6-9bf3-5a536bb401b6"
+                }
+            ],
+            "severity": "warning",
+            "type": "connection_width"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Board'",
+            "items": [
+                {
+                    "description": "Footprint U7",
+                    "pos": {
+                        "x": 87.0,
+                        "y": 27.0
+                    },
+                    "uuid": "01febd66-687b-4194-abc4-1c0a6d93932d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Board'",
+            "items": [
+                {
+                    "description": "Footprint J4",
+                    "pos": {
+                        "x": 84.0,
+                        "y": 76.0
+                    },
+                    "uuid": "3f412499-8157-4bcc-b4a0-1f4744f936d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Board'",
+            "items": [
+                {
+                    "description": "Footprint L1",
+                    "pos": {
+                        "x": 58.5,
+                        "y": 47.0
+                    },
+                    "uuid": "7ea1cfca-3010-4872-a506-e3233f90e40d"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        },
+        {
+            "description": "The current configuration does not include the footprint library 'Board'",
+            "items": [
+                {
+                    "description": "Footprint D1",
+                    "pos": {
+                        "x": 68.0,
+                        "y": 57.0
+                    },
+                    "uuid": "b6988a70-c8a5-44fc-b52c-5cb1cbdde84e"
+                }
+            ],
+            "severity": "warning",
+            "type": "lib_footprint_issues"
+        }
+    ]
+}

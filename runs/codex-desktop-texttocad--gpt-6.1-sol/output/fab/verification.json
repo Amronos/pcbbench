@@ -1,0 +1,122 @@
+{
+  "verified_utc": "2026-11-10T02:12:01.906416+00:00",
+  "status": "PASS",
+  "errors": [],
+  "schematic_pin_assignments_checked": 432,
+  "pcb_footprints": 128,
+  "assembled_components": 115,
+  "bare_features_excluded": 13,
+  "tracks": 1532,
+  "routing_vias": 322,
+  "fill_cap_holes_total": 334,
+  "reports": {
+    "erc": {},
+    "drc": {}
+  },
+  "fast_net_copper_length_totals_mm_not_point_to_point": {
+    "QSPI_CLK_SRC": 6.689,
+    "QSPI_CLK": 13.642,
+    "QSPI_IO0": 17.811,
+    "QSPI_IO1": 27.1,
+    "QSPI_IO2": 28.281,
+    "QSPI_IO3": 22.489,
+    "FLASH_CS": 41.272,
+    "PSRAM_CS": 20.966,
+    "USB_D+": 26.769,
+    "USB_D-": 22.457,
+    "USB_PHY_D+": 1.74,
+    "USB_PHY_D-": 2.071,
+    "XIN": 7.192,
+    "XOUT": 4.498,
+    "XTAL_OUT": 5.458
+  },
+  "fast_net_vias": {
+    "QSPI_CLK_SRC": 0,
+    "QSPI_CLK": 0,
+    "QSPI_IO0": 3,
+    "QSPI_IO1": 4,
+    "QSPI_IO2": 2,
+    "QSPI_IO3": 0,
+    "FLASH_CS": 2,
+    "PSRAM_CS": 0,
+    "USB_D+": 0,
+    "USB_D-": 4,
+    "USB_PHY_D+": 0,
+    "USB_PHY_D-": 0,
+    "XIN": 0,
+    "XOUT": 0,
+    "XTAL_OUT": 0
+  },
+  "fast_net_layers": {
+    "QSPI_CLK_SRC": [
+      "F.Cu"
+    ],
+    "QSPI_CLK": [
+      "F.Cu"
+    ],
+    "QSPI_IO0": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "QSPI_IO1": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "QSPI_IO2": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "QSPI_IO3": [
+      "F.Cu"
+    ],
+    "FLASH_CS": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "PSRAM_CS": [
+      "F.Cu"
+    ],
+    "USB_D+": [
+      "F.Cu"
+    ],
+    "USB_D-": [
+      "B.Cu",
+      "F.Cu"
+    ],
+    "USB_PHY_D+": [
+      "F.Cu"
+    ],
+    "USB_PHY_D-": [
+      "F.Cu"
+    ],
+    "XIN": [
+      "F.Cu"
+    ],
+    "XOUT": [
+      "F.Cu"
+    ],
+    "XTAL_OUT": [
+      "F.Cu"
+    ]
+  },
+  "signal_layer_track_counts": {
+    "F.Cu": 903,
+    "B.Cu": 334,
+    "In1.Cu": 182,
+    "In2.Cu": 113
+  },
+  "unperformed": [
+    "physical prototype tests",
+    "PCBWay quote/DFM approval",
+    "USB compliance testing",
+    "RF certification",
+    "controlled-impedance simulation or measurement",
+    "first-article signal-integrity qualification"
+  ],
+  "source_sha256": {
+    "Atlas2350.kicad_pcb": "d566adf81f6cd3687b7653f3ec31e04d1cb71c4ed3aec2fcd21980b33ea612a8",
+    "Atlas2350.kicad_pro": "ca28388910100c81f10d4bddb19110c5f81dd62e8f0d421f00de31673bd176a6",
+    "Atlas2350.kicad_sch": "a63fe27c34266d2b7ce8c131aedf51c47f44575fa3f4961be7a965c6a459538b",
+    "design.json": "034becacead4e3af18e2a4714a5044d900750504287446704dac06bbb4c6c2d6"
+  }
+}

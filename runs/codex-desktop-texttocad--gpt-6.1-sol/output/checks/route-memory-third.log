@@ -1,0 +1,13 @@
+route: NOT routed QSPI_IO0: U1.57 to U2.5: U1.57 is walled in by QSPI_IO2, QSPI_CLK_SRC and QSPI_IO3: no way out of the 0.2 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed QSPI_IO0: U1.57 to U3.5: U1.57 is walled in by QSPI_IO2, QSPI_CLK_SRC and QSPI_IO3: no way out of the 0.2 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+QSPI_CLK_SRC: R16.1 to U1.56: already joined by the copper on the board
+QSPI_CLK: R16.2 to U3.6: already joined by the copper on the board
+NOT routed QSPI_IO0: U1.57 to U2.5: U1.57 is walled in by QSPI_IO2, QSPI_CLK_SRC and QSPI_IO3: no way out of the 0.2 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed QSPI_IO0: U1.57 to U3.5: U1.57 is walled in by QSPI_IO2, QSPI_CLK_SRC and QSPI_IO3: no way out of the 0.2 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+routed QSPI_IO1: U1.59 to U2.2: 17.10 mm in 9 segments, 2 vias
+routed QSPI_IO1: U2.2 to U3.2: 10.61 mm in 5 segments
+QSPI_IO2: U1.58 to U3.3: already joined by the copper on the board
+QSPI_IO3: U1.55 to U3.7: already joined by the copper on the board
+FLASH_CS: R14.1 to U2.1: already joined by the copper on the board
+PSRAM_CS: R15.1 to U3.1: already joined by the copper on the board
+NOT ROUTED: 8 of 10 connection(s) routed, 14 segment(s), 2 via(s), 27.7 mm of track, in 0.4 s; 2 not routed, each said above

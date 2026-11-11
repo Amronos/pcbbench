@@ -1,0 +1,25 @@
+{
+	"name": "@pcbbench/monorepo",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"check": "turbo run check",
+		"lint": "oxlint"
+	},
+	"devDependencies": {
+		"oxlint": "1.90.0",
+		"turbo": "^2.9.8"
+	},
+	"engines": {
+		"bun": "^1.4.4"
+	},
+	"packageManager": "bun@1.4.4",
+	"workspaces": [
+		"packages/*",
+		"bench"
+	],
+	"catalog": {
+		"@types/bun": "^1.3.14",
+		"typescript": "^6.0.0"
+	}
+}

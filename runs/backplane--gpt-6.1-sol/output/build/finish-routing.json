@@ -1,0 +1,16 @@
+[
+  {
+    "net": "/SD_CS",
+    "success": true,
+    "pair": 0,
+    "items": 70,
+    "vias": 0
+  },
+  {
+    "net": "/USB_PGOOD_N",
+    "success": true,
+    "pair": 1,
+    "items": 81,
+    "vias": 0
+  }
+]

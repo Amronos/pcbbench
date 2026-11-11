@@ -1,0 +1,17 @@
+{
+	"runId": "sprocket--opus-5.5",
+	"harness": "sprocket",
+	"model": "opus-5.5",
+	"reasoning": "medium",
+	"machine": "linux",
+	"versions": {
+		"sprocket": "sprocket 0.5.0",
+		"kicadConnector": "v0.2.0",
+		"kicad": "10.99.0-6344-g8c85ac1452"
+	},
+	"skippedLargeFiles": [],
+	"board": "rp2350_dev.kicad_pcb",
+	"bom": "fab/rp2350_dev_bom.csv",
+	"placement": "fab/rp2350_dev_centroid.csv",
+	"fabZip": "fab/rp2350_dev_gerber.zip"
+}

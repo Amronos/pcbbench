@@ -1,0 +1,22 @@
+{
+  "meta": {"version": 5},
+  "current_layer_preset": "legacy_preset_flag",
+  "render": {
+    "show_board_body": true,
+    "show_copper_top": true,
+    "show_copper_bottom": true,
+    "show_copper_inner1": false,
+    "show_copper_inner2": false,
+    "show_zones": true,
+    "show_soldermask_top": true,
+    "show_soldermask_bottom": true,
+    "show_silkscreen_top": true,
+    "show_silkscreen_bottom": true,
+    "raytrace_anti_aliasing": true,
+    "raytrace_shadows": true,
+    "raytrace_reflections": false,
+    "raytrace_refractions": false,
+    "raytrace_post_processing": true,
+    "raytrace_procedural_textures": false
+  }
+}

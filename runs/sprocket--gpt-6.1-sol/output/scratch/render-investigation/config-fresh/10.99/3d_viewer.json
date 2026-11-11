@@ -1,0 +1,12 @@
+{
+  "meta": {"version": 5},
+  "render": {
+    "show_board_body": true,
+    "show_copper_inner1": false,
+    "show_copper_inner2": false,
+    "raytrace_reflections": false,
+    "raytrace_refractions": false,
+    "raytrace_post_processing": true,
+    "raytrace_procedural_textures": false
+  }
+}

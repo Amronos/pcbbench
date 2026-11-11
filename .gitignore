@@ -1,0 +1,8 @@
+node_modules
+.turbo
+.direnv
+.DS_Store
+.env
+.env.*
+.worktrees
+bench/.state

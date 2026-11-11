@@ -1,0 +1,64 @@
+{
+	"one": {
+		"pcbQty": 5,
+		"pcbUsd": 110.49,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"five": {
+		"pcbUsd": 110.49,
+		"assemblyUsd": 117.41,
+		"assemblyPromoUsd": null
+	},
+	"pcbItems": {
+		"base (HASL LF, 6/6mil, 0.3mm, tented)": 32.2,
+		"ENIG 1u\" surcharge": 29.84,
+		"track/space 4/4mil surcharge": 0.0,
+		"min hole 0.2mm surcharge": 0.0,
+		"Impedance control surcharge": 48.45,
+		"total_standard_build": 110.49,
+		"express_options": {
+			"express 48hours": 219.59,
+			"express 72hours": 168.94
+		},
+		"S1000H_TG150_alternative_total": 110.49
+	},
+	"options": {
+		"quoteTimeUtc": "2026-11-10T08:03:36+00:00",
+		"pcbBuildTime": "4-5 days",
+		"assemblyBuildTime": "5-6 days",
+		"pcbQtyMinimum": "5 (smallest quantity on orderonline.aspx; GetDeliveryDays returns [] for 1-4)",
+		"boardType": "Single pieces",
+		"size_mm": "80 x 65",
+		"layers": 4,
+		"material": "FR-4",
+		"FR4TG": "TG 150-160",
+		"thickness_mm": 1.6,
+		"minTrackSpace": "4/4mil",
+		"minHole_mm": 0.2,
+		"solderMask": "Green",
+		"silkscreen": "White",
+		"surfaceFinish": "Immersion gold (ENIG), 1u\"",
+		"outerCopper": "1 oz Cu",
+		"innerCopper": "1 oz",
+		"viaProcess": "Tenting vias",
+		"viaInPad": false,
+		"allViasResinFilledCapped": false,
+		"impedanceControl": true,
+		"assembly": {
+			"type": "Turnkey",
+			"boardType": "Single pieces",
+			"side": "Top side",
+			"qty": {
+				"one": 1,
+				"five": 5
+			},
+			"uniqueParts": 51,
+			"smdParts": 118,
+			"bgaQfpParts": 0,
+			"thtParts": 3
+		},
+		"method": "POST https://www.pcbway.com/Quote/GetDeliveryDays/ (body captured from orderonline.aspx and quotesmt.aspx with agent-browser, replayed with curl; anonymous). Recipe: /tmp/pcbway-quote-recipe.md"
+	},
+	"notes": "Impedance control is one checkbox; the 90 ohm target can't be entered. Assembly anomaly resolved: $117.41 is the real qty-5 price. At qty <= 10 the engine charges max($88, $25.27 + $0.1523 x parts/board x qty) whenever the $29 promo is off: 25.27 + 0.1523 x 121 x 5 = $117.41. The $371.99 seen at 116 SMD parts is only the struck-through 'list' price next to $29. It comes from the qty >= 11 formula (setup + unique-part fees): this board costs $209.45 at qty 10 and $385.69 at qty 11. The promo drops at 117 SMD parts because 120 x 5 = 600 is the order part limit; the server treats 600 as over. Five: no promo (605 parts > 600). One: $29 promo applies; normal is the $88 minimum."
+}

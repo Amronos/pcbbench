@@ -1,0 +1,244 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-10T05:59:21",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.99.0",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/b227f672-8ee1-4d14-9842-89850b06b85a",
+            "violations": [
+                {
+                    "description": "Pins of type Power output and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol #FLG1 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 15.24,
+                                "y": 195.58
+                            },
+                            "uuid": "6543e0fd-374f-458c-8297-1522554a30d3"
+                        },
+                        {
+                            "description": "Symbol #FLG3 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 66.04,
+                                "y": 195.58
+                            },
+                            "uuid": "27fac426-38f4-48d5-b2b4-21725ea58f54"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Power output and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol #FLG3 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 66.04,
+                                "y": 195.58
+                            },
+                            "uuid": "27fac426-38f4-48d5-b2b4-21725ea58f54"
+                        },
+                        {
+                            "description": "Symbol U7 Pin 9 [VOUT, Power output, Line]",
+                            "pos": {
+                                "x": 157.48,
+                                "y": 203.2
+                            },
+                            "uuid": "863c835e-3ee6-4a20-8370-032f0e685089"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Power output and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol #FLG4 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 91.44,
+                                "y": 195.58
+                            },
+                            "uuid": "e02daf1f-5979-416f-95c5-5ee096eb3468"
+                        },
+                        {
+                            "description": "Symbol U6 Pin 10 [OUT, Power output, Line]",
+                            "pos": {
+                                "x": 66.04,
+                                "y": 203.2
+                            },
+                            "uuid": "f6b44792-17fb-4085-9994-10eea33b811a"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Open collector and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U4 Pin 8 [PG, Open collector, Line]",
+                            "pos": {
+                                "x": 134.62,
+                                "y": 86.36
+                            },
+                            "uuid": "e193205e-5517-443e-8f4f-c3440e103c9a"
+                        },
+                        {
+                            "description": "Symbol U7 Pin 9 [VOUT, Power output, Line]",
+                            "pos": {
+                                "x": 157.48,
+                                "y": 203.2
+                            },
+                            "uuid": "863c835e-3ee6-4a20-8370-032f0e685089"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Power output and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol #FLG7 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 167.64,
+                                "y": 195.58
+                            },
+                            "uuid": "57d9a1ae-4bb2-4720-820a-d9b6715d4828"
+                        },
+                        {
+                            "description": "Symbol U11 Pin 6 [OUT, Power output, Line]",
+                            "pos": {
+                                "x": 292.1,
+                                "y": 132.08
+                            },
+                            "uuid": "81928399-28b5-4cdf-8715-bdd0fcb92b22"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Power output and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol #FLG8 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 193.04,
+                                "y": 195.58
+                            },
+                            "uuid": "640bb062-d60b-4bb9-9ddc-159cdea66a03"
+                        },
+                        {
+                            "description": "Symbol U9 Pin 5 [V_{OUT}, Power output, Line]",
+                            "pos": {
+                                "x": 337.82,
+                                "y": 213.36
+                            },
+                            "uuid": "7ee10b4d-bfc4-4655-b03c-ef8c16d72b11"
+                        }
+                    ],
+                    "severity": "error",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Both 1V1 and BOOT_SW are attached to the same items; 1V1 will be used in the netlist",
+                    "items": [
+                        {
+                            "description": "Label '1V1'",
+                            "pos": {
+                                "x": 116.84,
+                                "y": 165.1
+                            },
+                            "uuid": "5382cae2-1291-4355-aaf4-592e3091294b"
+                        },
+                        {
+                            "description": "Label 'BOOT_SW'",
+                            "pos": {
+                                "x": 115.57,
+                                "y": 165.1
+                            },
+                            "uuid": "95f207c0-a6ae-4cbf-9faa-d053494289f1"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "multiple_net_names"
+                },
+                {
+                    "description": "Both CORE_PG and GND are attached to the same items; CORE_PG will be used in the netlist",
+                    "items": [
+                        {
+                            "description": "Label 'CORE_PG'",
+                            "pos": {
+                                "x": 130.81,
+                                "y": 86.36
+                            },
+                            "uuid": "9609617a-1600-43ff-8715-aab33ba733a3"
+                        },
+                        {
+                            "description": "Label 'GND'",
+                            "pos": {
+                                "x": 133.35,
+                                "y": 86.36
+                            },
+                            "uuid": "2eb7ce00-b50a-4ee3-81f3-008978e2c0f8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "multiple_net_names"
+                },
+                {
+                    "description": "Both 3V3 and GND are attached to the same items; 3V3 will be used in the netlist",
+                    "items": [
+                        {
+                            "description": "Label '3V3'",
+                            "pos": {
+                                "x": 267.97,
+                                "y": 132.08
+                            },
+                            "uuid": "96232d78-0548-4624-a5cf-96a4735ea728"
+                        },
+                        {
+                            "description": "Label 'GND'",
+                            "pos": {
+                                "x": 267.97,
+                                "y": 132.08
+                            },
+                            "uuid": "3a9bd7af-2f76-45b4-ad46-73ae956e5666"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "multiple_net_names"
+                }
+            ]
+        }
+    ],
+    "source": "rp2350-connect.kicad_sch"
+}

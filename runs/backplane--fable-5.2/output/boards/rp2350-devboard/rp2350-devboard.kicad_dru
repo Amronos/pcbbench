@@ -1,0 +1,6 @@
+(version 1)
+# VREG_LX is routed between the pads of the 0402 input/output capacitors, as in the
+# Raspberry Pi RP2350 reference layout. 0.1 mm is within PCBWay's standard 4 mil spacing.
+(rule "VREG_LX between capacitor pads"
+  (condition "A.NetName == '/VREG_LX' || B.NetName == '/VREG_LX'")
+  (constraint clearance (min 0.1mm)))

@@ -1,0 +1,32 @@
+[
+  {
+    "footprint": "SOT-23-6",
+    "source_reference": "U9",
+    "sha256": "0e1378468fe1ffc8f11a8d7eb9874dddf81bf57b1fcc74ab1c2a479643966b11",
+    "changes": "Final saved copper, pad, courtyard and artwork geometry; board transform and electrical net assignments removed."
+  },
+  {
+    "footprint": "Fiducial_1mm_Mask2mm",
+    "source_reference": "FID1",
+    "sha256": "4158e387c47818c97f45969ebf5c42a61ec5fbf0cf92f65d29ee35f01091b425",
+    "changes": "Final saved copper, pad, courtyard and artwork geometry; board transform and electrical net assignments removed."
+  },
+  {
+    "footprint": "Texas_S-PWSON-N10",
+    "source_reference": "U7",
+    "sha256": "bc13face282a8510e5b1afad4264e1f5eafb14bd74ef4deafc3badb3f60c7d08",
+    "changes": "Final saved copper, pad, courtyard and artwork geometry; board transform and electrical net assignments removed."
+  },
+  {
+    "footprint": "ESP32-C3-WROOM-02",
+    "source_reference": "U8",
+    "sha256": "c2d39b7d014f701f48627ce9bb6f9337040650497b0850b7fe4730c12f75e61c",
+    "changes": "Final saved copper, pad, courtyard and artwork geometry; board transform and electrical net assignments removed."
+  },
+  {
+    "footprint": "microSD_HC_Hirose_DM3AT-SF-PEJM5",
+    "source_reference": "J4",
+    "sha256": "9fa3f666f54bd729d5738c1c07e9d28241280dfbafd7da19f6fcc6e352bf383b",
+    "changes": "Final saved copper, pad, courtyard and artwork geometry; board transform and electrical net assignments removed."
+  }
+]

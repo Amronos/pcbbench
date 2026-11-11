@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Board") (type "KiCad") (uri "${KIPRJMOD}/lib/Board.kicad_sym") (options "") (descr "MAX17048G battery gauge"))
+)

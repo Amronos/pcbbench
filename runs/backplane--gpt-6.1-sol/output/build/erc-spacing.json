@@ -1,0 +1,106 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-10T06:00:39",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.99.0",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/b227f672-8ee1-4d14-9842-89850b06b85a",
+            "violations": [
+                {
+                    "description": "Both ESP_STRAP2 and SD_CS are attached to the same items; ESP_STRAP2 will be used in the netlist",
+                    "items": [
+                        {
+                            "description": "Label 'ESP_STRAP2'",
+                            "pos": {
+                                "x": 316.23,
+                                "y": 160.02
+                            },
+                            "uuid": "bb0287aa-cdc1-4c7c-9c18-7ccc726457f3"
+                        },
+                        {
+                            "description": "Label 'SD_CS'",
+                            "pos": {
+                                "x": 314.96,
+                                "y": 160.02
+                            },
+                            "uuid": "565a58a2-b3ba-4574-b158-a98640bce105"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "multiple_net_names"
+                },
+                {
+                    "description": "Both 3V3 and SD_DAT1 are attached to the same items; 3V3 will be used in the netlist",
+                    "items": [
+                        {
+                            "description": "Label '3V3'",
+                            "pos": {
+                                "x": 316.23,
+                                "y": 175.26
+                            },
+                            "uuid": "a7bc4b55-c24f-4801-8d5b-3030830c6253"
+                        },
+                        {
+                            "description": "Label 'SD_DAT1'",
+                            "pos": {
+                                "x": 314.96,
+                                "y": 175.26
+                            },
+                            "uuid": "ed4eff68-54de-4ec7-b147-8eb0c9ee3796"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "multiple_net_names"
+                },
+                {
+                    "description": "Pins of type Bidirectional and Power output are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J4 Pin 8 [DAT1, Bidirectional, Line]",
+                            "pos": {
+                                "x": 318.77,
+                                "y": 175.26
+                            },
+                            "uuid": "5679adac-37f9-40dd-9d3b-56225f9754db"
+                        },
+                        {
+                            "description": "Symbol U7 Pin 9 [VOUT, Power output, Line]",
+                            "pos": {
+                                "x": 215.9,
+                                "y": 288.29
+                            },
+                            "uuid": "748658f7-e1cb-4c90-8705-764e428f9bc8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        }
+    ],
+    "source": "rp2350-connect.kicad_sch"
+}

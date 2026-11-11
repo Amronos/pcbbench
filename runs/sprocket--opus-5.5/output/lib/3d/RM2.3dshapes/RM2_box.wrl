@@ -1,0 +1,17 @@
+#VRML V2.0 utf8
+# Raspberry Pi RM2, 14.5 x 16.5 x 2.55 mm (datasheet Figure 4). Simplified: carrier PCB plus shield can.
+# Units are 0.1 in (2.54 mm), the KiCad VRML convention. The antenna end (pins 1 and 21) has no can.
+Transform {
+  translation 0 0 0.1575
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.05 0.35 0.12 } }
+    geometry Box { size 5.709 6.496 0.315 }
+  }
+}
+Transform {
+  translation 0 -0.591 0.6595
+  children Shape {
+    appearance Appearance { material Material { diffuseColor 0.78 0.78 0.80 specularColor 0.9 0.9 0.9 shininess 0.6 } }
+    geometry Box { size 5.472 5.118 0.689 }
+  }
+}

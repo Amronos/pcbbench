@@ -1,0 +1,77 @@
+{
+  "models": [
+    {
+      "reference": "Button_Switch_SMD.3dshapes/SW_SPST_TL3342.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Capacitor_SMD.3dshapes/C_0201_0603Metric.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Capacitor_SMD.3dshapes/C_0603_1608Metric.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Capacitor_SMD.3dshapes/C_0805_2012Metric.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Capacitor_SMD.3dshapes/C_1206_3216Metric.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Connector_Card.3dshapes/microSD_HC_Hirose_DM3AT-SF-PEJM5.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Connector_JST.3dshapes/JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Connector_PinHeader_2.54mm.3dshapes/PinHeader_1x04_P2.54mm_Vertical.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Connector_PinHeader_2.54mm.3dshapes/PinHeader_2x10_P2.54mm_Vertical.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Connector_USB.3dshapes/USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Crystal.3dshapes/Crystal_SMD_3225-4Pin_3.2x2.5mm.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Inductor_SMD.3dshapes/L_Abracon_AOTA-B201610S.step",
+      "source": "installed"
+    },
+    {
+      "reference": "LED_SMD.3dshapes/LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Package_SO.3dshapes/SOIC-8_3.9x4.9mm_P1.27mm.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Package_SO.3dshapes/SOIC-8_5.3x5.3mm_P1.27mm.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Package_TO_SOT_SMD.3dshapes/SOT-23-6.step",
+      "source": "installed"
+    },
+    {
+      "reference": "RF_Module.3dshapes/ESP32-C3-WROOM-02.step",
+      "source": "installed"
+    },
+    {
+      "reference": "Resistor_SMD.3dshapes/R_0603_1608Metric.step",
+      "source": "installed"
+    }
+  ],
+  "limitations": "Saved model transforms are unchanged during release. Local model substitutes are visualization only. Renders are not mechanical validation."
+}

@@ -1,0 +1,54 @@
+manufacturer,full_mpn,value,package,quantity,references,sides,mounting
+Murata,GRM155R71C104KA88D,100nF 16V X7R,Atlas:Capacitor_SMD_C_0402_1005Metric,26,"C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C19, C20, C21, C22, C23, C24, C40, C42",top,SMT
+Murata,GRM188R60J475KE19D,4.7uF 6.3V X5R,Atlas:Capacitor_SMD_C_0603_1608Metric,1,C25,top,SMT
+Murata,GRM188R61A225KE15D,2.2uF 10V X5R,Atlas:Capacitor_SMD_C_0603_1608Metric,2,"C26, C27",top,SMT
+Murata,GRM21BR61A106KE19L,10uF 10V X5R,Atlas:Capacitor_SMD_C_0805_2012Metric,5,"C28, C30, C31, C35, C44",top,SMT
+Murata,GRM21BR61A475KA73L,4.7uF 10V X5R,Atlas:Capacitor_SMD_C_0805_2012Metric,1,C29,top,SMT
+Murata,GRM31CR61C226KE15L,22uF 16V X5R,Atlas:Capacitor_SMD_C_1206_3216Metric,2,"C32, C33",top,SMT
+Murata,GRM21BR60J226ME39L,22uF 6.3V X5R,Atlas:Capacitor_SMD_C_0805_2012Metric,1,C34,top,SMT
+Murata,GRM155R61A105KE15D,1uF 10V X5R,Atlas:Capacitor_SMD_C_0402_1005Metric,4,"C36, C37, C43, C45",top,SMT
+Murata,GRM1555C1H150JA01D,15pF 50V C0G,Atlas:Capacitor_SMD_C_0402_1005Metric,2,"C38, C39",top,SMT
+Murata,GRM1555C1H102JA01D,1nF 50V C0G,Atlas:Capacitor_SMD_C_0402_1005Metric,1,C41,top,SMT
+Worldsemi,WS2812B-2020-V6,WS2812B-2020-V6,Atlas:LED_SMD_LED_WS2812B-2020_PLCC4_2.0x2.0mm,1,D1,top,SMT
+Bourns,MF-MSMF050-2,500mA hold,Atlas:Fuse_Fuse_1812_4532Metric,1,F1,top,SMT
+Murata,BLM15AG601SN1D,600R @ 100MHz,Atlas:Inductor_SMD_L_0402_1005Metric,1,FB1,top,SMT
+GCT,USB4105-GF-A,USB-C,Atlas:Connector_USB_USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal,1,J1,top,SMT+THT
+JST,S3B-PH-SM4-TB(LF)(SN),LiPo + NTC,Atlas:Connector_JST_JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal,1,J2,top,SMT
+Hirose,DM3AT-SF-PEJM5,microSD SPI,Atlas:Connector_Card_microSD_HC_Hirose_DM3AT-SF-PEJM5,1,J3,top,SMT
+JST,SM04B-SRSS-TB(LF)(SN),Qwiic / STEMMA QT,Atlas:Connector_JST_JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal,1,J4,top,SMT
+Samtec,TSW-110-07-G-D,GPIO expansion,Atlas:Connector_PinHeader_2.54mm_PinHeader_2x10_P2.54mm_Vertical,1,J5,top,THT
+Samtec,FTSH-105-01-L-D,Cortex SWD,Atlas:Connector_PinHeader_1.27mm_PinHeader_2x05_P1.27mm_Vertical,1,J6,top,THT
+Samtec,TSW-106-07-G-S,ESP programming,Atlas:Connector_PinHeader_2.54mm_PinHeader_1x06_P2.54mm_Vertical,1,J7,top,THT
+Coilcraft,XAL4020-102MEC,1.0uH,Atlas:Inductor_SMD_L_Coilcraft_XAL4020-XXX,1,L1,top,SMT
+Yageo,RC0402FR-075K1L,5.1k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,2,"R1, R2",top,SMT
+Yageo,RC0402FR-0727RL,27R 1%,Atlas:Resistor_SMD_R_0402_1005Metric,2,"R3, R4",top,SMT
+Yageo,RC0402FR-073K57L,3.57k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R5,top,SMT
+Yageo,RC0402FR-073K24L,3.24k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R6,top,SMT
+Yageo,RC0402FR-07100KL,100k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,3,"R7, R33, R41",top,SMT
+Yageo,RC0402FR-0710KL,10k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,11,"R8, R9, R14, R15, R18, R20, R21, R31, R36, R37, R40",top,SMT
+Yageo,RC0402FR-07470KL,470k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,2,"R10, R11",top,SMT
+Yageo,RC0402FR-071ML,1M 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R12,top,SMT
+Yageo,RC0402FR-07330KL,330k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R13,top,SMT
+Yageo,RC0402FR-0733RL,33R 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R16,top,SMT
+Yageo,RC0402FR-071KL,1k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,5,"R17, R19, R22, R23, R39",top,SMT
+Yageo,RC0402FR-074K7L,4.7k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,2,"R24, R25",top,SMT
+Yageo,RC0402FR-0747KL,47k 1%,Atlas:Resistor_SMD_R_0402_1005Metric,5,"R26, R27, R28, R29, R30",top,SMT
+Yageo,RC0402FR-07330RL,330R 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R32,top,SMT
+Yageo,RT0402BRD0710KL,10k 0.1%,Atlas:Resistor_SMD_R_0402_1005Metric,2,"R34, R35",top,SMT
+Yageo,RC0402FR-07100RL,100R 1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R38,top,SMT
+Yageo,RT0402BRD07312KL,312k 0.1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R42,top,SMT
+Yageo,RT0402BRD07100KL,100k 0.1%,Atlas:Resistor_SMD_R_0402_1005Metric,1,R43,top,SMT
+E-Switch,TL3342F160QG,RESET,Atlas:Button_Switch_SMD_SW_SPST_TL3342,2,"SW1, SW4",top,SMT
+E-Switch,TL3342F160QG,BOOT,Atlas:Button_Switch_SMD_SW_SPST_TL3342,2,"SW2, SW3",top,SMT
+C&K,JS102011SAQN,POWER,Atlas:Button_Switch_SMD_SW_SPDT_CK_JS102011SAQN,1,SW5,top,SMT
+Raspberry Pi,RP2350A,RP2350A,Atlas:Package_DFN_QFN_QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm,1,U1,top,SMT
+Winbond,W25Q32JVSSIQ,W25Q32JVSSIQ,Atlas:Package_SO_SOIC-8_5.3x5.3mm_P1.27mm,1,U2,top,SMT
+AP Memory,APS6404L-3SQR-SN,APS6404L-3SQR-SN,Atlas:Package_SO_SOIC-8_3.9x4.9mm_P1.27mm,1,U3,top,SMT
+Texas Instruments,BQ24074RGTR,BQ24074RGTR,Atlas:Package_DFN_QFN_VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm,1,U4,top,SMT
+Texas Instruments,TPS63070RNMR,TPS63070RNMR,Atlas:Custom_TPS63070_RNM0015A,1,U5,top,SMT
+Espressif Systems,ESP32-C3-WROOM-02-N4,ESP32-C3-WROOM-02-N4,Atlas:RF_Module_ESP32-C3-WROOM-02,1,U6,top,SMT with plated thermal features
+Texas Instruments,TLV75801PDBVR,TLV75801PDBVR,Atlas:Package_TO_SOT_SMD_SOT-23-5,1,U7,top,SMT
+STMicroelectronics,USBLC6-2SC6,USBLC6-2SC6,Atlas:Package_TO_SOT_SMD_SOT-23-6,1,U8,top,SMT
+Texas Instruments,TLV9001IDBVR,TLV9001IDBVR,Atlas:Package_TO_SOT_SMD_SOT-23-5,1,U9,top,SMT
+Texas Instruments,TPS22919DCKR,TPS22919DCKR,Atlas:Package_TO_SOT_SMD_SOT-363_SC-70-6,1,U10,top,SMT
+Abracon,ABM8-272-T3,12MHz / 10pF,Atlas:Crystal_Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm,1,Y1,top,SMT

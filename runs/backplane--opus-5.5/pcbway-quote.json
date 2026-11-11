@@ -1,0 +1,70 @@
+{
+	"one": {
+		"pcbQty": 5,
+		"pcbUsd": 62.04,
+		"assemblyUsd": 88.0,
+		"assemblyPromoUsd": 29.0
+	},
+	"five": {
+		"pcbUsd": 62.04,
+		"assemblyUsd": 89.26,
+		"assemblyPromoUsd": null
+	},
+	"pcbItems": {
+		"base (HASL LF, 6/6mil, 0.3mm, tented)": 32.2,
+		"ENIG 1u\" surcharge": 29.84,
+		"track/space 5/5mil surcharge": 0.0,
+		"min hole 0.25mm surcharge": 0.0,
+		"total_standard_build": 62.04,
+		"express_options": {
+			"express 48hours": 173.07,
+			"express 72hours": 122.93
+		},
+		"S1000H_TG150_alternative_total": 62.04
+	},
+	"options": {
+		"quoteTimeUtc": "2026-11-10T08:03:36+00:00",
+		"pcbBuildTime": "4-5 days",
+		"assemblyBuildTime": "5-6 days",
+		"pcbQtyMinimum": "5 (smallest quantity on orderonline.aspx; GetDeliveryDays returns [] for 1-4)",
+		"boardType": "Single pieces",
+		"size_mm": "80 x 38",
+		"layers": 4,
+		"material": "FR-4",
+		"FR4TG": "TG 150-160",
+		"thickness_mm": 1.6,
+		"minTrackSpace": "5/5mil",
+		"minHole_mm": 0.25,
+		"solderMask": "Green",
+		"silkscreen": "White",
+		"surfaceFinish": "Immersion gold (ENIG), 1u\"",
+		"outerCopper": "1 oz Cu",
+		"innerCopper": "1 oz",
+		"viaProcess": "Tenting vias",
+		"viaInPad": false,
+		"allViasResinFilledCapped": false,
+		"impedanceControl": false,
+		"assembly": {
+			"type": "Turnkey",
+			"boardType": "Single pieces",
+			"side": "Top side",
+			"qty": {
+				"one": 1,
+				"five": 5
+			},
+			"uniqueParts": 38,
+			"smdParts": 82,
+			"bgaQfpParts": 0,
+			"thtParts": 2
+		},
+		"method": "POST https://www.pcbway.com/Quote/GetDeliveryDays/ (body captured from orderonline.aspx and quotesmt.aspx with agent-browser, replayed with curl; anonymous). Recipe: /tmp/pcbway-quote-recipe.md"
+	},
+	"notes": "Inner copper 0.5 oz not offered -> 1 oz. Track/space 6/5 mil -> '5/5mil'. Five: no $29 promo because 24 THT joints x 5 = 120 > 100 per order (the instant quote still shows $29). Normal assembly at qty <= 10 = max($88, $25.27 + $0.1523 x parts/board x qty), unique parts have no effect. The struck-through 'list' price next to $29 ($243.69 at qty 1, $249.77 at qty 5) is the qty >= 11 formula and is not charged at these quantities.",
+	"fixes": [
+		{
+			"area": "fabSpec",
+			"problem": "The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+			"fix": "Quoted 1 oz inner copper"
+		}
+	]
+}

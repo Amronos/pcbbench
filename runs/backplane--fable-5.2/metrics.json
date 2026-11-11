@@ -1,0 +1,416 @@
+{
+	"startedAt": "2026-11-10T10:47:38.058Z",
+	"finishedAt": "2026-11-10T15:10:34.512Z",
+	"minutes": 225.37,
+	"endedBy": "done",
+	"tokens": {
+		"input": 274,
+		"cacheRead": 54010010,
+		"cacheWrite": 1152867,
+		"output": 459591,
+		"reasoning": 38622
+	},
+	"costUsd": 49.0875522,
+	"costSource": "API cost at market prices",
+	"boardCost": {
+		"afterFixes": true,
+		"oneBoard": {
+			"pcbQty": 5,
+			"pcbUsd": 62.04,
+			"assemblyUsd": 88,
+			"componentsUsd": 37.49,
+			"totalUsd": 187.53
+		},
+		"fiveBoards": {
+			"pcbUsd": 62.04,
+			"assemblyUsd": 88,
+			"componentsUsd": 113.38,
+			"totalUsd": 263.42,
+			"perBoardUsd": 52.68
+		},
+		"pricedAt": "2026-11-10T16:27:29.945Z",
+		"source": "PCB and assembly from PCBWay's instant quote (pcbway-quote.json) with the options in the run's fab notes, standard build, shipping excluded, no new-customer promo. PCBWay makes at least 5 bare PCBs, so one board means 5 PCBs with 1 assembled. Components at distributor list prices (components-pricing.json) for max(needed, minimum order): bench/part-prices.json where listed, else LCSC. When afterFixes is true, the design couldn't be ordered as delivered, and these are the prices after the changes listed in fixes."
+	},
+	"fixes": [
+		{
+			"area": "fabSpec",
+			"problem": "The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+			"fix": "Quoted 1 oz inner copper"
+		}
+	],
+	"boardSizeMm": {
+		"width": 76.2,
+		"height": 22.86
+	},
+	"missing3dModels": {
+		"count": 7,
+		"refs": [
+			"D1",
+			"J1",
+			"J2",
+			"J4",
+			"U1",
+			"U4",
+			"U7"
+		]
+	},
+	"bom": {
+		"lines": 36,
+		"partsNotInBom": [],
+		"refsNotOnBoard": [],
+		"qtyMismatchLines": [],
+		"linesWithoutMpn": 0,
+		"linesFixed": 0
+	},
+	"placement": {
+		"smdPartsMissing": [],
+		"refsNotOnBoard": [],
+		"duplicateRefs": [],
+		"wrongSide": [],
+		"positionOffByMoreThanHalfMm": [],
+		"rotationDiffersFromBoard": []
+	},
+	"parts": {
+		"lines": 36,
+		"inStockPercent": 97.2,
+		"notStocked": [
+			{
+				"refs": "C19, C20, C21",
+				"mpn": "CL05A475MP5NRNC",
+				"lcsc": "C23733",
+				"lcscStock": 0,
+				"digikeyStock": 0,
+				"needed": 15
+			}
+		],
+		"discontinued": [],
+		"padCountMismatches": []
+	},
+	"features": {
+		"rp2350": {
+			"status": "found",
+			"refs": [
+				"U1"
+			]
+		},
+		"qspiFlash": {
+			"status": "found",
+			"refs": [
+				"U2"
+			]
+		},
+		"psram": {
+			"status": "found",
+			"refs": [
+				"U3"
+			]
+		},
+		"usbC": {
+			"status": "found",
+			"refs": [
+				"J1"
+			]
+		},
+		"wifiBle": {
+			"status": "found",
+			"refs": [
+				"U7"
+			]
+		},
+		"microSd": {
+			"status": "found",
+			"refs": [
+				"J4"
+			]
+		},
+		"qwiic": {
+			"status": "found",
+			"refs": [
+				"J3"
+			]
+		},
+		"rgbLed": {
+			"status": "found",
+			"refs": [
+				"D1"
+			]
+		},
+		"chargerWithPowerPath": {
+			"status": "found",
+			"refs": [
+				"U4"
+			]
+		},
+		"batteryMonitoring": {
+			"status": "found",
+			"refs": [
+				"R12"
+			]
+		}
+	},
+	"deliverables": {
+		"readme": true,
+		"schematic": true,
+		"projectFile": true,
+		"fabFolder": true
+	},
+	"drc": {
+		"errors": 0,
+		"warnings": 1,
+		"unconnectedItems": 0,
+		"schematicParityIssues": 0,
+		"byType": {
+			"via_dangling": 1
+		}
+	},
+	"erc": {
+		"errors": 0,
+		"warnings": 0
+	},
+	"fab": {
+		"diffPercentByLayer": {
+			"In1.Cu": 0,
+			"In2.Cu": 0,
+			"B.Silkscreen": 0,
+			"Edge.Cuts": 0,
+			"F.Silkscreen": 0,
+			"B.Cu": 0,
+			"NPTH": 0,
+			"PTH": 0,
+			"F.Mask": 0,
+			"F.Cu": 0,
+			"B.Mask": 0,
+			"F.Paste": 0,
+			"B.Paste": 0
+		},
+		"layersDiffering": [],
+		"layersMissing": []
+	},
+	"needsFixes": {
+		"pcbManufacturing": [
+			"The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer"
+		],
+		"assembly": [
+			"not stocked for 5 boards: C19, C20, C21"
+		],
+		"bomLines": {
+			"total": 36,
+			"needingFixes": [
+				"C19, C20, C21"
+			]
+		}
+	},
+	"design": {
+		"decoupling": {
+			"maxMm": 3.2,
+			"pinsWithin": 8,
+			"powerPins": 14,
+			"pins": [
+				{
+					"pin": "IOVDD",
+					"pad": "1",
+					"net": "+3V3",
+					"capacitor": "C8",
+					"mm": 3.34
+				},
+				{
+					"pin": "DVDD",
+					"pad": "6",
+					"net": "+1V1",
+					"capacitor": "C21",
+					"mm": 7.34
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "11",
+					"net": "+3V3",
+					"capacitor": "C7",
+					"mm": 3.69
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "20",
+					"net": "+3V3",
+					"capacitor": "C9",
+					"mm": 4.27
+				},
+				{
+					"pin": "DVDD",
+					"pad": "23",
+					"net": "+1V1",
+					"capacitor": "C18",
+					"mm": 6.05
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "30",
+					"net": "+3V3",
+					"capacitor": "C11",
+					"mm": 1.43
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "38",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 3.11
+				},
+				{
+					"pin": "DVDD",
+					"pad": "39",
+					"net": "+1V1",
+					"capacitor": "C16",
+					"mm": 4.08
+				},
+				{
+					"pin": "ADC_AVDD",
+					"pad": "44",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 1.41
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "45",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 1.35
+				},
+				{
+					"pin": "VREG_AVDD",
+					"pad": "46",
+					"net": "/VREG_AVDD",
+					"capacitor": "C20",
+					"mm": 1.56
+				},
+				{
+					"pin": "VREG_VIN",
+					"pad": "49",
+					"net": "+3V3",
+					"capacitor": "C19",
+					"mm": 1.15
+				},
+				{
+					"pin": "USB_OTP_VDD",
+					"pad": "53",
+					"net": "+3V3",
+					"capacitor": "C13",
+					"mm": 1.14
+				},
+				{
+					"pin": "QSPI_IOVDD",
+					"pad": "54",
+					"net": "+3V3",
+					"capacitor": "C13",
+					"mm": 1.14
+				}
+			]
+		},
+		"battery": {
+			"fuelGauges": [],
+			"dividers": [
+				{
+					"top": "R12",
+					"bottom": "R13",
+					"topOhms": 200000,
+					"bottomOhms": 200000,
+					"bufferedBy": null,
+					"microampsAtFullCharge": 10.5,
+					"switchedBy": null
+				}
+			]
+		},
+		"usb": {
+			"dPlusNets": [
+				"/USB_DP",
+				"/USB_DP_R"
+			],
+			"dMinusNets": [
+				"/USB_DM",
+				"/USB_DM_R"
+			],
+			"dPlusMm": 44.52,
+			"dMinusMm": 42.26,
+			"mismatchMm": 2.26,
+			"vias": 3,
+			"pair": {
+				"layer": "F.Cu",
+				"widthMm": 0.15,
+				"gapMm": 0.16,
+				"lengthMm": 4.86
+			},
+			"differentialOhms": 114.7,
+			"esd": [
+				"U6"
+			]
+		},
+		"antennaKeepout": {
+			"module": "U7",
+			"keepouts": [
+				{
+					"owner": "board",
+					"name": "RM2 antenna keep-out",
+					"layers": [
+						"F.Cu",
+						"B.Cu",
+						"In1.Cu",
+						"In2.Cu"
+					],
+					"notAllowed": [
+						"tracks",
+						"vias",
+						"copperpour"
+					],
+					"copperInside": {
+						"tracks": 0,
+						"vias": 0,
+						"zoneFills": [],
+						"pads": []
+					}
+				}
+			]
+		}
+	},
+	"review": {
+		"judges": [
+			"opus-5.5",
+			"gpt-6.1-sol"
+		],
+		"yesVotes": {
+			"crystal": 2,
+			"buttons": 2,
+			"powerPath": 1
+		},
+		"meanScores": {
+			"thermal": 5,
+			"grounding": 6.5,
+			"layout": 6.5,
+			"routing": 3.5,
+			"silkscreen": 5
+		}
+	},
+	"suppliers": {
+		"lines": 36,
+		"validPercent": {
+			"LCSC": 50,
+			"Digi-Key": 0,
+			"Mouser": 0
+		},
+		"linesWithValidNumbers": {
+			"fromOne": 18,
+			"fromTwo": 0,
+			"fromAllThree": 0
+		},
+		"invalid": []
+	},
+	"score": {
+		"total": 58.9,
+		"groups": {
+			"designReview": 31.1,
+			"circuitChecks": 12.1,
+			"orderable": 9.7,
+			"partsData": 6
+		},
+		"missingFeatures": []
+	}
+}

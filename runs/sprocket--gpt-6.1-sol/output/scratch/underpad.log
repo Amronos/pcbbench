@@ -1,0 +1,38 @@
+ENV KNOBS: KICAD_CLI_PATH=/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli
+--clearance not given; escaping at the board Default net-class clearance 0.127mm.
+--board-edge-clearance not given; using the board min_copper_edge_clearance 0.3mm.
+--via-size not given; using the board Default net-class 0.6mm.
+--via-drill not given; using the board Default net-class 0.3mm.
+Parsing scratch/usb2.kicad_pcb...
+
+Found U1: Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm
+  Position: (55.00, 53.00)
+  Rotation: 0.0deg
+  Pads: 70
+  Layer: F.Cu (from footprint)
+  Netclass clearances for 12 net(s), honoured in full (no --clearance-ceiling) (mm: [0.127]); escape copper spaced at KiCad's pairwise max(A, B).
+QFN/QFP Layout Analysis for U1:
+  Center: (0.00, 0.00)
+  Bounding box: X[-3.45, 3.45], Y[-3.45, 3.45]
+  Size: 6.90 x 6.90 mm
+  Detected pad pitch: 0.40 mm
+  Edge tolerance: 0.69 mm
+  Stub length: pad_width / 2 + extension (clears pad before bend)
+  Layer: F.Cu
+  Found 60 pads to fanout:
+    bottom: 15 pads
+    left: 15 pads
+    right: 15 pads
+    top: 15 pads
+  Sample pad geometry: 0.20 x 0.80 mm
+  Escape method: underpad (via-drop), via 0.60/0.30 mm, allow via-in-pad
+  Hole-to-hole 0.25mm (from the board's own min_hole_to_hole)
+  Underpad via-drop: 40 vias placed, 20 dropped (pitch 0.40, via 0.60, stagger 0.657 mm, via-in-pad)
+    dropped (no clear via offset): ['/I2C_SCL', '/SD_DETECT', '/CHARGE_DISABLE', '/UART_RX', '/UART_CTS', '/UART_RTS', '/SWCLK', '/RUN', '/GPIO24', '/GAUGE_SCL', '/GPIO19', '/FLASH_CS', '/QSPI_D1', '/QSPI_D0', '/QSPI_D3', '/+3V3', '/MCU_USB_N', '/+3V3', '/VREG_LX', '/GND']
+
+  FAB NOTE (QFN underpad escape): 4 via(s) in a pad or paste opening [C13.1 F.Paste (pad), C18.1 F.Paste (pad), C9.1 F.Paste (pad), U1.45 F.Paste (pad)] -- 4 stamped (capping yes) (filling yes), 0 already filled+capped. via-in-pad requires IPC-4761 Type VII (filled + capped + plated); state it on the fab drawing or solder wicks into the barrel.
+    WARNING: 1 via-in-pad(s) cannot fit their pad, and no via the escalation policy allows is smaller than the 0.60mm asked for -- via kept at 0.60mm and still bulges past the pad edge
+
+Writing 39 tracks and 40 vias to scratch/underpad.kicad_pcb...
+Done!
+JSON_SUMMARY: {"component": "U1", "requested": 47, "escaped": 29, "failed": 18, "unescaped_nets": ["/+3V3", "/CHARGE_DISABLE", "/FLASH_CS", "/GAUGE_SCL", "/GND", "/GPIO19", "/GPIO24", "/I2C_SCL", "/QSPI_D0", "/QSPI_D1", "/QSPI_D3", "/RUN", "/SD_DETECT", "/SWCLK", "/UART_CTS", "/UART_RTS", "/UART_RX", "/VREG_LX"], "flagged_escaped_nets": ["/MCU_USB_N"], "skipped_nc": 0, "clearance": 0.127, "track_width": 0.127, "escape_method": "underpad", "via_size": 0.6, "via_drill": 0.3, "layer": "F.Cu", "drc_grazes": {"scope": "copper this step laid", "pad_via": 0, "via_segment": 0, "pad_segment": 0, "segment_segment": 0, "segment_crossing": 0, "other": 0, "total": 0}, "min_clearance_used": 0.127, "escalated": [], "allow_via_in_pad": true, "via_in_pad": 1, "via_in_pad_clamped": 0, "via_in_pad_offcentre": 0, "max_stub_mm": 3.95, "env_knobs": {"KICAD_CLI_PATH": "/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli"}}

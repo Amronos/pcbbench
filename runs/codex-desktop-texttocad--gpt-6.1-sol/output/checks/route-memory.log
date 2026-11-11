@@ -1,0 +1,19 @@
+route: NOT routed QSPI_IO2: U1.58 to U2.3: U1.58 is walled in by QSPI_IO0 (routed first in this plan), QSPI_IO1 (routed first in this plan) and QSPI_CLK_SRC (routed first in this plan): no way out of a pocket under 0.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed QSPI_IO2: U1.58 to U3.3: U1.58 is walled in by QSPI_IO0 (routed first in this plan), QSPI_IO1 (routed first in this plan) and QSPI_CLK_SRC (routed first in this plan): no way out of a pocket under 0.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed QSPI_CLK_SRC: R16.1 to U1.56: 4.65 mm in 6 segments
+routed QSPI_CLK: R16.2 to U2.6: 9.43 mm in 6 segments
+routed QSPI_CLK: R16.2 to U3.6: 12.51 mm in 6 segments
+routed QSPI_IO0: U1.57 to U2.5: 8.25 mm in 6 segments, 2 vias
+routed QSPI_IO0: U2.5 to U3.5: 9.77 mm in 3 segments, 1 via
+routed QSPI_IO1: U1.59 to U2.2: 19.02 mm in 10 segments, 2 vias
+routed QSPI_IO1: U2.2 to U3.2: 10.61 mm in 5 segments
+NOT routed QSPI_IO2: U1.58 to U2.3: U1.58 is walled in by QSPI_IO0 (routed first in this plan), QSPI_IO1 (routed first in this plan) and QSPI_CLK_SRC (routed first in this plan): no way out of a pocket under 0.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+NOT routed QSPI_IO2: U1.58 to U3.3: U1.58 is walled in by QSPI_IO0 (routed first in this plan), QSPI_IO1 (routed first in this plan) and QSPI_CLK_SRC (routed first in this plan): no way out of a pocket under 0.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed QSPI_IO3: U1.55 to U2.7: 11.17 mm in 7 segments
+routed QSPI_IO3: U2.7 to U3.7: 11.32 mm in 5 segments
+routed FLASH_CS: R14.1 to U2.1: 9.67 mm in 3 segments
+routed FLASH_CS: R14.1 to U1.60: 16.63 mm in 11 segments, 2 vias
+routed FLASH_CS: U2.1 to R19.2: 18.59 mm in 3 segments
+routed PSRAM_CS: R15.1 to U1.2: 12.26 mm in 9 segments, 2 vias
+routed PSRAM_CS: R15.1 to U3.1: 7.21 mm in 4 segments, 1 via
+NOT ROUTED: 14 of 16 connection(s) routed, 87 segment(s), 10 via(s), 161.1 mm of track, in 0.6 s; 2 not routed, each said above

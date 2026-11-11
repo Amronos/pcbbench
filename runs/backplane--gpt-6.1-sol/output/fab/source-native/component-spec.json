@@ -1,0 +1,2827 @@
+[
+  {
+    "ref": "U1",
+    "lib": "MCU_RaspberryPi:RP2350A",
+    "value": "RP2350A",
+    "mpn": "RP2350A",
+    "mfr": "Raspberry Pi",
+    "pins": {
+      "1": "3V3",
+      "6": "1V1",
+      "11": "3V3",
+      "20": "3V3",
+      "21": "XIN",
+      "22": "XOUT_DRV",
+      "23": "1V1",
+      "24": "SWCLK",
+      "25": "SWDIO",
+      "26": "RUN",
+      "30": "3V3",
+      "38": "3V3",
+      "39": "1V1",
+      "40": "VBAT_ADC",
+      "41": "GP27",
+      "42": "GP28",
+      "43": "GP29",
+      "44": "ADC_3V3",
+      "45": "3V3",
+      "46": "3V3",
+      "47": "GND",
+      "48": null,
+      "49": "3V3",
+      "50": "GND",
+      "51": "USB_DM_MCU",
+      "52": "USB_DP_MCU",
+      "53": "3V3",
+      "54": "3V3",
+      "55": "QSPI_D3",
+      "56": "QSPI_CLK",
+      "57": "QSPI_D0",
+      "58": "QSPI_D2",
+      "59": "QSPI_D1",
+      "60": "FLASH_CS",
+      "61": "GND",
+      "2": "PSRAM_CS",
+      "3": "SD_PWR_EN",
+      "4": "I2C_SDA",
+      "5": "I2C_SCL",
+      "7": "ESP_AT_RX",
+      "8": "ESP_AT_TX",
+      "9": "ESP_AT_RTS",
+      "10": "ESP_AT_CTS",
+      "12": "SD_MISO",
+      "13": "SD_CS",
+      "14": "SD_CLK_DRV",
+      "15": "SD_MOSI",
+      "16": "GP12",
+      "17": "GP13",
+      "18": "GP14",
+      "19": "GP15",
+      "27": "ESP_EN",
+      "28": "ESP_BOOT",
+      "29": "USB_EN1",
+      "31": "CHG_DISABLE",
+      "32": "USB_EN2",
+      "33": "CHG_N",
+      "34": "USB_PGOOD_N",
+      "35": "RGB_DATA",
+      "36": "SD_DET_N",
+      "37": "GP25"
+    },
+    "group": "mcu",
+    "pcbpos": [
+      137,
+      134,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      66.04,
+      76.2
+    ],
+    "note": "Procure A2 or later silicon; do not substitute A1. Externally supplied 1.1V core; firmware sets VREG.HIZ.",
+    "localfp": "connect:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm",
+    "localsym": "connect:RP2350A"
+  },
+  {
+    "ref": "U2",
+    "lib": "Memory_Flash:W25Q128JVS",
+    "value": "16MB QSPI",
+    "mpn": "W25Q128JVSIQ",
+    "mfr": "Winbond",
+    "pins": {
+      "1": "FLASH_CS",
+      "2": "QSPI_D1",
+      "3": "QSPI_D2",
+      "4": "GND",
+      "5": "QSPI_D0",
+      "6": "QSPI_CLK",
+      "7": "QSPI_D3",
+      "8": "3V3"
+    },
+    "group": "memory",
+    "pcbpos": [
+      137,
+      121,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      142.24,
+      35.56
+    ],
+    "note": "",
+    "localfp": "connect:SOIC-8_5.3x5.3mm_P1.27mm",
+    "localsym": "connect:W25Q128JVS"
+  },
+  {
+    "ref": "U3",
+    "lib": "Memory_RAM:APS6404L-3SQRx-SN",
+    "value": "8MB PSRAM",
+    "mpn": "APS6404L-3SQR-SN",
+    "mfr": "AP Memory",
+    "pins": {
+      "1": "PSRAM_CS",
+      "2": "QSPI_D1",
+      "3": "QSPI_D2",
+      "4": "GND",
+      "5": "QSPI_D0",
+      "6": "QSPI_CLK",
+      "7": "QSPI_D3",
+      "8": "3V3"
+    },
+    "group": "memory",
+    "pcbpos": [
+      149,
+      121,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      190.5,
+      35.56
+    ],
+    "note": "",
+    "localfp": "connect:SOIC-8_3.9x4.9mm_P1.27mm",
+    "localsym": "connect:APS6404L-3SQRx-SN"
+  },
+  {
+    "ref": "R1",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "FLASH_CS",
+      "2": "3V3"
+    },
+    "group": "memory",
+    "pcbpos": [
+      131,
+      122,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R2",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "PSRAM_CS",
+      "2": "3V3"
+    },
+    "group": "memory",
+    "pcbpos": [
+      155,
+      120,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C1",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "memory",
+    "pcbpos": [
+      141,
+      126,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C2",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "memory",
+    "pcbpos": [
+      152,
+      126,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "U4",
+    "lib": "Regulator_Switching:TPS62823DLC",
+    "value": "1.1V core buck",
+    "mpn": "TPS62823DLCR",
+    "mfr": "Texas Instruments",
+    "pins": {
+      "1": "3V3",
+      "2": "CORE_FB",
+      "3": "GND",
+      "4": null,
+      "5": "GND",
+      "6": "CORE_SW",
+      "7": "3V3",
+      "8": "CORE_PG"
+    },
+    "group": "core",
+    "pcbpos": [
+      146,
+      136,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      144.78,
+      83.82
+    ],
+    "note": "",
+    "localfp": "connect:Texas_VSON-HR-8_1.5x2mm_P0.5mm",
+    "localsym": "connect:TPS62823DLC"
+  },
+  {
+    "ref": "L1",
+    "lib": "Device:L",
+    "value": "470nH",
+    "mpn": "DFE201610P-R47M=P2",
+    "mfr": "Murata",
+    "pins": {
+      "1": "CORE_SW",
+      "2": "1V1"
+    },
+    "group": "core",
+    "pcbpos": [
+      149,
+      133,
+      0
+    ],
+    "footprint": "Inductor_SMD:L_Murata_DFE201610P",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:L_Murata_DFE201610P",
+    "localsym": "connect:L"
+  },
+  {
+    "ref": "C3",
+    "lib": "Device:C",
+    "value": "4.7u",
+    "mpn": "GRM21BR61A475KA73L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "core",
+    "pcbpos": [
+      143,
+      134,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C4",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "1V1",
+      "2": "GND"
+    },
+    "group": "core",
+    "pcbpos": [
+      151,
+      136,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R3",
+    "lib": "Device:R",
+    "value": "83.5k",
+    "mpn": "RC0603FR-0783K5L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "1V1",
+      "2": "CORE_FB"
+    },
+    "group": "core",
+    "pcbpos": [
+      147.5,
+      139,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R4",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CORE_FB",
+      "2": "GND"
+    },
+    "group": "core",
+    "pcbpos": [
+      151,
+      139,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C5",
+    "lib": "Device:C",
+    "value": "120p",
+    "mpn": "GRM1885C1H121JA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "1V1",
+      "2": "CORE_FB"
+    },
+    "group": "core",
+    "pcbpos": [
+      147.5,
+      141,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R5",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CORE_PG",
+      "2": "3V3"
+    },
+    "group": "core",
+    "pcbpos": [
+      144,
+      139,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C6",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      131,
+      131,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C7",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      132,
+      139,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C8",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      136,
+      140,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C9",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      143,
+      131,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C10",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      143,
+      137,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C11",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      133,
+      127,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C12",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      138,
+      128,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C13",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "1V1",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      140,
+      140,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C14",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "1V1",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      134,
+      139,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C15",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM155R71C104KA88D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "1V1",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      131,
+      136,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C16",
+    "lib": "Device:C",
+    "value": "4.7u",
+    "mpn": "GRM21BR61A475KA73L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      139,
+      143,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C17",
+    "lib": "Device:C",
+    "value": "1u",
+    "mpn": "GRM188R61C105KA93D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "ADC_3V3",
+      "2": "GND"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      144,
+      144,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R6",
+    "lib": "Device:R",
+    "value": "200",
+    "mpn": "RC0603FR-07200RL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "3V3",
+      "2": "ADC_3V3"
+    },
+    "group": "decoupling",
+    "pcbpos": [
+      144,
+      142,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "Y1",
+    "lib": "Device:Crystal_GND24",
+    "value": "12MHz CL10pF",
+    "mpn": "ABM8-272-T3",
+    "mfr": "Abracon",
+    "pins": {
+      "1": "XIN",
+      "2": "GND",
+      "3": "XOUT",
+      "4": "GND"
+    },
+    "group": "clock",
+    "pcbpos": [
+      128,
+      136,
+      0
+    ],
+    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+    "schpos": null,
+    "note": "12MHz, CL=10pF, ESR <=50 ohms.",
+    "localfp": "connect:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+    "localsym": "connect:Crystal_GND24"
+  },
+  {
+    "ref": "R7",
+    "lib": "Device:R",
+    "value": "1k",
+    "mpn": "RC0603FR-071KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "XOUT_DRV",
+      "2": "XOUT"
+    },
+    "group": "clock",
+    "pcbpos": [
+      129,
+      140,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C18",
+    "lib": "Device:C",
+    "value": "15p",
+    "mpn": "GRM1555C1H150JA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "XIN",
+      "2": "GND"
+    },
+    "group": "clock",
+    "pcbpos": [
+      125,
+      135,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C19",
+    "lib": "Device:C",
+    "value": "15p",
+    "mpn": "GRM1555C1H150JA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "XOUT",
+      "2": "GND"
+    },
+    "group": "clock",
+    "pcbpos": [
+      125,
+      138,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0402_1005Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R8",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "RUN",
+      "2": "3V3"
+    },
+    "group": "controls",
+    "pcbpos": [
+      129,
+      127,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C20",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "RUN",
+      "2": "GND"
+    },
+    "group": "controls",
+    "pcbpos": [
+      127,
+      127,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "SW1",
+    "lib": "Switch:SW_Push",
+    "value": "Pushbutton",
+    "mpn": "PTS810SJM250SMTRLFS",
+    "mfr": "C&K",
+    "pins": {
+      "1": "RUN",
+      "2": "GND"
+    },
+    "group": "controls",
+    "pcbpos": [
+      124,
+      147,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_PTS810",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:SW_SPST_PTS810",
+    "localsym": "connect:SW_Push"
+  },
+  {
+    "ref": "R9",
+    "lib": "Device:R",
+    "value": "1k",
+    "mpn": "RC0603FR-071KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "FLASH_CS",
+      "2": "BOOT_SW"
+    },
+    "group": "controls",
+    "pcbpos": [
+      129,
+      122,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "SW2",
+    "lib": "Switch:SW_Push",
+    "value": "Pushbutton",
+    "mpn": "PTS810SJM250SMTRLFS",
+    "mfr": "C&K",
+    "pins": {
+      "1": "BOOT_SW",
+      "2": "GND"
+    },
+    "group": "controls",
+    "pcbpos": [
+      132,
+      147,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_PTS810",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:SW_SPST_PTS810",
+    "localsym": "connect:SW_Push"
+  },
+  {
+    "ref": "J1",
+    "lib": "Connector:USB_C_Receptacle_USB2.0_16P",
+    "value": "USB-C",
+    "mpn": "USB4105-GF-A",
+    "mfr": "GCT",
+    "pins": {
+      "A1": "GND",
+      "A4": "VBUS_RAW",
+      "A5": "CC1",
+      "A6": "USB_DP",
+      "A7": "USB_DM",
+      "A8": null,
+      "A9": "VBUS_RAW",
+      "A12": "GND",
+      "B1": "GND",
+      "B4": "VBUS_RAW",
+      "B5": "CC2",
+      "B6": "USB_DP",
+      "B7": "USB_DM",
+      "B8": null,
+      "B9": "VBUS_RAW",
+      "B12": "GND",
+      "SH": "GND"
+    },
+    "group": "usb",
+    "pcbpos": [
+      102,
+      143,
+      270
+    ],
+    "footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+    "schpos": [
+      335.28,
+      38.1
+    ],
+    "note": "",
+    "localfp": "connect:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+    "localsym": "connect:USB_C_Receptacle_USB2.0_16P"
+  },
+  {
+    "ref": "R10",
+    "lib": "Device:R",
+    "value": "5.1k",
+    "mpn": "RC0603FR-075K1L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CC1",
+      "2": "GND"
+    },
+    "group": "usb",
+    "pcbpos": [
+      108,
+      140,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R11",
+    "lib": "Device:R",
+    "value": "5.1k",
+    "mpn": "RC0603FR-075K1L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CC2",
+      "2": "GND"
+    },
+    "group": "usb",
+    "pcbpos": [
+      108,
+      138,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "U5",
+    "lib": "Power_Protection:USBLC6-2SC6",
+    "value": "USB ESD",
+    "mpn": "USBLC6-2SC6",
+    "mfr": "STMicroelectronics",
+    "pins": {
+      "1": "USB_DM",
+      "2": "GND",
+      "3": "USB_DP",
+      "4": "USB_DP",
+      "5": "VBUS_RAW",
+      "6": "USB_DM"
+    },
+    "group": "usb",
+    "pcbpos": [
+      110,
+      143,
+      0
+    ],
+    "footprint": null,
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:SOT-23-6",
+    "localsym": "connect:USBLC6-2SC6"
+  },
+  {
+    "ref": "R12",
+    "lib": "Device:R",
+    "value": "27",
+    "mpn": "RC0603FR-0727RL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "USB_DM",
+      "2": "USB_DM_MCU"
+    },
+    "group": "usb",
+    "pcbpos": [
+      132,
+      129,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R13",
+    "lib": "Device:R",
+    "value": "27",
+    "mpn": "RC0603FR-0727RL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "USB_DP",
+      "2": "USB_DP_MCU"
+    },
+    "group": "usb",
+    "pcbpos": [
+      134,
+      129,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "F1",
+    "lib": "Device:Polyfuse",
+    "value": "750mA resettable",
+    "mpn": "MF-MSMF075-2",
+    "mfr": "Bourns",
+    "pins": {
+      "1": "VBUS_RAW",
+      "2": "VBUS"
+    },
+    "group": "usb",
+    "pcbpos": [
+      110,
+      134,
+      0
+    ],
+    "footprint": "Fuse:Fuse_1812_4532Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:Fuse_1812_4532Metric",
+    "localsym": "connect:Polyfuse"
+  },
+  {
+    "ref": "D1",
+    "lib": "Device:D_TVS",
+    "value": "5V TVS",
+    "mpn": "SMF5.0A",
+    "mfr": "Littelfuse",
+    "pins": {
+      "1": "GND",
+      "2": "VBUS_RAW"
+    },
+    "group": "usb",
+    "pcbpos": [
+      107,
+      134,
+      90
+    ],
+    "footprint": "Diode_SMD:D_SOD-123F",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:D_SOD-123F",
+    "localsym": "connect:D_TVS"
+  },
+  {
+    "ref": "C21",
+    "lib": "Device:C",
+    "value": "1u",
+    "mpn": "GRM188R61C105KA93D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VBUS",
+      "2": "GND"
+    },
+    "group": "usb",
+    "pcbpos": [
+      115,
+      132,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "U6",
+    "lib": "Battery_Management:BQ24074RGT",
+    "value": "LiPo power-path",
+    "mpn": "BQ24074RGTR",
+    "mfr": "Texas Instruments",
+    "pins": {
+      "1": "BAT_NTC",
+      "2": "VBAT",
+      "3": "VBAT",
+      "4": "CHG_DISABLE",
+      "5": "USB_EN2",
+      "6": "USB_EN1",
+      "7": "USB_PGOOD_N",
+      "8": "GND",
+      "9": "CHG_N",
+      "10": "VSYS",
+      "11": "VSYS",
+      "12": "CHG_ILIM",
+      "13": "VBUS",
+      "14": "CHG_TIMER",
+      "15": null,
+      "16": "CHG_ISET",
+      "17": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      115,
+      125,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      53.34,
+      213.36
+    ],
+    "note": "External protected 1S 4.2V pack with 10k NTC. ISET=1.78k, nominal499mA. ITERM default10%.",
+    "localfp": "connect:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm",
+    "localsym": "connect:BQ24074RGT"
+  },
+  {
+    "ref": "J2",
+    "lib": "Connector_Generic:Conn_01x03",
+    "value": "LiPo + NTC",
+    "mpn": "B3B-PH-K-S(LF)(SN)",
+    "mfr": "JST",
+    "pins": {
+      "1": "VBAT",
+      "2": "GND",
+      "3": "BAT_NTC"
+    },
+    "group": "charger",
+    "pcbpos": [
+      106,
+      115,
+      0
+    ],
+    "footprint": "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical",
+    "localsym": "connect:Conn_01x03"
+  },
+  {
+    "ref": "C22",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VBAT",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      112,
+      121,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C23",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      119,
+      125,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C24",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VBUS",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      112,
+      128,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R14",
+    "lib": "Device:R",
+    "value": "1.78k",
+    "mpn": "RC0603FR-071K78L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CHG_ISET",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      116,
+      128,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R15",
+    "lib": "Device:R",
+    "value": "3.24k",
+    "mpn": "RC0603FR-073K24L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CHG_ILIM",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      119,
+      128,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R16",
+    "lib": "Device:R",
+    "value": "39k",
+    "mpn": "RC0603FR-0739KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CHG_TIMER",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      120,
+      122,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R17",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "USB_EN1",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      122,
+      129,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R18",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "USB_EN2",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      122,
+      131,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R19",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CHG_DISABLE",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      121,
+      135,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R20",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "USB_PGOOD_N",
+      "2": "3V3"
+    },
+    "group": "charger",
+    "pcbpos": [
+      125,
+      131,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R21",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "CHG_N",
+      "2": "3V3"
+    },
+    "group": "charger",
+    "pcbpos": [
+      125,
+      133,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C25",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "BAT_NTC",
+      "2": "GND"
+    },
+    "group": "charger",
+    "pcbpos": [
+      109,
+      119,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "U7",
+    "lib": "Regulator_Switching:TPS63060",
+    "value": "3.3V buck-boost",
+    "mpn": "TPS63060DSCR",
+    "mfr": "Texas Instruments",
+    "pins": {
+      "1": "BB_L1",
+      "2": "VSYS",
+      "3": "VSYS",
+      "4": "GND",
+      "5": "MAIN_PG",
+      "6": "BB_VAUX",
+      "7": "GND",
+      "8": "MAIN_FB",
+      "9": "3V3",
+      "10": "BB_L2",
+      "11": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      125,
+      119,
+      0
+    ],
+    "footprint": "Package_SON:Texas_S-PWSON-N10",
+    "schpos": [
+      147.32,
+      213.36
+    ],
+    "note": "",
+    "localfp": "connect:Texas_S-PWSON-N10",
+    "localsym": "connect:TPS63060"
+  },
+  {
+    "ref": "L2",
+    "lib": "Device:L",
+    "value": "1uH",
+    "mpn": "DFE201610P-1R0M=P2",
+    "mfr": "Murata",
+    "pins": {
+      "1": "BB_L1",
+      "2": "BB_L2"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      125,
+      116,
+      0
+    ],
+    "footprint": "Inductor_SMD:L_Murata_DFE201610P",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:L_Murata_DFE201610P",
+    "localsym": "connect:L"
+  },
+  {
+    "ref": "C26",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      121,
+      118,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C27",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      121,
+      115,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C28",
+    "lib": "Device:C",
+    "value": "22u",
+    "mpn": "GRM31CR61A226KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      129,
+      115,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_1206_3216Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C29",
+    "lib": "Device:C",
+    "value": "22u",
+    "mpn": "GRM31CR61A226KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      132,
+      115,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_1206_3216Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C30",
+    "lib": "Device:C",
+    "value": "22u",
+    "mpn": "GRM31CR61A226KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      135,
+      115,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_1206_3216Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C31",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "BB_VAUX",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      129,
+      120,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R22",
+    "lib": "Device:R",
+    "value": "560k",
+    "mpn": "RC0603FR-07560KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "3V3",
+      "2": "MAIN_FB"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      129,
+      118,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R23",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "MAIN_FB",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      132,
+      118,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C32",
+    "lib": "Device:C",
+    "value": "10p",
+    "mpn": "GRM1885C1H100JA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "MAIN_FB",
+      "2": "GND"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      132,
+      120,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R24",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "MAIN_PG",
+      "2": "3V3"
+    },
+    "group": "mainpower",
+    "pcbpos": [
+      135,
+      119,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R25",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "VBAT",
+      "2": "VBAT_ADC"
+    },
+    "group": "batteryadc",
+    "pcbpos": [
+      145,
+      147,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R26",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "VBAT_ADC",
+      "2": "GND"
+    },
+    "group": "batteryadc",
+    "pcbpos": [
+      148,
+      147,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C33",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "VBAT_ADC",
+      "2": "GND"
+    },
+    "group": "batteryadc",
+    "pcbpos": [
+      151,
+      147,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "U8",
+    "lib": "RF_Module:ESP32-C3-WROOM-02",
+    "value": "Wi-Fi + BLE",
+    "mpn": "ESP32-C3-WROOM-02-N4",
+    "mfr": "Espressif Systems",
+    "pins": {
+      "1": "3V3",
+      "2": "ESP_EN",
+      "3": "ESP_AT_RTS",
+      "4": "ESP_AT_CTS",
+      "5": "ESP_AT_RX",
+      "6": "ESP_AT_TX",
+      "7": "ESP_STRAP8",
+      "8": "ESP_BOOT",
+      "9": "GND",
+      "10": null,
+      "11": "ESP_PROG_RX",
+      "12": "ESP_PROG_TX",
+      "13": null,
+      "14": null,
+      "15": null,
+      "16": "ESP_STRAP2",
+      "17": null,
+      "18": null,
+      "19": "GND"
+    },
+    "group": "radio",
+    "pcbpos": [
+      171,
+      108,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      251.46,
+      43.18
+    ],
+    "note": "4MB module. Antenna projects beyond PCB north edge. Load ESP32-C3-WROOM-02 ESP-AT binary on UART0; command UART1 is GPIO6/7/5/4.",
+    "localfp": "connect:ESP32-C3-WROOM-02",
+    "localsym": "connect:ESP32-C3-WROOM-02"
+  },
+  {
+    "ref": "C34",
+    "lib": "Device:C",
+    "value": "22u",
+    "mpn": "GRM31CR61A226KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "radio",
+    "pcbpos": [
+      157,
+      105,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_1206_3216Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C35",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "radio",
+    "pcbpos": [
+      159,
+      104,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R27",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "ESP_EN",
+      "2": "GND"
+    },
+    "group": "radio",
+    "pcbpos": [
+      159,
+      108,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C36",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "ESP_EN",
+      "2": "GND"
+    },
+    "group": "radio",
+    "pcbpos": [
+      159,
+      110,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R28",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "ESP_BOOT",
+      "2": "3V3"
+    },
+    "group": "radio",
+    "pcbpos": [
+      157,
+      113,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R29",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "ESP_STRAP8",
+      "2": "3V3"
+    },
+    "group": "radio",
+    "pcbpos": [
+      157,
+      115,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R30",
+    "lib": "Device:R",
+    "value": "10k",
+    "mpn": "RC0603FR-0710KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "ESP_STRAP2",
+      "2": "3V3"
+    },
+    "group": "radio",
+    "pcbpos": [
+      180,
+      103,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "SW3",
+    "lib": "Switch:SW_Push",
+    "value": "Pushbutton",
+    "mpn": "PTS810SJM250SMTRLFS",
+    "mfr": "C&K",
+    "pins": {
+      "1": "ESP_BOOT",
+      "2": "GND"
+    },
+    "group": "radio",
+    "pcbpos": [
+      155,
+      151,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_PTS810",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:SW_SPST_PTS810",
+    "localsym": "connect:SW_Push"
+  },
+  {
+    "ref": "J3",
+    "lib": "Connector_Generic:Conn_01x06",
+    "value": "ESP UART0",
+    "mpn": "SSQ-106-03-G-S",
+    "mfr": "Samtec",
+    "pins": {
+      "1": "GND",
+      "2": "3V3",
+      "3": "ESP_PROG_TX",
+      "4": "ESP_PROG_RX",
+      "5": "ESP_EN",
+      "6": "ESP_BOOT"
+    },
+    "group": "radio",
+    "pcbpos": [
+      181,
+      119,
+      0
+    ],
+    "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x06_P2.54mm_Vertical",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:PinSocket_1x06_P2.54mm_Vertical",
+    "localsym": "connect:Conn_01x06"
+  },
+  {
+    "ref": "J4",
+    "lib": "Connector:Micro_SD_Card_Det_Hirose_DM3AT",
+    "value": "microSD SPI",
+    "mpn": "DM3AT-SF-PEJM5",
+    "mfr": "Hirose",
+    "pins": {
+      "1": "SD_DAT2",
+      "2": "SD_CS",
+      "3": "SD_MOSI",
+      "4": "SD_3V3",
+      "5": "SD_CLK",
+      "6": "GND",
+      "7": "SD_MISO",
+      "8": "SD_DAT1",
+      "9": "SD_DET_N",
+      "10": "GND",
+      "SH": "GND"
+    },
+    "group": "sd",
+    "pcbpos": [
+      173,
+      149,
+      90
+    ],
+    "footprint": "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5",
+    "schpos": [
+      243.84,
+      119.38
+    ],
+    "note": "",
+    "localfp": "connect:microSD_HC_Hirose_DM3AT-SF-PEJM5",
+    "localsym": "connect:Micro_SD_Card_Det_Hirose_DM3AT"
+  },
+  {
+    "ref": "R31",
+    "lib": "Device:R",
+    "value": "47k",
+    "mpn": "RC0603FR-0747KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_CS",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      164,
+      142,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R32",
+    "lib": "Device:R",
+    "value": "47k",
+    "mpn": "RC0603FR-0747KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_MOSI",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      164,
+      144,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R33",
+    "lib": "Device:R",
+    "value": "47k",
+    "mpn": "RC0603FR-0747KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_MISO",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      164,
+      146,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R34",
+    "lib": "Device:R",
+    "value": "47k",
+    "mpn": "RC0603FR-0747KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_DAT1",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      161,
+      142,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R35",
+    "lib": "Device:R",
+    "value": "47k",
+    "mpn": "RC0603FR-0747KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_DAT2",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      161,
+      144,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R36",
+    "lib": "Device:R",
+    "value": "47k",
+    "mpn": "RC0603FR-0747KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_DET_N",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      161,
+      146,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R37",
+    "lib": "Device:R",
+    "value": "33",
+    "mpn": "RC0603FR-0733RL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_CLK_DRV",
+      "2": "SD_CLK"
+    },
+    "group": "sd",
+    "pcbpos": [
+      143,
+      130,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C37",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "SD_3V3",
+      "2": "GND"
+    },
+    "group": "sd",
+    "pcbpos": [
+      164,
+      139,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C38",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "SD_3V3",
+      "2": "GND"
+    },
+    "group": "sd",
+    "pcbpos": [
+      166,
+      139,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "J5",
+    "lib": "Connector_Generic:Conn_01x04",
+    "value": "Qwiic / STEMMA QT",
+    "mpn": "SM04B-SRSS-TB(LF)(SN)",
+    "mfr": "JST",
+    "pins": {
+      "1": "GND",
+      "2": "3V3",
+      "3": "I2C_SDA",
+      "4": "I2C_SCL"
+    },
+    "group": "qwiic",
+    "pcbpos": [
+      110,
+      158,
+      270
+    ],
+    "footprint": "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+    "localsym": "connect:Conn_01x04"
+  },
+  {
+    "ref": "R38",
+    "lib": "Device:R",
+    "value": "4.7k",
+    "mpn": "RC0603FR-074K7L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "I2C_SDA",
+      "2": "3V3"
+    },
+    "group": "qwiic",
+    "pcbpos": [
+      118,
+      156,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R39",
+    "lib": "Device:R",
+    "value": "4.7k",
+    "mpn": "RC0603FR-074K7L",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "I2C_SCL",
+      "2": "3V3"
+    },
+    "group": "qwiic",
+    "pcbpos": [
+      118,
+      158,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C39",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "qwiic",
+    "pcbpos": [
+      115,
+      154,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "U9",
+    "lib": "Regulator_Switching:MCP1640x-xCHY",
+    "value": "5V LED boost",
+    "mpn": "MCP1640T-I/CHY",
+    "mfr": "Microchip",
+    "pins": {
+      "1": "LED_SW",
+      "2": "GND",
+      "3": "3V3",
+      "4": "LED_FB",
+      "5": "LED_5V",
+      "6": "3V3"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      151,
+      157,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      327.66,
+      215.9
+    ],
+    "note": "",
+    "localfp": "connect:SOT-23-6_LED",
+    "localsym": "connect:MCP1640x-xCHY"
+  },
+  {
+    "ref": "L3",
+    "lib": "Device:L",
+    "value": "2.2uH",
+    "mpn": "DFE201610P-2R2M=P2",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "LED_SW"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      151,
+      154,
+      0
+    ],
+    "footprint": "Inductor_SMD:L_Murata_DFE201610P",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:L_Murata_DFE201610P",
+    "localsym": "connect:L"
+  },
+  {
+    "ref": "C40",
+    "lib": "Device:C",
+    "value": "4.7u",
+    "mpn": "GRM21BR61A475KA73L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      147,
+      155,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "C41",
+    "lib": "Device:C",
+    "value": "10u",
+    "mpn": "GRM21BR61A106KE19L",
+    "mfr": "Murata",
+    "pins": {
+      "1": "LED_5V",
+      "2": "GND"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      155,
+      157,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0805_2012Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R40",
+    "lib": "Device:R",
+    "value": "976k",
+    "mpn": "RC0603FR-07976KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "LED_5V",
+      "2": "LED_FB"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      152,
+      160,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R41",
+    "lib": "Device:R",
+    "value": "309k",
+    "mpn": "RC0603FR-07309KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "LED_FB",
+      "2": "GND"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      156,
+      160,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "U10",
+    "lib": "74xGxx:74AHCT1G125",
+    "value": "LED level buffer",
+    "mpn": "SN74AHCT1G125DBVR",
+    "mfr": "Texas Instruments",
+    "pins": {
+      "1": "GND",
+      "2": "RGB_DATA",
+      "3": "GND",
+      "4": "RGB_5V_DATA",
+      "5": "LED_5V"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      144,
+      157,
+      0
+    ],
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:SOT-23-5",
+    "localsym": "connect:74AHCT1G125"
+  },
+  {
+    "ref": "C42",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "LED_5V",
+      "2": "GND"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      141,
+      157,
+      90
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "R42",
+    "lib": "Device:R",
+    "value": "330",
+    "mpn": "RC0603FR-07330RL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "RGB_5V_DATA",
+      "2": "RGB_DIN"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      144,
+      160,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R43",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "RGB_DATA",
+      "2": "GND"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      141,
+      160,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "D2",
+    "lib": "LED:SK6812MINI",
+    "value": "Addressable RGB",
+    "mpn": "SK6812MINI",
+    "mfr": "OPSCO Optoelectronics",
+    "pins": {
+      "1": null,
+      "2": "GND",
+      "3": "RGB_DIN",
+      "4": "LED_5V"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      137,
+      154,
+      0
+    ],
+    "footprint": null,
+    "schpos": null,
+    "note": "5V supply, GRB data at800kHz; recommended brightness/current cap in firmware.",
+    "localfp": "connect:LED_SK6812MINI_PLCC4_3.5x3.5mm_P1.75mm",
+    "localsym": "connect:SK6812MINI"
+  },
+  {
+    "ref": "C43",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "LED_5V",
+      "2": "GND"
+    },
+    "group": "rgb",
+    "pcbpos": [
+      137,
+      158,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  },
+  {
+    "ref": "J6",
+    "lib": "Connector_Generic:Conn_01x12",
+    "value": "GPIO socket A",
+    "mpn": "SSQ-112-03-G-S",
+    "mfr": "Samtec",
+    "pins": {
+      "1": "3V3",
+      "2": "GND",
+      "3": "SD_PWR_EN",
+      "4": "I2C_SDA",
+      "5": "I2C_SCL",
+      "6": "GP12",
+      "7": "GP13",
+      "8": "GP14",
+      "9": "GP15",
+      "10": "GP25",
+      "11": "GND",
+      "12": "RUN"
+    },
+    "group": "expansion",
+    "pcbpos": [
+      116,
+      166,
+      90
+    ],
+    "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:PinSocket_1x12_P2.54mm_Vertical",
+    "localsym": "connect:Conn_01x12"
+  },
+  {
+    "ref": "J7",
+    "lib": "Connector_Generic:Conn_01x12",
+    "value": "GPIO socket B",
+    "mpn": "SSQ-112-03-G-S",
+    "mfr": "Samtec",
+    "pins": {
+      "1": "3V3",
+      "2": "GND",
+      "3": "GP27",
+      "4": "GP28",
+      "5": "GP29",
+      "6": "VBAT_ADC",
+      "7": "CHG_N",
+      "8": "USB_PGOOD_N",
+      "9": "USB_EN1",
+      "10": "USB_EN2",
+      "11": "CHG_DISABLE",
+      "12": "GND"
+    },
+    "group": "expansion",
+    "pcbpos": [
+      151,
+      166,
+      90
+    ],
+    "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x12_P2.54mm_Vertical",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:PinSocket_1x12_P2.54mm_Vertical",
+    "localsym": "connect:Conn_01x12"
+  },
+  {
+    "ref": "J8",
+    "lib": "Connector_Generic:Conn_02x05_Odd_Even",
+    "value": "SWD",
+    "mpn": "FTSH-105-01-L-D-K",
+    "mfr": "Samtec",
+    "pins": {
+      "1": "3V3",
+      "2": "SWDIO",
+      "3": "GND",
+      "4": "SWCLK",
+      "5": "GND",
+      "6": null,
+      "7": null,
+      "8": null,
+      "9": "GND",
+      "10": "RUN"
+    },
+    "group": "debug",
+    "pcbpos": [
+      116,
+      146,
+      0
+    ],
+    "footprint": "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical",
+    "schpos": null,
+    "note": "Through-hole D termination, 1.27mm pitch, keyed position; fits installed PTH SWD footprint.",
+    "localfp": "connect:PinHeader_2x05_P1.27mm_Vertical",
+    "localsym": "connect:Conn_02x05_Odd_Even"
+  },
+  {
+    "ref": "U11",
+    "lib": "Power_Management:TPS22919DCK",
+    "value": "SD power switch",
+    "mpn": "TPS22919DCKR",
+    "mfr": "Texas Instruments",
+    "pins": {
+      "1": "3V3",
+      "2": "GND",
+      "3": "SD_PWR_EN",
+      "4": null,
+      "5": "SD_QOD",
+      "6": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      159,
+      138,
+      0
+    ],
+    "footprint": null,
+    "schpos": [
+      281.94,
+      134.62
+    ],
+    "note": "",
+    "localfp": "connect:SOT-363_SC-70-6",
+    "localsym": "connect:TPS22919DCK"
+  },
+  {
+    "ref": "R44",
+    "lib": "Device:R",
+    "value": "100k",
+    "mpn": "RC0603FR-07100KL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_PWR_EN",
+      "2": "GND"
+    },
+    "group": "sd",
+    "pcbpos": [
+      156,
+      139,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "R45",
+    "lib": "Device:R",
+    "value": "100",
+    "mpn": "RC0603FR-07100RL",
+    "mfr": "Yageo",
+    "pins": {
+      "1": "SD_QOD",
+      "2": "SD_3V3"
+    },
+    "group": "sd",
+    "pcbpos": [
+      158,
+      141,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:R_0603_1608Metric",
+    "localsym": "connect:R"
+  },
+  {
+    "ref": "C44",
+    "lib": "Device:C",
+    "value": "100n",
+    "mpn": "GRM188R71C104KA01D",
+    "mfr": "Murata",
+    "pins": {
+      "1": "3V3",
+      "2": "GND"
+    },
+    "group": "sd",
+    "pcbpos": [
+      159,
+      135,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "schpos": null,
+    "note": "",
+    "localfp": "connect:C_0603_1608Metric",
+    "localsym": "connect:C"
+  }
+]

@@ -1,0 +1,18 @@
+{
+	"runId": "codex-desktop--gpt-6.1-sol",
+	"harness": "codex-desktop",
+	"model": "gpt-6.1-sol",
+	"reasoning": "medium",
+	"machine": "mac",
+	"versions": {
+		"chatgpt": "26.1103.60933",
+		"codex": "codex-cli 0.167.0-alpha.3.2",
+		"kicad": "10.99.0-6353-g0ef63a79e8",
+		"texttocad": "none"
+	},
+	"skippedLargeFiles": [],
+	"board": "Aster2350.kicad_pcb",
+	"bom": "fab/BOM.csv",
+	"placement": "fab/placements.csv",
+	"fabZip": "fab/Aster2350-RevA-PCBWay.zip"
+}

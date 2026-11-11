@@ -1,0 +1,65 @@
+CMD: python /home/ubuntu/.sprocket/connectors/kicad/v0.2.0/routing-tools/py_router/route_planes.py scratch/complete.kicad_pcb scratch/stitched.kicad_pcb --nets /GND --plane-layers In1.Cu --skip-existing-zones --stitch-vias --stitch-pitch 4 --stitch-edge-fence --stitch-fence-pitch 4 --stitch-inset 1 --add-gnd-vias --gnd-via-net /GND --gnd-via-distance .3 --via-size .45 --via-drill .15 --layers F.Cu In1.Cu In2.Cu B.Cu --layer-costs 1 -1 4 2 --escalation off --strict-sizes --no-fix-drc-settings
+ENV KNOBS: KICAD_CLI_PATH=/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli
+--track-width not given; using the board Default net-class 0.127mm.
+--clearance not given; honoring net classes with base = the board Default net-class clearance 0.127mm.
+--hole-to-hole-clearance not given; using 0.25mm [board constraint].
+--board-edge-clearance not given; using 0.3mm [board constraint].
+Loading PCB from scratch/complete.kicad_pcb...
+Zone clearance: following routed clearance 0.127mm (--zone-clearance to override)
+Found net '/GND' with ID 9
+Note: zone for '/GND' already exists on In1.Cu - keeping it (no new zone; thermal-array/--stitch-vias features still apply; pads are welded by the route step)
+Board bounds: (20.00, 20.00) to (100.00, 85.00)
+  Layer costs: F.Cu=1.0x, In1.Cu=-1.0x, In2.Cu=4.0x, B.Cu=2.0x
+  Auto-read netclass clearances for 12 net(s) (cross-class max(A,B) respected for plane taps).
+
+============================================================
+Processing net '/GND' on layer In1.Cu
+============================================================
+  1 exposed/thermal pad(s) get a via ARRAY (#487)
+  44 pad(s) on '/GND' deferred to the route step, each kept as a virtual via for the split
+
+Pad analysis for net '/GND':
+  Through-hole pads (no via needed): 20
+  SMD pads on In1.Cu (no via needed): 0
+  SMD pads already routed to plane (no via needed): 38
+  SMD pads kept for thermal via arrays (via needed): 1
+
+Building obstacle map for via placement...
+  Grid: 800 x 650 = 520,000 cells (grid_step=0.1mm)
+  Vias: 270 vias in 0.00s
+  Segments: 2466 tracks in 0.11s
+  Pads: 332 pads in 0.01s
+  Board edge: 0.00s
+  Drill holes: 0.02s
+  Total obstacle build: 0.15s
+
+Placing thermal via arrays under 1 exposed pad(s) on In1.Cu:
+  Pad U7.19... thermal array did not fit -- deferred to the route step
+
+Results for '/GND':
+  New vias placed: 0
+  Traces added: 0
+
+Via stitching: no requested net owns >= 2 plane layers -- nothing to stitch
+
+Writing output to scratch/stitched.kicad_pcb...
+Output written to scratch/stitched.kicad_pcb
+Note: Open in KiCad and press 'B' to refill zones
+
+============================================================
+GEOMETRIC VERIFICATION (re-parsed output)
+============================================================
+  /GND: 103/103 pads connected to plane on In1.Cu
+
+Adding GND return vias near signal vias...
+Checking 218 signal vias for GND via placement
+GND via placement parameters:
+  via_size=0.45mm, via_drill=0.15mm, clearance=0.127mm
+  grid_step=0.1mm
+  min_distance (center-to-center)=0.577mm
+  218 signal vias had no clear space for GND via within 0.3mm
+Plane Closed 3 stub gap(s) to same-net copper
+Plane Merged 1 collinear joint(s) on 1 net(s): -1 redundant segment(s) (#811)
+Plane cleanup: closed 3 stub gap(s), trimmed 0 dead-end segment(s)
+JSON_SUMMARY: {"complete": true, "env_knobs": {"KICAD_CLI_PATH": "/home/ubuntu/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli"}, "min_clearance_used": 0.127, "pads": {"geometric_failed": 0}, "pads_scope": "all zones in this run, summed -- not per zone; see plane_zones for what was poured", "plane_nets": ["/GND"], "plane_zones": [{"layer": "In1.Cu", "net": "/GND"}], "status": "ok"}
+EXIT=0

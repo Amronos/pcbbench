@@ -1,0 +1,18 @@
+{
+	"runId": "backplane--gpt-6.1-sol",
+	"harness": "backplane",
+	"model": "gpt-6.1-sol",
+	"reasoning": "medium",
+	"machine": "linux",
+	"versions": {
+		"backplane": "backplane-hub 0.15.0",
+		"claudeCode": "2.1.321 (Claude Code)",
+		"codex": "codex-cli 0.167.0",
+		"kicad": "10.99.0-bp.4 (5dbc22d292704d02b609d5b7a0edc971f1b7f08b)"
+	},
+	"skippedLargeFiles": [],
+	"board": "boards/rp2350-connect/rp2350-connect.kicad_pcb",
+	"bom": "fab/BOM.csv",
+	"placement": "fab/placement.csv",
+	"fabZip": "fab/rp2350-connect-pcbway.zip"
+}

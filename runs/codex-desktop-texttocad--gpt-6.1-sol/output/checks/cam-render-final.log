@@ -1,0 +1,6 @@
+gerbonara/excellon.py:576: checks/cam/Atlas2350-NPTH.drl:16 "G90": G90 header statement found after end of header
+gerbonara/excellon.py:576: checks/cam/Atlas2350-PTH.drl:20 "G90": G90 header statement found after end of header
+gerbonara/apertures.py:465: Aperture definition using macro RoundRect has more parameters than the macro uses.
+gerbonara/excellon.py:576: checks/cam/Atlas2350-NPTH.drl:16 "G90": G90 header statement found after end of header
+gerbonara/excellon.py:576: checks/cam/Atlas2350-PTH.drl:20 "G90": G90 header statement found after end of header
+gerbonara/layers.py:979: Layer "bottom paste" not found. Found layers: top copper, top mask, top silk, top paste, bottom copper, bottom mask, bottom silk, inner_2 copper, inner_1 copper, mechanical outline

@@ -1,0 +1,3631 @@
+[
+  {
+    "ref": "U1",
+    "library": "MCU_RaspberryPi",
+    "symbol": "RP2350A",
+    "value": "RP2350A",
+    "mpn": "RP2350A",
+    "manufacturer": "Raspberry Pi",
+    "nets": {
+      "1": "+3V3",
+      "6": "+1V1",
+      "11": "+3V3",
+      "20": "+3V3",
+      "21": "XIN",
+      "22": "XOUT",
+      "23": "+1V1",
+      "24": "SWCLK",
+      "25": "SWDIO",
+      "26": "RUN",
+      "30": "+3V3",
+      "38": "+3V3",
+      "39": "+1V1",
+      "44": "ADC_AVDD",
+      "45": "+3V3",
+      "46": "+3V3",
+      "47": "GND",
+      "48": null,
+      "49": "+3V3",
+      "50": "GND",
+      "51": "USB_PHY_D-",
+      "52": "USB_PHY_D+",
+      "53": "+3V3",
+      "54": "+3V3",
+      "55": "QSPI_IO3",
+      "56": "QSPI_CLK_SRC",
+      "57": "QSPI_IO0",
+      "58": "QSPI_IO2",
+      "59": "QSPI_IO1",
+      "60": "FLASH_CS",
+      "61": "GND",
+      "2": "PSRAM_CS",
+      "3": "GPIO1",
+      "4": "GPIO2",
+      "5": "GPIO3",
+      "7": "I2C_SDA",
+      "8": "I2C_SCL",
+      "9": "GPIO6",
+      "10": "GPIO7",
+      "12": "GPIO8",
+      "13": "GPIO9",
+      "14": "SD_CLK",
+      "15": "SD_MOSI",
+      "16": "SD_MISO",
+      "17": "SD_CS",
+      "18": "RGB_DATA",
+      "19": "SD_DETECT",
+      "27": "USB_500_EN",
+      "28": "USB_SUSPEND_EN",
+      "29": "ESP_EN_CTRL",
+      "31": "ESP_BOOT_CTRL",
+      "32": "WIFI_TX",
+      "33": "WIFI_RX",
+      "34": "WIFI_CTS",
+      "35": "WIFI_RTS",
+      "36": "CHARGE_N",
+      "37": "POWERGOOD_N",
+      "40": "BAT_ADC",
+      "41": "VBUS_ADC",
+      "42": "GPIO28_ADC2",
+      "43": "GPIO29_ADC3"
+    },
+    "board": [
+      30,
+      42,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      100,
+      103,
+      0
+    ],
+    "footprint": "Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm",
+    "description": "Dual Cortex-M33 / Hazard3, 520KB SRAM, 150MHz; external 1.1V core supply",
+    "local_symbol": "MCU_RaspberryPi_RP2350A",
+    "local_footprint": "Atlas:Package_DFN_QFN_QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm"
+  },
+  {
+    "ref": "U2",
+    "library": "Memory_Flash",
+    "symbol": "W25Q32JVSS",
+    "value": "W25Q32JVSSIQ",
+    "mpn": "W25Q32JVSSIQ",
+    "manufacturer": "Winbond",
+    "nets": {
+      "1": "FLASH_CS",
+      "2": "QSPI_IO1",
+      "3": "QSPI_IO2",
+      "4": "GND",
+      "5": "QSPI_IO0",
+      "6": "QSPI_CLK",
+      "7": "QSPI_IO3",
+      "8": "+3V3"
+    },
+    "board": [
+      20,
+      52,
+      90
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      70,
+      70,
+      0
+    ],
+    "footprint": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
+    "description": "32Mbit / 4MiB QSPI NOR flash",
+    "local_symbol": "Memory_Flash_W25Q32JVSS",
+    "local_footprint": "Atlas:Package_SO_SOIC-8_5.3x5.3mm_P1.27mm"
+  },
+  {
+    "ref": "U3",
+    "library": "Memory_RAM",
+    "symbol": "APS6404L-3SQRx-SN",
+    "value": "APS6404L-3SQR-SN",
+    "mpn": "APS6404L-3SQR-SN",
+    "manufacturer": "AP Memory",
+    "nets": {
+      "1": "PSRAM_CS",
+      "2": "QSPI_IO1",
+      "3": "QSPI_IO2",
+      "4": "GND",
+      "5": "QSPI_IO0",
+      "6": "QSPI_CLK",
+      "7": "QSPI_IO3",
+      "8": "+3V3"
+    },
+    "board": [
+      29,
+      56,
+      90
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      160,
+      70,
+      0
+    ],
+    "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+    "description": "64Mbit / 8MiB 3.3V QSPI PSRAM, SOP-8 narrow body",
+    "local_symbol": "Memory_RAM_APS6404L-3SQRx-SN",
+    "local_footprint": "Atlas:Package_SO_SOIC-8_3.9x4.9mm_P1.27mm"
+  },
+  {
+    "ref": "U4",
+    "library": "Battery_Management",
+    "symbol": "BQ24074RGT",
+    "value": "BQ24074RGTR",
+    "mpn": "BQ24074RGTR",
+    "manufacturer": "Texas Instruments",
+    "nets": {
+      "1": "BAT_TS",
+      "2": "VBAT",
+      "3": "VBAT",
+      "4": "GND",
+      "5": "USB_SUSPEND_EN",
+      "6": "USB_500_EN",
+      "7": "POWERGOOD_N",
+      "8": "GND",
+      "9": "CHARGE_N",
+      "10": "VSYS",
+      "11": "VSYS",
+      "12": "CHG_ILIM",
+      "13": "VBUS",
+      "14": null,
+      "15": null,
+      "16": "CHG_ISET",
+      "17": "GND"
+    },
+    "board": [
+      13,
+      19,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      70,
+      72,
+      0
+    ],
+    "footprint": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm",
+    "description": "4.2V single-cell charger, USB100/500 modes and dynamic power path",
+    "local_symbol": "Battery_Management_BQ24074RGT",
+    "local_footprint": "Atlas:Package_DFN_QFN_VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm"
+  },
+  {
+    "ref": "U5",
+    "library": "Custom",
+    "symbol": "TPS63070RNM",
+    "value": "TPS63070RNMR",
+    "mpn": "TPS63070RNMR",
+    "manufacturer": "Texas Instruments",
+    "nets": {
+      "1": "PWR_EN",
+      "2": "MAIN_PG",
+      "3": "MAIN_VAUX",
+      "4": "GND",
+      "5": "MAIN_FB",
+      "6": "GND",
+      "7": "+3V3",
+      "8": "+3V3",
+      "9": "BUCK_L2",
+      "10": "GND",
+      "11": "BUCK_L1",
+      "12": "VSYS",
+      "13": "VSYS",
+      "14": "PWR_EN",
+      "15": "GND"
+    },
+    "board": [
+      15,
+      29,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      170,
+      72,
+      0
+    ],
+    "footprint": "Custom:TPS63070_RNM0015A",
+    "description": "2A-class adjustable buck-boost set3.296V; 2.8V to4.5V system input",
+    "local_symbol": "Custom_TPS63070RNM",
+    "local_footprint": "Atlas:Custom_TPS63070_RNM0015A"
+  },
+  {
+    "ref": "U7",
+    "library": "Regulator_Linear",
+    "symbol": "TLV75801PDBV",
+    "value": "TLV75801PDBVR",
+    "mpn": "TLV75801PDBVR",
+    "manufacturer": "Texas Instruments",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND",
+      "3": "MAIN_PG",
+      "4": "CORE_FB",
+      "5": "+1V1"
+    },
+    "board": [
+      28,
+      31,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      240,
+      55,
+      0
+    ],
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "description": "500mA adjustable LDO, 1.1V core rail, 10k/10k feedback",
+    "local_symbol": "Regulator_Linear_TLV75801PDBV",
+    "local_footprint": "Atlas:Package_TO_SOT_SMD_SOT-23-5"
+  },
+  {
+    "ref": "U6",
+    "library": "RF_Module",
+    "symbol": "ESP32-C3-WROOM-02",
+    "value": "ESP32-C3-WROOM-02-N4",
+    "mpn": "ESP32-C3-WROOM-02-N4",
+    "manufacturer": "Espressif Systems",
+    "nets": {
+      "1": "+3V3",
+      "2": "ESP_EN",
+      "3": "WIFI_CTS",
+      "4": "WIFI_RTS",
+      "5": "WIFI_TX",
+      "6": "WIFI_RX",
+      "7": "ESP_STRAP8",
+      "8": "ESP_BOOT",
+      "9": "GND",
+      "10": null,
+      "11": "ESP_PROG_RX",
+      "12": "ESP_PROG_TX",
+      "13": null,
+      "14": null,
+      "15": null,
+      "16": "ESP_STRAP2",
+      "17": null,
+      "18": null,
+      "19": "GND"
+    },
+    "board": [
+      65,
+      7,
+      0
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      90,
+      90,
+      0
+    ],
+    "footprint": "RF_Module:ESP32-C3-WROOM-02",
+    "description": "4MB flash Wi-Fi 802.11b/g/n and BLE5 UART coprocessor",
+    "local_symbol": "RF_Module_ESP32-C3-WROOM-02",
+    "local_footprint": "Atlas:RF_Module_ESP32-C3-WROOM-02"
+  },
+  {
+    "ref": "J1",
+    "library": "Connector",
+    "symbol": "USB_C_Receptacle_USB2.0_16P",
+    "value": "USB-C",
+    "mpn": "USB4105-GF-A",
+    "manufacturer": "GCT",
+    "nets": {
+      "A1": "GND",
+      "A4": "VBUS_RAW",
+      "A5": "USB_CC1",
+      "A6": "USB_D+",
+      "A7": "USB_D-",
+      "A8": null,
+      "A9": "VBUS_RAW",
+      "A12": "GND",
+      "B1": "GND",
+      "B4": "VBUS_RAW",
+      "B5": "USB_CC2",
+      "B6": "USB_D+",
+      "B7": "USB_D-",
+      "B8": null,
+      "B9": "VBUS_RAW",
+      "B12": "GND",
+      "SH": "GND"
+    },
+    "board": [
+      3,
+      40,
+      270
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      65,
+      80,
+      0
+    ],
+    "footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+    "description": "USB2.0 device / 5V sink; both CC pins 5.1k Rd; through-hole shell stakes",
+    "local_symbol": "Connector_USB_C_Receptacle_USB2.0_16P",
+    "local_footprint": "Atlas:Connector_USB_USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
+  },
+  {
+    "ref": "J2",
+    "library": "Connector_Generic",
+    "symbol": "Conn_01x03",
+    "value": "LiPo + NTC",
+    "mpn": "S3B-PH-SM4-TB(LF)(SN)",
+    "manufacturer": "JST",
+    "nets": {
+      "1": "VBAT",
+      "2": "GND",
+      "3": "BAT_TS"
+    },
+    "board": [
+      4,
+      15,
+      270
+    ],
+    "sheet": "Power",
+    "schematic": [
+      32,
+      72,
+      0
+    ],
+    "footprint": "Connector_JST:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal",
+    "description": "External protected 1S LiPo with 10k NTC; custom 3-pin polarity; battery not supplied",
+    "local_symbol": "Connector_Generic_Conn_01x03",
+    "local_footprint": "Atlas:Connector_JST_JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal"
+  },
+  {
+    "ref": "J3",
+    "library": "Connector",
+    "symbol": "Micro_SD_Card_Det_Hirose_DM3AT",
+    "value": "microSD SPI",
+    "mpn": "DM3AT-SF-PEJM5",
+    "manufacturer": "Hirose",
+    "nets": {
+      "1": "SD_DAT2",
+      "2": "SD_CS",
+      "3": "SD_MOSI",
+      "4": "+3V3",
+      "5": "SD_CLK",
+      "6": "GND",
+      "7": "SD_MISO",
+      "8": "SD_DAT1",
+      "9": "SD_DETECT",
+      "10": "GND",
+      "SH": "GND"
+    },
+    "board": [
+      68,
+      62,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      220,
+      82,
+      0
+    ],
+    "footprint": "Connector_Card:microSD_HC_Hirose_DM3AT-SF-PEJM5",
+    "description": "Push-push microSD socket, SPI mode, card detect, no card supplied",
+    "local_symbol": "Connector_Micro_SD_Card_Det_Hirose_DM3AT",
+    "local_footprint": "Atlas:Connector_Card_microSD_HC_Hirose_DM3AT-SF-PEJM5"
+  },
+  {
+    "ref": "J4",
+    "library": "Connector_Generic",
+    "symbol": "Conn_01x04",
+    "value": "Qwiic / STEMMA QT",
+    "mpn": "SM04B-SRSS-TB(LF)(SN)",
+    "manufacturer": "JST",
+    "nets": {
+      "1": "GND",
+      "2": "+3V3",
+      "3": "I2C_SDA",
+      "4": "I2C_SCL"
+    },
+    "board": [
+      76,
+      38,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      295,
+      62,
+      0
+    ],
+    "footprint": "Connector_JST:JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal",
+    "description": "3.3V I2C, pin1 GND, pin2 VCC, pin3 SDA, pin4 SCL",
+    "local_symbol": "Connector_Generic_Conn_01x04",
+    "local_footprint": "Atlas:Connector_JST_JST_SH_SM04B-SRSS-TB_1x04-1MP_P1.00mm_Horizontal"
+  },
+  {
+    "ref": "J5",
+    "library": "Connector_Generic",
+    "symbol": "Conn_02x10_Odd_Even",
+    "value": "GPIO expansion",
+    "mpn": "TSW-110-07-G-D",
+    "manufacturer": "Samtec",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND",
+      "3": "GPIO1",
+      "4": "GPIO2",
+      "5": "GPIO3",
+      "6": "GPIO6",
+      "7": "GPIO7",
+      "8": "GPIO8",
+      "9": "GPIO9",
+      "10": "CHARGE_N",
+      "11": "POWERGOOD_N",
+      "12": "RGB_DATA",
+      "13": "GPIO28_ADC2",
+      "14": "GPIO29_ADC3",
+      "15": "I2C_SDA",
+      "16": "I2C_SCL",
+      "17": "RUN",
+      "18": "GND",
+      "19": "VBUS",
+      "20": "VSYS"
+    },
+    "board": [
+      48,
+      49,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      240,
+      165,
+      0
+    ],
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_2x10_P2.54mm_Vertical",
+    "description": "Through-hole 2x10 male header, PCBWay must fit and solder",
+    "local_symbol": "Connector_Generic_Conn_02x10_Odd_Even",
+    "local_footprint": "Atlas:Connector_PinHeader_2.54mm_PinHeader_2x10_P2.54mm_Vertical"
+  },
+  {
+    "ref": "J6",
+    "library": "Connector_Generic",
+    "symbol": "Conn_02x05_Odd_Even",
+    "value": "Cortex SWD",
+    "mpn": "FTSH-105-01-L-D",
+    "manufacturer": "Samtec",
+    "nets": {
+      "1": "+3V3",
+      "2": "SWDIO",
+      "3": "GND",
+      "4": "SWCLK",
+      "5": "GND",
+      "6": null,
+      "7": null,
+      "8": null,
+      "9": "GND",
+      "10": "RUN"
+    },
+    "board": [
+      42,
+      28,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      315,
+      168,
+      0
+    ],
+    "footprint": "Connector_PinHeader_1.27mm:PinHeader_2x05_P1.27mm_Vertical",
+    "description": "10-pin Cortex SWD through-hole header; no SWO; pin7 remains physically present",
+    "local_symbol": "Connector_Generic_Conn_02x05_Odd_Even",
+    "local_footprint": "Atlas:Connector_PinHeader_1.27mm_PinHeader_2x05_P1.27mm_Vertical"
+  },
+  {
+    "ref": "J7",
+    "library": "Connector_Generic",
+    "symbol": "Conn_01x06",
+    "value": "ESP programming",
+    "mpn": "TSW-106-07-G-S",
+    "manufacturer": "Samtec",
+    "nets": {
+      "1": "GND",
+      "2": "+3V3",
+      "3": "ESP_PROG_TX",
+      "4": "ESP_PROG_RX",
+      "5": "ESP_BOOT",
+      "6": "ESP_EN"
+    },
+    "board": [
+      57,
+      24,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      220,
+      76,
+      0
+    ],
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical",
+    "description": "3.3V UART0 flashing header; never connect a 5V UART",
+    "local_symbol": "Connector_Generic_Conn_01x06",
+    "local_footprint": "Atlas:Connector_PinHeader_2.54mm_PinHeader_1x06_P2.54mm_Vertical"
+  },
+  {
+    "ref": "U8",
+    "library": "Power_Protection",
+    "symbol": "USBLC6-2SC6",
+    "value": "USBLC6-2SC6",
+    "mpn": "USBLC6-2SC6",
+    "manufacturer": "STMicroelectronics",
+    "nets": {
+      "1": "USB_D+",
+      "2": "GND",
+      "3": "USB_D-",
+      "4": null,
+      "5": "VBUS",
+      "6": null
+    },
+    "board": [
+      10,
+      40,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      118,
+      83,
+      0
+    ],
+    "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+    "description": "Low capacitance USB ESD shunt; unused internally-common I/O4/6 pads left externally NC",
+    "local_symbol": "Power_Protection_USBLC6-2SC6",
+    "local_footprint": "Atlas:Package_TO_SOT_SMD_SOT-23-6"
+  },
+  {
+    "ref": "D1",
+    "library": "LED",
+    "symbol": "WS2812B-2020",
+    "value": "WS2812B-2020-V6",
+    "mpn": "WS2812B-2020-V6",
+    "manufacturer": "Worldsemi",
+    "nets": {
+      "1": null,
+      "2": "GND",
+      "3": "RGB_DIN",
+      "4": "LED_VDD"
+    },
+    "board": [
+      74,
+      26,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      294,
+      140,
+      0
+    ],
+    "footprint": "LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
+    "description": "V6 only, 3.3-5.5V and VIH=0.55VDD; switched VSYS, blank below battery about3.6V under load",
+    "local_symbol": "LED_WS2812B-2020",
+    "local_footprint": "Atlas:LED_SMD_LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+  },
+  {
+    "ref": "U10",
+    "library": "Power_Management",
+    "symbol": "TPS22919DCK",
+    "value": "TPS22919DCKR",
+    "mpn": "TPS22919DCKR",
+    "manufacturer": "Texas Instruments",
+    "nets": {
+      "1": "VSYS",
+      "2": "GND",
+      "3": "PWR_EN",
+      "4": null,
+      "5": "LED_VDD",
+      "6": "LED_VDD"
+    },
+    "board": [
+      77,
+      23,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      285,
+      180,
+      0
+    ],
+    "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+    "description": "1.6-5.5V LED load switch; ON=PWR_EN, QOD tied OUT; LED off with SW5",
+    "local_symbol": "Power_Management_TPS22919DCK",
+    "local_footprint": "Atlas:Package_TO_SOT_SMD_SOT-363_SC-70-6"
+  },
+  {
+    "ref": "F1",
+    "library": "Device",
+    "symbol": "Polyfuse",
+    "value": "500mA hold",
+    "mpn": "MF-MSMF050-2",
+    "manufacturer": "Bourns",
+    "nets": {
+      "1": "VBUS_RAW",
+      "2": "VBUS"
+    },
+    "board": [
+      8,
+      34,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      72,
+      35,
+      90
+    ],
+    "footprint": "Fuse:Fuse_1812_4532Metric",
+    "description": "Resettable input fuse, 0.5A hold / 1A trip",
+    "local_symbol": "Device_Polyfuse",
+    "local_footprint": "Atlas:Fuse_Fuse_1812_4532Metric"
+  },
+  {
+    "ref": "L1",
+    "library": "Device",
+    "symbol": "L",
+    "value": "1.0uH",
+    "mpn": "XAL4020-102MEC",
+    "manufacturer": "Coilcraft",
+    "nets": {
+      "1": "BUCK_L1",
+      "2": "BUCK_L2"
+    },
+    "board": [
+      11,
+      29,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      166,
+      42,
+      90
+    ],
+    "footprint": "Inductor_SMD:L_Coilcraft_XAL4020-XXX",
+    "description": "Shielded power inductor; 1uH with >=22uF effective output capacitance",
+    "local_symbol": "Device_L",
+    "local_footprint": "Atlas:Inductor_SMD_L_Coilcraft_XAL4020-XXX"
+  },
+  {
+    "ref": "FB1",
+    "library": "Device",
+    "symbol": "FerriteBead",
+    "value": "600R @ 100MHz",
+    "mpn": "BLM15AG601SN1D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "ADC_AVDD"
+    },
+    "board": [
+      34,
+      35,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      177,
+      108,
+      90
+    ],
+    "footprint": "Inductor_SMD:L_0402_1005Metric",
+    "description": "ADC analog supply bead, 300mA",
+    "local_symbol": "Device_FerriteBead",
+    "local_footprint": "Atlas:Inductor_SMD_L_0402_1005Metric"
+  },
+  {
+    "ref": "Y1",
+    "library": "Device",
+    "symbol": "Crystal_GND24",
+    "value": "12MHz / 10pF",
+    "mpn": "ABM8-272-T3",
+    "manufacturer": "Abracon",
+    "nets": {
+      "1": "XIN",
+      "2": "GND",
+      "3": "XTAL_OUT",
+      "4": "GND"
+    },
+    "board": [
+      39,
+      43,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      60,
+      177,
+      0
+    ],
+    "footprint": "Crystal:Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm",
+    "description": "Raspberry Pi recommended 12MHz crystal, 10pF CL, <=50ohm ESR",
+    "local_symbol": "Device_Crystal_GND24",
+    "local_footprint": "Atlas:Crystal_Crystal_SMD_Abracon_ABM8G-4Pin_3.2x2.5mm"
+  },
+  {
+    "ref": "R1",
+    "library": "Device",
+    "symbol": "R",
+    "value": "5.1k 1%",
+    "mpn": "RC0402FR-075K1L",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "USB_CC1",
+      "2": "GND"
+    },
+    "board": [
+      8,
+      45,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      44,
+      143,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R2",
+    "library": "Device",
+    "symbol": "R",
+    "value": "5.1k 1%",
+    "mpn": "RC0402FR-075K1L",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "USB_CC2",
+      "2": "GND"
+    },
+    "board": [
+      8,
+      48,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      67,
+      143,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R3",
+    "library": "Device",
+    "symbol": "R",
+    "value": "27R 1%",
+    "mpn": "RC0402FR-0727RL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "USB_D+",
+      "2": "USB_PHY_D+"
+    },
+    "board": [
+      25,
+      41.8,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      155,
+      70,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R4",
+    "library": "Device",
+    "symbol": "R",
+    "value": "27R 1%",
+    "mpn": "RC0402FR-0727RL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "USB_D-",
+      "2": "USB_PHY_D-"
+    },
+    "board": [
+      25,
+      40.7,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      155,
+      96,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R5",
+    "library": "Device",
+    "symbol": "R",
+    "value": "3.57k 1%",
+    "mpn": "RC0402FR-073K57L",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "CHG_ISET",
+      "2": "GND"
+    },
+    "board": [
+      10,
+      21,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      46,
+      132,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R6",
+    "library": "Device",
+    "symbol": "R",
+    "value": "3.24k 1%",
+    "mpn": "RC0402FR-073K24L",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "CHG_ILIM",
+      "2": "GND"
+    },
+    "board": [
+      13,
+      23,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      72,
+      132,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R7",
+    "library": "Device",
+    "symbol": "R",
+    "value": "100k 1%",
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "USB_500_EN",
+      "2": "GND"
+    },
+    "board": [
+      17,
+      17,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      98,
+      132,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R8",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "CHARGE_N",
+      "2": "+3V3"
+    },
+    "board": [
+      17,
+      21,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      124,
+      132,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R9",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "POWERGOOD_N",
+      "2": "+3V3"
+    },
+    "board": [
+      17,
+      23,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      150,
+      132,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R10",
+    "library": "Device",
+    "symbol": "R",
+    "value": "470k 1%",
+    "mpn": "RC0402FR-07470KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "VBAT",
+      "2": "BAT_SENSE"
+    },
+    "board": [
+      36,
+      34,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      255,
+      67,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R11",
+    "library": "Device",
+    "symbol": "R",
+    "value": "470k 1%",
+    "mpn": "RC0402FR-07470KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "BAT_SENSE",
+      "2": "GND"
+    },
+    "board": [
+      38,
+      34,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      255,
+      93,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R12",
+    "library": "Device",
+    "symbol": "R",
+    "value": "1M 1%",
+    "mpn": "RC0402FR-071ML",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "VBUS",
+      "2": "VBUS_ADC"
+    },
+    "board": [
+      38,
+      36,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      298,
+      67,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R13",
+    "library": "Device",
+    "symbol": "R",
+    "value": "330k 1%",
+    "mpn": "RC0402FR-07330KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "VBUS_ADC",
+      "2": "GND"
+    },
+    "board": [
+      40,
+      36,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      298,
+      93,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R14",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "FLASH_CS",
+      "2": "+3V3"
+    },
+    "board": [
+      20,
+      47,
+      0
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      48,
+      122,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R15",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "PSRAM_CS",
+      "2": "+3V3"
+    },
+    "board": [
+      29,
+      51,
+      0
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      144,
+      122,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R16",
+    "library": "Device",
+    "symbol": "R",
+    "value": "33R 1%",
+    "mpn": "RC0402FR-0733RL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "QSPI_CLK_SRC",
+      "2": "QSPI_CLK"
+    },
+    "board": [
+      25,
+      44.5,
+      0
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      106,
+      48,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R17",
+    "library": "Device",
+    "symbol": "R",
+    "value": "1k 1%",
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "XOUT",
+      "2": "XTAL_OUT"
+    },
+    "board": [
+      35.5,
+      43,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      58,
+      203,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R18",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "RUN",
+      "2": "+3V3"
+    },
+    "board": [
+      37,
+      48,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      150,
+      171,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R19",
+    "library": "Device",
+    "symbol": "R",
+    "value": "1k 1%",
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "BOOT_SWITCH",
+      "2": "FLASH_CS"
+    },
+    "board": [
+      34,
+      62,
+      90
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      240,
+      68,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R20",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "ESP_EN",
+      "2": "GND"
+    },
+    "board": [
+      54,
+      8,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      170,
+      120,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R21",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "ESP_BOOT",
+      "2": "+3V3"
+    },
+    "board": [
+      54,
+      12,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      210,
+      120,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R22",
+    "library": "Device",
+    "symbol": "R",
+    "value": "1k 1%",
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "ESP_EN_CTRL",
+      "2": "ESP_EN"
+    },
+    "board": [
+      53,
+      16,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      170,
+      63,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R23",
+    "library": "Device",
+    "symbol": "R",
+    "value": "1k 1%",
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "ESP_BOOT_CTRL",
+      "2": "ESP_BOOT"
+    },
+    "board": [
+      54,
+      18,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      170,
+      87,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R24",
+    "library": "Device",
+    "symbol": "R",
+    "value": "4.7k 1%",
+    "mpn": "RC0402FR-074K7L",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "I2C_SDA",
+      "2": "+3V3"
+    },
+    "board": [
+      70,
+      36,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      267,
+      92,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R25",
+    "library": "Device",
+    "symbol": "R",
+    "value": "4.7k 1%",
+    "mpn": "RC0402FR-074K7L",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "I2C_SCL",
+      "2": "+3V3"
+    },
+    "board": [
+      70,
+      40,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      305,
+      92,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R26",
+    "library": "Device",
+    "symbol": "R",
+    "value": "47k 1%",
+    "mpn": "RC0402FR-0747KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "SD_CS",
+      "2": "+3V3"
+    },
+    "board": [
+      58,
+      57,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      189,
+      144,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R27",
+    "library": "Device",
+    "symbol": "R",
+    "value": "47k 1%",
+    "mpn": "RC0402FR-0747KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "SD_MOSI",
+      "2": "+3V3"
+    },
+    "board": [
+      58,
+      60,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      213,
+      144,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R28",
+    "library": "Device",
+    "symbol": "R",
+    "value": "47k 1%",
+    "mpn": "RC0402FR-0747KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "SD_MISO",
+      "2": "+3V3"
+    },
+    "board": [
+      58,
+      63,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      237,
+      144,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R29",
+    "library": "Device",
+    "symbol": "R",
+    "value": "47k 1%",
+    "mpn": "RC0402FR-0747KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "SD_DAT1",
+      "2": "+3V3"
+    },
+    "board": [
+      63,
+      53,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      189,
+      181,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R30",
+    "library": "Device",
+    "symbol": "R",
+    "value": "47k 1%",
+    "mpn": "RC0402FR-0747KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "SD_DAT2",
+      "2": "+3V3"
+    },
+    "board": [
+      66,
+      53,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      213,
+      181,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R31",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "SD_DETECT",
+      "2": "+3V3"
+    },
+    "board": [
+      72,
+      52,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      237,
+      181,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R32",
+    "library": "Device",
+    "symbol": "R",
+    "value": "330R 1%",
+    "mpn": "RC0402FR-07330RL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "RGB_DATA",
+      "2": "RGB_DIN"
+    },
+    "board": [
+      70,
+      26,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      267,
+      140,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R33",
+    "library": "Device",
+    "symbol": "R",
+    "value": "100k 1%",
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "RGB_DIN",
+      "2": "GND"
+    },
+    "board": [
+      72,
+      29,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      315,
+      180,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R36",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "ESP_STRAP8",
+      "2": "+3V3"
+    },
+    "board": [
+      54,
+      14,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      252,
+      120,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R37",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "ESP_STRAP2",
+      "2": "+3V3"
+    },
+    "board": [
+      77,
+      3,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      294,
+      120,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R38",
+    "library": "Device",
+    "symbol": "R",
+    "value": "100R 1%",
+    "mpn": "RC0402FR-07100RL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "BAT_BUF",
+      "2": "BAT_ADC"
+    },
+    "board": [
+      39,
+      17,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      326,
+      83,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R39",
+    "library": "Device",
+    "symbol": "R",
+    "value": "1k 1%",
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "PWR_SWITCH",
+      "2": "PWR_EN"
+    },
+    "board": [
+      15,
+      38,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      175,
+      150,
+      90
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R40",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 1%",
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "MAIN_PG",
+      "2": "+3V3"
+    },
+    "board": [
+      22,
+      31,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      345,
+      151,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R41",
+    "library": "Device",
+    "symbol": "R",
+    "value": "100k 1%",
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "USB_SUSPEND_EN",
+      "2": "GND"
+    },
+    "board": [
+      21,
+      14,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      124,
+      95,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R42",
+    "library": "Device",
+    "symbol": "R",
+    "value": "312k 0.1%",
+    "mpn": "RT0402BRD07312KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "+3V3",
+      "2": "MAIN_FB"
+    },
+    "board": [
+      20,
+      35,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      250,
+      154,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R43",
+    "library": "Device",
+    "symbol": "R",
+    "value": "100k 0.1%",
+    "mpn": "RT0402BRD07100KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "MAIN_FB",
+      "2": "GND"
+    },
+    "board": [
+      22,
+      35,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      280,
+      154,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R34",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 0.1%",
+    "mpn": "RT0402BRD0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "+1V1",
+      "2": "CORE_FB"
+    },
+    "board": [
+      30,
+      28,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      240,
+      113,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "R35",
+    "library": "Device",
+    "symbol": "R",
+    "value": "10k 0.1%",
+    "mpn": "RT0402BRD0710KL",
+    "manufacturer": "Yageo",
+    "nets": {
+      "1": "CORE_FB",
+      "2": "GND"
+    },
+    "board": [
+      30,
+      26,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      270,
+      113,
+      0
+    ],
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_R",
+    "local_footprint": "Atlas:Resistor_SMD_R_0402_1005Metric"
+  },
+  {
+    "ref": "C1",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      29,
+      47,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      170,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C2",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      33,
+      47,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      196,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C3",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      35,
+      46,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      222,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C4",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      35,
+      40,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      248,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C5",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      33,
+      37,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      274,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C6",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      31,
+      37,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      300,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C7",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      25,
+      38,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      170,
+      75,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C8",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      25,
+      46,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      196,
+      75,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C9",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      25,
+      36,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      222,
+      75,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C10",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "ADC_AVDD",
+      "2": "GND"
+    },
+    "board": [
+      36,
+      37,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      170,
+      133,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C11",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "board": [
+      31,
+      47,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      275,
+      75,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C12",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "board": [
+      35,
+      37,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      301,
+      75,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C13",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "board": [
+      35,
+      44,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      325,
+      75,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C14",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      16,
+      52,
+      90
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      74,
+      122,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C15",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      25,
+      56,
+      90
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      171,
+      122,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C16",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VBUS",
+      "2": "GND"
+    },
+    "board": [
+      15,
+      15,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      40,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C17",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "board": [
+      18,
+      29,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      171,
+      170,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C18",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "BAT_TS",
+      "2": "GND"
+    },
+    "board": [
+      8,
+      17,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      203,
+      133,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C19",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "BAT_SENSE",
+      "2": "GND"
+    },
+    "board": [
+      40,
+      34,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      255,
+      132,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C20",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VBUS_ADC",
+      "2": "GND"
+    },
+    "board": [
+      42,
+      36,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      298,
+      132,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C21",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "ESP_EN",
+      "2": "GND"
+    },
+    "board": [
+      51,
+      8,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      170,
+      158,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C22",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      53,
+      4,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      35,
+      155,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C23",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      68,
+      51,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      259,
+      219,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C24",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "LED_VDD",
+      "2": "GND"
+    },
+    "board": [
+      74,
+      30,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      294,
+      219,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C40",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      33,
+      16,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      340,
+      125,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C42",
+    "library": "Device",
+    "symbol": "C",
+    "value": "100nF 16V X7R",
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "MAIN_VAUX",
+      "2": "GND"
+    },
+    "board": [
+      16,
+      33.8,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      310,
+      154,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C25",
+    "library": "Device",
+    "symbol": "C",
+    "value": "4.7uF 6.3V X5R",
+    "mpn": "GRM188R60J475KE19D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      27,
+      36,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      326,
+      38,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0603_1608Metric"
+  },
+  {
+    "ref": "C26",
+    "library": "Device",
+    "symbol": "C",
+    "value": "2.2uF 10V X5R",
+    "mpn": "GRM188R61A225KE15D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      25,
+      31,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      200,
+      55,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0603_1608Metric"
+  },
+  {
+    "ref": "C27",
+    "library": "Device",
+    "symbol": "C",
+    "value": "2.2uF 10V X5R",
+    "mpn": "GRM188R61A225KE15D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "board": [
+      31,
+      31,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      279,
+      55,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0603_1608Metric"
+  },
+  {
+    "ref": "C28",
+    "library": "Device",
+    "symbol": "C",
+    "value": "10uF 10V X5R",
+    "mpn": "GRM21BR61A106KE19L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VBAT",
+      "2": "GND"
+    },
+    "board": [
+      9,
+      18,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      74,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C29",
+    "library": "Device",
+    "symbol": "C",
+    "value": "4.7uF 10V X5R",
+    "mpn": "GRM21BR61A475KA73L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VBUS",
+      "2": "GND"
+    },
+    "board": [
+      13,
+      15,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      107,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C30",
+    "library": "Device",
+    "symbol": "C",
+    "value": "10uF 10V X5R",
+    "mpn": "GRM21BR61A106KE19L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "board": [
+      18,
+      19,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      139,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C31",
+    "library": "Device",
+    "symbol": "C",
+    "value": "10uF 10V X5R",
+    "mpn": "GRM21BR61A106KE19L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "board": [
+      15,
+      25,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      174,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C32",
+    "library": "Device",
+    "symbol": "C",
+    "value": "22uF 16V X5R",
+    "mpn": "GRM31CR61C226KE15L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      19,
+      29,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      205,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_1206_3216Metric"
+  },
+  {
+    "ref": "C33",
+    "library": "Device",
+    "symbol": "C",
+    "value": "22uF 16V X5R",
+    "mpn": "GRM31CR61C226KE15L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      19,
+      32,
+      90
+    ],
+    "sheet": "Power",
+    "schematic": [
+      237,
+      188,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_1206_3216Metric"
+  },
+  {
+    "ref": "C34",
+    "library": "Device",
+    "symbol": "C",
+    "value": "22uF 6.3V X5R",
+    "mpn": "GRM21BR60J226ME39L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      52,
+      2,
+      90
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      63,
+      155,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C35",
+    "library": "Device",
+    "symbol": "C",
+    "value": "10uF 10V X5R",
+    "mpn": "GRM21BR61A106KE19L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      70,
+      49,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      224,
+      219,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C36",
+    "library": "Device",
+    "symbol": "C",
+    "value": "1uF 10V X5R",
+    "mpn": "GRM155R61A105KE15D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "LED_VDD",
+      "2": "GND"
+    },
+    "board": [
+      76,
+      30,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      326,
+      219,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C45",
+    "library": "Device",
+    "symbol": "C",
+    "value": "1uF 10V X5R",
+    "mpn": "GRM155R61A105KE15D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "board": [
+      77,
+      20,
+      90
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      258,
+      180,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C37",
+    "library": "Device",
+    "symbol": "C",
+    "value": "1uF 10V X5R",
+    "mpn": "GRM155R61A105KE15D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "ADC_AVDD",
+      "2": "GND"
+    },
+    "board": [
+      38,
+      37,
+      90
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      196,
+      133,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C43",
+    "library": "Device",
+    "symbol": "C",
+    "value": "1uF 10V X5R",
+    "mpn": "GRM155R61A105KE15D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      33,
+      56,
+      90
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      196,
+      122,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C44",
+    "library": "Device",
+    "symbol": "C",
+    "value": "10uF 10V X5R",
+    "mpn": "GRM21BR61A106KE19L",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "board": [
+      54,
+      2,
+      270
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      90,
+      155,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0805_2012Metric"
+  },
+  {
+    "ref": "C41",
+    "library": "Device",
+    "symbol": "C",
+    "value": "1nF 50V C0G",
+    "mpn": "GRM1555C1H102JA01D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "BAT_ADC",
+      "2": "GND"
+    },
+    "board": [
+      41,
+      17,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      368,
+      125,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "U9",
+    "library": "Custom",
+    "symbol": "TLV9001IDBV",
+    "value": "TLV9001IDBVR",
+    "mpn": "TLV9001IDBVR",
+    "manufacturer": "Texas Instruments",
+    "nets": {
+      "1": "BAT_BUF",
+      "2": "GND",
+      "3": "BAT_SENSE",
+      "4": "BAT_BUF",
+      "5": "+3V3"
+    },
+    "board": [
+      35,
+      16,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      295,
+      118,
+      0
+    ],
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "description": "RRIO unity-gain buffer for high-impedance battery divider; 100ohm ADC isolation",
+    "local_symbol": "Custom_TLV9001IDBV",
+    "local_footprint": "Atlas:Package_TO_SOT_SMD_SOT-23-5"
+  },
+  {
+    "ref": "C38",
+    "library": "Device",
+    "symbol": "C",
+    "value": "15pF 50V C0G",
+    "mpn": "GRM1555C1H150JA01D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "XIN",
+      "2": "GND"
+    },
+    "board": [
+      39,
+      46,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      39,
+      224,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "C39",
+    "library": "Device",
+    "symbol": "C",
+    "value": "15pF 50V C0G",
+    "mpn": "GRM1555C1H150JA01D",
+    "manufacturer": "Murata",
+    "nets": {
+      "1": "XTAL_OUT",
+      "2": "GND"
+    },
+    "board": [
+      39,
+      40,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      83,
+      224,
+      0
+    ],
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "description": "",
+    "local_symbol": "Device_C",
+    "local_footprint": "Atlas:Capacitor_SMD_C_0402_1005Metric"
+  },
+  {
+    "ref": "SW1",
+    "library": "Switch",
+    "symbol": "SW_Push",
+    "value": "RESET",
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "nets": {
+      "1": "RUN",
+      "2": "GND"
+    },
+    "board": [
+      40,
+      55,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      149,
+      208,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "description": "SMT normally-open tactile switch",
+    "local_symbol": "Switch_SW_Push",
+    "local_footprint": "Atlas:Button_Switch_SMD_SW_SPST_TL3342"
+  },
+  {
+    "ref": "SW2",
+    "library": "Switch",
+    "symbol": "SW_Push",
+    "value": "BOOT",
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "nets": {
+      "1": "BOOT_SWITCH",
+      "2": "GND"
+    },
+    "board": [
+      40,
+      63,
+      0
+    ],
+    "sheet": "Memory",
+    "schematic": [
+      245,
+      107,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "description": "SMT normally-open tactile switch",
+    "local_symbol": "Switch_SW_Push",
+    "local_footprint": "Atlas:Button_Switch_SMD_SW_SPST_TL3342"
+  },
+  {
+    "ref": "SW3",
+    "library": "Switch",
+    "symbol": "SW_Push",
+    "value": "BOOT",
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "nets": {
+      "1": "ESP_BOOT",
+      "2": "GND"
+    },
+    "board": [
+      64,
+      31,
+      0
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      220,
+      158,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "description": "SMT normally-open tactile switch",
+    "local_symbol": "Switch_SW_Push",
+    "local_footprint": "Atlas:Button_Switch_SMD_SW_SPST_TL3342"
+  },
+  {
+    "ref": "SW4",
+    "library": "Switch",
+    "symbol": "SW_Push",
+    "value": "RESET",
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "nets": {
+      "1": "ESP_EN",
+      "2": "GND"
+    },
+    "board": [
+      57,
+      31,
+      0
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      265,
+      158,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "description": "SMT normally-open tactile switch",
+    "local_symbol": "Switch_SW_Push",
+    "local_footprint": "Atlas:Button_Switch_SMD_SW_SPST_TL3342"
+  },
+  {
+    "ref": "SW5",
+    "library": "Switch",
+    "symbol": "SW_SPDT",
+    "value": "POWER",
+    "mpn": "JS102011SAQN",
+    "manufacturer": "C&K",
+    "nets": {
+      "1": "VSYS",
+      "2": "PWR_SWITCH",
+      "3": "GND"
+    },
+    "board": [
+      8,
+      63,
+      270
+    ],
+    "sheet": "Power",
+    "schematic": [
+      175,
+      112,
+      0
+    ],
+    "footprint": "Button_Switch_SMD:SW_SPDT_CK_JS102011SAQN",
+    "description": "Logic-level power switch; charger remains active when system is off",
+    "local_symbol": "Switch_SW_SPDT",
+    "local_footprint": "Atlas:Button_Switch_SMD_SW_SPDT_CK_JS102011SAQN"
+  },
+  {
+    "ref": "H1",
+    "library": "Mechanical",
+    "symbol": "MountingHole",
+    "value": "M2.5 NPTH",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {},
+    "board": [
+      4,
+      4,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      68,
+      235,
+      0
+    ],
+    "footprint": "MountingHole:MountingHole_2.7mm_M2.5",
+    "description": "Mechanical hole, no fitted hardware",
+    "local_symbol": "Mechanical_MountingHole",
+    "local_footprint": "Atlas:MountingHole_MountingHole_2.7mm_M2.5"
+  },
+  {
+    "ref": "H2",
+    "library": "Mechanical",
+    "symbol": "MountingHole",
+    "value": "M2.5 NPTH",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {},
+    "board": [
+      4,
+      71,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      96,
+      235,
+      0
+    ],
+    "footprint": "MountingHole:MountingHole_2.7mm_M2.5",
+    "description": "Mechanical hole, no fitted hardware",
+    "local_symbol": "Mechanical_MountingHole",
+    "local_footprint": "Atlas:MountingHole_MountingHole_2.7mm_M2.5"
+  },
+  {
+    "ref": "H3",
+    "library": "Mechanical",
+    "symbol": "MountingHole",
+    "value": "M2.5 NPTH",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {},
+    "board": [
+      76,
+      71,
+      0
+    ],
+    "sheet": "Interfaces",
+    "schematic": [
+      124,
+      235,
+      0
+    ],
+    "footprint": "MountingHole:MountingHole_2.7mm_M2.5",
+    "description": "Mechanical hole, no fitted hardware",
+    "local_symbol": "Mechanical_MountingHole",
+    "local_footprint": "Atlas:MountingHole_MountingHole_2.7mm_M2.5"
+  },
+  {
+    "ref": "TP1",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "GND",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "GND"
+    },
+    "board": [
+      22,
+      20,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      73,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP2",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "VBUS",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "VBUS"
+    },
+    "board": [
+      22,
+      23,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      111,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP3",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "VBAT",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "VBAT"
+    },
+    "board": [
+      22,
+      16,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      149,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP4",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "VSYS",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "VSYS"
+    },
+    "board": [
+      22,
+      26,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      187,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP5",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "+3V3",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "+3V3"
+    },
+    "board": [
+      23,
+      29,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      225,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP6",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "+1V1",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "+1V1"
+    },
+    "board": [
+      33,
+      29,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      35,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP7",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "RUN",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "RUN"
+    },
+    "board": [
+      44,
+      55,
+      0
+    ],
+    "sheet": "MCU",
+    "schematic": [
+      73,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP8",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "ESP_PROG_RX",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "ESP_PROG_RX"
+    },
+    "board": [
+      74,
+      17,
+      0
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      111,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP9",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "ESP_PROG_TX",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "ESP_PROG_TX"
+    },
+    "board": [
+      74,
+      20,
+      0
+    ],
+    "sheet": "Wireless",
+    "schematic": [
+      149,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP10",
+    "library": "Connector",
+    "symbol": "TestPoint",
+    "value": "BAT_TS",
+    "mpn": "",
+    "manufacturer": "",
+    "nets": {
+      "1": "BAT_TS"
+    },
+    "board": [
+      8,
+      21,
+      0
+    ],
+    "sheet": "Power",
+    "schematic": [
+      270,
+      250,
+      0
+    ],
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "description": "Bare ENIG probe target; no assembled component",
+    "local_symbol": "Connector_TestPoint",
+    "local_footprint": "Atlas:TestPoint_TestPoint_Pad_D1.0mm"
+  }
+]

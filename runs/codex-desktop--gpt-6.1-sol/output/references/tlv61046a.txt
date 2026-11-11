@@ -1,0 +1,1139 @@
+TLV61046A 28-V Output Voltage Boost Converter with Power Diode and Isolation
+Switch
+1 Features
+• Input voltage range: 1.8 V to 5.5 V, down to 1.6 V
+after start-up
+• Output voltage up to 28 V
+• Integrated power diode and isolation switch
+• 980-mA (typical) switch current
+• Up to 85% efficiency at 3.6-V input and 12-V
+output
+• ±2.5% output voltage accuracy
+• Power save operation mode at light load
+• Internal 7-ms soft start time
+• True disconnection between input and output
+during shutdown
+• Output short circuit protection
+• Output overvoltage protection
+• Thermal shutdown protection
+• 3-mm × 3-mm SOT23-6 package
+• Create a custom design using the TLV61046A with
+the WEBENCH® Power Designer
+2 Applications
+• PMOLED power supply
+• LCD panel
+• Wearable devices
+• Portable medical equipment
+• Sensor power supply
+3 Description
+The TLV61046A is a highly-integrated boost converter
+designed for applications such as PMOLED panel,
+LCD bias supply, and sensor module. The
+TLV61046A integrates a 30-V power switch, an input
+to output isolation switch, and a rectifier diode. It can
+output up to 28 V from input of a Li+ battery or two
+alkaline batteries in series.
+The TLV61046A operates with a switching frequency
+at 1.0 MHz. This allows the use of small external
+components. The TLV61046A has an internal default
+12-V output voltage setting by connecting the FB pin
+to the VIN pin. Thus it only needs three external
+components to get 12-V output voltage. The
+TLV61046A has typical 980-mA switch current limit. It
+has 7-ms built-in soft start time to reduce the inrush
+current. When the TLV61046A is in shutdown mode,
+the isolation switch disconnects the output from input
+to minimize the leakage current. The TLV61046A also
+implements output short circuit protection, output
+overvoltage protection, and thermal shutdown.
+The TLV61046A is available in a 6-pin 3-mm x 3-mm
+SOT23-6 package.
+Device Information (1)
+PART NUMBER PACKAGE BODY SIZE (NOM)
+TLV61046A SOT23-6 (6) 2.9 mm x 1.6 mm
+(1) For all available packages, see the orderable addendum at
+the end of the data sheet.
+VIN
+EN
+SW
+VOUT
+FB
+GND
+OFF
+ON
+C1
+C2
+1.8 V ~ 5.5 V
+4.5 V ~ 28 V
+R1
+R2
+L1
+Simplified Schematic
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 1
+Product Folder Links: TLV61046A
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+An IMPORTANT NOTICE at the end of this data sheet addresses availability, warranty, changes, use in safety-critical applications,
+intellectual property matters and other important disclaimers. PRODUCTION DATA.
+Table of Contents
+1 Features............................................................................1
+2 Applications.....................................................................1
+3 Description.......................................................................1
+4 Revision History.............................................................. 2
+5 Pin Configuration and Functions...................................3
+6 Specifications.................................................................. 4
+6.1 Absolute Maximum Ratings........................................ 4
+6.2 ESD Ratings............................................................... 4
+6.3 Recommended Operating Conditions.........................4
+6.4 Thermal Information....................................................4
+6.5 Electrical Characteristics.............................................5
+6.6 Typical Characteristics................................................6
+7 Detailed Description........................................................8
+7.1 Overview.....................................................................8
+7.2 Functional Block Diagram...........................................8
+7.3 Feature Description.....................................................8
+7.4 Device Functional Modes............................................9
+8 Application and Implementation.................................. 11
+8.1 Application Information..............................................11
+8.2 Typical Application - 12-V Output Boost Converter...11
+8.3 System Examples..................................................... 16
+9 Power Supply Recommendations................................17
+10 Layout...........................................................................18
+10.1 Layout Guidelines................................................... 18
+10.2 Layout Example...................................................... 18
+11 Device and Documentation Support..........................19
+11.1 Device Support........................................................19
+11.2 Receiving Notification of Documentation Updates..19
+11.3 Support Resources................................................. 19
+11.4 Trademarks.............................................................19
+11.5 Electrostatic Discharge Caution..............................19
+11.6 Glossary..................................................................19
+12 Mechanical, Packaging, and Orderable
+Information.................................................................... 20
+4 Revision History
+Changes from Revision A (April 2017) to Revision B (February 2021) Page
+• Updated the numbering format for tables, figures and cross-references throughout the document. ................. 1
+• Corrected grammar and numeration format ...................................................................................................... 1
+• Added WEBENCH links ..................................................................................................................................... 1
+Changes from Revision * (April 2017) to Revision A (April 2017) Page
+• Changed to Production Data.............................................................................................................................. 1
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+2 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+5 Pin Configuration and Functions
+SW
+FB
+GND
+VIN
+EN
+VOUT
+Figure 5-1. DBV Package 6-Pin SOT23 Top View
+Table 5-1. Pin Functions
+PIN
+TYPE DESCRIPTION
+NAME NUMBER
+SW 1 PWR The switch pin of the converter. It is connected to the drain of the internal power MOSFET.
+GND 2 PWR Ground
+FB 3 I
+Voltage feedback of adjustable output voltage. Connected to the center tap of a resistor divider to
+program the output voltage. When it is connected to the VIN pin, the output voltage is set to 12 V by an
+internal feedback.
+EN 4 I Enable logic input. Logic high voltage enables the device. Logic low voltage disables the device and turns it into shutdown mode.
+VOUT 5 PWR Output of the boost converter
+VIN 6 I IC power supply input
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 3
+Product Folder Links: TLV61046A
+6 Specifications
+6.1 Absolute Maximum Ratings
+over operating free-air temperature range (unless otherwise noted) (1)
+MIN MAX UNIT
+Voltage range at terminals (2) VIN, EN, FB – 0.3 6 V
+SW, VOUT –0.3 32 V
+Operating junction temperature range, TJ –40 150 °C
+Storage temperature range, Tstg –65 150 °C
+(1) Stresses beyond those listed under Absolute Maximum Ratings may cause permanent damage to the device. These are stress ratings
+only, which do not imply functional operation of the device at these or any other conditions beyond those indicated under
+Recommended Operating Conditions. Exposure to absolute-maximum-rated conditions for extended periods may affect device
+reliability.
+(2) All voltage values are with respect to network ground terminal.
+6.2 ESD Ratings
+VALUE UNIT
+V(ESD) (1) Electrostatic discharge
+Human body model (HBM), per ANSI/ESDA/JEDEC JS-001, all pins(2) ±2000 V
+Charged device model (CDM), per JEDEC specification JESD22-C101,
+all pins(3) ±500 V
+(1) Electrostatic discharge (ESD) to measure device sensitivity and immunity to damage caused by assembly line electrostatic discharges
+in to the device.
+(2) JEDEC document JEP155 states that 500-V HBM allows safe manufacturing with a standard ESD control process.
+(3) JEDEC document JEP157 states that 250-V CDM allows safe manufacturing with a standard ESD control process.
+6.3 Recommended Operating Conditions
+over operating free-air temperature range (unless otherwise noted)
+MIN TYP MAX UNIT
+VIN Input voltage range 1.8 5.5 V
+VOUT Output voltage range 3.3 28 V
+L Effective inductance range 2.2×0.7 10 22×1.3 µH
+CIN Effective input capacitance range 0.22 1.0 µF
+COUT Effective output capacitance range 0.22 1.0 10 µF
+TJ Operating junction temperature –40 125 °C
+6.4 Thermal Information
+THERMAL METRIC(1)
+TLV61046A
+UNITDBV (SOT23)
+6 PINS
+RθJA Junction-to-ambient thermal resistance 177.7
+°C/W
+RθJC(top) Junction-to-case (top) thermal resistance 120.6
+RθJB Junction-to-board thermal resistance 33.2
+ψJT Junction-to-top characterization parameter 21.5
+ψJB Junction-to-board characterization parameter 32.6
+RθJC(bot) Junction-to-case (bottom) thermal resistance n/a
+(1) For more information about traditional and new thermal metrics, see the Semiconductor and IC Package Thermal Metrics application
+report.
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+4 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+6.5 Electrical Characteristics
+TA = –40°C to 85°C, VIN = 3.6 V and VOUT = 12 V. Typical values are at TA = 25°C, unless otherwise noted.
+PARAMETER TEST CONDITIONS MIN TYP MAX UNIT
+POWER SUPPLY
+VIN Input voltage range 1.8 5.5 V
+VIN_UVLO Under voltage lockout threshold
+VIN rising 1.75 1.8 V
+VIN falling 1.55 1.6
+VIN_HYS VIN UVLO hysteresis 200 mV
+IQ_VIN Quiescent current into VIN pin IC enabled, no load, no switching, VIN = 1.8 V to 5.5 V, VOUT = 12 V 110 200 µA
+ISD Shutdown current into VIN pin IC disabled, VIN = 1.8 V to 5.5 V, TA = 25°C 0.1 1.0 µA
+OUTPUT
+VOUT Output voltage range 3.3 28 V
+VOUT_12V 12-V output voltage accuracy FB pin connected to VIN pin, TJ=0°C to 125°C 11.7 12.1 12.4 V
+VREF Feedback voltage
+PWM mode, TA=25°C 0.783 0.795 0.807 V
+PWM mode, TJ=-40°C to 125°C 0.775 0.795 0.815 V
+PFM mode, TA=25°C 0.803 V
+VOVP Output overvoltage protection threshold 28 29.2 30.4 V
+VOVP_HYS Over voltage protection hysteresis 0.9 V
+IFB_LKG Leakage current into FB pin TA = 25°C 200 nA
+ISW_LKG Leakage current into SW pin IC disabled, TA = 25°C 500 nA
+POWER SWITCH
+RDS(on)
+Isolation MOSFET on resistance VOUT = 12 V 850 mΩ
+Low-side MOSFET on resistance VOUT = 12 V 450
+fSW Switching frequency VIN = 3.6 V, VOUT = 12 V, PWM mode 850 1050 1250 kHz
+tON_min Minimal switch on time 150 250 ns
+ILIM_SW Peak switch current limit
+VIN = 3.6 V, VOUT = 12 V 680 980 1250 mA
+VIN = 2.4 V, VOUT = 3.3 V 20 mA
+ILIM_CHG Pre-charge current VIN = 3.6 V, VOUT = 0 V 30 50 mA
+tSTARTUP Startup time VOUT from VIN to 12 V, COUT_effective = 2.2 µF, IOUT = 0 A 2 5 ms
+LOGIC INTERFACE
+VEN_H EN Logic high threshold 1.2 V
+VEN_L EN Logic Low threshold 0.4 V
+PROTECTION
+TSD Thermal shutdown threshold TJ rising 150 °C
+TSD_HYS Thermal shutdown hysteresis TJ falling below TSD 20 °C
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 5
+Product Folder Links: TLV61046A
+6.6 Typical Characteristics
+VIN = 3.6 V, VOUT = 12 V, TA = 25°C, unless otherwise noted.
+Output Current (A)
+Efficiency (%)
+0.0001 0.001 0.01 0.1 1
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+D001
+VIN = 1.8 V
+VIN = 3 V
+VIN = 3.6 V
+VIN = 4.2 V
+VOUT = 12 V
+Figure 6-1. Efficiency vs Output Current
+Output Current (A)
+Efficency (%)
+0.0001 0.001 0.01 0.1 1
+0
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+D002
+VOUT = 5 V
+VOUT = 12 V
+VOUT = 24 V
+VIN = 3.6 V
+Figure 6-2. Efficiency vs Output Current
+Temperature (qC)
+12-V Fixed Output Voltage (V)
+-40 -20 0 20 40 60 80 100 120
+11.9
+11.95
+12
+12.05
+12.1
+12.15
+12.2
+D003
+VIN = 3.6 V, VOUT = 12 V, FB pin connected to VIN pin, PWM
+mode
+Figure 6-3. 12-V Fixed Output Voltage vs Temperature
+Temperature (qC)
+Reference Voltage (mV)
+-40 -20 0 20 40 60 80 100 120
+780
+785
+790
+795
+800
+805
+810
+D004
+VIN = 3.6 V, VOUT = 12 V, PWM mode
+Figure 6-4. FB Reference Voltage vs Temperature
+Temperature (qC)
+Quiescent Current (PA)
+-40 -20 0 20 40 60 80 100 120
+70
+80
+90
+100
+110
+120
+130
+140
+150
+D005
+VIN = 3.6 V, VOUT = 12 V, No switching
+Figure 6-5. Quiescent Current into VIN vs Temperature
+Input Voltage (V)
+Quiescent Current (PA)
+1.8 2.4 3 3.6 4.2 4.8 5.4 6
+70
+80
+90
+100
+110
+120
+130
+140
+150
+D001
+VIN = 1.8 V ~ 6 V, VOUT = 12 V, No switching
+Figure 6-6. Quiescent Current into VIN vs Input Voltage
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+6 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+6.6 Typical Characteristics (continued)
+VIN = 3.6 V, VOUT = 12 V, TA = 25°C, unless otherwise noted.
+Temperature (qC)
+Shutdown Current (PA)
+-40 -20 0 20 40 60 80
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+D007
+VIN = 3.6 V
+Figure 6-7. Shutdown Current vs Temperature
+Temperature (qC)
+Current Limit (mA)
+-40 -20 0 20 40 60 80 100 120
+500
+600
+700
+800
+900
+1000
+1100
+D008
+VIN = 3.6 V, VOUT = 12 V
+Figure 6-8. Current Limit vs Temperature
+Input Voltage (V)
+Current Limit (mA)
+1.8 2.4 3 3.6 4.2 4.8 5.4 6
+500
+600
+700
+800
+900
+1000
+1100
+D009
+VIN = 1.8 V ~ 6 V, VOUT = 12 V
+Figure 6-9. Current Limit vs Input Voltage
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 7
+Product Folder Links: TLV61046A
+7 Detailed Description
+7.1 Overview
+The TLV61046A is a highly-integrated boost converter designed for applications requiring high voltage and small
+solution size such as PMOLED panel power supply and sensor module. The TLV61046A integrates a 30-V
+power switch, an input to output isolation switch, and a rectifier diode. It can output up to 28 V from input of a Li+
+battery or two-cell alkaline batteries in series.
+One common issue with conventional boost regulators is the conduction path from input to output even when the
+power switch is turned off. It creates three problems, which are inrush current during start-up, output leakage
+current during shutdown, and excessive over load current. In the TLV61046A, the isolation switch is turned off
+under shutdown mode and over load conditions, thereby opening the current path. Thus, the TLV61046A can
+truely disconnect the load from the input voltage and minimize the leakage current during shutdown mode.
+The TLV61046A operates with a switching frequency at 1.0 MHz. This allows the use of small external
+components. The TLV61046A has an internal default 12-V output voltage setting by connecting the FB pin to the
+VIN pin. Thus, it only needs three external components to get 12-V output voltage. The TLV61046A has typical
+980-mA switch current limit. It has 7-ms built-in soft start time to minimize the inrush current. The TLV61046A
+also implements output short circuit protection, output overvoltage protection, and thermal shutdown.
+7.2 Functional Block Diagram
+Thermal 
+shutdown
+UVLO
+Gate driver
+PWM / PFM control
+Soft start &
+current limit control
+3
+2
+5
+16
+Logic4
+VOUT EA
+VOUTVIN
+SW
+EN
+FB
+GND
+VOUT
+VIN
+Gate driver
+OVP REF
+Pre-charge &
+short circuit 
+protection & on/off 
+control
+EN
+REF
+FB
+1.2 V
+– 
++
+– 
++
++– 
+7.3 Feature Description
+7.3.1 Undervoltage Lockout
+An undervoltage lockout (UVLO) circuit stops the operation of the converter when the input voltage drops below
+the typical UVLO threshold of 1.55 V. A hysteresis of 200 mV is added so that the device cannot be enabled
+again until the input voltage goes up to 1.75 V. This function is implemented in order to prevent malfunctioning of
+the device when the input voltage is between 1.55 V and 1.75 V.
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+8 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+7.3.2 Enable and Disable
+When the input voltage is above the maximal UVLO rising threshold of 1.8 V and the EN pin is pulled high, the
+TLV61046A is enabled. When the EN pin is pulled low, the TLV61046A goes into shutdown mode. The device
+stops switching and the isolation switch is turned off, providing the isolation between input and output. In
+shutdown mode, less than 1-µA input current is consumed.
+7.3.3 Soft Start
+The TLV61046A begins soft start when the EN pin is pulled high. At the beginning of the soft start period, the
+isolation FET is turned on slowly to charge the output capacitor with 30-mA current for about 2 ms. This is called
+the pre-charge phase. After the pre-charge phase, the TLV61046A starts switching. This is called switching soft-
+start phase. An internal soft start circuit limits the peak inductor current according to the output voltage. When
+the output voltage is below 3 V, the peak inductor current is limited to 140 mA. Along with the output voltage
+going up from 3 V to 5 V, the peak current limit is gradually increased to the normal value of 980 mA. The
+switching soft start phase is about 5 ms typically. The soft start funciton reduces the inrush current during start-
+up.
+7.3.4 Overvoltage Protection
+The TLV61046A has internal output overvoltage protection (OVP) function. When the output voltage exceeds the
+OVP threshold of 29.2 V, the device stops switching. Once the output voltage falls 0.9 V below the OVP
+threshold, the device resumes operation again.
+7.3.5 Output Short Circuit Protection
+The TLV61046A starts to limit the output current whenever the output voltage drops below 4 V. The lower output
+voltage, the smaller output current limit. When the VOUT pin is shorted to ground, the output current is limited to
+less than 200 mA. This function protects the device from being damaged when the output is shorted to ground.
+7.3.6 Thermal Shutdown
+The TLV61046A goes into thermal shutdown once the junction temperature exceeds the thermal shutdown
+termperature threshold of 150°C typically. When the junction temperature drops below 130°C typically, the
+device starts operating again.
+7.4 Device Functional Modes
+The TLV61046A has two operation modes, PWM mode and power save mode.
+7.4.1 PWM Mode
+The TLV61046A uses a quasi-constant 1.0-MHz frequency pulse width modulation (PWM) at moderate to heavy
+load current. Based on the input voltage-to-output votlage ratio, a circuit predicts the required off-time. At the
+beginning of the switching cycle, the NMOS switching FET, shown in the functional block diagram, is turned on.
+The input voltage is applied across the inductor and the inductor current ramps up. In this phase, the output
+capacitor is discharged by the load current. When the inductor current hits the current threshold that is set by the
+output of the error amplifier, the PWM switch is turned off, and the power diode is forward-biased. The inductor
+transfers its stored energy to replenish the output capacitor and supply the load. When the off-time is expired,
+the next switching cycle starts again. The error amplifier compares the FB pin voltage with an internal reference
+votlage, and its output determines the inductor peak current.
+The TLV61046A has a built-in compensation circuit that can accommodate a wide range of input voltage, output
+voltage, inductor value, and output capacitor value for stable operation.
+7.4.2 Power Save Mode
+The TLV61046A implements a power save mode with pulse frequency modulation (PFM) to improve efficiency at
+light load. When the load current decreases, the inductor peak current set by the output of the error amplifier
+declines to regulate the output voltage. When the inductor peak current hits the low limit of 200 mA, the output
+voltage will exceed the setting voltage as the load current decreases further. When the FB voltage hits the PFM
+reference voltage, the TLV61046A goes into power save mode. In power save mode, when the FB voltage rises
+and hits the PFM reference voltage, the device continues switching for several cycles because of the delay time
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 9
+Product Folder Links: TLV61046A
+of the internal comparator, then it stops switching. The load is supplied by the output capacitor and the output
+voltage declines. When the FB voltage falls below the PFM reference voltage, after the delay time of the
+comparator, the device starts switching again to ramp up the output voltage.
+Output 
+Voltage
+VOUT_NOM
+1.01 x VOUT_NOM
+PFM mode at light load
+PWM mode at heavy load
+Figure 7-1. Output Voltage in PWM Mode and PFM Mode
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+10 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+8 Application and Implementation
+Note
+Information in the following applications sections is not part of the TI component specification, and TI
+does not warrant its accuracy or completeness. TI’s customers are responsible for determining
+suitability of components for their purposes, as well as validating and testing their design
+implementation to confirm system functionality.
+8.1 Application Information
+The TLV61046A is a boost DC-DC converter integrating a power switch, an input to output isolation switch, and
+a rectifier diode. The device supports up to 28-V output with the input voltage ranging from 1.8 V to 5.5 V. The
+TLV61046A adopts the current-mode control with adaptive constant off-time. The switching frequency is quasi-
+constant at 1.0 MHz. The isolation switch disconnects the output from the input during shutdown to minimize
+leakage current.
+The following design procedure can be used to select component values for the TLV61046A.
+8.2 Typical Application - 12-V Output Boost Converter
+spacing
+VIN
+EN
+SW
+VOUT
+FB
+GND
+L1
+4.7 µF
+1.0 µF
+R1
+R2
+OFF
+ON
+C1
+C2
+2.7 V ~ 4.2 V
+10 µH
+TLV61046A
+71.5 k 
+1.0 M
+12 V
+Figure 8-1. 12-V Boost Converter
+8.2.1 Design Requirements
+Table 8-1. Design Requirements
+PARAMETERS VALUES
+Input Voltage 2.7 V ~ 4.2 V
+Output Voltage 12 V
+Output Current 50 mA
+Output Voltage Ripple ±50 mV
+8.2.2 Detailed Design Procedure
+8.2.2.1 Custom Design With WEBENCH® Tools
+Click here to create a custom design using the TLV61046A device with the WEBENCH® Power Designer.
+1. Start by entering the input voltage (VIN), output voltage (VOUT), and output current (IOUT) requirements.
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 11
+Product Folder Links: TLV61046A
+2. Optimize the design for key parameters such as efficiency, footprint, and cost using the optimizer dial.
+3. Compare the generated design with other possible solutions from Texas Instruments.
+The WEBENCH Power Designer provides a customized schematic along with a list of materials with real-time
+pricing and component availability.
+In most cases, these actions are available:
+• Run electrical simulations to see important waveforms and circuit performance
+• Run thermal simulations to understand board thermal performance
+• Export customized schematic and layout into popular CAD formats
+• Print PDF reports for the design, and share the design with colleagues
+Get more information about WEBENCH tools at www.ti.com/WEBENCH.
+8.2.2.2 Programming the Output Voltage
+There are two ways to set the output voltage of the TLV61046A. When the FB pin is connected to the input
+voltage, the output voltage is fixed to 12 V. This function makes the TLV61046A only need three external
+components to minimize the solution size. The second way is to use an external resistor divider to set the
+desired output voltage.
+By selecting the external resistor divider R1 and R2, as shown in Equation 1, the output voltage is programmed
+to the desired value. When the output voltage is regulated, the typical voltage at the FB pin is VREF of 795 mV.
+OUT
+REF
+VR1 1 R2V § •   u¤ ‚ ' „ 
+(1)
+where
+• V OUT is the desired output voltage
+• V REF is the internal reference voltage at the FB pin
+For best accuracy, R2 should be kept smaller than 80 kΩ to ensure the current flowing through R2 is at least 100
+times larger than the FB pin leakage current. Changing R2 towards a lower value increases the immunity against
+noise injection. Changing the R2 towards a higher value reduces the quiescent current for achieving higher
+efficiency at low load currents.
+8.2.2.3 Inductor Selection
+Because the selection of the inductor affects steady state operation, transient behavior, and loop stability, the
+inductor is the most important component in power regulator design. There are three important inductor
+specifications, inductor value, saturation current, and dc resistance (DCR).
+The TLV61046A is designed to work with inductor values between 2.2 µH and 22 µH. Follow Equation 2  to
+Equation 4 to calculate the peak current of the inductor for the application. To calculate the peak current in the
+worst case, use the minimum input voltage, maximum output voltage, and maximum load current of the
+application. To have enough design margin, choose the inductor value with -30% tolerance, and a low power-
+conversion efficiency for the calculation.
+In a boost regulator, the inductor dc current can be calculated with Equation 2.
+OUT OUT
+L(DC)
+IN
+V I I V u uK
+(2)
+where
+• V OUT is output voltage
+• I OUT is output current
+• V IN is input voltage
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+12 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+• η is power conversion efficiency, use 80% for most applications
+The inductor ripple current is calculated with Equation 3  for an asynchronous boost converter in continuous
+conduction mode (CCM).
+ 
+ 
+IN OUT IN
+L(P P)
+SW OUT
+V V 0.8V VI L V 0.8V u  ’  u u f
+(3)
+where
+• ΔI L(P-P) is inductor ripple current
+• L is inductor value
+• f SW is switching frequency
+• V OUT is output voltage
+• V IN is input voltage
+Therefore, the inductor peak current is calculated with Equation 4.
+   
+ L P P
+L P L DC
+I
+I I 2
+’   
+(4)
+Normally, it is advisable to work with an inductor peak-to-peak current of less than 40% of the average inductor
+current for maximum output current. A smaller ripple from a larger valued inductor reduces the magnetic
+hysteresis losses in the inductor and EMI. But in the same way, load transient response time is increased.
+Because the TLV61046A is for relatively small output current application, the inductor peak-to-peak current can
+be as high as 200% of the average current with a small inductor value, which means the TLV61046A always
+works in DCM mode. Table 8-2 lists the recommended inductors for the TLV61046A.
+Table 8-2. Recommended Inductors for the TLV61046A
+PART NUMBER L(µH) DCR MAX (mΩ) SATURATION CURRENT (A) SIZE (LxWxH) VENDOR(1)
+FDSD0420-H-100M 10 200 2.5 4.2x4.2x2.0 Toko
+CDRH3D23/HP 10 198 1.02 4.0x4.0x2.5 Sumida
+74438336100 10 322 2.35 3.2x3.2x2.0 Wurth
+VLS4012-4R7M 4.7 132 1.1 4.0x4.0x1.2 TDK
+(1) See Third-party Products Disclaimer
+8.2.2.4 Input and Output Capacitor Selection
+The output capacitor is mainly selected to meet the requirements for output ripple and loop stability. This ripple
+voltage is related to the capacitance of the capacitor and its equivalent series resistance (ESR). Assuming a
+ceramic capacitor with zero ESR, the minimum capacitance needed for a given ripple can be calculated by:
+OUT MAX
+OUT
+SW RIPPLE
+I D C V u uf
+(5)
+where
+• D MAX is maximum switching duty cycle
+• V RIPPLE is peak to peak output voltage ripple
+The ESR impact on the output ripple must be considered if tantalum or aluminum electrolytic capacitors are
+used.
+Care must be taken when evaluating a ceramic capacitor’s derating under dc bias, aging, and ac signal. For
+example, the dc bias can significantly reduce capacitance. A ceramic capacitor can lose more than 50% of its
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 13
+Product Folder Links: TLV61046A
+capacitance at its rated voltage. Therefore, always leave margin on the voltage rating to ensure adequate
+capacitance at the required output voltage.
+It is recommended to use the output capacitor with effective capacitance in the range of 0.47 μF to 10 μF. The
+output capacitor affects loop stability of the boost regulator. If the output capacitor is below the range, the boost
+regulator can potentially become unstable. Increasing the output capacitor makes the output voltage ripple
+smaller in PWM mode.
+For input capacitor, a ceramic capacitor with more than 1.0 µF is enough for most applications.
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+14 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+8.2.3 Application Performance Curves
+SW
+10 V / div
+VOUT (AC)
+30 mV / div
+Inductor 
+Current
+100 mA / div
+VIN = 3.6 V, VOUT = 12 V, IOUT = 50 mA
+Figure 8-2. Switching Waveforms in PWM CCM
+Mode
+SW
+10 V / div
+VOUT (AC)
+10 mV / div
+Inductor 
+Current
+100 mA / div
+VIN = 3.6 V, VOUT = 12 V, IOUT = 18 mA
+Figure 8-3. Switching Waveforms in PWM DCM
+Mode
+SW
+10 V / div
+VOUT (AC)
+50 mV / div
+Inductor 
+Current
+100 mA / div
+VIN = 3.6 V, VOUT = 12 V, IOUT = 3 mA
+Figure 8-4. Switching Waveforms in Power Save
+Mode
+EN
+1 V / div
+VOUT
+3 V / div
+Inductor 
+Current
+100 mA / div
+VIN = 3.6 V, VOUT = 12 V, IOUT = 50 mA
+Figure 8-5. Soft Start-up Waveforms
+EN
+1 V / div
+VOUT (AC)
+3 V / div
+Inductor 
+Current
+100 mA / div
+VIN = 3.6 V, VOUT = 12 V, IOUT = 50 mA
+Figure 8-6. Shutdown Waveforms
+VOUT (AC)
+200 mV / div
+Output Current
+50 mA / div
+VIN = 3.6 V, VOUT = 12 V
+Figure 8-7. 30-mA to 70-mA Load Transient
+Response
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 15
+Product Folder Links: TLV61046A
+VOUT (AC)
+200 mV / div
+VIN (3.3 V offset)
+500 mV / div
+VOUT = 12 V, IOUT = 50 mA
+Figure 8-8. Input Voltage from 3.3-V to 4.2-V Line Transient Response
+8.3 System Examples
+8.3.1 Fixed 12-V Output Voltage with Three External Components
+The TLV61046A can output fixed 12-V voltage by connecting the FB pin to the VIN pin to save the external
+resistor divider. The Figure 8-9 shows the application circuit.
+VIN
+EN
+SW
+VOUT
+GND
+FB
+OFF
+ON
+C1
+C2
+1.8 V ~ 5.5 V
+12 V
+L1
+2.2PF
+10 µH
+10 µF
+Figure 8-9. Fixed 12-V Output Voltage by Connecting the FB Pin to VIN Pin
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+16 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+9 Power Supply Recommendations
+The device is designed to operate from an input voltage supply range between 1.8 V to 5.5 V. This input supply
+must be well regulated. If the input supply is located more than a few inches from the converter, additional bulk
+capacitance can be required in addition to the ceramic bypass capacitors. A typical choice is an electrolytic or
+tantalum capacitor with a value of 47 µF. The output current of the input power supply needs to be rated
+according to the supply voltage, output voltage, and output current of the TLV61046A.
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 17
+Product Folder Links: TLV61046A
+10 Layout
+10.1 Layout Guidelines
+As for all switching power supplies, especially those running at high switching frequency and high currents,
+layout is an important design step. If the layout is not carefully done, the regulator could suffer from instability
+and noise problems. To maximize efficiency, switch rise and fall time are very fast. To prevent radiation of high
+frequency noise (for example, EMI), proper layout of the high-frequency switching path is essential. Minimize the
+length and area of all traces connected to the SW pin, and always use a ground plane under the switching
+regulator to minimize interplane coupling. The input capacitor needs not only to be close to the VIN pin, but also
+to the GND pin in order to reduce input supply ripple.
+The most critical current path for all boost converters is from the switching FET, through the rectifier diode, then
+the output capacitors, and back to ground of the switching FET. This high current path contains nanosecond rise
+and fall time and should be kept as short as possible. Therefore, the output capacitors need not only to be close
+to the VOUT pin, but also to the GND pin to reduce the overshoot at the SW pin and VOUT pin.
+10.2 Layout Example
+A large ground plane on the bottom layer connects the ground pins of the components on the top layer through
+vias.
+VOUT
+VIN
+GND
+GND
+SW FBGND
+VIN ENVOUT
+Figure 10-1. PCB Layout Example
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+18 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+11 Device and Documentation Support
+11.1 Device Support
+11.1.1 Third-Party Products Disclaimer
+TI'S PUBLICATION OF INFORMATION REGARDING THIRD-PARTY PRODUCTS OR SERVICES DOES NOT
+CONSTITUTE AN ENDORSEMENT REGARDING THE SUITABILITY OF SUCH PRODUCTS OR SERVICES
+OR A WARRANTY, REPRESENTATION OR ENDORSEMENT OF SUCH PRODUCTS OR SERVICES, EITHER
+ALONE OR IN COMBINATION WITH ANY TI PRODUCT OR SERVICE.
+11.1.2 Development Support
+11.1.2.1 Custom Design With WEBENCH® Tools
+Click here to create a custom design using the TLV61046A device with the WEBENCH® Power Designer.
+1. Start by entering the input voltage (VIN), output voltage (VOUT), and output current (IOUT) requirements.
+2. Optimize the design for key parameters such as efficiency, footprint, and cost using the optimizer dial.
+3. Compare the generated design with other possible solutions from Texas Instruments.
+The WEBENCH Power Designer provides a customized schematic along with a list of materials with real-time
+pricing and component availability.
+In most cases, these actions are available:
+• Run electrical simulations to see important waveforms and circuit performance
+• Run thermal simulations to understand board thermal performance
+• Export customized schematic and layout into popular CAD formats
+• Print PDF reports for the design, and share the design with colleagues
+Get more information about WEBENCH tools at www.ti.com/WEBENCH.
+11.2 Receiving Notification of Documentation Updates
+To receive notification of documentation updates, navigate to the device product folder on ti.com. Click on
+Subscribe to updates  to register and receive a weekly digest of any product information that has changed. For
+change details, review the revision history included in any revised document.
+11.3 Support Resources
+TI E2E ™ support forums  are an engineer's go-to source for fast, verified answers and design help — straight
+from the experts. Search existing answers or ask your own question to get the quick design help you need.
+Linked content is provided "AS IS" by the respective contributors. They do not constitute TI specifications and do
+not necessarily reflect TI's views; see TI's Terms of Use.
+11.4 Trademarks
+TI E2E™ is a trademark of Texas Instruments.
+WEBENCH® are registered trademarks of Texas Instruments.
+All trademarks are the property of their respective owners.
+11.5 Electrostatic Discharge Caution
+This integrated circuit can be damaged by ESD. Texas Instruments recommends that all integrated circuits be handled
+with appropriate precautions. Failure to observe proper handling and installation procedures can cause damage.
+ESD damage can range from subtle performance degradation to complete device failure. Precision integrated circuits may
+be more susceptible to damage because very small parametric changes could cause the device not to meet its published
+specifications.
+11.6 Glossary
+TI Glossary This glossary lists and explains terms, acronyms, and definitions.
+www.ti.com
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021
+Copyright © 2021 Texas Instruments Incorporated Submit Document Feedback 19
+Product Folder Links: TLV61046A
+12 Mechanical, Packaging, and Orderable Information
+The following pages include mechanical, packaging, and orderable information. This information is the most
+current data available for the designated devices. This data is subject to change without notice and revision of
+this document. For browser-based versions of this data sheet, refer to the left-hand navigation.
+TLV61046A
+SLVSD82B – APRIL 2017 – REVISED FEBRUARY 2021 www.ti.com
+20 Submit Document Feedback Copyright © 2021 Texas Instruments Incorporated
+Product Folder Links: TLV61046A
+PACKAGE OPTION ADDENDUM
+www.ti.com 16-Jul-2026
+PACKAGING INFORMATION
+Orderable part number Status
+(1)
+Material type
+(2)
+Package | Pins Package qty | Carrier RoHS
+(3)
+Lead finish/
+Ball material
+(4)
+MSL rating/
+Peak reflow
+(5)
+Op temp (°C) Part marking
+(6)
+TLV61046ADBVR Active Production SOT-23 (DBV) | 6 3000 | LARGE T&R Yes NIPDAU | SN Level-1-260C-UNLIM -40 to 125 1C4F
+TLV61046ADBVR.A Active Production SOT-23 (DBV) | 6 3000 | LARGE T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1C4F
+TLV61046ADBVT Active Production SOT-23 (DBV) | 6 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1C4F
+TLV61046ADBVT.A Active Production SOT-23 (DBV) | 6 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1C4F
+TLV61046ADBVTG4 Active Production SOT-23 (DBV) | 6 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1C4F
+TLV61046ADBVTG4.A Active Production SOT-23 (DBV) | 6 250 | SMALL T&R Yes NIPDAU Level-1-260C-UNLIM -40 to 125 1C4F
+ 
+(1) Status:  For more details on status, see our product life cycle.
+ 
+(2) Material type:  When designated, preproduction parts are prototypes/experimental devices, and are not yet approved or released for full production. Testing and final process, including without limitation quality assurance,
+reliability performance testing, and/or process qualification, may not yet be complete, and this item is subject to further changes or possible discontinuation. If available for ordering, purchases will be subject to an additional
+waiver at checkout, and are intended for early internal evaluation purposes only. These items are sold without warranties of any kind.
+ 
+(3) RoHS values:  Yes, No, RoHS Exempt. See the TI RoHS Statement for additional information and value definition.
+ 
+(4) Lead finish/Ball material:  Parts may have multiple material finish options. Finish options are separated by a vertical ruled line. Lead finish/Ball material values may wrap to two lines if the finish value exceeds the maximum
+column width.
+ 
+(5) MSL rating/Peak reflow:  The moisture sensitivity level ratings and peak solder (reflow) temperatures. In the event that a part has multiple moisture sensitivity ratings, only the lowest level per JEDEC standards is shown.
+Refer to the shipping label for the actual reflow temperature that will be used to mount the part to the printed circuit board.
+ 
+(6) Part marking:  There may be an additional marking, which relates to the logo, the lot trace code information, or the environmental category of the part.
+ 
+Multiple part markings will be inside parentheses. Only one part marking contained in parentheses and separated by a "~" will appear on a part. If a line is indented then it is a continuation of the previous line and the two
+combined represent the entire part marking for that device.
+ 
+Important Information and Disclaimer:The information provided on this page represents TI's knowledge and belief as of the date that it is provided. TI bases its knowledge and belief on information provided by third parties, and
+makes no representation or warranty as to the accuracy of such information. Efforts are underway to better integrate information from third parties. TI has taken and continues to take reasonable steps to provide representative
+and accurate information but may not have conducted destructive testing or chemical analysis on incoming materials and chemicals. TI and TI suppliers consider certain information to be proprietary, and thus CAS numbers
+and other limited information may not be available for release.
+ 
+In no event shall TI's liability arising out of such information exceed the total purchase price of the TI part(s) at issue in this document sold by TI to Customer on an annual basis.
+Addendum-Page 1
+PACKAGE OPTION ADDENDUM
+www.ti.com 16-Jul-2026
+ 
+Addendum-Page 2
+PACKAGE MATERIALS INFORMATION
+  
+www.ti.com 18-Jun-2025
+TAPE AND REEL INFORMATION
+Reel Width (W1)
+REEL DIMENSIONS
+A0
+B0
+K0
+W
+Dimension designed to accommodate the component length
+Dimension designed to accommodate the component thickness
+Overall width of the carrier tape
+Pitch between successive cavity centers
+Dimension designed to accommodate the component width
+TAPE DIMENSIONS
+K0  P1
+B0 W
+A0Cavity
+QUADRANT ASSIGNMENTS FOR PIN 1 ORIENTATION IN TAPE
+Pocket Quadrants
+Sprocket Holes
+Q1 Q1Q2 Q2
+Q3 Q3Q4 Q4 User Direction of Feed
+P1
+Reel
+Diameter
+ 
+*All dimensions are nominal
+Device Package
+Type
+Package
+Drawing
+Pins SPQ Reel
+Diameter
+(mm)
+Reel
+Width
+W1 (mm)
+A0
+(mm)
+B0
+(mm)
+K0
+(mm)
+P1
+(mm)
+W
+(mm)
+Pin1
+Quadrant
+TLV61046ADBVR SOT-23 DBV 6 3000 180.0 8.4 3.2 3.2 1.4 4.0 8.0 Q3
+TLV61046ADBVT SOT-23 DBV 6 250 180.0 8.4 3.2 3.2 1.4 4.0 8.0 Q3
+TLV61046ADBVTG4 SOT-23 DBV 6 250 180.0 8.4 3.2 3.2 1.4 4.0 8.0 Q3
+Pack Materials-Page 1
+PACKAGE MATERIALS INFORMATION
+  
+www.ti.com 18-Jun-2025
+TAPE AND REEL BOX DIMENSIONS
+Width (mm)
+W L
+H
+ 
+*All dimensions are nominal
+Device Package Type Package Drawing Pins SPQ Length (mm) Width (mm) Height (mm)
+TLV61046ADBVR SOT-23 DBV 6 3000 210.0 185.0 35.0
+TLV61046ADBVT SOT-23 DBV 6 250 210.0 185.0 35.0
+TLV61046ADBVTG4 SOT-23 DBV 6 250 210.0 185.0 35.0
+Pack Materials-Page 2
+www.ti.com
+PACKAGE OUTLINE
+C
+0.22
+0.08 TYP
+0.25
+3.0
+2.6
+2X 0.95
+1.45
+0.90
+0.15
+0.00 TYP
+6X 0.50 0.25
+0.6
+0.3 TYP
+8
+0  TYP
+1.9
+4X 0 -15
+4X 4 -15
+A
+3.05
+2.75
+B1.75 1.45
+(1.1)
+SOT-23 - 1.45 mm max heightDBV0006A
+SMALL OUTLINE TRANSISTOR
+4214840/G   08/2024
+NOTES: 
+ 
+1. All linear dimensions are in millimeters. Any dimensions in parenthesis are for reference only. Dimensioning and tolerancing
+    per ASME Y14.5M.
+2. This drawing is subject to change without notice.
+3. Body dimensions do not include mold flash or protrusion. Mold flash and protrusion shall not exceed 0.25 per side.
+4. Leads 1,2,3 may be wider than leads 4,5,6 for package orientation.
+5. Refernce JEDEC MO-178.
+0.2 C A B
+1
+3
+4
+52
+INDEX AREA
+PIN 1
+6
+GAGE PLANE
+SEATING PLANE
+0.1 C
+SCALE  4.000
+www.ti.com
+EXAMPLE BOARD LAYOUT
+0.07 MAX
+ARROUND
+0.07 MIN
+ARROUND
+6X (1.1)
+6X (0.6)
+(2.6)
+2X (0.95)
+(R0.05) TYP
+4214840/G   08/2024
+SOT-23 - 1.45 mm max heightDBV0006A
+SMALL OUTLINE TRANSISTOR
+NOTES: (continued)
+ 
+6. Publication IPC-7351 may have alternate designs. 
+7. Solder mask tolerances between and around signal pads can vary based on board fabrication site.
+ 
+SYMM
+LAND PATTERN EXAMPLE
+EXPOSED METAL SHOWN
+SCALE:15X
+PKG
+1
+3 4
+52
+6
+SOLDER MASK
+OPENINGMETAL UNDER SOLDER MASK
+SOLDER MASK
+DEFINED
+EXPOSED METAL
+METALSOLDER MASK OPENING
+NON SOLDER MASK
+DEFINED
+(PREFERRED)
+SOLDER MASK DETAILS
+EXPOSED METAL
+www.ti.com
+EXAMPLE STENCIL DESIGN
+(2.6)
+2X(0.95)
+6X (1.1)
+6X (0.6)
+(R0.05) TYP
+SOT-23 - 1.45 mm max heightDBV0006A
+SMALL OUTLINE TRANSISTOR
+4214840/G   08/2024
+NOTES: (continued)
+ 
+8. Laser cutting apertures with trapezoidal walls and rounded corners may offer better paste release. IPC-7525 may have alternate
+     design recommendations. 
+9. Board assembly site may have different recommendations for stencil design.
+ 
+SOLDER PASTE EXAMPLE
+BASED ON 0.125 mm THICK STENCIL
+SCALE:15X
+SYMM
+PKG
+1
+3 4
+52
+6
+IMPORTANT NOTICE AND DISCLAIMER
+TI PROVIDES TECHNICAL AND RELIABILITY DATA (INCLUDING DATASHEETS), DESIGN RESOURCES (INCLUDING REFERENCE 
+DESIGNS), APPLICATION OR OTHER DESIGN ADVICE, WEB TOOLS, SAFETY INFORMATION, AND OTHER RESOURCES “AS IS” 
+AND WITH ALL FAULTS, AND DISCLAIMS ALL WARRANTIES, EXPRESS AND IMPLIED, INCLUDING WITHOUT LIMITATION ANY 
+IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT OF THIRD 
+PARTY INTELLECTUAL PROPERTY RIGHTS.
+These resources are intended for skilled developers designing with TI products. You are solely responsible for (1) selecting the appropriate 
+TI products for your application, (2) designing, validating and testing your application, and (3) ensuring your application meets applicable 
+standards, and any other safety, security, regulatory or other requirements.
+These resources are subject to change without notice. TI grants you permission to use these resources only for development of an 
+application that uses the TI products described in the resource. Other reproduction and display of these resources is prohibited. No license 
+is granted to any other TI intellectual property right or to any third party intellectual property right. TI disclaims responsibility for, and you fully 
+indemnify TI and its representatives against any claims, damages, costs, losses, and liabilities arising out of your use of these resources.
+TI’s products are provided subject to TI’s Terms of Sale, TI’s General Quality Guidelines, or other applicable terms available either on 
+ti.com or provided in conjunction with such TI products. TI’s provision of these resources does not expand or otherwise alter TI’s applicable 
+warranties or warranty disclaimers for TI products. Unless TI explicitly designates a product as custom or customer-specified, TI products 
+are standard, catalog, general purpose devices.
+TI objects to and rejects any additional or different terms you may propose.
+IMPORTANT NOTICE
+Copyright © 2026, Texas Instruments Incorporated
+Last updated 10/2025

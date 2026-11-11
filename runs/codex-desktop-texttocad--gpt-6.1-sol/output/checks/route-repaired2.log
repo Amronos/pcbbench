@@ -1,0 +1,8 @@
+routed +1V1: U1.39 to U1.23: 5.25 mm in 8 segments
+routed +1V1: U1.23 to C11.1: 1.56 mm in 1 segment
+routed FLASH_CS: R14.1 to U1.60: 5.83 mm in 4 segments, 1 via
+routed I2C_SCL: R25.1 to J5.16: 10.81 mm in 4 segments
+routed RGB_DATA: J5.12 to U1.18: 13.97 mm in 8 segments, 2 vias
+routed CHG_ISET: R5.1 to U4.16: 3.64 mm in 4 segments
+routed USB_SUSPEND_EN: U4.5 to R41.1: 3.09 mm in 3 segments
+OK: 7 of 7 connection(s) routed, 32 segment(s), 3 via(s), 44.1 mm of track, in 0.9 s

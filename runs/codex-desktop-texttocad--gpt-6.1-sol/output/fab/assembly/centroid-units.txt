@@ -1,0 +1,28 @@
+PCBWay physical F.Fab body bounding-box centers
+Generated UTC: 2026-11-10T02:12:06.888363+00:00
+Board: /Users/ec2-user/pcbbench-run/Atlas2350.kicad_pcb SHA256=d566adf81f6cd3687b7653f3ec31e04d1cb71c4ed3aec2fcd21980b33ea612a8
+Design metadata: /Users/ec2-user/pcbbench-run/design.json SHA256=034becacead4e3af18e2a4714a5044d900750504287446704dac06bbb4c6c2d6
+Units: millimetres; absolute saved board/page origin (0,0); no auxiliary-origin subtraction.
+Centroid CSV: Cartesian X right, Y up; MidX=boardX, MidY=-boardY, matching native Y-negative convention.
+Source CSV: explicitly labeled local/board-Y-down/Cartesian coordinates; local geometry is unscaled.
+Centroid CSV: surface-mounted parts only, including SMT+THT and U6 with plated thermal holes.
+Pure THT J5/J6/J7 excluded from centroid CSV; all real parts retained in centroid-source.csv.
+Layer=Top denotes assembly side, not mounting technology. H*/TP* bare features excluded.
+PCBWay primary requirement verified 2026-11-10: https://www.pcbway.com/assembly-file-requirements.html
+Official requirement: "Only surface mounting parts are listed in the Centroid."
+Native KiCad Footprint Position export may also be supplied separately; this export deliberately
+provides F.Fab body-box centers instead of saved footprint anchors to avoid anchor ambiguity.
+Method: largest-area valid closed F.Fab fp_rect/fp_poly or polygonized closed fp_line loop.
+Ignore text, other layers, courtyards, antenna keepouts, arcs/circles and smaller pin1 marks.
+Line endpoints rounded to 0.000001 mm; no gap bridging, buffering or guessed outline repair.
+Center is the selected body's local bounding-box center, then transformed; not center of mass.
+Transform: x=anchorX+(localX*scaleX)*cos+(localY*scaleY)*sin;
+           y=anchorY-(localX*scaleX)*sin+(localY*scaleY)*cos.
+Rotation: saved KiCad top-view CCW degrees normalized to [0,360); not a verified machine zero-angle.
+World bbox columns bound the transformed selected body, not courtyard/keepout.
+Assembler must reconcile zero-angle, reels, pick nozzle/fixtures and origin against assembly-pinout.csv
+and assembly drawings. Pure THT centers are in the source report for manual placement only.
+No anchor/Part.outline/courtyard fallback. Missing/ambiguous body is ERROR in centroid-source.csv.
+On any error no usable pcbway-centroids.csv is emitted; --overwrite removes its obsolete predecessor.
+Surface centroid rows: 112; all-part source rows: 115; errors: 0
+Status: geometry export only; not ERC/DRC/DFM, supplier acceptance or fabrication release approval.

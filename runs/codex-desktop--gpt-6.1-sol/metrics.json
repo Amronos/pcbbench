@@ -1,0 +1,583 @@
+{
+	"startedAt": "2026-11-09T22:44:11.407Z",
+	"finishedAt": "2026-11-10T00:02:15.825Z",
+	"minutes": 78.07,
+	"endedBy": "done",
+	"tokens": {
+		"input": 129207,
+		"cacheRead": 19751915,
+		"cacheWrite": 894558,
+		"output": 180464,
+		"reasoning": 93981
+	},
+	"costUsd": 6.410894875,
+	"costSource": "API cost at market prices",
+	"boardCost": {
+		"afterFixes": true,
+		"oneBoard": {
+			"pcbQty": 5,
+			"pcbUsd": 110.49,
+			"assemblyUsd": 88,
+			"componentsUsd": 47.82,
+			"totalUsd": 246.31
+		},
+		"fiveBoards": {
+			"pcbUsd": 110.49,
+			"assemblyUsd": 117.41,
+			"componentsUsd": 160.29,
+			"totalUsd": 388.19,
+			"perBoardUsd": 77.64
+		},
+		"pricedAt": "2026-11-10T08:48:21.777Z",
+		"source": "PCB and assembly from PCBWay's instant quote (pcbway-quote.json) with the options in the run's fab notes, standard build, shipping excluded, no new-customer promo. PCBWay makes at least 5 bare PCBs, so one board means 5 PCBs with 1 assembled. Components at distributor list prices (components-pricing.json) for max(needed, minimum order): bench/part-prices.json where listed, else LCSC. When afterFixes is true, the design couldn't be ordered as delivered, and these are the prices after the changes listed in fixes."
+	},
+	"fixes": [
+		{
+			"area": "bom",
+			"problem": "Legacy part: Coilcraft sells the ML termination only to existing customers",
+			"fix": "Priced LPS3010-103MRC, its halogen-free replacement with the same footprint",
+			"refs": "L2",
+			"mpn": "LPS3010-103MLC"
+		}
+	],
+	"boardSizeMm": {
+		"width": 80,
+		"height": 65
+	},
+	"missing3dModels": {
+		"count": 121,
+		"refs": [
+			"C1",
+			"C2",
+			"C3",
+			"C4",
+			"C5",
+			"C6",
+			"C7",
+			"C8",
+			"C9",
+			"C10",
+			"C11",
+			"C12",
+			"C13",
+			"C14",
+			"C15",
+			"C16",
+			"C17",
+			"C18",
+			"C19",
+			"C20",
+			"C21",
+			"C22",
+			"C23",
+			"C24",
+			"C25",
+			"C26",
+			"C27",
+			"C28",
+			"C29",
+			"C30",
+			"C31",
+			"C32",
+			"C33",
+			"C34",
+			"C35",
+			"C36",
+			"C37",
+			"C38",
+			"C39",
+			"C40",
+			"C41",
+			"C42",
+			"C43",
+			"C44",
+			"C45",
+			"C46",
+			"D1",
+			"F1",
+			"J1",
+			"J2",
+			"J3",
+			"J4",
+			"J5",
+			"J6",
+			"J7",
+			"L1",
+			"L2",
+			"R1",
+			"R2",
+			"R3",
+			"R4",
+			"R5",
+			"R6",
+			"R7",
+			"R8",
+			"R9",
+			"R10",
+			"R11",
+			"R12",
+			"R13",
+			"R14",
+			"R15",
+			"R16",
+			"R17",
+			"R18",
+			"R19",
+			"R20",
+			"R21",
+			"R22",
+			"R23",
+			"R24",
+			"R25",
+			"R26",
+			"R27",
+			"R28",
+			"R29",
+			"R30",
+			"R31",
+			"R32",
+			"R33",
+			"R34",
+			"R35",
+			"R36",
+			"R37",
+			"R38",
+			"R39",
+			"R40",
+			"R41",
+			"R42",
+			"R43",
+			"R44",
+			"R45",
+			"R46",
+			"R47",
+			"R48",
+			"SW1",
+			"SW2",
+			"SW3",
+			"U1",
+			"U2",
+			"U3",
+			"U4",
+			"U5",
+			"U6",
+			"U7",
+			"U8",
+			"U9",
+			"U10",
+			"U11",
+			"U12",
+			"Y1"
+		]
+	},
+	"bom": {
+		"lines": 51,
+		"partsNotInBom": [],
+		"refsNotOnBoard": [],
+		"qtyMismatchLines": [],
+		"linesWithoutMpn": 0,
+		"linesFixed": 1
+	},
+	"placement": {
+		"smdPartsMissing": [],
+		"refsNotOnBoard": [],
+		"duplicateRefs": [],
+		"wrongSide": [],
+		"positionOffByMoreThanHalfMm": [],
+		"rotationDiffersFromBoard": []
+	},
+	"parts": {
+		"lines": 51,
+		"inStockPercent": 92.2,
+		"notStocked": [
+			{
+				"refs": "C5 C16 C18 C22 C37",
+				"mpn": "GRM188R71C105KA12D",
+				"lcsc": "C97890",
+				"lcscStock": 0,
+				"digikeyStock": 0,
+				"needed": 25
+			},
+			{
+				"refs": "D1",
+				"mpn": "WS2812B-2020",
+				"lcsc": "C965555",
+				"lcscStock": 0,
+				"digikeyStock": 0,
+				"needed": 5
+			},
+			{
+				"refs": "L1",
+				"mpn": "XFL4020-152MEC",
+				"lcsc": "C3033018",
+				"lcscStock": 0,
+				"digikeyStock": 0,
+				"needed": 5
+			},
+			{
+				"refs": "L2",
+				"mpn": "LPS3010-103MLC",
+				"lcsc": null,
+				"lcscStock": 0,
+				"digikeyStock": 0,
+				"needed": 5
+			}
+		],
+		"discontinued": [
+			{
+				"refs": "C5 C16 C18 C22 C37",
+				"mpn": "GRM188R71C105KA12D",
+				"lcsc": "C97890",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C14 C19 C24 C43 C44",
+				"mpn": "GRM188R61A475KE15D",
+				"lcsc": "C71633",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "D1",
+				"mpn": "WS2812B-2020",
+				"lcsc": "C965555",
+				"discontinuedAt": [
+					"LCSC"
+				]
+			}
+		],
+		"padCountMismatches": []
+	},
+	"features": {
+		"rp2350": {
+			"status": "found",
+			"refs": [
+				"U1"
+			]
+		},
+		"qspiFlash": {
+			"status": "found",
+			"refs": [
+				"U2"
+			]
+		},
+		"psram": {
+			"status": "found",
+			"refs": [
+				"U3"
+			]
+		},
+		"usbC": {
+			"status": "found",
+			"refs": [
+				"J1"
+			]
+		},
+		"wifiBle": {
+			"status": "found",
+			"refs": [
+				"U9"
+			]
+		},
+		"microSd": {
+			"status": "found",
+			"refs": [
+				"J3"
+			]
+		},
+		"qwiic": {
+			"status": "found",
+			"refs": [
+				"J4"
+			]
+		},
+		"rgbLed": {
+			"status": "found",
+			"refs": [
+				"D1"
+			]
+		},
+		"chargerWithPowerPath": {
+			"status": "found",
+			"refs": [
+				"U6"
+			]
+		},
+		"batteryMonitoring": {
+			"status": "found",
+			"refs": [
+				"R27"
+			]
+		}
+	},
+	"deliverables": {
+		"readme": true,
+		"schematic": true,
+		"projectFile": true,
+		"fabFolder": true
+	},
+	"drc": {
+		"errors": 0,
+		"warnings": 0,
+		"unconnectedItems": 0,
+		"schematicParityIssues": 0,
+		"byType": {}
+	},
+	"erc": {
+		"errors": 0,
+		"warnings": 0
+	},
+	"fab": {
+		"diffPercentByLayer": {
+			"NPTH": 0,
+			"PTH": 0,
+			"F.Silkscreen": 0,
+			"F.Cu": 0,
+			"F.Mask": 0,
+			"B.Silkscreen": 0,
+			"B.Paste": 0,
+			"F.Paste": 0,
+			"In2.Cu": 0,
+			"In1.Cu": 0,
+			"B.Cu": 0,
+			"Edge.Cuts": 0,
+			"B.Mask": 0
+		},
+		"layersDiffering": [],
+		"layersMissing": []
+	},
+	"needsFixes": {
+		"pcbManufacturing": [],
+		"assembly": [
+			"L2: Legacy part: Coilcraft sells the ML termination only to existing customers",
+			"not stocked for 5 boards: C5 C16 C18 C22 C37; D1; L1"
+		],
+		"bomLines": {
+			"total": 51,
+			"needingFixes": [
+				"C5 C16 C18 C22 C37",
+				"D1",
+				"L1",
+				"L2"
+			]
+		}
+	},
+	"design": {
+		"decoupling": {
+			"maxMm": 3.2,
+			"pinsWithin": 13,
+			"powerPins": 14,
+			"pins": [
+				{
+					"pin": "IOVDD",
+					"pad": "1",
+					"net": "+3V3",
+					"capacitor": "C6",
+					"mm": 1.24
+				},
+				{
+					"pin": "DVDD",
+					"pad": "6",
+					"net": "+1V1",
+					"capacitor": "C13",
+					"mm": 2.01
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "11",
+					"net": "+3V3",
+					"capacitor": "C7",
+					"mm": 2.35
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "20",
+					"net": "+3V3",
+					"capacitor": "C8",
+					"mm": 1.26
+				},
+				{
+					"pin": "DVDD",
+					"pad": "23",
+					"net": "+1V1",
+					"capacitor": "C14",
+					"mm": 3.2
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "30",
+					"net": "+3V3",
+					"capacitor": "C9",
+					"mm": 2.81
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "38",
+					"net": "+3V3",
+					"capacitor": "C9",
+					"mm": 1.89
+				},
+				{
+					"pin": "DVDD",
+					"pad": "39",
+					"net": "+1V1",
+					"capacitor": "C15",
+					"mm": 1.36
+				},
+				{
+					"pin": "ADC_AVDD",
+					"pad": "44",
+					"net": "+3V3_ADC",
+					"capacitor": "C17",
+					"mm": 2.03
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "45",
+					"net": "+3V3",
+					"capacitor": "C10",
+					"mm": 1.45
+				},
+				{
+					"pin": "VREG_AVDD",
+					"pad": "46",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 1.47
+				},
+				{
+					"pin": "VREG_VIN",
+					"pad": "49",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 1.84
+				},
+				{
+					"pin": "USB_OTP_VDD",
+					"pad": "53",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 3.07
+				},
+				{
+					"pin": "QSPI_IOVDD",
+					"pad": "54",
+					"net": "+3V3",
+					"capacitor": "C12",
+					"mm": 3.43
+				}
+			]
+		},
+		"battery": {
+			"fuelGauges": [],
+			"dividers": [
+				{
+					"top": "R25",
+					"bottom": "R26",
+					"topOhms": 100000,
+					"bottomOhms": 100000,
+					"bufferedBy": "U8",
+					"microampsAtFullCharge": 21,
+					"switchedBy": null
+				}
+			]
+		},
+		"usb": {
+			"dPlusNets": [
+				"USB_DP",
+				"USB_DP_MCU"
+			],
+			"dMinusNets": [
+				"USB_DM",
+				"USB_DM_MCU"
+			],
+			"dPlusMm": 51.45,
+			"dMinusMm": 52.84,
+			"mismatchMm": 1.39,
+			"vias": 2,
+			"pair": {
+				"layer": "F.Cu",
+				"widthMm": 0.15,
+				"gapMm": 0.15,
+				"lengthMm": 37.66
+			},
+			"differentialOhms": 87.9,
+			"esd": [
+				"U5"
+			]
+		},
+		"antennaKeepout": {
+			"module": "U9",
+			"keepouts": [
+				{
+					"owner": "U9",
+					"name": "",
+					"layers": [
+						"F.Cu",
+						"B.Cu",
+						"In1.Cu",
+						"In2.Cu"
+					],
+					"notAllowed": [
+						"tracks",
+						"vias",
+						"pads",
+						"copperpour",
+						"footprints"
+					],
+					"copperInside": {
+						"tracks": 0,
+						"vias": 0,
+						"zoneFills": [],
+						"pads": []
+					}
+				}
+			]
+		}
+	},
+	"review": {
+		"judges": [
+			"opus-5.5",
+			"gpt-6.1-sol"
+		],
+		"yesVotes": {
+			"crystal": 2,
+			"buttons": 2,
+			"powerPath": 2
+		},
+		"meanScores": {
+			"thermal": 4,
+			"grounding": 5,
+			"layout": 3.5,
+			"routing": 3.5,
+			"silkscreen": 6
+		}
+	},
+	"suppliers": {
+		"lines": 51,
+		"validPercent": {
+			"LCSC": 0,
+			"Digi-Key": 0,
+			"Mouser": 0
+		},
+		"linesWithValidNumbers": {
+			"fromOne": 0,
+			"fromTwo": 0,
+			"fromAllThree": 0
+		},
+		"invalid": []
+	},
+	"score": {
+		"total": 69.1,
+		"groups": {
+			"designReview": 30.4,
+			"circuitChecks": 19.5,
+			"orderable": 19.2,
+			"partsData": 0
+		},
+		"missingFeatures": []
+	}
+}

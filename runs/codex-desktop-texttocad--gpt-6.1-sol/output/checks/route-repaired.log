@@ -1,0 +1,9 @@
+route: NOT routed SD_MISO: R28.1 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
++1V1: C11.1 to U7.5: already joined by the copper on the board
+FLASH_CS: R14.1 to U2.1: already joined by the copper on the board
+I2C_SCL: J4.4 to U1.8: already joined by the copper on the board
+RGB_DATA: J5.12 to U1.18: already joined by the copper on the board
+CHG_ISET: R5.1 to U4.16: already joined by the copper on the board
+USB_SUSPEND_EN: R41.1 to U4.5: already joined by the copper on the board
+NOT routed SD_MISO: R28.1 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT ROUTED: 6 of 7 connection(s) routed, 0 segment(s), 0 via(s), 0.0 mm of track, in 3.4 s; 1 not routed, each said above

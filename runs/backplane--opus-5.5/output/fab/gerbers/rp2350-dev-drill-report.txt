@@ -1,0 +1,29 @@
+Drill report for rp2350-dev.kicad_pcb
+Created on 2026-11-09T23:58:27
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  In1.Cu                    in1
+    L3 :  In2.Cu                    in2
+    L4 :  B.Cu                      back
+
+
+Drill file 'rp2350-dev-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  0.250mm  0.0098"  (29 holes))
+    T2  0.250mm  0.0098"  (9 holes))
+    T3  0.300mm  0.0118"  (179 holes))
+    T4  0.600mm  0.0236"  (4 holes)  (with 4 slots)
+    T5  1.000mm  0.0394"  (24 holes))
+
+    Total plated holes count 245
+
+
+Drill file 'rp2350-dev-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+    T1  0.650mm  0.0256"  (2 holes))
+
+    Total unplated holes count 2

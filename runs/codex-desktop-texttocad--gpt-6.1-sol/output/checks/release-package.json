@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "upload_zip": "/Users/ec2-user/pcbbench-run/fab/Atlas2350-PCBWay.zip",
+  "upload_sha256": "c29e36f1494476a11b1f97e74b4896291a8ba5d8122b392e8aff0a2a532407c9",
+  "project_zip": "/Users/ec2-user/pcbbench-run/Atlas2350-project.zip",
+  "project_sha256": "fbdc4bb2ff6659f9aae117a40219ce79eeecdf28cf73789c05f9c59fe186cc9e",
+  "manufacturing_files": 44,
+  "pdf_pages": {
+    "assembly/assembly-orientation.pdf": 4,
+    "assembly/top-assembly-kicad.pdf": 1,
+    "drill/Atlas2350-NPTH-drl_map.pdf": 1,
+    "drill/Atlas2350-PTH-drl_map.pdf": 1,
+    "fabrication-and-assembly.pdf": 1,
+    "schematic.pdf": 6
+  }
+}

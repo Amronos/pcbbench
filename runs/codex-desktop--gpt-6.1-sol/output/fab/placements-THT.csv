@@ -1,0 +1,4 @@
+Designator,Value,Footprint,Mid_X_mm,Mid_Y_mm,Rotation_deg,Layer,Assembly
+J2,LiPo + NTC,Aster:Connector_JST__JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical,9.0000,26.0000,0.000,Top,THT
+J6,GPIO A,Aster:Connector_PinHeader_2.54mm__PinHeader_1x08_P2.54mm_Vertical,2.8000,48.0000,0.000,Top,THT
+J7,GPIO B,Aster:Connector_PinHeader_2.54mm__PinHeader_1x08_P2.54mm_Vertical,33.0000,6.0000,90.000,Top,THT

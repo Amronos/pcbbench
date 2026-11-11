@@ -1,0 +1,57 @@
+cad run: making the environment of the model's packages, once: gerbonara beside cad 0.11.4, in /Users/ec2-user/.cache/cad/base/20d26fe1b06aa4d8
+cad run: downloading what gerbonara needs, once
+Usage: gerbonara render [OPTIONS] INPATH [OUTFILE]
+
+  Render a gerber file, or a directory or zip of gerber files into an SVG
+  file.
+
+Options:
+  --warnings [default|ignore|once]
+                                  Enable or disable file format warnings
+                                  during parsing (default: on)
+  --version
+  -m, --input-map PATH            Extend or override layer name mapping with
+                                  name map from JSON file. The JSON file must
+                                  contain a single JSON dict with an arbitrary
+                                  number of string: string entries. The keys
+                                  are interpreted as regexes applied to the
+                                  filenames via re.fullmatch, and each value
+                                  must either be the string "ignore" to remove
+                                  this layer from previous automatic guesses,
+                                  or a gerbonara layer name such as "top
+                                  copper", "inner_2 copper" or "bottom silk".
+  --use-builtin-name-rules / --no-builtin-name-rules
+                                  Disable built-in layer name rules and use
+                                  only rules given by --input-map
+  --force-zip                     Force treating input path as a zip file
+                                  (default: guess file type from extension and
+                                  contents)
+  --top                           Render top side
+  --bottom                        Render top side
+  --command-line-units [metric|us-customary]
+                                  Units for values given in other options.
+                                  Default: millimeter
+  --margin FLOAT                  Add space around the board inside the
+                                  viewport
+  --force-bounds TEXT             Force SVG bounding box to value given as
+                                  "min_x,min_y,max_x,max_y"
+  --inkscape / --standard-svg     Export in Inkscape SVG format with layers
+                                  and stuff.
+  --pretty / --no-filters         Export pseudo-realistic render using filters
+                                  (default) or just stack up layers using
+                                  given colorscheme. In "--no-filters" mode,
+                                  by default all layers are exported unless
+                                  either "--top" or "--bottom" is given.
+  --drills / --no-drills          Include (default) or exclude drills ("--no-
+                                  filters" only!)
+  --colorscheme PATH              Load colorscheme from given JSON file. The
+                                  JSON file must contain a single dict with
+                                  keys copper, silk, mask, paste, drill and
+                                  outline. Each key must map to a string
+                                  containing either a normal 6-digit hex color
+                                  with leading hash sign, or an 8-digit hex
+                                  color with leading hash sign, where the last
+                                  two digits set the layer's alpha value
+                                  (opacity), with FF being completely opaque,
+                                  and 00 being invisibly transparent.
+  --help                          Show this message and exit.

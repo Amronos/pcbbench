@@ -1,0 +1,32 @@
+[
+  {
+    "stage": "core and switch loops",
+    "connections": 22,
+    "routed": 18,
+    "failed": 4,
+    "vias": 2,
+    "length_mm": 78.516974,
+    "timed_out": false,
+    "elapsed_ms": 89.0
+  },
+  {
+    "stage": "QSPI memory",
+    "connections": 15,
+    "routed": 12,
+    "failed": 3,
+    "vias": 0,
+    "length_mm": 161.841239,
+    "timed_out": false,
+    "elapsed_ms": 1278.0
+  },
+  {
+    "stage": "USB data",
+    "connections": 10,
+    "routed": 10,
+    "failed": 0,
+    "vias": 6,
+    "length_mm": 87.561272,
+    "timed_out": false,
+    "elapsed_ms": 88.0
+  }
+]

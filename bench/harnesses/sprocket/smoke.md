@@ -1,0 +1,1 @@
+Create `hello.txt` containing the word `hi`. Then run `kicad-cli version`, `gh auth status`, `git config --get credential.helper` and `env | grep -iE '^(GH|GITHUB)_' | cut -d= -f1`. Reply with their outputs, the model you were asked to use for subagents ({{MODEL}}, {{EFFORT}}), the KiCad tools you have available, and any GitHub tools or connections you can use.

@@ -1,0 +1,419 @@
+{
+ "advisory": 0,
+ "advisory_pairs": [],
+ "assembly_sides": "both",
+ "back_side_zero_pad_blocks": [],
+ "blocking": 0,
+ "blocking_pairs": [],
+ "board": "sprocket2350.kicad_pcb",
+ "board_declares_no_floor": false,
+ "body_edge_band": {
+  "citation": "JLCPCB assembly terms, section 2 \"Notes on DFM\", item 3: \"The distance between the body of the components and the edge of the board must be equal or greater than 2.5mm.\" One assembler's rule, which also adds edge rails when the file has none (https://jlcpcb.com/help/article/Terms-and-Conditions-of-JLCPCB-Assembly-Service, read 2026-10-14)",
+  "eligible": 87,
+  "error": null,
+  "excluded": [
+   {
+    "mm": 0.0,
+    "ref": "J1",
+    "side": "F",
+    "source": "fab",
+    "why": "edge_receptacle"
+   },
+   {
+    "mm": 0.0,
+    "ref": "J4",
+    "side": "F",
+    "source": "fab",
+    "why": "edge_receptacle"
+   },
+   {
+    "mm": 0.05,
+    "ref": "H1",
+    "side": "F",
+    "source": "courtyard",
+    "why": "mount_hole"
+   },
+   {
+    "mm": 0.55,
+    "ref": "H2",
+    "side": "F",
+    "source": "courtyard",
+    "why": "mount_hole"
+   },
+   {
+    "mm": 0.55,
+    "ref": "H3",
+    "side": "F",
+    "source": "courtyard",
+    "why": "mount_hole"
+   },
+   {
+    "mm": 1.3,
+    "ref": "TP1",
+    "side": "F",
+    "source": "silk",
+    "why": "testpoint"
+   },
+   {
+    "mm": 1.3,
+    "ref": "TP2",
+    "side": "F",
+    "source": "silk",
+    "why": "testpoint"
+   },
+   {
+    "mm": 1.3,
+    "ref": "TP5",
+    "side": "F",
+    "source": "silk",
+    "why": "testpoint"
+   }
+  ],
+  "gates": false,
+  "in_band": [
+   {
+    "mm": 0.0,
+    "ref": "U7",
+    "side": "F",
+    "source": "fab"
+   },
+   {
+    "mm": 2.05,
+    "ref": "J2",
+    "side": "F",
+    "source": "fab"
+   },
+   {
+    "mm": 2.1,
+    "ref": "L2",
+    "side": "F",
+    "source": "fab"
+   },
+   {
+    "mm": 2.4,
+    "ref": "C30",
+    "side": "F",
+    "source": "fab"
+   }
+  ],
+  "measured": 106,
+  "new_in_band": null,
+  "new_in_band_refs": null,
+  "threshold_basis": "derived_default",
+  "threshold_mm": 2.5,
+  "unmeasured": []
+ },
+ "body_edge_band_gating": 0,
+ "body_in_board": [],
+ "body_in_board_basis": "the part's own 3D model (one kicad-cli GLB export) strictly between the board's faces, 0.2 mm in from each, its own pads and drilled holes left out, on 0.25 mm cells wholly inside the outline; gates from 4 mm^2",
+ "body_in_board_count": 0,
+ "body_in_board_unmeasured": null,
+ "buildable": true,
+ "clearance": 0.127,
+ "clearance_source": "board netclass",
+ "coincident_origin_groups": [],
+ "coincident_origins": 0,
+ "coincident_origins_basis": "every footprint BLOCK (#726): blocks sharing one reference are keyed with an ordinal suffix, so they form a pair here like any other two parts. See duplicate_references for the names the board itself uses. A pair at one origin stacks only when it shares something physical on a face both occupy -- copper pad boxes (a plated barrel on both faces), an NPTH hole on copper, or pad copper / a drawn body the body channel found -- and is not in the intent's overlap_waivers (#1204); coincident_origins_exempt names the rest.",
+ "coincident_origins_exempt": [],
+ "contained": 0,
+ "containers": {},
+ "containment_blocking": 0,
+ "containments": [],
+ "courtyard_advisory": 0,
+ "courtyard_blocking": 0,
+ "courtyard_blocking_gating": null,
+ "courtyard_blocking_gating_pairs": [],
+ "courtyard_blocking_pairs": [],
+ "courtyard_error_gating_pairs": [],
+ "courtyard_fixed_pose_waived": [],
+ "courtyard_gating_basis": "no-baseline: report-only",
+ "courtyard_pairs": [],
+ "courtyard_severity": "error",
+ "courtyard_severity_basis": "project",
+ "courtyard_severity_waiver": null,
+ "courtyard_synthetic_refs": [],
+ "courtyard_waivers_unresolved": [],
+ "courtyard_waivers_unused": [],
+ "duplicate_references": {},
+ "fab_rejected_refs": [],
+ "fab_unjudged": 3,
+ "fab_unjudged_refs": [
+  "H1",
+  "H2",
+  "H3"
+ ],
+ "footprint_blocks": 106,
+ "graphic_edge_shortfall_refs": [],
+ "graphic_pad_basis": "each part's pad copper against every OTHER part's footprint graphic copper (fp_poly / fp_line / fp_arc / fp_rect / fp_circle on a copper layer, #908) on a shared layer: the strokes by check_drc's pad-to-segment test, a filled shape's interior by containment (#1181). A CONTACT is judged on the stroke as drawn and is a `stack` on ANY net (two parts' copper in one place, check_assembly's pad_intersection argument) except a net tie's own tied net on the tie's copper; the clearance shortfall is graded at the modelled stroke check_drc grades and skips a pad of the one net the copper's owner gives it. Board-level art is not measured, nor copper the parser does not model (graphic_copper_unmeasured)",
+ "graphic_pad_contacts": [],
+ "graphic_pad_gating": null,
+ "graphic_pad_gating_pairs": null,
+ "graphic_pad_stack_pairs": [],
+ "graphic_pad_unmeasured": [],
+ "height_clear": 0,
+ "height_notices": [],
+ "height_pairs": [],
+ "heights": "92 part heights from models, 0 from IPC names, 0 part(s) with room under them",
+ "hole_conflicts": 0,
+ "keepout_copper_basis": "per-PAD copper rect (axis-aligned box at the pose) against each board-level rule-area keep-out with tracks not allowed, minus its holes, at a band of clearance + track_width/2 (the router's own track reach, obstacle_map.add_rule_area_keepout_obstacles). A pad is ILLEGAL when every copper layer it occupies is covered and no LANDING clears every covering area together by the band -- landings are the router's own CELLS on its default grid (routing_defaults.GRID_STEP): the pad's centre cell, and the cells of net_queries.pad_landing_extent (the shrunk rect, the inscribed ellipse for circle/oval pads, none for a tilted pad) -- and its net needs a connection (net with 2+ pads, not served by a same-net pour on those layers where pour is allowed AND a same-net zone outline reaches the pad copper at the pose). A through-hole pad is reported in keepout_copper_tht_refs, not failed, only when it keeps an ESCAPE layer: an uncovered outer layer, or an uncovered inner layer no zone of a different net covers at the pad (placement does not know the routing layer set, and a foreign plane is no escape); otherwise it fails like an SMD pad. The pour test reads the zone OUTLINE, not its fill: fill cut-outs, zone priority, zone holes and thermal-relief necks are ignored, so a pad the fill does not actually reach can read pour_served",
+ "keepout_copper_exempt": [],
+ "keepout_copper_pads": [],
+ "keepout_copper_tht_refs": [],
+ "keepout_copper_unmeasured": [
+  [
+   "<footprint>",
+   0,
+   [
+    "B.Cu",
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu"
+   ],
+   "footprint-owned rule area: moves with its part and is not re-posed by placement, so it is not graded"
+  ],
+  [
+   "<footprint>",
+   1,
+   [
+    "F.Cu"
+   ],
+   "footprint-owned rule area: moves with its part and is not re-posed by placement, so it is not graded"
+  ],
+  [
+   "<footprint>",
+   2,
+   [
+    "F.Cu"
+   ],
+   "footprint-owned rule area: moves with its part and is not re-posed by placement, so it is not graded"
+  ],
+  [
+   "<footprint>",
+   3,
+   [
+    "F.Cu"
+   ],
+   "footprint-owned rule area: moves with its part and is not re-posed by placement, so it is not graded"
+  ],
+  [
+   "<footprint>",
+   4,
+   [
+    "F.Cu"
+   ],
+   "footprint-owned rule area: moves with its part and is not re-posed by placement, so it is not graded"
+  ],
+  [
+   "<footprint>",
+   5,
+   [
+    "F.Cu"
+   ],
+   "footprint-owned rule area: moves with its part and is not re-posed by placement, so it is not graded"
+  ]
+ ],
+ "locked_contact_pairs": [],
+ "locked_contacts": 0,
+ "mating_keepout_count": 0,
+ "mating_keepout_refs": [],
+ "mountable": [],
+ "oob_graphic_copper_amount": 0.0,
+ "oob_graphic_copper_basis": "graphic copper shapes (drawn stroke, true circles) against the real outline + cutouts + milled contours not owned by the part, at margin 0; an edge running inside a filled shape counts by its depth in the copper",
+ "oob_graphic_copper_count": 0,
+ "oob_graphic_copper_refs": [],
+ "oob_graphic_copper_unmeasured": [],
+ "oob_graphic_copper_waived": [],
+ "oob_keepout_copper_amount": 0.0,
+ "oob_keepout_copper_count": 0,
+ "oob_keepout_copper_refs": [],
+ "oob_pad_amount": 0.0,
+ "oob_pad_basis": "part pad AABB vs outline inflated by the grading clearance (NOT the per-pad outline measure; see render_placement checklist.a_off_outline.pad_copper)",
+ "oob_pad_copper_basis": "per-PAD copper rects against the real outline at margin 0, a ranking MAGNITUDE (render_placement's checklist.a_off_outline.pad_copper). What gates is oob_pad_copper_gating_refs: pad_copper_overrun_mm, on true pad outlines (a custom pad on its parsed copper) with an edge-straddling castellated pad exempt",
+ "oob_pad_copper_count": 0,
+ "oob_pad_copper_gating_count": 0,
+ "oob_pad_copper_gating_refs": [],
+ "oob_pad_copper_overrun_mm": {},
+ "oob_pad_copper_refs": [],
+ "oob_pad_count": 0,
+ "oob_pad_refs": [],
+ "own_pad_basis": "each footprint's own pads against each other, by check_drc's pad-to-pad test, on a shared copper layer. Exempt as KiCad exempts them: two pads on one net, two pads with one number (unless they carry two different real nets that are not both a pin's `unconnected-(...)` net), and two pads in one net_tie_pad_groups group. Two pads with no net are not graded (check_drc's same-net rule; KiCad grades them `clearance`). A `short` is a contact between two pads on real nets (KiCad: shorting_items); a contact with a no-net pad is `no_net` (KiCad: clearance, actual 0)",
+ "own_pad_contacts": [],
+ "own_pad_gating_pairs": [],
+ "own_pad_short_pairs": [],
+ "own_pad_shorts": 0,
+ "pad_clearance_required": [],
+ "pad_conflicts": 0,
+ "pad_edge": {
+  "argument_mm": null,
+  "basis": "analytic pad copper extrema (custom pads: parsed polygons) vs rectangular Edge.Cuts centreline (within 0.1 mm of one: its bbox shrunk by the outline_inset_mm it strays); edge-straddling castellated pads exempt; other outlines sampled, not certified; no body/track/via/fill check",
+  "complete": false,
+  "findings": [],
+  "measured_pads": 398,
+  "minimum_gap_by_ref_mm": {
+   "C1": 13.774999999999999,
+   "C10": 27.974999999999994,
+   "C11": 24.974999999999994,
+   "C12": 24.974999999999994,
+   "C13": 31.025,
+   "C14": 29.025,
+   "C15": 25.974999999999994,
+   "C16": 25.974999999999994,
+   "C17": 29.025,
+   "C18": 27.974999999999994,
+   "C19": 24.974999999999994,
+   "C2": 13.774999999999999,
+   "C20": 32.05,
+   "C21": 8.024999999999999,
+   "C22": 3.2749999999999986,
+   "C23": 11.274999999999999,
+   "C24": 7.274999999999999,
+   "C25": 11.775000000000002,
+   "C26": 6.949999999999999,
+   "C27": 14.600000000000001,
+   "C28": 14.524999999999999,
+   "C29": 13.524999999999999,
+   "C3": 20.525,
+   "C30": 1.9499999999999993,
+   "C31": 2.1750000000000007,
+   "C32": 8.099999999999994,
+   "C33": 13.549999999999997,
+   "C34": 10.274999999999991,
+   "C35": 21.775,
+   "C4": 17.525000000000006,
+   "C5": 24.75,
+   "C6": 28.625,
+   "C7": 22.35,
+   "C8": 20.549999999999997,
+   "C9": 27.974999999999994,
+   "D1": 25.9,
+   "FID1": 3.0,
+   "FID2": 4.5,
+   "FID3": 4.5,
+   "J1": 1.5250000000000021,
+   "J2": 1.8999999999999986,
+   "J3": 3.1500000000000057,
+   "J4": 0.6749999999999972,
+   "J5": 2.8999999999999915,
+   "J6": 6.150000000000006,
+   "J7": 14.150000000000006,
+   "L1": 25.85,
+   "L2": 2.400000000000002,
+   "R1": 16.775,
+   "R10": 22.775,
+   "R11": 4.024999999999999,
+   "R12": 2.775000000000002,
+   "R13": 12.524999999999999,
+   "R14": 11.024999999999999,
+   "R16": 13.774999999999999,
+   "R17": 15.524999999999999,
+   "R18": 6.524999999999999,
+   "R19": 9.024999999999999,
+   "R2": 17.775,
+   "R20": 18.525,
+   "R21": 17.77499999999999,
+   "R22": 10.524999999999999,
+   "R23": 14.774999999999999,
+   "R24": 16.525,
+   "R25": 17.275,
+   "R26": 21.775,
+   "R27": 21.775,
+   "R28": 21.775,
+   "R29": 20.525000000000006,
+   "R3": 21.025,
+   "R30": 18.525000000000006,
+   "R31": 18.77499999999999,
+   "R32": 11.574999999999989,
+   "R33": 8.274999999999991,
+   "R34": 24.775,
+   "R35": 10.524999999999999,
+   "R36": 11.524999999999999,
+   "R4": 24.775,
+   "R5": 21.275,
+   "R6": 24.775,
+   "R7": 9.524999999999999,
+   "R8": 9.524999999999999,
+   "R9": 22.775,
+   "SW1": 17.0,
+   "SW2": 17.0,
+   "SW3": 11.0,
+   "TP1": 1.5,
+   "TP2": 1.5,
+   "TP3": 11.5,
+   "TP4": 8.5,
+   "TP5": 1.5,
+   "TP6": 17.5,
+   "TP7": 13.5,
+   "TP8": 22.5,
+   "U1": 28.15,
+   "U2": 14.769999999999996,
+   "U3": 14.795000000000002,
+   "U4": 12.75,
+   "U5": 6.625,
+   "U6": 7.300000000000001,
+   "U7": 0.5500000000000007,
+   "U8": 13.625,
+   "Y1": 19.55000000000001
+  },
+  "minimum_gap_mm": 0.5500000000000007,
+  "outline_inset_mm": 0.0,
+  "required_mm": 0.3,
+  "rules_unmeasured": [],
+  "source": "board constraint",
+  "tolerance_mm": 1e-06,
+  "units": "mm",
+  "unmeasured": [
+   {
+    "pad_index": 16,
+    "pad_loc": [
+     29.0,
+     57.0
+    ],
+    "pad_ref": "U6.11",
+    "reason": "custom pad uses parsed polygons"
+   }
+  ]
+ },
+ "pad_edge_conflicts": 0,
+ "pad_edge_shortfall": 0,
+ "pad_edge_unmeasured": 1,
+ "pairs": [],
+ "parts_by_side": {
+  "B": 2,
+  "F": 104
+ },
+ "parts_by_side_basis": "every footprint BLOCK (#726): blocks sharing one reference are keyed with an ordinal suffix and counted separately. `pad_bearing` restricts that to blocks carrying at least one pad that is not a paste/mask aperture (#1143), and it is the count the populated-side verdict is taken from -- a zero-pad graphic on the back does not make a board double-sided.",
+ "parts_by_side_blocks": {
+  "B": 2,
+  "F": 104
+ },
+ "pin_in_courtyard": 0,
+ "pin_in_courtyard_pairs": [],
+ "reflow_passes": 2,
+ "rule_area_gating": null,
+ "rule_area_items": [],
+ "silk_enclosed_gating_pairs": [],
+ "smd_parts_by_side": {
+  "B": 2,
+  "F": 96
+ },
+ "testpoint_covered": 0,
+ "testpoint_covered_basis": "a test point (part_class testpoint) whose copper pads, as boxes about their centres (legality.bodyless_pad_shape), lie at least CONTAINMENT_FRAC under another same-face part's drawn body (fab, else silk). Gates when a member moved vs --baseline, the body is .Fab, and the pair is not in the intent's overlap_waivers or a container's. Fiducials are not graded here.",
+ "testpoint_covered_gating": null,
+ "testpoint_covered_gating_pairs": [],
+ "testpoint_covered_pairs": [],
+ "through_hole_by_side": {
+  "B": 0,
+  "F": 5
+ },
+ "through_hole_parts": 5,
+ "unsoldered_parts_by_side": {
+  "B": 0,
+  "F": 3
+ },
+ "verdict": "buildable (blocking 0)",
+ "waived": 0,
+ "zero_pad_blocks_by_side": {
+  "B": [],
+  "F": []
+ }
+}

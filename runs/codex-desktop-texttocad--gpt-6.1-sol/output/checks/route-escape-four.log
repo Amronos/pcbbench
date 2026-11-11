@@ -1,0 +1,33 @@
+route: NOT routed +3V3: C9.1 to C8.1: C8.1 is walled in by QSPI_CLK_SRC, QSPI_IO3 and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed +3V3: U1.11 to U1.20: U1.20 is walled in by XIN, SD_CS and SD_DETECT: no way out of the 0.3 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed VBAT: U4.3 to C28.1: U4.3 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed VBAT: U4.2 to TP3.1: U4.2 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed VBAT: U4.2 to J2.1: U4.2 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed VBAT: U4.3 to R10.1: U4.3 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed SD_DAT1: J3.8 to R29.1: J3.8 is walled in by SD_DETECT, SD_MISO and SD_CLK: no way out of the 0.3 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed SD_DETECT: J3.9 to R31.1: J3.9 is walled in by VSYS, SD_DAT1 and SD_CLK: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed SD_DETECT: J3.9 to U1.19: J3.9 is walled in by VSYS, SD_DAT1 and SD_CLK: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed SD_MISO: J3.7 to R28.1: J3.7 is walled in by GND, SD_DAT1 and SD_CLK: no way out of the 0.3 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed SD_MISO: J3.7 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+routed GPIO7: J5.7 to U1.10: 21.94 mm in 8 segments
+routed GPIO8: J5.8 to U1.12: 25.23 mm in 11 segments
+routed GPIO9: J5.9 to U1.13: 26.99 mm in 10 segments, 1 via
+routed SWCLK: J6.4 to U1.24: 19.42 mm in 8 segments
+routed RUN: R18.1 to U1.26: 12.72 mm in 5 segments, 1 via
+routed USB_SUSPEND_EN: U4.5 to U1.28: 27.38 mm in 10 segments
+routed WIFI_RX: U1.33 to U6.6: 53.47 mm in 11 segments, 3 vias
+routed WIFI_RTS: U1.35 to U6.4: 54.13 mm in 26 segments, 4 vias
+routed I2C_SDA: J5.15 to U1.7: 39.06 mm in 10 segments
+routed RGB_DATA: J5.12 to U1.18: 47.13 mm in 15 segments
+NOT routed +3V3: C9.1 to C8.1: C8.1 is walled in by QSPI_CLK_SRC, QSPI_IO3 and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed +3V3: U1.11 to U1.20: U1.20 is walled in by XIN, SD_CS and SD_DETECT: no way out of the 0.3 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed VBAT: U4.3 to C28.1: U4.3 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed VBAT: U4.2 to TP3.1: U4.2 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed VBAT: U4.2 to J2.1: U4.2 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed VBAT: U4.3 to R10.1: U4.3 is walled in by BAT_TS and GND: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed SD_DAT1: J3.8 to R29.1: J3.8 is walled in by SD_DETECT, SD_MISO and SD_CLK: no way out of the 0.3 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed SD_DETECT: J3.9 to R31.1: J3.9 is walled in by VSYS, SD_DAT1 and SD_CLK: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed SD_DETECT: J3.9 to U1.19: J3.9 is walled in by VSYS, SD_DAT1 and SD_CLK: no way out of the 0.2 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed SD_MISO: J3.7 to R28.1: J3.7 is walled in by GND, SD_DAT1 and SD_CLK: no way out of the 0.3 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed SD_MISO: J3.7 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT ROUTED: 10 of 21 connection(s) routed, 114 segment(s), 9 via(s), 327.5 mm of track, in 5.9 s; 11 not routed, each said above

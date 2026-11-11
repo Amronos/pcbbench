@@ -1,0 +1,3 @@
+route: NOT routed SD_MISO: R28.1 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT routed SD_MISO: R28.1 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT ROUTED: 0 of 1 connection(s) routed, 0 segment(s), 0 via(s), 0.0 mm of track, in 3.3 s; 1 not routed, each said above

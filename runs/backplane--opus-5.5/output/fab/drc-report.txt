@@ -1,0 +1,32 @@
+** Drc report for rp2350-dev.kicad_pcb **
+** Created on 2026-11-09T23:58:37 **
+** Report includes: Errors, Warnings, Exclusions **
+
+** Found 3 DRC violations **
+[connection_width]: Copper connection too narrow (board setup constraints minimum connection width 0.1500 mm; actual 0.0790 mm) (In2.Cu)
+    Rule: board setup constraints; warning
+    @(134.5000 mm, 112.9000 mm): Via [GND] on F.Cu - B.Cu
+    @(135.1000 mm, 112.9000 mm): Via [GND] on F.Cu - B.Cu
+[connection_width]: Copper connection too narrow (board setup constraints minimum connection width 0.1500 mm; actual 0.0790 mm) (In1.Cu)
+    Rule: board setup constraints; warning
+    @(134.2000 mm, 115.5000 mm): Via [+1V1] on F.Cu - B.Cu
+    @(134.8000 mm, 115.5000 mm): Via [+1V1] on F.Cu - B.Cu
+[connection_width]: Copper connection too narrow (board setup constraints minimum connection width 0.1500 mm; actual 0.0790 mm) (In2.Cu)
+    Rule: board setup constraints; warning
+    @(134.2000 mm, 115.5000 mm): Via [+1V1] on F.Cu - B.Cu
+    @(134.8000 mm, 115.5000 mm): Via [+1V1] on F.Cu - B.Cu
+
+** Found 0 unconnected pads **
+
+** Found 0 Footprint errors **
+
+** Ignored checks **
+    - Footprint has no courtyard defined
+    - Track endpoint not centered on via
+    - Tuning profile track geometries
+    - Footprint doesn't match symbol's footprint filters
+    - Footprint component type doesn't match footprint pads
+    - Footprint not found in libraries
+    - Footprint doesn't match copy in library
+
+** End of Report **

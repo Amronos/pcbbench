@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "rp2350-devboard")(type "KiCad")(uri "${KIPRJMOD}/rp2350-devboard.kicad_sym")(options "")(descr "Project symbols"))
+)

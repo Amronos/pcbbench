@@ -1,0 +1,114 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-09T23:58:06",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        },
+        {
+            "description": "Footprint not found in libraries",
+            "key": "lib_footprint_issues"
+        },
+        {
+            "description": "Footprint doesn't match copy in library",
+            "key": "lib_footprint_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.99.0",
+    "schematic_parity": [],
+    "source": "rp2350-dev.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Copper connection too narrow (board setup constraints minimum connection width 0.1500 mm; actual 0.0790 mm) (In2.Cu)",
+            "items": [
+                {
+                    "description": "Via [+1V1] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 134.2,
+                        "y": 115.5
+                    },
+                    "uuid": "444a9e3a-7639-500c-8cba-0c34afeac6a4"
+                },
+                {
+                    "description": "Via [+1V1] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 134.8,
+                        "y": 115.5
+                    },
+                    "uuid": "f771ff1d-95c8-535f-9f34-3d95f2cea076"
+                }
+            ],
+            "severity": "warning",
+            "type": "connection_width"
+        },
+        {
+            "description": "Copper connection too narrow (board setup constraints minimum connection width 0.1500 mm; actual 0.0790 mm) (In1.Cu)",
+            "items": [
+                {
+                    "description": "Via [+1V1] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 134.2,
+                        "y": 115.5
+                    },
+                    "uuid": "444a9e3a-7639-500c-8cba-0c34afeac6a4"
+                },
+                {
+                    "description": "Via [+1V1] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 134.8,
+                        "y": 115.5
+                    },
+                    "uuid": "f771ff1d-95c8-535f-9f34-3d95f2cea076"
+                }
+            ],
+            "severity": "warning",
+            "type": "connection_width"
+        },
+        {
+            "description": "Copper connection too narrow (board setup constraints minimum connection width 0.1500 mm; actual 0.0790 mm) (In2.Cu)",
+            "items": [
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 134.5,
+                        "y": 112.9
+                    },
+                    "uuid": "6f919940-2edd-55d2-87f5-a541a75d3b81"
+                },
+                {
+                    "description": "Via [GND] on F.Cu - B.Cu",
+                    "pos": {
+                        "x": 135.1,
+                        "y": 112.9
+                    },
+                    "uuid": "8e0f3c94-8967-51f1-be56-894a964abbce"
+                }
+            ],
+            "severity": "warning",
+            "type": "connection_width"
+        }
+    ]
+}

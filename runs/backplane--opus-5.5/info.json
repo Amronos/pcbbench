@@ -1,0 +1,18 @@
+{
+	"runId": "backplane--opus-5.5",
+	"harness": "backplane",
+	"model": "opus-5.5",
+	"reasoning": "medium",
+	"machine": "linux",
+	"versions": {
+		"backplane": "backplane-hub 0.15.0",
+		"claudeCode": "2.1.321 (Claude Code)",
+		"codex": "codex-cli 0.167.0",
+		"kicad": "10.99.0-bp.4 (5dbc22d292704d02b609d5b7a0edc971f1b7f08b)"
+	},
+	"skippedLargeFiles": [],
+	"board": "boards/rp2350-dev/rp2350-dev.kicad_pcb",
+	"bom": "fab/rp2350-dev-BOM-pcbway.csv",
+	"placement": "fab/rp2350-dev-CPL-pcbway.csv",
+	"fabZip": "fab/rp2350-dev-gerbers.zip"
+}

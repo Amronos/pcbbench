@@ -1,0 +1,13 @@
+cad run: making the environment of the model's packages, once: sexpdata, shapely beside cad 0.11.4, in /Users/ec2-user/.cache/cad/base/f09aa027822c43be
+Critical body centers: board X/right Y/down; CSV MidY is the negative of board Y
+J1: local=(0.000000, 0.000000) body=(3.000000, 40.000000) anchor=(3.000000, 40.000000) offset=(0.000000, 0.000000) MidY=-40.000000 rotation=-90.000000 mounting=SMT+THT centroid_csv=yes
+J2: local=(0.000000, 0.600000) body=(6.400000, 14.000000) anchor=(7.000000, 14.000000) offset=(-0.600000, 0.000000) MidY=-14.000000 rotation=-90.000000 mounting=SMT centroid_csv=yes
+J3: local=(0.000000, 0.250000) body=(68.000000, 62.250000) anchor=(68.000000, 62.000000) offset=(0.000000, 0.250000) MidY=-62.250000 rotation=0.000000 mounting=SMT centroid_csv=yes
+J4: local=(0.000000, 0.450000) body=(76.450000, 38.000000) anchor=(76.000000, 38.000000) offset=(0.450000, 0.000000) MidY=-38.000000 rotation=90.000000 mounting=SMT centroid_csv=yes
+J5: local=(1.270000, 11.430000) body=(49.270000, 60.430000) anchor=(48.000000, 49.000000) offset=(1.270000, 11.430000) MidY=-60.430000 rotation=0.000000 mounting=THT centroid_csv=no
+J6: local=(0.635000, 2.540000) body=(42.635000, 30.540000) anchor=(42.000000, 28.000000) offset=(0.635000, 2.540000) MidY=-30.540000 rotation=0.000000 mounting=THT centroid_csv=no
+J7: local=(0.000000, 6.350000) body=(63.350000, 24.000000) anchor=(57.000000, 24.000000) offset=(6.350000, 0.000000) MidY=-24.000000 rotation=90.000000 mounting=THT centroid_csv=no
+U6: local=(0.000000, -3.100000) body=(65.000000, 3.900000) anchor=(65.000000, 7.000000) offset=(0.000000, -3.100000) MidY=-3.900000 rotation=0.000000 mounting=SMT with plated thermal features centroid_csv=yes
+SW5: local=(0.000000, 0.000000) body=(8.000000, 63.000000) anchor=(8.000000, 63.000000) offset=(0.000000, 0.000000) MidY=-63.000000 rotation=-90.000000 mounting=SMT centroid_csv=yes
+Surface centroid rows: 110; all-part source rows: 113; 0 errors
+Inspect-only: no output files or directories written

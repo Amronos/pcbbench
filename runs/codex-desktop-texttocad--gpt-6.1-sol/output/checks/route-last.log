@@ -1,0 +1,13 @@
+route: NOT routed SD_MISO: R28.1 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+routed +3V3: C9.1 to C8.1: 1.77 mm in 2 segments
+routed +3V3: U1.11 to U1.20: 5.00 mm in 2 segments
+routed VBAT: U4.3 to C28.1: 2.41 mm in 4 segments, 1 via
+routed VBAT: C28.1 to J2.1: 9.72 mm in 4 segments, 1 via
+routed VBAT: U4.2 to TP3.1: 9.18 mm in 5 segments, 1 via
+routed VBAT: TP3.1 to R10.1: 12.62 mm in 4 segments, 1 via
+routed SD_DAT1: J3.8 to R29.1: 5.45 mm in 4 segments, 1 via
+routed SD_DETECT: J3.9 to R31.1: 12.34 mm in 5 segments, 1 via
+routed SD_DETECT: J3.9 to U1.19: 34.50 mm in 4 segments
+routed SD_MISO: J3.7 to R28.1: 11.85 mm in 4 segments, 1 via
+NOT routed SD_MISO: R28.1 to U1.16: U1.16 is walled in by SD_MOSI, SD_CS and GND: no way out of the 2.9 mm² round it on F.Cu and B.Cu and In1.Cu and In2.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+NOT ROUTED: 10 of 11 connection(s) routed, 38 segment(s), 7 via(s), 104.8 mm of track, in 3.8 s; 1 not routed, each said above

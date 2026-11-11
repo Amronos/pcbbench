@@ -1,0 +1,3340 @@
+[
+  {
+    "ref": "U1",
+    "value": "RP2350A",
+    "symbol": "RP2350A",
+    "footprint": "Package_DFN_QFN:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm",
+    "pins": {
+      "1": "+3V3",
+      "2": "PSRAM_CS",
+      "3": "GPIO1",
+      "4": "GPIO2",
+      "5": "GPIO3",
+      "6": "+1V1",
+      "7": "RADIO_RX",
+      "8": "RADIO_TX",
+      "9": "RADIO_RTS",
+      "10": "RADIO_CTS",
+      "11": "+3V3",
+      "12": "GPIO8",
+      "13": "GPIO9",
+      "14": "SD_SCK_SRC",
+      "15": "SD_MOSI",
+      "16": "SD_MISO",
+      "17": "SD_CS",
+      "18": "SD_DETECT",
+      "19": "GPIO15",
+      "20": "+3V3",
+      "21": "XIN",
+      "22": "XOUT",
+      "23": "+1V1",
+      "24": "SWCLK",
+      "25": "SWDIO",
+      "26": "RUN",
+      "27": "RGB_DATA",
+      "28": "RGB_ENABLE",
+      "29": "GPIO18",
+      "30": "+3V3",
+      "31": "GPIO19",
+      "32": "I2C_SDA",
+      "33": "I2C_SCL",
+      "34": "RADIO_POWER",
+      "35": "USB_500MA",
+      "36": "VBUS_DETECT",
+      "37": "CHARGE_N",
+      "38": "+3V3",
+      "39": "+1V1",
+      "40": "GPIO26_ADC0",
+      "41": "GPIO27_ADC1",
+      "42": "GPIO28_ADC2",
+      "43": "BAT_ADC",
+      "44": "+3V3_ADC",
+      "45": "+3V3",
+      "46": "+3V3",
+      "47": "GND",
+      "48": null,
+      "49": "+3V3",
+      "50": "GND",
+      "51": "USB_DM_MCU",
+      "52": "USB_DP_MCU",
+      "53": "+3V3",
+      "54": "+3V3",
+      "55": "QSPI_D3",
+      "56": "QSPI_CLK_SRC",
+      "57": "QSPI_D0",
+      "58": "QSPI_D2",
+      "59": "QSPI_D1",
+      "60": "FLASH_CS",
+      "61": "GND"
+    },
+    "x": 130,
+    "y": 137,
+    "rotation": 0,
+    "mpn": "RP2350A",
+    "manufacturer": "Raspberry Pi",
+    "sheet": "processor",
+    "description": "QFN60, external 1.1 V core supply; VREG_FB grounded, LX deliberately open",
+    "uuid": "2e327e29-9dd3-5518-a901-594a4423ad68",
+    "sch_pos": [
+      58.42,
+      83.82
+    ],
+    "fp_id": "Aster:Package_DFN_QFN__QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm"
+  },
+  {
+    "ref": "U2",
+    "value": "W25Q128JVSIQ",
+    "symbol": "W25Q128JVS",
+    "footprint": "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm",
+    "pins": {
+      "1": "FLASH_CS",
+      "2": "QSPI_D1",
+      "3": "QSPI_D2",
+      "4": "GND",
+      "5": "QSPI_D0",
+      "6": "QSPI_CLK",
+      "7": "QSPI_D3",
+      "8": "+3V3"
+    },
+    "x": 132,
+    "y": 125,
+    "rotation": 0,
+    "mpn": "W25Q128JVSIQ",
+    "manufacturer": "Winbond",
+    "sheet": "processor",
+    "description": "16 MiB QSPI NOR, 3 V, 208 mil SOIC8",
+    "uuid": "b22513a0-a291-5f01-8e76-8a797bb8f71c",
+    "sch_pos": [
+      137.16,
+      39.37
+    ],
+    "fp_id": "Aster:Package_SO__SOIC-8_5.3x5.3mm_P1.27mm"
+  },
+  {
+    "ref": "U3",
+    "value": "APS6404L-3SQR-SN",
+    "symbol": "APS6404L_3SQR",
+    "footprint": "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm",
+    "pins": {
+      "1": "PSRAM_CS",
+      "2": "QSPI_D1",
+      "3": "QSPI_D2",
+      "4": "GND",
+      "5": "QSPI_D0",
+      "6": "QSPI_CLK",
+      "7": "QSPI_D3",
+      "8": "+3V3"
+    },
+    "x": 120,
+    "y": 125,
+    "rotation": 0,
+    "mpn": "APS6404L-3SQR-SN",
+    "manufacturer": "AP Memory",
+    "sheet": "processor",
+    "description": "8 MiB 3.3 V QSPI PSRAM, 150 mil SOP8; NOT a 1.8 V variant",
+    "uuid": "e06e0570-0654-5463-a951-1e0fcf9c7602",
+    "sch_pos": [
+      214.63,
+      39.37
+    ],
+    "fp_id": "Aster:Package_SO__SOIC-8_3.9x4.9mm_P1.27mm"
+  },
+  {
+    "ref": "Y1",
+    "value": "12MHz",
+    "symbol": "Crystal_GND24_Small",
+    "footprint": "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm",
+    "pins": {
+      "1": "XIN",
+      "2": "GND",
+      "3": "XTAL_OUT",
+      "4": "GND"
+    },
+    "x": 123,
+    "y": 142,
+    "rotation": 0,
+    "mpn": "ABM8-272-T3",
+    "manufacturer": "Abracon",
+    "sheet": "processor",
+    "description": "12 MHz, CL=10 pF, ESR<=50 ohm, reference-design crystal",
+    "uuid": "75174532-2a7b-52cd-8a73-a75f52b57d7a",
+    "sch_pos": [
+      38.1,
+      153.67
+    ],
+    "fp_id": "Aster:Crystal__Crystal_SMD_3225-4Pin_3.2x2.5mm"
+  },
+  {
+    "ref": "R1",
+    "value": "1k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "XOUT",
+      "2": "XTAL_OUT"
+    },
+    "x": 125.859,
+    "y": 142.141,
+    "rotation": 90,
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "0a3f90d6-f066-5cca-8e15-e7c947280f69",
+    "sch_pos": [
+      76.2,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C1",
+    "value": "15p",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "XIN",
+      "2": "GND"
+    },
+    "x": 121.786,
+    "y": 144.404,
+    "rotation": 0,
+    "mpn": "GRM1555C1H150JA01D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "15 pF, 50 V, C0G, 5%, 0402",
+    "uuid": "3e7341b0-cf70-562d-841b-b38d6db3ea49",
+    "sch_pos": [
+      114.3,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C2",
+    "value": "15p",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "XTAL_OUT",
+      "2": "GND"
+    },
+    "x": 124.793,
+    "y": 144.352,
+    "rotation": 0,
+    "mpn": "GRM1555C1H150JA01D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "15 pF, 50 V, C0G, 5%, 0402",
+    "uuid": "a59f3881-021c-57f6-8b24-6b054bfa4a29",
+    "sch_pos": [
+      153.67,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "R2",
+    "value": "33",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "QSPI_CLK_SRC",
+      "2": "QSPI_CLK"
+    },
+    "x": 129.3,
+    "y": 131.8,
+    "rotation": 90,
+    "mpn": "RC0402FR-0733RL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "8ddc1156-f681-5185-b2c2-e5deeb33e4ab",
+    "sch_pos": [
+      191.77,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R3",
+    "value": "4.7k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "FLASH_CS"
+    },
+    "x": 135.389,
+    "y": 128.841,
+    "rotation": 0,
+    "mpn": "RC0402FR-074K7L",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "8ac13b0f-3c44-5337-8430-8f90d280884e",
+    "sch_pos": [
+      229.87,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R4",
+    "value": "4.7k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "PSRAM_CS"
+    },
+    "x": 116.2,
+    "y": 129,
+    "rotation": 0,
+    "mpn": "RC0402FR-074K7L",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "78f01768-3d92-5875-9e6e-83bcb2d25eee",
+    "sch_pos": [
+      267.97,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R5",
+    "value": "4.7k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "QSPI_D2"
+    },
+    "x": 138.2,
+    "y": 127,
+    "rotation": 0,
+    "mpn": "RC0402FR-074K7L",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "2012cb35-9248-5785-956e-1069bfce3e51",
+    "sch_pos": [
+      307.34,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R6",
+    "value": "4.7k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "QSPI_D3"
+    },
+    "x": 138.2,
+    "y": 124.5,
+    "rotation": 0,
+    "mpn": "RC0402FR-074K7L",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "c8bd9092-289e-59d3-8c3e-c3703567a69a",
+    "sch_pos": [
+      38.1,
+      170.18
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C3",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 137.3,
+    "y": 122.5,
+    "rotation": 90,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "476d2357-d7aa-5b6e-ace8-ff31e9a8b706",
+    "sch_pos": [
+      76.2,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C4",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 124.4,
+    "y": 122.5,
+    "rotation": 90,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "0c0c3a98-aec3-522e-8fa5-1d6a426c4ae4",
+    "sch_pos": [
+      114.3,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C5",
+    "value": "1u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 119.8,
+    "y": 120.654,
+    "rotation": 90,
+    "mpn": "GRM188R71C105KA12D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "1 uF, 16 V, X7R, 10%, 0603",
+    "uuid": "a34f4123-b870-5e03-9e18-b15127f6022f",
+    "sch_pos": [
+      153.67,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "C6",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 124.859,
+    "y": 133.941,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "b1093f45-6843-5002-8e2a-b0e4dc38dc0c",
+    "sch_pos": [
+      191.77,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C7",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 124.848,
+    "y": 136.193,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "05104f3d-3cf7-5290-b882-703cc2442a6f",
+    "sch_pos": [
+      229.87,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C8",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 129.141,
+    "y": 142.141,
+    "rotation": 90,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "3b44ef49-db26-519b-b5fb-bf9aff2e8b9c",
+    "sch_pos": [
+      267.97,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C9",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 135.2,
+    "y": 138.4,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "72ed1eb3-38cb-5ef7-a9f5-705b56e1c153",
+    "sch_pos": [
+      307.34,
+      170.18
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C10",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 135.2,
+    "y": 134.9,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "58478f14-56b7-5d42-9aa0-f2e22bbad19e",
+    "sch_pos": [
+      38.1,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C11",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 134.2,
+    "y": 131.6,
+    "rotation": 90,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "b14a87e2-e018-5780-b164-aef4a612243d",
+    "sch_pos": [
+      76.2,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C12",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 132.7,
+    "y": 131.6,
+    "rotation": 90,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "5836d909-9dff-5f07-945a-979e70a91166",
+    "sch_pos": [
+      114.3,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C13",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "x": 124.848,
+    "y": 137.793,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "eb727f59-a705-5e03-a022-dee55557a7ed",
+    "sch_pos": [
+      153.67,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C14",
+    "value": "4.7u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "x": 127.193,
+    "y": 142.752,
+    "rotation": 90,
+    "mpn": "GRM188R61A475KE15D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "4.7 uF, 10 V, X5R, 10%, 0603",
+    "uuid": "c5bbb383-0558-5749-8eb1-c38f2a231031",
+    "sch_pos": [
+      191.77,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "C15",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "x": 135.2,
+    "y": 137.1,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "0e1a3d5e-6053-5a95-8b8f-89a3de6a5daf",
+    "sch_pos": [
+      229.87,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C16",
+    "value": "1u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 135.6,
+    "y": 131.0,
+    "rotation": 90,
+    "mpn": "GRM188R71C105KA12D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "1 uF, 16 V, X7R, 10%, 0603",
+    "uuid": "ca7dd8fd-8778-5058-8082-e9a82a31d263",
+    "sch_pos": [
+      267.97,
+      185.42
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "R7",
+    "value": "33",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "+3V3_ADC"
+    },
+    "x": 137.0,
+    "y": 131.1,
+    "rotation": 90,
+    "mpn": "RC0402FR-0733RL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "81d7ce6d-48a5-5972-94cc-6e91f7a674ed",
+    "sch_pos": [
+      307.34,
+      185.42
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C17",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3_ADC",
+      "2": "GND"
+    },
+    "x": 135.3,
+    "y": 133.1,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "2d68776f-4e68-5101-a923-a4e1638aa82a",
+    "sch_pos": [
+      38.1,
+      201.93
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "U4",
+    "value": "TLV75801PDRVR",
+    "symbol": "TLV75801PDRV",
+    "footprint": "Package_SON:WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm",
+    "pins": {
+      "1": "+1V1",
+      "2": "CORE_FB",
+      "3": "GND",
+      "4": "+3V3",
+      "5": null,
+      "6": "+3V3",
+      "7": "GND"
+    },
+    "x": 137,
+    "y": 140.8,
+    "rotation": 0,
+    "mpn": "TLV75801PDRVR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "processor",
+    "description": "500 mA adjustable LDO, 0.55 V reference, 1.100 V nominal core; WSON thermal pad grounded",
+    "uuid": "14bab7ff-5aee-5ea7-863d-750f42d11626",
+    "sch_pos": [
+      137.16,
+      82.55
+    ],
+    "fp_id": "Aster:Package_SON__WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm"
+  },
+  {
+    "ref": "R8",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+1V1",
+      "2": "CORE_FB"
+    },
+    "x": 137.641,
+    "y": 143.141,
+    "rotation": 90,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "fde37719-40ec-5bf2-82bf-a4ac2dca3e4c",
+    "sch_pos": [
+      76.2,
+      201.93
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R9",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CORE_FB",
+      "2": "GND"
+    },
+    "x": 139.4,
+    "y": 143,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "9c39b8e8-1b87-50e1-bb76-660dd45a3263",
+    "sch_pos": [
+      114.3,
+      201.93
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C18",
+    "value": "1u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 140.5,
+    "y": 140.15,
+    "rotation": 0,
+    "mpn": "GRM188R71C105KA12D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "1 uF, 16 V, X7R, 10%, 0603",
+    "uuid": "aff4da4f-782a-52f8-8507-0ef1082bf9d0",
+    "sch_pos": [
+      153.67,
+      201.93
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "C19",
+    "value": "4.7u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+1V1",
+      "2": "GND"
+    },
+    "x": 133.8,
+    "y": 142.055,
+    "rotation": 180,
+    "mpn": "GRM188R61A475KE15D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "4.7 uF, 10 V, X5R, 10%, 0603",
+    "uuid": "771dab4a-b3d4-59f8-b904-c89f76d33f03",
+    "sch_pos": [
+      191.77,
+      201.93
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "R10",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "RUN"
+    },
+    "x": 132.588,
+    "y": 143.9,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "fa827dd9-5346-5233-a82d-c00b9a352f71",
+    "sch_pos": [
+      229.87,
+      201.93
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C20",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "RUN",
+      "2": "GND"
+    },
+    "x": 134.6,
+    "y": 144.307,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "processor",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "9f996591-b165-542a-81cf-ef894c8dbfc2",
+    "sch_pos": [
+      267.97,
+      201.93
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "SW1",
+    "value": "BOOTSEL",
+    "symbol": "SW_Push",
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "pins": {
+      "1": "BOOT_GND",
+      "2": "GND"
+    },
+    "x": 129,
+    "y": 149,
+    "rotation": 0,
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "sheet": "processor",
+    "description": "Hold while applying power or RESET for ROM USB mass-storage boot",
+    "uuid": "6df9b4ec-0cb0-5df5-a2c9-61682baa0157",
+    "sch_pos": [
+      307.34,
+      201.93
+    ],
+    "fp_id": "Aster:Button_Switch_SMD__SW_SPST_TL3342"
+  },
+  {
+    "ref": "R11",
+    "value": "1k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "FLASH_CS",
+      "2": "BOOT_GND"
+    },
+    "x": 128.689,
+    "y": 144.841,
+    "rotation": 90,
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "55a0a78c-c67b-539f-a6ec-3b42971b0ebc",
+    "sch_pos": [
+      38.1,
+      217.17
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "SW2",
+    "value": "RESET",
+    "symbol": "SW_Push",
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "pins": {
+      "1": "RUN",
+      "2": "GND"
+    },
+    "x": 139.4,
+    "y": 147.961,
+    "rotation": 0,
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "sheet": "processor",
+    "description": "RP2350 reset button",
+    "uuid": "16025694-c1b9-5d8d-94cf-5a9de12f5869",
+    "sch_pos": [
+      76.2,
+      217.17
+    ],
+    "fp_id": "Aster:Button_Switch_SMD__SW_SPST_TL3342"
+  },
+  {
+    "ref": "J1",
+    "value": "USB-C",
+    "symbol": "USB_C_Receptacle_USB2.0_16P",
+    "footprint": "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal",
+    "pins": {
+      "A1": "GND",
+      "A12": "GND",
+      "B1": "GND",
+      "B12": "GND",
+      "SH": "GND",
+      "A4": "USB_VBUS",
+      "A9": "USB_VBUS",
+      "B4": "USB_VBUS",
+      "B9": "USB_VBUS",
+      "A5": "CC1",
+      "B5": "CC2",
+      "A6": "USB_DP",
+      "B6": "USB_DP",
+      "A7": "USB_DM",
+      "B7": "USB_DM",
+      "A8": null,
+      "B8": null
+    },
+    "x": 112.2,
+    "y": 162.6,
+    "rotation": 0,
+    "mpn": "USB4105-GF-A",
+    "manufacturer": "GCT",
+    "sheet": "power",
+    "description": "USB 2.0 device, both plug orientations; plated shell slots",
+    "uuid": "07656df0-46cc-5b7d-9c11-cc134b1a2c5b",
+    "sch_pos": [
+      44.45,
+      39.37
+    ],
+    "fp_id": "Aster:Connector_USB__USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
+  },
+  {
+    "ref": "R12",
+    "value": "5.1k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CC1",
+      "2": "GND"
+    },
+    "x": 109.32,
+    "y": 157.2,
+    "rotation": 0,
+    "mpn": "RC0402FR-075K1L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "2a1db112-4836-5a0c-90b2-28a24c8ef817",
+    "sch_pos": [
+      31.75,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R13",
+    "value": "5.1k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CC2",
+      "2": "GND"
+    },
+    "x": 114.917,
+    "y": 157.217,
+    "rotation": 0,
+    "mpn": "RC0402FR-075K1L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "3f6d314d-aa4e-5266-81b8-003760298a80",
+    "sch_pos": [
+      68.58,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "U5",
+    "value": "USBLC6-2SC6",
+    "symbol": "USBLC6-2SC6",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+    "pins": {
+      "1": "USB_DP",
+      "2": "GND",
+      "3": "USB_DM",
+      "4": "USB_DM",
+      "5": "USB_VBUS",
+      "6": "USB_DP"
+    },
+    "x": 113,
+    "y": 153.8,
+    "rotation": 270,
+    "mpn": "USBLC6-2SC6",
+    "manufacturer": "STMicroelectronics",
+    "sheet": "power",
+    "description": "USB low-capacitance ESD array; pin-pairs are the same net",
+    "uuid": "6520adff-85f7-5d37-b02f-59653a4c0f36",
+    "sch_pos": [
+      121.92,
+      39.37
+    ],
+    "fp_id": "Aster:Package_TO_SOT_SMD__SOT-23-6"
+  },
+  {
+    "ref": "R14",
+    "value": "27",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "USB_DP",
+      "2": "USB_DP_MCU"
+    },
+    "x": 130.4,
+    "y": 131.8,
+    "rotation": 270,
+    "mpn": "RC0402FR-0727RL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "42305e74-aac3-54bf-87eb-de3e032c2082",
+    "sch_pos": [
+      114.3,
+      217.17
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R15",
+    "value": "27",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "USB_DM",
+      "2": "USB_DM_MCU"
+    },
+    "x": 131.6,
+    "y": 131.8,
+    "rotation": 270,
+    "mpn": "RC0402FR-0727RL",
+    "manufacturer": "Yageo",
+    "sheet": "processor",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "2fcf86e3-b2c6-56b1-8211-bf6baf443ce1",
+    "sch_pos": [
+      153.67,
+      217.17
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C21",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "USB_VBUS",
+      "2": "GND"
+    },
+    "x": 115.8,
+    "y": 153.6,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "59b0eb5f-6f07-5f2d-aca3-5dfa9a2abeb3",
+    "sch_pos": [
+      104.14,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "F1",
+    "value": "500mA PTC",
+    "symbol": "Polyfuse_Small",
+    "footprint": "Fuse:Fuse_1812_4532Metric",
+    "pins": {
+      "1": "USB_VBUS",
+      "2": "VBUS"
+    },
+    "x": 106.3,
+    "y": 154.5,
+    "rotation": 90,
+    "mpn": "MF-MSMF050-2",
+    "manufacturer": "Bourns",
+    "sheet": "power",
+    "description": "500 mA hold resettable fuse, 15 V max, 1812",
+    "uuid": "0a342e34-7304-53cf-b628-1e618e30809f",
+    "sch_pos": [
+      139.7,
+      153.67
+    ],
+    "fp_id": "Aster:Fuse__Fuse_1812_4532Metric"
+  },
+  {
+    "ref": "U6",
+    "value": "BQ24074RGTR",
+    "symbol": "BQ24074RGT",
+    "footprint": "Package_DFN_QFN:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm",
+    "pins": {
+      "1": "BAT_NTC",
+      "2": "BAT",
+      "3": "BAT",
+      "4": "GND",
+      "5": "GND",
+      "6": "USB_500MA",
+      "7": "POWER_GOOD_N",
+      "8": "GND",
+      "9": "CHARGE_N",
+      "10": "VSYS",
+      "11": "VSYS",
+      "12": "CHG_ILIM",
+      "13": "VBUS",
+      "14": "CHG_TMR",
+      "15": "CHG_ITERM",
+      "16": "CHG_ISET",
+      "17": "GND"
+    },
+    "x": 109,
+    "y": 147,
+    "rotation": 0,
+    "mpn": "BQ24074RGTR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "power",
+    "description": "4.2 V single-cell LiPo charger; OUT=4.4 V USB power path, 250 mA maximum charging",
+    "uuid": "9ecdf1c1-f712-5d72-a82b-eb1bb5efbdc4",
+    "sch_pos": [
+      199.39,
+      39.37
+    ],
+    "fp_id": "Aster:Package_DFN_QFN__VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm"
+  },
+  {
+    "ref": "C22",
+    "value": "1u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "VBUS",
+      "2": "GND"
+    },
+    "x": 108.8,
+    "y": 150.654,
+    "rotation": 0,
+    "mpn": "GRM188R71C105KA12D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "1 uF, 16 V, X7R, 10%, 0603",
+    "uuid": "2c74ef47-9259-5a9b-b326-829879988d62",
+    "sch_pos": [
+      176.53,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "C23",
+    "value": "10u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "pins": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "x": 113.1,
+    "y": 147.0,
+    "rotation": 0,
+    "mpn": "GRM21BR61C106KE15L",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "10 uF, 16 V, X5R, 10%, 0805",
+    "uuid": "bf311a14-1ca7-5024-8df7-408e002dfbb4",
+    "sch_pos": [
+      212.09,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0805_2012Metric"
+  },
+  {
+    "ref": "C24",
+    "value": "4.7u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "BAT",
+      "2": "GND"
+    },
+    "x": 105.217,
+    "y": 146.283,
+    "rotation": 0,
+    "mpn": "GRM188R61A475KE15D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "4.7 uF, 10 V, X5R, 10%, 0603",
+    "uuid": "1ad6f7dc-e712-5fd1-8867-06e976276d09",
+    "sch_pos": [
+      247.65,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "R16",
+    "value": "3.57k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CHG_ISET",
+      "2": "GND"
+    },
+    "x": 109.155,
+    "y": 143.98,
+    "rotation": 0,
+    "mpn": "RC0402FR-073K57L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "b70d9199-cc5b-5ec2-9197-e2f8ce2ce3a1",
+    "sch_pos": [
+      284.48,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R17",
+    "value": "3.24k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CHG_ILIM",
+      "2": "GND"
+    },
+    "x": 112.3,
+    "y": 144,
+    "rotation": 0,
+    "mpn": "RC0402FR-073K24L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "f8b85f5e-e400-519d-b6bf-79ea81389e9b",
+    "sch_pos": [
+      320.04,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R18",
+    "value": "49.9k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CHG_TMR",
+      "2": "GND"
+    },
+    "x": 106.98,
+    "y": 143.7,
+    "rotation": 0,
+    "mpn": "RC0402FR-0749K9L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "54363295-d366-59b4-a408-0c48405ee887",
+    "sch_pos": [
+      31.75,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R19",
+    "value": "3.3k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "CHG_ITERM",
+      "2": "GND"
+    },
+    "x": 104.961,
+    "y": 144.0,
+    "rotation": 0,
+    "mpn": "RC0402FR-073K3L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "86fe9501-db6a-5f5d-84ce-e72164b5136e",
+    "sch_pos": [
+      68.58,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R20",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "USB_500MA",
+      "2": "GND"
+    },
+    "x": 113.773,
+    "y": 145.1,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "af13e438-4e7f-5df8-87c7-658dd346973e",
+    "sch_pos": [
+      104.14,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R21",
+    "value": "3.3k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "CHARGE_N"
+    },
+    "x": 116,
+    "y": 146,
+    "rotation": 0,
+    "mpn": "RC0402FR-073K3L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "625055cf-3bcf-53e4-96d1-70d2980c1624",
+    "sch_pos": [
+      139.7,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R22",
+    "value": "3.3k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "POWER_GOOD_N"
+    },
+    "x": 115.859,
+    "y": 147.859,
+    "rotation": 0,
+    "mpn": "RC0402FR-073K3L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "51938558-77fa-5226-b768-bf36cfb9a692",
+    "sch_pos": [
+      176.53,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "J2",
+    "value": "LiPo + NTC",
+    "symbol": "Conn_01x03",
+    "footprint": "Connector_JST:JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical",
+    "pins": {
+      "1": "BAT",
+      "2": "BAT_NTC",
+      "3": "GND"
+    },
+    "x": 109,
+    "y": 139,
+    "rotation": 0,
+    "mpn": "B3B-PH-K-S(LF)(SN)",
+    "manufacturer": "JST",
+    "sheet": "power",
+    "description": "Protected 1S 4.2 V LiPo, >=500 mAh, 10 kohm 3435 K pack thermistor; pin 1=BAT+, 2=NTC, 3=GND",
+    "uuid": "cd5fbe78-ef51-5c64-bdf3-04b42f2e36b8",
+    "sch_pos": [
+      278.13,
+      39.37
+    ],
+    "fp_id": "Aster:Connector_JST__JST_PH_B3B-PH-K_1x03_P2.00mm_Vertical"
+  },
+  {
+    "ref": "C25",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "BAT_NTC",
+      "2": "GND"
+    },
+    "x": 109.0,
+    "y": 142.9,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "3b99f6cf-7b45-5124-bd50-02b3bb2ed691",
+    "sch_pos": [
+      212.09,
+      167.64
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "U7",
+    "value": "TPS63060DSCR",
+    "symbol": "TPS63060",
+    "footprint": "Package_SON:Texas_S-PWSON-N10",
+    "pins": {
+      "1": "BUCK_L1",
+      "2": "VSYS",
+      "3": "VSYS",
+      "4": "GND",
+      "5": null,
+      "6": "BUCK_VAUX",
+      "7": "GND",
+      "8": "BUCK_FB",
+      "9": "+3V3",
+      "10": "BUCK_L2",
+      "11": "GND"
+    },
+    "x": 112.8,
+    "y": 132,
+    "rotation": 0,
+    "mpn": "TPS63060DSCR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "power",
+    "description": "2.25 A switch buck-boost, 3.310 V nominal output; PS/SYNC low enables power-save",
+    "uuid": "1c6fec2d-95b9-59c7-b720-f6eb3dc7cddb",
+    "sch_pos": [
+      44.45,
+      82.55
+    ],
+    "fp_id": "Aster:Package_SON__Texas_S-PWSON-N10"
+  },
+  {
+    "ref": "L1",
+    "value": "1.5uH",
+    "symbol": "L_Small",
+    "footprint": "Inductor_SMD:L_Coilcraft_XxL4020",
+    "pins": {
+      "1": "BUCK_L1",
+      "2": "BUCK_L2"
+    },
+    "x": 112.8,
+    "y": 127.5,
+    "rotation": 0,
+    "mpn": "XFL4020-152MEC",
+    "manufacturer": "Coilcraft",
+    "sheet": "power",
+    "description": "1.5 uH, 20%, shielded, Isat=4.4 A, DCR=14.4 milliohm",
+    "uuid": "15451bd4-05ad-50fe-97e9-a17fc534ed76",
+    "sch_pos": [
+      247.65,
+      167.64
+    ],
+    "fp_id": "Aster:Inductor_SMD__L_Coilcraft_XxL4020"
+  },
+  {
+    "ref": "C26",
+    "value": "10u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "pins": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "x": 108.8,
+    "y": 131.673,
+    "rotation": 180,
+    "mpn": "GRM21BR61C106KE15L",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "10 uF, 16 V, X5R, 10%, 0805",
+    "uuid": "169ea135-f122-5826-a898-27b29c547944",
+    "sch_pos": [
+      284.48,
+      167.64
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0805_2012Metric"
+  },
+  {
+    "ref": "C27",
+    "value": "10u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "pins": {
+      "1": "VSYS",
+      "2": "GND"
+    },
+    "x": 108.707,
+    "y": 129.252,
+    "rotation": 180,
+    "mpn": "GRM21BR61C106KE15L",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "10 uF, 16 V, X5R, 10%, 0805",
+    "uuid": "31eff470-db9b-5089-8b78-c4fbd9a01102",
+    "sch_pos": [
+      320.04,
+      167.64
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0805_2012Metric"
+  },
+  {
+    "ref": "C28",
+    "value": "22u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 117.2,
+    "y": 131.5,
+    "rotation": 0,
+    "mpn": "GRM21BR61A226ME44L",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "22 uF, 10 V, X5R, 20%, 0805",
+    "uuid": "05860ecc-bb80-536c-93d4-3b7fd0178937",
+    "sch_pos": [
+      31.75,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0805_2012Metric"
+  },
+  {
+    "ref": "C29",
+    "value": "22u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 117.2,
+    "y": 135.2,
+    "rotation": 0,
+    "mpn": "GRM21BR61A226ME44L",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "22 uF, 10 V, X5R, 20%, 0805",
+    "uuid": "80241dfd-5113-5814-b533-d749490323c7",
+    "sch_pos": [
+      68.58,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0805_2012Metric"
+  },
+  {
+    "ref": "C30",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "BUCK_VAUX",
+      "2": "GND"
+    },
+    "x": 116.066,
+    "y": 133.434,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "f2bc8623-0eac-5f5d-a3aa-6f6e1f5df5e0",
+    "sch_pos": [
+      104.14,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "R23",
+    "value": "562k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "BUCK_FB"
+    },
+    "x": 118.3,
+    "y": 129.848,
+    "rotation": 0,
+    "mpn": "RC0402FR-07562KL",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "7dea3cad-4c53-5936-9464-fe5df5468257",
+    "sch_pos": [
+      139.7,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R24",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "BUCK_FB",
+      "2": "GND"
+    },
+    "x": 121.8,
+    "y": 132.1,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "c81a4408-b565-5ae5-b3f6-fbea07525c97",
+    "sch_pos": [
+      176.53,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C31",
+    "value": "10p",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "BUCK_FB",
+      "2": "GND"
+    },
+    "x": 118.696,
+    "y": 133.614,
+    "rotation": 0,
+    "mpn": "GRM1555C1H100JA01D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "10 pF, 50 V, C0G, 5%, 0402",
+    "uuid": "c1412c97-d7ce-5587-9964-6ebc9009269d",
+    "sch_pos": [
+      212.09,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "U8",
+    "value": "TLV9001IDCKR",
+    "symbol": "TLV9001IDCK",
+    "footprint": "Package_TO_SOT_SMD:SOT-353_SC-70-5",
+    "pins": {
+      "1": "BAT_DIV",
+      "2": "GND",
+      "3": "BAT_BUFFER",
+      "4": "BAT_BUFFER",
+      "5": "+3V3"
+    },
+    "x": 146,
+    "y": 138,
+    "rotation": 0,
+    "mpn": "TLV9001IDCKR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "power",
+    "description": "RRIO voltage follower prevents RP2350 GPIO leakage loading battery divider",
+    "uuid": "45041ecd-59f2-524b-9b93-69acb10b1657",
+    "sch_pos": [
+      121.92,
+      82.55
+    ],
+    "fp_id": "Aster:Package_TO_SOT_SMD__SOT-353_SC-70-5"
+  },
+  {
+    "ref": "R25",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "BAT",
+      "2": "BAT_DIV"
+    },
+    "x": 143,
+    "y": 136,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "869e2d5a-94e5-5ebd-8319-2e16d6b05a80",
+    "sch_pos": [
+      247.65,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R26",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "BAT_DIV",
+      "2": "GND"
+    },
+    "x": 143,
+    "y": 138,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "93da6532-1562-5fad-8b8c-580c7025c7c0",
+    "sch_pos": [
+      284.48,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C32",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "BAT_DIV",
+      "2": "GND"
+    },
+    "x": 143.2,
+    "y": 140.0,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "b9407ebb-9ca0-5803-8bd7-04dd7aa87f12",
+    "sch_pos": [
+      320.04,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C33",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 148.5,
+    "y": 137.3,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "441cad98-1b80-5c02-b93f-58bd9c2eebab",
+    "sch_pos": [
+      31.75,
+      195.58
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "R27",
+    "value": "1k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "BAT_BUFFER",
+      "2": "BAT_ADC"
+    },
+    "x": 145.507,
+    "y": 140.448,
+    "rotation": 90,
+    "mpn": "RC0402FR-071KL",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "7e9fde63-2c1a-5681-8133-a4b53d279ea7",
+    "sch_pos": [
+      68.58,
+      195.58
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C34",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "BAT_ADC",
+      "2": "GND"
+    },
+    "x": 145.7,
+    "y": 142,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "59756f76-0ca5-5abe-baa8-6546146d4416",
+    "sch_pos": [
+      104.14,
+      195.58
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "R28",
+    "value": "5.1k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "VBUS",
+      "2": "VBUS_DETECT"
+    },
+    "x": 118.227,
+    "y": 150.2,
+    "rotation": 0,
+    "mpn": "RC0402FR-075K1L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "d27e4e41-d225-541b-98ff-cf1b77d7e375",
+    "sch_pos": [
+      139.7,
+      195.58
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R29",
+    "value": "6.8k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "VBUS_DETECT",
+      "2": "GND"
+    },
+    "x": 118.593,
+    "y": 152.052,
+    "rotation": 0,
+    "mpn": "RC0402FR-076K8L",
+    "manufacturer": "Yageo",
+    "sheet": "power",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "303e441b-940a-5b50-8b8f-63e0c7a409f2",
+    "sch_pos": [
+      176.53,
+      195.58
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C35",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "VBUS_DETECT",
+      "2": "GND"
+    },
+    "x": 120.2,
+    "y": 151,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "power",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "1416da3b-0474-54cb-b249-b54f86934beb",
+    "sch_pos": [
+      212.09,
+      195.58
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "U9",
+    "value": "ESP32-C3-WROOM-02-N4",
+    "symbol": "ESP32-C3-WROOM-02",
+    "footprint": "RF_Module:ESP32-C3-WROOM-02",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "ESP_EN",
+      "3": "RADIO_CTS",
+      "4": "RADIO_RTS",
+      "5": null,
+      "6": null,
+      "7": "ESP_STRAP8",
+      "8": "ESP_BOOT",
+      "9": "GND",
+      "10": null,
+      "11": "RADIO_RX",
+      "12": "RADIO_TX",
+      "13": null,
+      "14": null,
+      "15": null,
+      "16": "ESP_STRAP2",
+      "17": null,
+      "18": null,
+      "19": "GND"
+    },
+    "x": 165,
+    "y": 118.1,
+    "rotation": 0,
+    "mpn": "ESP32-C3-WROOM-02-N4",
+    "manufacturer": "Espressif",
+    "sheet": "interfaces",
+    "description": "2.4 GHz Wi-Fi b/g/n + Bluetooth LE 5, 4 MiB flash, PCB antenna; factory firmware must be programmed",
+    "uuid": "1eea18f5-0e3e-5032-82b4-00b08e9ad0f7",
+    "sch_pos": [
+      44.45,
+      39.37
+    ],
+    "fp_id": "Aster:RF_Module__ESP32-C3-WROOM-02"
+  },
+  {
+    "ref": "U10",
+    "value": "TPS22919DCKR",
+    "symbol": "TPS22919DCK",
+    "footprint": "Package_TO_SOT_SMD:SOT-363_SC-70-6",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND",
+      "3": "RADIO_POWER",
+      "4": null,
+      "5": "+3V3_RF",
+      "6": "+3V3_RF"
+    },
+    "x": 149.5,
+    "y": 112.5,
+    "rotation": 0,
+    "mpn": "TPS22919DCKR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "interfaces",
+    "description": "1.5 A load switch, quick-output-discharge tied to switched rail; off by default",
+    "uuid": "78b2aaf4-d5e8-50d6-a332-a06baea8a015",
+    "sch_pos": [
+      121.92,
+      39.37
+    ],
+    "fp_id": "Aster:Package_TO_SOT_SMD__SOT-363_SC-70-6"
+  },
+  {
+    "ref": "R30",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "RADIO_POWER",
+      "2": "GND"
+    },
+    "x": 146.948,
+    "y": 112.693,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "36214486-353a-5882-ae99-13e71fa76063",
+    "sch_pos": [
+      31.75,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R31",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "ESP_EN"
+    },
+    "x": 154,
+    "y": 112,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "e4a85348-b77d-5ccc-a658-e31cc581ad15",
+    "sch_pos": [
+      68.58,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C36",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "ESP_EN",
+      "2": "GND"
+    },
+    "x": 154,
+    "y": 113.8,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "4e2780f4-19a4-5b94-840e-f71295b92b63",
+    "sch_pos": [
+      104.14,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "C37",
+    "value": "1u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 149.783,
+    "y": 115.283,
+    "rotation": 90,
+    "mpn": "GRM188R71C105KA12D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "1 uF, 16 V, X7R, 10%, 0603",
+    "uuid": "67897dde-6be4-5147-934e-4bb67e15adb5",
+    "sch_pos": [
+      139.7,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "C38",
+    "value": "47u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_1206_3216Metric",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "GND"
+    },
+    "x": 152.634,
+    "y": 118.039,
+    "rotation": 0,
+    "mpn": "GRM31CR61A476ME15L",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "47 uF, 10 V, X5R, 20%, 1206",
+    "uuid": "5f64a23c-34f9-5ce1-88eb-047edba920be",
+    "sch_pos": [
+      176.53,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_1206_3216Metric"
+  },
+  {
+    "ref": "C39",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "GND"
+    },
+    "x": 154.2,
+    "y": 115.0,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "3f6974e9-7b68-55e3-a4ff-03ff7839eb5b",
+    "sch_pos": [
+      212.09,
+      153.67
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "R32",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "ESP_STRAP8"
+    },
+    "x": 152.5,
+    "y": 119.9,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "63bcf224-7fda-5bbe-bfd6-fd13c81fa42a",
+    "sch_pos": [
+      247.65,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R33",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "ESP_BOOT"
+    },
+    "x": 152.5,
+    "y": 121.7,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "8bc72810-7fe3-5825-913e-7528af09d494",
+    "sch_pos": [
+      284.48,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R34",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3_RF",
+      "2": "ESP_STRAP2"
+    },
+    "x": 176,
+    "y": 114.8,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "10cd6a12-febd-57cb-b7ca-2ddc4f04a67a",
+    "sch_pos": [
+      320.04,
+      153.67
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "SW3",
+    "value": "ESP BOOT",
+    "symbol": "SW_Push",
+    "footprint": "Button_Switch_SMD:SW_SPST_TL3342",
+    "pins": {
+      "1": "ESP_BOOT",
+      "2": "GND"
+    },
+    "x": 151.655,
+    "y": 128.38,
+    "rotation": 0,
+    "mpn": "TL3342F160QG",
+    "manufacturer": "E-Switch",
+    "sheet": "interfaces",
+    "description": "Hold low through radio power-on to flash the ESP32-C3 ROM UART bootloader",
+    "uuid": "6d45fd0c-27b6-5500-a196-45ddc44487eb",
+    "sch_pos": [
+      31.75,
+      167.64
+    ],
+    "fp_id": "Aster:Button_Switch_SMD__SW_SPST_TL3342"
+  },
+  {
+    "ref": "J3",
+    "value": "microSD",
+    "symbol": "Micro_SD_Card_Det2",
+    "footprint": "Connector_Card:microSD_HC_Molex_104031-0811",
+    "pins": {
+      "1": "SD_DAT2",
+      "2": "SD_CS",
+      "3": "SD_MOSI",
+      "4": "+3V3",
+      "5": "SD_SCK",
+      "6": "GND",
+      "7": "SD_MISO",
+      "8": "SD_DAT1",
+      "9": "SD_DETECT",
+      "10": "GND",
+      "SH": "GND"
+    },
+    "x": 173,
+    "y": 140,
+    "rotation": 90,
+    "mpn": "104031-0811",
+    "manufacturer": "Molex",
+    "sheet": "interfaces",
+    "description": "Push-pull microSD socket with card detect; SPI mode, 3.3 V only",
+    "uuid": "6092e2ea-a9bc-5d04-a863-1f2ce9deae97",
+    "sch_pos": [
+      199.39,
+      39.37
+    ],
+    "fp_id": "Aster:Connector_Card__microSD_HC_Molex_104031-0811"
+  },
+  {
+    "ref": "R35",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "SD_CS"
+    },
+    "x": 163.6,
+    "y": 142,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "56ed40c6-b622-5bfa-b1d4-a719627b93ab",
+    "sch_pos": [
+      68.58,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R36",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "SD_MISO"
+    },
+    "x": 163.6,
+    "y": 136,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "217aa3d4-5125-5fed-a144-13b49e6dbf75",
+    "sch_pos": [
+      104.14,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R37",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "SD_MOSI"
+    },
+    "x": 163.459,
+    "y": 140.141,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "996d51ae-08a2-5789-8465-76f45b844c30",
+    "sch_pos": [
+      139.7,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R38",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "SD_DAT1"
+    },
+    "x": 163.6,
+    "y": 134,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "8bf39c8d-5a04-5720-8469-1b5f520c2e7e",
+    "sch_pos": [
+      176.53,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R39",
+    "value": "10k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "SD_DAT2"
+    },
+    "x": 163.6,
+    "y": 144,
+    "rotation": 0,
+    "mpn": "RC0402FR-0710KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "62f5341f-cc63-5e9b-91e8-b538cd7c4aa8",
+    "sch_pos": [
+      212.09,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R40",
+    "value": "3.3k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "SD_DETECT"
+    },
+    "x": 173,
+    "y": 148,
+    "rotation": 90,
+    "mpn": "RC0402FR-073K3L",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "4f768d15-4532-5343-a055-bf14ee40d8b7",
+    "sch_pos": [
+      247.65,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R41",
+    "value": "33",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "SD_SCK_SRC",
+      "2": "SD_SCK"
+    },
+    "x": 140,
+    "y": 135,
+    "rotation": 90,
+    "mpn": "RC0402FR-0733RL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "79148430-71cb-5258-939f-ae996e4a0069",
+    "sch_pos": [
+      284.48,
+      167.64
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C40",
+    "value": "10u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0805_2012Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 163.5,
+    "y": 138,
+    "rotation": 0,
+    "mpn": "GRM21BR61C106KE15L",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "10 uF, 16 V, X5R, 10%, 0805",
+    "uuid": "1bbb4154-0cbd-51c6-878c-b9d2ebf1fc9c",
+    "sch_pos": [
+      320.04,
+      167.64
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0805_2012Metric"
+  },
+  {
+    "ref": "C41",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 165.42,
+    "y": 139.955,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "6bebeb18-ba7e-5e68-90ae-f84bd877fa79",
+    "sch_pos": [
+      31.75,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "J4",
+    "value": "Qwiic / STEMMA QT",
+    "symbol": "Conn_01x04_QT",
+    "footprint": "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical",
+    "pins": {
+      "1": "GND",
+      "2": "+3V3",
+      "3": "I2C_SDA",
+      "4": "I2C_SCL",
+      "MP": "GND"
+    },
+    "x": 169.6,
+    "y": 158.0,
+    "rotation": 0,
+    "mpn": "BM04B-SRSS-TB(LF)(SN)",
+    "manufacturer": "JST",
+    "sheet": "interfaces",
+    "description": "1.0 mm JST SH; GND,3V3,SDA,SCL; 3.3 V peripherals, 100 mA total external budget",
+    "uuid": "8edb6515-2c6b-5816-bb17-00563601be13",
+    "sch_pos": [
+      278.13,
+      39.37
+    ],
+    "fp_id": "Aster:Connector_JST__JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical"
+  },
+  {
+    "ref": "R42",
+    "value": "2.2k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "I2C_SDA"
+    },
+    "x": 164.634,
+    "y": 157.5,
+    "rotation": 0,
+    "mpn": "RC0402FR-072K2L",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "564d8b58-0cf8-55a4-a228-a137a8430d68",
+    "sch_pos": [
+      68.58,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R43",
+    "value": "2.2k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "I2C_SCL"
+    },
+    "x": 164.98,
+    "y": 159.3,
+    "rotation": 0,
+    "mpn": "RC0402FR-072K2L",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "dd4de0a4-a43b-5609-b830-2c7d2bce0c07",
+    "sch_pos": [
+      104.14,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C42",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 166.352,
+    "y": 161.193,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "c004ef21-3899-5513-9336-ab1fd182d696",
+    "sch_pos": [
+      139.7,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "U11",
+    "value": "TLV61046ADBVR",
+    "symbol": "TLV61046A",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-6",
+    "pins": {
+      "1": "RGB_SW",
+      "2": "GND",
+      "3": "RGB_FB",
+      "4": "RGB_ENABLE",
+      "5": "+5V_RGB",
+      "6": "+3V3"
+    },
+    "x": 148.3,
+    "y": 153,
+    "rotation": 0,
+    "mpn": "TLV61046ADBVR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "interfaces",
+    "description": "Dedicated switched 5.06 V RGB boost rail; off by default",
+    "uuid": "8eca8785-5efc-5ec8-84a3-1aaca2f547c8",
+    "sch_pos": [
+      44.45,
+      82.55
+    ],
+    "fp_id": "Aster:Package_TO_SOT_SMD__SOT-23-6"
+  },
+  {
+    "ref": "L2",
+    "value": "10uH",
+    "symbol": "L_Small",
+    "footprint": "Inductor_SMD:L_Coilcraft_LPS3010",
+    "pins": {
+      "1": "+3V3",
+      "2": "RGB_SW"
+    },
+    "x": 144,
+    "y": 153,
+    "rotation": 90,
+    "mpn": "LPS3010-103MLC",
+    "manufacturer": "Coilcraft",
+    "sheet": "interfaces",
+    "description": "10 uH, 20%, shielded, >1 A saturation current",
+    "uuid": "30c936cb-d6e2-5b9a-9506-26243f3c55f1",
+    "sch_pos": [
+      176.53,
+      181.61
+    ],
+    "fp_id": "Aster:Inductor_SMD__L_Coilcraft_LPS3010"
+  },
+  {
+    "ref": "R44",
+    "value": "536k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "+5V_RGB",
+      "2": "RGB_FB"
+    },
+    "x": 148.4,
+    "y": 150.18,
+    "rotation": 90,
+    "mpn": "RC0402FR-07536KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "cdd324ef-41f4-5c00-8642-5acdb2cb4dac",
+    "sch_pos": [
+      212.09,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R45",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "RGB_FB",
+      "2": "GND"
+    },
+    "x": 150.5,
+    "y": 150.7,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "a0acc423-b0d8-5357-bae6-6ee5b6c1a229",
+    "sch_pos": [
+      247.65,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R46",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "RGB_ENABLE",
+      "2": "GND"
+    },
+    "x": 151.569,
+    "y": 151.975,
+    "rotation": 0,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "d4848176-51a0-5324-b2fe-60aba197a972",
+    "sch_pos": [
+      284.48,
+      181.61
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C43",
+    "value": "4.7u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND"
+    },
+    "x": 144.6,
+    "y": 149.261,
+    "rotation": 90,
+    "mpn": "GRM188R61A475KE15D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "4.7 uF, 10 V, X5R, 10%, 0603",
+    "uuid": "542ede88-eadd-56c1-87b6-e52aa9430bd0",
+    "sch_pos": [
+      320.04,
+      181.61
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "C44",
+    "value": "4.7u",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0603_1608Metric",
+    "pins": {
+      "1": "+5V_RGB",
+      "2": "GND"
+    },
+    "x": 151.205,
+    "y": 155.275,
+    "rotation": 90,
+    "mpn": "GRM188R61A475KE15D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "4.7 uF, 10 V, X5R, 10%, 0603",
+    "uuid": "2d50f636-1aff-51f8-97f5-524457432dbc",
+    "sch_pos": [
+      31.75,
+      195.58
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0603_1608Metric"
+  },
+  {
+    "ref": "U12",
+    "value": "SN74AHCT1G125DBVR",
+    "symbol": "74AHCT1G125",
+    "footprint": "Package_TO_SOT_SMD:SOT-23-5",
+    "pins": {
+      "1": "GND",
+      "2": "RGB_DATA",
+      "3": "GND",
+      "4": "RGB_DOUT_BUF",
+      "5": "+5V_RGB"
+    },
+    "x": 155,
+    "y": 153,
+    "rotation": 0,
+    "mpn": "SN74AHCT1G125DBVR",
+    "manufacturer": "Texas Instruments",
+    "sheet": "interfaces",
+    "description": "5 V buffer, TTL input accepts RP2350 3.3 V; active-low output enable grounded",
+    "uuid": "02a0ff19-e3ef-5323-8fb8-5cd33743a750",
+    "sch_pos": [
+      121.92,
+      82.55
+    ],
+    "fp_id": "Aster:Package_TO_SOT_SMD__SOT-23-5"
+  },
+  {
+    "ref": "R47",
+    "value": "100k",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "RGB_DATA",
+      "2": "GND"
+    },
+    "x": 154.717,
+    "y": 150.217,
+    "rotation": 90,
+    "mpn": "RC0402FR-07100KL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "26eb7116-6865-56d7-a3d4-56f3932e8a11",
+    "sch_pos": [
+      68.58,
+      195.58
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "R48",
+    "value": "330",
+    "symbol": "R_Small",
+    "footprint": "Resistor_SMD:R_0402_1005Metric",
+    "pins": {
+      "1": "RGB_DOUT_BUF",
+      "2": "RGB_DIN"
+    },
+    "x": 157.8,
+    "y": 154.4,
+    "rotation": 90,
+    "mpn": "RC0402FR-07330RL",
+    "manufacturer": "Yageo",
+    "sheet": "interfaces",
+    "description": "1%, 0402, 62.5 mW; zero-ohm link only where specified",
+    "uuid": "7418fdef-af8f-578c-87cd-5e0ed2a0e1f9",
+    "sch_pos": [
+      104.14,
+      195.58
+    ],
+    "fp_id": "Aster:Resistor_SMD__R_0402_1005Metric"
+  },
+  {
+    "ref": "C45",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+5V_RGB",
+      "2": "GND"
+    },
+    "x": 151.8,
+    "y": 153.2,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "b5eeda04-23f5-5ecc-87fb-b351af51a8a7",
+    "sch_pos": [
+      139.7,
+      195.58
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "D1",
+    "value": "WS2812B-2020",
+    "symbol": "WS2812B-2020",
+    "footprint": "LED_SMD:LED_WS2812B-2020_PLCC4_2.0x2.0mm",
+    "pins": {
+      "1": null,
+      "2": "GND",
+      "3": "RGB_DIN",
+      "4": "+5V_RGB"
+    },
+    "x": 160,
+    "y": 153,
+    "rotation": 0,
+    "mpn": "WS2812B-2020",
+    "manufacturer": "Worldsemi",
+    "sheet": "interfaces",
+    "description": "Addressable RGB LED, 800 kbit/s, 5 V supply, GRB; observe pin-1 orientation",
+    "uuid": "c841b300-7e7a-51ce-8be3-60e4b1ee244c",
+    "sch_pos": [
+      355.6,
+      110.49
+    ],
+    "fp_id": "Aster:LED_SMD__LED_WS2812B-2020_PLCC4_2.0x2.0mm"
+  },
+  {
+    "ref": "C46",
+    "value": "100n",
+    "symbol": "C_Small",
+    "footprint": "Capacitor_SMD:C_0402_1005Metric",
+    "pins": {
+      "1": "+5V_RGB",
+      "2": "GND"
+    },
+    "x": 162.6,
+    "y": 153.0,
+    "rotation": 0,
+    "mpn": "GRM155R71C104KA88D",
+    "manufacturer": "Murata",
+    "sheet": "interfaces",
+    "description": "100 nF, 16 V, X7R, 10%, 0402",
+    "uuid": "8624d0c1-cb46-539f-9774-b5301aeb9a16",
+    "sch_pos": [
+      212.09,
+      195.58
+    ],
+    "fp_id": "Aster:Capacitor_SMD__C_0402_1005Metric"
+  },
+  {
+    "ref": "J5",
+    "value": "SWD",
+    "symbol": "Conn_01x03_SWD",
+    "footprint": "Connector_JST:JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical",
+    "pins": {
+      "1": "SWCLK",
+      "2": "GND",
+      "3": "SWDIO",
+      "MP": "GND"
+    },
+    "x": 152,
+    "y": 144,
+    "rotation": 0,
+    "mpn": "BM03B-SRSS-TB(LF)(SN)",
+    "manufacturer": "JST",
+    "sheet": "interfaces",
+    "description": "Raspberry Pi Debug Probe pinout: SWCLK,GND,SWDIO; target is self-powered",
+    "uuid": "8026686e-e805-5b54-a2a9-9441611ecb0f",
+    "sch_pos": [
+      199.39,
+      82.55
+    ],
+    "fp_id": "Aster:Connector_JST__JST_SH_BM03B-SRSS-TB_1x03-1MP_P1.00mm_Vertical"
+  },
+  {
+    "ref": "J6",
+    "value": "GPIO A",
+    "symbol": "Conn_01x08",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
+    "pins": {
+      "1": "+3V3",
+      "2": "GND",
+      "3": "GPIO1",
+      "4": "GPIO2",
+      "5": "GPIO3",
+      "6": "GPIO8",
+      "7": "GPIO9",
+      "8": "GPIO15"
+    },
+    "x": 102.8,
+    "y": 117,
+    "rotation": 0,
+    "mpn": "61300811121",
+    "manufacturer": "Wurth Elektronik",
+    "sheet": "interfaces",
+    "description": "Factory installed 1x8 2.54 mm male header; 3.3 V logic only",
+    "uuid": "3c85b65b-d48d-519a-9517-0212cf60f53c",
+    "sch_pos": [
+      278.13,
+      82.55
+    ],
+    "fp_id": "Aster:Connector_PinHeader_2.54mm__PinHeader_1x08_P2.54mm_Vertical"
+  },
+  {
+    "ref": "J7",
+    "value": "GPIO B",
+    "symbol": "Conn_01x08",
+    "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
+    "pins": {
+      "1": "GND",
+      "2": "GPIO18",
+      "3": "GPIO19",
+      "4": "GPIO26_ADC0",
+      "5": "GPIO27_ADC1",
+      "6": "GPIO28_ADC2",
+      "7": "RUN",
+      "8": "+3V3"
+    },
+    "x": 133,
+    "y": 159,
+    "rotation": 90,
+    "mpn": "61300811121",
+    "manufacturer": "Wurth Elektronik",
+    "sheet": "interfaces",
+    "description": "Factory installed 1x8 2.54 mm male header; ADC0/1/2 available",
+    "uuid": "71604baf-c158-5c35-ba77-23b9dec6cb4c",
+    "sch_pos": [
+      44.45,
+      125.73
+    ],
+    "fp_id": "Aster:Connector_PinHeader_2.54mm__PinHeader_1x08_P2.54mm_Vertical"
+  },
+  {
+    "ref": "TP1",
+    "value": "GND",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "GND"
+    },
+    "x": 120,
+    "y": 156,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "93a16f20-af2c-5d60-8628-a8741181fc76",
+    "sch_pos": [
+      247.65,
+      195.58
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP2",
+    "value": "VSYS",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "VSYS"
+    },
+    "x": 116.6,
+    "y": 141.0,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "4ed57705-3f59-509d-8b72-f7b4dceab40d",
+    "sch_pos": [
+      284.48,
+      195.58
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP3",
+    "value": "+3V3",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "+3V3"
+    },
+    "x": 122,
+    "y": 148,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "4cc76f4d-19a3-53cd-b296-159fe3e766dd",
+    "sch_pos": [
+      320.04,
+      195.58
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP4",
+    "value": "+1V1",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "+1V1"
+    },
+    "x": 141.503,
+    "y": 143.4,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "fc18cb58-e034-5da0-af6b-d063633584b9",
+    "sch_pos": [
+      31.75,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP5",
+    "value": "BAT",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "BAT"
+    },
+    "x": 105,
+    "y": 142,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "5590db1e-af16-539a-8d9f-f77b27e291be",
+    "sch_pos": [
+      68.58,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP6",
+    "value": "BAT_ADC",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "BAT_ADC"
+    },
+    "x": 147.654,
+    "y": 140.8,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "d1c0cafd-8046-5ed4-b17e-ef9527531686",
+    "sch_pos": [
+      104.14,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP7",
+    "value": "RADIO_RX",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "RADIO_RX"
+    },
+    "x": 176,
+    "y": 126,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "5fff5481-e78d-51d8-b71c-29c42558de5d",
+    "sch_pos": [
+      139.7,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP8",
+    "value": "RADIO_TX",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "RADIO_TX"
+    },
+    "x": 176.141,
+    "y": 128.141,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "7f2cf98f-3d45-5034-908d-af7f91b4a0ef",
+    "sch_pos": [
+      176.53,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP9",
+    "value": "ESP_EN",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "ESP_EN"
+    },
+    "x": 149,
+    "y": 119,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "7638df79-876f-584f-8759-d9e6a27c0f16",
+    "sch_pos": [
+      212.09,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP10",
+    "value": "POWER_GOOD_N",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "POWER_GOOD_N"
+    },
+    "x": 118.614,
+    "y": 146.104,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "3ede6606-fc1a-5400-aafe-b939e365431a",
+    "sch_pos": [
+      247.65,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP11",
+    "value": "USB_500MA",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "USB_500MA"
+    },
+    "x": 121.155,
+    "y": 152.58,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "da3fd835-906b-591d-ae05-41f4788992f9",
+    "sch_pos": [
+      284.48,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP12",
+    "value": "RUN",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "RUN"
+    },
+    "x": 144.932,
+    "y": 146.482,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "ff994d68-7e77-5a59-9b14-dc2d455fd314",
+    "sch_pos": [
+      320.04,
+      209.55
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "TP13",
+    "value": "RGB_ENABLE",
+    "symbol": "TestPoint",
+    "footprint": "TestPoint:TestPoint_Pad_D1.0mm",
+    "pins": {
+      "1": "RGB_ENABLE"
+    },
+    "x": 153.8,
+    "y": 157.0,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "interfaces",
+    "description": "Bare test pad; not a purchased or assembled component",
+    "uuid": "ecd842d6-3101-550e-8857-7ea79d8d25c1",
+    "sch_pos": [
+      31.75,
+      223.52
+    ],
+    "fp_id": "Aster:TestPoint__TestPoint_Pad_D1.0mm"
+  },
+  {
+    "ref": "#FLG1",
+    "value": "PWR_FLAG",
+    "symbol": "PWR_FLAG",
+    "footprint": "",
+    "pins": {
+      "1": "USB_VBUS"
+    },
+    "x": 104.8,
+    "y": 152,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "power",
+    "description": "ERC supply declaration",
+    "uuid": "0440fd9c-a385-5bed-a7f4-9d35642fe2db",
+    "sch_pos": [
+      247.65,
+      195.58
+    ],
+    "virtual": true
+  },
+  {
+    "ref": "#FLG2",
+    "value": "PWR_FLAG",
+    "symbol": "PWR_FLAG",
+    "footprint": "",
+    "pins": {
+      "1": "VBUS"
+    },
+    "x": 104,
+    "y": 148,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "power",
+    "description": "ERC supply declaration",
+    "uuid": "d4394fe2-d436-5f2c-b868-6b672ad59e74",
+    "sch_pos": [
+      284.48,
+      195.58
+    ],
+    "virtual": true
+  },
+  {
+    "ref": "#FLG3",
+    "value": "PWR_FLAG",
+    "symbol": "PWR_FLAG",
+    "footprint": "",
+    "pins": {
+      "1": "+3V3_ADC"
+    },
+    "x": 141,
+    "y": 132,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "power",
+    "description": "ERC supply declaration",
+    "uuid": "b85317fb-a2a8-5a02-b7c9-4148913be280",
+    "sch_pos": [
+      320.04,
+      195.58
+    ],
+    "virtual": true
+  },
+  {
+    "ref": "#FLG4",
+    "value": "PWR_FLAG",
+    "symbol": "PWR_FLAG",
+    "footprint": "",
+    "pins": {
+      "1": "GND"
+    },
+    "x": 120,
+    "y": 159,
+    "rotation": 0,
+    "mpn": "",
+    "manufacturer": "",
+    "sheet": "power",
+    "description": "ERC supply declaration",
+    "uuid": "cc94a176-9003-5cff-a96d-8c516e7ea5dd",
+    "sch_pos": [
+      31.75,
+      209.55
+    ],
+    "virtual": true
+  }
+]

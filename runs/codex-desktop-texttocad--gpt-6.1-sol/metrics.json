@@ -1,0 +1,491 @@
+{
+	"startedAt": "2026-11-10T00:39:26.528Z",
+	"finishedAt": "2026-11-10T02:15:25.867Z",
+	"minutes": 95.99,
+	"endedBy": "done",
+	"tokens": {
+		"input": 135756,
+		"cacheRead": 49739991,
+		"cacheWrite": 2169008,
+		"output": 343616,
+		"reasoning": 124706
+	},
+	"costUsd": 14.360570615,
+	"costSource": "API cost at market prices",
+	"boardCost": {
+		"afterFixes": true,
+		"oneBoard": {
+			"pcbQty": 5,
+			"pcbUsd": 156.77,
+			"assemblyUsd": 88,
+			"componentsUsd": 52.55,
+			"totalUsd": 297.32
+		},
+		"fiveBoards": {
+			"pcbUsd": 156.77,
+			"assemblyUsd": 112.84,
+			"componentsUsd": 168.02,
+			"totalUsd": 437.63,
+			"perBoardUsd": 87.53
+		},
+		"pricedAt": "2026-11-10T08:48:36.406Z",
+		"source": "PCB and assembly from PCBWay's instant quote (pcbway-quote.json) with the options in the run's fab notes, standard build, shipping excluded, no new-customer promo. PCBWay makes at least 5 bare PCBs, so one board means 5 PCBs with 1 assembled. Components at distributor list prices (components-pricing.json) for max(needed, minimum order): bench/part-prices.json where listed, else LCSC. When afterFixes is true, the design couldn't be ordered as delivered, and these are the prices after the changes listed in fixes."
+	},
+	"fixes": [
+		{
+			"area": "fabSpec",
+			"problem": "The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+			"fix": "Quoted 1 oz inner copper"
+		},
+		{
+			"area": "bom",
+			"problem": "Invalid MPN: Murata makes no GRM188R61A225KE15D",
+			"fix": "Priced GRM188R61A225KE34D, the 2.2uF 10V X5R 0603",
+			"refs": "C26, C27",
+			"mpn": "GRM188R61A225KE15D"
+		},
+		{
+			"area": "bom",
+			"problem": "Unavailable part: no 312k 0.1% 0402 is sold by LCSC, DigiKey or Mouser",
+			"fix": "Priced RT0603BRD07312KL, the same series in 0603",
+			"refs": "R42",
+			"mpn": "RT0402BRD07312KL"
+		},
+		{
+			"area": "pcb",
+			"problem": "The 0402 footprint doesn't fit the 0603 substitute",
+			"fix": "Assumed a 0603 footprint; not re-quoted, since the PCB is at PCBWay's minimum price and the part count is unchanged",
+			"refs": "R42",
+			"mpn": "RT0402BRD07312KL"
+		}
+	],
+	"boardSizeMm": {
+		"width": 80,
+		"height": 75
+	},
+	"missing3dModels": {
+		"count": 7,
+		"refs": [
+			"D1",
+			"F1",
+			"J2",
+			"SW5",
+			"U1",
+			"U4",
+			"U5"
+		]
+	},
+	"bom": {
+		"lines": 53,
+		"partsNotInBom": [],
+		"refsNotOnBoard": [],
+		"qtyMismatchLines": [],
+		"linesWithoutMpn": 0,
+		"linesFixed": 2
+	},
+	"placement": {
+		"smdPartsMissing": [],
+		"refsNotOnBoard": [],
+		"duplicateRefs": [],
+		"wrongSide": [],
+		"positionOffByMoreThanHalfMm": [],
+		"rotationDiffersFromBoard": []
+	},
+	"parts": {
+		"lines": 53,
+		"inStockPercent": 98.1,
+		"notStocked": [
+			{
+				"refs": "C29",
+				"mpn": "GRM21BR61A475KA73L",
+				"lcsc": "C97913",
+				"lcscStock": 0,
+				"digikeyStock": 0,
+				"needed": 5
+			}
+		],
+		"discontinued": [
+			{
+				"refs": "C25",
+				"mpn": "GRM188R60J475KE19D",
+				"lcsc": "C71631",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C28, C30, C31, C35, C44",
+				"mpn": "GRM21BR61A106KE19L",
+				"lcsc": "C77073",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C29",
+				"mpn": "GRM21BR61A475KA73L",
+				"lcsc": "C97913",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C32, C33",
+				"mpn": "GRM31CR61C226KE15L",
+				"lcsc": "C77088",
+				"discontinuedAt": [
+					"LCSC",
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C36, C37, C43, C45",
+				"mpn": "GRM155R61A105KE15D",
+				"lcsc": "C76999",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "U2",
+				"mpn": "W25Q32JVSSIQ",
+				"lcsc": "C179173",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			}
+		],
+		"padCountMismatches": []
+	},
+	"features": {
+		"rp2350": {
+			"status": "found",
+			"refs": [
+				"U1"
+			]
+		},
+		"qspiFlash": {
+			"status": "found",
+			"refs": [
+				"U2"
+			]
+		},
+		"psram": {
+			"status": "found",
+			"refs": [
+				"U3"
+			]
+		},
+		"usbC": {
+			"status": "found",
+			"refs": [
+				"J1"
+			]
+		},
+		"wifiBle": {
+			"status": "found",
+			"refs": [
+				"U6"
+			]
+		},
+		"microSd": {
+			"status": "found",
+			"refs": [
+				"J3"
+			]
+		},
+		"qwiic": {
+			"status": "found",
+			"refs": [
+				"J4"
+			]
+		},
+		"rgbLed": {
+			"status": "found",
+			"refs": [
+				"D1"
+			]
+		},
+		"chargerWithPowerPath": {
+			"status": "found",
+			"refs": [
+				"U4"
+			]
+		},
+		"batteryMonitoring": {
+			"status": "found",
+			"refs": [
+				"R38"
+			]
+		}
+	},
+	"deliverables": {
+		"readme": true,
+		"schematic": true,
+		"projectFile": true,
+		"fabFolder": true
+	},
+	"drc": {
+		"errors": 0,
+		"warnings": 0,
+		"unconnectedItems": 0,
+		"schematicParityIssues": 0,
+		"byType": {}
+	},
+	"erc": {
+		"errors": 0,
+		"warnings": 0
+	},
+	"fab": {
+		"diffPercentByLayer": {
+			"NPTH": 0,
+			"PTH": 0,
+			"F.Mask": 0,
+			"In1.Cu": 0,
+			"B.Silkscreen": 0,
+			"F.Silkscreen": 0,
+			"F.Paste": 0,
+			"In2.Cu": 0,
+			"B.Cu": 0,
+			"B.Mask": 0,
+			"F.Cu": 0,
+			"Edge.Cuts": 0
+		},
+		"layersDiffering": [],
+		"layersMissing": []
+	},
+	"needsFixes": {
+		"pcbManufacturing": [
+			"The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+			"R42: The 0402 footprint doesn't fit the 0603 substitute"
+		],
+		"assembly": [
+			"C26, C27: Invalid MPN: Murata makes no GRM188R61A225KE15D",
+			"R42: Unavailable part: no 312k 0.1% 0402 is sold by LCSC, DigiKey or Mouser",
+			"not stocked for 5 boards: C29"
+		],
+		"bomLines": {
+			"total": 53,
+			"needingFixes": [
+				"C26, C27",
+				"C29",
+				"R42"
+			]
+		}
+	},
+	"design": {
+		"decoupling": {
+			"maxMm": 3.2,
+			"pinsWithin": 14,
+			"powerPins": 14,
+			"pins": [
+				{
+					"pin": "IOVDD",
+					"pad": "1",
+					"net": "+3V3",
+					"capacitor": "C9",
+					"mm": 2.91
+				},
+				{
+					"pin": "DVDD",
+					"pad": "6",
+					"net": "+1V1",
+					"capacitor": "C11",
+					"mm": 3.14
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "11",
+					"net": "+3V3",
+					"capacitor": "C2",
+					"mm": 3.14
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "20",
+					"net": "+3V3",
+					"capacitor": "C3",
+					"mm": 2.79
+				},
+				{
+					"pin": "DVDD",
+					"pad": "23",
+					"net": "+1V1",
+					"capacitor": "C13",
+					"mm": 1.47
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "30",
+					"net": "+3V3",
+					"capacitor": "C4",
+					"mm": 1.18
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "38",
+					"net": "+3V3",
+					"capacitor": "C5",
+					"mm": 2.93
+				},
+				{
+					"pin": "DVDD",
+					"pad": "39",
+					"net": "+1V1",
+					"capacitor": "C12",
+					"mm": 2.57
+				},
+				{
+					"pin": "ADC_AVDD",
+					"pad": "44",
+					"net": "ADC_AVDD",
+					"capacitor": "C10",
+					"mm": 2.45
+				},
+				{
+					"pin": "IOVDD",
+					"pad": "45",
+					"net": "+3V3",
+					"capacitor": "C6",
+					"mm": 2.07
+				},
+				{
+					"pin": "VREG_AVDD",
+					"pad": "46",
+					"net": "+3V3",
+					"capacitor": "C7",
+					"mm": 1.89
+				},
+				{
+					"pin": "VREG_VIN",
+					"pad": "49",
+					"net": "+3V3",
+					"capacitor": "C7",
+					"mm": 2.4
+				},
+				{
+					"pin": "USB_OTP_VDD",
+					"pad": "53",
+					"net": "+3V3",
+					"capacitor": "C8",
+					"mm": 2.03
+				},
+				{
+					"pin": "QSPI_IOVDD",
+					"pad": "54",
+					"net": "+3V3",
+					"capacitor": "C8",
+					"mm": 1.91
+				}
+			]
+		},
+		"battery": {
+			"fuelGauges": [],
+			"dividers": [
+				{
+					"top": "R10",
+					"bottom": "R11",
+					"topOhms": 470000,
+					"bottomOhms": 470000,
+					"bufferedBy": "U9",
+					"microampsAtFullCharge": 4.47,
+					"switchedBy": null
+				}
+			]
+		},
+		"usb": {
+			"dPlusNets": [
+				"USB_D+",
+				"USB_PHY_D+"
+			],
+			"dMinusNets": [
+				"USB_D-",
+				"USB_PHY_D-"
+			],
+			"dPlusMm": 28.51,
+			"dMinusMm": 24.53,
+			"mismatchMm": 3.98,
+			"vias": 4,
+			"pair": {
+				"layer": "F.Cu",
+				"widthMm": 0.15,
+				"gapMm": 0.15,
+				"lengthMm": 8.29
+			},
+			"differentialOhms": 95.5,
+			"esd": [
+				"U8"
+			]
+		},
+		"antennaKeepout": {
+			"module": "U6",
+			"keepouts": [
+				{
+					"owner": "U6",
+					"name": "",
+					"layers": [
+						"F.Cu",
+						"B.Cu",
+						"In1.Cu",
+						"In2.Cu"
+					],
+					"notAllowed": [
+						"tracks",
+						"vias",
+						"pads",
+						"copperpour",
+						"footprints"
+					],
+					"copperInside": {
+						"tracks": 0,
+						"vias": 0,
+						"zoneFills": [],
+						"pads": []
+					}
+				}
+			]
+		}
+	},
+	"review": {
+		"judges": [
+			"opus-5.5",
+			"gpt-6.1-sol"
+		],
+		"yesVotes": {
+			"crystal": 2,
+			"buttons": 2,
+			"powerPath": 2
+		},
+		"meanScores": {
+			"thermal": 5,
+			"grounding": 4.5,
+			"layout": 6.5,
+			"routing": 4,
+			"silkscreen": 6
+		}
+	},
+	"suppliers": {
+		"lines": 53,
+		"validPercent": {
+			"LCSC": 0,
+			"Digi-Key": 0,
+			"Mouser": 0
+		},
+		"linesWithValidNumbers": {
+			"fromOne": 0,
+			"fromTwo": 0,
+			"fromAllThree": 0
+		},
+		"invalid": []
+	},
+	"score": {
+		"total": 67.3,
+		"groups": {
+			"designReview": 33.2,
+			"circuitChecks": 20,
+			"orderable": 9.4,
+			"partsData": 4.7
+		},
+		"missingFeatures": []
+	}
+}

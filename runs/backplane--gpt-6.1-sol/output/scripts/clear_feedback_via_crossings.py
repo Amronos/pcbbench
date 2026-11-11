@@ -1,0 +1,2 @@
+from ipc_client import *
+c=Client();d=c.open(base.DOCTYPE_PCB);objs=c.get(d);ids=[o.id for o in objs if hasattr(o,'id') and o.id.value in ['0b8ca15d-cefe-4e12-81fd-43f53f19778e','2285c559-e48b-4af7-9584-ce080c14fc94']];cid=c.begin(d);c.call(editor.DeleteItems(header=base.ItemHeader(document=d),item_ids=ids));c.end(d,cid,'Route status and SD select clear of capped feedback vias');c.save(d);c.call(pcbcmd.RefillZones(board=d));c.save(d)

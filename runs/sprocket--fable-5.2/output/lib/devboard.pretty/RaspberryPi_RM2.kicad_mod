@@ -1,0 +1,374 @@
+(footprint "RaspberryPi_RM2"
+	(version 20260206)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Raspberry Pi Radio Module 2 (RM2, RMC20452T), CYW43439 2.4 GHz Wi-Fi 4 + Bluetooth 5.2, 21 castellated pads, 1.5 mm pitch, 14.5x16.5x2.55mm, antenna at the top edge (pins 1/21 side) with 35.5x18.5mm RF keep-out, land pattern from datasheet release 7 figure 6, https://datasheets.raspberrypi.com/rm2/rm2-datasheet.pdf")
+	(tags "WiFi Bluetooth BLE RM2 RMC20452T CYW43439 castellated")
+	(property "Reference" "REF**"
+		(at 0 10.2 0)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000001")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "RaspberryPi_RM2"
+		(at 0 11.7 0)
+		(layer "F.Fab")
+		(uuid "5d2a0000-0000-4000-8000-000000000002")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" "https://datasheets.raspberrypi.com/rm2/rm2-datasheet.pdf"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5d2a0000-0000-4000-8000-000000000003")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" "Raspberry Pi Radio Module 2, CYW43439 Wi-Fi 4 + Bluetooth 5.2, gSPI host interface"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "5d2a0000-0000-4000-8000-000000000004")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(duplicate_pad_numbers_are_jumpers no)
+	(fp_line
+		(start -7.36 -8.36)
+		(end 7.36 -8.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000010")
+	)
+	(fp_line
+		(start -7.36 -8.36)
+		(end -7.36 -3.6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000011")
+	)
+	(fp_line
+		(start 7.36 -8.36)
+		(end 7.36 -3.6)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000012")
+	)
+	(fp_line
+		(start -7.36 7.5)
+		(end -7.36 8.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000013")
+	)
+	(fp_line
+		(start -7.36 8.36)
+		(end -5.55 8.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000014")
+	)
+	(fp_line
+		(start 7.36 7.5)
+		(end 7.36 8.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000015")
+	)
+	(fp_line
+		(start 7.36 8.36)
+		(end 5.55 8.36)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000016")
+	)
+	(fp_poly
+		(pts
+			(xy -8.2 -2.55) (xy -8.8 -2.95) (xy -8.8 -2.15)
+		)
+		(stroke
+			(width 0.12)
+			(type solid)
+		)
+		(fill yes)
+		(layer "F.SilkS")
+		(uuid "5d2a0000-0000-4000-8000-000000000017")
+	)
+	(fp_rect
+		(start -8 -8.5)
+		(end 8 9)
+		(stroke
+			(width 0.05)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "5d2a0000-0000-4000-8000-000000000020")
+	)
+	(fp_poly
+		(pts
+			(xy -6.25 -8.25) (xy 7.25 -8.25) (xy 7.25 8.25) (xy -7.25 8.25) (xy -7.25 -7.25)
+		)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "5d2a0000-0000-4000-8000-000000000030")
+	)
+	(fp_rect
+		(start -6 -3.1)
+		(end 6 6.9)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "5d2a0000-0000-4000-8000-000000000031")
+	)
+	(fp_text user "ANTENNA"
+		(at 0 -5.7 0)
+		(layer "F.Fab")
+		(uuid "5d2a0000-0000-4000-8000-000000000032")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "RF KEEP-OUT 35.5 x 18.5"
+		(at 0 -15 0)
+		(layer "Cmts.User")
+		(uuid "5d2a0000-0000-4000-8000-000000000033")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(fp_text user "${REFERENCE}"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "5d2a0000-0000-4000-8000-000000000034")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(pad "1" smd rect
+		(at -6.75 -2.55)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000101")
+	)
+	(pad "2" smd rect
+		(at -6.75 -1.05)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000102")
+	)
+	(pad "3" smd rect
+		(at -6.75 0.45)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000103")
+	)
+	(pad "4" smd rect
+		(at -6.75 1.95)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000104")
+	)
+	(pad "5" smd rect
+		(at -6.75 3.45)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000105")
+	)
+	(pad "6" smd rect
+		(at -6.75 4.95)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000106")
+	)
+	(pad "7" smd rect
+		(at -6.75 6.45)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000107")
+	)
+	(pad "8" smd rect
+		(at -4.5 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000108")
+	)
+	(pad "9" smd rect
+		(at -3 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000109")
+	)
+	(pad "10" smd rect
+		(at -1.5 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000110")
+	)
+	(pad "11" smd rect
+		(at 0 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000111")
+	)
+	(pad "12" smd rect
+		(at 1.5 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000112")
+	)
+	(pad "13" smd rect
+		(at 3 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000113")
+	)
+	(pad "14" smd rect
+		(at 4.5 7.75)
+		(size 1 2)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000114")
+	)
+	(pad "15" smd rect
+		(at 6.75 6.45)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000115")
+	)
+	(pad "16" smd rect
+		(at 6.75 4.95)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000116")
+	)
+	(pad "17" smd rect
+		(at 6.75 3.45)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000117")
+	)
+	(pad "18" smd rect
+		(at 6.75 1.95)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000118")
+	)
+	(pad "19" smd rect
+		(at 6.75 0.45)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000119")
+	)
+	(pad "20" smd rect
+		(at 6.75 -1.05)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000120")
+	)
+	(pad "21" smd rect
+		(at 6.75 -2.55)
+		(size 2 1)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "5d2a0000-0000-4000-8000-000000000121")
+	)
+	(zone
+		(layers "*.Cu")
+		(uuid "5d2a0000-0000-4000-8000-000000000200")
+		(name "RM2 antenna keep-out")
+		(hatch full 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias not_allowed)
+			(pads not_allowed)
+			(copperpour not_allowed)
+			(footprints not_allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy -17.75 -21.75) (xy 17.75 -21.75) (xy 17.75 -3.25) (xy -17.75 -3.25)
+			)
+		)
+	)
+	(embedded_fonts no)
+	(model "${KIPRJMOD}/lib/3d/RaspberryPi_RM2.step"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

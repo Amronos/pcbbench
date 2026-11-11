@@ -1,0 +1,8 @@
+(version 1)
+
+# The RP2350 VREG / decoupling copper is copied verbatim from the Raspberry Pi
+# RP2350A minimal reference design, which uses 0.125 mm spacing in a few places
+# around the regulator. PCBWay's standard process supports 0.1 mm (4 mil) spacing.
+(rule "RPi reference VREG copper"
+	(condition "A.NetName == '+1V1' || B.NetName == '+1V1' || A.NetName == 'VREG_LX' || B.NetName == 'VREG_LX' || A.NetName == 'VREG_AVDD' || B.NetName == 'VREG_AVDD'")
+	(constraint clearance (min 0.12mm)))

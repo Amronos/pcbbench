@@ -1,0 +1,57 @@
+{
+  "generated_utc": "2026-11-10T02:12:01.626690+00:00",
+  "board_path": "/Users/ec2-user/pcbbench-run/Atlas2350.kicad_pcb",
+  "design_path": "/Users/ec2-user/pcbbench-run/design.json",
+  "board_sha256": "d566adf81f6cd3687b7653f3ec31e04d1cb71c4ed3aec2fcd21980b33ea612a8",
+  "design_sha256": "034becacead4e3af18e2a4714a5044d900750504287446704dac06bbb4c6c2d6",
+  "units": "mm",
+  "origin": "absolute KiCad board/page (0,0)",
+  "axes": "top view; X right, Y down",
+  "rotation": "saved KiCad degrees CCW in top view",
+  "placement_anchor": "saved footprint anchor; not a computed centroid",
+  "pad_coordinates": "transformed board-coordinate pad/hole centers",
+  "excluded_reference_prefixes": [
+    "H",
+    "TP"
+  ],
+  "excluded_saved_board_references": [
+    "H1",
+    "H2",
+    "H3",
+    "TP1",
+    "TP2",
+    "TP3",
+    "TP4",
+    "TP5",
+    "TP6",
+    "TP7",
+    "TP8",
+    "TP9",
+    "TP10"
+  ],
+  "component_count": 115,
+  "bom_group_count": 53,
+  "pinout_row_count": 458,
+  "sides": {
+    "top": 115,
+    "bottom": 0
+  },
+  "release_status": "not assessed; script does not run ERC/DRC/DFM or approve fabrication",
+  "files": [
+    "parts.csv",
+    "bom.csv",
+    "placement.csv",
+    "assembly-pinout.csv",
+    "top-assembly-orientation.svg",
+    "assembly-orientation.md",
+    "manifest.json"
+  ],
+  "output_sha256": {
+    "parts.csv": "2e007c313fd7ac452bc629996e6e221e9ad379d319cb3a1c71451854572f0fde",
+    "bom.csv": "39491a52fef9ceb27fe14966fe78d10ea7c93a922de855ada380d30fb7fdd81b",
+    "placement.csv": "bbf2448b8afe105abab01e412b45b379d37d838eb615b6e69a969b413e50c14c",
+    "assembly-pinout.csv": "3046f308c886a154ad073752f6d9b169f83d5f54a4a748a10270d967533ceb23",
+    "top-assembly-orientation.svg": "843531c7a3711d88b626c018718ec223af0fd9b017a0d34a4f8bbf212ff615a5",
+    "assembly-orientation.md": "b2824fb7dc1298b25b446332c7cbbdd9d45cbf879a980384704f2aae1b34ed18"
+  }
+}

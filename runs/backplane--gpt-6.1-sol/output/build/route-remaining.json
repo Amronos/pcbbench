@@ -1,0 +1,12 @@
+[
+  {
+    "stage": "remaining nets",
+    "connections": 17,
+    "routed": 6,
+    "failed": 11,
+    "vias": 10,
+    "length_mm": 145.188837,
+    "timed_out": false,
+    "elapsed_ms": 4379.0
+  }
+]

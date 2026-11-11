@@ -1,0 +1,981 @@
+[
+	{
+		"refs": "U1",
+		"qty": 1,
+		"mpn": "RP2350A",
+		"lcsc": null,
+		"source": "LCSC C42411118",
+		"buyMpn": "RP2350A",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.3065,
+			"usd": 1.31
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.3065,
+			"usd": 6.53
+		}
+	},
+	{
+		"refs": "U2",
+		"qty": 1,
+		"mpn": "W25Q128JVSIQ",
+		"lcsc": null,
+		"source": "LCSC C97521",
+		"buyMpn": "W25Q128JVSIQ",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 2.3402,
+			"usd": 2.34
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 2.3402,
+			"usd": 11.7
+		}
+	},
+	{
+		"refs": "U3",
+		"qty": 1,
+		"mpn": "APS6404L-3SQR-SN",
+		"lcsc": null,
+		"source": "LCSC C5333729",
+		"buyMpn": "APS6404L-3SQR-SN",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 4.0125,
+			"usd": 4.01
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 4.0125,
+			"usd": 20.06
+		}
+	},
+	{
+		"refs": "R1 R2 R8 R20 R21 R27 R28 R29 R30",
+		"qty": 9,
+		"mpn": "RC0603FR-0710KL",
+		"lcsc": null,
+		"source": "LCSC C98220",
+		"buyMpn": "RC0603FR-0710KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0023,
+			"usd": 0.23
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0023,
+			"usd": 0.23
+		}
+	},
+	{
+		"refs": "C1 C2 C20 C25 C31 C33 C35 C36 C38 C39 C42 C43 C44",
+		"qty": 13,
+		"mpn": "GRM188R71C104KA01D",
+		"lcsc": null,
+		"source": "LCSC C45000",
+		"buyMpn": "GRM188R71C104KA01D",
+		"oneBoard": {
+			"buy": 50,
+			"unitUsd": 0.0172,
+			"usd": 0.86
+		},
+		"fiveBoards": {
+			"buy": 65,
+			"unitUsd": 0.0172,
+			"usd": 1.12
+		}
+	},
+	{
+		"refs": "U4",
+		"qty": 1,
+		"mpn": "TPS62823DLCR",
+		"lcsc": null,
+		"source": "LCSC C2693497",
+		"buyMpn": "TPS62823DLCR",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.2906,
+			"usd": 1.29
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.2906,
+			"usd": 6.45
+		}
+	},
+	{
+		"refs": "L1",
+		"qty": 1,
+		"mpn": "DFE201610P-R47M=P2",
+		"lcsc": null,
+		"source": "LCSC C882980",
+		"buyMpn": "DFE201610P-R47M=P2",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.1211,
+			"usd": 0.61
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.1211,
+			"usd": 0.61
+		}
+	},
+	{
+		"refs": "C3 C16 C40",
+		"qty": 3,
+		"mpn": "GRM21BR61A475KA73L",
+		"lcsc": null,
+		"source": "LCSC C97913",
+		"buyMpn": "GRM21BR61A475KA73L",
+		"oneBoard": {
+			"buy": 20,
+			"unitUsd": 0.039,
+			"usd": 0.78
+		},
+		"fiveBoards": {
+			"buy": 20,
+			"unitUsd": 0.039,
+			"usd": 0.78
+		}
+	},
+	{
+		"refs": "C4 C22 C23 C24 C26 C27 C37 C41",
+		"qty": 8,
+		"mpn": "GRM21BR61A106KE19L",
+		"lcsc": null,
+		"source": "LCSC C77073",
+		"buyMpn": "GRM21BR61A106KE19L",
+		"oneBoard": {
+			"buy": 10,
+			"unitUsd": 0.0816,
+			"usd": 0.82
+		},
+		"fiveBoards": {
+			"buy": 40,
+			"unitUsd": 0.0816,
+			"usd": 3.26
+		}
+	},
+	{
+		"refs": "R3",
+		"qty": 1,
+		"mpn": "RC0603FR-0783K5L",
+		"lcsc": null,
+		"buyMpn": "RN73R1JTTD8352B25",
+		"fixes": [
+			{
+				"area": "bom",
+				"problem": "Invalid MPN: 83.5k is not an E96 value, so Yageo's 1% RC series doesn't make it",
+				"fix": "Priced KOA RN73R1JTTD8352B25, an 83.5k 0.1% 0603"
+			}
+		],
+		"source": "https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RN73R1JTTD8352B25",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 0.1,
+			"usd": 0.1
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.1,
+			"usd": 0.5
+		}
+	},
+	{
+		"refs": "R4 R5 R17 R18 R19 R23 R24 R25 R26 R43 R44",
+		"qty": 11,
+		"mpn": "RC0603FR-07100KL",
+		"lcsc": null,
+		"source": "LCSC C14675",
+		"buyMpn": "RC0603FR-07100KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0021,
+			"usd": 0.21
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0021,
+			"usd": 0.21
+		}
+	},
+	{
+		"refs": "C5",
+		"qty": 1,
+		"mpn": "GRM1885C1H121JA01D",
+		"lcsc": null,
+		"source": "LCSC C85974",
+		"buyMpn": "GRM1885C1H121JA01D",
+		"oneBoard": {
+			"buy": 50,
+			"unitUsd": 0.0236,
+			"usd": 1.18
+		},
+		"fiveBoards": {
+			"buy": 50,
+			"unitUsd": 0.0236,
+			"usd": 1.18
+		}
+	},
+	{
+		"refs": "C6 C7 C8 C9 C10 C11 C12 C13 C14 C15",
+		"qty": 10,
+		"mpn": "GRM155R71C104KA88D",
+		"lcsc": null,
+		"source": "LCSC C71629",
+		"buyMpn": "GRM155R71C104KA88D",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0036,
+			"usd": 0.36
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0036,
+			"usd": 0.36
+		}
+	},
+	{
+		"refs": "C17 C21",
+		"qty": 2,
+		"mpn": "GRM188R61C105KA93D",
+		"lcsc": null,
+		"source": "LCSC C77404",
+		"buyMpn": "GRM188R61C105KA93D",
+		"oneBoard": {
+			"buy": 20,
+			"unitUsd": 0.0361,
+			"usd": 0.72
+		},
+		"fiveBoards": {
+			"buy": 20,
+			"unitUsd": 0.0361,
+			"usd": 0.72
+		}
+	},
+	{
+		"refs": "R6",
+		"qty": 1,
+		"mpn": "RC0603FR-07200RL",
+		"lcsc": null,
+		"source": "LCSC C114664",
+		"buyMpn": "RC0603FR-07200RL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0033,
+			"usd": 0.33
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0033,
+			"usd": 0.33
+		}
+	},
+	{
+		"refs": "Y1",
+		"qty": 1,
+		"mpn": "ABM8-272-T3",
+		"lcsc": null,
+		"source": "LCSC C20625731",
+		"buyMpn": "ABM8-272-T3",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.4001,
+			"usd": 2
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.4001,
+			"usd": 2
+		}
+	},
+	{
+		"refs": "R7 R9",
+		"qty": 2,
+		"mpn": "RC0603FR-071KL",
+		"lcsc": null,
+		"source": "LCSC C22548",
+		"buyMpn": "RC0603FR-071KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0036,
+			"usd": 0.36
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0036,
+			"usd": 0.36
+		}
+	},
+	{
+		"refs": "C18 C19",
+		"qty": 2,
+		"mpn": "GRM1555C1H150JA01D",
+		"lcsc": null,
+		"source": "LCSC C76950",
+		"buyMpn": "GRM1555C1H150JA01D",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0068,
+			"usd": 0.68
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0068,
+			"usd": 0.68
+		}
+	},
+	{
+		"refs": "SW1 SW2 SW3",
+		"qty": 3,
+		"mpn": "PTS810SJM250SMTRLFS",
+		"lcsc": null,
+		"source": "LCSC C116501",
+		"buyMpn": "PTS810SJM250SMTRLFS",
+		"oneBoard": {
+			"buy": 3,
+			"unitUsd": 0.6595,
+			"usd": 1.98
+		},
+		"fiveBoards": {
+			"buy": 15,
+			"unitUsd": 0.5339,
+			"usd": 8.01
+		}
+	},
+	{
+		"refs": "J1",
+		"qty": 1,
+		"mpn": "USB4105-GF-A",
+		"lcsc": null,
+		"source": "LCSC C3020560",
+		"buyMpn": "USB4105-GF-A",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.03,
+			"usd": 1.03
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.03,
+			"usd": 5.15
+		}
+	},
+	{
+		"refs": "R10 R11",
+		"qty": 2,
+		"mpn": "RC0603FR-075K1L",
+		"lcsc": null,
+		"source": "LCSC C105580",
+		"buyMpn": "RC0603FR-075K1L",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0021,
+			"usd": 0.21
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0021,
+			"usd": 0.21
+		}
+	},
+	{
+		"refs": "U5",
+		"qty": 1,
+		"mpn": "USBLC6-2SC6",
+		"lcsc": null,
+		"source": "LCSC C2687116",
+		"buyMpn": "USBLC6-2SC6",
+		"oneBoard": {
+			"buy": 10,
+			"unitUsd": 0.0482,
+			"usd": 0.48
+		},
+		"fiveBoards": {
+			"buy": 10,
+			"unitUsd": 0.0482,
+			"usd": 0.48
+		}
+	},
+	{
+		"refs": "R12 R13",
+		"qty": 2,
+		"mpn": "RC0603FR-0727RL",
+		"lcsc": null,
+		"source": "LCSC C137753",
+		"buyMpn": "RC0603FR-0727RL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0031,
+			"usd": 0.31
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0031,
+			"usd": 0.31
+		}
+	},
+	{
+		"refs": "F1",
+		"qty": 1,
+		"mpn": "MF-MSMF075-2",
+		"lcsc": null,
+		"source": "LCSC C84140",
+		"buyMpn": "MF-MSMF075-2",
+		"oneBoard": {
+			"buy": 10,
+			"unitUsd": 0.0777,
+			"usd": 0.78
+		},
+		"fiveBoards": {
+			"buy": 10,
+			"unitUsd": 0.0777,
+			"usd": 0.78
+		}
+	},
+	{
+		"refs": "D1",
+		"qty": 1,
+		"mpn": "SMF5.0A",
+		"lcsc": null,
+		"source": "LCSC C19077497",
+		"buyMpn": "SMF5.0A",
+		"oneBoard": {
+			"buy": 20,
+			"unitUsd": 0.0286,
+			"usd": 0.57
+		},
+		"fiveBoards": {
+			"buy": 20,
+			"unitUsd": 0.0286,
+			"usd": 0.57
+		}
+	},
+	{
+		"refs": "U6",
+		"qty": 1,
+		"mpn": "BQ24074RGTR",
+		"lcsc": null,
+		"source": "LCSC C54313",
+		"buyMpn": "BQ24074RGTR",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 2.1391,
+			"usd": 2.14
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 2.1391,
+			"usd": 10.7
+		}
+	},
+	{
+		"refs": "J2",
+		"qty": 1,
+		"mpn": "B3B-PH-K-S(LF)(SN)",
+		"lcsc": null,
+		"source": "LCSC C131339",
+		"buyMpn": "B3B-PH-K-S(LF)(SN)",
+		"oneBoard": {
+			"buy": 10,
+			"unitUsd": 0.042,
+			"usd": 0.42
+		},
+		"fiveBoards": {
+			"buy": 10,
+			"unitUsd": 0.042,
+			"usd": 0.42
+		}
+	},
+	{
+		"refs": "R14",
+		"qty": 1,
+		"mpn": "RC0603FR-071K78L",
+		"lcsc": null,
+		"source": "LCSC C137775",
+		"buyMpn": "RC0603FR-071K78L",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0034,
+			"usd": 0.34
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0034,
+			"usd": 0.34
+		}
+	},
+	{
+		"refs": "R15",
+		"qty": 1,
+		"mpn": "RC0603FR-073K24L",
+		"lcsc": null,
+		"source": "LCSC C273779",
+		"buyMpn": "RC0603FR-073K24L",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0033,
+			"usd": 0.33
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0033,
+			"usd": 0.33
+		}
+	},
+	{
+		"refs": "R16",
+		"qty": 1,
+		"mpn": "RC0603FR-0739KL",
+		"lcsc": null,
+		"source": "LCSC C163424",
+		"buyMpn": "RC0603FR-0739KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0054,
+			"usd": 0.54
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0054,
+			"usd": 0.54
+		}
+	},
+	{
+		"refs": "U7",
+		"qty": 1,
+		"mpn": "TPS63060DSCR",
+		"lcsc": null,
+		"source": "LCSC C48567",
+		"buyMpn": "TPS63060DSCR",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 3.864,
+			"usd": 3.86
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 3.864,
+			"usd": 19.32
+		}
+	},
+	{
+		"refs": "L2",
+		"qty": 1,
+		"mpn": "DFE201610P-1R0M=P2",
+		"lcsc": null,
+		"source": "LCSC C882953",
+		"buyMpn": "DFE201610P-1R0M=P2",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.1354,
+			"usd": 0.68
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.1354,
+			"usd": 0.68
+		}
+	},
+	{
+		"refs": "C28 C29 C30 C34",
+		"qty": 4,
+		"mpn": "GRM31CR61A226KE19L",
+		"lcsc": null,
+		"source": "LCSC C97950",
+		"buyMpn": "GRM31CR61A226KE19L",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.1478,
+			"usd": 0.74
+		},
+		"fiveBoards": {
+			"buy": 20,
+			"unitUsd": 0.1478,
+			"usd": 2.96
+		}
+	},
+	{
+		"refs": "R22",
+		"qty": 1,
+		"mpn": "RC0603FR-07560KL",
+		"lcsc": null,
+		"source": "LCSC C137699",
+		"buyMpn": "RC0603FR-07560KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0029,
+			"usd": 0.29
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0029,
+			"usd": 0.29
+		}
+	},
+	{
+		"refs": "C32",
+		"qty": 1,
+		"mpn": "GRM1885C1H100JA01D",
+		"lcsc": null,
+		"source": "LCSC C84498",
+		"buyMpn": "GRM1885C1H100JA01D",
+		"oneBoard": {
+			"buy": 50,
+			"unitUsd": 0.0178,
+			"usd": 0.89
+		},
+		"fiveBoards": {
+			"buy": 50,
+			"unitUsd": 0.0178,
+			"usd": 0.89
+		}
+	},
+	{
+		"refs": "U8",
+		"qty": 1,
+		"mpn": "ESP32-C3-WROOM-02-N4",
+		"lcsc": null,
+		"source": "LCSC C2934560",
+		"buyMpn": "ESP32-C3-WROOM-02-N4",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 3.3224,
+			"usd": 3.32
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 3.3224,
+			"usd": 16.61
+		}
+	},
+	{
+		"refs": "J3",
+		"qty": 1,
+		"mpn": "SSQ-106-03-G-S",
+		"lcsc": null,
+		"source": "LCSC C3323798",
+		"buyMpn": "SSQ-106-03-G-S",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.5948,
+			"usd": 1.59
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.5948,
+			"usd": 7.97
+		}
+	},
+	{
+		"refs": "J4",
+		"qty": 1,
+		"mpn": "DM3AT-SF-PEJM5",
+		"lcsc": null,
+		"source": "LCSC C114218",
+		"buyMpn": "DM3AT-SF-PEJM5",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.4038,
+			"usd": 1.4
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.4038,
+			"usd": 7.02
+		}
+	},
+	{
+		"refs": "R31 R32 R33 R34 R35 R36",
+		"qty": 6,
+		"mpn": "RC0603FR-0747KL",
+		"lcsc": null,
+		"source": "LCSC C105579",
+		"buyMpn": "RC0603FR-0747KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0031,
+			"usd": 0.31
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0031,
+			"usd": 0.31
+		}
+	},
+	{
+		"refs": "R37",
+		"qty": 1,
+		"mpn": "RC0603FR-0733RL",
+		"lcsc": null,
+		"source": "LCSC C108661",
+		"buyMpn": "RC0603FR-0733RL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0035,
+			"usd": 0.35
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0035,
+			"usd": 0.35
+		}
+	},
+	{
+		"refs": "J5",
+		"qty": 1,
+		"mpn": "SM04B-SRSS-TB(LF)(SN)",
+		"lcsc": null,
+		"source": "LCSC C160404",
+		"buyMpn": "SM04B-SRSS-TB(LF)(SN)",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.2167,
+			"usd": 1.08
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.2167,
+			"usd": 1.08
+		}
+	},
+	{
+		"refs": "R38 R39",
+		"qty": 2,
+		"mpn": "RC0603FR-074K7L",
+		"lcsc": null,
+		"source": "LCSC C99782",
+		"buyMpn": "RC0603FR-074K7L",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0032,
+			"usd": 0.32
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0032,
+			"usd": 0.32
+		}
+	},
+	{
+		"refs": "U9",
+		"qty": 1,
+		"mpn": "MCP1640T-I/CHY",
+		"lcsc": null,
+		"source": "LCSC C44365",
+		"buyMpn": "MCP1640T-I/CHY",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.1404,
+			"usd": 1.14
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.1404,
+			"usd": 5.7
+		}
+	},
+	{
+		"refs": "L3",
+		"qty": 1,
+		"mpn": "DFE201610P-2R2M=P2",
+		"lcsc": null,
+		"source": "LCSC C237554",
+		"buyMpn": "DFE201610P-2R2M=P2",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.1535,
+			"usd": 0.77
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.1535,
+			"usd": 0.77
+		}
+	},
+	{
+		"refs": "R40",
+		"qty": 1,
+		"mpn": "RC0603FR-07976KL",
+		"lcsc": null,
+		"source": "LCSC C246018",
+		"buyMpn": "RC0603FR-07976KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0051,
+			"usd": 0.51
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0051,
+			"usd": 0.51
+		}
+	},
+	{
+		"refs": "R41",
+		"qty": 1,
+		"mpn": "RC0603FR-07309KL",
+		"lcsc": null,
+		"source": "LCSC C273754",
+		"buyMpn": "RC0603FR-07309KL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0053,
+			"usd": 0.53
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0053,
+			"usd": 0.53
+		}
+	},
+	{
+		"refs": "U10",
+		"qty": 1,
+		"mpn": "SN74AHCT1G125DBVR",
+		"lcsc": null,
+		"source": "LCSC C7484",
+		"buyMpn": "SN74AHCT1G125DBVR",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.1009,
+			"usd": 0.5
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.1009,
+			"usd": 0.5
+		}
+	},
+	{
+		"refs": "R42",
+		"qty": 1,
+		"mpn": "RC0603FR-07330RL",
+		"lcsc": null,
+		"source": "LCSC C105881",
+		"buyMpn": "RC0603FR-07330RL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0023,
+			"usd": 0.23
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0023,
+			"usd": 0.23
+		}
+	},
+	{
+		"refs": "D2",
+		"qty": 1,
+		"mpn": "SK6812MINI",
+		"lcsc": null,
+		"buyMpn": "Adafruit 2686 (SK6812MINI, pack of 10)",
+		"source": "https://www.digikey.com/en/products/detail/adafruit-industries-llc/2686/5804107",
+		"oneBoard": {
+			"buy": 10,
+			"unitUsd": 0.495,
+			"usd": 4.95
+		},
+		"fiveBoards": {
+			"buy": 10,
+			"unitUsd": 0.495,
+			"usd": 4.95
+		}
+	},
+	{
+		"refs": "J6",
+		"qty": 1,
+		"mpn": "SSQ-112-03-G-S",
+		"lcsc": null,
+		"source": "LCSC C7088165",
+		"buyMpn": "SSQ-112-03-G-S",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 3.2771,
+			"usd": 3.28
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 3.2771,
+			"usd": 16.39
+		}
+	},
+	{
+		"refs": "J7",
+		"qty": 1,
+		"mpn": "SSQ-112-03-G-S",
+		"lcsc": null,
+		"source": "LCSC C7088165",
+		"buyMpn": "SSQ-112-03-G-S",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 3.2771,
+			"usd": 3.28
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 3.2771,
+			"usd": 16.39
+		}
+	},
+	{
+		"refs": "J8",
+		"qty": 1,
+		"mpn": "FTSH-105-01-L-D-K",
+		"lcsc": null,
+		"source": "LCSC C19191796",
+		"buyMpn": "FTSH-105-01-L-D-K",
+		"oneBoard": {
+			"buy": 1,
+			"unitUsd": 1.8038,
+			"usd": 1.8
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 1.8038,
+			"usd": 9.02
+		}
+	},
+	{
+		"refs": "U11",
+		"qty": 1,
+		"mpn": "TPS22919DCKR",
+		"lcsc": null,
+		"source": "LCSC C2149796",
+		"buyMpn": "TPS22919DCKR",
+		"oneBoard": {
+			"buy": 5,
+			"unitUsd": 0.1233,
+			"usd": 0.62
+		},
+		"fiveBoards": {
+			"buy": 5,
+			"unitUsd": 0.1233,
+			"usd": 0.62
+		}
+	},
+	{
+		"refs": "R45",
+		"qty": 1,
+		"mpn": "RC0603FR-07100RL",
+		"lcsc": null,
+		"source": "LCSC C105588",
+		"buyMpn": "RC0603FR-07100RL",
+		"oneBoard": {
+			"buy": 100,
+			"unitUsd": 0.0024,
+			"usd": 0.24
+		},
+		"fiveBoards": {
+			"buy": 100,
+			"unitUsd": 0.0024,
+			"usd": 0.24
+		}
+	}
+]

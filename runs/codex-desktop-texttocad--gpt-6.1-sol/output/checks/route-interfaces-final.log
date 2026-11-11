@@ -1,0 +1,29 @@
+route: NOT routed SD_MISO: J3.7 to R28.1: J3.7 is walled in by GND, SD_DAT1 and SD_CLK (routed first in this plan): no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed SD_MISO: J3.7 to U1.16: J3.7 is walled in by GND, SD_DAT1 and SD_CLK (routed first in this plan): no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed SD_DAT1: J3.8 to R29.1: J3.8 is walled in by SD_DETECT, SD_MISO and SD_CLK (routed first in this plan): no way out of the 0.6 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed SD_DETECT: J3.9 to R31.1: J3.9 is walled in by VSYS, SD_DAT1 and SD_CLK (routed first in this plan): no way out of the 0.5 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed SD_DETECT: J3.9 to U1.19: U1.19 is walled in by GND, +1V1 and SD_CS (routed first in this plan): no way out of the 3.6 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+route: NOT routed I2C_SDA: J5.15 to U1.7: U1.7 is walled in by GND, +1V1 and +3V3: no way out of the 9.9 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+route: NOT routed RGB_DATA: J5.12 to U1.18: U1.18 is walled in by SD_MOSI (routed first in this plan), SD_MISO and XIN: no way out of the 2.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed USB_CC1: J1.A5 to R1.1: 12.25 mm in 12 segments, 2 vias
+routed USB_CC2: J1.B5 to R2.1: 7.70 mm in 4 segments
+routed SD_CLK: J3.5 to U1.14: 39.22 mm in 8 segments, 2 vias
+routed SD_MOSI: J3.3 to R27.1: 14.12 mm in 8 segments, 2 vias
+routed SD_MOSI: R27.1 to U1.15: 34.31 mm in 13 segments, 3 vias
+NOT routed SD_MISO: J3.7 to R28.1: J3.7 is walled in by GND, SD_DAT1 and SD_CLK (routed first in this plan): no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+NOT routed SD_MISO: J3.7 to U1.16: J3.7 is walled in by GND, SD_DAT1 and SD_CLK (routed first in this plan): no way out of the 0.7 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed SD_CS: J3.2 to R26.1: 13.99 mm in 7 segments, 2 vias
+routed SD_CS: R26.1 to U1.17: 32.23 mm in 12 segments, 3 vias
+NOT routed SD_DAT1: J3.8 to R29.1: J3.8 is walled in by SD_DETECT, SD_MISO and SD_CLK (routed first in this plan): no way out of the 0.6 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed SD_DAT2: J3.1 to R30.1: 9.06 mm in 7 segments, 2 vias
+NOT routed SD_DETECT: J3.9 to R31.1: J3.9 is walled in by VSYS, SD_DAT1 and SD_CLK (routed first in this plan): no way out of the 0.5 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+NOT routed SD_DETECT: J3.9 to U1.19: U1.19 is walled in by GND, +1V1 and SD_CS (routed first in this plan): no way out of the 3.6 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed I2C_SDA: J4.3 to R24.1: 4.41 mm in 2 segments
+routed I2C_SDA: R24.1 to J5.15: 39.85 mm in 12 segments, 3 vias
+NOT routed I2C_SDA: J5.15 to U1.7: U1.7 is walled in by GND, +1V1 and +3V3: no way out of the 9.9 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; move what walls it in, or route it by hand
+routed I2C_SCL: J4.4 to R25.1: 6.05 mm in 6 segments, 2 vias
+routed I2C_SCL: R25.1 to J5.16: 36.43 mm in 12 segments, 1 via
+routed I2C_SCL: J5.16 to U1.8: 30.94 mm in 11 segments, 2 vias
+NOT routed RGB_DATA: J5.12 to U1.18: U1.18 is walled in by SD_MOSI (routed first in this plan), SD_MISO and XIN: no way out of the 2.1 mm² round it on F.Cu and B.Cu for a 0.15 mm track keeping 0.127 mm; put this entry before those in the plan, or route it by hand
+routed RGB_DATA: J5.12 to R32.1: 43.30 mm in 11 segments, 4 vias
+NOT ROUTED: 14 of 21 connection(s) routed, 125 segment(s), 28 via(s), 323.9 mm of track, in 3.9 s; 7 not routed, each said above
