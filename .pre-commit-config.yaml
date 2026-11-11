@@ -20,6 +20,8 @@ repos:
     rev: v2.4.3
     hooks:
       - id: codespell
+        # `atLeast` is Effect CLI's API.
+        args: ['--ignore-words-list', 'atleast']
         exclude: ^bun\.lock$
         exclude_types: [svg]
 
