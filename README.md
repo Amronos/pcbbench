@@ -11,18 +11,18 @@ The prompt is [bench/prompt.md](bench/prompt.md).
 
 ## Results
 
-### Board score
+### Complete scores
 
-| Run | Design review (50) | Circuit checks (20) | Orderable (20) | Parts data (10) | Score (100) | 1 board | AI cost |
+| Run | Design review (50) | Circuit checks (20) | Orderable (20) | Parts data (10) | Score (100) | 5 boards, per board | AI cost |
 |---|---|---|---|---|---|---|---|
-| [`sprocket--fable-5.2`][sprocket] | 33.2 | 20 | 20 | 9.4 | 82.6 | $189.77 | $87.61 |
-| [`sprocket--opus-5.5`][sprocket] | 31.1 | 14.2 | 20 | 8.6 | 73.8 | $278.13 | $40.73 |
-| [`sprocket--gpt-6.1-sol`][sprocket] | 28.6 | 19.5 | 19.1 | 5 | 72.2 | $661.63 | $64.51 |
-| [`codex-desktop--gpt-6.1-sol`][codex] | 30.4 | 19.5 | 19.2 | 0 | 69.1 | $246.31 | $6.41 |
-| [`codex-desktop`][codex][`-texttocad--gpt-6.1-sol`][texttocad] | 33.2 | 20 | 9.4 | 4.7 | 67.3 | $297.32 | $14.36 |
-| [`backplane--opus-5.5`][backplane] | 35.7 | 13.2 | 9.7 | 7.8 | 66.3 | $185.16 | $56.77 |
-| [`backplane--fable-5.2`][backplane] | 31.1 | 12.1 | 9.7 | 6 | 58.9 | $187.53 | $49.09 |
-| [`backplane--gpt-6.1-sol`][backplane] | 25.4 | 4.5 | 18.9 | 4.8 | 53.6 | $741.00 | $5.81 |
+| [`sprocket--fable-5.2`][sprocket] | 33.2 | 20 | 20 | 9.4 | **82.6** | $56.34 | $87.61 |
+| [`sprocket--opus-5.5`][sprocket] | 31.1 | 14.2 | 20 | 8.6 | **73.8** | $70.99 | $40.73 |
+| [`sprocket--gpt-6.1-sol`][sprocket] | 28.6 | 19.5 | 19.1 | 5 | **72.2** | $159.09 | $64.51 |
+| [`codex-desktop--gpt-6.1-sol`][codex] | 30.4 | 19.5 | 19.2 | 0 | **69.1** | $77.64 | $6.41 |
+| [`codex-desktop`][codex][`-texttocad--gpt-6.1-sol`][texttocad] | 33.2 | 20 | 9.4 | 4.7 | **67.3** | $87.53 | $14.36 |
+| [`backplane--opus-5.5`][backplane] | 35.7 | 13.2 | 9.7 | 7.8 | **66.3** | $51.57 | $56.77 |
+| [`backplane--fable-5.2`][backplane] | 31.1 | 12.1 | 9.7 | 6 | **58.9** | $52.68 | $49.09 |
+| [`backplane--gpt-6.1-sol`][backplane] | 25.4 | 4.5 | 18.9 | 4.8 | **53.6** | $181.34 | $5.81 |
 
 The score covers the board only. Price, AI cost and time are left out of it, so they can be weighed separately. Each item earns its points times a fraction from 0 to 1:
 
