@@ -1,6 +1,6 @@
 import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Effect, FileSystem, Layer, Schema } from 'effect';
-import { Argument, Command } from 'effect/cli';
+import { Command } from 'effect/cli';
 import {
 	byRef,
 	readMetrics,
@@ -14,7 +14,7 @@ import { isSamePart, parseCsv, readBom, splitRefs, type BomLine } from './bom.ts
 import { Digikey, type DigikeyError } from './digikey.ts';
 import { Lcsc, type LcscError } from './lcsc.ts';
 import { Fix } from './price.ts';
-import { BATCH_BOARDS } from './runs.ts';
+import { BATCH_BOARDS, runIdArgument } from './runs.ts';
 
 const PLACEMENT_TOLERANCE_MM = 0.5;
 
@@ -1009,7 +1009,7 @@ const checkDeliverables = Effect.fn('checkDeliverables')(function* ({ board, out
 	};
 });
 
-const command = Command.make('check', { runId: Argument.String('run-id') }, ({ runId }) =>
+const command = Command.make('check', { runId: runIdArgument }, ({ runId }) =>
 	Effect.gen(function* () {
 		const run = yield* readCheckedRun(runId);
 

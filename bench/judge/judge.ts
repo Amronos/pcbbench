@@ -14,7 +14,7 @@ import { Argument, Command } from 'effect/cli';
 import { ChildProcess } from 'effect/process';
 import { readRun, updateMetrics } from '../board.ts';
 import { run } from '../command.ts';
-import { isModelId, RUNS, type ModelId } from '../runs.ts';
+import { isModelId, runIdArgument, type ModelId } from '../runs.ts';
 import { buildPackage } from './package.ts';
 import { judgeStateDirectory, writeReasoning } from './reasoning.ts';
 
@@ -199,10 +199,7 @@ const judge = Effect.fn('judge')(function* ({
 Command.make(
 	'judge',
 	{
-		runId: Argument.Literals(
-			'run-id',
-			RUNS.map((run) => run.id)
-		),
+		runId: runIdArgument,
 		host: Argument.String('host').pipe(Argument.withDescription('Judge box address'))
 	},
 	judge

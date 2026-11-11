@@ -1,10 +1,10 @@
 import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Console, DateTime, Effect, FileSystem, Layer, Schema } from 'effect';
-import { Argument, Command } from 'effect/cli';
+import { Command } from 'effect/cli';
 import { runDirectory, updateMetrics } from './board.ts';
 import { readBom } from './bom.ts';
 import { Lcsc, type LcscProduct } from './lcsc.ts';
-import { BATCH_BOARDS } from './runs.ts';
+import { BATCH_BOARDS, runIdArgument } from './runs.ts';
 
 const Tier = Schema.Struct({ ladder: Schema.Number, usd: Schema.Number });
 
@@ -160,7 +160,7 @@ function scenarioCost(
 	};
 }
 
-const command = Command.make('price', { runId: Argument.String('run-id') }, ({ runId }) =>
+const command = Command.make('price', { runId: runIdArgument }, ({ runId }) =>
 	Effect.gen(function* () {
 		const fs = yield* FileSystem.FileSystem;
 		const runDir = runDirectory(runId);

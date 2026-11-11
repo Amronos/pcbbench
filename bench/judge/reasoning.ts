@@ -2,7 +2,7 @@ import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Effect, FileSystem, Schema } from 'effect';
 import { Argument, Command } from 'effect/cli';
 import { runDirectory } from '../board.ts';
-import { MODELS, RUNS } from '../runs.ts';
+import { MODELS, runIdArgument } from '../runs.ts';
 
 const Part = Schema.fromJsonString(
 	Schema.Struct({
@@ -109,10 +109,7 @@ if (import.meta.main)
 	Command.make(
 		'reasoning',
 		{
-			runId: Argument.Literals(
-				'run-id',
-				RUNS.map((run) => run.id)
-			),
+			runId: runIdArgument,
 			models: Argument.Literals('judge-models', MODELS).pipe(Argument.atLeast(1))
 		},
 		({ runId, models }) => writeReasoning(runId, models)

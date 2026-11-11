@@ -1,8 +1,9 @@
 import { BunRuntime, BunServices } from '@effect/platform-bun';
-import { Console, DateTime, Effect, FileSystem, Option, Schema, Stream } from 'effect';
-import { Argument, Command } from 'effect/cli';
-import { ChildProcess, ChildProcessSpawner } from 'effect/process';
-import { COST_LIMIT_USD, COST_REVOKE_MARGIN_USD, RUNS } from './runs.ts';
+import { Console, DateTime, Effect, FileSystem, Option, Schema } from 'effect';
+import { Command } from 'effect/cli';
+import { ChildProcess } from 'effect/process';
+import { exec } from './command.ts';
+import { COST_LIMIT_USD, COST_REVOKE_MARGIN_USD, RUNS, runIdArgument } from './runs.ts';
 
 const SCOPE = 'spikonado';
 const STATE_DIR = `${import.meta.dir}/.state`;
@@ -32,19 +33,12 @@ export class GatewayError extends Schema.TaggedError<GatewayError>()('GatewayErr
 const redactSecrets = (text: string) => text.replaceAll(/vck_\w+/g, 'vck_…');
 
 const vercel = Effect.fn('vercel')(function* (args: ReadonlyArray<string>) {
-	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
-
-	const handle = yield* spawner.spawn(
-		ChildProcess.make('bunx', ['vercel@latest', ...args, '--scope', SCOPE], { stdin: 'inherit' })
-	);
-
-	const [stdout, stderr, exitCode] = yield* Effect.all(
-		[
-			Stream.mkString(Stream.decodeText(handle.stdout)),
-			Stream.mkString(Stream.decodeText(handle.stderr)),
-			handle.exitCode
-		],
-		{ concurrency: 'unbounded' }
+	const { stdout, stderr, exitCode } = yield* exec(
+		// Vercel may prompt on the terminal, which stops a child in its own session with SIGTTIN.
+		ChildProcess.make('bunx', ['vercel@latest', ...args, '--scope', SCOPE], {
+			stdin: 'inherit',
+			detached: false
+		})
 	);
 
 	if (exitCode !== 0)
@@ -53,7 +47,7 @@ const vercel = Effect.fn('vercel')(function* (args: ReadonlyArray<string>) {
 		});
 
 	return { stdout, stderr };
-}, Effect.scoped);
+});
 
 const keyName = (runId: string) => `pcbbench-${runId}`;
 
@@ -153,29 +147,24 @@ const watchRunKey = Effect.fn('watchRunKey')(function* (key: RunKey) {
 	}
 });
 
-const runId = Argument.Literals(
-	'run-id',
-	RUNS.map((run) => run.id)
-);
-
 const gateway = Command.make('gateway').pipe(
 	Command.withSubcommands([
-		Command.make('create', { runId }, ({ runId }) =>
+		Command.make('create', { runId: runIdArgument }, ({ runId }) =>
 			Effect.gen(function* () {
 				const key = yield* createRunKey(runId);
 				yield* Console.log(`Created ${key.name} (${key.keyId}); secret in ${statePath(runId)}`);
 			})
 		),
-		Command.make('spent', { runId }, ({ runId }) =>
+		Command.make('spent', { runId: runIdArgument }, ({ runId }) =>
 			readRunKey(runId).pipe(
 				Effect.flatMap(readBudget),
 				Effect.flatMap((budget) => Console.log(JSON.stringify(budget)))
 			)
 		),
-		Command.make('watch', { runId }, ({ runId }) =>
+		Command.make('watch', { runId: runIdArgument }, ({ runId }) =>
 			readRunKey(runId).pipe(Effect.flatMap(watchRunKey))
 		),
-		Command.make('revoke', { runId }, ({ runId }) =>
+		Command.make('revoke', { runId: runIdArgument }, ({ runId }) =>
 			readRunKey(runId).pipe(Effect.flatMap(revokeRunKey))
 		)
 	])

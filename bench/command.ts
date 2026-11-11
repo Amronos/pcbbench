@@ -5,7 +5,12 @@ export class CommandError extends Schema.TaggedError<CommandError>()('CommandErr
 	message: Schema.String
 }) {}
 
-export const exec = Effect.fn('exec')(function* (command: ChildProcess.StandardCommand) {
+const display = (command: ChildProcess.Command): string =>
+	ChildProcess.isStandardCommand(command)
+		? CommandLine.display([command.command, ...command.args])
+		: `${display(command.left)} | ${display(command.right)}`;
+
+export const exec = Effect.fn('exec')(function* (command: ChildProcess.Command) {
 	const handle = yield* command;
 
 	const [stdout, stderr, exitCode] = yield* Effect.all(
@@ -20,12 +25,12 @@ export const exec = Effect.fn('exec')(function* (command: ChildProcess.StandardC
 	return { stdout, stderr, exitCode };
 }, Effect.scoped);
 
-export const run = Effect.fn('run')(function* (command: ChildProcess.StandardCommand) {
+export const run = Effect.fn('run')(function* (command: ChildProcess.Command) {
 	const { stdout, stderr, exitCode } = yield* exec(command);
 
 	if (exitCode !== 0)
 		return yield* new CommandError({
-			message: `${CommandLine.display([command.command, ...command.args])} exited with ${exitCode}: ${stderr}`
+			message: `${display(command)} exited with ${exitCode}: ${stderr}`
 		});
 
 	return stdout;

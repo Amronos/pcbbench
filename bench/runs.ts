@@ -1,4 +1,5 @@
 import { Effect, FileSystem, Schema } from 'effect';
+import { Argument } from 'effect/cli';
 
 export const ModelId = Schema.Literals(['opus-5.5', 'gpt-6.1-sol', 'fable-5.2']);
 
@@ -85,3 +86,8 @@ export const RUNS: Run[] = [
 	{ id: 'backplane--fable-5.2', harness: 'backplane', model: 'fable-5.2', machine: 'linux' },
 	{ id: 'sprocket--fable-5.2', harness: 'sprocket', model: 'fable-5.2', machine: 'linux' }
 ];
+
+export const runIdArgument = Argument.Literals(
+	'run-id',
+	RUNS.map((run) => run.id)
+);

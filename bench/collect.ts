@@ -1,10 +1,11 @@
 import { BunRuntime, BunServices } from '@effect/platform-bun';
-import { Console, Effect, FileSystem, Option, Schema, Stream } from 'effect';
+import { Console, Effect, FileSystem, Option, Schema } from 'effect';
 import type { PlatformError } from 'effect/PlatformError';
 import { Argument, Command } from 'effect/cli';
 import { ChildProcess, ChildProcessSpawner } from 'effect/process';
 import { homedir } from 'node:os';
 import { runDirectory } from './board.ts';
+import { run as runCommand, type CommandError } from './command.ts';
 import { readBudget, readRunKey, spentUsd } from './gateway.ts';
 import {
 	BACKPLANE_CLI,
@@ -34,11 +35,11 @@ type Timing = { startedAt: string; finishedAt: string; minutes: number; endedBy:
 
 type Shell = (
 	script: string
-) => Effect.Effect<string, CollectError | PlatformError, ChildProcessSpawner.ChildProcessSpawner>;
+) => Effect.Effect<string, CommandError | PlatformError, ChildProcessSpawner.ChildProcessSpawner>;
 
 type Read<A> = Effect.Effect<
 	A,
-	CollectError | PlatformError | Schema.SchemaError,
+	CommandError | PlatformError | Schema.SchemaError,
 	FileSystem.FileSystem | ChildProcessSpawner.ChildProcessSpawner
 >;
 
@@ -65,20 +66,6 @@ const readJsonOr = <S extends Schema.ConstraintDecoder<unknown>>(
 		Effect.flatMap((fs) => fs.exists(path)),
 		Effect.flatMap((exists) => (exists ? readJson(path, schema) : Effect.succeed(missing)))
 	);
-
-const output = Effect.fnUntraced(function* (command: ChildProcess.StandardCommand) {
-	const handle = yield* command;
-
-	const [stdout, exitCode] = yield* Effect.all(
-		[Stream.mkString(Stream.decodeText(handle.stdout)), handle.exitCode],
-		{ concurrency: 'unbounded' }
-	);
-
-	if (exitCode !== 0)
-		return yield* new CollectError({ message: `${command.command} exited with ${exitCode}` });
-
-	return stdout;
-}, Effect.scoped);
 
 const CodexResult = Schema.Struct({
 	startedAt: Schema.String,
@@ -184,7 +171,7 @@ const machine = (run: Run, host: Option.Option<string>) => {
 
 		return Effect.succeed({
 			source,
-			shell: (script: string) => output(ChildProcess.make(script, { cwd: source, shell: true }))
+			shell: (script: string) => runCommand(ChildProcess.make(script, { cwd: source, shell: true }))
 		});
 	}
 
@@ -194,22 +181,19 @@ const machine = (run: Run, host: Option.Option<string>) => {
 			Effect.succeed({
 				source: `${host}:`,
 				shell: (script: string) =>
-					output(ChildProcess.make('ssh', [...SSH_OPTIONS, host, script], { stdin: 'ignore' }))
+					runCommand(ChildProcess.make('ssh', [...SSH_OPTIONS, host, script], { stdin: 'ignore' }))
 			})
 	});
 };
 
-const rsync = Effect.fnUntraced(function* (args: ReadonlyArray<string>) {
-	const exitCode = yield* (yield* ChildProcessSpawner.ChildProcessSpawner).exitCode(
+const rsync = (args: ReadonlyArray<string>) =>
+	runCommand(
 		ChildProcess.make('rsync', ['-a', ...args], {
 			stdin: 'ignore',
 			stdout: 'inherit',
 			stderr: 'inherit'
 		})
 	);
-
-	if (exitCode !== 0) return yield* new CollectError({ message: `rsync exited with ${exitCode}` });
-});
 
 const FinalFiles = Schema.Struct({
 	board: Schema.optional(Schema.NullOr(Schema.String)),

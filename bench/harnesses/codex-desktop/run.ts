@@ -11,8 +11,9 @@ import {
 	Stream
 } from 'effect';
 import { Argument, Command } from 'effect/cli';
-import { ChildProcess, ChildProcessSpawner } from 'effect/process';
+import { ChildProcess } from 'effect/process';
 import { homedir } from 'node:os';
+import { exec, run as runCommand } from '../../command.ts';
 import { readRunKey, revokeRunKey } from '../../gateway.ts';
 import {
 	GATEWAY_MODEL,
@@ -76,57 +77,28 @@ const resultJson = (result: Result) => `${JSON.stringify(result, null, '\t')}\n`
 
 const now = DateTime.now.pipe(Effect.map(DateTime.formatIso));
 
-const exec = Effect.fnUntraced(function* (command: ChildProcess.Command) {
-	const handle = yield* command;
-
-	const [stdout, stderr, exitCode] = yield* Effect.all(
-		[
-			Stream.mkString(Stream.decodeText(handle.stdout)),
-			Stream.mkString(Stream.decodeText(handle.stderr)),
-			handle.exitCode
-		],
-		{ concurrency: 'unbounded' }
-	);
-
-	return { stdout: stdout.trim(), stderr, exitCode };
-}, Effect.scoped);
-
-const succeeds = Effect.fnUntraced(function* (name: string, command: ChildProcess.Command) {
-	const exitCode = yield* (yield* ChildProcessSpawner.ChildProcessSpawner).exitCode(command);
-
-	if (exitCode !== 0) return yield* new MacError({ message: `${name} exited with ${exitCode}` });
-});
-
 const aws = Effect.fn('aws')(function* (args: ReadonlyArray<string>) {
-	const { stdout, stderr, exitCode } = yield* exec(
+	const stdout = yield* runCommand(
 		ChildProcess.make('nix', ['run', 'nixpkgs#awscli2', '--', '--region', 'us-east-1', ...args], {
 			stdin: 'ignore'
 		})
 	);
 
-	if (exitCode !== 0)
-		return yield* new MacError({
-			message: `aws ${args.join(' ')} exited with ${exitCode}: ${stderr}`
-		});
-
-	return stdout;
+	return stdout.trim();
 });
 
 // Commands run as ec2-user in the GUI login session, where the app and its environment live.
 const AS_GUI_USER = 'sudo launchctl asuser 501 sudo -u ec2-user';
 
 const mac = Effect.fn('mac')(function* (script: string, { check = true } = {}) {
-	const { stdout, exitCode } = yield* exec(
-		ChildProcess.make('ssh', [...SSH_OPTIONS, HOST, 'bash -s'], {
-			stdin: Stream.make(`set -euo pipefail\n${script}`).pipe(Stream.encodeText),
-			stderr: 'inherit'
-		})
-	);
+	const command = ChildProcess.make('ssh', [...SSH_OPTIONS, HOST, 'bash -s'], {
+		stdin: Stream.make(`set -euo pipefail\n${script}`).pipe(Stream.encodeText),
+		stderr: 'inherit'
+	});
 
-	if (exitCode !== 0 && check)
-		return yield* new MacError({ message: `Mac command failed:\n${script}` });
+	const stdout = check ? yield* runCommand(command) : (yield* exec(command)).stdout;
 
-	return stdout;
+	return stdout.trim();
 });
 
 const vnc = Effect.fn('vnc')(function* (actions: ReadonlyArray<string>) {
@@ -146,8 +118,7 @@ const vnc = Effect.fn('vnc')(function* (actions: ReadonlyArray<string>) {
 	);
 
 	yield* Effect.sleep('3 seconds');
-	yield* succeeds(
-		'vnc.py',
+	yield* runCommand(
 		ChildProcess.make('uv', ['run', '--quiet', `${HERE}/vnc.py`, ...actions], {
 			env: { MAC_VNC_PORT: String(VNC_PORT) },
 			extendEnv: true,
@@ -359,8 +330,7 @@ grep '"type":"token_count"' ${result.rollout} | tail -1 | grep -oE '"total_token
 });
 
 const collect = (resultDir: string) =>
-	succeeds(
-		'collect',
+	runCommand(
 		ChildProcess.make(
 			'ssh',
 			[...SSH_OPTIONS, HOST, 'tar -C ~ -czf - pcbbench-run .codex/sessions'],

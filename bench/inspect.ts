@@ -5,7 +5,7 @@ import { ChildProcess } from 'effect/process';
 import { readRun, updateMetrics } from './board.ts';
 import { exec, run } from './command.ts';
 import { matchFab } from './fab-match.ts';
-import { RUNS } from './runs.ts';
+import { runIdArgument } from './runs.ts';
 
 const RENDERS = {
 	top: ['--side', 'top'],
@@ -165,10 +165,7 @@ const inspect = Effect.fn('inspect')(function* ({
 Command.make(
 	'inspect',
 	{
-		runId: Argument.Literals(
-			'run-id',
-			RUNS.map((run) => run.id)
-		),
+		runId: runIdArgument,
 		kicadCli: Argument.String('kicad-cli').pipe(
 			Argument.withDescription('kicad-cli of the KiCad version the run used')
 		)
