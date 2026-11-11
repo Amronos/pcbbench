@@ -20,7 +20,6 @@ import { claudeCodeUsage, codexUsage, type TokenUsage } from './usage.ts';
 
 // GitHub rejects files over 100 MB; agents sometimes leave large downloads in their folder.
 const MAX_FILE_SIZE = '50M';
-const USAGE = 'Usage: bun bench/collect.ts <run id> [user@host, for Linux runs]';
 const SSH_OPTIONS = ['-i', `${homedir()}/.ssh/pcbbench.pem`, '-o', 'BatchMode=yes'];
 const FIND_LARGE = `find pcbbench-run -type f -size +${MAX_FILE_SIZE}`;
 
@@ -176,7 +175,8 @@ const machine = (run: Run, host: Option.Option<string>) => {
 	}
 
 	return Option.match(host, {
-		onNone: () => Effect.fail(new CollectError({ message: USAGE })),
+		onNone: () =>
+			Effect.fail(new CollectError({ message: `${run.id} is a Linux run; pass its user@host` })),
 		onSome: (host) =>
 			Effect.succeed({
 				source: `${host}:`,
@@ -297,11 +297,9 @@ const collect = Effect.fn('collect')(function* (run: Run, host: Option.Option<st
 Command.make(
 	'collect',
 	{
-		run: Argument.String('run-id').pipe(
-			Argument.filterMap(
-				(id) => Option.fromNullishOr(RUNS.find((run) => run.id === id)),
-				() => `a run id from runs.ts: ${RUNS.map((run) => run.id).join(', ')}`
-			)
+		run: Argument.ChoiceWithValue(
+			'run-id',
+			RUNS.map((run) => [run.id, run] as const)
 		),
 		host: Argument.String('user@host').pipe(Argument.optional)
 	},

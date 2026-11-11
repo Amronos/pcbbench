@@ -1,7 +1,7 @@
 import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Console, DateTime, Effect, FileSystem, Layer, Schema } from 'effect';
 import { Command } from 'effect/cli';
-import { runDirectory, updateMetrics } from './board.ts';
+import { readRunInfo, runDirectory, updateMetrics } from './board.ts';
 import { readBom } from './bom.ts';
 import { Lcsc, type LcscProduct } from './lcsc.ts';
 import { BATCH_BOARDS, runIdArgument } from './runs.ts';
@@ -51,8 +51,6 @@ const PcbwayQuote = Schema.fromJsonString(
 		fixes: Schema.optional(Schema.Array(Fix))
 	})
 );
-
-const BomPath = Schema.fromJsonString(Schema.Struct({ bom: Schema.String }));
 
 type Line = { refs: string; qty: number; mpn: string; lcsc: string | null };
 
@@ -176,9 +174,7 @@ const command = Command.make('price', { runId: runIdArgument }, ({ runId }) =>
 		const [width, height] = quote.options.size_mm.split('x').map(Number);
 		const boardSizeMm = { width, height };
 
-		const { bom: bomPath } = yield* Schema.decodeEffect(BomPath)(
-			yield* fs.readFileString(`${runDir}/info.json`)
-		);
+		const { bom: bomPath } = yield* readRunInfo(runId);
 
 		const bom = yield* readBom(`${runDir}/output/${bomPath}`);
 		const lcscColumn = bom.column(/lcsc/i);

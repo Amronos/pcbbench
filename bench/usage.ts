@@ -16,7 +16,6 @@ const empty = (): TokenUsage => ({
 	reasoning: 0
 });
 
-// The lines of each matching log file that decode with the schema.
 const logEntries = Effect.fnUntraced(function* <S extends Schema.ConstraintDecoder<unknown>>(
 	dir: string,
 	isLog: (path: string) => boolean,

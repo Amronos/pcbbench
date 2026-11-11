@@ -177,12 +177,19 @@ const RunInfo = Schema.fromJsonString(
 	})
 );
 
+export const readRunInfo = Effect.fn('readRunInfo')(function* (runId: string) {
+	const text = yield* (yield* FileSystem.FileSystem).readFileString(
+		`${runDirectory(runId)}/info.json`
+	);
+
+	return yield* Schema.decodeEffect(RunInfo)(text);
+});
+
 export const readRun = Effect.fn('readRun')(function* (runId: string) {
-	const fs = yield* FileSystem.FileSystem;
 	const runDir = runDirectory(runId);
-	const info = yield* Schema.decodeEffect(RunInfo)(yield* fs.readFileString(`${runDir}/info.json`));
+	const info = yield* readRunInfo(runId);
 	const board = `${runDir}/output/${info.board}`;
-	const pcb = yield* fs.readFileString(board);
+	const pcb = yield* (yield* FileSystem.FileSystem).readFileString(board);
 	const fileVersion = Number(pcb.match(/\(version (\d+)\)/)?.[1]);
 
 	const footprints = children(pcb, 'footprint').map((footprint) =>

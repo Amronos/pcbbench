@@ -11,7 +11,8 @@ import {
 	RUNS,
 	WALL_CLOCK_LIMIT_HOURS,
 	minutesBetween,
-	renderPrompt
+	renderPrompt,
+	type ModelId
 } from '../../runs.ts';
 import { HOME, PREFIX, startHub, type Hub, type HubError, type HubOptions } from './hub.ts';
 
@@ -121,7 +122,7 @@ const run = Effect.fn('run')(function* ({
 	thread: followupThread
 }: {
 	runId: string;
-	model: (typeof MODELS)[number];
+	model: ModelId;
 	prompt: Option.Option<string>;
 	keyFile: string;
 	thread: Option.Option<string>;

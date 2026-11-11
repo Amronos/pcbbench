@@ -26,7 +26,7 @@ const Budget = Schema.Struct({
 
 type Budget = typeof Budget.Type;
 
-export class GatewayError extends Schema.TaggedError<GatewayError>()('GatewayError', {
+class GatewayError extends Schema.TaggedError<GatewayError>()('GatewayError', {
 	message: Schema.String
 }) {}
 

@@ -31,6 +31,8 @@ export class LcscError extends Schema.TaggedError<LcscError>()('LcscError', {
 	cause: Schema.Defect()
 }) {}
 
+const toLcscError = <E>(cause: E) => new LcscError({ cause });
+
 const API = 'https://wmsc.lcsc.com/ftps/wm';
 
 export class Lcsc extends Context.Service<
@@ -55,45 +57,38 @@ export class Lcsc extends Context.Service<
 			const api = (request: HttpClientRequest.HttpClientRequest) =>
 				client.execute(HttpClientRequest.setHeader(request, 'Content-Type', 'application/json'));
 
-			const productByCode = Effect.fn('Lcsc.productByCode')(
-				function* (code: string) {
-					const response = yield* api(
-						HttpClientRequest.get(`${API}/product/detail?productCode=${code}`)
-					);
+			const productByCode = Effect.fn('Lcsc.productByCode')(function* (code: string) {
+				const response = yield* api(
+					HttpClientRequest.get(`${API}/product/detail?productCode=${code}`)
+				);
 
-					return (yield* HttpClientResponse.schemaBodyJson(ProductResponse)(response)).result;
-				},
-				Effect.mapError((cause) => new LcscError({ cause }))
-			);
+				return (yield* HttpClientResponse.schemaBodyJson(ProductResponse)(response)).result;
+			}, Effect.mapError(toLcscError));
 
-			const exactMatches = Effect.fn('Lcsc.exactMatches')(
-				function* (keyword: string) {
-					const response = yield* api(
-						HttpClientRequest.post(`${API}/search/v3/global`).pipe(
-							HttpClientRequest.bodyJsonUnsafe({ keyword })
-						)
-					);
+			const exactMatches = Effect.fn('Lcsc.exactMatches')(function* (keyword: string) {
+				const response = yield* api(
+					HttpClientRequest.post(`${API}/search/v3/global`).pipe(
+						HttpClientRequest.bodyJsonUnsafe({ keyword })
+					)
+				);
 
-					const { result } = yield* HttpClientResponse.schemaBodyJson(SearchResponse)(response);
+				const { result } = yield* HttpClientResponse.schemaBodyJson(SearchResponse)(response);
 
-					return result?.exactMatchResult ?? [];
-				},
-				Effect.mapError((cause) => new LcscError({ cause }))
-			);
+				return result?.exactMatchResult ?? [];
+			}, Effect.mapError(toLcscError));
 
-			const footprintPadNumbers = Effect.fn('Lcsc.footprintPadNumbers')(
-				function* (product: LcscProduct) {
-					const svgUrl = product.edaSvgInfo?.pcbSvg;
+			const footprintPadNumbers = Effect.fn('Lcsc.footprintPadNumbers')(function* (
+				product: LcscProduct
+			) {
+				const svgUrl = product.edaSvgInfo?.pcbSvg;
 
-					if (!svgUrl) return [];
-					const svg = yield* (yield* client.get(`https:${svgUrl}`)).text;
+				if (!svgUrl) return [];
+				const svg = yield* (yield* client.get(`https:${svgUrl}`)).text;
 
-					return [...svg.matchAll(/<[^>]*c_partid="part_pad"[^>]*>/g)].flatMap(
-						([tag]) => tag.match(/\bnumber="([^"]+)"/)?.[1] ?? []
-					);
-				},
-				Effect.mapError((cause) => new LcscError({ cause }))
-			);
+				return [...svg.matchAll(/<[^>]*c_partid="part_pad"[^>]*>/g)].flatMap(
+					([tag]) => tag.match(/\bnumber="([^"]+)"/)?.[1] ?? []
+				);
+			}, Effect.mapError(toLcscError));
 
 			return Lcsc.of({ productByCode, exactMatches, footprintPadNumbers });
 		})

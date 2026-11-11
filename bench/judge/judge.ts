@@ -14,7 +14,7 @@ import { Argument, Command } from 'effect/cli';
 import { ChildProcess } from 'effect/process';
 import { readRun, updateMetrics } from '../board.ts';
 import { run } from '../command.ts';
-import { isModelId, runIdArgument, type ModelId } from '../runs.ts';
+import { ModelId, runIdArgument } from '../runs.ts';
 import { buildPackage } from './package.ts';
 import { judgeStateDirectory, writeReasoning } from './reasoning.ts';
 
@@ -46,7 +46,7 @@ const ReviewJson = Schema.fromJsonString(Review);
 
 const Json = Schema.fromJsonString(Schema.Unknown);
 
-const Order = Schema.fromJsonString(Schema.Array(Schema.String));
+const Order = Schema.fromJsonString(Schema.Array(ModelId));
 
 const standardIssues = SchemaIssue.makeFormatterStandardSchemaV1();
 
@@ -110,7 +110,7 @@ const judge = Effect.fn('judge')(function* ({
 		yield* fs.writeFileString(orderPath, JSON.stringify(yield* Random.shuffle(JUDGES)));
 
 	const order = (yield* Schema.decodeEffect(Order)(yield* fs.readFileString(orderPath))).filter(
-		(model): model is ModelId => isModelId(model) && JUDGES.includes(model)
+		(model) => JUDGES.includes(model)
 	);
 
 	yield* fs.makeDirectory(`${runDir}/review`, { recursive: true });

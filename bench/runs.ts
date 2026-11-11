@@ -26,8 +26,6 @@ export const BACKPLANE_CLI: Record<ModelId, 'claude' | 'codex'> = {
 	'fable-5.2': 'claude'
 };
 
-export const isModelId = Schema.is(ModelId);
-
 export const MODELS = ModelId.literals;
 
 export const REASONING_EFFORT = 'medium';
