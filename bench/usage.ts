@@ -8,7 +8,13 @@ export type TokenUsage = {
 	reasoning: number;
 };
 
-const empty = (): TokenUsage => ({ input: 0, cacheRead: 0, cacheWrite: 0, output: 0, reasoning: 0 });
+const empty = (): TokenUsage => ({
+	input: 0,
+	cacheRead: 0,
+	cacheWrite: 0,
+	output: 0,
+	reasoning: 0
+});
 
 async function* jsonLines(dir: string, pattern: string) {
 	for await (const path of new Glob(pattern).scan({ cwd: dir, absolute: true, dot: true })) {
@@ -41,7 +47,16 @@ export async function claudeCodeUsage(dir: string) {
 // Each Codex rollout (the main agent and every subagent) keeps running totals; its last token_count is the total.
 // Codex's input_tokens includes cached reads and cache writes.
 export async function codexUsage(dir: string) {
-	const totals = new Map<string, { input_tokens: number; cached_input_tokens: number; cache_write_input_tokens?: number; output_tokens: number; reasoning_output_tokens: number }>();
+	const totals = new Map<
+		string,
+		{
+			input_tokens: number;
+			cached_input_tokens: number;
+			cache_write_input_tokens?: number;
+			output_tokens: number;
+			reasoning_output_tokens: number;
+		}
+	>();
 	for await (const { path, entry } of jsonLines(dir, '**/rollout-*.jsonl')) {
 		const info = entry?.payload?.type === 'token_count' ? entry.payload.info : null;
 		if (!info?.total_token_usage) continue;

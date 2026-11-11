@@ -9,7 +9,8 @@ const WIRE_DICT = join(PREFIX, 'pcbbench-wire-dict.json');
 export type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
 type Obj = { [key: string]: Json };
 
-export const isObj = (v: Json | undefined): v is Obj => typeof v === 'object' && v !== null && !Array.isArray(v);
+export const isObj = (v: Json | undefined): v is Obj =>
+	typeof v === 'object' && v !== null && !Array.isArray(v);
 export const str = (v: Json | undefined): string => (typeof v === 'string' ? v : '');
 
 function hubBinary(): string {
@@ -76,15 +77,32 @@ function cborDecoder(): (bytes: Uint8Array) => Json {
 
 export type Hub = { proc: Bun.Subprocess; rpc: Rpc };
 
-export async function startHub(opts: { home: string; port: number; cwd: string; env: Record<string, string>; log: string }): Promise<Hub> {
+export async function startHub(opts: {
+	home: string;
+	port: number;
+	cwd: string;
+	env: Record<string, string>;
+	log: string;
+}): Promise<Hub> {
 	const out = Bun.file(opts.log);
 	const proc = Bun.spawn(
-		[hubBinary(), '--home', opts.home, '--port', String(opts.port), '--host', '127.0.0.1', '--no-tailscale', '--foreground'],
+		[
+			hubBinary(),
+			'--home',
+			opts.home,
+			'--port',
+			String(opts.port),
+			'--host',
+			'127.0.0.1',
+			'--no-tailscale',
+			'--foreground'
+		],
 		{ cwd: opts.cwd, env: opts.env, stdin: 'ignore', stdout: out, stderr: out }
 	);
 	const url = `http://127.0.0.1:${opts.port}`;
 	for (let i = 0; ; i++) {
-		if (proc.exitCode !== null) throw new Error(`hub exited with ${proc.exitCode}; see ${opts.log}`);
+		if (proc.exitCode !== null)
+			throw new Error(`hub exited with ${proc.exitCode}; see ${opts.log}`);
 		if (i > 600) throw new Error('hub did not answer /hello within 60 s');
 		const ok = await fetch(`${url}/hello`).then(
 			(r) => r.ok,
@@ -94,13 +112,19 @@ export async function startHub(opts: { home: string; port: number; cwd: string; 
 		await Bun.sleep(100);
 	}
 	const token = readFileSync(join(opts.home, 'token'), 'utf8').trim();
-	return { proc, rpc: await Rpc.connect(`ws://127.0.0.1:${opts.port}/ws?token=${encodeURIComponent(token)}`) };
+	return {
+		proc,
+		rpc: await Rpc.connect(`ws://127.0.0.1:${opts.port}/ws?token=${encodeURIComponent(token)}`)
+	};
 }
 
 export async function stopHub(hub: Hub): Promise<void> {
 	hub.rpc.close();
 	hub.proc.kill('SIGTERM');
-	const exited = await Promise.race([hub.proc.exited.then(() => true), Bun.sleep(15_000).then(() => false)]);
+	const exited = await Promise.race([
+		hub.proc.exited.then(() => true),
+		Bun.sleep(15_000).then(() => false)
+	]);
 	if (!exited) hub.proc.kill('SIGKILL');
 }
 
@@ -113,7 +137,12 @@ export class Rpc {
 		ws.binaryType = 'arraybuffer';
 		ws.addEventListener('message', (e) => {
 			const data: unknown = e.data;
-			const msg = data instanceof ArrayBuffer ? decode(new Uint8Array(data)) : typeof data === 'string' ? JSON.parse(data) : null;
+			const msg =
+				data instanceof ArrayBuffer
+					? decode(new Uint8Array(data))
+					: typeof data === 'string'
+						? JSON.parse(data)
+						: null;
 			if (!isObj(msg) || msg.t !== 'reply' || typeof msg.id !== 'number') return;
 			this.waiting.get(msg.id)?.(msg);
 			this.waiting.delete(msg.id);

@@ -39,7 +39,13 @@
 	},
 	"LPS3010-103MLC": {
 		"buyMpn": "LPS3010-103MRC",
-		"fixes": [{ "area": "bom", "problem": "Legacy part: Coilcraft sells the ML termination only to existing customers", "fix": "Priced LPS3010-103MRC, its halogen-free replacement with the same footprint" }],
+		"fixes": [
+			{
+				"area": "bom",
+				"problem": "Legacy part: Coilcraft sells the ML termination only to existing customers",
+				"fix": "Priced LPS3010-103MRC, its halogen-free replacement with the same footprint"
+			}
+		],
 		"source": "https://www.coilcraft.com/en-us/products/power/shielded-inductors/ferrite-drum/lps/lps3010/",
 		"minBuy": 1,
 		"tiers": [
@@ -55,21 +61,41 @@
 	},
 	"RC0603FR-0783K5L": {
 		"buyMpn": "RN73R1JTTD8352B25",
-		"fixes": [{ "area": "bom", "problem": "Invalid MPN: 83.5k is not an E96 value, so Yageo's 1% RC series doesn't make it", "fix": "Priced KOA RN73R1JTTD8352B25, an 83.5k 0.1% 0603" }],
+		"fixes": [
+			{
+				"area": "bom",
+				"problem": "Invalid MPN: 83.5k is not an E96 value, so Yageo's 1% RC series doesn't make it",
+				"fix": "Priced KOA RN73R1JTTD8352B25, an 83.5k 0.1% 0603"
+			}
+		],
 		"source": "https://www.digikey.com/en/products/detail/koa-speer-electronics-inc/RN73R1JTTD8352B25",
 		"minBuy": 1,
 		"tiers": [{ "ladder": 1, "usd": 0.1 }]
 	},
 	"GRM188R61A225KE15D": {
 		"buyMpn": "GRM188R61A225KE34D",
-		"fixes": [{ "area": "bom", "problem": "Invalid MPN: Murata makes no GRM188R61A225KE15D", "fix": "Priced GRM188R61A225KE34D, the 2.2uF 10V X5R 0603" }],
+		"fixes": [
+			{
+				"area": "bom",
+				"problem": "Invalid MPN: Murata makes no GRM188R61A225KE15D",
+				"fix": "Priced GRM188R61A225KE34D, the 2.2uF 10V X5R 0603"
+			}
+		],
 		"lcsc": "C86013"
 	},
 	"RT0402BRD07312KL": {
 		"buyMpn": "RT0603BRD07312KL",
 		"fixes": [
-			{ "area": "bom", "problem": "Unavailable part: no 312k 0.1% 0402 is sold by LCSC, DigiKey or Mouser", "fix": "Priced RT0603BRD07312KL, the same series in 0603" },
-			{ "area": "pcb", "problem": "The 0402 footprint doesn't fit the 0603 substitute", "fix": "Assumed a 0603 footprint; not re-quoted, since the PCB is at PCBWay's minimum price and the part count is unchanged" }
+			{
+				"area": "bom",
+				"problem": "Unavailable part: no 312k 0.1% 0402 is sold by LCSC, DigiKey or Mouser",
+				"fix": "Priced RT0603BRD07312KL, the same series in 0603"
+			},
+			{
+				"area": "pcb",
+				"problem": "The 0402 footprint doesn't fit the 0603 substitute",
+				"fix": "Assumed a 0603 footprint; not re-quoted, since the PCB is at PCBWay's minimum price and the part count is unchanged"
+			}
 		],
 		"lcsc": "C861315"
 	}

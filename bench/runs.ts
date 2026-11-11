@@ -21,7 +21,8 @@ export const BACKPLANE_CLI: Record<ModelId, 'claude' | 'codex'> = {
 	'fable-5.2': 'claude'
 };
 
-export const isModelId = (value: string | undefined): value is ModelId => value !== undefined && value in GATEWAY_MODEL;
+export const isModelId = (value: string | undefined): value is ModelId =>
+	value !== undefined && value in GATEWAY_MODEL;
 export const MODELS = Object.keys(GATEWAY_MODEL).filter(isModelId);
 
 export const REASONING_EFFORT = 'medium';
@@ -48,12 +49,19 @@ export const parseVersions = (output: string): Record<string, string> =>
 			.map((line) => [line.slice(0, line.indexOf('=')), line.slice(line.indexOf('=') + 1)])
 	);
 
-export const kicadFullVersion = (kicadCli: string) => `$(${kicadCli} version --format about | sed -n 's/^Version: \\([^,]*\\).*/\\1/p')`;
+export const kicadFullVersion = (kicadCli: string) =>
+	`$(${kicadCli} version --format about | sed -n 's/^Version: \\([^,]*\\).*/\\1/p')`;
 
-export const minutesBetween = (startMs: number, endMs: number) => Math.round((endMs - startMs) / 600) / 100;
+export const minutesBetween = (startMs: number, endMs: number) =>
+	Math.round((endMs - startMs) / 600) / 100;
 
 export const RUNS: Run[] = [
-	{ id: 'codex-desktop--gpt-6.1-sol', harness: 'codex-desktop', model: 'gpt-6.1-sol', machine: 'mac' },
+	{
+		id: 'codex-desktop--gpt-6.1-sol',
+		harness: 'codex-desktop',
+		model: 'gpt-6.1-sol',
+		machine: 'mac'
+	},
 	{
 		id: 'codex-desktop-texttocad--gpt-6.1-sol',
 		harness: 'codex-desktop-texttocad',

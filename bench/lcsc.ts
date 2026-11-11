@@ -20,12 +20,15 @@ export async function lcsc<T>(path: string, body?: object): Promise<T | null> {
 	return result;
 }
 
-export const productByCode = (code: string) => lcsc<LcscProduct>(`product/detail?productCode=${code}`);
+export const productByCode = (code: string) =>
+	lcsc<LcscProduct>(`product/detail?productCode=${code}`);
 
 // LCSC's own footprint for the part, as an SVG with one element per pad.
 export async function footprintPadNumbers(product: LcscProduct) {
 	const svgUrl = product.edaSvgInfo?.pcbSvg;
 	if (!svgUrl) return [];
 	const svg = await (await fetch(`https:${svgUrl}`, { headers: USER_AGENT })).text();
-	return [...svg.matchAll(/<[^>]*c_partid="part_pad"[^>]*>/g)].flatMap(([tag]) => tag.match(/\bnumber="([^"]+)"/)?.[1] ?? []);
+	return [...svg.matchAll(/<[^>]*c_partid="part_pad"[^>]*>/g)].flatMap(
+		([tag]) => tag.match(/\bnumber="([^"]+)"/)?.[1] ?? []
+	);
 }

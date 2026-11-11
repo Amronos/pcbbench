@@ -39,7 +39,8 @@ export async function createRunKey(runId: string): Promise<RunKey> {
 	const text = out.stdout.toString() + out.stderr.toString();
 	const secret = text.match(/vck_\w+/)?.[0];
 	const keyId = text.match(/API key \S+ \((\w+)\) created/)?.[1];
-	if (!secret || !keyId) throw new Error(`Could not parse the new key from: ${text.replaceAll(/vck_\w+/g, 'vck_…')}`);
+	if (!secret || !keyId)
+		throw new Error(`Could not parse the new key from: ${text.replaceAll(/vck_\w+/g, 'vck_…')}`);
 	const key = { runId, keyId, name, secret };
 	await mkdir(STATE_DIR, { recursive: true });
 	await Bun.write(statePath(runId), JSON.stringify(key));
@@ -52,7 +53,15 @@ export async function readRunKey(runId: string): Promise<RunKey> {
 }
 
 export async function readBudget(key: RunKey): Promise<Budget> {
-	const out = await vercel(['ai-gateway', 'budgets', 'inspect', 'api-key', key.name, '--format', 'json']);
+	const out = await vercel([
+		'ai-gateway',
+		'budgets',
+		'inspect',
+		'api-key',
+		key.name,
+		'--format',
+		'json'
+	]);
 	const text = out.stdout.toString();
 	return JSON.parse(text.slice(text.indexOf('{')));
 }
@@ -72,7 +81,10 @@ async function watchRunKey(key: RunKey) {
 		});
 		if (budget && spentUsd(budget) >= revokeAtUsd) {
 			await revokeRunKey(key);
-			await Bun.write(`${STATE_DIR}/${key.runId}.revoked.json`, JSON.stringify({ at: new Date(), spentUsd: spentUsd(budget) }));
+			await Bun.write(
+				`${STATE_DIR}/${key.runId}.revoked.json`,
+				JSON.stringify({ at: new Date(), spentUsd: spentUsd(budget) })
+			);
 			console.log(`Revoked ${key.name} at $${spentUsd(budget).toFixed(2)}`);
 			return;
 		}

@@ -38,4 +38,5 @@ Before a run, start `sprocket login --credential-store file` on every box at the
    3. Fetch that URL from the app page, then `POST /api/auth/desktop-login/result {"loginId": ...}`.
 
    Stay on the app page until this finishes. Leaving it cancels the pending sign-in.
+
 4. Stop the server and run `sprocket logout`. Then `rm ~/.sprocket/installation.json` and `sudo truncate -s 0 /etc/machine-id` so each box gets its own Sprocket installation and machine id. Image the box.

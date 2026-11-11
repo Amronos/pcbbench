@@ -1,7 +1,14 @@
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
-import { MODELS, REASONING_EFFORT, WALL_CLOCK_LIMIT_HOURS, isModelId, renderPrompt, type ModelId } from '../../runs.ts';
+import {
+	MODELS,
+	REASONING_EFFORT,
+	WALL_CLOCK_LIMIT_HOURS,
+	isModelId,
+	renderPrompt,
+	type ModelId
+} from '../../runs.ts';
 
 const [runId, model, promptFile] = Bun.argv.slice(2);
 if (!runId || !isModelId(model)) {
@@ -19,8 +26,13 @@ if ((await readdir(workDir)).length > 0) {
 await mkdir(resultDir, { recursive: true });
 
 // Each box needs its own login; a copied refresh token dies 30 s after any other copy refreshes.
-if (Bun.spawnSync(['sprocket', 'run', '--list-models'], { stdout: 'ignore', stderr: 'ignore' }).exitCode !== 0) {
-	const login = Bun.spawnSync(['sprocket', 'login', '--credential-store', 'file'], { stdio: ['inherit', 'inherit', 'inherit'] });
+if (
+	Bun.spawnSync(['sprocket', 'run', '--list-models'], { stdout: 'ignore', stderr: 'ignore' })
+		.exitCode !== 0
+) {
+	const login = Bun.spawnSync(['sprocket', 'login', '--credential-store', 'file'], {
+		stdio: ['inherit', 'inherit', 'inherit']
+	});
 	if (login.exitCode !== 0) process.exit(1);
 }
 
@@ -49,22 +61,34 @@ const result: {
 	workDir,
 	startedAt: new Date().toISOString()
 };
-const saveResult = () => writeFile(join(resultDir, 'result.json'), JSON.stringify(result, null, '\t') + '\n');
+const saveResult = () =>
+	writeFile(join(resultDir, 'result.json'), JSON.stringify(result, null, '\t') + '\n');
 await saveResult();
 
 const child = Bun.spawn(
 	[
-		'sprocket', 'run',
-		'--prompt-file', renderedPrompt,
-		'-C', workDir,
-		'--model', model,
-		'--reasoning', REASONING_EFFORT,
-		'--timeout', `${WALL_CLOCK_LIMIT_HOURS}h`
+		'sprocket',
+		'run',
+		'--prompt-file',
+		renderedPrompt,
+		'-C',
+		workDir,
+		'--model',
+		model,
+		'--reasoning',
+		REASONING_EFFORT,
+		'--timeout',
+		`${WALL_CLOCK_LIMIT_HOURS}h`
 	],
 	{ stdin: 'ignore', stdout: 'pipe', stderr: 'pipe' }
 );
 
-async function tee(stream: ReadableStream<Uint8Array>, path: string, echo: NodeJS.WriteStream, onText?: (text: string) => void) {
+async function tee(
+	stream: ReadableStream<Uint8Array>,
+	path: string,
+	echo: NodeJS.WriteStream,
+	onText?: (text: string) => void
+) {
 	const file = Bun.file(path).writer();
 	const decoder = new TextDecoder();
 	for await (const chunk of stream) {

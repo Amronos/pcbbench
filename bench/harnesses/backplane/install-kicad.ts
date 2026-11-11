@@ -7,15 +7,27 @@ import { PREFIX, startHub, stopHub } from './hub.ts';
 
 const home = mkdtempSync(join(tmpdir(), 'bp-kicad-'));
 const staged = join(home, 'kicad');
-const hub = await startHub({ home, port: 3899, cwd: home, env: { ...process.env, BACKPLANE_NO_UPDATE: '1' }, log: join(home, 'hub.log') });
+const hub = await startHub({
+	home,
+	port: 3899,
+	cwd: home,
+	env: { ...process.env, BACKPLANE_NO_UPDATE: '1' },
+	log: join(home, 'hub.log')
+});
 try {
 	await hub.rpc.call('kicad.install', { consent: true });
 	const deadline = Date.now() + 30 * 60_000;
 	const installed = (): string[] =>
-		existsSync(staged) ? readdirSync(staged).filter((d) => !d.startsWith('.') && existsSync(join(staged, d, 'bin/kicad-cli'))) : [];
-	const busy = (): boolean => existsSync(staged) && readdirSync(staged).some((d) => d.startsWith('.install-'));
+		existsSync(staged)
+			? readdirSync(staged).filter(
+					(d) => !d.startsWith('.') && existsSync(join(staged, d, 'bin/kicad-cli'))
+				)
+			: [];
+	const busy = (): boolean =>
+		existsSync(staged) && readdirSync(staged).some((d) => d.startsWith('.install-'));
 	while (installed().length === 0 || busy()) {
-		if (Date.now() > deadline) throw new Error(`KiCad did not install in 30 min; see ${home}/hub.log`);
+		if (Date.now() > deadline)
+			throw new Error(`KiCad did not install in 30 min; see ${home}/hub.log`);
 		await Bun.sleep(2000);
 	}
 	const dest = join(PREFIX, 'kicad');
