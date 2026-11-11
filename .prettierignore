@@ -1,0 +1,12 @@
+bun.lock
+
+# Renovate writes TOML in its own style
+*.toml
+
+flake*
+
+# Agent output, kept as delivered
+runs/
+
+# Vendored Oxlint plugin
+tools/oxlint/anti-slop/

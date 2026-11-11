@@ -1,0 +1,13 @@
+name: Setup Nix shell
+description: >-
+  Installs Nix and realises the dev shell into the pcbbench-shell profile so
+  later steps can run `nix develop ./pcbbench-shell`.
+
+runs:
+  using: composite
+  steps:
+    - uses: nixbuild/nix-quick-install-action@v35
+
+    - name: Build shell environment
+      shell: bash
+      run: nix develop --profile pcbbench-shell -c true

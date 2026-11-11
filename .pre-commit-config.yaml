@@ -1,0 +1,65 @@
+# Agent output, kept as delivered
+exclude: ^runs/
+
+repos:
+  - repo: builtin
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: check-xml
+      - id: end-of-file-fixer
+      - id: fix-byte-order-marker
+      - id: mixed-line-ending
+      - id: trailing-whitespace
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        exclude: ^bun\.lock$
+        exclude_types: [svg]
+
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.39.0
+    hooks:
+      - id: check-github-actions
+        args: ['--verbose']
+      - id: check-github-workflows
+        args: ['--verbose']
+      - id: check-github-workflows-require-timeout
+
+  - repo: local
+    hooks:
+      - id: nix-fmt
+        name: nix-fmt
+        language: system
+        entry: nix fmt
+        pass_filenames: false
+
+      - id: commitlint
+        name: commitlint
+        language: system
+        entry: commitlint --edit
+        stages: [commit-msg]
+
+      - id: oxlint
+        name: oxlint
+        language: system
+        entry: bun run lint:oxlint
+        pass_filenames: false
+
+      - id: typescript-check
+        name: typescript-check
+        language: system
+        entry: bun run check
+        pass_filenames: false
+
+      - id: bun-fmt
+        name: bun-fmt
+        language: system
+        entry: bun fmt .
+        pass_filenames: false

@@ -3,15 +3,21 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"check": "turbo run check",
-		"lint": "oxlint"
+		"test": "bun run test:anti-slop",
+		"test:anti-slop": "node --test tools/oxlint/anti-slop/rules/*.test.ts tools/oxlint/anti-slop/effect/rules/*.test.ts",
+		"check:anti-slop": "bun check --no-script -p tsconfig.anti-slop.json",
+		"check": "bun run check:anti-slop && bun turbo run check",
+		"lint:oxlint": "oxlint"
 	},
 	"devDependencies": {
+		"@oxlint/plugins": "1.90.0",
+		"@types/bun": "catalog:",
 		"oxlint": "1.90.0",
 		"turbo": "^2.9.8"
 	},
 	"engines": {
-		"bun": "^1.4.4"
+		"bun": "^1.4.4",
+		"node": "^26.0.0"
 	},
 	"packageManager": "bun@1.4.4",
 	"workspaces": [
@@ -19,7 +25,6 @@
 		"bench"
 	],
 	"catalog": {
-		"@types/bun": "^1.3.14",
-		"typescript": "^6.0.0"
+		"@types/bun": "^1.3.14"
 	}
 }
