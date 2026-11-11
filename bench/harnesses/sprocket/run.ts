@@ -11,6 +11,7 @@ import {
 } from '../../runs.ts';
 
 const [runId, model, promptFile] = Bun.argv.slice(2);
+
 if (!runId || !isModelId(model)) {
 	console.error(`Usage: bun run.ts <run-id> <${MODELS.join('|')}> [smoke-test prompt file]`);
 	process.exit(2);
@@ -18,11 +19,14 @@ if (!runId || !isModelId(model)) {
 
 const workDir = join(homedir(), 'pcbbench-run');
 const resultDir = join(homedir(), 'pcbbench-results', runId);
+
 await mkdir(workDir, { recursive: true });
+
 if ((await readdir(workDir)).length > 0) {
 	console.error(`${workDir} is not empty; use a fresh box or clear it first.`);
 	process.exit(1);
 }
+
 await mkdir(resultDir, { recursive: true });
 
 // Each box needs its own login; a copied refresh token dies 30 s after any other copy refreshes.
@@ -33,11 +37,13 @@ if (
 	const login = Bun.spawnSync(['sprocket', 'login', '--credential-store', 'file'], {
 		stdio: ['inherit', 'inherit', 'inherit']
 	});
+
 	if (login.exitCode !== 0) process.exit(1);
 }
 
 const prompt = await renderPrompt(model, promptFile);
 const renderedPrompt = join(resultDir, 'prompt.md');
+
 await Bun.write(renderedPrompt, prompt);
 
 const result: {
@@ -61,8 +67,10 @@ const result: {
 	workDir,
 	startedAt: new Date().toISOString()
 };
+
 const saveResult = () =>
 	writeFile(join(resultDir, 'result.json'), JSON.stringify(result, null, '\t') + '\n');
+
 await saveResult();
 
 const child = Bun.spawn(
@@ -91,22 +99,26 @@ async function tee(
 ) {
 	const file = Bun.file(path).writer();
 	const decoder = new TextDecoder();
+
 	for await (const chunk of stream) {
 		file.write(chunk);
 		file.flush();
 		echo.write(chunk);
 		onText?.(decoder.decode(chunk, { stream: true }));
 	}
+
 	await file.end();
 }
 
 let stderrSoFar = '';
+
 await Promise.all([
 	tee(child.stdout, join(resultDir, 'stdout.md'), process.stdout),
 	tee(child.stderr, join(resultDir, 'stderr.log'), process.stderr, async (text) => {
 		if (result.threadId) return;
 		stderrSoFar += text;
 		const ids = stderrSoFar.match(/Thread (\S+) \| Run (\S+)/);
+
 		if (ids) {
 			result.threadId = ids[1];
 			result.sprocketRunId = ids[2];
@@ -116,8 +128,13 @@ await Promise.all([
 ]);
 
 const exitCode = await child.exited;
+
 result.exitCode = exitCode;
+
 result.finishedAt = new Date().toISOString();
+
 await saveResult();
+
 console.error(`\nSaved ${resultDir}/result.json (thread ${result.threadId}, exit ${exitCode})`);
+
 process.exit(exitCode);

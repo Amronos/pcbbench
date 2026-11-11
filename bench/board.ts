@@ -4,8 +4,10 @@ function children(expr: string, head: string) {
 	let depth = 0;
 	let start = 0;
 	let quoted = false;
+
 	for (let i = 1; i < expr.length; i++) {
 		const char = expr[i];
+
 		if (quoted) {
 			if (char === '\\') i++;
 			else if (char === '"') quoted = false;
@@ -19,6 +21,7 @@ function children(expr: string, head: string) {
 		)
 			found.push(expr.slice(start, i + 1));
 	}
+
 	return found;
 }
 
@@ -29,16 +32,21 @@ export type Point = { x: number; y: number };
 const point = (block: string, key: string): Point => {
 	const [, x = 0, y = 0] =
 		block.match(new RegExp(`\\(${key} ([-\\d.]+) ([-\\d.]+)`))?.map(Number) ?? [];
+
 	return { x, y };
 };
+
 const points = (block: string) =>
 	[...block.matchAll(/\((?:xy|start|mid|end|center) ([-\d.]+) ([-\d.]+)\)/g)].map(([, x, y]) => ({
 		x: Number(x),
 		y: Number(y)
 	}));
+
 const netOf = (block: string) => block.match(/\(net (?:\d+ )?"([^"]*)"/)?.[1] ?? '';
+
 const layersOf = (block: string) =>
 	block.match(/\(layers? ((?:"[^"]*"\s*)+)\)/)?.[1].match(/[^"\s]+/g) ?? [];
+
 const numberOf = (block: string, key: string) =>
 	Number(block.match(new RegExp(`\\(${key} ([-\\d.]+)`))?.[1]);
 
@@ -67,20 +75,24 @@ const FIRST_FOOTPRINT_FRAME_ZONES = 20260616;
 
 function parseFootprint(block: string, fileVersion: number) {
 	const header = block.slice(0, block.search(/\(property |\(descr |\(pad /));
+
 	const placement =
 		header.match(/\(translate ([-\d.]+) ([-\d.]+)\)(?:\s*\(rotate ([-\d.]+)\))?/) ??
 		header.match(/\(at ([-\d.]+) ([-\d.]+)(?: ([-\d.]+))?\)/);
+
 	const attrs = block.match(/\(attr ([^)]*)\)/)?.[1].split(' ') ?? [];
 	const libId = block.match(/^\(footprint "([^"]*)"/)?.[1] ?? '';
 	const x = Number(placement?.[1]);
 	const y = Number(placement?.[2]);
 	const rotation = Number(placement?.[3] ?? 0);
 	const [cos, sin] = [Math.cos((rotation * Math.PI) / 180), Math.sin((rotation * Math.PI) / 180)];
+
 	// Child positions are stored unrotated, relative to the footprint; KiCad's y axis points down.
 	const toBoard = ({ x: dx, y: dy }: Point) => ({
 		x: x + dx * cos + dy * sin,
 		y: y - dx * sin + dy * cos
 	});
+
 	const pads = [...block.matchAll(/\(pad "([^"]*)" (\w+)[\s\S]*?(?=\(pad "|$)/g)].map(
 		([pad, number = '', type = '']) => {
 			return {
@@ -92,6 +104,7 @@ function parseFootprint(block: string, fileVersion: number) {
 			};
 		}
 	);
+
 	return {
 		ref: block.match(/\(property "Reference" "([^"]*)"/)?.[1] ?? '',
 		value: block.match(/\(property "Value" "([^"]*)"/)?.[1] ?? '',
@@ -121,6 +134,7 @@ export type Footprint = ReturnType<typeof parseFootprint>;
 
 function parseCopper(pcb: string) {
 	const setup = children(pcb, 'setup')[0] ?? '';
+
 	return {
 		tracks: ['segment', 'arc'].flatMap((kind) =>
 			children(pcb, kind).map((track) => ({
@@ -155,18 +169,23 @@ export async function readRun(runId: string) {
 	const board = `${runDir}/output/${info.board}`;
 	const pcb = await Bun.file(board).text();
 	const fileVersion = Number(pcb.match(/\(version (\d+)\)/)?.[1]);
+
 	const footprints = children(pcb, 'footprint').map((footprint) =>
 		parseFootprint(footprint, fileVersion)
 	);
+
 	const parts = footprints
 		.filter((footprint) => footprint.isPart)
 		.sort((a, b) => byRef(a.ref, b.ref));
+
 	const copperLayers = [
 		...(pcb.match(/\n\t\(layers\n([\s\S]*?)\n\t\)/)?.[1] ?? '').matchAll(
 			/\(\d+ "([^"]+\.Cu)" (?:signal|power|mixed|jumper)/g
 		)
 	].map(([, name]) => name!);
+
 	const metricsPath = `${runDir}/metrics.json`;
+
 	const updateMetrics = async (fields: object) => {
 		await Bun.write(
 			metricsPath,
@@ -174,6 +193,7 @@ export async function readRun(runId: string) {
 		);
 		console.log(JSON.stringify(fields, null, '\t'));
 	};
+
 	return {
 		runDir,
 		info,

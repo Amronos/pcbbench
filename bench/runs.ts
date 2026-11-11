@@ -23,20 +23,24 @@ export const BACKPLANE_CLI: Record<ModelId, 'claude' | 'codex'> = {
 
 export const isModelId = (value: string | undefined): value is ModelId =>
 	value !== undefined && value in GATEWAY_MODEL;
+
 export const MODELS = Object.keys(GATEWAY_MODEL).filter(isModelId);
 
 export const REASONING_EFFORT = 'medium';
 export const WALL_CLOCK_LIMIT_HOURS = 12;
+
 export const COST_LIMIT_USD: Record<ModelId, number> = {
 	'opus-5.5': 100,
 	'gpt-6.1-sol': 100,
 	'fable-5.2': 250
 };
+
 export const COST_REVOKE_MARGIN_USD = 5;
 export const BATCH_BOARDS = 5;
 
 export async function renderPrompt(model: ModelId, path = `${import.meta.dir}/prompt.md`) {
 	const template = await Bun.file(path).text();
+
 	return template.replaceAll('{{MODEL}}', model).replaceAll('{{EFFORT}}', REASONING_EFFORT);
 }
 

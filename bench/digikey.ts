@@ -4,10 +4,12 @@ const API = 'https://api.digikey.com';
 
 async function accessToken() {
 	const { DIGIKEY_CLIENT_ID: clientId, DIGIKEY_CLIENT_SECRET: clientSecret } = process.env;
+
 	if (!clientId || !clientSecret)
 		throw new Error(
 			'Set DIGIKEY_CLIENT_ID and DIGIKEY_CLIENT_SECRET to a Digi-Key Product Information v4 app'
 		);
+
 	const response = await fetch(`${API}/v1/oauth2/token`, {
 		method: 'POST',
 		body: new URLSearchParams({
@@ -16,9 +18,11 @@ async function accessToken() {
 			grant_type: 'client_credentials'
 		})
 	});
+
 	if (!response.ok)
 		throw new Error(`Digi-Key sign-in failed: ${response.status} ${await response.text()}`);
 	const { access_token }: { access_token: string } = JSON.parse(await response.text());
+
 	return { clientId, token: access_token };
 }
 
@@ -34,6 +38,7 @@ type Product = {
 
 async function headers() {
 	const { clientId, token } = await (session ??= accessToken());
+
 	return {
 		Authorization: `Bearer ${token}`,
 		'X-DIGIKEY-Client-Id': clientId,
@@ -49,15 +54,19 @@ export async function digikeyPart(mpn: string) {
 		headers: await headers(),
 		body: JSON.stringify({ Keywords: mpn, Limit: 20 })
 	});
+
 	if (!response.ok)
 		throw new Error(
 			`Digi-Key lookup of ${mpn} failed: ${response.status} ${await response.text()}`
 		);
+
 	const { Products = [], ExactMatches = [] }: Record<'Products' | 'ExactMatches', Product[]> =
 		JSON.parse(await response.text());
+
 	const matches = [...ExactMatches, ...Products].filter((product) =>
 		isSamePart(mpn, product.ManufacturerProductNumber)
 	);
+
 	return {
 		stock: Math.max(0, ...matches.map((product) => product.QuantityAvailable ?? 0)),
 		discontinued:
@@ -72,19 +81,24 @@ export async function isDigikeyNumberFor(number: string, mpn: string) {
 		`${API}/products/v4/search/${encodeURIComponent(number)}/productdetails`,
 		{ headers: await headers() }
 	);
+
 	if (response.status === 404) return false;
+
 	if (!response.ok)
 		throw new Error(
 			`Digi-Key lookup of ${number} failed: ${response.status} ${await response.text()}`
 		);
+
 	const {
 		Product
 	}: { Product: Product & { ProductVariations?: { DigiKeyProductNumber: string }[] } } = JSON.parse(
 		await response.text()
 	);
+
 	const listed = (Product.ProductVariations ?? []).some(
 		(variation) =>
 			normalizePartNumber(variation.DigiKeyProductNumber) === normalizePartNumber(number)
 	);
+
 	return listed && isSamePart(mpn, Product.ManufacturerProductNumber);
 }

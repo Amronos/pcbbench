@@ -12,12 +12,15 @@ const RENDERS = {
 };
 
 const [runId, kicadCli] = Bun.argv.slice(2);
+
 if (!runId || !kicadCli)
 	throw new Error(
 		'Usage: bun bench/inspect.ts <run id> <kicad-cli of the KiCad version the run used>'
 	);
+
 const { runDir, info, board, footprints, parts, copperLayers, updateMetrics } =
 	await readRun(runId);
+
 // kicad-cli writes a local-settings .kicad_prl next to the board when there is none.
 const localSettings = board.replace(/\.kicad_pcb$/, '.kicad_prl');
 const hadLocalSettings = await Bun.file(localSettings).exists();
@@ -25,21 +28,28 @@ const hadLocalSettings = await Bun.file(localSettings).exists();
 const cliVersion = (await $`${kicadCli} version --format about`.text()).match(
 	/^Version: ([^,]+)/m
 )?.[1];
+
 const runVersion = info.versions.kicad.split(' ')[0];
+
 // Backplane's fork calls itself 10.99.0-unknown-bp.4.
 if (cliVersion?.replace('-unknown-', '-') !== runVersion)
 	throw new Error(`${kicadCli} is KiCad ${cliVersion}, but the run used ${runVersion}`);
 
 const work = await mkdtemp(join(tmpdir(), 'pcbbench-inspect-'));
+
 type Violation = { severity: string; type: string };
+
 const bySeverity = (violations: Violation[]) => ({
 	errors: violations.filter((violation) => violation.severity === 'error').length,
 	warnings: violations.filter((violation) => violation.severity === 'warning').length
 });
+
 // KiCad only warns about copper narrower than the board's own minimum connection width, but the fab has to make that copper.
 const DRC_MANUFACTURING_ERRORS = ['connection_width'];
+
 // The footprint differs from its library copy. That's an edit to the footprint, not a design fault.
 const DRC_IGNORED = ['lib_footprint_mismatch'];
+
 const classifyDrc = (violations: Violation[]) =>
 	violations
 		.filter((violation) => !DRC_IGNORED.includes(violation.type))
@@ -48,6 +58,7 @@ const classifyDrc = (violations: Violation[]) =>
 				? { ...violation, severity: 'error' }
 				: violation
 		);
+
 const countByType = (violations: Violation[]) =>
 	Object.fromEntries(
 		[...Map.groupBy(violations, (violation) => violation.type)].map(([type, group]) => [
@@ -55,6 +66,7 @@ const countByType = (violations: Violation[]) =>
 			group.length
 		])
 	);
+
 try {
 	// Saved zone fills can be stale; refilling checks the design as KiCad would plot it.
 	await $`${kicadCli} pcb drc --format json --severity-error --severity-warning --schematic-parity --refill-zones -o ${work}/drc.json ${board}`.quiet();
@@ -63,6 +75,7 @@ try {
 	const erc = await Bun.file(`${work}/erc.json`).json();
 
 	const smdSides = new Set(parts.filter((part) => part.smd).map((part) => part.side));
+
 	const expectedLayers = [
 		...copperLayers,
 		'Edge.Cuts',
@@ -76,6 +89,7 @@ try {
 			? ['NPTH']
 			: [])
 	];
+
 	const fab = await matchFab(
 		kicadCli,
 		board,
@@ -88,11 +102,13 @@ try {
 	const glb = await $`${kicadCli} pcb export glb --no-dnp -f -o ${work}/board.glb ${board}`
 		.quiet()
 		.nothrow();
+
 	const unloaded = new Set(
 		[...`${glb.stdout}${glb.stderr}`.matchAll(/Could not add 3D model for (\S+?)\.?$/gm)].map(
 			([, ref]) => ref
 		)
 	);
+
 	const missing3dModels = parts
 		.filter((part) => !part.hasModel || unloaded.has(part.ref))
 		.map((part) => part.ref);
@@ -114,5 +130,6 @@ try {
 	});
 } finally {
 	await rm(work, { recursive: true, force: true });
+
 	if (!hadLocalSettings) await rm(localSettings, { force: true });
 }

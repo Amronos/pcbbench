@@ -7,6 +7,7 @@ import { PREFIX, startHub, stopHub } from './hub.ts';
 
 const home = mkdtempSync(join(tmpdir(), 'bp-kicad-'));
 const staged = join(home, 'kicad');
+
 const hub = await startHub({
 	home,
 	port: 3899,
@@ -14,24 +15,30 @@ const hub = await startHub({
 	env: { ...process.env, BACKPLANE_NO_UPDATE: '1' },
 	log: join(home, 'hub.log')
 });
+
 try {
 	await hub.rpc.call('kicad.install', { consent: true });
 	const deadline = Date.now() + 30 * 60_000;
+
 	const installed = (): string[] =>
 		existsSync(staged)
 			? readdirSync(staged).filter(
 					(d) => !d.startsWith('.') && existsSync(join(staged, d, 'bin/kicad-cli'))
 				)
 			: [];
+
 	const busy = (): boolean =>
 		existsSync(staged) && readdirSync(staged).some((d) => d.startsWith('.install-'));
+
 	while (installed().length === 0 || busy()) {
 		if (Date.now() > deadline)
 			throw new Error(`KiCad did not install in 30 min; see ${home}/hub.log`);
 		await Bun.sleep(2000);
 	}
+
 	const dest = join(PREFIX, 'kicad');
 	mkdirSync(dest, { recursive: true });
+
 	for (const version of installed()) {
 		renameSync(join(staged, version), join(dest, version));
 		console.log(`KiCad ${version} in ${join(dest, version)}`);
@@ -39,4 +46,5 @@ try {
 } finally {
 	await stopHub(hub);
 }
+
 rmSync(home, { recursive: true, force: true });

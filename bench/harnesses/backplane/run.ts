@@ -27,8 +27,10 @@ import { HOME, PREFIX, isObj, startHub, stopHub, str, type Hub, type Json } from
 const GATEWAY = 'https://ai-gateway.vercel.sh';
 const PORT = 3800;
 const QUIET_MS = 3 * 60_000;
+
 const ASK_ANSWER =
 	'Nobody is available to answer. Make a reasonable decision yourself, record it, and continue.';
+
 const FOLLOWUP = 'continue your work and finish it';
 
 const { values: args } = parseArgs({
@@ -40,34 +42,43 @@ const { values: args } = parseArgs({
 		thread: { type: 'string' }
 	}
 });
+
 const runId = args['run-id'];
 const model = args.model;
 const followupThread = args.thread;
+
 if (!runId || !isModelId(model) || !args['key-file']) {
 	throw new Error(
 		`usage: bun run.ts --run-id <id> --model <${MODELS.join('|')}> --key-file <file> [--prompt <file> | --thread <id to follow up>]`
 	);
 }
+
 const listed = RUNS.find((r) => r.id === runId);
+
 if (listed && (listed.harness !== 'backplane' || listed.model !== model))
 	throw new Error(`${runId} in runs.ts is ${listed.harness} on ${listed.model}`);
 
 const gatewayModel = GATEWAY_MODEL[model];
 const provider = BACKPLANE_CLI[model];
+
 // Claude Code does not recognise vmc/ names: without the gateway's [1m] suffix and an output cap it runs Opus with a 200k window and 32k output.
 const cliModel = provider === 'claude' ? `${gatewayModel}[1m]` : gatewayModel;
 const work = join(HOME, 'pcbbench-run');
 const home = join(HOME, 'pcbbench-hub');
 const out = join(HOME, 'pcbbench-logs', runId);
+
 if (!followupThread) {
 	for (const d of [work, home, out])
 		if (existsSync(d) && readdirSync(d).length > 0) throw new Error(`${d} is not empty`);
 }
+
 for (const d of [work, home, out]) mkdirSync(d, { recursive: true });
 
 const prompt = await renderPrompt(model, args.prompt);
+
 // Deleted once read, so the agent cannot find the key on disk.
 const key = readFileSync(args['key-file'], 'utf8').trim();
+
 rmSync(args['key-file']);
 
 const log = (line: string): void => {
@@ -78,14 +89,19 @@ const log = (line: string): void => {
 
 // Only the run's provider gets credentials, so nothing Backplane runs can reach another model through the key.
 const env: Record<string, string> = {};
+
 for (const [k, v] of Object.entries(process.env)) {
 	if (v !== undefined && !/^(ANTHROPIC_|CLAUDE_|OPENAI_|CODEX_|AI_GATEWAY_|BACKPLANE_)/.test(k))
 		env[k] = v;
 }
+
 // The hub looks for CLIs in its own PATH first, so the wrappers below stand in for the real ones.
 const binDir = join(home, 'bin');
+
 mkdirSync(binDir, { recursive: true });
+
 const realPath = `${HOME}/.local/bin:${HOME}/.bun/bin:${env.PATH ?? '/usr/bin:/bin'}`;
+
 Object.assign(env, {
 	BACKPLANE_NO_UPDATE: '1',
 	BACKPLANE_MODELS: JSON.stringify({ [provider]: [cliModel] }),
@@ -99,6 +115,7 @@ function writeBin(name: string, body: string): void {
 
 function wrap(name: string, script: (real: string) => string): void {
 	const real = Bun.which(name, { PATH: realPath });
+
 	if (!real) throw new Error(`${name} is not installed`);
 	writeBin(name, script(real));
 }
@@ -124,11 +141,14 @@ const forceFlags = (name: string, cases: string): string =>
 // Backplane's prompt takes KiCad only from PATH, and calls a Backplane build stock KiCad because its --version has no -bp. tag.
 const kicadRoot = join(PREFIX, 'kicad');
 const kicadVersion = readdirSync(kicadRoot).sort().at(-1);
+
 if (!kicadVersion) throw new Error(`no KiCad runtime in ${kicadRoot}`);
+
 writeBin(
 	'kicad-cli',
 	`[ "$*" = --version ] && echo ${kicadVersion} && exit\nexec ${join(kicadRoot, kicadVersion, 'bin/kicad-cli')} "$@"\n`
 );
+
 env.BACKPLANE_KICAD_COMMIT = readFileSync(
 	join(kicadRoot, kicadVersion, 'SOURCE_COMMIT'),
 	'utf8'
@@ -168,12 +188,15 @@ if (provider === 'claude') {
 			`${forceFlags('codex', `\t\t-m|--model) new='${gatewayModel}' ;;\n${effortCase}`)}case " $* " in *" --ephemeral "*) ;; " exec "*) exec ${real} "$@" </dev/null ;; esac\nexec ${real} "$@"\n`
 	);
 	mkdirSync(join(HOME, '.codex'), { recursive: true });
+
 	// Codex has no metadata for vmc/ names and falls back to generic settings; give the slug the bundled metadata of the model it aliases.
 	const catalog: Json = JSON.parse(
 		Bun.spawnSync(['codex', 'debug', 'models'], { env }).stdout.toString()
 	);
+
 	const models = isObj(catalog) && Array.isArray(catalog.models) ? catalog.models : [];
 	const own = models.find((m) => isObj(m) && m.slug === model);
+
 	if (!isObj(own)) throw new Error(`codex has no bundled metadata for ${model}`);
 	const catalogFile = join(HOME, '.codex/pcbbench-models.json');
 	writeFileSync(
@@ -212,6 +235,7 @@ type State = {
 	offset: number;
 	lastChange: number;
 };
+
 const state: State = {
 	projects: [],
 	threads: [],
@@ -224,12 +248,15 @@ const state: State = {
 
 function readEvents(): Json[] {
 	const file = join(home, 'events.jsonl');
+
 	if (!existsSync(file)) return [];
 	const buf = readFileSync(file);
 	const end = buf.lastIndexOf(10) + 1;
+
 	if (end <= state.offset) return [];
 	const lines = buf.subarray(state.offset, end).toString('utf8').split('\n');
 	state.offset = end;
+
 	return lines.filter((l) => l.trim()).map((l): Json => JSON.parse(l));
 }
 
@@ -237,6 +264,7 @@ async function follow(hub: Hub): Promise<void> {
 	for (const e of readEvents()) {
 		if (!isObj(e)) continue;
 		const t = str(e.$);
+
 		if (t === 'TurnChanged') {
 			state.turns.set(str(e.thread), str(e.state));
 			state.lastChange = Date.now();
@@ -284,17 +312,21 @@ async function startRun(): Promise<void> {
 		'order.enabled': 'off',
 		'order.estimates': 'off'
 	};
+
 	for (const [k, v] of Object.entries(settings)) {
 		await hub.rpc.call('setting.set', { key: k, value: v });
 	}
+
 	// project.add opens the project's first thread from the settings above; the run uses that thread.
 	await hub.rpc.call('project.add', { path: work });
 	let first: State['threads'][number] | undefined;
+
 	for (let i = 0; i < 100 && !first; i++) {
 		await Bun.sleep(100);
 		await follow(hub);
 		first = state.threads.find((t) => state.projects.includes(t.project));
 	}
+
 	if (!first || first.provider !== provider || first.model !== cliModel)
 		throw new Error(
 			`project.add opened no ${provider} ${cliModel} thread: ${JSON.stringify(first)}`
@@ -313,6 +345,7 @@ let hub = await startHub(hubOpts);
 let status = 'error';
 const started = Date.now();
 const deadline = started + WALL_CLOCK_LIMIT_HOURS * 3600_000;
+
 try {
 	if (followupThread) {
 		// Skips the earlier run's events so its finished turns and answered asks are not tracked again.
@@ -325,16 +358,20 @@ try {
 
 	for (;;) {
 		await Bun.sleep(5000);
+
 		if (hub.proc.exitCode !== null) {
 			log(`hub exited with ${hub.proc.exitCode}; restarting it`);
 			hub = await startHub(hubOpts);
 		}
+
 		await follow(hub);
+
 		if (Date.now() > deadline) {
 			status = 'timeout';
 			log(
 				`wall-clock limit of ${WALL_CLOCK_LIMIT_HOURS} h: interrupting ${running().join(' ') || 'nothing'}`
 			);
+
 			for (const t of running())
 				await hub.rpc
 					.call('turn.interrupt', { thread: t })
@@ -343,6 +380,7 @@ try {
 			await follow(hub);
 			break;
 		}
+
 		if (
 			state.turns.size > 0 &&
 			running().length === 0 &&
@@ -360,14 +398,17 @@ try {
 }
 
 const ended = Date.now();
+
 for (const f of ['events.jsonl', 'hub.log'])
 	if (existsSync(join(home, f))) cpSync(join(home, f), join(out, f));
+
 for (const [from, to] of [
 	['.claude/projects', 'claude-projects'],
 	['.codex/sessions', 'codex-sessions']
 ]) {
 	if (existsSync(join(HOME, from))) cpSync(join(HOME, from), join(out, to), { recursive: true });
 }
+
 const summary = {
 	runId,
 	model,
@@ -382,9 +423,12 @@ const summary = {
 	threads: Object.fromEntries(state.turns),
 	usageEventsByModel: Object.fromEntries(state.models)
 };
+
 writeFileSync(
 	join(out, followupThread ? 'followup-summary.json' : 'summary.json'),
 	`${JSON.stringify(summary, null, '\t')}\n`
 );
+
 log(`finished: ${JSON.stringify(summary)}`);
+
 process.exit(status === 'error' ? 1 : 0);

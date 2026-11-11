@@ -15,7 +15,9 @@ const ITEMS = [
 	{ group: 'partsData', name: 'supplierFromTwo', points: 1.5 },
 	{ group: 'partsData', name: 'supplierFromAllThree', points: 0.5 }
 ];
+
 type Items = typeof ITEMS;
+
 const GROUPS = [...new Set(ITEMS.map((item) => item.group))];
 const MISSING_FEATURE_CAP = 50;
 const USB_TARGET_OHMS = 90;
@@ -34,6 +36,7 @@ type Keepout = {
 async function readFractions(runId: string) {
 	const { parts, metrics, updateMetrics } = await readRun(runId);
 	const { review, design, needsFixes, suppliers, missing3dModels, features } = metrics;
+
 	if (!review || !suppliers || !needsFixes?.bomLines)
 		throw new Error(`Run judge/judge.ts and check.ts on ${runId} first`);
 	const yesVotes: number[] = Object.values(review.yesVotes);
@@ -41,13 +44,16 @@ async function readFractions(runId: string) {
 	const ohms: number | null = design.usb.differentialOhms;
 	const usbError = ohms === null ? Infinity : Math.abs(ohms - USB_TARGET_OHMS) / USB_TARGET_OHMS;
 	const keepouts: Keepout[] = design.antennaKeepout.keepouts;
+
 	const keepoutClear =
 		keepouts.length > 0 &&
 		keepouts.every(
 			({ copperInside: c }) => !c.tracks && !c.vias && !c.zoneFills.length && !c.pads.length
 		);
+
 	const supplierLines = (count: number) => count / suppliers.lines;
 	const featureStatus: [string, { status: string }][] = Object.entries(features);
+
 	const fractions: Record<string, number> = {
 		yesNo: sum(yesVotes) / (yesVotes.length * review.judges.length),
 		judgeScores: sum(meanScores) / (meanScores.length * 10),
@@ -61,6 +67,7 @@ async function readFractions(runId: string) {
 		supplierFromTwo: supplierLines(suppliers.linesWithValidNumbers.fromTwo),
 		supplierFromAllThree: supplierLines(suppliers.linesWithValidNumbers.fromAllThree)
 	};
+
 	return {
 		id: runId,
 		fractions,
@@ -85,7 +92,9 @@ function score(
 			)
 		])
 	);
+
 	const total = sum(Object.values(groups));
+
 	return { total: missingFeatures.length ? Math.min(total, MISSING_FEATURE_CAP) : total, groups };
 }
 
@@ -93,16 +102,19 @@ function score(
 function shiftedItems(from: string, to: string): Items {
 	const groupPoints = (group: string) =>
 		sum(ITEMS.filter((item) => item.group === group).map((item) => item.points));
+
 	const factor = (group: string) =>
 		group === from
 			? (groupPoints(from) - WEIGHT_SHIFT) / groupPoints(from)
 			: group === to
 				? (groupPoints(to) + WEIGHT_SHIFT) / groupPoints(to)
 				: 1;
+
 	return ITEMS.map((item) => ({ ...item, points: item.points * factor(item.group) }));
 }
 
 const runs = await Promise.all(RUNS.map(({ id }) => readFractions(id)));
+
 const ranking = (items: Items) =>
 	runs.toSorted((a, b) => score(b, items).total - score(a, items).total).map((run) => run.id);
 
@@ -120,12 +132,15 @@ for (const run of runs) {
 }
 
 const baseline = ranking(ITEMS);
+
 console.log(`Ranking: ${baseline.join(' > ')}`);
+
 for (const from of GROUPS) {
 	for (const to of GROUPS.filter((group) => group !== from)) {
 		const moves = ranking(shiftedItems(from, to)).flatMap((id, place) =>
 			place === baseline.indexOf(id) ? [] : [`${id} ${baseline.indexOf(id) + 1}→${place + 1}`]
 		);
+
 		console.log(
 			`${WEIGHT_SHIFT} points ${from} → ${to}: ${moves.length ? moves.join(', ') : 'same ranking'}`
 		);

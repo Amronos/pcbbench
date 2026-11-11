@@ -18,6 +18,7 @@ import {
 const INSTANCE_ID = 'i-0667c1457d80ee354';
 const BASE_AMI = 'ami-0a11b952507c9bb48';
 const HOST = 'ec2-user@54.234.19.231';
+
 const SSH_OPTIONS = [
 	'-i',
 	join(homedir(), '.ssh/pcbbench.pem'),
@@ -32,6 +33,7 @@ const SSH_OPTIONS = [
 	'-o',
 	'BatchMode=yes'
 ];
+
 const VNC_PORT = 15901;
 const WORK_DIR = '/Users/ec2-user/pcbbench-run';
 const HERE = import.meta.dir;
@@ -62,8 +64,11 @@ async function mac(script: string, { check = true } = {}): Promise<string> {
 		stdout: 'pipe',
 		stderr: 'inherit'
 	});
+
 	const stdout = await new Response(child.stdout).text();
+
 	if ((await child.exited) !== 0 && check) throw new Error(`Mac command failed:\n${script}`);
+
 	return stdout.trim();
 }
 
@@ -78,6 +83,7 @@ async function vnc(...actions: string[]) {
 		`${VNC_PORT}:localhost:5900`,
 		HOST
 	]);
+
 	try {
 		await Bun.sleep(3000);
 		await $`uv run --quiet ${join(HERE, 'vnc.py')} ${actions}`.env({
@@ -96,6 +102,7 @@ function parseRunId(runId: string | undefined) {
 	const base = RUNS.find(
 		(run) => run.machine === 'mac' && (runId === run.id || runId?.startsWith(`${run.id}--`))
 	);
+
 	if (!runId || !base) {
 		console.error(
 			`Run ids are a mac run from runs.ts with an optional --suffix: ${RUNS.filter(
@@ -106,6 +113,7 @@ function parseRunId(runId: string | undefined) {
 		);
 		process.exit(2);
 	}
+
 	return {
 		runId,
 		harness: base.harness,
@@ -128,10 +136,13 @@ async function reset() {
 		'--output',
 		'text'
 	]);
+
 	const taskId = task.stdout.toString().trim();
 	console.log(`Replacing the root volume with ${BASE_AMI} (${taskId})`);
+
 	for (;;) {
 		await Bun.sleep(30_000);
+
 		const state = (
 			await aws([
 				'ec2',
@@ -146,17 +157,23 @@ async function reset() {
 		).stdout
 			.toString()
 			.trim();
+
 		console.log(state);
+
 		if (state === 'succeeded') break;
+
 		if (state.startsWith('fail')) throw new Error(`Root volume replacement ${taskId} ${state}`);
 	}
+
 	for (;;) {
 		const ready = await mac('pgrep -xu ec2-user Dock >/dev/null && echo ready', {
 			check: false
 		}).catch(() => '');
+
 		if (ready === 'ready') break;
 		await Bun.sleep(15_000);
 	}
+
 	console.log('The Mac is back and logged in.');
 }
 
@@ -166,12 +183,14 @@ async function start(run: Run, promptFile: string | undefined) {
 	await mkdir(run.resultDir, { recursive: true });
 	const prompt = await renderPrompt(run.model, promptFile);
 	await Bun.write(join(run.resultDir, 'prompt.md'), prompt);
+
 	const config = (await Bun.file(join(HERE, 'config.toml')).text())
 		.replaceAll('__MODEL__', GATEWAY_MODEL[run.model])
 		.replaceAll('__EFFORT__', REASONING_EFFORT)
 		.replaceAll('__RUN_ID__', runId);
 
 	const leftovers = await mac(`ls -A ${WORK_DIR}; find ~/.codex/sessions -type f`);
+
 	if (leftovers)
 		throw new Error(`The Mac is not fresh; run \`bun run.ts reset\` first:\n${leftovers}`);
 	await mac(`cat > ~/.codex/config.toml <<'CONFIG'
@@ -180,9 +199,11 @@ ${config}CONFIG`);
 	// The installer adds the plugin to config.toml, so it runs after the config is written.
 	if (run.harness === 'codex-desktop-texttocad') {
 		console.log('Installing text-to-cad');
+
 		const log =
 			await mac(`curl -fsSL https://texttocad.dev/install.sh | sh -s -- --only codex --no-telemetry 2>&1
 ~/.local/bin/cad doctor 2>&1`);
+
 		await Bun.write(join(run.resultDir, 'texttocad-install.log'), log + '\n');
 	}
 
@@ -212,13 +233,16 @@ sleep 5`);
 	const rollout = await mac(
 		'sleep 20; find ~/.codex/sessions -name "rollout-*.jsonl" | sort | head -1'
 	);
+
 	if (!rollout) throw new Error(`No rollout appeared; check ${run.resultDir}/started.png`);
+
 	const versions = parseVersions(
 		await mac(`echo "chatgpt=$(defaults read /Applications/ChatGPT.app/Contents/Info CFBundleShortVersionString)"
 echo "codex=$(/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex --version)"
 echo "kicad=${kicadFullVersion('/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli')}"
 echo "texttocad=$(~/.local/bin/cad --version 2>/dev/null || echo none)"`)
 	);
+
 	const result: Result = {
 		runId,
 		harness: run.harness,
@@ -228,6 +252,7 @@ echo "texttocad=$(~/.local/bin/cad --version 2>/dev/null || echo none)"`)
 		startedAt: new Date().toISOString(),
 		rollout
 	};
+
 	await Bun.write(join(run.resultDir, 'result.json'), JSON.stringify(result, null, '\t') + '\n');
 	console.log(`Started ${runId}; rollout ${rollout}`);
 	await wait(run);
@@ -237,15 +262,18 @@ async function wait(run: Run) {
 	const resultPath = join(run.resultDir, 'result.json');
 	const result: Result = await Bun.file(resultPath).json();
 	const deadline = Date.parse(result.startedAt) + WALL_CLOCK_LIMIT_HOURS * 3_600_000;
+
 	while (!result.outcome) {
 		const status = await mac(
 			`grep -oE '"type":"(task_complete|turn_aborted)"' ${result.rollout} | tail -1 | cut -d'"' -f4 || true
 grep '"type":"token_count"' ${result.rollout} | tail -1 | grep -oE '"total_token_usage":\\{[^}]*\\}' || true`,
 			{ check: false }
 		);
+
 		const end = status.match(/^(task_complete|turn_aborted)$/m)?.[1];
 		const usage = status.match(/"total_token_usage".*/)?.[0];
 		console.log(`${new Date().toISOString()} ${usage ?? 'no token usage yet'}`);
+
 		if (end === 'task_complete' || end === 'turn_aborted') result.outcome = end;
 		else if (Date.now() > deadline) {
 			await mac('pkill -f /Applications/ChatGPT.app || true');
@@ -253,6 +281,7 @@ grep '"type":"token_count"' ${result.rollout} | tail -1 | grep -oE '"total_token
 			result.outcome = 'wall_clock_limit';
 		} else await Bun.sleep(POLL_MS);
 	}
+
 	result.finishedAt = new Date().toISOString();
 	await vnc('shot', join(run.resultDir, 'finished.png')).catch((error) =>
 		console.error(`Final screenshot failed: ${error}`)
@@ -267,6 +296,7 @@ async function collect(resultDir: string) {
 }
 
 const [command, runId, promptFile] = Bun.argv.slice(2);
+
 if (command === 'reset') await reset();
 else if (command === 'start') await start(parseRunId(runId), promptFile);
 else if (command === 'wait') await wait(parseRunId(runId));

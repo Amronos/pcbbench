@@ -34,6 +34,7 @@ const codexDesktop: CollectedHarness = {
 	],
 	timing: async (logsDir) => {
 		const result = await Bun.file(`${logsDir}/codex-desktop/result.json`).json();
+
 		return {
 			startedAt: result.startedAt,
 			finishedAt: result.finishedAt,
@@ -54,6 +55,7 @@ const HARNESSES: Record<Run['harness'], CollectedHarness> = {
 		],
 		timing: async (logsDir) => {
 			const summary = await Bun.file(`${logsDir}/backplane/summary.json`).json();
+
 			return {
 				startedAt: summary.startedAt,
 				finishedAt: summary.endedAt,
@@ -78,6 +80,7 @@ echo "kicad=$(basename $kicad) ($(cat $kicad/SOURCE_COMMIT))"`)
 		],
 		timing: async (logsDir) => {
 			const result = await Bun.file(`${logsDir}/sprocket/result.json`).json();
+
 			return {
 				startedAt: result.startedAt,
 				finishedAt: result.finishedAt,
@@ -101,36 +104,46 @@ echo "kicad=${kicadFullVersion('~/.sprocket/connectors/kicad/bin/kicad-cli')}"`)
 
 const [runId, host] = Bun.argv.slice(2);
 const run = RUNS.find((candidate) => candidate.id === runId);
+
 if (!run || (run.machine === 'linux' && !host)) {
 	throw new Error('Usage: bun bench/collect.ts <run id> [user@host, for Linux runs]');
 }
+
 const harness = HARNESSES[run.harness];
 const source = run.machine === 'mac' ? `${homedir()}/pcbbench-results/${run.id}/` : `${host}:`;
 
 const runDir = `${import.meta.dir}/../runs/${run.id}`;
+
 // Logs hold account ids and transcripts, so they stay on this machine and out of the public repo.
 const logsDir = `${import.meta.dir}/.state/logs/${run.id}`;
 const ssh = `ssh -i ${homedir()}/.ssh/pcbbench.pem -o BatchMode=yes`;
+
 const remoteVersions = async (script: string) =>
 	parseVersions(await $`${{ raw: ssh }} ${host} ${script}`.text());
+
 await mkdir(logsDir, { recursive: true });
 
 // Agents clone reference repos into their folder; a nested .git would become a gitlink here.
 await $`rsync -a --delete --delete-excluded --max-size=${MAX_FILE_SIZE} --exclude=.git --exclude=.venv --exclude=node_modules --exclude=__pycache__ -e ${ssh} ${source}pcbbench-run/ ${runDir}/output/`;
+
 const findLarge = `find pcbbench-run -type f -size +${MAX_FILE_SIZE}`;
+
 const skipped =
 	run.machine === 'mac'
 		? await $`${{ raw: findLarge }}`.cwd(source).text()
 		: await $`${{ raw: ssh }} ${host} ${findLarge}`.text();
+
 for (const [from, local] of harness.logs(run.id, source)) {
 	await $`rsync -a --exclude=/pcbbench-run -e ${ssh} ${from} ${logsDir}/${local}`;
 }
 
 const usesGateway = run.harness !== 'sprocket';
+
 // A revoked key's budget can no longer be read, so a re-collect keeps the cost recorded before revocation.
 const budget = usesGateway ? await readBudget(await readRunKey(run.id)).catch(() => null) : null;
 const metricsPath = `${runDir}/metrics.json`;
 const previous = (await Bun.file(metricsPath).exists()) ? await Bun.file(metricsPath).json() : {};
+
 const collected = {
 	...(await harness.timing(logsDir)),
 	tokens: (await harness.tokens(logsDir, run)) ?? previous.tokens ?? null,
@@ -138,9 +151,11 @@ const collected = {
 	costSource: usesGateway ? 'API cost at market prices' : 'Sprocket thread usage in the web UI',
 	boardCost: previous.boardCost ?? null
 };
+
 // Fields added later by hand or by price.ts (fixes, costByModel) survive a re-collect.
 const metrics = { ...collected, ...previous, ...collected };
 const infoPath = `${runDir}/info.json`;
+
 // These are set by hand once the run's final files are known.
 const {
 	board = null,
@@ -148,6 +163,7 @@ const {
 	placement = null,
 	fabZip = null
 } = (await Bun.file(infoPath).exists()) ? await Bun.file(infoPath).json() : {};
+
 const info = {
 	runId: run.id,
 	harness: run.harness,
@@ -161,6 +177,7 @@ const info = {
 	placement,
 	fabZip
 };
+
 for (const [name, data] of [
 	['metrics', metrics],
 	['info', info]
@@ -174,4 +191,5 @@ const leaks =
 	await $`grep -rlE ${'vck_[A-Za-z0-9]{20,}|gh[opsu]_[A-Za-z0-9]{30,}|\\bsk-[A-Za-z0-9_-]{30,}|AKIA[0-9A-Z]{16}'} ${runDir}`
 		.nothrow()
 		.text();
+
 if (leaks.trim()) throw new Error(`Possible credentials in:\n${leaks}`);
