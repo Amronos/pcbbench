@@ -5,8 +5,6 @@
 
 PCBBench compares AI models and agents on PCB design performance across 40+ metrics.
 
-The tables below show each board's score, what each run produced and cost, and how two AI judges scored each board's design.
-
 ## The task
 
 The prompt is [bench/prompt.md](bench/prompt.md).
