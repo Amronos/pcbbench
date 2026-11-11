@@ -17,7 +17,10 @@ const config = {
 	],
 	plugins: ['typescript', 'unicorn', 'oxc'],
 	categories: { correctness: 'error' },
-	jsPlugins: [{ name: 'anti-slop', specifier: './tools/oxlint/anti-slop/index.ts' }],
+	jsPlugins: [
+		{ name: 'anti-slop', specifier: './tools/oxlint/anti-slop/index.ts' },
+		{ name: 'anti-slop-effect', specifier: './tools/oxlint/anti-slop/effect/index.ts' }
+	],
 	rules: {
 		'typescript/no-confusing-non-null-assertion': 'error',
 		'oxc/no-accumulating-spread': 'error',
@@ -39,6 +42,11 @@ const config = {
 		'anti-slop/no-widen-then-assert': 'error',
 		'anti-slop/require-readable-spacing': 'error',
 		'anti-slop/require-safety-comment-for-type-assertion': 'error',
+		'anti-slop-effect/no-manual-effect-error-tag': 'error',
+		'anti-slop-effect/no-manual-tag-comparison': 'error',
+		'anti-slop-effect/no-manual-tagged-construction': 'error',
+		'anti-slop-effect/no-service-constructor-imports': 'error',
+		'anti-slop-effect/prefer-effect-match': 'error',
 		'no-unmodified-loop-condition': ['error', { checkConditionalExpressions: true }],
 		'no-case-declarations': 'error',
 		'no-empty': ['error', { allowEmptyCatch: true }],
