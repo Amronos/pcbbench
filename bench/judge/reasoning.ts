@@ -1,5 +1,5 @@
 import { Glob } from 'bun';
-import { readRun } from '../board.ts';
+import { runDirectory } from '../board.ts';
 
 type Part = {
 	number: number;
@@ -46,7 +46,7 @@ async function readThread(dir: string) {
 
 // Writes each judge's final message and its subagents' final reports next to its review, from the logs `judge.ts` keeps.
 export async function writeReasoning(runId: string, models: string[]) {
-	const { runDir } = await readRun(runId);
+	const runDir = runDirectory(runId);
 	const state = `${import.meta.dir}/../.state/judge/${runId}`;
 
 	for (const model of models) {

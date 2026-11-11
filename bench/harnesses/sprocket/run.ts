@@ -1,3 +1,5 @@
+import { BunServices } from '@effect/platform-bun';
+import { Effect } from 'effect';
 import { mkdir, readdir, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
@@ -41,7 +43,10 @@ if (
 	if (login.exitCode !== 0) process.exit(1);
 }
 
-const prompt = await renderPrompt(model, promptFile);
+const prompt = await Effect.runPromise(
+	renderPrompt(model, promptFile).pipe(Effect.provide(BunServices.layer))
+);
+
 const renderedPrompt = join(resultDir, 'prompt.md');
 
 await Bun.write(renderedPrompt, prompt);

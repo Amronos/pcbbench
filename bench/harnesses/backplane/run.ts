@@ -1,3 +1,5 @@
+import { BunServices } from '@effect/platform-bun';
+import { Effect } from 'effect';
 import {
 	appendFileSync,
 	chmodSync,
@@ -74,7 +76,9 @@ if (!followupThread) {
 
 for (const d of [work, home, out]) mkdirSync(d, { recursive: true });
 
-const prompt = await renderPrompt(model, args.prompt);
+const prompt = await Effect.runPromise(
+	renderPrompt(model, args.prompt).pipe(Effect.provide(BunServices.layer))
+);
 
 // Deleted once read, so the agent cannot find the key on disk.
 const key = readFileSync(args['key-file'], 'utf8').trim();

@@ -1,9 +1,34 @@
-import { byRef, readRun, type Footprint, type Point } from './board.ts';
+import { BunServices } from '@effect/platform-bun';
+import { Effect, Layer, ManagedRuntime } from 'effect';
+import {
+	byRef,
+	readRun,
+	updateMetrics as writeMetrics,
+	type Footprint,
+	type JsonFields,
+	type Point
+} from './board.ts';
 import { isSamePart, parseCsv, readBom, splitRefs } from './bom.ts';
-import { digikeyPart, isDigikeyNumberFor } from './digikey.ts';
-import { footprintPadNumbers, productByCode } from './lcsc.ts';
+import { Digikey } from './digikey.ts';
+import { Lcsc, type LcscProduct } from './lcsc.ts';
 import type { Fix } from './price.ts';
 import { BATCH_BOARDS } from './runs.ts';
+
+const runtime = ManagedRuntime.make(Layer.mergeAll(BunServices.layer, Lcsc.layer, Digikey.layer));
+
+const [lcscService, digikeyService] = await runtime.runPromise(
+	Effect.all([Effect.service(Lcsc), Effect.service(Digikey)])
+);
+
+const productByCode = (code: string) => Effect.runPromise(lcscService.productByCode(code));
+
+const footprintPadNumbers = (product: LcscProduct) =>
+	Effect.runPromise(lcscService.footprintPadNumbers(product));
+
+const digikeyPart = (mpn: string) => Effect.runPromise(digikeyService.part(mpn));
+
+const isDigikeyNumberFor = (number: string, mpn: string) =>
+	Effect.runPromise(digikeyService.isNumberFor(number, mpn));
 
 const PLACEMENT_TOLERANCE_MM = 0.5;
 
@@ -95,11 +120,13 @@ const [runId] = Bun.argv.slice(2);
 
 if (!runId) throw new Error('Usage: bun bench/check.ts <run id>');
 
-const { runDir, info, board, footprints, parts, copper, metrics, updateMetrics } =
-	await readRun(runId);
+const { runDir, info, board, footprints, parts, copper } = await runtime.runPromise(readRun(runId));
+const metrics = await Bun.file(`${runDir}/metrics.json`).json();
+
+const updateMetrics = (fields: JsonFields) => runtime.runPromise(writeMetrics(runId, fields));
 
 const output = `${runDir}/output`;
-const bom = await readBom(`${output}/${info.bom}`);
+const bom = await runtime.runPromise(readBom(`${output}/${info.bom}`));
 const fittedLines = bom.lines.filter((line) => line.fitted);
 const byReference = new Map(footprints.map((footprint) => [footprint.ref, footprint]));
 const percent = (count: number, total: number) => Math.round((count / total) * 1000) / 10;

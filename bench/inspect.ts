@@ -1,8 +1,10 @@
+import { BunServices } from '@effect/platform-bun';
 import { $ } from 'bun';
+import { ManagedRuntime } from 'effect';
 import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { readRun } from './board.ts';
+import { readRun, updateMetrics as writeMetrics, type JsonFields } from './board.ts';
 import { matchFab } from './fab-match.ts';
 
 const RENDERS = {
@@ -18,8 +20,13 @@ if (!runId || !kicadCli)
 		'Usage: bun bench/inspect.ts <run id> <kicad-cli of the KiCad version the run used>'
 	);
 
-const { runDir, info, board, footprints, parts, copperLayers, updateMetrics } =
-	await readRun(runId);
+const runtime = ManagedRuntime.make(BunServices.layer);
+
+const { runDir, info, board, footprints, parts, copperLayers } = await runtime.runPromise(
+	readRun(runId)
+);
+
+const updateMetrics = (fields: JsonFields) => runtime.runPromise(writeMetrics(runId, fields));
 
 // kicad-cli writes a local-settings .kicad_prl next to the board when there is none.
 const localSettings = board.replace(/\.kicad_pcb$/, '.kicad_prl');

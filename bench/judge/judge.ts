@@ -1,6 +1,8 @@
+import { BunServices } from '@effect/platform-bun';
 import { $ } from 'bun';
+import { ManagedRuntime } from 'effect';
 import { mkdir } from 'node:fs/promises';
-import { readRun } from '../board.ts';
+import { readRun, updateMetrics as writeMetrics, type JsonFields } from '../board.ts';
 import { isModelId, type ModelId } from '../runs.ts';
 import { buildPackage } from './package.ts';
 import { writeReasoning } from './reasoning.ts';
@@ -18,7 +20,9 @@ const [runId, host] = Bun.argv.slice(2);
 
 if (!runId || !host) throw new Error('Usage: bun judge/judge.ts <run id> <judge box address>');
 
-const { runDir, info, copperLayers, updateMetrics } = await readRun(runId);
+const runtime = ManagedRuntime.make(BunServices.layer);
+const { runDir, info, copperLayers } = await runtime.runPromise(readRun(runId));
+const updateMetrics = (fields: JsonFields) => runtime.runPromise(writeMetrics(runId, fields));
 const state = `${import.meta.dir}/../.state/judge/${runId}`;
 
 const ssh = [

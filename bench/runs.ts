@@ -1,4 +1,8 @@
-export type ModelId = 'opus-5.5' | 'gpt-6.1-sol' | 'fable-5.2';
+import { Effect, FileSystem, Schema } from 'effect';
+
+export const ModelId = Schema.Literals(['opus-5.5', 'gpt-6.1-sol', 'fable-5.2']);
+
+export type ModelId = typeof ModelId.Type;
 
 export type Harness = 'codex-desktop' | 'codex-desktop-texttocad' | 'backplane' | 'sprocket';
 
@@ -21,10 +25,9 @@ export const BACKPLANE_CLI: Record<ModelId, 'claude' | 'codex'> = {
 	'fable-5.2': 'claude'
 };
 
-export const isModelId = (value: string | undefined): value is ModelId =>
-	value !== undefined && value in GATEWAY_MODEL;
+export const isModelId = Schema.is(ModelId);
 
-export const MODELS = Object.keys(GATEWAY_MODEL).filter(isModelId);
+export const MODELS = ModelId.literals;
 
 export const REASONING_EFFORT = 'medium';
 export const WALL_CLOCK_LIMIT_HOURS = 12;
@@ -38,11 +41,14 @@ export const COST_LIMIT_USD: Record<ModelId, number> = {
 export const COST_REVOKE_MARGIN_USD = 5;
 export const BATCH_BOARDS = 5;
 
-export async function renderPrompt(model: ModelId, path = `${import.meta.dir}/prompt.md`) {
-	const template = await Bun.file(path).text();
+export const renderPrompt = Effect.fn('renderPrompt')(function* (
+	model: ModelId,
+	path = `${import.meta.dir}/prompt.md`
+) {
+	const template = yield* (yield* FileSystem.FileSystem).readFileString(path);
 
 	return template.replaceAll('{{MODEL}}', model).replaceAll('{{EFFORT}}', REASONING_EFFORT);
-}
+});
 
 // Harness version scripts print one `name=version` line per tool.
 export const parseVersions = (output: string): Record<string, string> =>

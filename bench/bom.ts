@@ -1,3 +1,5 @@
+import { Effect, FileSystem, Schema } from 'effect';
+
 export type BomLine = { refs: string; qty: number; mpn: string; fitted: boolean; row: string[] };
 
 export const parseCsv = (text: string) =>
@@ -35,8 +37,14 @@ export function isSamePart(bomMpn: string, listedMpn: string) {
 	);
 }
 
-export async function readBom(path: string) {
-	const [header = [], ...rows] = parseCsv(await Bun.file(path).text());
+export class BomColumnsError extends Schema.TaggedError<BomColumnsError>()('BomColumnsError', {
+	message: Schema.String
+}) {}
+
+export const readBom = Effect.fn('readBom')(function* (path: string) {
+	const [header = [], ...rows] = parseCsv(
+		yield* (yield* FileSystem.FileSystem).readFileString(path)
+	);
 
 	// PCBWay's BOM template marks required columns with a leading *.
 	const column = (pattern: RegExp) =>
@@ -50,7 +58,9 @@ export async function readBom(path: string) {
 	};
 
 	if (columns.qty < 0 || columns.mpn < 0)
-		throw new Error(`No quantity or MPN column in ${header.join(',')}`);
+		return yield* new BomColumnsError({
+			message: `No quantity or MPN column in ${header.join(',')}`
+		});
 
 	const lines: BomLine[] = rows.map((row) => ({
 		refs: row[columns.refs] ?? '',
@@ -61,4 +71,4 @@ export async function readBom(path: string) {
 	}));
 
 	return { column, lines };
-}
+});

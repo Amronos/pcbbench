@@ -1,3 +1,5 @@
+import { Console, Effect, FileSystem, Schema } from 'effect';
+
 // The child lists of an s-expression, found by matching parentheses outside quoted strings.
 function children(expr: string, head: string) {
 	const found: string[] = [];
@@ -120,8 +122,8 @@ function parseFootprint(block: string, fileVersion: number) {
 		hasModel: block.includes('(model '),
 		pads,
 		courtyard: ['fp_line', 'fp_rect', 'fp_poly', 'fp_arc', 'fp_circle']
-			.flatMap((shape) => children(block, shape))
-			.filter((shape) => /\(layer "[FB]\.CrtYd"\)/.test(shape))
+			.flatMap((kind) => children(block, kind))
+			.filter((graphic) => /\(layer "[FB]\.CrtYd"\)/.test(graphic))
 			.flatMap(points)
 			.map(toBoard),
 		zones: children(block, 'zone').map((zone) =>
@@ -163,11 +165,24 @@ function parseCopper(pcb: string) {
 
 export type Copper = ReturnType<typeof parseCopper>;
 
-export async function readRun(runId: string) {
-	const runDir = `${import.meta.dir}/../runs/${runId}`;
-	const info = await Bun.file(`${runDir}/info.json`).json();
+export const runDirectory = (runId: string) => `${import.meta.dir}/../runs/${runId}`;
+
+const RunInfo = Schema.fromJsonString(
+	Schema.Struct({
+		board: Schema.String,
+		bom: Schema.String,
+		placement: Schema.String,
+		fabZip: Schema.String,
+		versions: Schema.Struct({ kicad: Schema.String })
+	})
+);
+
+export const readRun = Effect.fn('readRun')(function* (runId: string) {
+	const fs = yield* FileSystem.FileSystem;
+	const runDir = runDirectory(runId);
+	const info = yield* Schema.decodeEffect(RunInfo)(yield* fs.readFileString(`${runDir}/info.json`));
 	const board = `${runDir}/output/${info.board}`;
-	const pcb = await Bun.file(board).text();
+	const pcb = yield* fs.readFileString(board);
 	const fileVersion = Number(pcb.match(/\(version (\d+)\)/)?.[1]);
 
 	const footprints = children(pcb, 'footprint').map((footprint) =>
@@ -184,25 +199,35 @@ export async function readRun(runId: string) {
 		)
 	].map(([, name]) => name!);
 
-	const metricsPath = `${runDir}/metrics.json`;
+	return { runDir, info, board, footprints, parts, copperLayers, copper: parseCopper(pcb) };
+});
 
-	const updateMetrics = async (fields: object) => {
-		await Bun.write(
-			metricsPath,
-			`${JSON.stringify({ ...(await Bun.file(metricsPath).json()), ...fields }, null, '\t')}\n`
-		);
-		console.log(JSON.stringify(fields, null, '\t'));
-	};
+const metricsPath = (runId: string) => `${runDirectory(runId)}/metrics.json`;
 
-	return {
-		runDir,
-		info,
-		board,
-		footprints,
-		parts,
-		copperLayers,
-		copper: parseCopper(pcb),
-		metrics: await Bun.file(metricsPath).json(),
-		updateMetrics
-	};
-}
+// Each script decodes only the metrics.json sections it reads.
+export const readMetrics = Effect.fn('readMetrics')(function* <
+	S extends Schema.ConstraintDecoder<unknown>
+>(runId: string, sections: S) {
+	const text = yield* (yield* FileSystem.FileSystem).readFileString(metricsPath(runId));
+
+	return yield* Schema.decodeUnknownEffect(Schema.fromJsonString(sections))(text);
+});
+
+// What JSON.stringify writes, which leaves out undefined fields.
+export type JsonFields = { readonly [key: string]: JsonField };
+
+type JsonField =
+	string | number | boolean | null | undefined | ReadonlyArray<JsonField> | JsonFields;
+
+export const updateMetrics = Effect.fn('updateMetrics')(function* (
+	runId: string,
+	fields: JsonFields
+) {
+	const metrics = yield* readMetrics(runId, Schema.JsonObject);
+
+	yield* (yield* FileSystem.FileSystem).writeFileString(
+		metricsPath(runId),
+		`${JSON.stringify({ ...metrics, ...fields }, null, '\t')}\n`
+	);
+	yield* Console.log(JSON.stringify(fields, null, '\t'));
+});

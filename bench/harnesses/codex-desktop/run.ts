@@ -1,4 +1,6 @@
+import { BunServices } from '@effect/platform-bun';
 import { $ } from 'bun';
+import { ManagedRuntime } from 'effect';
 import { mkdir } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
@@ -18,6 +20,7 @@ import {
 const INSTANCE_ID = 'i-0667c1457d80ee354';
 const BASE_AMI = 'ami-0a11b952507c9bb48';
 const HOST = 'ec2-user@54.234.19.231';
+const runtime = ManagedRuntime.make(BunServices.layer);
 
 const SSH_OPTIONS = [
 	'-i',
@@ -179,9 +182,9 @@ async function reset() {
 
 async function start(run: Run, promptFile: string | undefined) {
 	const { runId } = run;
-	const { secret } = await readRunKey(runId);
+	const { secret } = await runtime.runPromise(readRunKey(runId));
 	await mkdir(run.resultDir, { recursive: true });
-	const prompt = await renderPrompt(run.model, promptFile);
+	const prompt = await runtime.runPromise(renderPrompt(run.model, promptFile));
 	await Bun.write(join(run.resultDir, 'prompt.md'), prompt);
 
 	const config = (await Bun.file(join(HERE, 'config.toml')).text())
@@ -277,7 +280,7 @@ grep '"type":"token_count"' ${result.rollout} | tail -1 | grep -oE '"total_token
 		if (end === 'task_complete' || end === 'turn_aborted') result.outcome = end;
 		else if (Date.now() > deadline) {
 			await mac('pkill -f /Applications/ChatGPT.app || true');
-			await revokeRunKey(await readRunKey(run.runId));
+			await runtime.runPromise(revokeRunKey(await runtime.runPromise(readRunKey(run.runId))));
 			result.outcome = 'wall_clock_limit';
 		} else await Bun.sleep(POLL_MS);
 	}

@@ -1,4 +1,6 @@
+import { BunServices } from '@effect/platform-bun';
 import { $ } from 'bun';
+import { ManagedRuntime } from 'effect';
 import { mkdir } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { readBudget, readRunKey, spentUsd } from './gateway.ts';
@@ -15,6 +17,8 @@ import { claudeCodeUsage, codexUsage, type TokenUsage } from './usage.ts';
 
 // GitHub rejects files over 100 MB; agents sometimes leave large downloads in their folder.
 const MAX_FILE_SIZE = '50M';
+
+const runtime = ManagedRuntime.make(BunServices.layer);
 
 type Timing = { startedAt: string; finishedAt: string; minutes: number; endedBy: string };
 
@@ -42,7 +46,7 @@ const codexDesktop: CollectedHarness = {
 			endedBy: result.outcome === 'task_complete' ? 'done' : result.outcome
 		};
 	},
-	tokens: (logsDir) => codexUsage(logsDir),
+	tokens: (logsDir) => runtime.runPromise(codexUsage(logsDir)),
 	versions: async (logsDir) =>
 		(await Bun.file(`${logsDir}/codex-desktop/result.json`).json()).versions
 };
@@ -64,7 +68,9 @@ const HARNESSES: Record<Run['harness'], CollectedHarness> = {
 			};
 		},
 		tokens: (logsDir, run) =>
-			BACKPLANE_CLI[run.model] === 'claude' ? claudeCodeUsage(logsDir) : codexUsage(logsDir),
+			runtime.runPromise(
+				BACKPLANE_CLI[run.model] === 'claude' ? claudeCodeUsage(logsDir) : codexUsage(logsDir)
+			),
 		versions: () =>
 			remoteVersions(`echo "backplane=$(~/.local/share/backplane/builds/*/backplane-hub --version)"
 echo "claudeCode=$(~/.local/bin/claude --version)"
@@ -140,7 +146,12 @@ for (const [from, local] of harness.logs(run.id, source)) {
 const usesGateway = run.harness !== 'sprocket';
 
 // A revoked key's budget can no longer be read, so a re-collect keeps the cost recorded before revocation.
-const budget = usesGateway ? await readBudget(await readRunKey(run.id)).catch(() => null) : null;
+const budget = usesGateway
+	? await runtime
+			.runPromise(readBudget(await runtime.runPromise(readRunKey(run.id))))
+			.catch(() => null)
+	: null;
+
 const metricsPath = `${runDir}/metrics.json`;
 const previous = (await Bun.file(metricsPath).exists()) ? await Bun.file(metricsPath).json() : {};
 

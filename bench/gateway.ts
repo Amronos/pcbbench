@@ -1,65 +1,113 @@
-import { $ } from 'bun';
-import { chmod, mkdir } from 'node:fs/promises';
+import { BunRuntime, BunServices } from '@effect/platform-bun';
+import { Console, DateTime, Effect, FileSystem, Option, Schema, Stream } from 'effect';
+import { Argument, Command } from 'effect/cli';
+import { ChildProcess, ChildProcessSpawner } from 'effect/process';
 import { COST_LIMIT_USD, COST_REVOKE_MARGIN_USD, RUNS } from './runs.ts';
 
 const SCOPE = 'spikonado';
 const STATE_DIR = `${import.meta.dir}/.state`;
 const POLL_MS = 15_000;
 
-type RunKey = { runId: string; keyId: string; name: string; secret: string };
+const RunKey = Schema.Struct({
+	runId: Schema.String,
+	keyId: Schema.String,
+	name: Schema.String,
+	secret: Schema.String
+});
 
-type Budget = { currentSpend: number; currentByokSpend: number; active: boolean };
+type RunKey = typeof RunKey.Type;
 
-const vercel = (args: string[]) => $`bunx vercel@latest ${args} --scope ${SCOPE}`.quiet();
+const Budget = Schema.Struct({
+	currentSpend: Schema.Number,
+	currentByokSpend: Schema.Number,
+	active: Schema.Boolean
+});
+
+type Budget = typeof Budget.Type;
+
+export class GatewayError extends Schema.TaggedError<GatewayError>()('GatewayError', {
+	message: Schema.String
+}) {}
+
+const redactSecrets = (text: string) => text.replaceAll(/vck_\w+/g, 'vck_…');
+
+const vercel = Effect.fn('vercel')(function* (args: ReadonlyArray<string>) {
+	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+
+	const handle = yield* spawner.spawn(
+		ChildProcess.make('bunx', ['vercel@latest', ...args, '--scope', SCOPE], { stdin: 'inherit' })
+	);
+
+	const [stdout, stderr, exitCode] = yield* Effect.all(
+		[
+			Stream.mkString(Stream.decodeText(handle.stdout)),
+			Stream.mkString(Stream.decodeText(handle.stderr)),
+			handle.exitCode
+		],
+		{ concurrency: 'unbounded' }
+	);
+
+	if (exitCode !== 0)
+		return yield* new GatewayError({
+			message: `vercel ${args.join(' ')} exited with ${exitCode}: ${redactSecrets(stderr)}`
+		});
+
+	return { stdout, stderr };
+}, Effect.scoped);
 
 const keyName = (runId: string) => `pcbbench-${runId}`;
 
 const statePath = (runId: string) => `${STATE_DIR}/${runId}.key.json`;
 
-function costLimitUsd(runId: string) {
+const costLimitUsd = Effect.fnUntraced(function* (runId: string) {
 	const run = RUNS.find((candidate) => candidate.id === runId);
 
-	if (!run) throw new Error(`Unknown run id: ${runId}`);
+	if (!run) return yield* new GatewayError({ message: `Unknown run id: ${runId}` });
 
 	return COST_LIMIT_USD[run.model];
-}
+});
 
-export async function createRunKey(runId: string): Promise<RunKey> {
+const createRunKey = Effect.fn('createRunKey')(function* (runId: string) {
 	const name = keyName(runId);
 
-	const out = await vercel([
+	const out = yield* vercel([
 		'ai-gateway',
 		'api-keys',
 		'create',
 		'--name',
 		name,
 		'--amount',
-		String(costLimitUsd(runId)),
+		String(yield* costLimitUsd(runId)),
 		'--include-byok',
 		'--expiration',
 		'7d'
 	]);
 
-	const text = out.stdout.toString() + out.stderr.toString();
+	const text = out.stdout + out.stderr;
 	const secret = text.match(/vck_\w+/)?.[0];
 	const keyId = text.match(/API key \S+ \((\w+)\) created/)?.[1];
 
 	if (!secret || !keyId)
-		throw new Error(`Could not parse the new key from: ${text.replaceAll(/vck_\w+/g, 'vck_…')}`);
+		return yield* new GatewayError({
+			message: `Could not parse the new key from: ${redactSecrets(text)}`
+		});
 	const key = { runId, keyId, name, secret };
-	await mkdir(STATE_DIR, { recursive: true });
-	await Bun.write(statePath(runId), JSON.stringify(key));
-	await chmod(statePath(runId), 0o600);
+	const fs = yield* FileSystem.FileSystem;
+	yield* fs.makeDirectory(STATE_DIR, { recursive: true });
+	yield* fs.writeFileString(statePath(runId), JSON.stringify(key));
+	yield* fs.chmod(statePath(runId), 0o600);
 
 	return key;
-}
+});
 
-export async function readRunKey(runId: string): Promise<RunKey> {
-	return Bun.file(statePath(runId)).json();
-}
+export const readRunKey = Effect.fn('readRunKey')(function* (runId: string) {
+	const text = yield* (yield* FileSystem.FileSystem).readFileString(statePath(runId));
 
-export async function readBudget(key: RunKey): Promise<Budget> {
-	const out = await vercel([
+	return yield* Schema.decodeEffect(Schema.fromJsonString(RunKey))(text);
+});
+
+export const readBudget = Effect.fn('readBudget')(function* (key: RunKey) {
+	const { stdout } = yield* vercel([
 		'ai-gateway',
 		'budgets',
 		'inspect',
@@ -69,57 +117,73 @@ export async function readBudget(key: RunKey): Promise<Budget> {
 		'json'
 	]);
 
-	const text = out.stdout.toString();
-
-	return JSON.parse(text.slice(text.indexOf('{')));
-}
+	return yield* Schema.decodeEffect(Schema.fromJsonString(Budget))(
+		stdout.slice(stdout.indexOf('{'))
+	);
+});
 
 export const spentUsd = (budget: Budget) => budget.currentSpend + budget.currentByokSpend;
 
-export async function revokeRunKey(key: RunKey) {
-	await vercel(['ai-gateway', 'api-keys', 'revoke', key.keyId, '--yes']);
-}
+export const revokeRunKey = Effect.fn('revokeRunKey')(function* (key: RunKey) {
+	yield* vercel(['ai-gateway', 'api-keys', 'revoke', key.keyId, '--yes']);
+});
 
-async function watchRunKey(key: RunKey) {
-	const revokeAtUsd = costLimitUsd(key.runId) - COST_REVOKE_MARGIN_USD;
+const watchRunKey = Effect.fn('watchRunKey')(function* (key: RunKey) {
+	const revokeAtUsd = (yield* costLimitUsd(key.runId)) - COST_REVOKE_MARGIN_USD;
 
 	for (;;) {
-		const budget = await readBudget(key).catch((error: Error) => {
-			console.error(`Budget read failed: ${error.message}`);
+		const spent = yield* readBudget(key).pipe(
+			Effect.map(spentUsd),
+			Effect.tapError((error) => Console.error(`Budget read failed: ${error.message}`)),
+			Effect.option
+		);
 
-			return null;
-		});
-
-		if (budget && spentUsd(budget) >= revokeAtUsd) {
-			await revokeRunKey(key);
-			await Bun.write(
+		if (Option.isSome(spent) && spent.value >= revokeAtUsd) {
+			yield* revokeRunKey(key);
+			yield* (yield* FileSystem.FileSystem).writeFileString(
 				`${STATE_DIR}/${key.runId}.revoked.json`,
-				JSON.stringify({ at: new Date(), spentUsd: spentUsd(budget) })
+				JSON.stringify({ at: DateTime.formatIso(yield* DateTime.now), spentUsd: spent.value })
 			);
-			console.log(`Revoked ${key.name} at $${spentUsd(budget).toFixed(2)}`);
+			yield* Console.log(`Revoked ${key.name} at $${spent.value.toFixed(2)}`);
 
 			return;
 		}
 
-		await Bun.sleep(POLL_MS);
+		yield* Effect.sleep(POLL_MS);
 	}
-}
+});
 
-if (import.meta.main) {
-	const [command, runId] = Bun.argv.slice(2);
+const runId = Argument.Literals(
+	'run-id',
+	RUNS.map((run) => run.id)
+);
 
-	if (!RUNS.some((run) => run.id === runId)) throw new Error(`Unknown run id: ${runId}`);
+const gateway = Command.make('gateway').pipe(
+	Command.withSubcommands([
+		Command.make('create', { runId }, ({ runId }) =>
+			Effect.gen(function* () {
+				const key = yield* createRunKey(runId);
+				yield* Console.log(`Created ${key.name} (${key.keyId}); secret in ${statePath(runId)}`);
+			})
+		),
+		Command.make('spent', { runId }, ({ runId }) =>
+			readRunKey(runId).pipe(
+				Effect.flatMap(readBudget),
+				Effect.flatMap((budget) => Console.log(JSON.stringify(budget)))
+			)
+		),
+		Command.make('watch', { runId }, ({ runId }) =>
+			readRunKey(runId).pipe(Effect.flatMap(watchRunKey))
+		),
+		Command.make('revoke', { runId }, ({ runId }) =>
+			readRunKey(runId).pipe(Effect.flatMap(revokeRunKey))
+		)
+	])
+);
 
-	if (command === 'create') {
-		const key = await createRunKey(runId);
-		console.log(`Created ${key.name} (${key.keyId}); secret in ${statePath(runId)}`);
-	} else if (command === 'spent') {
-		console.log(JSON.stringify(await readBudget(await readRunKey(runId))));
-	} else if (command === 'watch') {
-		await watchRunKey(await readRunKey(runId));
-	} else if (command === 'revoke') {
-		await revokeRunKey(await readRunKey(runId));
-	} else {
-		throw new Error('Usage: bun bench/gateway.ts create|spent|watch|revoke <run-id>');
-	}
-}
+if (import.meta.main)
+	gateway.pipe(
+		Command.run({ version: '0.0.0' }),
+		Effect.provide(BunServices.layer),
+		BunRuntime.runMain
+	);

@@ -1,6 +1,12 @@
+import { BunServices } from '@effect/platform-bun';
+import { Effect, Layer, ManagedRuntime } from 'effect';
 import { readBom } from './bom.ts';
-import { lcsc, productByCode, type LcscProduct } from './lcsc.ts';
+import { Lcsc, type LcscProduct } from './lcsc.ts';
 import { BATCH_BOARDS } from './runs.ts';
+
+const runtime = ManagedRuntime.make(Layer.mergeAll(BunServices.layer, Lcsc.layer));
+const lcsc = await runtime.runPromise(Effect.service(Lcsc));
+const productByCode = (code: string) => Effect.runPromise(lcsc.productByCode(code));
 
 type Line = { refs: string; qty: number; mpn: string; lcsc: string | null };
 
@@ -44,7 +50,7 @@ const [width, height] = quote.options.size_mm.split('x').map(Number);
 const boardSizeMm = { width, height };
 
 const { bom: bomPath } = await Bun.file(`${runDir}/info.json`).json();
-const bom = await readBom(`${runDir}/output/${bomPath}`);
+const bom = await runtime.runPromise(readBom(`${runDir}/output/${bomPath}`));
 const lcscColumn = bom.column(/lcsc/i);
 
 const lines: Line[] = bom.lines
@@ -72,9 +78,7 @@ const partByCode = async (code: string) => toPart(await productByCode(code));
 
 async function partByMpn(mpn: string) {
 	for (const keyword of new Set([mpn, mpn.replaceAll('-', '')])) {
-		const matches =
-			(await lcsc<{ exactMatchResult?: LcscProduct[] }>('search/v3/global', { keyword }))
-				?.exactMatchResult ?? [];
+		const matches = await Effect.runPromise(lcsc.exactMatches(keyword));
 
 		const best = matches
 			.filter((product) => normalize(product.productModel) === normalize(mpn))
