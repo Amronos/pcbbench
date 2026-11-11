@@ -1,57 +1,48 @@
-import { BunServices } from '@effect/platform-bun';
-import { Effect } from 'effect';
-import { mkdir, readdir, writeFile } from 'node:fs/promises';
+import { BunRuntime, BunServices } from '@effect/platform-bun';
+import {
+	Console,
+	DateTime,
+	Effect,
+	FileSystem,
+	Option,
+	Predicate,
+	Runtime,
+	Schema,
+	Sink,
+	Stdio,
+	Stream
+} from 'effect';
+import type { PlatformError } from 'effect/PlatformError';
+import { Argument, Command } from 'effect/cli';
+import { ChildProcess, ChildProcessSpawner } from 'effect/process';
 import { homedir } from 'node:os';
-import { join } from 'node:path';
 import {
 	MODELS,
 	REASONING_EFFORT,
 	WALL_CLOCK_LIMIT_HOURS,
-	isModelId,
 	renderPrompt,
 	type ModelId
 } from '../../runs.ts';
 
-const [runId, model, promptFile] = Bun.argv.slice(2);
+const WORK_DIR = `${homedir()}/pcbbench-run`;
+const THREAD_HEADER = /Thread (\S+) \| Run (\S+)/;
 
-if (!runId || !isModelId(model)) {
-	console.error(`Usage: bun run.ts <run-id> <${MODELS.join('|')}> [smoke-test prompt file]`);
-	process.exit(2);
+class SprocketError extends Schema.TaggedError<SprocketError>()('SprocketError', {
+	message: Schema.String
+}) {}
+
+// The run's own exit code becomes the driver's, as `sprocket run` already printed why it stopped.
+class SprocketRunExit extends Schema.TaggedError<SprocketRunExit>()('SprocketRunExit', {
+	exitCode: Schema.Number
+}) {
+	get [Runtime.errorExitCode]() {
+		return this.exitCode;
+	}
+
+	readonly [Runtime.errorReported] = false;
 }
 
-const workDir = join(homedir(), 'pcbbench-run');
-const resultDir = join(homedir(), 'pcbbench-results', runId);
-
-await mkdir(workDir, { recursive: true });
-
-if ((await readdir(workDir)).length > 0) {
-	console.error(`${workDir} is not empty; use a fresh box or clear it first.`);
-	process.exit(1);
-}
-
-await mkdir(resultDir, { recursive: true });
-
-// Each box needs its own login; a copied refresh token dies 30 s after any other copy refreshes.
-if (
-	Bun.spawnSync(['sprocket', 'run', '--list-models'], { stdout: 'ignore', stderr: 'ignore' })
-		.exitCode !== 0
-) {
-	const login = Bun.spawnSync(['sprocket', 'login', '--credential-store', 'file'], {
-		stdio: ['inherit', 'inherit', 'inherit']
-	});
-
-	if (login.exitCode !== 0) process.exit(1);
-}
-
-const prompt = await Effect.runPromise(
-	renderPrompt(model, promptFile).pipe(Effect.provide(BunServices.layer))
-);
-
-const renderedPrompt = join(resultDir, 'prompt.md');
-
-await Bun.write(renderedPrompt, prompt);
-
-const result: {
+type Result = {
 	runId: string;
 	harness: 'sprocket';
 	model: ModelId;
@@ -63,83 +54,134 @@ const result: {
 	threadId?: string;
 	sprocketRunId?: string;
 	exitCode?: number;
-} = {
-	runId,
-	harness: 'sprocket',
-	model,
-	reasoning: REASONING_EFFORT,
-	sprocketVersion: Bun.spawnSync(['sprocket', '--version']).stdout.toString().trim(),
-	workDir,
-	startedAt: new Date().toISOString()
 };
 
-const saveResult = () =>
-	writeFile(join(resultDir, 'result.json'), JSON.stringify(result, null, '\t') + '\n');
+const now = DateTime.now.pipe(Effect.map(DateTime.formatIso));
 
-await saveResult();
+const run = Effect.fn('run')(function* (runId: string, model: ModelId, promptFile?: string) {
+	const fs = yield* FileSystem.FileSystem;
+	const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
+	const stdio = yield* Stdio.Stdio;
+	const resultDir = `${homedir()}/pcbbench-results/${runId}`;
 
-const child = Bun.spawn(
-	[
-		'sprocket',
-		'run',
-		'--prompt-file',
-		renderedPrompt,
-		'-C',
-		workDir,
-		'--model',
-		model,
-		'--reasoning',
-		REASONING_EFFORT,
-		'--timeout',
-		`${WALL_CLOCK_LIMIT_HOURS}h`
-	],
-	{ stdin: 'ignore', stdout: 'pipe', stderr: 'pipe' }
-);
+	yield* fs.makeDirectory(WORK_DIR, { recursive: true });
 
-async function tee(
-	stream: ReadableStream<Uint8Array>,
-	path: string,
-	echo: NodeJS.WriteStream,
-	onText?: (text: string) => void
-) {
-	const file = Bun.file(path).writer();
-	const decoder = new TextDecoder();
+	if ((yield* fs.readDirectory(WORK_DIR)).length > 0)
+		return yield* new SprocketError({
+			message: `${WORK_DIR} is not empty; use a fresh box or clear it first.`
+		});
 
-	for await (const chunk of stream) {
-		file.write(chunk);
-		file.flush();
-		echo.write(chunk);
-		onText?.(decoder.decode(chunk, { stream: true }));
+	yield* fs.makeDirectory(resultDir, { recursive: true });
+
+	// Each box needs its own login; a copied refresh token dies 30 s after any other copy refreshes.
+	const signedIn = yield* spawner.exitCode(
+		ChildProcess.make('sprocket', ['run', '--list-models'], {
+			stdin: 'ignore',
+			stdout: 'ignore',
+			stderr: 'ignore'
+		})
+	);
+
+	if (signedIn !== 0) {
+		// Like the run below, this stays in the terminal's process group: the login reads the
+		// terminal, and a hangup that ends the driver also ends the run instead of orphaning it.
+		const login = yield* spawner.exitCode(
+			ChildProcess.make('sprocket', ['login', '--credential-store', 'file'], {
+				stdin: 'inherit',
+				stdout: 'inherit',
+				stderr: 'inherit',
+				detached: false
+			})
+		);
+
+		if (login !== 0) return yield* new SprocketError({ message: 'sprocket login failed' });
 	}
 
-	await file.end();
-}
+	const renderedPrompt = `${resultDir}/prompt.md`;
 
-let stderrSoFar = '';
+	yield* fs.writeFileString(renderedPrompt, yield* renderPrompt(model, promptFile));
 
-await Promise.all([
-	tee(child.stdout, join(resultDir, 'stdout.md'), process.stdout),
-	tee(child.stderr, join(resultDir, 'stderr.log'), process.stderr, async (text) => {
-		if (result.threadId) return;
-		stderrSoFar += text;
-		const ids = stderrSoFar.match(/Thread (\S+) \| Run (\S+)/);
+	const result: Result = {
+		runId,
+		harness: 'sprocket',
+		model,
+		reasoning: REASONING_EFFORT,
+		sprocketVersion: (yield* spawner.string(
+			ChildProcess.make('sprocket', ['--version'], { stdin: 'ignore', stderr: 'inherit' })
+		)).trim(),
+		workDir: WORK_DIR,
+		startedAt: yield* now
+	};
 
-		if (ids) {
-			result.threadId = ids[1];
-			result.sprocketRunId = ids[2];
-			await saveResult();
-		}
-	})
-]);
+	const saveResult = () =>
+		fs.writeFileString(`${resultDir}/result.json`, `${JSON.stringify(result, null, '\t')}\n`);
 
-const exitCode = await child.exited;
+	yield* saveResult();
 
-result.exitCode = exitCode;
+	const child = yield* spawner.spawn(
+		ChildProcess.make(
+			'sprocket',
+			[
+				'run',
+				'--prompt-file',
+				renderedPrompt,
+				'-C',
+				WORK_DIR,
+				'--model',
+				model,
+				'--reasoning',
+				REASONING_EFFORT,
+				'--timeout',
+				`${WALL_CLOCK_LIMIT_HOURS}h`
+			],
+			{ stdin: 'ignore', detached: false }
+		)
+	);
 
-result.finishedAt = new Date().toISOString();
+	const tee =
+		(path: string, echo: Sink.Sink<void, Uint8Array, never, PlatformError>) =>
+		(output: Stream.Stream<Uint8Array, PlatformError>) =>
+			output.pipe(Stream.tapSink(fs.sink(path)), Stream.tapSink(echo));
 
-await saveResult();
+	yield* Effect.all(
+		[
+			child.stdout.pipe(tee(`${resultDir}/stdout.md`, stdio.stdout()), Stream.runDrain),
+			child.stderr.pipe(
+				tee(`${resultDir}/stderr.log`, stdio.stderr()),
+				Stream.decodeText(),
+				Stream.splitLines,
+				Stream.map((line) => line.match(THREAD_HEADER)),
+				Stream.filter(Predicate.isNotNull),
+				Stream.runForEach(([, threadId, sprocketRunId]) => {
+					if (result.threadId) return Effect.void;
+					result.threadId = threadId;
+					result.sprocketRunId = sprocketRunId;
 
-console.error(`\nSaved ${resultDir}/result.json (thread ${result.threadId}, exit ${exitCode})`);
+					return saveResult();
+				})
+			)
+		],
+		{ concurrency: 'unbounded' }
+	);
 
-process.exit(exitCode);
+	const exitCode = yield* child.exitCode;
+
+	result.exitCode = exitCode;
+	result.finishedAt = yield* now;
+	yield* saveResult();
+	yield* Console.error(
+		`\nSaved ${resultDir}/result.json (thread ${result.threadId}, exit ${exitCode})`
+	);
+
+	if (exitCode !== 0) return yield* new SprocketRunExit({ exitCode });
+}, Effect.scoped);
+
+Command.make(
+	'sprocket',
+	{
+		runId: Argument.String('run-id'),
+		model: Argument.Literals('model', MODELS),
+		promptFile: Argument.String('smoke-test-prompt-file').pipe(Argument.optional)
+	},
+	({ runId, model, promptFile }) => run(runId, model, Option.getOrUndefined(promptFile))
+).pipe(Command.run({ version: '0.0.0' }), Effect.provide(BunServices.layer), BunRuntime.runMain);
