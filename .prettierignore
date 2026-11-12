@@ -1,0 +1,16 @@
+bun.lock
+
+# Renovate writes TOML in its own style
+*.toml
+
+flake*
+
+# Agent output, kept as delivered
+runs/
+
+# Prompts sent to models, kept byte-stable across runs
+bench/**/prompt.md
+bench/harnesses/*/smoke.md
+
+# Vendored Oxlint plugin
+tools/oxlint/anti-slop/

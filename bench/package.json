@@ -4,11 +4,14 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"check": "tsc"
+		"check": "bun check --no-script"
+	},
+	"dependencies": {
+		"@effect/platform-bun": "^4.1.2",
+		"effect": "^4.1.2"
 	},
 	"devDependencies": {
 		"@pcbbench/typescript-config": "workspace:*",
-		"@types/bun": "catalog:",
-		"typescript": "catalog:"
+		"@types/bun": "catalog:"
 	}
 }

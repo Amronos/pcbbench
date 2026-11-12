@@ -1,0 +1,32 @@
+name: Prek
+
+on:
+  merge_group:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  run_prek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: ./.github/actions/setup-nix-shell
+
+      - name: Install dependencies
+        shell: 'nix develop ./pcbbench-shell -c bash -e {0}'
+        run: bun install --frozen-lockfile
+
+      - name: Run prek
+        shell: 'nix develop ./pcbbench-shell -c bash -e {0}'
+        run: prek run -a

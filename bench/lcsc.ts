@@ -1,31 +1,96 @@
-export type LcscProduct = {
-	productCode: string;
-	productModel: string;
-	minBuyNumber: number;
-	stockNumber: number;
-	productCycle?: string;
-	encapStandard?: string;
-	edaSvgInfo?: { pcbSvg?: string };
-	productPriceList?: { ladder: number; usdPrice: number }[];
-};
+import { Context, Effect, Layer, Schema } from 'effect';
+import { FetchHttpClient, HttpClient, HttpClientRequest, HttpClientResponse } from 'effect/http';
 
-const USER_AGENT = { 'User-Agent': 'Mozilla/5.0' };
+// LCSC leaves out or nulls fields it has no value for, and search results skip some detail fields.
+const nullable = <S extends Schema.Top>(schema: S) => Schema.optional(Schema.NullOr(schema));
 
-export async function lcsc<T>(path: string, body?: object): Promise<T | null> {
-	const response = await fetch(`https://wmsc.lcsc.com/ftps/wm/${path}`, {
-		headers: { ...USER_AGENT, 'Content-Type': 'application/json' },
-		...(body && { method: 'POST', body: JSON.stringify(body) })
-	});
-	const { result }: { result: T | null } = JSON.parse(await response.text());
-	return result;
-}
+export const LcscProduct = Schema.Struct({
+	productCode: Schema.String,
+	productModel: Schema.String,
+	minBuyNumber: Schema.Number,
+	stockNumber: Schema.Number,
+	productCycle: nullable(Schema.String),
+	encapStandard: nullable(Schema.String),
+	edaSvgInfo: nullable(Schema.Struct({ pcbSvg: nullable(Schema.String) })),
+	productPriceList: nullable(
+		Schema.Array(Schema.Struct({ ladder: Schema.Number, usdPrice: Schema.Number }))
+	)
+});
 
-export const productByCode = (code: string) => lcsc<LcscProduct>(`product/detail?productCode=${code}`);
+export type LcscProduct = typeof LcscProduct.Type;
 
-// LCSC's own footprint for the part, as an SVG with one element per pad.
-export async function footprintPadNumbers(product: LcscProduct) {
-	const svgUrl = product.edaSvgInfo?.pcbSvg;
-	if (!svgUrl) return [];
-	const svg = await (await fetch(`https:${svgUrl}`, { headers: USER_AGENT })).text();
-	return [...svg.matchAll(/<[^>]*c_partid="part_pad"[^>]*>/g)].flatMap(([tag]) => tag.match(/\bnumber="([^"]+)"/)?.[1] ?? []);
+const ProductResponse = Schema.Struct({ result: Schema.NullOr(LcscProduct) });
+
+const SearchResponse = Schema.Struct({
+	result: Schema.NullOr(
+		Schema.Struct({ exactMatchResult: Schema.NullOr(Schema.Array(LcscProduct)) })
+	)
+});
+
+export class LcscError extends Schema.TaggedError<LcscError>()('LcscError', {
+	cause: Schema.Defect()
+}) {}
+
+const toLcscError = <E>(cause: E) => new LcscError({ cause });
+
+const API = 'https://wmsc.lcsc.com/ftps/wm';
+
+export class Lcsc extends Context.Service<
+	Lcsc,
+	{
+		productByCode(code: string): Effect.Effect<LcscProduct | null, LcscError>;
+		exactMatches(keyword: string): Effect.Effect<ReadonlyArray<LcscProduct>, LcscError>;
+		// LCSC's own footprint for the part, as an SVG with one element per pad.
+		footprintPadNumbers(product: LcscProduct): Effect.Effect<Array<string>, LcscError>;
+	}
+>()('pcbbench/bench/Lcsc') {
+	static readonly layer = Layer.effect(
+		Lcsc,
+		Effect.gen(function* () {
+			const client = (yield* HttpClient.HttpClient).pipe(
+				HttpClient.mapRequest(HttpClientRequest.setHeader('User-Agent', 'Mozilla/5.0')),
+				HttpClient.transformResponse(
+					Effect.provideService(HttpClient.TracerPropagationEnabled, false)
+				)
+			);
+
+			const api = (request: HttpClientRequest.HttpClientRequest) =>
+				client.execute(HttpClientRequest.setHeader(request, 'Content-Type', 'application/json'));
+
+			const productByCode = Effect.fn('Lcsc.productByCode')(function* (code: string) {
+				const response = yield* api(
+					HttpClientRequest.get(`${API}/product/detail?productCode=${code}`)
+				);
+
+				return (yield* HttpClientResponse.schemaBodyJson(ProductResponse)(response)).result;
+			}, Effect.mapError(toLcscError));
+
+			const exactMatches = Effect.fn('Lcsc.exactMatches')(function* (keyword: string) {
+				const response = yield* api(
+					HttpClientRequest.post(`${API}/search/v3/global`).pipe(
+						HttpClientRequest.bodyJsonUnsafe({ keyword })
+					)
+				);
+
+				const { result } = yield* HttpClientResponse.schemaBodyJson(SearchResponse)(response);
+
+				return result?.exactMatchResult ?? [];
+			}, Effect.mapError(toLcscError));
+
+			const footprintPadNumbers = Effect.fn('Lcsc.footprintPadNumbers')(function* (
+				product: LcscProduct
+			) {
+				const svgUrl = product.edaSvgInfo?.pcbSvg;
+
+				if (!svgUrl) return [];
+				const svg = yield* (yield* client.get(`https:${svgUrl}`)).text;
+
+				return [...svg.matchAll(/<[^>]*c_partid="part_pad"[^>]*>/g)].flatMap(
+					([tag]) => tag.match(/\bnumber="([^"]+)"/)?.[1] ?? []
+				);
+			}, Effect.mapError(toLcscError));
+
+			return Lcsc.of({ productByCode, exactMatches, footprintPadNumbers });
+		})
+	).pipe(Layer.provide(FetchHttpClient.layer));
 }

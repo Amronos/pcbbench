@@ -1,47 +1,82 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { BunSocket } from '@effect/platform-bun';
+import {
+	Deferred,
+	Effect,
+	Fiber,
+	FileSystem,
+	Layer,
+	Match,
+	Option,
+	Predicate,
+	Schedule,
+	Schema,
+	Stream
+} from 'effect';
+import { FetchHttpClient, HttpClient } from 'effect/http';
+import { ChildProcess, ChildProcessSpawner } from 'effect/process';
+import type { PlatformError } from 'effect/PlatformError';
+import { Socket } from 'effect/socket';
 import { homedir } from 'node:os';
-import { join } from 'node:path';
 
 export const HOME = homedir();
-export const PREFIX = join(HOME, '.local/share/backplane');
-const WIRE_DICT = join(PREFIX, 'pcbbench-wire-dict.json');
+export const PREFIX = `${HOME}/.local/share/backplane`;
 
-export type Json = null | boolean | number | string | Json[] | { [key: string]: Json };
-type Obj = { [key: string]: Json };
+const REPLY_TIMEOUT_MS = 30_000;
 
-export const isObj = (v: Json | undefined): v is Obj => typeof v === 'object' && v !== null && !Array.isArray(v);
-export const str = (v: Json | undefined): string => (typeof v === 'string' ? v : '');
+export class HubError extends Schema.TaggedError<HubError>()('HubError', {
+	message: Schema.String
+}) {}
 
-function hubBinary(): string {
-	const build = readFileSync(join(PREFIX, 'CURRENT'), 'utf8').trim();
-	return join(PREFIX, 'builds', build, 'backplane-hub');
-}
+const WireDict = Schema.fromJsonString(
+	Schema.Struct({ keys: Schema.Array(Schema.String), words: Schema.Array(Schema.String) })
+);
+
+const Reply = Schema.Struct({
+	t: Schema.Literal('reply'),
+	id: Schema.Number,
+	ok: Schema.optionalKey(Schema.Boolean),
+	error: Schema.optionalKey(Schema.Json)
+});
+
+type Reply = typeof Reply.Type;
+
+const replyFromCbor = Schema.decodeUnknownOption(Reply);
+const replyFromText = Schema.decodeUnknownOption(Schema.fromJsonString(Reply));
+const textDecoder = new TextDecoder();
 
 // The hub answers in Backplane's CBOR subset: map keys from KEYS travel as their index, strings from WORDS as tag 6, other numbers as tag 7 text.
-function cborDecoder(): (bytes: Uint8Array) => Json {
-	const dict: unknown = JSON.parse(readFileSync(WIRE_DICT, 'utf8'));
-	const list = (k: string): string[] => {
-		const v: unknown = typeof dict === 'object' && dict !== null ? Reflect.get(dict, k) : undefined;
-		return Array.isArray(v) ? v.map(String) : [];
-	};
-	const keys = list('keys');
-	const words = list('words');
-	return (b) => {
+const cborDecoder =
+	({ keys, words }: typeof WireDict.Type) =>
+	(b: Uint8Array): Schema.Json => {
 		let at = 0;
+
 		const arg = (ai: number): number => {
 			if (ai < 24) return ai;
-			const n = ai === 24 ? 1 : ai === 25 ? 2 : ai === 26 ? 4 : 8;
 			let v = 0;
-			for (let i = 0; i < n; i++) v = v * 256 + (b[at++] ?? 0);
+
+			for (let i = 0; i < 2 ** (ai - 24); i++) v = v * 256 + (b[at++] ?? 0);
+
 			return v;
 		};
-		const text = (n: number): string => new TextDecoder().decode(b.subarray(at, (at += n)));
-		const item = (): Json => {
+
+		const text = (n: number): string => textDecoder.decode(b.subarray(at, (at += n)));
+
+		const key = (k: Schema.Json): string =>
+			Predicate.isNumber(k) ? (keys[k] ?? `#${k}`) : String(k);
+
+		const item = (): Schema.Json => {
 			const h = b[at++] ?? 0;
 			const major = h >> 5;
 			const ai = h & 31;
-			if (major === 7) return ai === 21 ? true : ai === 20 ? false : null;
+
+			if (major === 7)
+				return Match.value(ai).pipe(
+					Match.when(21, () => true),
+					Match.when(20, () => false),
+					Match.orElse(() => null)
+				);
 			const n = arg(ai);
+
 			switch (major) {
 				case 0:
 					return n;
@@ -49,103 +84,185 @@ function cborDecoder(): (bytes: Uint8Array) => Json {
 					return -1 - n;
 				case 2:
 					at += n;
+
 					return null;
 				case 3:
 					return text(n);
 				case 4:
 					return Array.from({ length: n }, item);
-				case 5: {
-					const o: Obj = {};
-					for (let i = 0; i < n; i++) {
-						const k = item();
-						o[typeof k === 'number' ? (keys[k] ?? `#${k}`) : String(k)] = item();
-					}
-					return o;
-				}
+				case 5:
+					return Object.fromEntries(Array.from({ length: n }, () => [key(item()), item()]));
 				default: {
 					const v = item();
-					if (n === 6 && typeof v === 'number') return words[v] ?? `#word${v}`;
-					if (n === 7 && typeof v === 'string') return Number(v);
+
+					if (n === 6 && Predicate.isNumber(v)) return words[v] ?? `#word${v}`;
+
+					if (n === 7 && Predicate.isString(v)) return Number(v);
+
 					return v;
 				}
 			}
 		};
+
 		return item();
 	};
-}
 
-export type Hub = { proc: Bun.Subprocess; rpc: Rpc };
+export type Hub = {
+	exited: Effect.Effect<Option.Option<string>, PlatformError>;
+	call(m: string, p: Schema.JsonObject): Effect.Effect<void, HubError>;
+};
 
-export async function startHub(opts: { home: string; port: number; cwd: string; env: Record<string, string>; log: string }): Promise<Hub> {
-	const out = Bun.file(opts.log);
-	const proc = Bun.spawn(
-		[hubBinary(), '--home', opts.home, '--port', String(opts.port), '--host', '127.0.0.1', '--no-tailscale', '--foreground'],
-		{ cwd: opts.cwd, env: opts.env, stdin: 'ignore', stdout: out, stderr: out }
-	);
-	const url = `http://127.0.0.1:${opts.port}`;
-	for (let i = 0; ; i++) {
-		if (proc.exitCode !== null) throw new Error(`hub exited with ${proc.exitCode}; see ${opts.log}`);
-		if (i > 600) throw new Error('hub did not answer /hello within 60 s');
-		const ok = await fetch(`${url}/hello`).then(
-			(r) => r.ok,
-			() => false
+export type HubOptions = {
+	home: string;
+	port: number;
+	cwd: string;
+	env: Record<string, string | undefined>;
+	log: string;
+};
+
+export const startHub = Effect.fn('startHub')(
+	function* (opts: HubOptions) {
+		const fs = yield* FileSystem.FileSystem;
+
+		const decode = cborDecoder(
+			yield* Schema.decodeEffect(WireDict)(
+				yield* fs.readFileString(`${PREFIX}/pcbbench-wire-dict.json`)
+			)
 		);
-		if (ok && existsSync(join(opts.home, 'token'))) break;
-		await Bun.sleep(100);
-	}
-	const token = readFileSync(join(opts.home, 'token'), 'utf8').trim();
-	return { proc, rpc: await Rpc.connect(`ws://127.0.0.1:${opts.port}/ws?token=${encodeURIComponent(token)}`) };
-}
 
-export async function stopHub(hub: Hub): Promise<void> {
-	hub.rpc.close();
-	hub.proc.kill('SIGTERM');
-	const exited = await Promise.race([hub.proc.exited.then(() => true), Bun.sleep(15_000).then(() => false)]);
-	if (!exited) hub.proc.kill('SIGKILL');
-}
+		const build = (yield* fs.readFileString(`${PREFIX}/CURRENT`)).trim();
 
-export class Rpc {
-	private next = 1;
-	private waiting = new Map<number, (reply: Obj) => void>();
+		const proc = yield* (yield* ChildProcessSpawner.ChildProcessSpawner).spawn(
+			ChildProcess.make(
+				`${PREFIX}/builds/${build}/backplane-hub`,
+				[
+					'--home',
+					opts.home,
+					'--port',
+					String(opts.port),
+					'--host',
+					'127.0.0.1',
+					'--no-tailscale',
+					'--foreground'
+				],
+				{ cwd: opts.cwd, env: opts.env, stdin: 'ignore' }
+			)
+		);
 
-	private constructor(private ws: WebSocket) {
-		const decode = cborDecoder();
-		ws.binaryType = 'arraybuffer';
-		ws.addEventListener('message', (e) => {
-			const data: unknown = e.data;
-			const msg = data instanceof ArrayBuffer ? decode(new Uint8Array(data)) : typeof data === 'string' ? JSON.parse(data) : null;
-			if (!isObj(msg) || msg.t !== 'reply' || typeof msg.id !== 'number') return;
-			this.waiting.get(msg.id)?.(msg);
-			this.waiting.delete(msg.id);
+		const logging = yield* Effect.forkScoped(
+			Stream.run(proc.all, fs.sink(opts.log, { flag: 'a' }))
+		);
+
+		// Runs before the spawner's own cleanup, so the hub's shutdown output still reaches the log.
+		yield* Effect.addFinalizer(() =>
+			Effect.ignore(proc.kill({ forceKillAfter: '15 seconds' })).pipe(
+				Effect.andThen(Fiber.join(logging).pipe(Effect.timeout('5 seconds'))),
+				Effect.ignore
+			)
+		);
+
+		const exited = Effect.gen(function* () {
+			if (yield* proc.isRunning) return Option.none<string>();
+
+			// exitCode fails when a signal ended the process.
+			return Option.some(
+				yield* proc.exitCode.pipe(
+					Effect.map(String),
+					Effect.orElseSucceed(() => 'a signal')
+				)
+			);
 		});
-	}
 
-	static async connect(url: string): Promise<Rpc> {
-		const ws = new WebSocket(url);
-		await new Promise((resolve, reject) => {
-			ws.addEventListener('open', resolve, { once: true });
-			ws.addEventListener('error', reject, { once: true });
-		});
-		return new Rpc(ws);
-	}
+		const client = HttpClient.filterStatusOk(yield* HttpClient.HttpClient);
+		const tokenFile = `${opts.home}/token`;
 
-	call(m: string, p: Obj, timeoutMs = 30_000): Promise<Obj> {
-		const id = this.next++;
-		return new Promise((resolve, reject) => {
-			const timer = setTimeout(() => {
-				this.waiting.delete(id);
-				reject(new Error(`${m}: no reply in ${timeoutMs} ms`));
-			}, timeoutMs);
-			this.waiting.set(id, (reply) => {
-				clearTimeout(timer);
-				if (reply.ok === false) reject(new Error(`${m}: ${JSON.stringify(reply.error ?? reply)}`));
-				else resolve(reply);
+		yield* Effect.gen(function* () {
+			const exit = yield* exited;
+
+			if (Option.isSome(exit))
+				return yield* new HubError({
+					message: `hub exited with ${exit.value}; see ${opts.log}`
+				});
+
+			const hello = yield* client.get(`http://127.0.0.1:${opts.port}/hello`).pipe(
+				Effect.as(true),
+				Effect.orElseSucceed(() => false)
+			);
+
+			return hello && (yield* fs.exists(tokenFile));
+		}).pipe(
+			Effect.repeat({ until: (ready) => ready, schedule: Schedule.spaced('100 millis') }),
+			Effect.timeoutOrElse({
+				duration: '60 seconds',
+				orElse: () =>
+					Effect.fail(new HubError({ message: 'hub did not answer /hello within 60 s' }))
+			})
+		);
+
+		const token = (yield* fs.readFileString(tokenFile)).trim();
+
+		const socket = yield* Socket.makeWebSocket(
+			`ws://127.0.0.1:${opts.port}/ws?token=${encodeURIComponent(token)}`
+		);
+
+		const { pull } = yield* socket.reader.pipe(
+			Effect.mapError((error) => new HubError({ message: `hub websocket: ${error.message}` }))
+		);
+
+		const { write } = yield* socket.writer;
+		const waiting = new Map<number, Deferred.Deferred<Reply>>();
+		let next = 1;
+
+		yield* pull.pipe(
+			Effect.flatMap((frames) => {
+				const replies = frames.flatMap((frame) =>
+					Option.toArray(
+						Predicate.isString(frame) ? replyFromText(frame) : replyFromCbor(decode(frame))
+					)
+				);
+
+				return Effect.forEach(replies, (reply) => {
+					const waiter = waiting.get(reply.id);
+
+					return waiter ? Deferred.succeed(waiter, reply) : Effect.void;
+				});
+			}),
+			Effect.forever,
+			Effect.ignore,
+			Effect.forkScoped
+		);
+
+		const call = (m: string, p: Schema.JsonObject) =>
+			Effect.suspend(() => {
+				const id = next++;
+
+				return Effect.gen(function* () {
+					const reply = yield* Deferred.make<Reply>();
+					waiting.set(id, reply);
+
+					yield* write(JSON.stringify({ id, m, p })).pipe(
+						Effect.mapError((error) => new HubError({ message: `${m}: ${error.message}` }))
+					);
+
+					return yield* Deferred.await(reply);
+				}).pipe(
+					Effect.timeoutOrElse({
+						duration: REPLY_TIMEOUT_MS,
+						orElse: () =>
+							Effect.fail(new HubError({ message: `${m}: no reply in ${REPLY_TIMEOUT_MS} ms` }))
+					}),
+					Effect.flatMap((reply) =>
+						reply.ok === false
+							? Effect.fail(
+									new HubError({ message: `${m}: ${JSON.stringify(reply.error ?? reply)}` })
+								)
+							: Effect.void
+					),
+					Effect.ensuring(Effect.sync(() => waiting.delete(id)))
+				);
 			});
-			this.ws.send(JSON.stringify({ id, m, p }));
-		});
-	}
 
-	close(): void {
-		this.ws.close();
-	}
-}
+		return { exited, call } satisfies Hub;
+	},
+	Effect.provide(Layer.mergeAll(FetchHttpClient.layer, BunSocket.layerWebSocketConstructor))
+);

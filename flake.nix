@@ -9,7 +9,11 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+          # gerbv still needs gtk2, which nixpkgs marks broken ahead of removing it.
+          config.problems.handlers."gtk+".broken = "ignore";
+        };
       in
       {
         formatter = pkgs.nixfmt-tree;
@@ -18,10 +22,12 @@
           packages = with pkgs; [
             awscli2
             bun
+            commitlint
             gerbv
             imagemagick
             librsvg
             nodejs_26
+            prek
             unzip
           ];
         };

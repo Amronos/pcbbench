@@ -1,4 +1,9 @@
-export type ModelId = 'opus-5.5' | 'gpt-6.1-sol' | 'fable-5.2';
+import { Effect, FileSystem, Schema } from 'effect';
+import { Argument } from 'effect/cli';
+
+export const ModelId = Schema.Literals(['opus-5.5', 'gpt-6.1-sol', 'fable-5.2']);
+
+export type ModelId = typeof ModelId.Type;
 
 export type Harness = 'codex-desktop' | 'codex-desktop-texttocad' | 'backplane' | 'sprocket';
 
@@ -21,23 +26,28 @@ export const BACKPLANE_CLI: Record<ModelId, 'claude' | 'codex'> = {
 	'fable-5.2': 'claude'
 };
 
-export const isModelId = (value: string | undefined): value is ModelId => value !== undefined && value in GATEWAY_MODEL;
-export const MODELS = Object.keys(GATEWAY_MODEL).filter(isModelId);
+export const MODELS = ModelId.literals;
 
 export const REASONING_EFFORT = 'medium';
 export const WALL_CLOCK_LIMIT_HOURS = 12;
+
 export const COST_LIMIT_USD: Record<ModelId, number> = {
 	'opus-5.5': 100,
 	'gpt-6.1-sol': 100,
 	'fable-5.2': 250
 };
+
 export const COST_REVOKE_MARGIN_USD = 5;
 export const BATCH_BOARDS = 5;
 
-export async function renderPrompt(model: ModelId, path = `${import.meta.dir}/prompt.md`) {
-	const template = await Bun.file(path).text();
+export const renderPrompt = Effect.fn('renderPrompt')(function* (
+	model: ModelId,
+	path = `${import.meta.dir}/prompt.md`
+) {
+	const template = yield* (yield* FileSystem.FileSystem).readFileString(path);
+
 	return template.replaceAll('{{MODEL}}', model).replaceAll('{{EFFORT}}', REASONING_EFFORT);
-}
+});
 
 // Harness version scripts print one `name=version` line per tool.
 export const parseVersions = (output: string): Record<string, string> =>
@@ -48,12 +58,19 @@ export const parseVersions = (output: string): Record<string, string> =>
 			.map((line) => [line.slice(0, line.indexOf('=')), line.slice(line.indexOf('=') + 1)])
 	);
 
-export const kicadFullVersion = (kicadCli: string) => `$(${kicadCli} version --format about | sed -n 's/^Version: \\([^,]*\\).*/\\1/p')`;
+export const kicadFullVersion = (kicadCli: string) =>
+	`$(${kicadCli} version --format about | sed -n 's/^Version: \\([^,]*\\).*/\\1/p')`;
 
-export const minutesBetween = (startMs: number, endMs: number) => Math.round((endMs - startMs) / 600) / 100;
+export const minutesBetween = (startMs: number, endMs: number) =>
+	Math.round((endMs - startMs) / 600) / 100;
 
 export const RUNS: Run[] = [
-	{ id: 'codex-desktop--gpt-6.1-sol', harness: 'codex-desktop', model: 'gpt-6.1-sol', machine: 'mac' },
+	{
+		id: 'codex-desktop--gpt-6.1-sol',
+		harness: 'codex-desktop',
+		model: 'gpt-6.1-sol',
+		machine: 'mac'
+	},
 	{
 		id: 'codex-desktop-texttocad--gpt-6.1-sol',
 		harness: 'codex-desktop-texttocad',
@@ -67,3 +84,8 @@ export const RUNS: Run[] = [
 	{ id: 'backplane--fable-5.2', harness: 'backplane', model: 'fable-5.2', machine: 'linux' },
 	{ id: 'sprocket--fable-5.2', harness: 'sprocket', model: 'fable-5.2', machine: 'linux' }
 ];
+
+export const runIdArgument = Argument.Literals(
+	'run-id',
+	RUNS.map((run) => run.id)
+);
