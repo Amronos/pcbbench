@@ -1,0 +1,96 @@
+---
+import { Font } from 'astro:assets';
+import { GITHUB } from '../data/runs';
+import '../styles/global.css';
+
+type Props = { title: string; description: string };
+
+const { title, description } = Astro.props;
+const ogImage = new URL('/og.png', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#061423" media="(prefers-color-scheme: dark)" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content={ogImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<Font cssVariable="--font-iso" preload />
+		<Font cssVariable="--font-body" preload />
+	</head>
+	<body>
+		<header class="page masthead">
+			<a class="wordmark" href="/">PCBBench</a>
+			<nav aria-label="Site">
+				<a href="/">Leaderboard</a>
+				<a href="/tasks">Tasks</a>
+				<a href="/method">Method</a>
+				<a href={GITHUB}>GitHub</a>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer class="page footer">
+			<p>
+				PCBBench is under development. All data, boards and reviews are in the <a href={GITHUB}
+					>GitHub repo</a
+				>.
+			</p>
+		</footer>
+	</body>
+</html>
+
+<style>
+	.masthead {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 0.5rem 2rem;
+		padding-block: 1.5rem;
+	}
+
+	.wordmark {
+		font-family: var(--font-iso);
+		font-size: var(--step-1);
+		text-decoration: none;
+	}
+
+	nav {
+		display: flex;
+		gap: 1.5rem;
+		font-size: var(--step--1);
+	}
+
+	nav a {
+		text-decoration: none;
+		color: var(--dim);
+	}
+
+	nav a:hover {
+		color: var(--accent);
+	}
+
+	.footer {
+		margin-top: 6rem;
+		padding-bottom: 3rem;
+		color: var(--dim);
+		font-size: var(--step--1);
+	}
+
+	.footer p {
+		border-top: 1px solid var(--rule);
+		padding-top: 2rem;
+		max-width: none;
+	}
+</style>

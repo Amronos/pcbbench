@@ -1,0 +1,172 @@
+---
+import type { Item } from '@pcbbench/bench/scoring';
+import { usd } from '../data/format';
+import type { Run } from '../data/runs';
+import CheckHead from './CheckHead.astro';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { boardCost, fixes, needsFixes } = run.metrics;
+const { oneBoard, fiveBoards } = boardCost;
+const { bomLines } = needsFixes;
+
+const FIX_AREAS: Record<(typeof fixes)[number]['area'], string> = {
+	bom: 'BOM',
+	fabSpec: 'Fab notes',
+	pcb: 'Board'
+};
+
+const prices = [
+	{ label: 'PCBs', one: oneBoard.pcbUsd, five: fiveBoards.pcbUsd },
+	{ label: 'Assembly', one: oneBoard.assemblyUsd, five: fiveBoards.assemblyUsd },
+	{ label: 'Components', one: oneBoard.componentsUsd, five: fiveBoards.componentsUsd }
+];
+
+const checks = [
+	{ item: 'fabNotesWithoutFixes', issues: needsFixes.fabNotes },
+	{ item: 'boardWithoutRework', issues: needsFixes.board },
+	{
+		item: 'bomLinesWithoutFixes',
+		issues: needsFixes.assembly,
+		summary: `${bomLines.needingFixes.length} of ${bomLines.total} BOM lines need a fix.`
+	}
+] satisfies { item: Item['name']; issues: string[]; summary?: string }[];
+---
+
+<div class="ordering">
+	<div class="prices">
+		<div class="scroll">
+			<table class="data">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col" class="n">1 board</th>
+						<th scope="col" class="n">5 boards</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						prices.map((price) => (
+							<tr>
+								<th scope="row">{price.label}</th>
+								<td class="n">{usd(price.one)}</td>
+								<td class="n">{usd(price.five)}</td>
+							</tr>
+						))
+					}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="row">Total</th>
+						<td class="n">{usd(oneBoard.totalUsd)}</td>
+						<td class="n">{usd(fiveBoards.totalUsd)}</td>
+					</tr>
+					<tr>
+						<th scope="row">Per board</th>
+						<td class="n">{usd(oneBoard.totalUsd)}</td>
+						<td class="n">{usd(fiveBoards.perBoardUsd)}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+		<p class="dim">
+			PCBWay's instant quote for the options in the fab notes, without shipping. PCBWay makes at
+			least 5 PCBs, so 1 board is 5 PCBs with 1 assembled. Parts are at distributor list prices.{
+				boardCost.afterFixes && ' The prices include the fixes below.'
+			}
+		</p>
+	</div>
+
+	{
+		fixes.length > 0 && (
+			<section>
+				<h3>Fixes made to price the order</h3>
+				<div class="scroll">
+					<table class="data">
+						<thead>
+							<tr>
+								<th scope="col">Area</th>
+								<th scope="col">Parts</th>
+								<th scope="col">Problem</th>
+								<th scope="col">Fix</th>
+							</tr>
+						</thead>
+						<tbody>
+							{fixes.map((fix) => (
+								<tr>
+									<td>{FIX_AREAS[fix.area]}</td>
+									<td>{fix.refs}</td>
+									<td class="text">{fix.problem}</td>
+									<td class="text">{fix.fix}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			</section>
+		)
+	}
+
+	<div class="checks">
+		{
+			checks.map((check) => (
+				<section>
+					<CheckHead run={run} item={check.item} />
+					{check.summary && <p>{check.summary}</p>}
+					{check.issues.length ? (
+						<ul>
+							{check.issues.map((issue) => (
+								<li>{issue}</li>
+							))}
+						</ul>
+					) : (
+						!check.summary && <p class="pass">No fixes needed.</p>
+					)}
+				</section>
+			))
+		}
+	</div>
+</div>
+
+<style>
+	.ordering {
+		display: grid;
+		gap: 2.5rem;
+	}
+
+	.prices {
+		display: grid;
+		gap: 0.75rem;
+		max-width: 36rem;
+	}
+
+	.prices p {
+		font-size: var(--step--1);
+	}
+
+	section {
+		display: grid;
+		gap: 0.75rem;
+		align-content: start;
+	}
+
+	h3 {
+		font-size: var(--step-1);
+	}
+
+	.text {
+		min-width: 16rem;
+	}
+
+	ul {
+		margin: 0;
+		padding-left: 1.2em;
+		display: grid;
+		gap: 0.3rem;
+	}
+
+	li::first-letter {
+		text-transform: uppercase;
+	}
+</style>

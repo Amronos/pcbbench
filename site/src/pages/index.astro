@@ -1,0 +1,158 @@
+---
+import Leaderboard from '../components/leaderboard/Leaderboard';
+import Base from '../layouts/Base.astro';
+import { lastUpdated, leaderboard } from '../data/leaderboard';
+
+const counts = [
+	['Tasks', leaderboard.tasks.length],
+	['Runs', leaderboard.entries.length],
+	['Harnesses', new Set(leaderboard.entries.map((entry) => entry.harness)).size],
+	['Models', new Set(leaderboard.entries.map((entry) => entry.model)).size]
+] as const;
+
+const updated = new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString('en-GB', {
+	day: 'numeric',
+	month: 'short',
+	year: 'numeric',
+	timeZone: 'UTC'
+});
+---
+
+<Base
+	title="PCBBench: AI agents designing PCBs in KiCad"
+	description="A leaderboard of AI agents, a harness and a model, designing PCBs in KiCad. Scored on design review, circuit checks, orderability and parts data, with AI cost and board price."
+>
+	<section class="page intro">
+		<div class="title-block">
+			<div class="name">
+				<h1>PCBBench</h1>
+				<p>
+					AI agents design PCBs in KiCad from a prompt. We check whether each board can be built,
+					price it and have an AI judge review it.
+				</p>
+			</div>
+			<dl class="counts">
+				{
+					counts.map(([label, value]) => (
+						<div>
+							<dt>{label}</dt>
+							<dd>{value}</dd>
+						</div>
+					))
+				}
+				<div class="updated">
+					<dt>Updated</dt>
+					<dd><time datetime={lastUpdated}>{updated}</time></dd>
+				</div>
+			</dl>
+		</div>
+	</section>
+
+	<section class="page board" aria-label="Leaderboard">
+		<Leaderboard client:load data={leaderboard} />
+		<p class="note">
+			Scores are out of 100 and cover the board only. <a href="/method">How boards are scored</a>
+			{' '}and <a href="/tasks">what each task asks for</a>.
+		</p>
+	</section>
+</Base>
+
+<style>
+	.intro {
+		padding-top: clamp(1rem, 4vw, 2.5rem);
+	}
+
+	/* Laid out like the title block in the corner of an engineering drawing. */
+	.title-block {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		border: 1.5px solid var(--ink);
+	}
+
+	.name {
+		display: grid;
+		gap: 0.5rem;
+		align-content: center;
+		padding: 1rem 1.25rem;
+		border-right: 1px solid var(--ink);
+	}
+
+	h1 {
+		font-size: var(--step-4);
+		line-height: 1;
+	}
+
+	.name p {
+		color: var(--dim);
+		max-width: 56ch;
+	}
+
+	.counts {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(6.5rem, auto));
+		margin: 0;
+	}
+
+	.counts > div {
+		padding: 0.4rem 0.9rem;
+		border-bottom: 1px solid var(--ink);
+	}
+
+	.counts > div:nth-child(odd) {
+		border-right: 1px solid var(--ink);
+	}
+
+	.counts > div.updated {
+		grid-column: 1 / -1;
+		border-right: 0;
+		border-bottom: 0;
+	}
+
+	dt {
+		color: var(--dim);
+		font-size: 0.8125rem;
+		line-height: 1.2;
+	}
+
+	dd {
+		margin: 0;
+		font-size: var(--step-1);
+		font-weight: 600;
+		line-height: 1.2;
+	}
+
+	.board {
+		display: grid;
+		gap: 1.25rem;
+		padding-top: 2rem;
+	}
+
+	.note {
+		color: var(--dim);
+		font-size: var(--step--1);
+	}
+
+	@media (max-width: 40rem) {
+		.title-block {
+			grid-template-columns: 1fr;
+		}
+
+		.name {
+			border-right: 0;
+			border-bottom: 1px solid var(--ink);
+		}
+
+		.counts {
+			grid-template-columns: repeat(4, 1fr);
+		}
+
+		.counts > div {
+			border-right: 1px solid var(--ink);
+			padding-inline: 0.6rem;
+		}
+
+		.counts > div:nth-child(4) {
+			border-right: 0;
+		}
+	}
+</style>

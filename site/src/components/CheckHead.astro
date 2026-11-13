@@ -1,0 +1,45 @@
+---
+import type { Item } from '@pcbbench/bench/scoring';
+import { points } from '../data/format';
+import type { Run } from '../data/runs';
+import { ITEM_LABELS, itemEarned, itemPoints } from '../data/scoring';
+
+type Props = { run: Run; item: Item['name'] };
+
+const { run, item } = Astro.props;
+const earned = itemEarned(run, item);
+const possible = itemPoints(item);
+---
+
+<header>
+	<h3>{ITEM_LABELS[item].label}</h3>
+	<span class="pts">
+		{points(earned)}{' '}
+		<span class="of">of {possible}</span>
+	</span>
+</header>
+
+<style>
+	header {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 1rem;
+		border-bottom: 1px solid var(--rule);
+		padding-bottom: 0.35rem;
+	}
+
+	h3 {
+		font-size: var(--step-1);
+	}
+
+	.pts {
+		font-size: var(--step-1);
+		white-space: nowrap;
+	}
+
+	.of {
+		font-size: var(--step--1);
+		color: var(--dim);
+	}
+</style>

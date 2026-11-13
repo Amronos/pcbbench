@@ -1,0 +1,141 @@
+---
+import { percent } from '../data/format';
+import type { Run } from '../data/runs';
+import CheckHead from './CheckHead.astro';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { parts, suppliers, missing3dModels, drc, erc, bom } = run.metrics;
+const drcTypes = Object.entries(drc.byType);
+---
+
+<div class="checks">
+	<section>
+		<CheckHead run={run} item="models3d" />
+		<p>
+			{
+				missing3dModels.count
+					? `${missing3dModels.count} ${missing3dModels.count === 1 ? 'part has' : 'parts have'} no 3D model the run's KiCad can load: ${missing3dModels.refs.join(', ')}.`
+					: 'Every part has a 3D model.'
+			}
+		</p>
+	</section>
+
+	<section>
+		<CheckHead run={run} item="supplierNumbers" />
+		<p>
+			{suppliers.linesWithValidNumber} of {suppliers.lines} BOM lines have a valid supplier part number.
+		</p>
+		<p class="dim small">
+			{
+				Object.entries(suppliers.validPercent)
+					.map(([supplier, valid]) => `${supplier} ${percent(valid)}`)
+					.join(', ')
+			}
+		</p>
+	</section>
+
+	<section>
+		<h3>Stock</h3>
+		<p>
+			{percent(parts.inStockPercent)} of {bom.lines} BOM lines are stocked for 5 boards at LCSC, JLCPCB
+			or Digi-Key.
+		</p>
+		{
+			parts.notStocked.length > 0 && (
+				<div class="scroll">
+					<table class="data">
+						<caption>Not stocked</caption>
+						<thead>
+							<tr>
+								<th scope="col">Parts</th>
+								<th scope="col">MPN</th>
+								<th scope="col" class="n">Needed</th>
+							</tr>
+						</thead>
+						<tbody>
+							{parts.notStocked.map((line) => (
+								<tr>
+									<td>{line.refs}</td>
+									<td>{line.mpn ?? 'none'}</td>
+									<td class="n">{line.needed}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			)
+		}
+		{
+			parts.discontinued.length > 0 && (
+				<div class="scroll">
+					<table class="data">
+						<caption>Discontinued, but may still be stocked</caption>
+						<thead>
+							<tr>
+								<th scope="col">Parts</th>
+								<th scope="col">MPN</th>
+								<th scope="col">At</th>
+							</tr>
+						</thead>
+						<tbody>
+							{parts.discontinued.map((line) => (
+								<tr>
+									<td>{line.refs}</td>
+									<td>{line.mpn ?? 'none'}</td>
+									<td>{line.discontinuedAt.join(', ')}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
+			)
+		}
+	</section>
+
+	<section>
+		<h3>DRC and ERC</h3>
+		<div class="scroll">
+			<table class="data">
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col" class="n">Errors</th>
+						<th scope="col" class="n">Warnings</th>
+						<th scope="col" class="n">Unconnected</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">DRC</th>
+						<td class:list={['n', drc.errors > 0 && 'fail']}>{drc.errors}</td>
+						<td class="n">{drc.warnings}</td>
+						<td class:list={['n', drc.unconnectedItems > 0 && 'fail']}>{drc.unconnectedItems}</td>
+					</tr>
+					<tr>
+						<th scope="row">ERC</th>
+						<td class:list={['n', erc.errors > 0 && 'fail']}>{erc.errors}</td>
+						<td class="n">{erc.warnings}</td>
+						<td class="n"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{
+			drcTypes.length > 0 && (
+				<p class="dim small">
+					DRC by type: {drcTypes.map(([type, count]) => `${type} ${count}`).join(', ')}.
+					{'lib_footprint_mismatch' in drc.byType &&
+						" Footprints that differ from their library copy aren't counted as warnings."}
+				</p>
+			)
+		}
+	</section>
+</div>
+
+<style>
+	.small {
+		font-size: var(--step--1);
+	}
+</style>

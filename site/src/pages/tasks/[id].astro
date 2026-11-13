@@ -1,0 +1,58 @@
+---
+import Leaderboard from '../../components/leaderboard/Leaderboard';
+import Lineup from '../../components/Lineup.astro';
+import Base from '../../layouts/Base.astro';
+import { leaderboard } from '../../data/leaderboard';
+import { tasks, textOnlyMarkdown, type Task } from '../../data/runs';
+
+export const getStaticPaths = () => tasks.map((task) => ({ params: { id: task.id }, props: { task } }));
+
+type Props = { task: Task };
+
+const { task } = Astro.props;
+
+const data = {
+	...leaderboard,
+	entries: leaderboard.entries.filter((entry) => entry.task === task.id),
+	tasks: leaderboard.tasks.filter((candidate) => candidate.id === task.id)
+};
+---
+
+<Base title={`${task.name} · PCBBench`} description={task.summary}>
+	<section class="page section">
+		<p class="crumb"><a href="/tasks">Tasks</a></p>
+		<h1>{task.name}</h1>
+		<p class="lede">{task.summary}</p>
+		<Leaderboard client:load data={data} />
+	</section>
+
+	<section class="page section">
+		<h2>The boards</h2>
+		<p class="lede">Drawn to scale, in millimetres, ranked by score.</p>
+		<Lineup runs={task.runs} />
+	</section>
+
+	<section class="page section">
+		<h2>The prompt</h2>
+		<p class="lede">Every run got this prompt, with its own model and reasoning effort filled in.</p>
+		<div class="prompt prose" set:html={textOnlyMarkdown(task.prompt)} />
+	</section>
+</Base>
+
+<style>
+	.crumb {
+		font-size: var(--step--1);
+		color: var(--dim);
+	}
+
+	h1 {
+		font-size: var(--step-4);
+	}
+
+	.prompt {
+		background: var(--raised);
+		border-left: 3px solid var(--silk);
+		padding: 1.25rem 1.5rem;
+		border-radius: 0 4px 4px 0;
+	}
+</style>

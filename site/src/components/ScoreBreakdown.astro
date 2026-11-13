@@ -1,0 +1,181 @@
+---
+import { GATE_PENALTY, GROUPS, ITEMS, groupPoints } from '@pcbbench/bench/scoring';
+import { points } from '../data/format';
+import type { Run } from '../data/runs';
+import { GROUP_LABELS, ITEM_LABELS, failedGateLabel, itemEarned } from '../data/scoring';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { score } = run.metrics;
+const groupTotal = GROUPS.reduce((total, group) => total + score.groups[group], 0);
+---
+
+<div class="breakdown">
+	{
+		GROUPS.map((group) => (
+			<section style={`--color: var(--${group})`}>
+				<h3>
+					<span>{GROUP_LABELS[group]}</span>
+					<span>
+						{points(score.groups[group])}{' '}
+						<span class="of">of {groupPoints(group)}</span>
+					</span>
+				</h3>
+				<ul>
+					{ITEMS.filter((item) => item.group === group).map((item) => (
+						<li>
+							<span class="label">{ITEM_LABELS[item.name].label}</span>
+							<span class="earned">
+								{points(itemEarned(run, item.name))}{' '}
+								<span class="of">of {item.points}</span>
+							</span>
+							<span class="how">{ITEM_LABELS[item.name].fraction}</span>
+							<span class="meter" aria-hidden="true">
+								<i style={`width: ${score.fractions[item.name] * 100}%`} />
+							</span>
+						</li>
+					))}
+				</ul>
+			</section>
+		))
+	}
+</div>
+
+<table class="total">
+	<tbody>
+		<tr>
+			<th scope="row">The five groups</th>
+			<td>{points(groupTotal)}</td>
+		</tr>
+		{
+			score.failedGates.length ? (
+				<tr class="penalty">
+					<th scope="row">
+						Failed {score.failedGates.length === 1 ? 'gate' : 'gates'}:{' '}
+						{score.failedGates.map(failedGateLabel).join(', ')}
+					</th>
+					<td>−{GATE_PENALTY}</td>
+				</tr>
+			) : (
+				<tr>
+					<th scope="row">Every gate passed, so no penalty</th>
+					<td>0</td>
+				</tr>
+			)
+		}
+		<tr class="score">
+			<th scope="row">Score</th>
+			<td>
+				{points(score.total)}{' '}
+				<span class="of">of 100</span>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<style>
+	.breakdown {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+		gap: 2rem 3rem;
+	}
+
+	section {
+		display: grid;
+		gap: 0.75rem;
+		align-content: start;
+	}
+
+	h3 {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		font-size: var(--step-1);
+		border-bottom: 2px solid var(--color);
+		padding-bottom: 0.4rem;
+	}
+
+	.of {
+		color: var(--dim);
+		font-size: var(--step--1);
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.85rem;
+	}
+
+	li {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas: 'label earned' 'how how' 'meter meter';
+		column-gap: 1rem;
+		row-gap: 0.2rem;
+	}
+
+	.label {
+		grid-area: label;
+	}
+
+	.earned {
+		grid-area: earned;
+		white-space: nowrap;
+	}
+
+	.how {
+		grid-area: how;
+		font-size: var(--step--1);
+		color: var(--dim);
+		line-height: 1.4;
+	}
+
+	.meter {
+		grid-area: meter;
+		height: 0.3rem;
+		margin-top: 0.15rem;
+		background: var(--rule);
+		border-radius: 2px;
+		overflow: hidden;
+	}
+
+	.meter i {
+		display: block;
+		height: 100%;
+		background: var(--color);
+	}
+
+	.total {
+		width: 100%;
+		max-width: 36rem;
+	}
+
+	.total th,
+	.total td {
+		padding: 0.5rem 0;
+		border-bottom: 1px solid var(--rule);
+		text-align: left;
+		font-weight: normal;
+	}
+
+	.total td {
+		text-align: right;
+		white-space: nowrap;
+		padding-left: 1rem;
+	}
+
+	.penalty {
+		color: var(--fail);
+	}
+
+	.score th,
+	.score td {
+		font-family: var(--font-iso);
+		font-size: var(--step-1);
+		border-bottom: 0;
+	}
+</style>

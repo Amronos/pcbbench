@@ -1,0 +1,11 @@
+.env.*
+.direnv
+.turbo
+bench/.state
+site/.astro
+site/dist
+site/src/generated
+
+# The site only reads each run's README from the agent's output.
+runs/*/output/*
+!runs/*/output/README.md
