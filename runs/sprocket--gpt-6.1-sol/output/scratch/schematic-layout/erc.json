@@ -1,0 +1,113 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-13T16:52:30",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.99.0",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/79e2a64a-4880-4fd0-87f5-d09e67c82f42",
+            "violations": [
+                {
+                    "description": "The current configuration does not include the footprint library 'RP2350_Core'",
+                    "items": [
+                        {
+                            "description": "Symbol C5 [C]",
+                            "pos": {
+                                "x": 165.1,
+                                "y": 90.17
+                            },
+                            "uuid": "d2f23dc1-4dd1-4dca-a420-910d5d6a9206"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RP2350_Core'",
+                    "items": [
+                        {
+                            "description": "Symbol L2 [L]",
+                            "pos": {
+                                "x": 175.26,
+                                "y": 54.61
+                            },
+                            "uuid": "a18b25c8-feb0-48a0-8d3c-0b08fb3dcd7d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RP2350_Core'",
+                    "items": [
+                        {
+                            "description": "Symbol C31 [C]",
+                            "pos": {
+                                "x": 199.39,
+                                "y": 90.17
+                            },
+                            "uuid": "5fe26ab2-2e30-4ce2-9814-c51334a636bb"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RP2350_Core'",
+                    "items": [
+                        {
+                            "description": "Symbol R32 [R]",
+                            "pos": {
+                                "x": 209.55,
+                                "y": 54.61
+                            },
+                            "uuid": "cdeef35c-cc99-4a57-acf7-703205d5005c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                },
+                {
+                    "description": "The current configuration does not include the footprint library 'RP2350_Core'",
+                    "items": [
+                        {
+                            "description": "Symbol C32 [C]",
+                            "pos": {
+                                "x": 234.95,
+                                "y": 90.17
+                            },
+                            "uuid": "fff58aad-810d-4ce6-8169-b57d2d2bd4b5"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "footprint_link_issues"
+                }
+            ]
+        }
+    ],
+    "source": "sprocket2350.kicad_sch"
+}

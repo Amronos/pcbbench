@@ -2,53 +2,23 @@
 
 ## Final message
 
-I wrote [review.json](review.json):
+The review found 9 confirmed problems: 4 major and 5 minor, with no fatal faults. They're in [review.json](review.json), which is valid JSON. I've also deleted the scratch folder and the pickle cache.
 
-```json
-{ "crystal": true, "buttons": true, "powerPath": true, "thermal": 4, "grounding": 5, "layout": 5, "routing": 3, "silkscreen": 4 }
-```
+The upgrade made no changes. `kicad-cli` reported that the schematic and board are already in the connector's latest format (KiCad 10.99), so I didn't touch either file. DRC reports no violations and no unconnected items. The footprints and the pinouts of the main ICs match their libraries and datasheets.
 
-**Upgrade:** I didn't need to change anything. Both files already use the connector's format (generator 10.99, board `20261031`, schematic `20261106`). `kicad-cli … upgrade` reported "not updated", and the board, schematic and project files are byte-for-byte the same as before. ERC and DRC (with zone refill and schematic parity) found only missing-library warnings: 0 unconnected items and 0 parity issues.
+| # | Area | Severity | Refs | Problem |
+|---|---|---|---|---|
+| 1 | routing | major | U1, U2, U3 | QSPI lines are 13–41 mm long to the flash against 9–19 mm direct, with 2–4 vias each. Lines to the PSRAM are 24–44 mm. |
+| 2 | routing | major | U1, J2 | SD_CLK is 83 mm against about 38 mm direct, and the rest of the SD bus is 45–70 mm with up to 6 vias. |
+| 3 | routing | minor | J2, R27 | SD_MOSI runs on past the card pin as a 21 mm stub to its pull-up. |
+| 4 | routing | major | U1, R25, Y1, C4 | The crystal output path is about 21 mm with 6 vias, one segment on an inner layer. XIN is 8 mm with no vias. |
+| 5 | layout | minor | U1, U2, U3 | Flash and PSRAM sit 14–23 mm from the QSPI pins. |
+| 6 | layout | minor | Y1, R25 | The crystal sits 6–7 mm away, behind the decoupling caps. |
+| 7 | layout | minor | U4, J1 | The charger is 26 mm from the USB-C VBUS pins, and the area next to J1 is empty. |
+| 8 | routing | minor | J1, U4 | The VBUS feed narrows to 0.11 mm traces and passes through single 0.2 mm vias. |
+| 9 | routing | minor | U5, C26, C27 | The 3V3 output reaches its plane through one 0.2 mm trace and one via, which it shares with the feedback pin. |
 
-The files in `renders/` don't match the board. They show "SPROCKET 2350" on the silkscreen, but the board says "KESTREL 2350". I reviewed the board file itself, using fresh renders and copper views.
-
-**Yes/no answers**
-
-| Key | Answer | Evidence |
-|---|---|---|
-| crystal | yes | Y1 is the ABM8‑272‑T3: 12 MHz, 10 pF load, approved by Raspberry Pi. It has 15 pF load caps and a 1 kΩ resistor on XOUT, as in the design guide. Its placement and traces are poor (see layout). |
-| buttons | yes | BOOTSEL connects QSPI_SS through 1 kΩ to GND. RUN has a 10 kΩ pull-up and a button to GND. Both buttons are top-mounted TL3342s about 9 mm apart with nothing over them. |
-| powerPath | yes | The BQ24074 feeds SYS, which feeds the TPS63001 buck-boost (input range 1.8–5.5 V). SYS stays regulated with no battery or a flat one. On unplug, the charger's battery switch takes over, and the buck-boost holds 3.3 V down to a battery of about 3 V. Two things depend on firmware: input current starts limited to 100 mA (EN1 pulled down), and charging starts disabled (CE pulled up). |
-
-**Why the scores are low**
-
-- **Thermal (4):**
-  - The whole 3.3 V output runs from U6 over 0.127 mm traces and one via into the In2 plane.
-  - Every via on the board is 0.45/0.15 mm. Single vias carry:
-    - USB power into the charger.
-    - The charger's output into SYS.
-    - Both switching nodes of the buck-boost inductor, with peaks over 1 A.
-  - U5's thermal pad has no vias, and U6's pad has one.
-- **Grounding (5):**
-  - In1 is one solid GND plane, which is good.
-  - The top and bottom GND pours are broken into dozens of pieces. Several pieces of about 100 mm² hang on a single via.
-  - There is no via fence along the board edge, and the RP2350's centre pad has one via.
-  - In2, the 3.3 V plane under the bottom-layer signals, carries 2 mm GND traces and many signal traces. That cuts slots in the plane.
-- **Layout (5):**
-  - The USB‑C, LiPo, microSD and Qwiic connectors sit at the edges, and the antenna hangs past the corner. All good.
-  - The crystal is about 12 mm from the RP2350, and the flash about 10 mm.
-  - BOOT and RUN sit mid-board, not at an edge.
-  - The SD card is at the bottom-right, but its GPIO4–7 pins are on the chip's left side.
-- **Routing (3):**
-  - Power traces are too thin: 0.127 mm on the 3.3 V output and the core regulator's switch node (VREG_LX).
-  - QSPI traces run 21–42 mm and SD traces 44–70 mm, with up to 8 vias each.
-  - XIN runs 20 mm through two vias and crosses RUN.
-  - 25 bottom-layer QSPI, SD and XIN segments cross the slots in In2.
-- **Silkscreen (4):**
-  - The "LiPo + -" label puts "+" over the GND pin.
-  - "RST" sits about 13 mm from SW2, next to the crystal and the SWD header.
-  - The GPIO, SWD and radio UART headers have no labels, and the test points are unlabeled.
-  - The pin-1 marks for the ESP32 module and the RGB LED were moved to the fab layer, so they won't be printed.
-  - All text has a 0.12 mm stroke, below PCBWay's 0.15 mm minimum, so it may print illegibly.
-
-The board can still be built at PCBWay. The 0.15 mm drills are within its range but cost extra, and the two capacitors on the bottom need a second assembly pass. The WS2812B‑V6 is fine at 3.3 V; its datasheet supports it.
+I chose not to report these:
+- **Battery and system power traces:** their width is adequate for the current they carry.
+- **J4 and SW1/SW2:** they sit inside the board but can still be reached.
+- **Q2:** its gate is tied to 3V3, so battery sensing is always on. That isn't a fatal fault, and the "other" area only takes fatal ones.

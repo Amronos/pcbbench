@@ -8,14 +8,19 @@ export const IDENTIFYING =
 const KICAD_FILE = /\.(kicad_sch|kicad_pro|kicad_dru)$|^(fp|sym)-lib-table$/;
 const TEXT_FILE = /\.(kicad_\w+|csv)$|-lib-table$/;
 
-const neutralName = (match: string) =>
-	match === match.toUpperCase() ? 'KESTREL' : match[0] === 'S' ? 'Kestrel' : 'kestrel';
+// Title-block company and comment fields often name the agent's tools.
+const neutralize = (text: string) =>
+	text
+		.replace(/sprocket/gi, (match) =>
+			match === match.toUpperCase() ? 'KESTREL' : match[0] === 'S' ? 'Kestrel' : 'kestrel'
+		)
+		.replace(/\((company|comment \d+) "(?:[^"\\]|\\.)*"\)/g, '($1 "")');
 
 class PackageLeakError extends Schema.TaggedError<PackageLeakError>()('PackageLeakError', {
 	message: Schema.String
 }) {}
 
-// Copies a run's KiCad project, BOM and renders into `dir` as board.*, without the agent's notes, scripts or fab files.
+// Copies a run's KiCad project and BOM into `dir` as board.*, without the agent's notes, scripts or fab files.
 export const buildPackage = Effect.fn('buildPackage')(function* (runId: string, dir: string) {
 	const fs = yield* FileSystem.FileSystem;
 	const { join, dirname, basename } = yield* Path.Path;
@@ -44,7 +49,7 @@ export const buildPackage = Effect.fn('buildPackage')(function* (runId: string, 
 
 	for (const path of localPaths) {
 		if (yield* fs.exists(join(projectDir, path)))
-			yield* fs.copy(join(projectDir, path), join(dir, path), { overwrite: true });
+			yield* fs.copy(join(projectDir, path), join(dir, neutralize(path)), { overwrite: true });
 	}
 
 	for (const [index, file] of projectFiles.entries()) {
@@ -55,7 +60,6 @@ export const buildPackage = Effect.fn('buildPackage')(function* (runId: string, 
 	}
 
 	yield* fs.copyFile(`${runDir}/output/${info.bom}`, join(dir, 'bom.csv'));
-	yield* fs.copy(`${runDir}/renders`, join(dir, 'renders'), { overwrite: true });
 
 	const leaks = [];
 
@@ -66,10 +70,11 @@ export const buildPackage = Effect.fn('buildPackage')(function* (runId: string, 
 
 		if (!TEXT_FILE.test(file)) continue;
 
-		const text = (yield* fs.readFileString(join(dir, file)))
-			.replaceAll(`${name}.kicad_`, 'board.kicad_')
-			.replaceAll(`(project "${name}"`, '(project "board"')
-			.replace(/sprocket/gi, neutralName);
+		const text = neutralize(
+			(yield* fs.readFileString(join(dir, file)))
+				.replaceAll(`${name}.kicad_`, 'board.kicad_')
+				.replaceAll(`(project "${name}"`, '(project "board"')
+		);
 
 		yield* fs.writeFileString(join(dir, file), text);
 		const leak = text.match(new RegExp(`.{0,40}(${IDENTIFYING.source}).{0,40}`, 'i'));

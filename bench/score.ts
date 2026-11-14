@@ -6,17 +6,21 @@ import { RUNS } from './runs.ts';
 
 // Each item scores its points times a fraction from 0 to 1.
 const ITEMS = [
-	{ group: 'designReview', name: 'yesNo', points: 15 },
-	{ group: 'designReview', name: 'judgeScores', points: 35 },
-	{ group: 'circuitChecks', name: 'decoupling', points: 7 },
-	{ group: 'circuitChecks', name: 'usbImpedance', points: 7 },
-	{ group: 'circuitChecks', name: 'antennaKeepout', points: 6 },
-	{ group: 'orderable', name: 'pcbWithoutFixes', points: 10 },
+	{ group: 'designReview', name: 'layout', points: 10 },
+	{ group: 'designReview', name: 'routing', points: 10 },
+	{ group: 'circuitChecks', name: 'decoupling', points: 5 },
+	{ group: 'circuitChecks', name: 'usbProtection', points: 5 },
+	{ group: 'circuitChecks', name: 'antennaKeepout', points: 5 },
+	{ group: 'circuitChecks', name: 'batteryDrain', points: 5 },
+	{ group: 'layoutChecks', name: 'thermal', points: 10 },
+	{ group: 'layoutChecks', name: 'grounding', points: 10 },
+	{ group: 'layoutChecks', name: 'silkscreen', points: 5 },
+	{ group: 'layoutChecks', name: 'boardSize', points: 5 },
+	{ group: 'orderable', name: 'fabNotesWithoutFixes', points: 5 },
+	{ group: 'orderable', name: 'boardWithoutRework', points: 5 },
 	{ group: 'orderable', name: 'bomLinesWithoutFixes', points: 10 },
 	{ group: 'partsData', name: 'models3d', points: 5 },
-	{ group: 'partsData', name: 'supplierFromOne', points: 3 },
-	{ group: 'partsData', name: 'supplierFromTwo', points: 1.5 },
-	{ group: 'partsData', name: 'supplierFromAllThree', points: 0.5 }
+	{ group: 'partsData', name: 'supplierNumbers', points: 5 }
 ] as const;
 
 type Item = {
@@ -28,25 +32,61 @@ type Item = {
 type Items = ReadonlyArray<Item>;
 
 const GROUPS = [...new Set(ITEMS.map((item) => item.group))];
-const MISSING_FEATURE_CAP = 50;
-const USB_TARGET_OHMS = 90;
-const USB_FULL_WITHIN = 0.1;
-const USB_NONE_BEYOND = 0.35;
+const GATE_PENALTY = 20;
+
+// Adafruit's Feather RP2350 (50.8 × 22.8 mm) fits all of the brief but Wi-Fi and microSD.
+const FULL_SIZE_MM2 = 50.8 * 22.8;
+const ZERO_SIZE_MM2 = 5 * FULL_SIZE_MM2;
+
+// A review area starts at 10 and loses these points per finding.
+const MINOR_COST = 1;
+const MAJOR_COST = 2;
+
+// Battery current drawn by unswitched monitor dividers: full points at or below the first, none at the second.
+const DRAIN_FULL_UA = 5;
+const DRAIN_NONE_UA = 25;
 const WEIGHT_SHIFT = 10;
+
+// Each BOM line needing a fix costs this share of the BOM lines item, whatever the BOM's size.
+const BOM_LINE_FIX_COST = 0.2;
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const round = (value: number) => Math.round(value * 10) / 10;
 const sum = (values: number[]) => values.reduce((total, value) => total + value, 0);
 
+const Findings = Schema.Struct({ minor: Schema.Number, major: Schema.Number });
+const Fraction = Schema.Struct({ fraction: Schema.Number });
+
 const ScoredMetrics = Schema.Struct({
 	review: Schema.Struct({
-		judges: Schema.Array(Schema.String),
-		yesVotes: Schema.Record(Schema.String, Schema.Number),
-		meanScores: Schema.Record(Schema.String, Schema.Number)
+		findings: Schema.Struct({
+			layout: Findings,
+			routing: Findings,
+			fatal: Schema.Number
+		})
+	}),
+	boardSizeMm: Schema.Struct({ width: Schema.Number, height: Schema.Number }),
+	gates: Schema.Record(Schema.String, Schema.Struct({ pass: Schema.Boolean })),
+	layout: Schema.Struct({
+		thermal: Fraction,
+		grounding: Fraction,
+		silkscreen: Fraction
 	}),
 	design: Schema.Struct({
 		decoupling: Schema.Struct({ pinsWithin: Schema.Number, powerPins: Schema.Number }),
-		usb: Schema.Struct({ differentialOhms: Schema.NullOr(Schema.Number) }),
+		usb: Schema.Struct({
+			dPlusNets: Schema.Array(Schema.String),
+			dMinusNets: Schema.Array(Schema.String),
+			esd: Schema.Array(Schema.String)
+		}),
+		battery: Schema.Struct({
+			dividers: Schema.Array(
+				Schema.Struct({
+					microampsAtFullCharge: Schema.Number,
+					switchedBy: Schema.NullOr(Schema.String)
+				})
+			)
+		}),
 		antennaKeepout: Schema.Struct({
 			keepouts: Schema.Array(
 				Schema.Struct({
@@ -61,16 +101,13 @@ const ScoredMetrics = Schema.Struct({
 		})
 	}),
 	needsFixes: Schema.Struct({
-		pcbManufacturing: Schema.Array(Schema.String),
+		fabNotes: Schema.Array(Schema.String),
+		board: Schema.Array(Schema.String),
 		bomLines: Schema.Struct({ total: Schema.Number, needingFixes: Schema.Array(Schema.String) })
 	}),
 	suppliers: Schema.Struct({
 		lines: Schema.Number,
-		linesWithValidNumbers: Schema.Struct({
-			fromOne: Schema.Number,
-			fromTwo: Schema.Number,
-			fromAllThree: Schema.Number
-		})
+		linesWithValidNumber: Schema.Number
 	}),
 	missing3dModels: Schema.Struct({ count: Schema.Number }),
 	features: Schema.Record(Schema.String, Schema.Struct({ status: Schema.String }))
@@ -84,10 +121,17 @@ class UncheckedRunError extends Schema.TaggedError<UncheckedRunError>()('Uncheck
 const readFractions = Effect.fn('readFractions')(function* (runId: string) {
 	const { parts } = yield* readRun(runId);
 
-	const { review, design, needsFixes, suppliers, missing3dModels, features } = yield* readMetrics(
-		runId,
-		ScoredMetrics
-	).pipe(
+	const {
+		review,
+		boardSizeMm,
+		gates,
+		layout,
+		design,
+		needsFixes,
+		suppliers,
+		missing3dModels,
+		features
+	} = yield* readMetrics(runId, ScoredMetrics).pipe(
 		Effect.catchTag('SchemaError', (cause) =>
 			Effect.fail(
 				new UncheckedRunError({
@@ -98,10 +142,19 @@ const readFractions = Effect.fn('readFractions')(function* (runId: string) {
 		)
 	);
 
-	const yesVotes = Object.values(review.yesVotes);
-	const meanScores = Object.values(review.meanScores);
-	const ohms = design.usb.differentialOhms;
-	const usbError = ohms === null ? Infinity : Math.abs(ohms - USB_TARGET_OHMS) / USB_TARGET_OHMS;
+	const reviewed = ({ minor, major }: typeof Findings.Type) =>
+		clamp(1 - (MINOR_COST * minor + MAJOR_COST * major) / 10);
+
+	const { usb } = design;
+	// check.ts lists a line's nets from the connector side; a series resistor adds the RP2350-side net.
+	const hasSeriesResistor = (nets: readonly string[]) => nets.length > 1;
+
+	const drainMicroamps = sum(
+		design.battery.dividers.flatMap(({ microampsAtFullCharge, switchedBy }) =>
+			switchedBy ? [] : [microampsAtFullCharge]
+		)
+	);
+
 	const { keepouts } = design.antennaKeepout;
 
 	const keepoutClear =
@@ -110,33 +163,43 @@ const readFractions = Effect.fn('readFractions')(function* (runId: string) {
 			({ copperInside: c }) => !c.tracks && !c.vias && !c.zoneFills.length && !c.pads.length
 		);
 
-	const supplierLines = (count: number) => count / suppliers.lines;
-
 	const fractions = {
-		yesNo: sum(yesVotes) / (yesVotes.length * review.judges.length),
-		judgeScores: sum(meanScores) / (meanScores.length * 10),
+		layout: reviewed(review.findings.layout),
+		routing: reviewed(review.findings.routing),
 		decoupling: design.decoupling.pinsWithin / design.decoupling.powerPins,
-		usbImpedance: clamp((USB_NONE_BEYOND - usbError) / (USB_NONE_BEYOND - USB_FULL_WITHIN)),
+		usbProtection:
+			(usb.esd.length ? 0.5 : 0) +
+			0.25 * [usb.dPlusNets, usb.dMinusNets].filter(hasSeriesResistor).length,
 		antennaKeepout: keepoutClear ? 1 : 0,
-		pcbWithoutFixes: needsFixes.pcbManufacturing.length ? 0 : 1,
-		bomLinesWithoutFixes: 1 - needsFixes.bomLines.needingFixes.length / needsFixes.bomLines.total,
+		batteryDrain: clamp((DRAIN_NONE_UA - drainMicroamps) / (DRAIN_NONE_UA - DRAIN_FULL_UA)),
+		thermal: layout.thermal.fraction,
+		grounding: layout.grounding.fraction,
+		silkscreen: layout.silkscreen.fraction,
+		boardSize: clamp(
+			(ZERO_SIZE_MM2 - boardSizeMm.width * boardSizeMm.height) / (ZERO_SIZE_MM2 - FULL_SIZE_MM2)
+		),
+		fabNotesWithoutFixes: needsFixes.fabNotes.length ? 0 : 1,
+		boardWithoutRework: needsFixes.board.length ? 0 : 1,
+		bomLinesWithoutFixes: clamp(1 - BOM_LINE_FIX_COST * needsFixes.bomLines.needingFixes.length),
 		models3d: 1 - missing3dModels.count / parts.length,
-		supplierFromOne: supplierLines(suppliers.linesWithValidNumbers.fromOne),
-		supplierFromTwo: supplierLines(suppliers.linesWithValidNumbers.fromTwo),
-		supplierFromAllThree: supplierLines(suppliers.linesWithValidNumbers.fromAllThree)
+		supplierNumbers: suppliers.linesWithValidNumber / suppliers.lines
 	} satisfies Record<Item['name'], number>;
 
 	return {
 		id: runId,
 		fractions,
-		missingFeatures: Object.entries(features).flatMap(([name, { status }]) =>
-			status === 'found' ? [] : [name]
-		)
+		failedGates: [
+			...Object.entries(features).flatMap(([name, { status }]) =>
+				status === 'found' ? [] : [`missing ${name}`]
+			),
+			...Object.entries(gates).flatMap(([name, { pass }]) => (pass ? [] : [name])),
+			...(review.findings.fatal ? [`${review.findings.fatal} fatal review findings`] : [])
+		]
 	};
 });
 
 function score(
-	{ fractions, missingFeatures }: Effect.Success<ReturnType<typeof readFractions>>,
+	{ fractions, failedGates }: Effect.Success<ReturnType<typeof readFractions>>,
 	items: Items
 ) {
 	const groups = Object.fromEntries(
@@ -150,7 +213,7 @@ function score(
 
 	const total = sum(Object.values(groups));
 
-	return { total: missingFeatures.length ? Math.min(total, MISSING_FEATURE_CAP) : total, groups };
+	return { total: failedGates.length ? Math.max(0, total - GATE_PENALTY) : total, groups };
 }
 
 // WEIGHT_SHIFT points moved from one group to another, scaling each group's items in proportion.
@@ -186,7 +249,7 @@ const command = Command.make('score', {}, () =>
 					groups: Object.fromEntries(
 						Object.entries(groups).map(([group, points]) => [group, round(points)])
 					),
-					missingFeatures: run.missingFeatures
+					failedGates: run.failedGates
 				}
 			});
 		}

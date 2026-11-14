@@ -1,10 +1,169 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": false,
-	"thermal": 3,
-	"grounding": 4,
-	"layout": 5,
-	"routing": 3,
-	"silkscreen": 5
-}
+[
+	{
+		"area": "other",
+		"severity": "fatal",
+		"refs": [
+			"D1"
+		],
+		"nets": [
+			"/VBUS_RAW",
+			"/GND"
+		],
+		"issue": "The USB VBUS TVS diode is fitted backwards. The schematic uses a bidirectional TVS symbol, but SMF5.0A is a unidirectional part. Its cathode sits on GND and its anode on VBUS, so the diode is forward-biased across USB 5 V. With F1 downstream, it shorts the host's VBUS, and the board can't power from USB or the TVS burns.",
+		"evidence": "D1 (SOD-123F at 107.0, 134.0): pad 1 at (107.0, 135.4) is /GND and pad 2 at (107.0, 132.6) is /VBUS_RAW. The footprint marks pad 1 as the cathode with the silkscreen bracket at x=-2.21 and the F.Fab bar at x=-0.35. Littelfuse lists SMF5.0A as 'Uni-directional', with the cathode marked by the color band. Symbol connect:D_TVS is described as 'Bidirectional transient-voltage-suppression diode'."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U6",
+			"U7",
+			"C26",
+			"C27",
+			"C23"
+		],
+		"nets": [
+			"/VSYS"
+		],
+		"issue": "The charger output to the 3.3 V buck-boost is a 0.25 mm trace that passes through two 0.2 mm-drill vias, but it carries up to 1.5 A. The charger's OUT capacitor C23 hangs off a 0.15 mm trace.",
+		"evidence": "U6 pads 10/11 (116.44, 124.75/125.25) go out on F.Cu at 0.25 mm to via (117.061, 124.982), 0.45/0.2 mm. The path continues on B.Cu at 0.25 mm for 3.39 mm to via (117.061, 121.589), 0.45/0.2 mm. It then runs on F.Cu at 0.25 mm for 3.73 mm to (119.7, 118.95), and U7 pads 2/3 are fed by 0.25 mm F.Cu stubs at (122.3-123.24, 118.5-119.25). C23 pad 1 (119.0, 126.2) reaches VSYS through B.Cu at 0.15 mm, (119.0, 126.2)-(117.8, 125.0)-(117.05, 125.0)."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"J2",
+			"U6",
+			"C22"
+		],
+		"nets": [
+			"/VBAT"
+		],
+		"issue": "The battery path from J2 to the charger's BAT pins narrows to 0.25 mm and passes through two 0.2 mm-drill vias, but it carries up to 1.5 A.",
+		"evidence": "J2 pad 1 (106.0, 115.0) runs on B.Cu at 0.5 mm to via (109.575, 120.2), then on F.Cu at 0.5 mm to (112.0, 121.95). From there it runs on F.Cu at 0.25 mm to via (112.0, 122.8925), 0.45/0.2 mm, and on B.Cu at 0.25 mm for 1.51 mm to via (112.0, 124.4005), 0.45/0.2 mm. The last leg is F.Cu at 0.25 mm, (112.62, 124.75)-(113.56, 124.75/125.25), into U6 pads 2/3."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U7",
+			"L2"
+		],
+		"nets": [
+			"/BB_L1",
+			"/BB_L2"
+		],
+		"issue": "The buck-boost inductor connections are 0.18 mm traces about 5 mm long, and they carry the full inductor current. The TPS63060 datasheet requires wide, short traces for the main current path and the inductor as close as possible. The board's average inductor current limit is 2.0 to 2.5 A.",
+		"evidence": "BB_L1 runs from U7 pad 1 (123.525, 118.0) to L2 pad 1 (124.275, 114.0), 5.23 mm on F.Cu at 0.18 mm through (122.79, 117.63). BB_L2 runs from U7 pad 10 (126.475, 118.0) to L2 pad 2 (125.725, 114.0), 5.23 mm on F.Cu at 0.18 mm through (127.21, 117.63). The TPS63060 datasheet covers this in section 11.1 Layout Guidelines, and the electrical characteristics give ISW average inductance current limit = 2000/2250/2500 mA."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U7",
+			"C28",
+			"C29",
+			"C30"
+		],
+		"nets": [
+			"/3V3"
+		],
+		"issue": "The 3.3 V regulator output, which supplies the whole board including ESP32-C3 Wi-Fi bursts, leaves U7 through one 0.15 mm trace and a single via to the In4 plane. The output capacitors reach VOUT only through that via and the plane.",
+		"evidence": "U7 pad 9 VOUT (126.475-126.76, 118.5) is the only copper on F.Cu. It runs at 0.15 mm, (126.76, 118.5)-(127.05, 118.5)-(128.175, 117.375)-(128.175, 116.75), to one via (128.175, 116.75), 0.55/0.25 mm, into the In4.Cu 3V3 pour. C28/C29/C30 pad 1 connect only through their own vias at (129.0, 114.975), (132.0, 115.475) and (135.0, 116.475)."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"R37",
+			"J4"
+		],
+		"nets": [
+			"/SD_CLK_DRV",
+			"/SD_CLK"
+		],
+		"issue": "The microSD clock detours around the board. GPIO10 runs about 100 mm down to the bottom edge and back up to series resistor R37 at U1's opposite corner, then 34 mm more to J4. With 5 vias, the 33 ohm resistor sits 100 mm from its driver, so it no longer damps the clock edges.",
+		"evidence": "SD_CLK_DRV goes from U1 pad 14 (133.55, 136.4) to via (131.75, 136.4), then 5.2 mm on B.Cu to via (129.7, 141.2). It continues 92.3 mm on In2.Cu at 0.127 mm, with a bounding box (129.7-161.6, 130.3-167.05), to via (141.55, 130.275) and R37 pad 1 (142.175, 130.0). That's 100.1 mm against 10.7 mm straight. SD_CLK goes from R37 pad 2 to via (145.97, 130.0), 29.3 mm on B.Cu to via (163.13, 149.305), then to J4 pad 5 (165.275, 150.625), 34.2 mm."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"J4"
+		],
+		"nets": [
+			"/SD_CS",
+			"/SD_MOSI",
+			"/SD_MISO"
+		],
+		"issue": "The microSD data lines cross the whole board with up to 5 vias each. The SPI pins GPIO8-11 are on U1's west side, and J4 is at the east edge.",
+		"evidence": "U1 pad 13 to J4 pad 2 (SD_CS) is 62.2 mm with 5 vias, against 33.7 mm straight. U1 pad 15 to J4 pad 3 (SD_MOSI) is 44.4 mm with 5 vias, including vias (132.45, 136.8), (149.6, 142.5), (155.05, 142.5), (157.025, 143.025) and (161.675, 142.5), mostly on In3.Cu. U1 pad 12 to J4 pad 7 (SD_MISO) is 48.9 mm with 2 vias, mostly on In2.Cu. U1 pads 12-15 are at x=133.55, and J4 pins are at x=165.275."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"U3",
+			"R2"
+		],
+		"nets": [
+			"/PSRAM_CS"
+		],
+		"issue": "The PSRAM chip select detours around the flash and PSRAM and changes layer 6 times. It is three times longer than the direct path.",
+		"evidence": "U1 pad 2 (133.55, 131.6) to U3 pad 1 (146.525, 119.095) is 56.8 mm against 18.0 mm straight. It uses 6 vias at (129.672, 132.016), (131.611, 122.182), (131.611, 123.567), (132.58, 123.567), (135.074, 126.06) and (138.536, 126.614). On F.Cu it loops down to (147.5, 130) and around U3's east side to (154, 121) before reaching pin 1 and R2."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"/QSPI_D1",
+			"/QSPI_CLK",
+			"/QSPI_D3",
+			"/FLASH_CS"
+		],
+		"issue": "Several QSPI lines change layers even though flash and PSRAM sit on the same side as U1. QSPI_D1 has 4 vias, and QSPI_CLK, QSPI_D3 and FLASH_CS have 2 each.",
+		"evidence": "QSPI_D1 vias are at (134.758, 120.47), (134.758, 121.856), (136.42, 127.257) and (134.6, 129.45). QSPI_CLK vias are at (137.925, 131.375) and (140.675, 122.25). QSPI_D3 vias are at (136.2, 129.45) and (139.48, 120.365), and its U1 to U2 path is 17.4 mm against 11.1 mm straight. FLASH_CS vias are at (129.0, 122.825) and (129.975, 125.2)."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"J1",
+			"R13",
+			"R12",
+			"U1",
+			"Y1"
+		],
+		"nets": [
+			"/USB_DP",
+			"/USB_DM",
+			"/USB_DP_MCU"
+		],
+		"issue": "The USB pair is routed apart. D- stays on F.Cu, but D+ drops to In2 and detours under the crystal to a series resistor 4 mm away from D-'s. D+ ends up 13 mm longer than D- with 4 vias against D-'s 2.",
+		"evidence": "J1 pad A6 to R13 pad 1 (USB_DP) is 40.4 mm. It runs on F.Cu at 0.22 mm to via (124.2725, 138.955), then 17.5 mm on In2.Cu at 0.127 mm across Y1 (124.3-131.2, 125.1-139.0) to via (131.175, 125.125). R13 pad 2 to U1 pad 52 is 16.0 mm through vias (135.96, 125.55) and (137.4, 128.75). J1 pad A7 to R12 pad 1 (USB_DM) is 36.0 mm on F.Cu at 0.22 mm, and R12 pad 2 to U1 pad 51 is 6.7 mm. R13 is at y=124.8 and R12 at y=129.0."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"U3"
+		],
+		"nets": [
+			"/QSPI_CLK",
+			"/QSPI_D0",
+			"/QSPI_D1",
+			"/QSPI_D2",
+			"/QSPI_D3"
+		],
+		"issue": "The PSRAM sits past the flash, about 13 mm from the RP2350 QSPI pins, so its QSPI branches are 22 to 29 mm long.",
+		"evidence": "U3 pad 4 (146.525, 122.905) is 12.8 mm from U1 pad 55 (136.2, 130.55), and U3 pad 6 (151.475, 121.635) is 18.0 mm from U1 pad 56. U1 to U3 path lengths are CLK 24.8 mm, D0 22.1 mm, D1 26.9 mm, D2 25.7 mm and D3 29.4 mm."
+	}
+]

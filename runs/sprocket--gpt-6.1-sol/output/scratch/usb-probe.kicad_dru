@@ -1,9 +1,0 @@
-(version 1)
-(rule "USB outer-layer ground pour spacing"
-  (condition "A.NetName == '*USB_D_*' || A.NetName == '*MCU_USB_*'")
-  (layer outer)
-  (constraint clearance (min 0.3mm)))
-(rule "USB track and terminal spacing"
-  (condition "(A.NetName == '*USB_D_*' || A.NetName == '*MCU_USB_*') && (A.Type == 'Track' || A.Type == 'Pad' || A.Type == 'Via') && (B.Type == 'Track' || B.Type == 'Pad' || B.Type == 'Via')")
-  (layer outer)
-  (constraint clearance (min 0.127mm)))

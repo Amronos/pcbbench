@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "rp2350-devboard") (type "KiCad") (uri "${KIPRJMOD}/lib/rp2350-devboard.pretty") (options "") (descr "RP2350 dev board project footprints"))
+)

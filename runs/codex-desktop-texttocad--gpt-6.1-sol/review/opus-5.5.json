@@ -1,10 +1,103 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": true,
-	"thermal": 5,
-	"grounding": 4,
-	"layout": 6,
-	"routing": 3,
-	"silkscreen": 6
-}
+[
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"J2",
+			"U4"
+		],
+		"nets": [
+			"VBAT"
+		],
+		"issue": "The battery path from the LiPo connector to the charger's BAT pins is a 0.15 mm trace, mostly on a 0.5 oz inner layer, but it carries up to 1.5 A.",
+		"evidence": "J2 pad 1 (9.85, 12.00) runs on F.Cu at 0.15 mm to via (11.635, 12.74), then on In1.Cu (17.5 um copper per the stackup) at 0.15 mm through (11.635, 16.51), (14.365, 19.24) and (15.41, 19.24) to via (15.65, 19.00), and only then widens to 0.3 mm into U4 pads 2/3 (15.562, 18.75/19.25). The copper cross-section is 0.0026 mm2, far below what 1.5 A needs (about 0.5 mm of 1 oz outer copper for a 10 C rise per IPC-2221)."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U4",
+			"U5"
+		],
+		"nets": [
+			"VSYS"
+		],
+		"issue": "The charger output to the buck-boost input is a 0.3 mm trace with single 0.3 mm vias, but it carries up to 1.5 A.",
+		"evidence": "From C30 pad 1 (20.05, 20.00) the VSYS track is 0.3 mm: F.Cu to via (19.63, 21.06), B.Cu through (23.595, 25.025) and (23.595, 28.47) to via (19.955, 32.11), then F.Cu through (19.02, 33.50) and (17.55, 33.50) to U5 VIN pads 12/13 (16.225-16.725, 32.40). The run is about 15 mm long. IPC-2221 gives about a 25 C rise for 0.3 mm of 1 oz outer copper at 1.5 A. About 0.5 mm is needed for 10 C."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"U2",
+			"U3",
+			"U1"
+		],
+		"nets": [
+			"QSPI_IO0",
+			"QSPI_IO1",
+			"QSPI_IO2",
+			"QSPI_IO3",
+			"QSPI_CLK"
+		],
+		"issue": "The flash and PSRAM sit about 10 mm and 12 mm from the QSPI pins, and the PSRAM is chained behind the flash, so the QSPI runs reach 27-28 mm.",
+		"evidence": "The U1 QSPI pins 55-60 are at x = 26.55, y = 42.8-44.8. U2's centre (20.0, 52.0) is 9.7 mm from U1 pad 60, and U3's centre (29.0, 56.0) is 11.9 mm from U1 pad 59. QSPI_IO2 runs U1 pad 58, then U2 pad 3, then U3 pad 3, for 28.3 mm of track. QSPI_IO1 is 27.1 mm long."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"QSPI_IO1",
+			"QSPI_IO0"
+		],
+		"issue": "QSPI_IO1 has 4 vias, two of them for a needless 1.6 mm hop onto F.Cu, and QSPI_IO0 has 3 vias.",
+		"evidence": "QSPI_IO1 has vias at (27.25, 44.40), (26.13, 45.825), (24.57, 45.825) and (19.695, 54.47). Between the 2nd and 3rd via it runs on F.Cu (26.13, 45.825) to (24.57, 45.825), then returns to B.Cu. QSPI_IO0 has vias at (27.25, 43.60), (22.555, 47.905) and (30.42, 52.325). QSPI_IO3 and QSPI_CLK are routed with no vias."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"J1",
+			"U8",
+			"R3",
+			"R4"
+		],
+		"nets": [
+			"USB_D+",
+			"USB_D-"
+		],
+		"issue": "USB D+ and D- are not routed as a pair. D- changes layer through 4 vias, and D+ detours around U8, so it is 4.3 mm longer.",
+		"evidence": "USB_D- has vias at (7.65, 40.25), (7.80, 38.90), (9.20, 40.95) and (14.60, 40.60), with B.Cu between them. USB_D+ stays on F.Cu but runs from U8 pad 1 (10.363, 39.05) up to (10.363, 37.40), across to (12.40, 37.40) and back down at x = 13.8 to y = 41.6, about 3.5 mm away from D- at y = 40.95. Track lengths are D+ 26.8 mm and D- 22.5 mm."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"J3"
+		],
+		"nets": [
+			"SD_MOSI",
+			"SD_CS"
+		],
+		"issue": "SD_MOSI and SD_CS each change layer 5 times on their way to the microSD socket.",
+		"evidence": "SD_MOSI has vias at (34.255, 45.37), (37.05, 44.785), (42.12, 49.595), (57.395, 60.19) and (62.465, 56.745), and uses F.Cu, In1.Cu, B.Cu and In2.Cu. SD_CS has vias at (32.695, 44.395), (33.475, 46.15), (46.345, 50.635), (58.045, 58.11) and (61.945, 57.265). SD_CLK covers the same distance with 2 vias."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"SW5"
+		],
+		"nets": [
+			"PWR_SWITCH"
+		],
+		"issue": "The side-actuated power slide switch sits back from the left edge, so its actuator ends 4.2 mm inside the board outline instead of reaching the edge.",
+		"evidence": "SW5 (C&K JS102011SAQN, a right-angle SMT part per the C&K JS datasheet) is at (8.0, 63.0) rotated -90. Its F.Fab actuator (local x -2 to -0.5, y 1.8 to 3.8) maps to board x 4.2-6.2, y 61.0-62.5, and the body spans x 6.2-9.8. The Edge.Cuts line is at x = 0."
+	}
+]

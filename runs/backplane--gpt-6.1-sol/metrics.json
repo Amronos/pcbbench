@@ -72,13 +72,14 @@
 	},
 	"parts": {
 		"lines": 54,
-		"inStockPercent": 88.9,
+		"inStockPercent": 92.6,
 		"notStocked": [
 			{
 				"refs": "C3 C16 C40",
 				"mpn": "GRM21BR61A475KA73L",
 				"lcsc": "C97913",
 				"lcscStock": 0,
+				"jlcpcbStock": 0,
 				"digikeyStock": 0,
 				"needed": 15
 			},
@@ -87,6 +88,7 @@
 				"mpn": "RC0603FR-0783K5L",
 				"lcsc": null,
 				"lcscStock": 0,
+				"jlcpcbStock": 0,
 				"digikeyStock": 0,
 				"needed": 5
 			},
@@ -95,6 +97,7 @@
 				"mpn": "GRM188R61C105KA93D",
 				"lcsc": "C77404",
 				"lcscStock": 0,
+				"jlcpcbStock": 0,
 				"digikeyStock": 0,
 				"needed": 10
 			},
@@ -103,24 +106,9 @@
 				"mpn": "GRM31CR61A226KE19L",
 				"lcsc": "C97950",
 				"lcscStock": 0,
+				"jlcpcbStock": 0,
 				"digikeyStock": 0,
 				"needed": 20
-			},
-			{
-				"refs": "R40",
-				"mpn": "RC0603FR-07976KL",
-				"lcsc": "C246018",
-				"lcscStock": 0,
-				"digikeyStock": 1,
-				"needed": 5
-			},
-			{
-				"refs": "D2",
-				"mpn": "SK6812MINI",
-				"lcsc": null,
-				"lcscStock": 0,
-				"digikeyStock": 0,
-				"needed": 5
 			}
 		],
 		"discontinued": [
@@ -273,10 +261,11 @@
 		"layersMissing": []
 	},
 	"needsFixes": {
-		"pcbManufacturing": [],
+		"fabNotes": [],
+		"board": [],
 		"assembly": [
 			"R3: Invalid MPN: 83.5k is not an E96 value, so Yageo's 1% RC series doesn't make it",
-			"not stocked for 5 boards: C3 C16 C40; C17 C21; C28 C29 C30 C34; R40; D2"
+			"not stocked for 5 boards: C3 C16 C40; C17 C21; C28 C29 C30 C34"
 		],
 		"bomLines": {
 			"total": 54,
@@ -284,9 +273,7 @@
 				"C3 C16 C40",
 				"R3",
 				"C17 C21",
-				"C28 C29 C30 C34",
-				"R40",
-				"D2"
+				"C28 C29 C30 C34"
 			]
 		}
 	},
@@ -489,21 +476,17 @@
 		}
 	},
 	"review": {
-		"judges": [
-			"gpt-6.1-sol",
-			"opus-5.5"
-		],
-		"yesVotes": {
-			"crystal": 2,
-			"buttons": 2,
-			"powerPath": 0
-		},
-		"meanScores": {
-			"thermal": 3.5,
-			"grounding": 4.5,
-			"layout": 5,
-			"routing": 3,
-			"silkscreen": 6
+		"judge": "opus-5.5",
+		"findings": {
+			"layout": {
+				"minor": 1,
+				"major": 0
+			},
+			"routing": {
+				"minor": 2,
+				"major": 7
+			},
+			"fatal": 1
 		}
 	},
 	"suppliers": {
@@ -513,21 +496,128 @@
 			"Digi-Key": 0,
 			"Mouser": 0
 		},
-		"linesWithValidNumbers": {
-			"fromOne": 0,
-			"fromTwo": 0,
-			"fromAllThree": 0
-		},
+		"linesWithValidNumber": 0,
 		"invalid": []
 	},
 	"score": {
-		"total": 53.6,
+		"total": 29.5,
 		"groups": {
-			"designReview": 25.4,
-			"circuitChecks": 4.5,
-			"orderable": 18.9,
+			"designReview": 9,
+			"circuitChecks": 9.2,
+			"layoutChecks": 14.5,
+			"orderable": 12,
 			"partsData": 4.8
 		},
-		"missingFeatures": []
+		"failedGates": [
+			"1 fatal review findings"
+		]
+	},
+	"gates": {
+		"crystal": {
+			"pass": true,
+			"reason": "Y1 ABM8-272-T3 (CL 10 pF) between XIN and XOUT via R7 1k; load caps /XIN: C18 15p; /XOUT: C19 15p; needs 10.5–17.5 pF per side for 3 pF stray",
+			"refs": [
+				"Y1",
+				"R7",
+				"C18",
+				"C19"
+			]
+		},
+		"buttons": {
+			"pass": true,
+			"reason": "QSPI_SS (/FLASH_CS) → R9 → SW2 → GND; RUN (/RUN) → SW1 → GND",
+			"refs": [
+				"R9",
+				"SW2",
+				"SW1"
+			]
+		},
+		"powerPath": {
+			"pass": true,
+			"reason": "U6 BQ24074RGTR: U6 IN (/VBUS) is on J1 VBUS; BAT (/VBAT) goes to J2; U7 TPS63060DSCR makes /3V3 from OUT (/VSYS)",
+			"refs": [
+				"U6",
+				"J1",
+				"J2",
+				"U7"
+			]
+		}
+	},
+	"layout": {
+		"thermal": {
+			"fraction": 0.267,
+			"pads": [
+				{
+					"ref": "U1",
+					"net": "/GND",
+					"vias": 0,
+					"minVias": 9,
+					"planeOnOtherLayer": true,
+					"share": 0
+				},
+				{
+					"ref": "U6",
+					"net": "/GND",
+					"vias": 0,
+					"minVias": 5,
+					"planeOnOtherLayer": true,
+					"share": 0
+				},
+				{
+					"ref": "U7",
+					"net": "/GND",
+					"vias": 4,
+					"minVias": 5,
+					"planeOnOtherLayer": true,
+					"share": 0.8
+				}
+			]
+		},
+		"grounding": {
+			"fraction": 0.682,
+			"usb": {
+				"nets": [
+					"/USB_DP",
+					"/USB_DP_MCU",
+					"/USB_DM",
+					"/USB_DM_MCU"
+				],
+				"mm": 101.2,
+				"groundedMm": 85.5
+			},
+			"qspi": {
+				"nets": [
+					"/QSPI_D3",
+					"/QSPI_CLK",
+					"/QSPI_D0",
+					"/QSPI_D2",
+					"/QSPI_D1",
+					"/FLASH_CS"
+				],
+				"mm": 154.8,
+				"groundedMm": 134.3
+			},
+			"microSd": {
+				"nets": [
+					"/SD_DAT2",
+					"/SD_CS",
+					"/SD_MOSI",
+					"/SD_CLK",
+					"/SD_MISO",
+					"/SD_DAT1",
+					"/SD_DET_N",
+					"/SD_CLK_DRV"
+				],
+				"mm": 383.3,
+				"groundedMm": 216.3
+			}
+		},
+		"silkscreen": {
+			"fraction": 1,
+			"minTextHeightMm": 0.8,
+			"texts": 11,
+			"textsBelowMin": 0,
+			"smallestTextMm": 0.85
+		}
 	}
 }

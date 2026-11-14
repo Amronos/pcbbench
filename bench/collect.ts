@@ -213,6 +213,7 @@ const collect = Effect.fn('collect')(function* (run: Run, host: Option.Option<st
 	const ssh = ['ssh', ...SSH_OPTIONS].join(' ');
 
 	yield* fs.makeDirectory(logsDir, { recursive: true });
+	yield* fs.makeDirectory(runDir, { recursive: true });
 
 	// Agents clone reference repos into their folder; a nested .git would become a gitlink here.
 	yield* rsync([

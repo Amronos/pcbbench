@@ -1,10 +1,147 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": true,
-	"thermal": 4,
-	"grounding": 5,
-	"layout": 5,
-	"routing": 3,
-	"silkscreen": 4
-}
+[
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"/QSPI_CLK",
+			"/QSPI_D0",
+			"/QSPI_D1",
+			"/QSPI_D2",
+			"/QSPI_D3",
+			"/FLASH_CS",
+			"/PSRAM_CS"
+		],
+		"issue": "QSPI bus to flash and PSRAM takes long detours with several layer changes per line. The lines differ in length by up to about 3x, and each has 2 to 4 vias, which hurts signal integrity and timing margin at QSPI clock rates.",
+		"evidence": "U1 to U2 routed vs direct: D0 13.2 mm vs ~10 mm (2 vias); CLK 18.5 mm vs 9.6 mm (2 vias plus an In2.Cu hop (139,123.1)-(141.2,123.1)); D3 23.2 mm vs 9.4 mm (2 vias); D2 24.6 mm vs 17.6 mm (2 vias); D1 32.7 mm vs 18.1 mm (2 vias); FLASH_CS 41.2 mm vs 18.7 mm (3 vias). D1 runs from U1 pin 59 north to the via at (136.8,121), then on F.Cu along y=118.7 from x=142.1 to 150.1, then down to U2 pin 2. FLASH_CS goes west to (133.6,123.1)-(133.6,120.9), through the via at (135,119.5), along B.Cu to (143.1,119.5), along In2.Cu at y=118.2 to the via at (152.1,122), then to U2 pin 1. D2 runs ~23 mm on In2.Cu: (139.4,125.6)->(143.3,121.7)->(148.6,121.7)->(154.8,127.9). D3 detours north on B.Cu to (143.3,121.7) and leaves a 2.6 mm stub from the via at (151.5,128.9) to U2 pin 7. U1 to U3 (PSRAM) totals are 24-43 mm with 3-4 vias per line. PSRAM_CS (U1 pin 2) is 43.6 mm, including an 18.7 mm B.Cu run at y=121.3."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"J2"
+		],
+		"nets": [
+			"/SD_CLK",
+			"/SD_MOSI",
+			"/SD_MISO",
+			"/SD_CS"
+		],
+		"issue": "The microSD SPI bus wanders around the board. SD_CLK is more than twice the direct distance, and the bus lines differ greatly in length and via count.",
+		"evidence": "SD_CLK from U1 pin 14 (137.55,132.4) to J2 pin 5 (172.4,147.3) is 83.2 mm against ~38 mm direct, all on F.Cu. It runs down x~133.1 to y~158, along y=161.35-162.35 under J5 to (157.8,162.35), then back up to J2. SD_MOSI from U1 pin 15 to J2 pin 3 is 69.8 mm with 2 vias and runs along y=161.05 from x=146.8 to 158.35. SD_MISO is 44.8 mm with 4 vias. SD_CS from U1 pin 13 to J2 pin 2 is 49.7 mm with 6 vias."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"J2",
+			"R27"
+		],
+		"nets": [
+			"/SD_MOSI"
+		],
+		"issue": "SD_MOSI continues past the card connector pin as a ~21 mm stub to reach its pull-up resistor R27, which sits far from J2.",
+		"evidence": "After J2 pin 3 (174.6,147.45) the trace continues (176.6,149.3)->(179.65,147.35)->(179.65,145.35)->(178.2,144.45)->(176.6,142.85)->(174.6,142.3)->(171.65,142.3) and ends at R27 pad 2 (170.51,145). The routed length from J2 pin 3 to R27 is 21.3 mm."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"R25",
+			"Y1",
+			"C4"
+		],
+		"nets": [
+			"/XOUT",
+			"/XTAL_OUT"
+		],
+		"issue": "The crystal drive path from XOUT through R25 to Y1 is long and changes layers six times, including an inner-layer segment. This adds parasitic capacitance and noise pickup to the oscillator loop and makes it asymmetric with XIN.",
+		"evidence": "XOUT: U1 pin 22 (140.6,133.45) -> via (140.6,134.175) -> B.Cu (141.65,133.15)-(143.8,133.15) -> via (145.4,134.75) -> F.Cu to R25 at (147,140.5). That is 13.0 mm with 2 vias. XTAL_OUT from Y1 pin 3 to R25 is 8.1 mm with 4 vias at (143,138.2), (143.75,137.45), (145.85,140.4) and (146.7,142.2), partly on In2.Cu (143.75,137.45)-(143,138.2). The total path is ~21 mm with 6 vias. XIN is 8.1 mm with 0 vias."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"/QSPI_CLK",
+			"/QSPI_D0",
+			"/QSPI_D1",
+			"/QSPI_D2",
+			"/QSPI_D3",
+			"/FLASH_CS",
+			"/PSRAM_CS"
+		],
+		"issue": "Flash U2 and PSRAM U3 are placed far east of the RP2350 QSPI pins, with capacitors between them. This placement forces the long QSPI routes.",
+		"evidence": "The QSPI pins are on U1's north side at y=126.55, x=138.2-140.2. U2 at (153,128) has pads 10-18 mm from those pins, center 13.7 mm. U3 at (162,128) has pads 20.6-25.6 mm away, center 22.6 mm. C13-C15 sit between U1 and the memories."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"Y1",
+			"U1",
+			"R25",
+			"C11",
+			"C8",
+			"C12"
+		],
+		"nets": [
+			"/XIN",
+			"/XOUT",
+			"/XTAL_OUT"
+		],
+		"issue": "Crystal Y1 is placed behind the decoupling capacitors instead of next to XIN/XOUT, and R25 is offset to the east. This placement forces the long crystal route.",
+		"evidence": "Y1 at (142,140) is ~5.7-7.4 mm from U1 pins 21/22 at y=133.45. C11, C8 and C12 sit between Y1 and U1. R25 is at (147,141)."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"U4",
+			"J1",
+			"U5"
+		],
+		"nets": [
+			"/VBUS"
+		],
+		"issue": "Charger U4 is placed ~26 mm from the USB-C VBUS pins, although the area next to J1 is empty. The long VBUS run goes through vias.",
+		"evidence": "U4 at (114,121); J1 VBUS pads at x 133.55-138.45, y 107.05. The routed VBUS path from J1 A4 to U4 pin 13 is 26.9 mm through 2 vias. The area x 115-130, y 100-112 next to J1 is empty. U5 is at (127,120)."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"J1",
+			"U4"
+		],
+		"nets": [
+			"/VBUS"
+		],
+		"issue": "The VBUS feed to the charger necks down to 0.11 mm traces and single small vias. This is marginal for the 500 mA input limit and the USB inrush current.",
+		"evidence": "The last 0.7 mm into U4 pin 13 (114.75,119.56) is 0.11 mm wide: (115.25,119.1)->(114.8,119.55). The pad itself is 0.25 mm wide. J1 A9/B4 joins through a 0.11 mm trace (133.6,107)->(133.6,106.3)->(134,105.9)->(134.425,105.9) to the via at (134.5,105.9). The path passes through single 0.45/0.2 mm vias at (138.6,110.7) and (134.4,111.9). Input current is up to 500 mA because EN2 is tied to GND and EN1 is driven by GP6 (bq24074 Table 7-2)."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U5",
+			"C26",
+			"C27"
+		],
+		"nets": [
+			"/3V3"
+		],
+		"issue": "The buck-boost U5 output reaches the 3V3 plane through one thin trace and one via that also carries the FB connection. Load current shares the feedback path, and there is no via at the output capacitors.",
+		"evidence": "U5 VOUT connects to the In2.Cu 3V3 plane only through a 0.2 mm x 1.2 mm trace (128.2,117.25)->(128.2,118.4) and one 0.6/0.3 mm via at (128.2,118.4). This is also the path to FB pin 10. C26 and C27 have no via to the plane."
+	}
+]

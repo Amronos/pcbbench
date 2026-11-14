@@ -26,6 +26,28 @@
 			{ "ladder": 25, "usd": 0.266 }
 		]
 	},
+	"61300411121": {
+		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61300411121/4846827",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 0.18 },
+			{ "ladder": 10, "usd": 0.155 },
+			{ "ladder": 25, "usd": 0.1284 },
+			{ "ladder": 50, "usd": 0.1074 },
+			{ "ladder": 100, "usd": 0.1047 }
+		]
+	},
+	"61302021121": {
+		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61302021121/4846862",
+		"minBuy": 1,
+		"tiers": [
+			{ "ladder": 1, "usd": 1.33 },
+			{ "ladder": 10, "usd": 1.13 },
+			{ "ladder": 25, "usd": 0.9416 },
+			{ "ladder": 50, "usd": 0.7838 },
+			{ "ladder": 100, "usd": 0.7163 }
+		]
+	},
 	"61301211121": {
 		"source": "https://www.digikey.com/en/products/detail/w%C3%BCrth-elektronik/61301211121/4846844",
 		"minBuy": 1,

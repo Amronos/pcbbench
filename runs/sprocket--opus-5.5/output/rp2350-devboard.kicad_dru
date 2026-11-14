@@ -1,0 +1,4 @@
+(version 1)
+(rule "VREG_LX between capacitor pads"
+  (condition "A.NetName == '/MCU/VREG_LX'")
+  (constraint clearance (min 0.127mm)))

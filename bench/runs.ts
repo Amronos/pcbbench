@@ -81,8 +81,7 @@ export const RUNS: Run[] = [
 	{ id: 'backplane--gpt-6.1-sol', harness: 'backplane', model: 'gpt-6.1-sol', machine: 'linux' },
 	{ id: 'sprocket--opus-5.5', harness: 'sprocket', model: 'opus-5.5', machine: 'linux' },
 	{ id: 'sprocket--gpt-6.1-sol', harness: 'sprocket', model: 'gpt-6.1-sol', machine: 'linux' },
-	{ id: 'backplane--fable-5.2', harness: 'backplane', model: 'fable-5.2', machine: 'linux' },
-	{ id: 'sprocket--fable-5.2', harness: 'sprocket', model: 'fable-5.2', machine: 'linux' }
+	{ id: 'backplane--fable-5.2', harness: 'backplane', model: 'fable-5.2', machine: 'linux' }
 ];
 
 export const runIdArgument = Argument.Literals(

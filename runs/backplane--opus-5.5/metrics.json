@@ -69,17 +69,8 @@
 	},
 	"parts": {
 		"lines": 38,
-		"inStockPercent": 97.4,
-		"notStocked": [
-			{
-				"refs": "C8,C9,C10",
-				"mpn": "CL05A475MP5NRNC",
-				"lcsc": "C23733",
-				"lcscStock": 0,
-				"digikeyStock": 0,
-				"needed": 15
-			}
-		],
+		"inStockPercent": 100,
+		"notStocked": [],
 		"discontinued": [],
 		"padCountMismatches": []
 	},
@@ -184,18 +175,16 @@
 		"layersMissing": []
 	},
 	"needsFixes": {
-		"pcbManufacturing": [
-			"The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+		"fabNotes": [
+			"The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer"
+		],
+		"board": [
 			"3 DRC errors"
 		],
-		"assembly": [
-			"not stocked for 5 boards: C8,C9,C10"
-		],
+		"assembly": [],
 		"bomLines": {
 			"total": 38,
-			"needingFixes": [
-				"C8,C9,C10"
-			]
+			"needingFixes": []
 		}
 	},
 	"design": {
@@ -392,21 +381,17 @@
 		}
 	},
 	"review": {
-		"judges": [
-			"opus-5.5",
-			"gpt-6.1-sol"
-		],
-		"yesVotes": {
-			"crystal": 2,
-			"buttons": 2,
-			"powerPath": 2
-		},
-		"meanScores": {
-			"thermal": 4,
-			"grounding": 7,
-			"layout": 6,
-			"routing": 6.5,
-			"silkscreen": 6
+		"judge": "opus-5.5",
+		"findings": {
+			"layout": {
+				"minor": 0,
+				"major": 0
+			},
+			"routing": {
+				"minor": 3,
+				"major": 0
+			},
+			"fatal": 0
 		}
 	},
 	"suppliers": {
@@ -416,21 +401,119 @@
 			"Digi-Key": 0,
 			"Mouser": 0
 		},
-		"linesWithValidNumbers": {
-			"fromOne": 38,
-			"fromTwo": 0,
-			"fromAllThree": 0
-		},
+		"linesWithValidNumber": 38,
 		"invalid": []
 	},
 	"score": {
-		"total": 66.3,
+		"total": 69.9,
 		"groups": {
-			"designReview": 35.7,
-			"circuitChecks": 13.2,
-			"orderable": 9.7,
-			"partsData": 7.8
+			"designReview": 17,
+			"circuitChecks": 17.8,
+			"layoutChecks": 15.4,
+			"orderable": 10,
+			"partsData": 9.8
 		},
-		"missingFeatures": []
+		"failedGates": []
+	},
+	"gates": {
+		"crystal": {
+			"pass": true,
+			"reason": "Y1 ABM8-272-T3 (CL 10 pF) between XIN and XOUT via R15 1k; load caps XIN: C22 15p; XOSC_R: C23 15p; needs 10.5–17.5 pF per side for 3 pF stray",
+			"refs": [
+				"Y1",
+				"R15",
+				"C22",
+				"C23"
+			]
+		},
+		"buttons": {
+			"pass": true,
+			"reason": "QSPI_SS (QSPI_SS) → R18 → SW1 → GND; RUN (RUN) → SW2 → R20 → GND",
+			"refs": [
+				"R18",
+				"SW1",
+				"SW2",
+				"R20"
+			]
+		},
+		"powerPath": {
+			"pass": true,
+			"reason": "U2 BQ24074RGTR: U2 IN (VBUS) is on J1 VBUS; BAT (VBAT) goes to J2; U3 TLV75733PDBVR makes +3V3 from OUT (VSYS)",
+			"refs": [
+				"U2",
+				"J1",
+				"J2",
+				"U3"
+			]
+		}
+	},
+	"layout": {
+		"thermal": {
+			"fraction": 0.5,
+			"pads": [
+				{
+					"ref": "U4",
+					"net": "GND",
+					"vias": 9,
+					"minVias": 9,
+					"planeOnOtherLayer": true,
+					"share": 1
+				},
+				{
+					"ref": "U2",
+					"net": "GND",
+					"vias": 0,
+					"minVias": 5,
+					"planeOnOtherLayer": true,
+					"share": 0
+				}
+			]
+		},
+		"grounding": {
+			"fraction": 0.706,
+			"usb": {
+				"nets": [
+					"USB_DP",
+					"USB_DP_MCU",
+					"USB_DM",
+					"USB_DM_MCU"
+				],
+				"mm": 76.3,
+				"groundedMm": 76.3
+			},
+			"qspi": {
+				"nets": [
+					"QSPI_SD3",
+					"QSPI_SCLK",
+					"QSPI_SD0",
+					"QSPI_SD2",
+					"QSPI_SD1",
+					"QSPI_SS",
+					"FLASH_SS"
+				],
+				"mm": 132.1,
+				"groundedMm": 95.3
+			},
+			"microSd": {
+				"nets": [
+					"SD_D2",
+					"SD_D3",
+					"SD_CMD",
+					"SD_CLK",
+					"SD_D0",
+					"SD_D1",
+					"SD_DET"
+				],
+				"mm": 185.3,
+				"groundedMm": 106.5
+			}
+		},
+		"silkscreen": {
+			"fraction": 0.077,
+			"minTextHeightMm": 0.8,
+			"texts": 65,
+			"textsBelowMin": 60,
+			"smallestTextMm": 0.6
+		}
 	}
 }

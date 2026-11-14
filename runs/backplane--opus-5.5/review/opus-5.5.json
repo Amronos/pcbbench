@@ -1,10 +1,53 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": true,
-	"thermal": 4,
-	"grounding": 6,
-	"layout": 6,
-	"routing": 6,
-	"silkscreen": 5
-}
+[
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U2",
+			"U3",
+			"J2",
+			"C2",
+			"C3",
+			"J6"
+		],
+		"nets": [
+			"VSYS",
+			"VBAT"
+		],
+		"issue": "The charger output and the battery path are 0.4 mm tracks on 35 um outer copper. At 1.5 A, IPC-2221 gives about a 16 C rise. A 10 C rise needs about 0.53 mm, so these tracks should be at least 0.6 mm. The VSYS feed to the header also drops through a single 0.3 mm via.",
+		"evidence": "VSYS on F.Cu at 0.4 mm: U2 pads 10/11 (116.84, 116.25/115.75) -> C2 pad 1 (119.40, 118.18) -> segment (119.40, 119.80)-(115.48, 123.72) -> U3 pad 1 (114.46, 124.05). VBAT on F.Cu at 0.4 mm: J2 pad 2 (108.05, 127.00) -> (110.15, 127.00) -> (109.46, 123.67)-(109.46, 119.33) -> C3 pad 1 (111.60, 117.38) -> U2 pads 2/3 (113.96, 115.75/116.25). The stackup gives F.Cu and B.Cu 0.035 mm thick. VSYS reaches J6 pad 2 only through the 0.6/0.3 mm via at (118.32, 116.36) and a 0.4 mm B.Cu track."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U4",
+			"U5",
+			"U6",
+			"R17"
+		],
+		"nets": [
+			"QSPI_SD0",
+			"QSPI_SD1",
+			"QSPI_SS"
+		],
+		"issue": "Adding the PSRAM made the router put 2 vias on each path of QSPI_SD0, QSPI_SD1 and QSPI_SS, and one of them sits under the RP2350 body. The Raspberry Pi minimal reference that the flash placement copies routes these nets with no vias. The PSRAM branches of SD0, SD1 and SD3 also run 1.7 to 2.3 times their straight distance.",
+		"evidence": "QSPI_SD0 vias at (137.47, 117.77), inside the U4 outline between pad 57 and the EP, plus (133.49, 119.53) and (138.55, 124.32). Its PSRAM branch goes out on B.Cu to (139.53, 122.98)-(139.53, 123.92) and comes back on F.Cu (138.55, 124.32)-(136.40, 124.32) to U6 pad 5: 12.96 mm routed vs 7.40 mm straight. QSPI_SD1 vias at (135.05, 119.53) and (130.04, 124.60). It daisy-chains through U5 pad 2 to U6 pad 2: 22.8 mm vs 12.0 mm. QSPI_SS vias at (135.04, 120.28) and (124.56, 127.58). QSPI_SD3 from U4 pad 55 to U6 pad 7: 20.4 mm vs 8.9 mm. In RPI-RP2350A-MINIMAL_R4-S1, QSPI_SD0, SD1 and SS have 0 vias."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U4",
+			"J4",
+			"Y1",
+			"R27"
+		],
+		"nets": [
+			"SD_D3",
+			"SD_D2"
+		],
+		"issue": "SD_D3 takes a 39 mm detour on B.Cu that loops up past the crystal, while the direct distance is 15 mm and the other SD lines are 13 to 20 mm. SD_D2 changes layers 4 times and leaves a 10 mm stub past the socket pad to reach its pull-up.",
+		"evidence": "SD_D3: U4 pad 19 (143.45, 117.60) -> via (144.37, 117.76) -> B.Cu north to (144.44, 111.65) -> (145.83, 110.80) -> (151.08, 116.05) -> (158.81, 116.05), which passes under Y1 -> via (160.20, 117.43) -> J4 pad 2 (157.68, 120.78). That is 38.9 mm routed vs 14.6 mm straight. SD_D2 vias at (142.75, 118.00) under U4, (145.73, 120.98), (148.35, 120.98) and (150.10, 122.73). Past J4 pad 1 (158.78, 120.78), SD_D2 runs on through (162.21, 121.60), (164.50, 117.80) and (160.86, 117.54) to R27 pad 2."
+	}
+]

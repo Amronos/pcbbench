@@ -238,22 +238,23 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.127,
-        "min_connection": 0.127,
+        "min_clearance": 0.11,
+        "min_connection": 0.0,
         "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
-        "min_hole_clearance": 0.15,
+        "min_hole_clearance": 0.2,
         "min_hole_to_hole": 0.25,
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
-        "min_silk_clearance": 0.15,
+        "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
-        "min_text_thickness": 0.12,
-        "min_through_hole_diameter": 0.15,
-        "min_track_width": 0.127,
-        "min_via_annular_width": 0.15,
+        "min_text_thickness": 0.08,
+        "min_through_hole_diameter": 0.2,
+        "min_track_width": 0.11,
+        "min_via_annular_width": 0.1,
         "min_via_diameter": 0.45,
+        "min_via_drill": 0.2,
         "solder_mask_to_copper_clearance": 0.0,
         "use_height_for_length_calcs": true
       },
@@ -363,7 +364,7 @@
       "mpn": "",
       "net_names": "",
       "ref_des": "",
-      "sch_revision": "A",
+      "sch_revision": "",
       "sections": ""
     },
     "layer_pairs": [],
@@ -620,46 +621,33 @@
     }
   },
   "kicad_routing_tools": {
-    "net_impedance": {
-      "/MCU_USB_N": {
-        "applied": true,
-        "coplanar_gap": 0.3,
-        "differential": true,
-        "ohms": 90.0,
-        "pair_gap": 0.15
-      },
-      "/MCU_USB_P": {
-        "applied": true,
-        "coplanar_gap": 0.3,
-        "differential": true,
-        "ohms": 90.0,
-        "pair_gap": 0.15
-      },
-      "/USB_D_N": {
-        "applied": true,
-        "coplanar_gap": 0.3,
-        "differential": true,
-        "ohms": 90.0,
-        "pair_gap": 0.15
-      },
-      "/USB_D_P": {
-        "applied": true,
-        "coplanar_gap": 0.3,
-        "differential": true,
-        "ohms": 90.0,
-        "pair_gap": 0.15
-      }
+    "fab_floor_origin": {
+      "min_hole_clearance": 0.2,
+      "min_through_hole_diameter": 0.2,
+      "min_track_width": 0.11,
+      "min_via_annular_width": 0.1,
+      "min_via_diameter": 0.45
+    },
+    "power_widths": {
+      "/1V1": 0.2,
+      "/BAT": 0.5,
+      "/CORE_LX": 0.2,
+      "/PWR_L1": 0.5,
+      "/PWR_L2": 0.5,
+      "/SYS": 0.5,
+      "/VBUS": 0.5
     },
     "protected_nets": {
-      "/USB_D_N": "diff-pair",
-      "/USB_D_P": "diff-pair"
+      "/USB_CONN_DM": "diff-pair",
+      "/USB_CONN_DP": "diff-pair",
+      "/USB_DM": "diff-pair",
+      "/USB_DP": "diff-pair"
     },
     "records_rev": 4,
-    "power_widths": {
-      "/+3V3": 0.127,
-      "/CORE_1V1": 0.127,
-      "/GND": 0.8
-    }
+    "repo_rules": {
+      "min_via_drill": 0.2
+    },
+    "same_net_pad_clearance": 0.1
   },
   "libraries": {
     "pinned_design_block_libs": [],
@@ -667,14 +655,14 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "fine-base.kicad_pro",
+    "filename": "sprocket2350.kicad_pro",
     "version": 4
   },
   "net_settings": {
     "classes": [
       {
         "bus_width": 12,
-        "clearance": 0.127,
+        "clearance": 0.11,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.2,
@@ -685,39 +673,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.127,
-        "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
-        "wire_width": 6
-      },
-      {
-        "bus_width": 12,
-        "clearance": 0.127,
-        "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.2,
-        "name": "Power",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2147483647,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.5,
-        "tuning_profile": "",
-        "via_diameter": 0.6,
-        "via_drill": 0.3,
-        "wire_width": 6
-      },
-      {
-        "bus_width": 12,
-        "clearance": 0.127,
-        "diff_pair_gap": 0.15,
-        "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.235,
-        "name": "USB",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.235,
+        "track_width": 0.2,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -731,48 +687,7 @@
     "net_chain_netclasses": {},
     "net_colors": {},
     "netclass_assignments": {},
-    "netclass_patterns": [
-      {
-        "netclass": "USB",
-        "pattern": "/USB_D_*"
-      },
-      {
-        "netclass": "USB",
-        "pattern": "/MCU_USB_*"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/+3V3"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/VBUS"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/BAT"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/SYS"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/CORE_1V1"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/VREG_LX"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/BUCK_L1"
-      },
-      {
-        "netclass": "Power",
-        "pattern": "/BUCK_L2"
-      }
-    ]
+    "netclass_patterns": []
   },
   "pcbnew": {
     "find_by_properties": {
@@ -934,7 +849,7 @@
       {
         "filename": "sprocket2350.kicad_sch",
         "name": "Root",
-        "uuid": "d24457de-3530-47b8-93fe-d753477199f6"
+        "uuid": "79e2a64a-4880-4fd0-87f5-d09e67c82f42"
       }
     ],
     "used_designators": "",
@@ -942,7 +857,7 @@
   },
   "sheets": [
     [
-      "d24457de-3530-47b8-93fe-d753477199f6",
+      "79e2a64a-4880-4fd0-87f5-d09e67c82f42",
       "Root"
     ]
   ],

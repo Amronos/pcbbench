@@ -1,10 +1,63 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": true,
-	"thermal": 5,
-	"grounding": 6,
-	"layout": 5,
-	"routing": 3,
-	"silkscreen": 6
-}
+[
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"/QSPI_SS",
+			"/QSPI_SD1",
+			"/QSPI_SD2"
+		],
+		"issue": "U2 sits with pins 1-4 (SS, SD1, SD2) on its far side from U1. These three lines loop under U2 and come back up, about twice their direct length. The PSRAM branches of SD1 and SD2 split off at the bottom of that loop and climb back up on In2.Cu to U3, which leaves a long branch on each line.",
+		"evidence": "QSPI_SS runs on F.Cu from U1 pad 60 down x=143.45 to y=99.6, along y=99.6 to x=133.35, then up x=133.15 to U2 pad 1 (134.40, 93.59): 23.3 mm routed vs 9.7 mm direct. QSPI_SD1 U1 pad 59 to U2 pad 2 is 20.0 mm vs 9.7 mm, along y=99.05. QSPI_SD2 U1 pad 58 to U2 pad 3 is 16.7 mm vs 10.0 mm, along y=98.25. The PSRAM branches start at vias (137.0, 99.05) and (138.5, 98.25) and run on In2.Cu up to vias (132.65, 87.75) and (132.65, 88.55). That makes U1 pad 59 to U3 pad 2 about 28.8 mm (11.9 mm direct) and U1 pad 58 to U3 pad 3 about 25.6 mm (11.5 mm direct)."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U3",
+			"R19"
+		],
+		"nets": [
+			"/PSRAM_CS"
+		],
+		"issue": "The PSRAM chip select leaves U1 on the side away from U3 and crosses under the flash on In2.Cu with three vias. It is much longer than the other PSRAM lines.",
+		"evidence": "U1 pad 2 (145.10, 94.88) to U3 pad 1 (133.67, 87.55) is 23.9 mm routed vs 13.6 mm direct. It uses vias at (144.0, 97.4) and (133.675, 86.8), runs on In2.Cu through (139.25, 97.0), (138.85, 91.15) and (135.6, 87.2), and has a third via at (146.35, 99.3) for the R19 branch."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"R3",
+			"R4",
+			"U6"
+		],
+		"nets": [
+			"/USB_DP",
+			"/USB_DM"
+		],
+		"issue": "USB_DP has a dead-end via stub next to R3. USB_DM drops to B.Cu through two vias while USB_DP stays on F.Cu, so the pair runs uncoupled on different layers for about 20 mm.",
+		"evidence": "DRC via_dangling: the USB_DP via at (133.6, 90.45) connects only on F.Cu, through a 0.5 mm stub from (133.6, 90.95). USB_DM changes layer at vias (112.8, 85.25) and (134.5, 90.72) and runs on B.Cu (114.75, 84.85)-(122.7, 92.8)-(129.05, 92.8). USB_DP runs on F.Cu (112.8, 87.15)-(119.8, 94.15)-(126.85, 94.2)."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U4",
+			"U5",
+			"J2",
+			"C3"
+		],
+		"nets": [
+			"VBAT",
+			"VSYS"
+		],
+		"issue": "The battery path and the charger output are 0.4 mm traces on 1 oz copper. At 1.5 A they heat up about 16 °C (IPC-2221, outer layer). A 10 °C rise needs about 0.53 mm.",
+		"evidence": "Every VBAT and VSYS segment is 0.4 mm wide, and the stackup copper is 0.035 mm. Examples: VBAT on B.Cu (111.2, 88.65)-(111.2, 94.55) from J2 pad 2 to the via at C3 (114.45, 85.4). VBAT on F.Cu (115.0, 84.8)-(116.1, 84.8) into U4 pads 2/3. VSYS on B.Cu (120.25, 84.25)-(125.4, 89.4) from U4 pads 10/11 to C5 and U5 pad 1."
+	}
+]

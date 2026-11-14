@@ -18,4 +18,4 @@ Put everything in this folder. Deliverables:
 - A `fab/` folder with everything PCBWay needs to manufacture and assemble the board.
 - A `README.md` describing the board, your key design decisions, and anything a reviewer should know.
 
-If you spawn subagents, they must use the model {{MODEL}} with {{EFFORT}} reasoning effort.
+If you spawn subagents, every `spawn_subagent` call must set `model` to {{MODEL}} and `reasoning` to {{EFFORT}}. Put this same rule, word for word, in every subagent's prompt.

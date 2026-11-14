@@ -1,5 +1,5 @@
 import { BunRuntime, BunServices } from '@effect/platform-bun';
-import { Effect, FileSystem, Layer, Schema } from 'effect';
+import { Effect, FileSystem, Layer, Record, Schema } from 'effect';
 import { Command } from 'effect/cli';
 import {
 	byRef,
@@ -10,9 +10,33 @@ import {
 	type Footprint,
 	type Point
 } from './board.ts';
-import { isSamePart, parseCsv, readBom, splitRefs, type BomLine } from './bom.ts';
+import { isSamePart, parseCsv, readBom, refsMatching, splitRefs } from './bom.ts';
 import { Digikey, type DigikeyError } from './digikey.ts';
+import { checkGates } from './gates.ts';
+import {
+	boundingBox,
+	cross,
+	distance,
+	dot,
+	EDGE_MM,
+	isDeepInside,
+	polygonsOverlap,
+	segmentToPolygon,
+	sub,
+	trackLength
+} from './geometry.ts';
+import { Jlcpcb } from './jlcpcb.ts';
+import { checkLayout } from './layout-checks.ts';
 import { Lcsc, type LcscError } from './lcsc.ts';
+import {
+	isGround,
+	isResistor,
+	isTwoTerminal,
+	onNet,
+	otherNet,
+	rp2350Pin,
+	terminals
+} from './netlist.ts';
 import { Fix } from './price.ts';
 import { BATCH_BOARDS, runIdArgument } from './runs.ts';
 
@@ -63,32 +87,6 @@ const POWER_PATH_CHARGERS =
 const FUEL_GAUGES = /\b(MAX1704|MAX1720|BQ27\d|LC709203|STC3100|CW201)/i;
 const BATTERY_NET = /BAT|LIPO|CELL/i;
 
-// RP2350A (QFN-60) pins by pad number, from the RP2350 datasheet, for footprints whose pads don't name their pin functions.
-const RP2350A_PINS = new Map(
-	Object.entries({
-		1: 'IOVDD',
-		6: 'DVDD',
-		11: 'IOVDD',
-		20: 'IOVDD',
-		23: 'DVDD',
-		30: 'IOVDD',
-		38: 'IOVDD',
-		39: 'DVDD',
-		40: 'GPIO26/ADC0',
-		41: 'GPIO27/ADC1',
-		42: 'GPIO28/ADC2',
-		43: 'GPIO29/ADC3',
-		44: 'ADC_AVDD',
-		45: 'IOVDD',
-		46: 'VREG_AVDD',
-		49: 'VREG_VIN',
-		51: 'USB_DM',
-		52: 'USB_DP',
-		53: 'USB_OTP_VDD',
-		54: 'QSPI_IOVDD'
-	})
-);
-
 const POWER_PINS = [
 	'IOVDD',
 	'DVDD',
@@ -102,14 +100,10 @@ const POWER_PINS = [
 // Hardware design with RP2350 only asks for decoupling "close to the power pins". Its Minimal board, whose capacitors it
 // calls "slightly further away from the chip than is optimal", has one within 3.2 mm of every power pin, pad center to pad center.
 const DECOUPLING_MAX_MM = 3.2;
-const GROUND_NET = /GND/i;
 const BATTERY_FULL_VOLTS = 4.2;
 
 // D+ and D- segments further apart than this don't count as running side by side.
 const PAIR_GAP_MAX_MM = 2;
-
-// Tolerance for copper that only touches a keepout's edge.
-const EDGE_MM = 0.005;
 
 const CheckedMetrics = Schema.Struct({
 	fixes: Schema.Array(Fix),
@@ -139,12 +133,6 @@ const percent = (count: number, total: number) => Math.round((count / total) * 1
 const round = (value: number, places = 2) => Math.round(value * 10 ** places) / 10 ** places;
 const hasValue = (cell = '') => /\w/.test(cell) && !/^(n\/?a|none|-)$/i.test(cell);
 
-const refsMatching = (lines: ReadonlyArray<BomLine>, pattern: RegExp) =>
-	lines.filter((line) => pattern.test(line.mpn)).flatMap((line) => splitRefs(line.refs));
-
-const rp2350Pin = (pad: Footprint['pads'][number]) =>
-	pad.pinFunction.replace(/_\d+$/, '') || RP2350A_PINS.get(pad.number) || '';
-
 const readCheckedRun = Effect.fn('readCheckedRun')(function* (runId: string) {
 	const run = yield* readRun(runId);
 
@@ -162,7 +150,7 @@ const readCheckedRun = Effect.fn('readCheckedRun')(function* (runId: string) {
 		(ref) => byReference.get(ref) ?? []
 	);
 
-	const adcNets = new Set(
+	const adcPinNets = new Set(
 		run.footprints.flatMap((footprint) =>
 			footprint.pads.flatMap((pad) =>
 				/ADC\d/i.test(rp2350s.includes(footprint) ? rp2350Pin(pad) : pad.pinFunction)
@@ -171,6 +159,16 @@ const readCheckedRun = Effect.fn('readCheckedRun')(function* (runId: string) {
 			)
 		)
 	);
+
+	// Some boards isolate the ADC pin from the divider with a transistor, so its non-gate pads also carry the midpoint.
+	const adcNets = new Set([
+		...adcPinNets,
+		...run.footprints.flatMap((footprint) =>
+			/^Q\d/.test(footprint.ref) && footprint.pads.some((pad) => adcPinNets.has(pad.net))
+				? footprint.pads.filter((pad) => !/^G/i.test(pad.pinFunction)).map((pad) => pad.net)
+				: []
+		)
+	]);
 
 	return {
 		...run,
@@ -187,7 +185,7 @@ const readCheckedRun = Effect.fn('readCheckedRun')(function* (runId: string) {
 	};
 });
 
-type CheckedRun = Effect.Success<ReturnType<typeof readCheckedRun>>;
+export type CheckedRun = Effect.Success<ReturnType<typeof readCheckedRun>>;
 
 function checkBom({ bom, parts, byReference, fixedBomLines }: CheckedRun) {
 	const bomRefs = new Set(bom.lines.flatMap((line) => splitRefs(line.refs)));
@@ -199,7 +197,7 @@ function checkBom({ bom, parts, byReference, fixedBomLines }: CheckedRun) {
 		qtyMismatchLines: bom.lines
 			.filter((line) => line.qty !== splitRefs(line.refs).length)
 			.map((line) => line.refs),
-		linesWithoutMpn: bom.lines.filter((line) => !line.mpn).length,
+		linesWithoutMpn: bom.lines.filter((line) => line.fitted && !line.mpn).length,
 		linesFixed: fixedBomLines.size
 	};
 }
@@ -210,10 +208,10 @@ const checkSuppliers = Effect.fn('checkSuppliers')(function* ({ bom, fittedLines
 	);
 
 	const invalid = [];
-	const validPerLine: number[] = [];
+	let linesWithValidNumber = 0;
 
 	for (const line of fittedLines) {
-		let valid = 0;
+		let hasValid = false;
 
 		for (const { name, column, isNumberFor } of SUPPLIERS) {
 			const number = line.row[bom.column(column)] ?? '';
@@ -221,15 +219,13 @@ const checkSuppliers = Effect.fn('checkSuppliers')(function* ({ bom, fittedLines
 			if (!hasValue(number)) continue;
 
 			if (yield* isNumberFor(number, line.mpn)) {
-				valid++;
+				hasValid = true;
 				validBySupplier[name] = (validBySupplier[name] ?? 0) + 1;
 			} else invalid.push({ refs: line.refs, mpn: line.mpn, supplier: name, number });
 		}
 
-		validPerLine.push(valid);
+		if (hasValid) linesWithValidNumber++;
 	}
-
-	const linesWith = (count: number) => validPerLine.filter((valid) => valid >= count).length;
 
 	return {
 		lines: fittedLines.length,
@@ -239,11 +235,7 @@ const checkSuppliers = Effect.fn('checkSuppliers')(function* ({ bom, fittedLines
 				percent(count, fittedLines.length)
 			])
 		),
-		linesWithValidNumbers: {
-			fromOne: linesWith(1),
-			fromTwo: linesWith(2),
-			fromAllThree: linesWith(3)
-		},
+		linesWithValidNumber,
 		invalid
 	};
 });
@@ -371,7 +363,7 @@ const checkPlacement = Effect.fn('checkPlacement')(function* (run: CheckedRun) {
 const padCounts = (numbers: string[]) => ({ total: numbers.length, unique: new Set(numbers).size });
 
 const checkParts = Effect.fn('checkParts')(function* ({ runDir, byReference }: CheckedRun) {
-	const [lcsc, digikey] = [yield* Lcsc, yield* Digikey];
+	const [lcsc, jlcpcb, digikey] = [yield* Lcsc, yield* Jlcpcb, yield* Digikey];
 
 	const priced = yield* Schema.decodeEffect(PricedLines)(
 		yield* (yield* FileSystem.FileSystem).readFileString(`${runDir}/components-pricing.json`)
@@ -383,19 +375,21 @@ const checkParts = Effect.fn('checkParts')(function* ({ runDir, byReference }: C
 
 	for (const line of priced) {
 		const needed = line.qty * BATCH_BOARDS;
-		const code = line.source.match(/^LCSC (C\d+)$/)?.[1];
+		const code = line.source.match(/^LCSC (C\d+)$/)?.[1] ?? null;
 		const product = code ? yield* lcsc.productByCode(code) : null;
 
 		if (code && !product) return yield* new CheckError({ message: `LCSC has no ${code}` });
 		const lcscStock = product?.stockNumber ?? 0;
+		const jlcpcbStock = yield* jlcpcb.stock(line.mpn, code);
 		const digikeyPart = yield* digikey.part(line.mpn);
 
-		if (lcscStock < needed && digikeyPart.stock < needed)
+		if (Math.max(lcscStock, jlcpcbStock, digikeyPart.stock) < needed)
 			notStocked.push({
 				refs: line.refs,
 				mpn: line.mpn,
-				lcsc: code ?? null,
+				lcsc: code,
 				lcscStock,
+				jlcpcbStock,
 				digikeyStock: digikeyPart.stock,
 				needed
 			});
@@ -406,7 +400,7 @@ const checkParts = Effect.fn('checkParts')(function* ({ runDir, byReference }: C
 		];
 
 		if (discontinuedAt.length)
-			discontinued.push({ refs: line.refs, mpn: line.mpn, lcsc: code ?? null, discontinuedAt });
+			discontinued.push({ refs: line.refs, mpn: line.mpn, lcsc: code, discontinuedAt });
 
 		if (!product) continue;
 		const supplierNumbers = yield* lcsc.footprintPadNumbers(product);
@@ -481,8 +475,9 @@ function needsFixes(
 	]);
 
 	return {
-		pcbManufacturing: [
-			...fixesIn('fabSpec', 'pcb'),
+		fabNotes: fixesIn('fabSpec'),
+		board: [
+			...fixesIn('pcb'),
 			...(drc.errors ? [`${drc.errors} DRC errors`] : []),
 			...(drc.unconnectedItems ? [`${drc.unconnectedItems} unconnected items`] : []),
 			...listed('fab layers differing from the board', fab.layersDiffering),
@@ -529,12 +524,7 @@ function checkFeatures({ bom, footprints, adcNets }: CheckedRun) {
 	);
 
 	return {
-		...Object.fromEntries(
-			Object.entries(FEATURES).map(([name, pattern]) => [
-				name,
-				status(refsMatching(bom.lines, pattern))
-			])
-		),
+		...Record.map(FEATURES, (pattern) => status(refsMatching(bom.lines, pattern))),
 		chargerWithPowerPath: status(refsMatching(bom.lines, POWER_PATH_CHARGERS)),
 		batteryMonitoring: status(
 			[...refsMatching(bom.lines, FUEL_GAUGES), ...dividers.map((divider) => divider.ref)].sort(
@@ -544,111 +534,18 @@ function checkFeatures({ bom, footprints, adcNets }: CheckedRun) {
 	};
 }
 
-type Features = ReturnType<typeof checkFeatures>;
-
-const sub = (a: Point, b: Point) => ({ x: a.x - b.x, y: a.y - b.y });
-const cross = (a: Point, b: Point) => a.x * b.y - a.y * b.x;
-const dot = (a: Point, b: Point) => a.x * b.x + a.y * b.y;
-const distance = (a: Point, b: Point) => Math.hypot(a.x - b.x, a.y - b.y);
-
-const edges = (polygon: Point[]) =>
-	polygon.map((vertex, i) => [vertex, polygon[(i + 1) % polygon.length]!] as const);
-
-const isInside = (point: Point, polygon: Point[]) =>
-	edges(polygon).filter(
-		([a, b]) =>
-			a.y > point.y !== b.y > point.y &&
-			point.x < a.x + ((point.y - a.y) * (b.x - a.x)) / (b.y - a.y)
-	).length %
-		2 ===
-	1;
-
-const pointToSegment = (point: Point, a: Point, b: Point) => {
-	const along = sub(b, a);
-	const t = Math.max(0, Math.min(1, dot(sub(point, a), along) / (dot(along, along) || 1)));
-
-	return distance(point, { x: a.x + t * along.x, y: a.y + t * along.y });
-};
-
-const segmentsCross = (a: Point, b: Point, c: Point, d: Point) =>
-	cross(sub(b, a), sub(c, a)) * cross(sub(b, a), sub(d, a)) < 0 &&
-	cross(sub(d, c), sub(a, c)) * cross(sub(d, c), sub(b, c)) < 0;
-
-// How far a segment, or a point when a equals b, is from a polygon; 0 when it crosses into it.
-const segmentToPolygon = (a: Point, b: Point, polygon: Point[]) =>
-	isInside(a, polygon) || edges(polygon).some(([c, d]) => segmentsCross(a, b, c, d))
-		? 0
-		: Math.min(
-				...edges(polygon).flatMap(([c, d]) => [
-					pointToSegment(c, a, b),
-					pointToSegment(a, c, d),
-					pointToSegment(b, c, d)
-				])
-			);
-
-const isDeepInside = (point: Point, polygon: Point[]) =>
-	isInside(point, polygon) &&
-	edges(polygon).every(([a, b]) => pointToSegment(point, a, b) > EDGE_MM);
-
-const polygonsOverlap = (p: Point[], q: Point[]) =>
-	p.some((vertex) => isDeepInside(vertex, q)) ||
-	q.some((vertex) => isDeepInside(vertex, p)) ||
-	edges(p).some(([a, b]) => edges(q).some(([c, d]) => segmentsCross(a, b, c, d)));
-
-const boundingBox = (points: Point[]) => {
-	const xs = points.map((point) => point.x);
-	const ys = points.map((point) => point.y);
-
-	const [left, right, top, bottom] = [
-		Math.min(...xs),
-		Math.max(...xs),
-		Math.min(...ys),
-		Math.max(...ys)
-	];
-
-	return [
-		{ x: left, y: top },
-		{ x: right, y: top },
-		{ x: right, y: bottom },
-		{ x: left, y: bottom }
-	];
-};
-
-// An arc's radius is that of the circle through its three points.
-const trackLength = ({ start, mid, end }: Copper['tracks'][number]) => {
-	if (!mid) return distance(start, end);
-	const [a, b, c] = [distance(start, mid), distance(mid, end), distance(start, end)];
-	const radius = (a * b * c) / Math.abs(2 * cross(sub(mid, start), sub(end, start)));
-
-	return Number.isFinite(radius)
-		? 2 *
-				radius *
-				(Math.asin(Math.min(1, a / (2 * radius))) + Math.asin(Math.min(1, b / (2 * radius))))
-		: c;
-};
-
-// Copper pads; some footprints add unnumbered paste-only pads.
-const terminals = (footprint: Footprint) => footprint.pads.filter((pad) => pad.number);
-
-const isTwoTerminal = (footprint: Footprint, prefix: 'R' | 'C') =>
-	new RegExp(`^${prefix}\\d`).test(footprint.ref) && terminals(footprint).length === 2;
-
-const isResistor = (footprint: Footprint) => isTwoTerminal(footprint, 'R');
-
-const otherNet = (footprint: Footprint, net: string) =>
-	terminals(footprint).find((pad) => pad.net !== net)?.net ?? '';
+export type Features = ReturnType<typeof checkFeatures>;
 
 function checkDecoupling({ footprints }: CheckedRun, rp2350: Footprint) {
 	const capacitors = footprints.filter(
-		(footprint) =>
-			isTwoTerminal(footprint, 'C') && footprint.pads.some((pad) => GROUND_NET.test(pad.net))
+		(footprint) => isTwoTerminal(footprint, 'C') && footprint.pads.some((pad) => isGround(pad.net))
 	);
 
 	const pins = rp2350.pads
 		.filter((pad) => POWER_PINS.includes(rp2350Pin(pad)))
 		.map((pin) => {
 			const [nearest] = capacitors
-				.filter((capacitor) => capacitor.pads.some((pad) => pad.net === pin.net))
+				.filter((capacitor) => onNet(capacitor, pin.net))
 				.map((capacitor) => ({
 					capacitor: capacitor.ref,
 					mm: Math.min(...terminals(capacitor).map((pad) => distance(pad, pin)))
@@ -706,20 +603,21 @@ const checkBatteryDivider = Effect.fnUntraced(function* (
 			(footprint) =>
 				/^[QU]\d/.test(footprint.ref) &&
 				!chargers.includes(footprint) &&
-				footprint.pads.some((pad) => pad.net === net) &&
+				onNet(footprint, net) &&
 				footprint.pads.some((pad) => batteryNets.has(pad.net))
 		)?.ref ?? null;
 
 	const dividerAt = (midpoint: string) => {
 		const resistors = footprints.filter(
-			(footprint) => isResistor(footprint) && footprint.pads.some((pad) => pad.net === midpoint)
+			(footprint) => isResistor(footprint) && onNet(footprint, midpoint)
 		);
 
-		const bottom = resistors.find((resistor) => GROUND_NET.test(otherNet(resistor, midpoint)));
+		const bottom = resistors.find((resistor) => isGround(otherNet(resistor, midpoint)));
 
 		const top = resistors.find(
 			(resistor) =>
-				batteryNets.has(otherNet(resistor, midpoint)) || switchOf(otherNet(resistor, midpoint))
+				resistor !== bottom &&
+				(batteryNets.has(otherNet(resistor, midpoint)) || switchOf(otherNet(resistor, midpoint)))
 		);
 
 		return top && bottom ? { top, bottom, source: otherNet(top, midpoint) } : null;
@@ -736,15 +634,12 @@ const checkBatteryDivider = Effect.fnUntraced(function* (
 				? null
 				: footprints.find(
 						(footprint) =>
-							/^U\d/.test(footprint.ref) &&
-							footprint.pads.some((pad) => pad.net === otherNet(resistor, adcNet))
+							/^U\d/.test(footprint.ref) && onNet(footprint, otherNet(resistor, adcNet))
 					);
 
 			const divider =
 				direct ??
-				buffer?.pads
-					.map((pad) => (GROUND_NET.test(pad.net) ? null : dividerAt(pad.net)))
-					.find(Boolean);
+				buffer?.pads.map((pad) => (isGround(pad.net) ? null : dividerAt(pad.net))).find(Boolean);
 
 			if (!divider)
 				return yield* new CheckError({ message: `No battery divider found around ${ref}` });
@@ -835,7 +730,7 @@ const checkUsb = Effect.fnUntraced(function* (
 	rp2350: Footprint,
 	connector: Footprint
 ) {
-	const onConnector = (net: string) => connector.pads.some((pad) => pad.net === net);
+	const onConnector = (net: string) => onNet(connector, net);
 
 	// The nets from the RP2350 pin to the connector, through a series resistor if there is one.
 	const line = Effect.fnUntraced(function* (pin: string) {
@@ -845,9 +740,7 @@ const checkUsb = Effect.fnUntraced(function* (
 
 		const series = footprints.find(
 			(footprint) =>
-				isResistor(footprint) &&
-				footprint.pads.some((pad) => pad.net === net) &&
-				onConnector(otherNet(footprint, net))
+				isResistor(footprint) && onNet(footprint, net) && onConnector(otherNet(footprint, net))
 		);
 
 		if (!series)
@@ -1020,13 +913,16 @@ const command = Command.make('check', { runId: runIdArgument }, ({ runId }) =>
 		};
 
 		const features = checkFeatures(run);
+		const design = yield* checkDesign(run, features);
 
 		yield* updateMetrics(runId, {
 			...checks,
 			suppliers: yield* checkSuppliers(run),
 			needsFixes: needsFixes(run, checks),
 			features,
-			design: yield* checkDesign(run, features),
+			design,
+			gates: checkGates(run, features),
+			layout: checkLayout(run, features, [...design.usb.dPlusNets, ...design.usb.dMinusNets]),
 			deliverables: yield* checkDeliverables(run)
 		});
 	})
@@ -1034,6 +930,6 @@ const command = Command.make('check', { runId: runIdArgument }, ({ runId }) =>
 
 command.pipe(
 	Command.run({ version: '0.0.0' }),
-	Effect.provide(Layer.mergeAll(BunServices.layer, Lcsc.layer, Digikey.layer)),
+	Effect.provide(Layer.mergeAll(BunServices.layer, Lcsc.layer, Jlcpcb.layer, Digikey.layer)),
 	BunRuntime.runMain
 );
