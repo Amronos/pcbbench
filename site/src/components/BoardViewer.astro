@@ -1,0 +1,134 @@
+---
+import { Image } from 'astro:assets';
+import type { Run } from '../data/runs';
+import ScaledBoard from './ScaledBoard.astro';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { width, height } = run.metrics.boardSizeMm;
+const name = `the board ${run.model.name} designed in ${run.harness.name}`;
+
+const views = [
+	{ id: 'top', label: 'Top' },
+	{ id: 'bottom', label: 'Bottom' },
+	{ id: 'iso', label: '3D' }
+] as const;
+---
+
+<div class="viewer" data-viewer>
+	<div class="tabs" role="group" aria-label="Board view">
+		{
+			views.map((view, index) => (
+				<button type="button" data-view={view.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+					{view.label}
+				</button>
+			))
+		}
+	</div>
+	<div class="stage">
+		<div data-panel="top">
+			<ScaledBoard
+				render={run.renders.top}
+				widthMm={width}
+				heightMm={height}
+				alt={`Top of ${name}`}
+				maxScale={9}
+				loading="eager"
+			/>
+		</div>
+		<div data-panel="bottom" hidden>
+			<ScaledBoard
+				render={run.renders.bottom}
+				widthMm={width}
+				heightMm={height}
+				alt={`Bottom of ${name}, seen from below`}
+				maxScale={9}
+			/>
+		</div>
+		<div data-panel="iso" hidden>
+			<Image
+				src={run.renders.iso}
+				alt={`3D view of ${name}`}
+				widths={[700, 1100]}
+				sizes="(min-width: 60rem) 900px, 100vw"
+				class="iso"
+			/>
+		</div>
+	</div>
+	<p class="caption">
+		Rendered by kicad-cli with the run's own KiCad version. Dimensions in mm.
+	</p>
+</div>
+
+<script>
+	for (const viewer of document.querySelectorAll<HTMLElement>('[data-viewer]')) {
+		const buttons = [...viewer.querySelectorAll<HTMLButtonElement>('[data-view]')];
+		const panels = [...viewer.querySelectorAll<HTMLElement>('[data-panel]')];
+
+		for (const button of buttons) {
+			button.addEventListener('click', () => {
+				for (const other of buttons)
+					other.setAttribute('aria-pressed', String(other === button));
+
+				for (const panel of panels) panel.hidden = panel.dataset.panel !== button.dataset.view;
+			});
+		}
+	}
+</script>
+
+<style>
+	.viewer {
+		display: grid;
+		gap: 1rem;
+	}
+
+	.stage {
+		--scale: 3.6;
+		min-height: 12rem;
+	}
+
+	@media (min-width: 40rem) {
+		.stage {
+			--scale: 6;
+		}
+	}
+
+	@media (min-width: 75rem) {
+		.stage {
+			--scale: 8;
+		}
+	}
+
+	.iso {
+		width: 100%;
+		max-width: 56rem;
+	}
+
+	.tabs {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	.tabs button {
+		font: inherit;
+		font-size: var(--step--1);
+		color: var(--dim);
+		background: none;
+		border: 1px solid var(--rule);
+		border-radius: 3px;
+		padding: 0.3rem 0.85rem;
+		cursor: pointer;
+	}
+
+	.tabs button[aria-pressed='true'] {
+		color: var(--canvas);
+		background: var(--silk);
+		border-color: var(--silk);
+	}
+
+	.caption {
+		font-size: var(--step--1);
+		color: var(--dim);
+	}
+</style>

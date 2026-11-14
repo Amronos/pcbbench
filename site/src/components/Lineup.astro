@@ -1,0 +1,108 @@
+---
+import type { Run } from '../data/runs';
+import { points } from '../data/format';
+import ScaledBoard from './ScaledBoard.astro';
+
+type Props = { runs: Run[] };
+
+const { runs } = Astro.props;
+---
+
+<ol class="lineup">
+	{
+		runs.map((run) => (
+			<li>
+				<a href={`/runs/${run.id}`} class="entry">
+					<ScaledBoard
+						render={run.renders.top}
+						widthMm={run.metrics.boardSizeMm.width}
+						heightMm={run.metrics.boardSizeMm.height}
+						alt={`Top of the board ${run.model.name} designed in ${run.harness.name}`}
+						maxScale={4.2}
+						loading={run.rank <= 4 ? 'eager' : 'lazy'}
+					/>
+					<span class="caption">
+					<span class="rank">{run.rank}</span>
+						<span class="who">
+							<span class="model">{run.model.name}</span>
+							<span class="harness">{run.harness.name}</span>
+						</span>
+					<span class="score">{points(run.metrics.score.total)}</span>
+					</span>
+				</a>
+			</li>
+		))
+	}
+</ol>
+
+<style>
+	.lineup {
+		--scale: 2.9;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-end;
+		gap: 2.5rem 1.5rem;
+	}
+
+	@media (min-width: 40rem) {
+		.lineup {
+			--scale: 3.4;
+		}
+	}
+
+	@media (min-width: 75rem) {
+		.lineup {
+			--scale: 4.2;
+		}
+	}
+
+	.entry {
+		display: block;
+		text-decoration: none;
+	}
+
+	.caption {
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		align-items: baseline;
+		gap: 0.75rem;
+		border-top: 1px solid var(--rule);
+		padding-top: 0.6rem;
+		margin-right: 2.25rem;
+	}
+
+	.rank {
+		color: var(--dim);
+		font-size: var(--step-0);
+	}
+
+	.who {
+		display: grid;
+		line-height: 1.25;
+	}
+
+	.model {
+		font-weight: 650;
+	}
+
+	.harness {
+		color: var(--dim);
+		font-size: var(--step--1);
+	}
+
+	.score {
+		font-size: var(--step-2);
+		line-height: 1;
+	}
+
+	.entry:hover .caption {
+		border-top-color: var(--silk);
+	}
+
+	.entry:hover .model {
+		color: var(--silk);
+	}
+</style>

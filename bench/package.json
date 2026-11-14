@@ -3,6 +3,10 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"exports": {
+		"./scoring": "./scoring.ts",
+		"./runs": "./runs.ts"
+	},
 	"scripts": {
 		"check": "bun check --no-script"
 	},

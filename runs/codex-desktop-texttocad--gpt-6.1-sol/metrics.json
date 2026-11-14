@@ -482,6 +482,23 @@
 			"orderable": 4,
 			"partsData": 4.7
 		},
+		"fractions": {
+			"layout": 0.8,
+			"routing": 0.3,
+			"decoupling": 1,
+			"usbProtection": 1,
+			"antennaKeepout": 1,
+			"batteryDrain": 1,
+			"thermal": 0.322,
+			"grounding": 0.847,
+			"silkscreen": 1,
+			"boardSize": 0,
+			"fabNotesWithoutFixes": 0,
+			"boardWithoutRework": 0,
+			"bomLinesWithoutFixes": 0.4,
+			"models3d": 0.9391,
+			"supplierNumbers": 0
+		},
 		"failedGates": []
 	},
 	"gates": {

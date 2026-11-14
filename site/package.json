@@ -1,0 +1,26 @@
+{
+	"name": "@pcbbench/site",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"renders": "bun scripts/renders.ts",
+		"dev": "bun run renders && astro dev",
+		"build": "bun run renders && astro build",
+		"preview": "astro preview",
+		"check": "bun run renders && astro check"
+	},
+	"dependencies": {
+		"@astrojs/preact": "^6.1.2",
+		"@pcbbench/bench": "workspace:*",
+		"astro": "^7.4.0",
+		"marked": "^18.1.0",
+		"preact": "^11.2.0",
+		"sharp": "^0.35.4"
+	},
+	"devDependencies": {
+		"@astrojs/check": "^0.9.12",
+		"@types/bun": "catalog:",
+		"typescript": "^6.0.0"
+	}
+}

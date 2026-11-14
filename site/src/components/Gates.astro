@@ -1,0 +1,85 @@
+---
+import type { Run } from '../data/runs';
+import { featureLabel, gateLabel } from '../data/scoring';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { gates, features } = run.metrics;
+---
+
+<div class="gates">
+	<div class="scroll">
+		<table class="data">
+			<thead>
+				<tr>
+					<th scope="col">Check</th>
+					<th scope="col">Result</th>
+					<th scope="col">What the check found</th>
+				</tr>
+			</thead>
+			<tbody>
+				{
+					Object.entries(gates).map(([name, gate]) => (
+						<tr>
+							<th scope="row">{gateLabel(name)}</th>
+							<td class:list={[gate.pass ? 'pass' : 'fail']}>{gate.pass ? 'Pass' : 'Fail'}</td>
+							<td class="wide">{gate.reason}</td>
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<div class="features">
+		<h3>Prompt features</h3>
+		<ul>
+			{
+				Object.entries(features).map(([name, feature]) => (
+					<li>
+						<span class:list={[feature.status === 'found' ? 'pass' : 'fail']}>
+							{feature.status === 'found' ? 'Found' : feature.status}
+						</span>{' '}
+						{featureLabel(name)}{' '}
+						<span class="refs">{feature.refs.join(', ')}</span>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>
+
+<style>
+	.gates {
+		display: grid;
+		gap: 2rem;
+	}
+
+	.wide {
+		min-width: 22rem;
+	}
+
+	.features {
+		display: grid;
+		gap: 0.75rem;
+	}
+
+	h3 {
+		font-size: var(--step-1);
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+		gap: 0.4rem 2rem;
+		font-size: var(--step--1);
+	}
+
+	.refs {
+		color: var(--dim);
+	}
+</style>

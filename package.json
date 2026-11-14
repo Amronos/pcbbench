@@ -22,7 +22,8 @@
 	"packageManager": "bun@1.4.4",
 	"workspaces": [
 		"packages/*",
-		"bench"
+		"bench",
+		"site"
 	],
 	"catalog": {
 		"@types/bun": "^1.3.14"

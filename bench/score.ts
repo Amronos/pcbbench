@@ -3,52 +3,29 @@ import { Console, Effect, Schema } from 'effect';
 import { Command } from 'effect/cli';
 import { readMetrics, readRun, updateMetrics } from './board.ts';
 import { RUNS } from './runs.ts';
-
-// Each item scores its points times a fraction from 0 to 1.
-const ITEMS = [
-	{ group: 'designReview', name: 'layout', points: 10 },
-	{ group: 'designReview', name: 'routing', points: 10 },
-	{ group: 'circuitChecks', name: 'decoupling', points: 5 },
-	{ group: 'circuitChecks', name: 'usbProtection', points: 5 },
-	{ group: 'circuitChecks', name: 'antennaKeepout', points: 5 },
-	{ group: 'circuitChecks', name: 'batteryDrain', points: 5 },
-	{ group: 'layoutChecks', name: 'thermal', points: 10 },
-	{ group: 'layoutChecks', name: 'grounding', points: 10 },
-	{ group: 'layoutChecks', name: 'silkscreen', points: 5 },
-	{ group: 'layoutChecks', name: 'boardSize', points: 5 },
-	{ group: 'orderable', name: 'fabNotesWithoutFixes', points: 5 },
-	{ group: 'orderable', name: 'boardWithoutRework', points: 5 },
-	{ group: 'orderable', name: 'bomLinesWithoutFixes', points: 10 },
-	{ group: 'partsData', name: 'models3d', points: 5 },
-	{ group: 'partsData', name: 'supplierNumbers', points: 5 }
-] as const;
-
-type Item = {
-	group: (typeof ITEMS)[number]['group'];
-	name: (typeof ITEMS)[number]['name'];
-	points: number;
-};
+import {
+	BOM_LINE_FIX_COST,
+	DRAIN_FULL_UA,
+	DRAIN_NONE_UA,
+	FEATHER_MM,
+	GATE_PENALTY,
+	GROUPS,
+	ITEMS,
+	MAJOR_COST,
+	MINOR_COST,
+	REVIEW_AREA_POINTS,
+	ZERO_SIZE_FACTOR,
+	groupPoints,
+	type Group,
+	type Item
+} from './scoring.ts';
 
 type Items = ReadonlyArray<Item>;
 
-const GROUPS = [...new Set(ITEMS.map((item) => item.group))];
-const GATE_PENALTY = 20;
+const FULL_SIZE_MM2 = FEATHER_MM.width * FEATHER_MM.height;
+const ZERO_SIZE_MM2 = ZERO_SIZE_FACTOR * FULL_SIZE_MM2;
 
-// Adafruit's Feather RP2350 (50.8 × 22.8 mm) fits all of the brief but Wi-Fi and microSD.
-const FULL_SIZE_MM2 = 50.8 * 22.8;
-const ZERO_SIZE_MM2 = 5 * FULL_SIZE_MM2;
-
-// A review area starts at 10 and loses these points per finding.
-const MINOR_COST = 1;
-const MAJOR_COST = 2;
-
-// Battery current drawn by unswitched monitor dividers: full points at or below the first, none at the second.
-const DRAIN_FULL_UA = 5;
-const DRAIN_NONE_UA = 25;
 const WEIGHT_SHIFT = 10;
-
-// Each BOM line needing a fix costs this share of the BOM lines item, whatever the BOM's size.
-const BOM_LINE_FIX_COST = 0.2;
 
 const clamp = (value: number) => Math.min(1, Math.max(0, value));
 const round = (value: number) => Math.round(value * 10) / 10;
@@ -143,7 +120,7 @@ const readFractions = Effect.fn('readFractions')(function* (runId: string) {
 	);
 
 	const reviewed = ({ minor, major }: typeof Findings.Type) =>
-		clamp(1 - (MINOR_COST * minor + MAJOR_COST * major) / 10);
+		clamp(1 - (MINOR_COST * minor + MAJOR_COST * major) / REVIEW_AREA_POINTS);
 
 	const { usb } = design;
 	// check.ts lists a line's nets from the connector side; a series resistor adds the RP2350-side net.
@@ -193,7 +170,7 @@ const readFractions = Effect.fn('readFractions')(function* (runId: string) {
 				status === 'found' ? [] : [`missing ${name}`]
 			),
 			...Object.entries(gates).flatMap(([name, { pass }]) => (pass ? [] : [name])),
-			...(review.findings.fatal ? [`${review.findings.fatal} fatal review findings`] : [])
+			...(review.findings.fatal ? ['fatalFinding'] : [])
 		]
 	};
 });
@@ -217,11 +194,8 @@ function score(
 }
 
 // WEIGHT_SHIFT points moved from one group to another, scaling each group's items in proportion.
-function shiftedItems(from: string, to: string): Items {
-	const groupPoints = (group: string) =>
-		sum(ITEMS.flatMap((item) => (item.group === group ? [item.points] : [])));
-
-	const factor = (group: string) =>
+function shiftedItems(from: Group, to: Group): Items {
+	const factor = (group: Group) =>
 		group === from
 			? (groupPoints(from) - WEIGHT_SHIFT) / groupPoints(from)
 			: group === to
@@ -248,6 +222,12 @@ const command = Command.make('score', {}, () =>
 					total: round(total),
 					groups: Object.fromEntries(
 						Object.entries(groups).map(([group, points]) => [group, round(points)])
+					),
+					fractions: Object.fromEntries(
+						Object.entries(run.fractions).map(([name, fraction]) => [
+							name,
+							Math.round(fraction * 1e4) / 1e4
+						])
 					),
 					failedGates: run.failedGates
 				}

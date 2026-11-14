@@ -1,0 +1,276 @@
+---
+import {
+	BATCH_BOARDS,
+	COST_LIMIT_USD,
+	MODELS as MODEL_IDS,
+	REASONING_EFFORT,
+	WALL_CLOCK_LIMIT_HOURS
+} from '@pcbbench/bench/runs';
+import { GATE_PENALTY, GROUPS, ITEMS, groupPoints } from '@pcbbench/bench/scoring';
+import Base from '../layouts/Base.astro';
+import { MODELS } from '../data/catalog';
+import { GITHUB, runs } from '../data/runs';
+import { GROUP_LABELS, ITEM_LABELS } from '../data/scoring';
+
+const judges = [...new Set(runs.map((run) => MODELS[run.review.judge].name))];
+const usualLimit = Math.min(...Object.values(COST_LIMIT_USD));
+const higherLimits = MODEL_IDS.filter((model) => COST_LIMIT_USD[model] !== usualLimit);
+---
+
+<Base
+	title="Method · PCBBench"
+	description="How PCBBench runs AI agents on PCB design tasks and scores the boards they deliver."
+>
+	<article class="page">
+		<header class="intro">
+			<h1>Method</h1>
+			<p class="lede">
+				Each run gives one agent one task prompt. Scripts check the board it delivers, an AI judge
+				reviews it, and PCBWay prices it. The score covers the board only.
+			</p>
+		</header>
+
+		<section class="section">
+			<h2>A run</h2>
+			<ol class="steps">
+				<li>
+					The agent gets the task prompt with its model and {REASONING_EFFORT} reasoning effort filled
+					in, a clean machine with KiCad, and up to {WALL_CLOCK_LIMIT_HOURS} hours. AI spend is capped
+					at ${usualLimit}
+					{
+						higherLimits.map((model) => (
+							<>
+								{' '}
+								(${COST_LIMIT_USD[model]} for {MODELS[model].name})
+							</>
+						))
+					}.
+				</li>
+				<li>The run's work folder, logs, tokens and AI cost are collected.</li>
+				<li>
+					Scripts run DRC and ERC with the run's own KiCad version, match the fab files to the board,
+					and check the BOM, placement file, parts, gates and layout.
+				</li>
+				<li>{judges.join(' and ')} reviews an anonymous copy of the board.</li>
+				<li>
+					PCBWay quotes 1 and {BATCH_BOARDS} assembled boards, after any fixes needed to order them.
+				</li>
+			</ol>
+		</section>
+
+		<section class="section">
+			<h2>Score</h2>
+			<p>
+				Each item earns its points times a fraction from 0 to 1. A board that fails a gate loses{' '}
+				{GATE_PENALTY} points. Differences under about 5 points aren't meaningful. "Change the mix" on
+				the leaderboard reweights the groups.
+			</p>
+			<div class="scroll">
+				<table class="items">
+					<thead>
+						<tr>
+							<th scope="col">Item</th>
+							<th scope="col" class="n">Points</th>
+							<th scope="col">Fraction</th>
+						</tr>
+					</thead>
+					{
+						GROUPS.map((group) => (
+							<tbody style={`--color: var(--${group})`}>
+								<tr class="group">
+									<th scope="rowgroup" colspan="3">
+										<span class="swatch" aria-hidden="true" />
+										{GROUP_LABELS[group]} {groupPoints(group)}
+									</th>
+								</tr>
+								{ITEMS.filter((item) => item.group === group).map((item) => (
+									<tr>
+										<td>{ITEM_LABELS[item.name].label}</td>
+										<td class="n">{item.points}</td>
+										<td class="fraction">{ITEM_LABELS[item.name].fraction}</td>
+									</tr>
+								))}
+							</tbody>
+						))
+					}
+				</table>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2>Gates</h2>
+			<ul class="facts">
+				<li>
+					<strong>Prompt features.</strong> The BOM has a part for every feature the prompt asks for.
+				</li>
+				<li>
+					<strong>Crystal.</strong> Its load capacitors are within 25% of what its datasheet needs, with
+					3 pF of board capacitance.
+				</li>
+				<li>
+					<strong>Buttons.</strong> BOOT pulls QSPI_SS to ground through a switch, and RUN has its own
+					switch to ground.
+				</li>
+				<li>
+					<strong>Power path.</strong> The charger takes USB VBUS, charges the battery connector and
+					feeds the 3.3 V regulator.
+				</li>
+				<li>
+					<strong>No fatal finding.</strong> The judge found nothing that stops the assembled board
+					working, damages a part or stops PCBWay building it.
+				</li>
+			</ul>
+		</section>
+
+		<section class="section">
+			<h2>Checks</h2>
+			<div class="cards">
+				<div style="--color: var(--designReview)">
+					<h3>Design review</h3>
+					<p>
+						{judges.join(' and ')} on high reasoning, in the Sprocket CLI with its KiCad connector, sees
+						the KiCad project, the BOM, renders and layer images, without run names. It lists layout and
+						routing problems with their parts, nets and evidence, rated minor, major or fatal. It gives
+						no scores.
+					</p>
+				</div>
+				<div style="--color: var(--circuitChecks)">
+					<h3>Circuit checks</h3>
+					<p>
+						Scripts read the board file for the nearest capacitor to each RP2350 power pin, ESD parts
+						and series resistors on USB D+ and D−, copper in the Wi-Fi antenna keepout, and the current
+						battery dividers draw when the board is off.
+					</p>
+				</div>
+				<div style="--color: var(--layoutChecks)">
+					<h3>Layout checks</h3>
+					<p>
+						Vias in the exposed pads of the RP2350, charger and regulator. USB, QSPI and microSD track
+						length over a ground plane on the next layer. Silkscreen text height. Board area.
+					</p>
+				</div>
+				<div style="--color: var(--orderable)">
+					<h3>Orderable</h3>
+					<p>
+						Fab options PCBWay doesn't offer, DRC errors or fab files that differ from the board, and
+						BOM lines with invalid part numbers, too little stock for {BATCH_BOARDS} boards or a footprint
+						that doesn't match the part.
+					</p>
+				</div>
+				<div style="--color: var(--partsData)">
+					<h3>Parts data</h3>
+					<p>
+						Parts with a 3D model that loads, and BOM lines with a valid LCSC, Digi-Key or Mouser part
+						number.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section">
+			<h2>Not in the score</h2>
+			<ul class="facts">
+				<li><strong>AI cost.</strong> The run's API cost at market prices, including subagents.</li>
+				<li><strong>Time.</strong> How long the agent was working.</li>
+				<li>
+					<strong>Board price.</strong> PCB, assembly and parts at PCBWay's instant-quote prices,
+					without shipping. PCBWay makes at least 5 PCBs, so 1 board means 5 PCBs with 1 assembled.
+					Parts are priced at distributor list prices.
+				</li>
+			</ul>
+			<p>
+				The <a href={`${GITHUB}#readme`}>README</a> has every check's exact rules, and the{' '}
+				<a href={`${GITHUB}/tree/main/bench`}>bench code</a> runs them.
+			</p>
+		</section>
+	</article>
+</Base>
+
+<style>
+	.intro {
+		display: grid;
+		gap: 1rem;
+		padding-top: clamp(2rem, 6vw, 4rem);
+	}
+
+	h1 {
+		font-size: var(--step-4);
+	}
+
+	.steps,
+	.facts {
+		display: grid;
+		gap: 0.6rem;
+		margin: 0;
+		padding-left: 1.25em;
+		max-width: var(--measure);
+	}
+
+	.scroll {
+		overflow-x: auto;
+	}
+
+	.items {
+		width: 100%;
+		max-width: 56rem;
+	}
+
+	.items th,
+	.items td {
+		text-align: left;
+		vertical-align: top;
+		padding: 0.45rem 1rem 0.45rem 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.items thead th {
+		color: var(--dim);
+		font-weight: normal;
+		font-size: var(--step--1);
+	}
+
+	.items .n {
+		text-align: right;
+	}
+
+	.items .group th {
+		padding-top: 1.25rem;
+		font-weight: 600;
+	}
+
+	.fraction {
+		color: var(--dim);
+		font-size: var(--step--1);
+	}
+
+	.swatch {
+		display: inline-block;
+		width: 0.75rem;
+		height: 0.75rem;
+		margin-right: 0.5rem;
+		border-radius: 2px;
+		background: var(--color);
+	}
+
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: 1.5rem 2.5rem;
+	}
+
+	.cards > div {
+		display: grid;
+		align-content: start;
+		gap: 0.5rem;
+		border-top: 3px solid var(--color);
+		padding-top: 0.75rem;
+	}
+
+	.cards h3 {
+		font-size: var(--step-1);
+	}
+
+	.cards p {
+		color: var(--dim);
+	}
+</style>
