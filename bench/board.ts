@@ -1,4 +1,5 @@
 import { Console, Effect, FileSystem, Schema } from 'effect';
+import { arc, boundingBox, frame } from './geometry.ts';
 
 // The child lists of an s-expression, found by matching parentheses outside quoted strings.
 function children(expr: string, head: string) {
@@ -52,6 +53,51 @@ const layersOf = (block: string) =>
 const numberOf = (block: string, key: string) =>
 	Number(block.match(new RegExp(`\\(${key} ([-\\d.]+)`))?.[1]);
 
+const angleOf = (block: string) =>
+	Number(block.match(/\(at [-\d.]+ [-\d.]+ ([-\d.]+)\)/)?.[1] ?? 0);
+
+function padOutline(kind: string, { x: width, y: height }: Point) {
+	if (!['circle', 'oval'].includes(kind))
+		return boundingBox([
+			{ x: -width / 2, y: -height / 2 },
+			{ x: width / 2, y: height / 2 }
+		]);
+
+	const radius = Math.min(width, height) / 2;
+	const along = Math.max(width, height) / 2 - radius;
+
+	const stadium = [
+		...arc({ x: along, y: 0 }, radius, -Math.PI / 2, Math.PI, 8),
+		...arc({ x: -along, y: 0 }, radius, Math.PI / 2, Math.PI, 8)
+	];
+
+	return width >= height ? stadium : stadium.map(({ x, y }) => ({ x: y, y: x }));
+}
+
+function parseText(block: string) {
+	return {
+		text: block.match(/^\((?:gr_text|fp_text \w+|property "[^"]*") "((?:\\.|[^"\\])*)"/)?.[1] ?? '',
+		layer: layersOf(block)[0] ?? '',
+		height: Number(block.match(/\(size ([-\d.]+) [-\d.]+\)/)?.[1] ?? 0)
+	};
+}
+
+export type Text = ReturnType<typeof parseText>;
+
+const SILKSCREEN = /^[FB]\.Silk/;
+
+// The silkscreen texts a board or footprint shows.
+function parseSilkscreen(block: string, prefix: 'gr' | 'fp') {
+	return [
+		...children(block, `${prefix}_text`),
+		...(prefix === 'fp' ? children(block, 'property') : [])
+	].flatMap((block) => {
+		const text = parseText(block);
+
+		return !block.includes('(hide yes)') && SILKSCREEN.test(text.layer) && text.text ? [text] : [];
+	});
+}
+
 function parseZone(block: string, toBoard = (xy: Point) => xy) {
 	return {
 		name: block.match(/\(name "([^"]*)"/)?.[1] ?? '',
@@ -87,22 +133,23 @@ function parseFootprint(block: string, fileVersion: number) {
 	const x = Number(placement?.[1]);
 	const y = Number(placement?.[2]);
 	const rotation = Number(placement?.[3] ?? 0);
-	const [cos, sin] = [Math.cos((rotation * Math.PI) / 180), Math.sin((rotation * Math.PI) / 180)];
 
-	// Child positions are stored unrotated, relative to the footprint; KiCad's y axis points down.
-	const toBoard = ({ x: dx, y: dy }: Point) => ({
-		x: x + dx * cos + dy * sin,
-		y: y - dx * sin + dy * cos
-	});
+	// Child positions are stored unrotated, relative to the footprint.
+	const toBoard = frame({ x, y }, rotation);
 
-	const pads = [...block.matchAll(/\(pad "([^"]*)" (\w+)[\s\S]*?(?=\(pad "|$)/g)].map(
-		([pad, number = '', type = '']) => {
+	const pads = [...block.matchAll(/\(pad "([^"]*)" (\w+) (\w+)[\s\S]*?(?=\(pad "|$)/g)].map(
+		([pad, number = '', type = '', kind = '']) => {
+			const at = toBoard(point(pad, 'at'));
+
 			return {
 				number,
 				type,
 				net: netOf(pad),
 				pinFunction: pad.match(/\(pinfunction "([^"]*)"/)?.[1] ?? '',
-				...toBoard(point(pad, 'at'))
+				layers: layersOf(pad),
+				// Pad angles are stored relative to the board, not the footprint.
+				outline: padOutline(kind, point(pad, 'size')).map(frame(at, angleOf(pad))),
+				...at
 			};
 		}
 	);
@@ -128,7 +175,8 @@ function parseFootprint(block: string, fileVersion: number) {
 			.map(toBoard),
 		zones: children(block, 'zone').map((zone) =>
 			parseZone(zone, fileVersion >= FIRST_FOOTPRINT_FRAME_ZONES ? toBoard : undefined)
-		)
+		),
+		silkscreen: parseSilkscreen(block, 'fp')
 	};
 }
 
@@ -166,6 +214,14 @@ function parseCopper(pcb: string) {
 export type Copper = ReturnType<typeof parseCopper>;
 
 export const runDirectory = (runId: string) => `${import.meta.dir}/../runs/${runId}`;
+
+export const RENDERS = {
+	top: ['--side', 'top'],
+	bottom: ['--side', 'bottom'],
+	iso: ['--rotate', '-40,0,30', '--perspective', '--floor', '--zoom', '0.7']
+};
+
+export const RENDER_SIZE = ['--quality', 'high', '--width', '1600', '--height', '1200'];
 
 const RunInfo = Schema.fromJsonString(
 	Schema.Struct({
@@ -206,7 +262,16 @@ export const readRun = Effect.fn('readRun')(function* (runId: string) {
 		)
 	].map(([, name]) => name!);
 
-	return { runDir, info, board, footprints, parts, copperLayers, copper: parseCopper(pcb) };
+	return {
+		runDir,
+		info,
+		board,
+		footprints,
+		parts,
+		copperLayers,
+		copper: parseCopper(pcb),
+		silkscreen: parseSilkscreen(pcb, 'gr')
+	};
 });
 
 const metricsPath = (runId: string) => `${runDirectory(runId)}/metrics.json`;

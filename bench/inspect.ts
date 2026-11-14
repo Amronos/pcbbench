@@ -2,16 +2,10 @@ import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Effect, FileSystem, Schema } from 'effect';
 import { Argument, Command } from 'effect/cli';
 import { ChildProcess } from 'effect/process';
-import { readRun, updateMetrics } from './board.ts';
+import { readRun, RENDER_SIZE, RENDERS, updateMetrics } from './board.ts';
 import { exec, run } from './command.ts';
 import { matchFab } from './fab-match.ts';
 import { runIdArgument } from './runs.ts';
-
-const RENDERS = {
-	top: ['--side', 'top'],
-	bottom: ['--side', 'bottom'],
-	iso: ['--rotate', '-40,0,30', '--perspective', '--floor', '--zoom', '0.7']
-};
 
 const Violation = Schema.Struct({ severity: Schema.String, type: Schema.String });
 
@@ -145,7 +139,7 @@ const inspect = Effect.fn('inspect')(function* ({
 
 	for (const [name, args] of Object.entries(RENDERS)) {
 		yield* run(
-			ChildProcess.make`${kicadCli} pcb render --quality high --width 1600 --height 1200 ${args} -o ${runDir}/renders/${name}.png ${board}`
+			ChildProcess.make`${kicadCli} pcb render ${RENDER_SIZE} ${args} -o ${runDir}/renders/${name}.png ${board}`
 		);
 	}
 

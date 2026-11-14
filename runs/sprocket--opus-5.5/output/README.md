@@ -1,160 +1,132 @@
-# RP2350 Wi-Fi/BLE LiPo dev board, Rev A
+# RP2350 dev board
 
-A 30.48 × 70 mm, 4-layer RP2350 board for PCBWay turnkey fabrication and assembly. All 77 parts sit on the top side. It has:
+A 28 × 78.54 mm, 4-layer RP2350A board with Wi-Fi/BLE, a LiPo charger and microSD, laid out for PCBWay's
+standard PCB and turnkey assembly service. Every fitted part is on the top side.
 
-- RP2350A (A4 stepping) with 16 MB QSPI flash and 8 MB QSPI PSRAM
-- USB-C for power and USB 1.1 full-speed data
-- BQ24074 LiPo charger with power path, plus battery and VBUS voltage sensing
-- Raspberry Pi RM2 module (CYW43439) for Wi-Fi 4 and Bluetooth 5.2, wired like the Pico 2 W
-- microSD socket with card detect, Qwiic/STEMMA QT connector and a WS2812C-2020 RGB LED
-- BOOTSEL and RESET buttons and two 15-pin 0.1 in header rows (pads only)
-
-![Perspective render](docs/persp.png)
-
-| Top | Bottom |
-| --- | --- |
-| ![Top](docs/top.png) | ![Bottom](docs/bottom.png) |
+| Block | Part | Notes |
+| --- | --- | --- |
+| MCU | RP2350A (U1), 12 MHz crystal | Core supply from the internal switching regulator (L1 3.3 µH) |
+| Flash | W25Q128JVSIQ (U2), 16 MB | QSPI CS0, boots from it |
+| PSRAM | APS6404L-3SQR-SN (U3), 8 MB | QSPI CS1 on GPIO8 |
+| USB | USB-C (J1, GCT USB4105), 5.1 kΩ CC pull-downs, USBLC6-2 ESD | USB 2.0 full speed, power and data |
+| Charger | BQ24074 (U5) with power path | 445 mA charge current, 500 mA input limit |
+| Battery | JST PH 2-pin (J2), reverse-polarity P-FET (Q1) | Single-cell LiPo |
+| Battery monitor | 470 k/470 k divider on GPIO28 (ADC2), switched by Q2 | `VBAT = 2 × ADC` |
+| 3.3 V | TPS63001 buck-boost (U6) | Runs from the cell or USB; 3V3_EN on the header turns it off |
+| Wireless | Raspberry Pi RM2 module (U7, CYW43439) | Wi-Fi 4 and Bluetooth 5.2, same wiring as the Pico 2 W |
+| microSD | Molex 104031-0811 (J3) | 4-bit SD on GPIO10-15, card detect on GPIO9 |
+| Qwiic / STEMMA QT | JST SH 4-pin (J4) | I²C0 on GPIO4 (SDA) and GPIO5 (SCL), 2.2 kΩ pull-ups |
+| RGB LED | WS2812B-2020 (D3) | Data on GPIO22 |
+| Buttons | BOOTSEL (SW1), RESET (SW2) | |
+| Headers | 2 × 14 pins on 2.54 mm, rows 22.86 mm apart (J5, J6) | Holes only; not fitted. Pin names on the bottom silkscreen |
 
 ## Files
 
-| Path | Content |
+| Path | Contents |
 | --- | --- |
-| `rp2350_dev.kicad_pro`, `*.kicad_sch`, `rp2350_dev.kicad_pcb` | KiCad project: root sheet plus power, mcu, wireless and io sheets |
-| `lib/` | RM2 symbol and 3D models from LCSC (easyeda2kicad) |
-| `fab/` | Everything PCBWay needs. [`fab/README_fab.txt`](fab/README_fab.txt) holds the order notes |
-| `scripts/` | Generators: `design.py` is the circuit source of truth |
-| `docs/` | Schematic and 3D renders used here |
+| `rp2350-devboard.kicad_pro` | KiCad project: schematic (5 sheets) and PCB |
+| `BOM.csv` | Bill of materials |
+| `fab/` | Gerbers, drill files and job file (`gerbers/`, zipped as `rp2350-devboard-gerbers.zip`), PCBWay BOM and centroid |
+| `docs/assembly.md` | Assembly and bring-up instructions |
+| `docs/renders/` | 3D renders |
+| `lib/` | Project symbols, footprints and 3D models |
+| `scripts/` | Generators: `design.py` holds every part and net, the other scripts build the schematic and board, finish it (`teardrops.py`, `label_board.py`) and export `fab/` (`export_fab.py`) |
 
-## Block diagram
-
-```mermaid
-flowchart LR
-  USB["USB-C J1"] -->|"VBUS"| CHG["BQ24074 U5<br/>charger + power path"]
-  USB -->|"D+/D- via USBLC6 U7"| MCU["RP2350A U1"]
-  BAT["LiPo J4"] <-->|"VBAT"| CHG
-  CHG -->|"VSYS 3.0-4.4 V"| LDO["TLV75733 U6<br/>3.3 V 1 A"]
-  CHG -->|"VSYS"| RM2["RM2 U4<br/>Wi-Fi + BLE"]
-  LDO -->|"+3V3"| MCU
-  MCU <-->|"QSPI"| MEM["W25Q128 flash U2<br/>APS6404L PSRAM U3"]
-  MCU <-->|"gSPI GPIO23-25, 29"| RM2
-  MCU <-->|"SPI1 / PIO SDIO"| SD["microSD J2"]
-  MCU <-->|"I2C0"| QW["Qwiic J3"]
-  MCU -->|"GPIO22"| LED["WS2812C D1"]
-  BAT -.->|"VBAT/2"| MCU
-```
-
-## Power behaviour
-
-| Source present | VSYS | Battery |
-| --- | --- | --- |
-| USB only | 4.4 V from USB, input limit USB500 (about 450 mA min) | none |
-| USB + LiPo | 4.4 V from USB. The cell supplements it when the load exceeds the input limit | charges at 330 mA (R4 = 2.7 kΩ), red LED D2 on while charging |
-| LiPo only | follows VBAT (3.0-4.2 V) | discharges |
-
-- The 3.3 V LDO and the RM2 VIN both run from VSYS, as on the Pico W. Wi-Fi TX peaks don't load the LDO.
-- `3V3_EN` (J5 pin 14) has a 100 kΩ pull-up to VSYS. Pull it low to turn 3.3 V off. It sits at VSYS level, up to 4.4 V, so drive it open-drain.
-- Battery voltage reads on GPIO28 (ADC2) as VBAT / 2. VBUS reads on RM2 WL_GPIO2 as 0.595 × VBUS, the same as the Pico 2 W.
-- The TS pin has a fixed 10 kΩ, so the board has no cell temperature sensing. Use cells with their own protection PCB.
+The schematic, placement and pre-routed copper come from the scripts. Edit the schematic and board in KiCad now.
+`build_schematic.py` assigns new UUIDs, which breaks the link to the routed board, and `build_pcb.py` replaces the
+routed board.
 
 ## Pinout
 
-GPIO map (design.py `GPIO`):
+Left header J5, pin 1 at the top (USB-C is at the bottom):
 
-| GPIO | Function | GPIO | Function |
-| --- | --- | --- | --- |
-| 0-3 | header (UART0 on 0/1) | 16-21 | header |
-| 4 / 5 | I2C0 SDA / SCL: Qwiic, 4.7 kΩ pull-ups | 22 | WS2812C data |
-| 6, 7 | header | 23 | RM2 WL_ON |
-| 8 | PSRAM CS (XIP_CS1n) | 24 | RM2 data / IRQ |
-| 9 | SD card detect, low = card present | 25 | RM2 CS |
-| 10 | SD CLK | 26, 27 | header (ADC0, ADC1) |
-| 11 | SD CMD / SPI1 MOSI | 28 | VBAT / 2 (ADC2) |
-| 12-15 | SD D0-D3 (D0 = MISO, D3 = CS) | 29 | RM2 CLK |
+| Pin | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| J5 | GND | 3V3 | SWCLK | SWDIO | RUN | GP16 | GP17 | GP18 | GP19 | GP20 | GP21 | GP26/A0 | GP27/A1 | GND |
+| J6 | GND | VBUS | GND | 3V3 | GP7 | GP6 | GP5/SCL | GP4/SDA | GP3 | GP2 | GP1 | GP0 | GND | 3V3_EN |
 
-Headers, top view, pin 1 (square pad) at the RM2 end:
+Fixed functions:
 
-| Pin | J5 left | J6 right |
-| --- | --- | --- |
-| 1 | GND | GND |
-| 2 | GPIO26 | GPIO21 |
-| 3 | GPIO27 | GPIO20 |
-| 4 | +3V3 (out) | GPIO19 |
-| 5 | GND | GPIO18 |
-| 6 | GPIO0 | GPIO17 |
-| 7 | GPIO1 | GPIO16 |
-| 8 | GPIO2 | SWDIO |
-| 9 | GPIO3 | SWCLK |
-| 10 | SDA (GPIO4) | RUN |
-| 11 | SCL (GPIO5) | +3V3 (out) |
-| 12 | GPIO6 | VBAT |
-| 13 | GPIO7 | VSYS (out) |
-| 14 | 3V3_EN | VBUS |
-| 15 | GND | GND |
-
-## Firmware
-
-Build with `PICO_BOARD=pico2_w` plus a board header that sets:
-
-- PSRAM: CS on GPIO8 and 8 MB.
-- Flash: 16 MB.
-
-Keep the PSRAM clock at 84 MHz or below. The APS6404L limits linear bursts across page boundaries above that. The Wi-Fi pins already match `pico2_w`, so the CYW43 driver works unchanged. The only user LED is the WS2812 on GPIO22, so `PICO_DEFAULT_LED_PIN` doesn't apply.
-
-## Key design decisions
-
-| Decision | Reason |
+| GPIO | Function |
 | --- | --- |
-| RP2350A (QFN-60) with external flash | 30 GPIO is enough, and external flash lets the size be chosen (16 MB here) |
-| RM2 module, not a bare CYW43439 | Pre-certified with an on-module antenna, uses the Pico 2 W driver, and needs no RF layout. No copper on any layer within 5.5 mm of the top edge, under the antenna |
-| BQ24074 | Power path, USB500 input limit set by its EN pins, 1.5 A capable charger in QFN-16 |
-| Charge current 330 mA | Safe for cells of 330 mAh and larger at 1C, and fits under the 450 mA USB500 limit with the board running |
-| TLV75733 LDO from VSYS | 1 A, low dropout at the 3.0 V end of a LiPo, active discharge |
-| PSRAM CS on GPIO8 with 2.7 kΩ pull-up | Same pin as the Adafruit Feather RP2350. The pull-up overrides the reset pull-down so the PSRAM stays deselected |
-| microSD on GPIO10-15 | Works with SPI1 and with 4-bit PIO SDIO |
-| Power enters only through VBUS | All input current passes the charger's USB500 limit. VBUS on J6 is an input up to 5.5 V, because 0.595 × 5.5 V = 3.27 V on the RM2 sense pin. On USB it is an output |
-| No ESD parts on CC or Qwiic | Accepted risk to save space. USBLC6 covers D+/D- and VBUS. The CC lines only see 5.1 kΩ Rd |
-| Headers not populated | Keeps assembly SMT-only and lets the user choose pins, sockets or direct wires |
-| Board 30.48 × 70 mm | Header rows 27.94 mm (1.1 in) apart on the 0.1 in grid, so perfboard fits |
+| 8 | PSRAM CS |
+| 9 | microSD card detect (low when a card is in) |
+| 10-15 | microSD CLK, CMD, D0, D1, D2, D3 |
+| 22 | WS2812B data |
+| 23, 24, 25, 29 | RM2 WL_ON, WL_D, WL_CS, WL_CLK (as on the Pico 2 W) |
+| 28 | Battery voltage / 2 |
 
-Accepted trade-offs:
+## Design decisions
 
-- The VBAT divider (2 × 100 kΩ) draws 21 µA from the cell at all times.
-- Header VSYS and +3V3 are outputs only. VSYS connects straight to the cell, so back-feeding it bypasses the charger.
+- **Pico 2 W compatible wireless.** The RM2 uses GPIO23/24/25/29 and the same 470 Ω/10 kΩ data network, and its
+  WL_GPIO2 senses VBUS through a 100 k/150 k divider. Stock MicroPython and the Pico SDK `pico2_w` board files
+  drive Wi-Fi and BLE unchanged.
+- **No WL_GPIO0 LED.** The Pico 2 W's LED hangs off the RM2. Its track would block the left header fan-out, and the
+  RGB LED already serves as the user LED, so U7 pin 8 is unconnected. `Pin("LED")` on stock `pico2_w` firmware
+  runs without error but lights nothing. Use the WS2812B on GPIO22.
+- **Charger in USB500 mode.** EN1 is tied high and EN2 low, so the BQ24074 draws at most 500 mA from any USB port
+  without negotiation. ISET = 2 kΩ sets 445 mA fast charge, which suits cells from about 450 mAh up. R10 (ILIM) only
+  matters if EN1/EN2 are changed to resistor-programmed mode.
+- **Power path.** The BQ24074 OUT pin (VSYS) feeds the TPS63001 from USB when present, else from the cell. The
+  buck-boost keeps 3.3 V across the full LiPo range (3.0-4.2 V) and from USB (VSYS = 4.4 V).
+- **VSYS not on the header.** VSYS is tied to the cell through the charger's internal BAT-OUT FET, so 5 V fed there
+  would charge the cell with no regulation. External 5 V power goes in through VBUS (J6 pin 2), which passes the
+  charger's input current limit and over-voltage protection.
+- **3V3_EN.** Pulled up to VSYS with 100 kΩ. Grounding J6 pin 14 turns off 3.3 V while the charger keeps working.
+- **Battery monitor back-power blocker.** The divider reads VBAT/2, up to 2.1 V. With the 3.3 V rail off, that
+  voltage would forward-bias the GPIO28 clamp diode into an unpowered IOVDD. Q2, an N-FET gated by +3V3, connects
+  the divider to the pin only while 3.3 V is up. The divider draws 4.5 µA from the cell.
+- **2.2 kΩ PSRAM CS pull-up.** At power-on the RP2350 pulls GPIO8 down (36 kΩ minimum). 2.2 kΩ keeps CE# above
+  the PSRAM's V_IH so it stays deselected until firmware configures CS1.
+- **Reverse-battery P-FET (Q1).** A reversed cell leaves the FET off, so the charger and buck-boost see no
+  negative voltage.
+- **Headers not fitted.** J5/J6 are holes only, so the board can be soldered down, socketed or fitted with headers
+  by the user. J1's four shell tabs are the only plated through-holes that get solder. PCBWay solders them with
+  paste-in-hole or by hand.
+
+## Layout
+
+- Stackup: PCBWay standard 1.6 mm 4-layer, 1 oz outer copper, ENIG. F.Cu signals and parts, In1.Cu solid GND
+  with no tracks, In2.Cu +3.3 V plane that also carries signals (see the reviewer notes), B.Cu signals with GND
+  pour.
+- Rules: 0.15 mm track and clearance for signals (PCBWay minimum 0.127 mm), 0.6/0.3 mm vias, USB pair 0.2 mm.
+- Power copper: VBUS, VSYS, VBAT, BAT_CONN and the inductor nets run at 0.4 mm and +1V1 at 0.2-0.25 mm. The
+  narrowest pieces are 0.15 mm stubs where they enter fine-pitch pins: about 0.7 mm of VBAT at U5's BAT pins and
+  the EN1 tie to VSYS. +3V3 reaches the parts through the In2 plane.
+- The RM2 sits at the top edge with its antenna past the copper. Its footprint carries the datasheet's RF keepout on
+  all copper layers. The datasheet forbids metal only in the antenna keepout, so tracks and vias run under the module
+  body.
+- The RP2350 regulator follows Raspberry Pi's hardware design guide: VREG_LX runs between the C12 and C13 pads to
+  L1. A custom DRC rule allows that one net 0.127 mm clearance, still at PCBWay's minimum.
+- Switch-node keepouts on In2.Cu and B.Cu keep signal tracks out of the fields under the buck-boost (tracks and
+  vias) and the RP2350 regulator (tracks only, so a GND via can drop the C12/C13 return straight to the plane).
+  GND still pours in both.
+- Drawn by hand in `scripts/hand_routes.py` and `scripts/build_pcb.py`: the top-left fan-out (SWD, RUN, GP16-27,
+  VBAT_SENSE, RGB_DIN and the RM2 lines), USB_D±_MCU from U1 to R3/R4, the VREG_LX loop, and the buck-boost
+  BB_L1/BB_L2/VSYS/+3V3 loop. The USB pair was routed as a differential pair and locked before the autoroute.
+  The router did the rest, then GND stitching vias and a 3 mm edge fence went in.
+- Teardrops on every pad and via. Reference designators are hidden on the silkscreen and shown on F.Fab.
 
 ## Reviewer notes
 
-- Via-in-pad: about 75 vias sit in SMD pads (U1 QFN-60, U5 thermal pad, several 0402s). The board needs filled and capped vias (IPC-4761 Type VII). This is in the fab notes and adds cost at PCBWay. Rerouting without it isn't practical at this density.
-- Layer use: In1 is a solid GND plane under the whole board, and F.Cu signals reference it. In2 is the +3V3 plane, but it also carries signal tracks, so it has voids near U1. DRC confirms the plane stays connected.
-- Signal return paths: QSPI runs mostly on B.Cu (about 80 mm) and In2 (about 40 mm), where the nearest reference is the voided +3V3 plane or the B.Cu GND pour. Each net is 20-45 mm long, which is fine for flash at the default clock. Check this before running flash or PSRAM above 100 MHz. USB D+/D- runs mostly on F.Cu over In1. D- has about 8 mm each on In2 and B.Cu, which is fine at 12 Mbit/s full speed.
-- DRC: 0 errors, 0 unconnected, 0 schematic parity issues. Two `lib_footprint_mismatch` warnings on J5/J6 are intentional. Their front silk outline ran off the board edge and was removed.
-- Hand edits after autorouting: an I2C_SCL via at (115.43, 81.45) and a GPIO6 via at (115.64, 83.08) in board coordinates, plus reroutes of QSPI_SCLK, GPIO7 and a +3V3 link to the In2 plane.
-- The battery polarity follows Adafruit/SparkFun JST PH cells (pin 1 = GND). The silk on the back marks "- GND" and "+ BAT". Check any cell before plugging it in.
-- Centroid rotations use the KiCad convention. Ask PCBWay to confirm polarity of U1-U7, D1, D2, L1 and Y1 against the assembly drawing.
-- Most custom 3D models came from LCSC. The RM2 model is a hand-made box. Placement was checked in the renders, but not against mechanical drawings.
-
-## Sourcing
-
-Every BOM line has a manufacturer MPN and an LCSC number. The RP2350A (SC1509-A4) is LCSC C42411118, and the RM2 is C49451547. PCBWay sources parts itself, so the LCSC numbers are references. The distributor numbers were checked on each distributor's own page in July 2026. Recheck stock when ordering. The BOM's Alternate column lists approved substitutes, for example APS6404L-3SQN-SN for the PSRAM.
-
-## Schematic
-
-![Power](docs/rp2350_dev-power.png)
-![MCU](docs/rp2350_dev-mcu.png)
-![Wireless](docs/rp2350_dev-wireless.png)
-![IO](docs/rp2350_dev-io.png)
-
-## Regenerating
-
-Run each kipy step with a fresh `kicad-cli api-server`. Run `finish_files.py` with the server stopped, because it edits the board file directly.
-
-```bash
-kicad-python scripts/gen_schematic.py          # schematic from design.py
-kicad-python scripts/gen_board.py create        # board, outline, placement, zones, drill origin
-kicad-python scripts/gen_board.py rules
-# routing: kicad-route, then route_planes.py GND stitching (see git history)
-kicad-python scripts/gen_board.py teardrops
-kicad-python scripts/gen_board.py silk
-python3 scripts/finish_files.py                 # 3D models, stackup, title block, text angles
-python3 scripts/gen_fab.py                      # fab/: Gerbers, drill, BOM, centroid, assembly PDF
-kicad-cli pcb drc --refill-zones --schematic-parity --severity-all rp2350_dev.kicad_pcb
-```
+- **DRC.** ERC is clean. DRC has 0 errors, 0 unconnected items and clean schematic parity. One warning remains:
+  R7's top silk line touched U3's pin-1 mark and was deleted, so R7 no longer matches its library footprint.
+- **Via in pad.** The router put 82 vias in or against SMD pads, such as on the decoupling caps, U1, U2, U3 and J1.
+  They are marked filled and capped, so the order needs PCBWay's resin-filled, capped vias, which cost more. Moving
+  them beside the pads by hand would allow plain tented vias.
+- **In2 is a split plane.** About 410 mm of other nets run on In2.Cu: SD bus, RUN, GP4, QSPI_SCLK (23 mm),
+  PSRAM_CS, +1V1, VBUS and others. The +3.3 V copper still connects everywhere, but these traces reference a
+  broken plane on one side. That is fine at the default QSPI clock. Check flash and PSRAM signal quality
+  before raising the QSPI clock.
+- **Routing quality.** The autorouted copper is functional but not tidy. Some routes are long, for example GP0
+  runs under U2, and a hand cleanup pass would shorten several.
+- **L1 stock.** The Abracon 3.3 µH 0806 inductor had 143 at JLCPCB and 10 at LCSC in November 2026. Any 2016 (0806)
+  3.3 µH molded inductor rated ≥ 1 A with DCR ≤ 150 mΩ is a drop-in substitute.
+- **Fiducials.** The antenna keepout and the header rows leave no room for fiducials near the top, so the three
+  fiducials sit in the lower half of the board. They still form a triangle across the whole width.
+- **Hole clearance 0.19 mm.** The board rule is 0.19 mm hole-to-copper because the stock GCT USB4105 footprint
+  places its shell tabs that close to the contacts. Confirm it in PCBWay's DFM review.
+- **Pico 2 W software differences.** The LED (see above) and the extra parts: PSRAM on GPIO8, microSD on GPIO9-15
+  and the WS2812B on GPIO22. The Pico 2 W's GPIO29 ADC VSYS measurement does not exist here: GPIO29 is WL_CLK, and
+  the battery reads on GPIO28.
+- **Not verified on hardware.** Check charge current, buck-boost ripple and Wi-Fi range on the first boards.

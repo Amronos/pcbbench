@@ -1,0 +1,253 @@
+CMD: python /home/amronos/.sprocket/connectors/kicad/v0.2.0/routing-tools/py_router/route.py scratch/power-revision.kicad_pcb scratch/power-routed.kicad_pcb --nets /VBUS /SYS /BAT /ISET /ILIM /TMR /ITERM /USB_LIMIT /CHG /PGOOD /3V3 --layers F.Cu In1.Cu In2.Cu B.Cu --layer-costs 1 -1 3 3 --keep-input-copper --escalation off --strict-sizes --no-fix-drc-settings --track-width 0.2 --power-nets /VBUS /SYS /BAT --power-nets-widths 0.5 0.5 0.5 --no-power-tap-neckdown --neckdown-length 0.8
+ENV KNOBS: KICAD_CLI=/home/amronos/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli KICAD_FINALIZE_RIP=0 KICAD_RIP_PREEXISTING=0
+--via-size not given; using the board Default net-class 0.6mm.
+--via-drill not given; using the board Default net-class 0.3mm.
+--clearance not given; honoring net classes with base = the board Default net-class clearance 0.11mm.
+--hole-to-hole-clearance not given; using 0.25mm [board constraint].
+--board-edge-clearance not given; using 0.3mm [board constraint].
+Loading scratch/power-revision.kicad_pcb to expand net patterns...
+Routing 11 nets: ['/VBUS', '/SYS', '/BAT', '/ISET', '/ILIM']...
+Loading scratch/power-revision.kicad_pcb...
+Using 4 routing layers: ['F.Cu', 'In1.Cu', 'In2.Cu', 'B.Cu']
+  Layer costs: F.Cu=1.0x, In1.Cu=-1.0x, In2.Cu=3.0x, B.Cu=3.0x
+No BGA components detected - no exclusion zones needed
+Same-net pad via clearance 0.1mm (from project record, #581): vias stay off same-net pads
+
+Power net width assignments (3 nets):
+  0.5mm: /VBUS, /SYS, /BAT
+
+Skipping 1 already-routed net(s): Already fully connected
+
+Analyzing layer swaps for 2 multi-point net(s) spanning layers...
+  No common layer found for 2 multi-point net(s) (left as-is)
+
+Using MPS ordering strategy...
+MPS: Using segment intersection method (no nets on BGA chips)
+MPS: 10 nets with 5 crossing conflicts detected
+WARNING: Could not find pads for both stub groups in /VBUS (found 1 pads)
+MPS Round 1: 8 units: /ITERM, /ISET, /PGOOD, /ILIM, /SYS, /VBUS, /BAT, /CHG
+MPS Round 2: 2 units: /USB_LIMIT, /3V3
+
+Routing 10 single-ended net(s)...
+============================================================
+Building base obstacle map...
+Pour guard (#1260): /GND pour on B.Cu: islands left crossable -- 1 hold a routed net's terminal
+Pour guard (#1260): /GND pour on F.Cu: islands left crossable -- 1 hold a routed net's terminal
+Pour guard (#1260): /GND pour on In1.Cu: islands left crossable -- 1 hold a routed net's terminal
+Pour guard (#1260): /GND pour on In2.Cu: islands left crossable -- 1 hold a routed net's terminal
+Base obstacle map built in 0.25s
+Found 75 unrouted nets in PCB for stub proximity
+Pre-computing net obstacle cache...
+Net obstacle cache built in 0.10s (75 nets)
+Plane fragility: exact fill unavailable (no python with pcbnew found; set KICAD_PYTHON to KiCad's bundled interpreter); using zone outlines
+Plane fragility field: 127423 cells near the edges of 130 pour(s) (KICAD_PLANE_FRAGILITY_COST=2.0mm-equiv, DYNAMIC #466 (=0 via KICAD_PLANE_FRAGILITY_DYNAMIC reverts))
+History congestion (#590) armed: +0.1mm-equiv per contest, cap 0.5, escalate 0.0, rip weight 1.0 (radius +0.25mm), frontier weight 0.25
+
+[1/10] Routing /ITERM (id=10)
+  SUCCESS: 3 segments, 0 vias, 15 iterations, length=1.51mm (stubs=0.00mm) (0.03s)
+
+[2/10] Routing /ISET (id=77)
+  SUCCESS: 7 segments, 0 vias, 3387 iterations, length=1.89mm (stubs=0.00mm) (0.02s)
+
+[3/10] Routing /PGOOD (id=69)
+  SUCCESS: 4 segments, 0 vias, 30 iterations, length=2.59mm (stubs=0.00mm) (0.02s)
+
+[4/10] Routing /ILIM (id=59)
+  SUCCESS: 10 segments, 0 vias, 1922 iterations, length=4.14mm (stubs=0.00mm) (0.02s)
+
+[5/10] Routing /SYS (id=5)
+  Detected multi-point net with 4 pads (Phase 1: main route only)
+  Existing copper joins 4 terminals into 3 group(s)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=9.35mm)
+  Phase 1 routed in 169 iterations, 12 segments
+  SUCCESS: 12 segments, 0 vias, 169 iterations, length=18.93mm (stubs=10.55mm) (0.03s)
+
+[6/10] Routing /VBUS (id=4)
+  Detected multi-point net with 8 pads (Phase 1: main route only)
+  Existing copper joins 8 terminals into 5 group(s)
+  POUR-LAUNCH: 7 bare fill region(s) kept by the zone island policy are not yet nodes (deferred)
+  Multi-point net Phase 1: routing longest MST edge (pads 5 and 6, length=14.26mm)
+  Phase 1 routed in 5540 iterations, 17 segments
+  SUCCESS: 17 segments, 0 vias, 5540 iterations, length=25.76mm (stubs=12.30mm) (0.09s)
+
+[7/10] Routing /BAT (id=46)
+  Detected multi-point net with 4 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 1, length=15.88mm)
+  Phase 1 routed in 50945 iterations, 11 segments
+  SUCCESS: 11 segments, 2 vias, 50945 iterations, length=21.71mm (stubs=3.74mm) (0.12s)
+
+[8/10] Routing /CHG (id=41)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=69.49mm)
+  Phase 1 routed in 185773 iterations, 37 segments
+  SUCCESS: 37 segments, 3 vias, 185773 iterations, length=65.54mm (stubs=0.00mm) (0.07s)
+
+[9/10] Routing /USB_LIMIT (id=79)
+  Detected multi-point net with 3 pads (Phase 1: main route only)
+  Multi-point net Phase 1: routing longest MST edge (pads 0 and 2, length=8.92mm)
+  Phase 1 routed in 22240 iterations, 12 segments
+  SUCCESS: 12 segments, 2 vias, 22240 iterations, length=8.94mm (stubs=0.00mm) (0.04s)
+
+[10/10] Routing /3V3 (id=9)
+  Detected multi-point net with 39 pads (Phase 1: main route only)
+  Existing copper joins 39 terminals into 6 group(s)
+  POUR-LAUNCH: 201 bare fill region(s) kept by the zone island policy are not yet nodes (deferred)
+  POUR-LAUNCH v3: +45 region-laddered target(s) across 1 component(s) (phase 1)
+  Multi-point net Phase 1: routing longest MST edge (pads 7 and 8, length=5.17mm)
+  Phase 1 routed in 443 iterations, 5 segments
+  SUCCESS: 5 segments, 1 vias, 443 iterations, length=180.92mm (stubs=179.46mm) (1.30s)
+
+Sync pcb_data: 1356 -> 1240 (kept stubs) -> 1356 (after adding 116)
+
+============================================================
+Multi-point Phase 3: Routing 12 tap connections
+============================================================
+Phase 3 order (boxed-in risk first): /3V3, /VBUS, /CHG, /SYS, /BAT, /USB_LIMIT
+
+/3V3 (net 9):
+  POUR-LAUNCH: 201 bare fill region(s) kept by the zone island policy are not yet nodes (deferred)
+  POUR-LAUNCH v3: +35 region-laddered target(s) across 1 component(s) (phase 3)
+  Multi-point net Phase 3: routing 4 remaining MST edges (longest first)
+    [1/12] Routing MST edge: pad 8 -> pad 6 (length=4.55mm) target=(125.60, 117.25)
+      Routed in 287 iterations (0.00s)
+    [2/12] Routing MST edge: pad 2 -> pad 0 (length=2.03mm) target=(115.00, 128.50)
+      Routed in 228 iterations (0.00s)
+    [3/12] Routing MST edge: pad 0 -> pad 1 (length=3.19mm) target=(115.20, 125.51)
+      Routed in 1185 iterations (0.00s)
+    [4/12] Routing MST edge: pad 1 -> pad 3 (length=3.62mm) target=(117.31, 124.00)
+      Routed in 4959 iterations (0.00s)
+  Phase 3 routing complete: 4 edges, 25 total segments, 2 total vias
+  Added 20 tap segments, 1 tap vias
+  Net total time: 0.37s, 7102 iterations
+
+/VBUS (net 4):
+  POUR-LAUNCH: 7 bare fill region(s) kept by the zone island policy are not yet nodes (deferred)
+  Multi-point net Phase 3: routing 3 remaining MST edges (longest first)
+    [5/12] Routing MST edge: pad 6 -> pad 7 (length=9.31mm) target=(119.29, 124.80)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1193, 1248, layer=0): ok, 8/8 neighbors blocked (margin=3)
+          Blocking obstacles: /USB_LIMIT(2 track)
+      Failed to route MST edge after 5001 iterations (0.09s)
+    [6/12] (1 failed) Routing MST edge: pad 5 -> pad 3 (length=2.82mm) target=(110.10, 110.40)
+      Routed in 530 iterations (0.00s)
+    [7/12] (1 failed) Routing MST edge: pad 5 -> pad 4 (length=2.17mm) target=(110.45, 107.90)
+      Routed in 900 iterations (0.00s)
+    Fallback: attempting orphaned pad 7 directly from connected copper
+    [8/12] (1 failed) Routing MST edge: pad 6 -> pad 7 (length=9.31mm) target=(119.29, 124.80)
+      backward stuck (1 < 5000), forward=5000
+        backward cell (1193, 1248, layer=0): ok, 8/8 neighbors blocked (margin=3)
+          Blocking obstacles: /USB_LIMIT(2 track)
+      Failed to route MST edge after 5001 iterations (0.01s)
+  Warning: 1 pad(s) not connected (1 MST edge(s) failed)
+  Phase 3 routing complete: 2 edges, 27 total segments, 0 total vias
+  NOT CONNECTED (so far): /VBUS - R19 pad 1 at (119.29, 124.80) - may still be recovered; final verdict in the end-of-run summary
+  Added 10 tap segments, 0 tap vias
+  Net total time: 0.31s, 16972 iterations
+
+/CHG (net 41):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [8/12] (1 failed) Routing MST edge: pad 1 -> pad 0 (length=3.10mm) target=(115.44, 121.75)
+      Routed in 2347 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 42 total segments, 3 total vias
+  Added 5 tap segments, 0 tap vias
+  #444 seam re-ask: /CHG tree is 1.32x its MST bound -- re-asking whole
+
+  Re-routing /CHG (net 41)...
+  Multi-point net Phase 1: routing longest MST edge (pads 1 and 2, length=69.49mm)
+  Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+  dynamic iterations (#529): search extended to 364144 (base 200000)
+  Phase 1 routed in 374144 iterations, 20 segments
+    Re-routed main path: 20 segments, 3 vias
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [1/0] Routing MST edge: pad 1 -> pad 0 (length=3.10mm) target=(115.44, 121.75)
+      Routed in 2375 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 25 total segments, 3 total vias
+    Re-routed 5 tap segments, 0 tap vias
+  Net total time: 1.18s, 188120 iterations
+
+/SYS (net 5):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [9/12] (1 failed) Routing MST edge: pad 2 -> pad 3 (length=5.22mm) target=(129.82, 120.00)
+      Routed in 15866 iterations (0.03s)
+  Phase 3 routing complete: 1 edges, 26 total segments, 0 total vias
+  Added 14 tap segments, 0 tap vias
+  Net total time: 0.12s, 16035 iterations
+
+/BAT (net 46):
+  Multi-point net Phase 3: routing 2 remaining MST edges (longest first)
+    [10/12] (1 failed) Routing MST edge: pad 0 -> pad 2 (length=12.66mm) target=(118.00, 141.51)
+      Routed in 15888 iterations (0.03s)
+    [11/12] (1 failed) Routing MST edge: pad 2 -> pad 3 (length=2.50mm) target=(120.06, 141.95)
+      Routed in 648 iterations (0.00s)
+  Phase 3 routing complete: 2 edges, 30 total segments, 2 total vias
+  Added 19 tap segments, 0 tap vias
+  Net total time: 0.13s, 67481 iterations
+
+/USB_LIMIT (net 79):
+  Multi-point net Phase 3: routing 1 remaining MST edges (longest first)
+    [12/12] (1 failed) Routing MST edge: pad 2 -> pad 1 (length=2.12mm) target=(119.29, 125.90)
+      Routed in 447 iterations (0.00s)
+  Phase 3 routing complete: 1 edges, 14 total segments, 2 total vias
+  Added 3 tap segments, 0 tap vias
+  Net total time: 0.08s, 22687 iterations
+
+Per-net fine-parameter rescue (#331/#371): 1 candidate net(s)
+  Rescuing /VBUS (partial, 2 disconnected parts)
+Probe: forward=5000, backward=5000 iters, trying forward with full iterations...
+Route found in 146750 iterations, path length: 371
+    rescued a gap: grid 0.025, clearance 0.11, track 0.5 (72 segs, 2 vias, 146750 iters)
+    fully reconnected (2 -> 1 parts, 2.0s)
+Rescue pass: 1 recovered, 0 improved, 0 unchanged (2.0s)
+Cycle prune: removed 6 redundant loop segment(s) across 4 net(s)
+Octolinear smoothing: collapsed 23 staircase span(s) on 8 net(s), -5.23 mm of copper (#536)
+Bridged 2 same-net soft joint(s) with a tiny connector
+Merged 4 collinear joint(s) on 3 net(s): -4 redundant segment(s) (#811)
+
+WARNING: 1 stacked-copper finding(s) on the write model (same-net duplicates KiCad will not flag):
+  /VBUS F.Cu: 2 duplicate segments stacked on (105.450, 108.150)-(105.550, 107.045)
+
+============================================================
+Routing complete
+============================================================
+  Single-ended:  10/10 routed
+  Multi-point:   88/88 pads connected (6 nets)
+  Total vias:    11
+  Search time:   1.72s (net search only, not the whole run)
+  Iterations:    270,464
+  Fragility refresh (#466): 22 windows, 1.81s total
+  History congestion (#590): 0 contest + 0 rip + 1 blocked-frontier event(s) over 8 cell(s), peak 0.03mm-equiv (inc 0.1mm, cap 0.5, escalate 0.0, rip weight 1.0, frontier weight 0.25), 0.00s of field upkeep
+
+Power trace ampacity (bottleneck segment, IPC-2152):
+  /BAT: 0.88A max (0.250mm on F.Cu (1 oz copper, 10°C rise), IPC-2221: 0.88A)
+  /SYS: 0.85A max (0.240mm on F.Cu (1 oz copper, 10°C rise), IPC-2221: 0.85A)
+  /VBUS: 0.51A max (0.120mm on F.Cu (1 oz copper, 10°C rise), IPC-2221: 0.51A)
+JSON_SUMMARY: {"routed_single": ["/ITERM", "/ISET", "/PGOOD", "/ILIM", "/SYS", "/VBUS", "/BAT", "/CHG", "/USB_LIMIT", "/3V3"], "failed_single": [], "open_single": [], "failed_multipoint": [], "multipoint_nets": 6, "multipoint_pads_connected": 88, "multipoint_pads_total": 88, "multipoint_edges_routed": 17, "multipoint_edges_failed": 1, "ripup_success_pairs": [], "rerouted_pairs": [], "single_ended_target_swaps": [], "layer_swaps": 0, "successful": 10, "failed": 0, "total_time": 1.72, "total_iterations": 270464, "total_vias": 11, "cleanup_disconnected": [], "min_clearance_used": 0.11, "design_rules": {"escalation_policy": "off", "fab_tier": "auto", "board_floors": {"clearance": 0.11, "track_width": 0.11, "via_diameter": 0.45, "via_drill": 0.2, "hole_to_hole": 0.25, "annular": 0.1, "board_edge": 0.3}, "count": 0, "nets": [], "narrowed": [], "min_delivered": {}, "fab_tier_escalations": 0, "fab_tier_contexts": [], "fab_tier_target": "advanced", "unsupported_rules": []}, "plane_fragility": {"source": "zone_outlines", "islands": 0, "refill_status": "no_kicad_python", "why": "no python with pcbnew found; set KICAD_PYTHON to KiCad's bundled interpreter", "machine_dependent": false}, "pour_guard": {"source": "zone_outlines", "why": "no python with pcbnew found; set KICAD_PYTHON to KiCad's bundled interpreter", "pours": [{"net": "/GND", "layer": "B.Cu", "blocked_islands": 0, "blocked_mm2": 0, "crossable_islands": 1, "minor_islands": 0}, {"net": "/GND", "layer": "F.Cu", "blocked_islands": 0, "blocked_mm2": 0, "crossable_islands": 1, "minor_islands": 0}, {"net": "/GND", "layer": "In1.Cu", "blocked_islands": 0, "blocked_mm2": 0, "crossable_islands": 1, "minor_islands": 0}, {"net": "/GND", "layer": "In2.Cu", "blocked_islands": 0, "blocked_mm2": 0, "crossable_islands": 1, "minor_islands": 0}]}, "rescue": {"attempted": 1, "recovered": ["/VBUS"], "improved": [], "unchanged": [], "pads_reconnected": 1, "widths": {"/VBUS": {"requested_mm": 0.5, "delivered_mm": 0.5, "rescue_min_mm": 0.5, "rescue_max_mm": 0.5, "rescue_segments_emitted": 72, "rescue_by_width": {"0.5": 72}, "scope": "THIS RESCUE ONLY -- not the net. Counts are as EMITTED, before cycle-prune drops redundant loop segments, so the board can carry fewer. For the net's whole width profile, measure the board."}}, "time": 1.99}, "stacked_copper": [{"category": "stacked-copper", "net": "/VBUS", "layer": "F.Cu", "x": 105.45, "y": 108.15, "detail": "2 duplicate segments stacked on (105.450, 108.150)-(105.550, 107.045)", "size": 1.1095156600967864}], "oracle_check": "disabled", "pad_pairs_connected": 86, "pad_pairs_total": 86, "power_trace_ampacity": [{"net": "/BAT", "bottleneck_width_mm": 0.25, "bottleneck_layer": "F.Cu", "copper_oz": 1.0, "max_current_a": 0.88, "max_current_ipc2152_a": 0.88, "temp_rise_c": 10.0, "trace_length_mm": 34.9}, {"net": "/SYS", "bottleneck_width_mm": 0.24, "bottleneck_layer": "F.Cu", "copper_oz": 1.0, "max_current_a": 0.85, "max_current_ipc2152_a": 0.85, "temp_rise_c": 10.0, "trace_length_mm": 23.3}, {"net": "/VBUS", "bottleneck_width_mm": 0.12, "bottleneck_layer": "F.Cu", "copper_oz": 1.0, "max_current_a": 0.51, "max_current_ipc2152_a": 0.51, "temp_rise_c": 10.0, "trace_length_mm": 41.2}], "scope": "run", "env_knobs": {"KICAD_CLI": "/home/amronos/.sprocket/connectors/kicad/v0.2.0/kicad/bin/kicad-cli", "KICAD_FINALIZE_RIP": "0", "KICAD_RIP_PREEXISTING": "0"}}
+
+Writing output to scratch/power-routed.kicad_pcb...
+Successfully wrote scratch/power-routed.kicad_pcb
+  Plane finalize: zone net(s) /GND are OUTSIDE this route's --nets scope -- excluded from the finalize BY PLAN. Since #562 a pour alone connects nothing: unless a later route step covers these nets, their pads ship disconnected.
+
+Plane finalize (#562): all zone nets complete (fill-aware) -- skipping engine/cleanup legs, oracle verifies
+  KiCad-oracle recheck: KiCad reports all processed nets complete
+  [finalize timing] oracle leg: 1.2s
+JSON_ORACLE: {"available": true, "reason": "ok", "why": "the oracle ran", "rounds": 0, "links_routed": 0, "links_failed": 0, "remaining": 0, "collapsed_duplicate_links": 0, "remaining_links": [], "cross_board": 0, "off_board": 0, "removed_segments": [], "removed_vias": []}
+  Strict collapse (#1063, end of run): removed 27 redundant segment(s) on 8 net(s)
+  Stacked copper (#162, end of run): removed 1 duplicate segment(s) on 1 net(s)
+
+  FAB NOTE (route): 15 via(s) in a pad or paste opening [C19.2 F.Paste (pad), C23.2 F.Paste (pad), C24.2 F.Paste (pad), C25.2 F.Paste (pad), C26.2 F.Paste (pad), C27.2 F.Paste (pad), U2.4 F.Paste (pad), U4 F.Paste (paste_only_pad), +1 more] -- 0 stamped (capping yes) (filling yes), 10 already filled+capped, 5 shipped WITHOUT Type VII. via-in-pad requires IPC-4761 Type VII (filled + capped + plated); state it on the fab drawing or solder wicks into the barrel.
+VIA_IN_PAD_JSON: {"count": 15, "sites": ["C19.2 F.Paste (pad)", "C23.2 F.Paste (pad)", "C24.2 F.Paste (pad)", "C25.2 F.Paste (pad)", "C26.2 F.Paste (pad)", "C27.2 F.Paste (pad)", "U2.4 F.Paste (pad)", "U4 F.Paste (paste_only_pad)", "U5 F.Paste (paste_only_pad)"], "stamped": 0, "restored": 0, "protected": 10, "unstampable": 0, "site_created": 0, "unprotected": [{"site": "C27.2 F.Paste (pad)", "x": 129.85, "y": 115.35, "why": "at the spot of an input via, kept as the input had it"}, {"site": "C26.2 F.Paste (pad)", "x": 126.45, "y": 115.35, "why": "at the spot of an input via, kept as the input had it"}, {"site": "C23.2 F.Paste (pad)", "x": 118.95, "y": 120.05, "why": "at the spot of an input via, kept as the input had it"}, {"site": "C24.2 F.Paste (pad)", "x": 126.45, "y": 124.95, "why": "at the spot of an input via, kept as the input had it"}, {"site": "C25.2 F.Paste (pad)", "x": 130.5, "y": 120.5, "why": "at the spot of an input via, kept as the input had it"}], "note": "via-in-pad requires IPC-4761 Type VII (filled + capped + plated); state it on the fab drawing or solder wicks into the barrel"}
+Power widths: /VBUS 2.4/40.1 mm under the requested 0.5 (min 0.12); /SYS 4.7/22.5 mm under the requested 0.5 (min 0.24); /BAT 1.9/34.2 mm under the requested 0.5 (min 0.25) -- JSON_SUMMARY power_widths
+JSON_SHIPPED_RULES: {"min_clearance_used": 0.11, "design_rules": {"escalation_policy": "off", "fab_tier": "auto", "board_floors": {"clearance": 0.11, "track_width": 0.11, "via_diameter": 0.45, "via_drill": 0.2, "hole_to_hole": 0.25, "annular": 0.1, "board_edge": 0.3}, "count": 3, "nets": [4, 5, 46], "narrowed": [{"net": 4, "net_name": "/VBUS", "kind": "track_width", "requested": 0.5, "delivered": 0.12, "site": "power copper shipped under width", "count": 1, "length_mm": 2.38}, {"net": 5, "net_name": "/SYS", "kind": "track_width", "requested": 0.5, "delivered": 0.24, "site": "power copper shipped under width", "count": 1, "length_mm": 4.72}, {"net": 46, "net_name": "/BAT", "kind": "track_width", "requested": 0.5, "delivered": 0.25, "site": "power copper shipped under width", "count": 1, "length_mm": 1.93}], "min_delivered": {"track_width": 0.12}, "fab_tier_escalations": 0, "fab_tier_contexts": [], "fab_tier_target": "advanced"}}
+JSON_REGRADE: {"board": "file", "graded_nets": 10, "seconds": 1.45, "routed_single": ["/ITERM", "/ISET", "/PGOOD", "/ILIM", "/SYS", "/VBUS", "/BAT", "/CHG", "/USB_LIMIT", "/3V3"], "failed_single": [], "open_single": [], "failed_multipoint": [], "multipoint_pads_total": 88, "multipoint_pads_connected": 88, "successful": 10, "failed": 0, "unowned_broken": [], "recovered": [], "pad_pairs": {}, "broken_by_run": []}
+
+============================================================
+Run complete -- whole run, re-graded on the written board (10 net(s), 1.4s)
+============================================================
+  Single-ended:  10/10 routed
+  Multi-point:   88/88 pads connected
+JSON_IMPROVEMENT_GATE: {"lost": [], "gained": ["/3V3", "/BAT", "/CHG", "/ILIM", "/ISET", "/ITERM", "/PGOOD", "/SYS", "/USB_LIMIT", "/VBUS"], "lost_zone": [], "gained_zone": ["/3V3"], "worsened": [], "disconnected_pads_before": 27, "disconnected_pads_after": 0, "nets_compared": 75, "verdict": "accept"}
+  Design rules [--escalation off, --fab-tier auto]: 3 feature(s) on 3 net(s) delivered below the requested size (smallest track width 0.12 mm). Details: JSON_SUMMARY design_rules.
+JSON_SUMMARY_MIN: {"escalations": 3, "failed": 0, "failed_single": [], "finalize_excluded_nets": ["/GND"], "main_loop_time_s": 1.72, "min_clearance_used": 0.11, "multipoint_deficit": 0, "open_single": [], "pad_pairs_open": {"count": 0, "nets": []}, "regraded_nets": 10, "routed": 10, "scope": "merged", "terminal_restores_broken": [], "vias": 11}
+  --strict-sizes: Design rules [--escalation off, --fab-tier auto]: 3 feature(s) on 3 net(s) delivered below the requested size (smallest track width 0.12 mm). Details: JSON_SUMMARY design_rules.
+Wall time: 32.3s (whole run)
+EXIT=3

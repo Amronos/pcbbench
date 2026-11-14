@@ -100,6 +100,7 @@
 				"mpn": "GRM21BR61A475KA73L",
 				"lcsc": "C97913",
 				"lcscStock": 0,
+				"jlcpcbStock": 0,
 				"digikeyStock": 0,
 				"needed": 5
 			}
@@ -255,8 +256,10 @@
 		"layersMissing": []
 	},
 	"needsFixes": {
-		"pcbManufacturing": [
-			"The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer",
+		"fabNotes": [
+			"The fab notes ask for 0.5 oz inner copper, which PCBWay does not offer"
+		],
+		"board": [
 			"R42: The 0402 footprint doesn't fit the 0603 substitute"
 		],
 		"assembly": [
@@ -447,21 +450,17 @@
 		}
 	},
 	"review": {
-		"judges": [
-			"opus-5.5",
-			"gpt-6.1-sol"
-		],
-		"yesVotes": {
-			"crystal": 2,
-			"buttons": 2,
-			"powerPath": 2
-		},
-		"meanScores": {
-			"thermal": 5,
-			"grounding": 4.5,
-			"layout": 6.5,
-			"routing": 4,
-			"silkscreen": 6
+		"judge": "opus-5.5",
+		"findings": {
+			"layout": {
+				"minor": 2,
+				"major": 0
+			},
+			"routing": {
+				"minor": 3,
+				"major": 2
+			},
+			"fatal": 0
 		}
 	},
 	"suppliers": {
@@ -471,21 +470,118 @@
 			"Digi-Key": 0,
 			"Mouser": 0
 		},
-		"linesWithValidNumbers": {
-			"fromOne": 0,
-			"fromTwo": 0,
-			"fromAllThree": 0
-		},
+		"linesWithValidNumber": 0,
 		"invalid": []
 	},
 	"score": {
-		"total": 67.3,
+		"total": 56.4,
 		"groups": {
-			"designReview": 33.2,
+			"designReview": 11,
 			"circuitChecks": 20,
-			"orderable": 9.4,
+			"layoutChecks": 16.7,
+			"orderable": 4,
 			"partsData": 4.7
 		},
-		"missingFeatures": []
+		"failedGates": []
+	},
+	"gates": {
+		"crystal": {
+			"pass": true,
+			"reason": "Y1 ABM8-272-T3 (CL 10 pF) between XIN and XOUT via R17 1k 1%; load caps XIN: C38 15pF 50V C0G; XTAL_OUT: C39 15pF 50V C0G; needs 10.5–17.5 pF per side for 3 pF stray",
+			"refs": [
+				"Y1",
+				"R17",
+				"C38",
+				"C39"
+			]
+		},
+		"buttons": {
+			"pass": true,
+			"reason": "QSPI_SS (FLASH_CS) → R19 → SW2 → GND; RUN (RUN) → SW1 → GND",
+			"refs": [
+				"R19",
+				"SW2",
+				"SW1"
+			]
+		},
+		"powerPath": {
+			"pass": true,
+			"reason": "U4 BQ24074RGTR: U4 IN (VBUS) is on J1 VBUS; BAT (VBAT) goes to J2; U5 TPS63070RNMR makes +3V3 from OUT (VSYS)",
+			"refs": [
+				"U4",
+				"J1",
+				"J2",
+				"U5"
+			]
+		}
+	},
+	"layout": {
+		"thermal": {
+			"fraction": 0.322,
+			"pads": [
+				{
+					"ref": "U1",
+					"net": "GND",
+					"vias": 4,
+					"minVias": 9,
+					"planeOnOtherLayer": true,
+					"share": 0.4444444444444444
+				},
+				{
+					"ref": "U4",
+					"net": "GND",
+					"vias": 1,
+					"minVias": 5,
+					"planeOnOtherLayer": true,
+					"share": 0.2
+				}
+			]
+		},
+		"grounding": {
+			"fraction": 0.847,
+			"usb": {
+				"nets": [
+					"USB_D+",
+					"USB_PHY_D+",
+					"USB_D-",
+					"USB_PHY_D-"
+				],
+				"mm": 53,
+				"groundedMm": 48.7
+			},
+			"qspi": {
+				"nets": [
+					"QSPI_IO3",
+					"QSPI_CLK_SRC",
+					"QSPI_IO0",
+					"QSPI_IO2",
+					"QSPI_IO1",
+					"FLASH_CS",
+					"QSPI_CLK"
+				],
+				"mm": 157.3,
+				"groundedMm": 140.2
+			},
+			"microSd": {
+				"nets": [
+					"SD_DAT2",
+					"SD_CS",
+					"SD_MOSI",
+					"SD_CLK",
+					"SD_MISO",
+					"SD_DAT1",
+					"SD_DETECT"
+				],
+				"mm": 242.2,
+				"groundedMm": 194.4
+			}
+		},
+		"silkscreen": {
+			"fraction": 1,
+			"minTextHeightMm": 0.8,
+			"texts": 16,
+			"textsBelowMin": 0,
+			"smallestTextMm": 1
+		}
 	}
 }

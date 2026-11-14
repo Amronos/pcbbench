@@ -1,14 +1,14 @@
 # Design review
 
-Two models review each board: gpt-6.1-sol and opus-5.5, each on high reasoning in the Sprocket CLI. fable-5.2 wasn't used. A judge sees only an anonymous package of the board, made by `package.ts`:
+opus-5.5 on high reasoning in the Sprocket CLI reviews each board once. A judge sees only an anonymous package of the board, made by `package.ts`:
 
 - the KiCad project renamed to `board.*`, with its sheets and local libraries
 - the BOM as `bom.csv`
-- the run's renders, and one image per layer, both exported with the run's KiCad version
+- three renders and one image per layer, made on the box from the package with the run's KiCad version
 
-The agent's README, notes, scripts and fab files are left out. Names of harnesses and models are replaced or make `package.ts` stop. The rubric is in [prompt.md](prompt.md). Judges answer three yes or no questions and give five integer scores from 0 to 10 against shared bands, from "ship it as is" down to "would stop the board working or being built". `judge.ts` stores each review in `runs/<run-id>/review/<model>.json` and their votes and mean scores under `review` in `metrics.json`. [`reasoning.ts`](reasoning.ts) writes each judge's final message and its subagents' reports to `runs/<run-id>/review/<model>.md`.
+The agent's README, notes, scripts and fab files are left out, and title-block company and comment fields are cleared. Names of harnesses and models are replaced or make `package.ts` stop. The rubric is in [prompt.md](prompt.md). [`start-judge.sh`](start-judge.sh) fills in the judge's model, which its subagents must use too. The judge lists findings on layout and routing, each `minor`, `major` or `fatal`, plus any other fatal faults. It gives no scores. `judge.ts` stores the review in `runs/<run-id>/review/<model>.json` and the finding counts under `review` in `metrics.json`. [`reasoning.ts`](reasoning.ts) writes the judge's final message and its subagents' reports to `runs/<run-id>/review/<model>.md`.
 
-Each board gets its own box, so no judge can read another board. The judges of a board run one at a time, in random order. After each judge, `judge.ts` copies the review and the Sprocket transcript to `bench/.state/judge/<run-id>/`, and [`clear-judge.sh`](clear-judge.sh) stops the judge's processes and deletes its files from the box.
+Each board gets its own box, so no judge can read another board. After each attempt, `judge.ts` copies the review and the Sprocket transcript to `bench/.state/judge/<run-id>/`, and [`clear-judge.sh`](clear-judge.sh) stops the judge's processes and deletes its files from the box.
 
 ## The box image
 
@@ -27,4 +27,4 @@ Launch one box per board and sign each in with `sprocket login --credential-stor
 bun judge/judge.ts <run-id> <box address>
 ```
 
-`judge.ts` keeps only the run's KiCad on the box, at `/opt/kicad-run`. It skips judges whose review already exists, so it can be rerun after a failure.
+`judge.ts` keeps only the run's KiCad on the box, at `/opt/kicad-run`. It doesn't start the judge when the review already exists, so it can be rerun after a failure.

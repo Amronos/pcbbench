@@ -1,10 +1,172 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": true,
-	"thermal": 3,
-	"grounding": 4,
-	"layout": 5,
-	"routing": 3,
-	"silkscreen": 5
-}
+[
+	{
+		"area": "layout",
+		"severity": "fatal",
+		"refs": [
+			"J3",
+			"R35",
+			"R36",
+			"R37",
+			"R38",
+			"R39",
+			"C40",
+			"C41"
+		],
+		"nets": [
+			"SD_SCK",
+			"SD_MOSI",
+			"SD_MISO",
+			"SD_CS",
+			"SD_DAT1",
+			"SD_DAT2",
+			"SD_DETECT"
+		],
+		"issue": "The microSD socket J3 faces into the board. Its card opening points away from the edge, and R35-R39, C40 and C41 sit in the card's insertion path, so no card can be inserted.",
+		"evidence": "J3 (Molex 104031-0811) is at (173,140), rotated 90 deg. In the stock footprint the card opening and the protrusion of the inserted card are on the local -y side, at the pin 1-8 row. The F.Fab card outline runs to y=-9.7, about 4 mm past the 11.4 mm body, and the silkscreen is open on that side. On the board this puts the opening at x~167.5, facing left, with the card reaching x~163.3. The socket rear (x~178.8) faces the right board edge at x=180. Parts in the card path: R35-R39 at x~163.1-163.6, y 134-144; C40 (0805) at (162.55-163.5,138); C41 at (164.94-165.42,139.96)."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U6",
+			"J2",
+			"C24",
+			"TP5"
+		],
+		"nets": [
+			"BAT"
+		],
+		"issue": "The charger-to-battery path is a 0.15 mm trace for its whole length. It is far too narrow for the 1.5 A battery current and takes a detour.",
+		"evidence": "F.Cu, 0.15 mm wide, from U6 BAT pads 2/3 at (107.562,146.75)/(107.562,147.25) via (105.144,146.985), (103.955,145.796), (103.955,143.045), past TP5 (105,142), then (108,139) to J2 pin 1 at (109,139). Routed length is 13.2 mm against 7.9 mm straight."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U6",
+			"U7"
+		],
+		"nets": [
+			"VSYS"
+		],
+		"issue": "The charger output narrows to 0.15-0.2 mm at both ends and changes layer through single small vias. The full 1.5 A system current goes through these sections.",
+		"evidence": "U6 OUT pads 10/11 at (110.438,146.75)/(110.438,147.25) join through 0.15 mm traces to x=111.15, then the 0.15 mm segment (111.15,147.25)-(111.35,147.25), before widening to 0.5 mm. The path drops through one 0.6/0.3 mm via at (111.4,149.2) into the B.Cu pour (104.5-118.6, 129.9-154.2) and comes up through one 0.6/0.3 mm via at (109.5,133.05). U7 VIN pin 2 is fed by a 0.2 mm trace, (111.325,131.5)-(110.0,131.5)."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"J3",
+			"R41"
+		],
+		"nets": [
+			"SD_MISO",
+			"SD_SCK",
+			"SD_SCK_SRC"
+		],
+		"issue": "The SD bus takes long detours with many vias. SD_MISO loops back under the QSPI memory area, and the SD clock series resistor sits far from its source pin.",
+		"evidence": "SD_MISO from U1.16 (127.2,140.45) to J3.7 is 64.6 mm routed against 40.5 mm straight, with 8 vias on the path (9 in the net): (125.50,140.04), (126.05,128.50), (128.50,128.35), (131.05,127.20), (132.95,129.10), (136.30,132.50), (136.84,135.08), (163.31,136.80). It loops up to y~127 under the flash/PSRAM area. SD_SCK_SRC from U1.14 (126.55,139.4) to R41 (140,135) is 20.2 mm routed with 3 vias, 14 mm straight. SD_SCK then runs another 32.7 mm with 2 vias to J3.5. The SD pins GPIO10-13 are on U1's left and bottom sides, and J3 is at the right edge."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U2",
+			"U3",
+			"R5",
+			"R11"
+		],
+		"nets": [
+			"QSPI_D1",
+			"QSPI_D2",
+			"QSPI_D3",
+			"FLASH_CS"
+		],
+		"issue": "The QSPI traces are about twice their straight-line length and use 2-3 vias each. QSPI_D3 is daisy-chained, and FLASH_CS has a long branch to the BOOTSEL resistor and a long stub to its pull-up.",
+		"evidence": "QSPI_D3: U1.55 to U2.7 is 24.1 mm against 11.2 mm straight, chained U1 -> PSRAM -> flash. QSPI_D1: U1.59 to U3.2 is 25.3 mm against 13.6 mm, 3 vias. QSPI_D2: U1.58 to U3.3 is 21.9 mm against 13.1 mm, 3 vias. FLASH_CS: U1.60 to U2.1 is 18.6 mm against 10.5 mm, 3 vias. Its branch to R11 (128.69,144.84) is 19.9 mm with 4 vias, 6 vias in the net. The R5 pull-up at (138.2,127) is an 11 mm stub from U2.3 (128.41,125.64)."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"Y1",
+			"U1"
+		],
+		"nets": [
+			"XIN"
+		],
+		"issue": "XIN detours through 2 vias and runs about 10 mm on the +3V3 plane layer. XOUT is routed directly.",
+		"evidence": "XIN from U1.21 (129.2,140.45) to Y1.1 (121.9,142.85) is 13.7 mm routed against 7.7 mm straight. Vias at (129.29,139.11), inside the QFN outline, and (123.11,144.14), with about 10 mm on In2.Cu (+3V3 pour). XOUT is 5.6 mm on F.Cu with no vias."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"J1",
+			"F1",
+			"U6"
+		],
+		"nets": [
+			"USB_VBUS",
+			"VBUS"
+		],
+		"issue": "The USB input power path is routed at 0.15 mm and narrows to 0.1124 mm in places. It carries up to about 500 mA.",
+		"evidence": "0.1124 mm segment from (112.303,160.0) to (114.176,160.0). VBUS runs 10 mm on In2.Cu at 0.15 mm, from (110.19,149.86) to (116.64,149.86)."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"U3",
+			"U1"
+		],
+		"nets": [
+			"QSPI_CLK",
+			"QSPI_D0",
+			"QSPI_D1",
+			"QSPI_D2",
+			"QSPI_D3"
+		],
+		"issue": "The PSRAM sits far from the RP2350's QSPI pins.",
+		"evidence": "U3's center is 11.7 mm from the QSPI pins, and its signal pins are 9-14.6 mm from the matching U1 pins. For example, U3.1 to U1.2 is 14.6 mm and U3.2 to U1.59 is 13.6 mm."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"SW1",
+			"SW2",
+			"SW3"
+		],
+		"nets": [],
+		"issue": "The BOOTSEL, RESET and ESP BOOT buttons are in the board interior instead of at an edge. SW1 and SW2 sit behind the J7 header.",
+		"evidence": "SW1 BOOTSEL at (129,149) and SW2 RESET at (139.4,148) are about 16 mm from the bottom edge (y=165), behind J7. SW3 ESP BOOT at (151.7,128.4) is about 28 mm from the nearest edge."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"J2"
+		],
+		"nets": [
+			"BAT"
+		],
+		"issue": "The battery connector is not at the board edge.",
+		"evidence": "J2 (JST PH) at (109,139) is about 7 mm in from the left edge at x=100."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"J5"
+		],
+		"nets": [
+			"SWCLK",
+			"SWDIO"
+		],
+		"issue": "The SWD connector is in the board interior.",
+		"evidence": "J5 at (152,144) is about 21 mm from the bottom edge (y=165) and 28 mm from the right edge (x=180)."
+	}
+]

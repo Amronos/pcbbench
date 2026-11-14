@@ -1,57 +1,77 @@
 {
-	"startedAt": "2026-11-10T05:56:58.122Z",
-	"finishedAt": "2026-11-10T09:00:32.000Z",
-	"minutes": 183.56,
+	"startedAt": "2026-11-13T15:12:39.162Z",
+	"finishedAt": "2026-11-13T17:12:20Z",
+	"minutes": 95.8,
 	"endedBy": "done",
 	"tokens": {
-		"input": 6700,
-		"cacheRead": 175900000,
-		"cacheWrite": 8100000,
-		"output": 983500,
-		"reasoning": 341000
+		"input": 8600,
+		"cacheRead": 173400000,
+		"cacheWrite": 10800000,
+		"output": 925000,
+		"reasoning": 170900
 	},
-	"costUsd": 64.51,
-	"costByModel": {
-		"gpt-6.1-sol": {
-			"tokens": 6600000,
-			"costUsd": 37.1
-		},
-		"opus-5.5": {
-			"tokens": 2500000,
-			"costUsd": 27.41
-		}
-	},
+	"costUsd": 53.72,
 	"costSource": "Sprocket thread usage in the web UI",
 	"boardCost": {
 		"afterFixes": false,
 		"oneBoard": {
 			"pcbQty": 5,
-			"pcbUsd": 525.98,
+			"pcbUsd": 526.83,
 			"assemblyUsd": 88,
-			"componentsUsd": 47.65,
-			"totalUsd": 661.63
+			"componentsUsd": 44.25,
+			"totalUsd": 659.08
 		},
 		"fiveBoards": {
-			"pcbUsd": 525.98,
-			"assemblyUsd": 95.34,
-			"componentsUsd": 174.11,
-			"totalUsd": 795.43,
-			"perBoardUsd": 159.09
+			"pcbUsd": 526.83,
+			"assemblyUsd": 96.1,
+			"componentsUsd": 117.46,
+			"totalUsd": 740.39,
+			"perBoardUsd": 148.08
 		},
-		"pricedAt": "2026-11-10T09:15:01.001Z",
+		"pricedAt": "2026-11-13T18:02:28.537Z",
 		"source": "PCB and assembly from PCBWay's instant quote (pcbway-quote.json) with the options in the run's fab notes, standard build, shipping excluded, no new-customer promo. PCBWay makes at least 5 bare PCBs, so one board means 5 PCBs with 1 assembled. Components at distributor list prices (components-pricing.json) for max(needed, minimum order): bench/part-prices.json where listed, else LCSC. When afterFixes is true, the design couldn't be ordered as delivered, and these are the prices after the changes listed in fixes."
 	},
-	"fixes": [],
-	"boardSizeMm": {
-		"width": 80,
-		"height": 65
+	"drc": {
+		"errors": 0,
+		"warnings": 0,
+		"unconnectedItems": 0,
+		"schematicParityIssues": 0,
+		"byType": {}
+	},
+	"erc": {
+		"errors": 0,
+		"warnings": 0
+	},
+	"fab": {
+		"diffPercentByLayer": {
+			"NPTH": 0,
+			"PTH": 0,
+			"B.Cu": 0,
+			"B.Mask": 0,
+			"B.Paste": 0,
+			"B.Silkscreen": 0,
+			"Edge.Cuts": 0,
+			"F.Cu": 0,
+			"F.Mask": 0,
+			"F.Paste": 0,
+			"F.Silkscreen": 0,
+			"In1.Cu": 0,
+			"In2.Cu": 0
+		},
+		"layersDiffering": [],
+		"layersMissing": []
 	},
 	"missing3dModels": {
 		"count": 0,
 		"refs": []
 	},
+	"boardSizeMm": {
+		"width": 85,
+		"height": 65
+	},
+	"fixes": [],
 	"bom": {
-		"lines": 43,
+		"lines": 55,
 		"partsNotInBom": [],
 		"refsNotOnBoard": [],
 		"qtyMismatchLines": [],
@@ -67,78 +87,87 @@
 		"rotationDiffersFromBoard": []
 	},
 	"parts": {
-		"lines": 43,
-		"inStockPercent": 90.7,
-		"notStocked": [
-			{
-				"refs": "C5, C7, C8",
-				"mpn": "GRM21BR71A475KA73L",
-				"lcsc": "C86039",
-				"lcscStock": 0,
-				"digikeyStock": 0,
-				"needed": 15
-			},
-			{
-				"refs": "C21, C29",
-				"mpn": "GRM188R71C105KA12D",
-				"lcsc": "C97890",
-				"lcscStock": 0,
-				"digikeyStock": 0,
-				"needed": 10
-			},
-			{
-				"refs": "C22, C23, C24, C30, C33",
-				"mpn": "GRM21BC71E106ME11L",
-				"lcsc": "C42407631",
-				"lcscStock": 0,
-				"digikeyStock": 0,
-				"needed": 25
-			},
-			{
-				"refs": "C26, C27, C32",
-				"mpn": "GRM31CR61A226KE19L",
-				"lcsc": "C97950",
-				"lcscStock": 0,
-				"digikeyStock": 0,
-				"needed": 15
-			}
-		],
+		"lines": 55,
+		"inStockPercent": 100,
+		"notStocked": [],
 		"discontinued": [
 			{
-				"refs": "C1, C2, C9, C10, C11, C12, C13, C14, C15, C16, C17, C18, C19, C25, C28, C31, C34, C35",
-				"mpn": "GRM188R71C104KA01D",
-				"lcsc": "C45000",
+				"refs": "C1 C20",
+				"mpn": "GRM155R61A105KE15D",
+				"lcsc": "C76999",
 				"discontinuedAt": [
 					"Digi-Key"
 				]
 			},
 			{
-				"refs": "C5, C7, C8",
-				"mpn": "GRM21BR71A475KA73L",
-				"lcsc": "C86039",
+				"refs": "C18",
+				"mpn": "GRM155R61A105KE15D",
+				"lcsc": "C76999",
 				"discontinuedAt": [
 					"Digi-Key"
 				]
 			},
 			{
-				"refs": "C21, C29",
-				"mpn": "GRM188R71C105KA12D",
-				"lcsc": "C97890",
+				"refs": "C21 C22",
+				"mpn": "GRM188R61A475KE15D",
+				"lcsc": "C71633",
 				"discontinuedAt": [
 					"Digi-Key"
 				]
 			},
 			{
-				"refs": "C26, C27, C32",
-				"mpn": "GRM31CR61A226KE19L",
-				"lcsc": "C97950",
+				"refs": "C23",
+				"mpn": "GRM21BR61A106KE19L",
+				"lcsc": "C77073",
 				"discontinuedAt": [
-					"LCSC",
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C24",
+				"mpn": "GRM21BR61A106KE19L",
+				"lcsc": "C77073",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C28",
+				"mpn": "GRM21BR61A106KE19L",
+				"lcsc": "C77073",
+				"discontinuedAt": [
+					"Digi-Key"
+				]
+			},
+			{
+				"refs": "C30",
+				"mpn": "GRM21BR61A106KE19L",
+				"lcsc": "C77073",
+				"discontinuedAt": [
 					"Digi-Key"
 				]
 			}
 		],
 		"padCountMismatches": []
+	},
+	"suppliers": {
+		"lines": 55,
+		"validPercent": {
+			"LCSC": 0,
+			"Digi-Key": 0,
+			"Mouser": 0
+		},
+		"linesWithValidNumber": 0,
+		"invalid": []
+	},
+	"needsFixes": {
+		"fabNotes": [],
+		"board": [],
+		"assembly": [],
+		"bomLines": {
+			"total": 55,
+			"needingFixes": []
+		}
 	},
 	"features": {
 		"rp2350": {
@@ -168,232 +197,189 @@
 		"wifiBle": {
 			"status": "found",
 			"refs": [
-				"U7"
+				"U6"
 			]
 		},
 		"microSd": {
 			"status": "found",
 			"refs": [
-				"J4"
+				"J2"
 			]
 		},
 		"qwiic": {
 			"status": "found",
 			"refs": [
-				"J5"
+				"J4"
 			]
 		},
 		"rgbLed": {
 			"status": "found",
 			"refs": [
-				"D1"
+				"D2"
 			]
 		},
 		"chargerWithPowerPath": {
 			"status": "found",
 			"refs": [
-				"U5"
+				"U4"
 			]
 		},
 		"batteryMonitoring": {
 			"status": "found",
 			"refs": [
-				"U8"
-			]
-		}
-	},
-	"deliverables": {
-		"readme": true,
-		"schematic": true,
-		"projectFile": true,
-		"fabFolder": true
-	},
-	"drc": {
-		"errors": 0,
-		"warnings": 0,
-		"unconnectedItems": 0,
-		"schematicParityIssues": 0,
-		"byType": {}
-	},
-	"erc": {
-		"errors": 0,
-		"warnings": 0
-	},
-	"fab": {
-		"diffPercentByLayer": {
-			"NPTH": 0,
-			"PTH": 0,
-			"B.Silkscreen": 0,
-			"Edge.Cuts": 0,
-			"F.Cu": 0,
-			"F.Mask": 0,
-			"F.Silkscreen": 0,
-			"In2.Cu": 0,
-			"B.Mask": 0,
-			"B.Paste": 0,
-			"In1.Cu": 0,
-			"B.Cu": 0,
-			"F.Paste": 0
-		},
-		"layersDiffering": [],
-		"layersMissing": []
-	},
-	"needsFixes": {
-		"pcbManufacturing": [],
-		"assembly": [
-			"not stocked for 5 boards: C5, C7, C8; C21, C29; C22, C23, C24, C30, C33; C26, C27, C32"
-		],
-		"bomLines": {
-			"total": 43,
-			"needingFixes": [
-				"C5, C7, C8",
-				"C21, C29",
-				"C22, C23, C24, C30, C33",
-				"C26, C27, C32"
+				"R23"
 			]
 		}
 	},
 	"design": {
 		"decoupling": {
 			"maxMm": 3.2,
-			"pinsWithin": 13,
+			"pinsWithin": 12,
 			"powerPins": 14,
 			"pins": [
 				{
 					"pin": "IOVDD",
 					"pad": "1",
-					"net": "/+3V3",
+					"net": "/3V3",
 					"capacitor": "C9",
-					"mm": 1.72
+					"mm": 3.15
 				},
 				{
 					"pin": "DVDD",
 					"pad": "6",
-					"net": "/CORE_1V1",
-					"capacitor": "C18",
-					"mm": 1.59
+					"net": "/1V1",
+					"capacitor": "C6",
+					"mm": 3.3
 				},
 				{
 					"pin": "IOVDD",
 					"pad": "11",
-					"net": "/+3V3",
+					"net": "/3V3",
 					"capacitor": "C10",
-					"mm": 1.6
+					"mm": 3.3
 				},
 				{
 					"pin": "IOVDD",
 					"pad": "20",
-					"net": "/+3V3",
+					"net": "/3V3",
 					"capacitor": "C11",
-					"mm": 1.77
+					"mm": 2.22
 				},
 				{
 					"pin": "DVDD",
 					"pad": "23",
-					"net": "/CORE_1V1",
-					"capacitor": "C19",
-					"mm": 1.87
+					"net": "/1V1",
+					"capacitor": "C8",
+					"mm": 2.3
 				},
 				{
 					"pin": "IOVDD",
 					"pad": "30",
-					"net": "/+3V3",
+					"net": "/3V3",
 					"capacitor": "C12",
-					"mm": 1.98
+					"mm": 2.74
 				},
 				{
 					"pin": "IOVDD",
 					"pad": "38",
-					"net": "/+3V3",
-					"capacitor": "C13",
-					"mm": 1.65
+					"net": "/3V3",
+					"capacitor": "C14",
+					"mm": 2.3
 				},
 				{
 					"pin": "DVDD",
 					"pad": "39",
-					"net": "/CORE_1V1",
-					"capacitor": "C20",
-					"mm": 0.27
+					"net": "/1V1",
+					"capacitor": "C7",
+					"mm": 2.11
 				},
 				{
 					"pin": "ADC_AVDD",
 					"pad": "44",
-					"net": "/+3V3",
-					"capacitor": "C6",
-					"mm": 1.51
+					"net": "/3V3",
+					"capacitor": "C15",
+					"mm": 2.11
 				},
 				{
 					"pin": "IOVDD",
 					"pad": "45",
-					"net": "/+3V3",
-					"capacitor": "C6",
-					"mm": 1.11
+					"net": "/3V3",
+					"capacitor": "C32",
+					"mm": 2.04
 				},
 				{
 					"pin": "VREG_AVDD",
 					"pad": "46",
 					"net": "/VREG_AVDD",
-					"capacitor": "C5",
-					"mm": 3.67
+					"capacitor": "C31",
+					"mm": 1.8
 				},
 				{
 					"pin": "VREG_VIN",
 					"pad": "49",
-					"net": "/+3V3",
-					"capacitor": "C6",
-					"mm": 0.62
+					"net": "/3V3",
+					"capacitor": "C32",
+					"mm": 1.17
 				},
 				{
 					"pin": "USB_OTP_VDD",
 					"pad": "53",
-					"net": "/+3V3",
-					"capacitor": "C15",
-					"mm": 1.87
+					"net": "/3V3",
+					"capacitor": "C32",
+					"mm": 1.88
 				},
 				{
 					"pin": "QSPI_IOVDD",
 					"pad": "54",
-					"net": "/+3V3",
-					"capacitor": "C15",
-					"mm": 1.69
+					"net": "/3V3",
+					"capacitor": "C32",
+					"mm": 2.21
 				}
 			]
 		},
 		"battery": {
-			"fuelGauges": [
-				"U8"
-			],
-			"dividers": []
+			"fuelGauges": [],
+			"dividers": [
+				{
+					"top": "R23",
+					"bottom": "R24",
+					"topOhms": 100000,
+					"bottomOhms": 100000,
+					"bufferedBy": null,
+					"microampsAtFullCharge": 21,
+					"switchedBy": "Q1"
+				}
+			]
 		},
 		"usb": {
 			"dPlusNets": [
-				"/USB_D_P",
-				"/MCU_USB_P"
+				"/USB_CONN_DP",
+				"/USB_DP"
 			],
 			"dMinusNets": [
-				"/USB_D_N",
-				"/MCU_USB_N"
+				"/USB_CONN_DM",
+				"/USB_DM"
 			],
-			"dPlusMm": 36.51,
-			"dMinusMm": 38.61,
-			"mismatchMm": 2.1,
-			"vias": 6,
+			"dPlusMm": 23.84,
+			"dMinusMm": 25.79,
+			"mismatchMm": 1.95,
+			"vias": 2,
 			"pair": {
 				"layer": "F.Cu",
-				"widthMm": 0.234,
+				"widthMm": 0.22,
 				"gapMm": 0.15,
-				"lengthMm": 14.58
+				"lengthMm": 8.76
 			},
-			"differentialOhms": 96.5,
+			"differentialOhms": 90.7,
 			"esd": [
-				"U4"
+				"D1"
 			]
 		},
 		"antennaKeepout": {
-			"module": "U7",
+			"module": "U6",
 			"keepouts": [
 				{
-					"owner": "U7",
+					"owner": "U6",
 					"name": "",
 					"layers": [
 						"F.Cu",
@@ -418,46 +404,142 @@
 			]
 		}
 	},
+	"deliverables": {
+		"readme": true,
+		"schematic": true,
+		"projectFile": true,
+		"fabFolder": true
+	},
 	"review": {
-		"judges": [
-			"opus-5.5",
-			"gpt-6.1-sol"
-		],
-		"yesVotes": {
-			"crystal": 2,
-			"buttons": 2,
-			"powerPath": 1
-		},
-		"meanScores": {
-			"thermal": 4,
-			"grounding": 6.5,
-			"layout": 5,
-			"routing": 3.5,
-			"silkscreen": 4
+		"judge": "opus-5.5",
+		"findings": {
+			"layout": {
+				"minor": 3,
+				"major": 0
+			},
+			"routing": {
+				"minor": 3,
+				"major": 3
+			},
+			"fatal": 0
 		}
 	},
-	"suppliers": {
-		"lines": 43,
-		"validPercent": {
-			"LCSC": 0,
-			"Digi-Key": 0,
-			"Mouser": 0
-		},
-		"linesWithValidNumbers": {
-			"fromOne": 0,
-			"fromTwo": 0,
-			"fromAllThree": 0
-		},
-		"invalid": []
-	},
 	"score": {
-		"total": 72.2,
+		"total": 71.3,
 		"groups": {
-			"designReview": 28.6,
-			"circuitChecks": 19.5,
-			"orderable": 19.1,
+			"designReview": 8,
+			"circuitChecks": 19.3,
+			"layoutChecks": 19,
+			"orderable": 20,
 			"partsData": 5
 		},
-		"missingFeatures": []
+		"failedGates": []
+	},
+	"gates": {
+		"crystal": {
+			"pass": true,
+			"reason": "Y1 ABM8-272-T3 (CL 10 pF) between XIN and XOUT via R25 1 kΩ; load caps /XIN: C3 15 pF; /XTAL_OUT: C4 15 pF; needs 10.5–17.5 pF per side for 3 pF stray",
+			"refs": [
+				"Y1",
+				"R25",
+				"C3",
+				"C4"
+			]
+		},
+		"buttons": {
+			"pass": true,
+			"reason": "QSPI_SS (/FLASH_CS) → R7 → SW1 → GND; RUN (/RUN) → SW2 → GND",
+			"refs": [
+				"R7",
+				"SW1",
+				"SW2"
+			]
+		},
+		"powerPath": {
+			"pass": true,
+			"reason": "U4 BQ24074RGTR: U4 IN (/VBUS) is on J1 VBUS; BAT (/BAT) goes to J3; U5 TPS63001DRCR makes /3V3 from OUT (/SYS)",
+			"refs": [
+				"U4",
+				"J1",
+				"J3",
+				"U5"
+			]
+		}
+	},
+	"layout": {
+		"thermal": {
+			"fraction": 0.6,
+			"pads": [
+				{
+					"ref": "U1",
+					"net": "/GND",
+					"vias": 0,
+					"minVias": 9,
+					"planeOnOtherLayer": true,
+					"share": 0
+				},
+				{
+					"ref": "U4",
+					"net": "/GND",
+					"vias": 4,
+					"minVias": 5,
+					"planeOnOtherLayer": true,
+					"share": 0.8
+				},
+				{
+					"ref": "U5",
+					"net": "/GND",
+					"vias": 4,
+					"minVias": 4,
+					"planeOnOtherLayer": true,
+					"share": 1
+				}
+			]
+		},
+		"grounding": {
+			"fraction": 0.768,
+			"usb": {
+				"nets": [
+					"/USB_CONN_DP",
+					"/USB_DP",
+					"/USB_CONN_DM",
+					"/USB_DM"
+				],
+				"mm": 49.6,
+				"groundedMm": 46.3
+			},
+			"qspi": {
+				"nets": [
+					"/QSPI_D3",
+					"/QSPI_CLK",
+					"/QSPI_D0",
+					"/QSPI_D2",
+					"/QSPI_D1",
+					"/FLASH_CS"
+				],
+				"mm": 215.6,
+				"groundedMm": 137.7
+			},
+			"microSd": {
+				"nets": [
+					"/SD_DAT2",
+					"/SD_CS",
+					"/SD_MOSI",
+					"/SD_CLK",
+					"/SD_MISO",
+					"/SD_DAT1",
+					"/SD_DETECT"
+				],
+				"mm": 336.3,
+				"groundedMm": 277.8
+			}
+		},
+		"silkscreen": {
+			"fraction": 1,
+			"minTextHeightMm": 0.8,
+			"texts": 8,
+			"textsBelowMin": 0,
+			"smallestTextMm": 1
+		}
 	}
 }

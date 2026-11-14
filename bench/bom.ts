@@ -15,6 +15,9 @@ export const parseCsv = (text: string) =>
 
 export const splitRefs = (refs: string) => refs.split(/[\s,;]+/).filter(Boolean);
 
+export const refsMatching = (lines: ReadonlyArray<BomLine>, pattern: RegExp) =>
+	lines.filter((line) => pattern.test(line.mpn)).flatMap((line) => splitRefs(line.refs));
+
 export const normalizePartNumber = (number: string) =>
 	number.toUpperCase().replace(/[^A-Z0-9]/g, '');
 
@@ -51,10 +54,11 @@ export const readBom = Effect.fn('readBom')(function* (path: string) {
 		header.findIndex((name) => pattern.test(name.replace(/^\*/, '')));
 
 	const columns = {
-		refs: column(/designator|references/i),
+		refs: column(/designator|references|^refs$/i),
 		qty: column(/^(qty|quantity)/i),
 		mpn: column(/mfg part|mpn|manufacturer part/i),
-		fit: column(/^(fit|populate)$/i)
+		fit: column(/^(fit|populate)$/i),
+		notes: column(/^notes?$/i)
 	};
 
 	if (columns.qty < 0 || columns.mpn < 0)
@@ -66,7 +70,9 @@ export const readBom = Effect.fn('readBom')(function* (path: string) {
 		refs: row[columns.refs] ?? '',
 		qty: Number(row[columns.qty]),
 		mpn: row[columns.mpn] ?? '',
-		fitted: columns.fit < 0 || !/^(no|dnp|n)$/i.test(row[columns.fit] ?? ''),
+		fitted:
+			!/^(no|dnp|n)$/i.test(row[columns.fit] ?? '') &&
+			!/\bDNP\b|do not (populate|fit)/i.test(row[columns.notes] ?? ''),
 		row
 	}));
 

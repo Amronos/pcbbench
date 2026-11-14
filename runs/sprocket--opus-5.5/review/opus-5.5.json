@@ -1,10 +1,103 @@
-{
-	"crystal": true,
-	"buttons": true,
-	"powerPath": true,
-	"thermal": 5,
-	"grounding": 3,
-	"layout": 6,
-	"routing": 3,
-	"silkscreen": 7
-}
+[
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"QSPI_SD3"
+		],
+		"issue": "QSPI_SD3 detours across the board. The flash's IO3 pin is 9.3 mm from the RP2350, but the copper path to it is 65.5 mm long with 8 vias. It daisy-chains through the PSRAM, runs out to the left edge, then crosses under SW1 and comes back up the right side.",
+		"evidence": "U1 pad 55 (114.8, 82.74) to U2 pad 7 (122.29, 88.3): 65.5 mm of copper against a 9.3 mm straight line. The path takes vias at (115.0, 84.3), (109.5, 90.9), (105.5, 91.7), (103.6, 91.6), (103.6, 94.2), (122.5, 104.7), (123.8, 103.4) and (124.1, 88.9). It also runs a B.Cu segment from (109.8, 105.2) to (119.8, 105.2) under SW1. The other QSPI lines to U2 are 6.5 to 16.9 mm long."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"U1",
+			"U2",
+			"U3"
+		],
+		"nets": [
+			"QSPI_SS",
+			"QSPI_SD0",
+			"PSRAM_CS"
+		],
+		"issue": "Three more QSPI lines take indirect routes with several vias. QSPI_SS loops below the flash before reaching U2 pin 1, QSPI_SD0 to the PSRAM drops to y = 94 first, and PSRAM_CS goes over the top of U1 past the crystal.",
+		"evidence": "QSPI_SS from U1 pad 60 (116.8, 82.74) to U2 pad 1 (115.11, 87.03): 20.8 mm and 4 vias, at (117.4, 83.4), (117.6, 87.1), (112.9, 91.6) and (115.0, 87.1), against 4.6 mm direct. QSPI_SD0 from U1 pad 57 to U3 pad 5 (105.93, 88.98): 27.9 mm against 11.5 mm, through vias (114.3, 94.0) and (105.1, 88.9). PSRAM_CS from U1 pad 12 (117.45, 77.69) to U3 pad 1 (110.88, 92.8): 39.1 mm and 4 vias, at (118.4, 71.3), (115.0, 74.3), (106.1, 87.0) and (111.1, 92.5), against 16.5 mm direct."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U1",
+			"J3"
+		],
+		"nets": [
+			"SD_CLK",
+			"SD_D3"
+		],
+		"issue": "SD_CLK and SD_D3 detour down the far left edge of the board, although the microSD socket is at the bottom right. The other SD lines run down the right side. This makes the SD clock 87 mm long and D3 98 mm long, each with 5 to 7 vias.",
+		"evidence": "SD_CLK from U1 pad 14 (117.45, 76.89) to J3 pad 5 (119.2, 127.74): 87.0 mm against 50.9 mm direct, with 5 vias. It crosses In2.Cu from (118.5, 73.5) to (105.8, 75.9), then runs on B.Cu along x = 104.4 and x = 101.4 from y = 77.3 to 109.9. SD_D3 from U1 pad 19 (115.6, 75.84) to J3 pad 2 (122.5, 127.74): 97.6 mm against 52.4 mm direct, with 7 vias. It runs along In2.Cu at y = 69.1 from x = 114.7 to 101.8, then along F.Cu at x = 101.3 from y = 69.7 to 93.5. For comparison, SD_D0 is 64.5 mm, SD_D1 70.8 mm and SD_D2 74.3 mm."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"U5",
+			"Q1",
+			"C21"
+		],
+		"nets": [
+			"VBAT"
+		],
+		"issue": "All of the battery current between the charger's BAT pins and the battery FET necks down to a 0.15 mm track, which is far too narrow for 1.5 A. The rest of the path continues on In2.Cu at 0.4 mm, which is also undersized on an inner layer.",
+		"evidence": "U5 pads 2 and 3 (106.54, 98.49 and 98.99) are joined by a 0.25 mm F.Cu track. They reach the via at (105.7, 99.0) only through a 0.15 mm F.Cu segment from (106.4, 99.1) to (105.8, 99.1); check_weird reports it as a narrow-pad-joint. From that via the path to Q1 pad 2 (101.25, 99.0) runs on In2.Cu at 0.4 mm, from (105.6, 99.0) to (103.1, 100.2). The VBAT net class width is 0.4 mm, and the stackup has 35 µm copper on every layer."
+	},
+	{
+		"area": "routing",
+		"severity": "major",
+		"refs": [
+			"J1",
+			"U4"
+		],
+		"nets": [
+			"USB_DP"
+		],
+		"issue": "USB D+ from contact A6 loops about 18 mm under the USB-C receptacle before joining the B6 branch at the ESD diode. A6 sits 1 mm from B6. The loop leaves D+ uncoupled from D− and forms an 18 mm stub whenever the plug is in the B6 orientation.",
+		"evidence": "J1 pad A6 (106.05, 121.18) to U4 pad 6 (107.25, 118.98) is 18.1 mm on F.Cu, routed down to y ≈ 122.7, across to x ≈ 111.6 and back up. J1 pad B6 (107.05, 121.18) to U4 pad 6 is 1.7 mm. D− joins A7 and B7 within 2.4 mm. The total D+ length is 54.5 mm from A6 and 44.4 mm from B6, against 42.4 mm for D−."
+	},
+	{
+		"area": "routing",
+		"severity": "minor",
+		"refs": [
+			"L2",
+			"U6"
+		],
+		"nets": [
+			"USB_DP",
+			"USB_DM",
+			"/USB & Power/BB_L1"
+		],
+		"issue": "The USB pair zigzags down through the power stage. D+ passes 0.23 mm from the switch-node pad of the buck-boost inductor.",
+		"evidence": "The USB_DP segment from (113.575, 99.13) to (113.575, 99.57) on F.Cu is 0.225 mm edge to edge from L2 pad 1 (BB_L1, 114.9, 99.94). From U4 to R3 and R4 the pair is 37.3 mm long against 27.7 mm direct, zigzagging between x = 111.7 and 114.2 from y = 91 to 111."
+	},
+	{
+		"area": "layout",
+		"severity": "minor",
+		"refs": [
+			"U5",
+			"U6",
+			"J1",
+			"C19"
+		],
+		"nets": [
+			"VBUS"
+		],
+		"issue": "The charger and the 3.3 V regulator sit in the middle of the board, about 24 mm from the USB-C power input. VBUS has to cross half the board with 7 vias.",
+		"evidence": "J1 is at (106.3, 124.86) with its VBUS pads at y = 121.18. U5 is at (108.0, 98.74) and U6 at (118.2, 98.94). VBUS from J1 pad A4 to U5 pad 13 (108.75, 97.28) is 34.1 mm, with 7 vias: (103.9, 121.2), (106.3, 119.0), (108.7, 121.2), (108.8, 115.5), (105.3, 106.0), (110.1, 102.0) and (108.9, 97.3). Part of that run is on In2.Cu."
+	}
+]

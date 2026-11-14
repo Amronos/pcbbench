@@ -2,45 +2,29 @@
 
 ## Final message
 
-I wrote `review.json`. The board fails the power-path check because the USB TVS diode is placed backwards, which shorts USB VBUS. The crystal and the buttons pass.
+I finished the review and saved it to [review.json](review.json). The file is valid JSON and has 11 findings. When I checked it a final time, I found that 5 of the 16 findings I had before broke your exclusion rules, so I removed them.
 
-```json
-{ "crystal": true, "buttons": true, "powerPath": false, "thermal": 3, "grounding": 4, "layout": 5, "routing": 3, "silkscreen": 5 }
-```
-
-I upgraded `board.kicad_sch` and `board.kicad_pcb` in place with `kicad-cli … upgrade` and changed nothing else. KiCad also created a `board.kicad_prl` settings file. After the upgrade, ERC is clean. DRC shows 0 unconnected items, 0 parity issues and two warnings: a dangling via on `XOUT_DRV` and a dangling stub on `SD_CS`. I deleted my scratch folder.
-
-**Yes/no answers**
-
-| Key | Answer | Evidence |
+| Area | Severity | Finding |
 |---|---|---|
-| `crystal` | yes | Abracon ABM8-272-T3 (12 MHz, 10 pF load), 15 pF C0G caps and a 1 kΩ resistor on XOUT. That is the part and values the RP2350 datasheet recommends, and the crystal footprint's pins match the part. |
-| `buttons` | yes | RUN goes to ground through SW1 (with a 10 kΩ pull-up and 100 nF cap). BOOTSEL connects QSPI_SS through 1 kΩ (R9) and SW2 to ground. Both are top-pressed switches on the front, 8 mm apart, with nothing tall around them. |
-| `powerPath` | no | D1 is an SMF5.0A, which conducts one way only, but the schematic uses a two-way symbol. Its pad 1, the cathode-band end, is on GND and its anode is on `VBUS_RAW`, before the fuse. The diode conducts as soon as USB is plugged in, so VBUS collapses and the board can't run from USB. |
+| other | fatal | D1: the SMF5.0A TVS diode is backwards across USB VBUS. It conducts across the 5 V input, so the board either can't power from USB or the TVS burns out. |
+| routing | major | VSYS from the charger to the buck-boost is a 0.25 mm trace through two 0.2 mm vias, but it carries up to 1.5 A. |
+| routing | major | The VBAT path from J2 to the charger narrows to 0.25 mm. |
+| routing | major | The traces to the buck-boost inductor (BB_L1/BB_L2) are 0.18 mm wide and about 5 mm long. |
+| routing | major | The 3.3 V output feeds the whole board, including the ESP32 Wi-Fi bursts, through a 0.15 mm trace and a single via. |
+| routing | major | SD_CLK detours around the board, about 134 mm long. |
+| routing | major | The SD data lines cross the whole board with up to 5 vias each. |
+| routing | major | PSRAM_CS detours and changes layer 6 times. |
+| routing | minor | Several QSPI lines have extra layer changes. |
+| routing | minor | USB D+ drops to In2 and detours under the crystal. It ends up 13 mm longer than D-. |
+| layout | minor | The PSRAM sits about 13 mm from the QSPI pins, so its branches are 22 to 29 mm long. |
 
-The charger chip (BQ24074) and the 3.3 V buck-boost would otherwise do the job. Switching to battery on unplug would be seamless. There is a smaller problem: pull-downs on EN1 and EN2 leave the charger at a 100 mA input limit at power-up, so firmware must raise it before the Wi-Fi module starts transmitting.
+**What I removed**
+- **Crystal routing, crystal placement and the XOUT_DRV stub:** your list says automated checks cover the crystal circuit, and I couldn't confirm any of these would stop the oscillator.
+- **Buttons in the board interior:** BOOTSEL/RUN buttons are on the list too.
+- **SD_CS stub:** it's one of KiCad's two DRC warnings, and DRC is excluded. The XOUT_DRV stub is the other one.
+- **USB, downgraded from major to minor:** I took out the claim that the pair is uncoupled because that's about impedance, which is excluded. RP2350 USB runs at full speed (12 Mbps), so a 13 mm length mismatch has almost no electrical effect. That leaves a messy detour with extra vias.
 
-**Scores**
+**Upgrade**
+The schematic and board were upgraded in place to the connector's KiCad version. The only file changes are the version lines and one removed `(embedded_fonts no)` line. KiCad also created `board.kicad_prl`.
 
-- **Thermal, 3:**
-  - The charger's thermal pad (U6) has no vias, and it dissipates about 0.9–1 W while charging at 500 mA.
-  - The RP2350's ground pad has no vias of its own.
-  - The buck-boost's inductor traces (`BB_L1`/`BB_L2`) are 0.18 mm wide for about 1.5–2 A peaks.
-  - `VSYS` narrows to 0.15 mm.
-- **Grounding, 4:**
-  - The In1 ground plane is solid, and the outer ground pours are cut into 40 (front) and 27 (back) stitched pieces.
-  - The RP2350's only ground, its exposed pad, reaches the plane through a 34 mm² copper patch with one via.
-  - Signals on the back and on In3 reference the 3.3 V plane, not ground.
-- **Layout, 5:**
-  - Blocks are grouped well. USB-C, microSD, the GPIO sockets and the ESP UART header are at the edges, and the antenna hangs past the edge with a keepout on every layer.
-  - The crystal is about 9 mm from the RP2350 and the flash about 10 mm away.
-  - The buttons sit mid-board, and the Qwiic connector is set 8 mm back from the edge.
-- **Routing, 3:**
-  - The crystal's XIN trace is 25 mm long with 6 vias.
-  - The SD clock path is about 136 mm long.
-  - USB D+ runs partly on an inner layer while D− stays on top.
-  - The QSPI traces are 20–29 mm long.
-- **Silkscreen, 5:**
-  - Pin-1 and polarity marks are there, no silkscreen sits on pads, and the text is readable.
-  - The two 12-pin GPIO sockets have no label or pin names at all.
-  - The "BAT+ GND NTC" text is spaced wider than the 2 mm pins, so "GND" sits over the NTC pin.
+I didn't run `/cleanup`, as you asked. No subagents were used.

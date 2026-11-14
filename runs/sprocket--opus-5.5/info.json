@@ -5,13 +5,13 @@
 	"reasoning": "medium",
 	"machine": "linux",
 	"versions": {
-		"sprocket": "sprocket 0.5.0",
+		"sprocket": "sprocket 0.5.1",
 		"kicadConnector": "v0.2.0",
 		"kicad": "10.99.0-6344-g8c85ac1452"
 	},
 	"skippedLargeFiles": [],
-	"board": "rp2350_dev.kicad_pcb",
-	"bom": "fab/rp2350_dev_bom.csv",
-	"placement": "fab/rp2350_dev_centroid.csv",
-	"fabZip": "fab/rp2350_dev_gerber.zip"
+	"board": "rp2350-devboard.kicad_pcb",
+	"bom": "fab/rp2350-devboard-bom-pcbway.csv",
+	"placement": "fab/rp2350-devboard-centroid.csv",
+	"fabZip": "fab/rp2350-devboard-gerbers.zip"
 }

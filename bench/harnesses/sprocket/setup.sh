@@ -3,7 +3,7 @@
 # Sign-in and the KiCad connector install happen afterwards (see README.md) because both need the account.
 set -euo pipefail
 
-SPROCKET_VERSION="${SPROCKET_VERSION:-0.5.0}"
+SPROCKET_VERSION="${SPROCKET_VERSION:-0.5.1}"
 
 export DEBIAN_FRONTEND=noninteractive
 sudo apt-get update

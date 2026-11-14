@@ -1,0 +1,56 @@
+refs,qty,value,MPN,manufacturer,footprint,datasheet
+C1 C20,2,1 µF,GRM155R61A105KE15D,Murata,Sprocket:C_0402_1005Metric_bd85cb550de6,https://www.murata.com/en-us/products/capacitor/mlcc
+C2 C16 C19 C33 C34,5,100 nF,GRM155R71C104KA88D,Murata,Sprocket:C_0402_1005Metric_bd85cb550de6,https://www.murata.com/en-us/products/capacitor/mlcc
+C3 C4,2,15 pF,GRM1555C1H150JA01D,Murata,Sprocket:C_0402_1005Metric_bd85cb550de6,https://www.murata.com/en-us/products/capacitor/mlcc
+C5 C32,2,4.7 µF,GRM155R60J475ME47D,Murata,Sprocket:C_0402_Reference_Wide_14cca4d2f3c2,https://www.murata.com/en-us/products/capacitor/mlcc
+C6 C7 C9 C10 C13 C14 C15 C29,8,100 nF,GRM155R71C104KA88D,Murata,Sprocket:C_0402_1005Metric_5bb70af72c21,https://www.murata.com/en-us/products/capacitor/mlcc
+C8,1,4.7 µF,GRM155R60J475ME87D,Murata,Sprocket:C_0402_1005Metric_3d5b6007ab61,https://www.murata.com/en-us/products/capacitor/mlcc
+C11 C12 C17,3,100 nF,GRM155R71C104KA88D,Murata,Sprocket:C_0402_1005Metric_3d5b6007ab61,https://www.murata.com/en-us/products/capacitor/mlcc
+C18,1,1 µF,GRM155R61A105KE15D,Murata,Sprocket:C_0402_1005Metric_3d5b6007ab61,https://www.murata.com/en-us/products/capacitor/mlcc
+C21 C22,2,4.7 µF,GRM188R61A475KE15D,Murata,Sprocket:C_0603_1608Metric_fc57b2d2c517,https://www.murata.com/en-us/products/capacitor/mlcc
+C23,1,10 µF,GRM21BR61A106KE19L,Murata,Sprocket:C_0805_2012Metric_9b2498f01ab8,https://www.murata.com/en-us/products/capacitor/mlcc
+C24,1,10 µF,GRM21BR61A106KE19L,Murata,Sprocket:C_0805_2012Metric_2a2089b9c0e0,https://www.murata.com/en-us/products/capacitor/mlcc
+C25,1,100 nF,GRM155R71C104KA88D,Murata,Sprocket:C_0402_1005Metric_379fea1f11f0,https://www.murata.com/en-us/products/capacitor/mlcc
+C26 C27,2,22 µF,GRM21BR60J226ME39L,Murata,Sprocket:C_0805_2012Metric_9b2498f01ab8,https://www.murata.com/en-us/products/capacitor/mlcc
+C28,1,10 µF,GRM21BR61A106KE19L,Murata,Sprocket:C_0805_2012Metric_9aa12f2a5b38,https://www.murata.com/en-us/products/capacitor/mlcc
+C30,1,10 µF,GRM21BR61A106KE19L,Murata,Sprocket:C_0805_2012Metric_3c44b73798b4,https://www.murata.com/en-us/products/capacitor/mlcc
+C31,1,4.7 µF,GRM155R60J475ME47D,Murata,Sprocket:C_0402_Reference_e393483276fd,https://www.murata.com/en-us/products/capacitor/mlcc
+D1,1,USB ESD,USBLC6-2SC6,STMicroelectronics,Sprocket:SOT-23-6_9f72e7298dc2,https://www.st.com/resource/en/datasheet/usblc6-2.pdf
+D2,1,RGB,WS2812C-2020-V6,Worldsemi,Sprocket:LED_WS2812B-2020_PLCC4_2.0x2.0mm_a21191c056fd,https://www.world-semi.com/downloads/datasheets/en/ws2812c-2020-v6-2.1.pdf
+J1,1,USB-C,TYPE-C-31-M-12,HRO,Sprocket:USB_C_Receptacle_HRO_TYPE-C-31-M-12_f41bc01c523c,https://www.lcsc.com/product-detail/USB-Connectors_HRO-TYPE-C-31-M-12_C165948.html
+J2,1,microSD SPI,DM3AT-SF-PEJM5,Hirose,Sprocket:microSD_HC_Hirose_DM3AT-SF-PEJM5_c8561cc7c035,https://www.hirose.com/product/p/CL0609-0031-1-00
+J3,1,LiPo + NTC,S3B-PH-SM4-TB(LF)(SN),JST,Sprocket:JST_PH_S3B-PH-SM4-TB_1x03-1MP_P2.00mm_Horizontal_7d858e54ec81,https://www.jst-mfg.com/product/pdf/eng/ePH.pdf
+J4,1,Qwiic / STEMMA QT,BM04B-SRSS-TB(LF)(SN),JST,Sprocket:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical_15770d88cefa,https://www.jst-mfg.com/product/pdf/eng/eSH.pdf
+J5,1,GPIO expansion,61302021121,Würth Elektronik,Sprocket:PinHeader_2x10_P2.54mm_Vertical_6b6633ddffb1,https://www.we-online.com/en/components/products/WR_PHD
+J6,1,SWD,61300411121,Würth Elektronik,Sprocket:PinHeader_1x04_P2.54mm_Vertical_aa6e1eda1045,https://www.we-online.com/en/components/products/WR_PHD
+L1,1,2.2 µH,SRN4018-2R2M,Bourns,Sprocket:L_Bourns-SRN4018_023b05217879,https://www.bourns.com/docs/product-datasheets/srn4018.pdf
+L2,1,3.3 µH,AOTA-B201610S3R3-101-T,Abracon,Sprocket:Abracon_AOTA_B201610S_Reversed_8ee5be28bd5d,https://abracon.com/Magnetics/new/AOTA-B201610S.pdf
+Q1,1,Battery sense gate,"BSS84,215",Nexperia,Sprocket:SOT-23_0f2464f3dff4,https://assets.nexperia.com/documents/data-sheet/BSS84.pdf
+Q2,1,Sense enable,"2N7002,215",Nexperia,Sprocket:SOT-23_0f2464f3dff4,https://assets.nexperia.com/documents/data-sheet/2N7002.pdf
+R1 R2,2,5.1 kΩ,RC0402FR-075K1L,Yageo,Sprocket:R_0402_1005Metric_c12575d0a1b0,https://www.yageo.com/en/Product/Index/rchip
+R3 R4,2,27 Ω,RC0402FR-0727RL,Yageo,Sprocket:R_0402_1005Metric_47d8607f7501,https://www.yageo.com/en/Product/Index/rchip
+R5 R6 R8 R18,4,10 kΩ,RC0402FR-0710KL,Yageo,Sprocket:R_0402_1005Metric_c12575d0a1b0,https://www.yageo.com/en/Product/Index/rchip
+R7 R34,2,1 kΩ,RC0402FR-071KL,Yageo,Sprocket:R_0402_1005Metric_012c2e6e4d3c,https://www.yageo.com/en/Product/Index/rchip
+R9,1,2.2 kΩ,RC0402FR-072K2L,Yageo,Sprocket:R_0402_1005Metric_012c2e6e4d3c,https://www.yageo.com/en/Product/Index/rchip
+R10 R11 R12 R26 R27 R28 R29 R30 R31,9,10 kΩ,RC0402FR-0710KL,Yageo,Sprocket:R_0402_1005Metric_012c2e6e4d3c,https://www.yageo.com/en/Product/Index/rchip
+R13,1,2.94 kΩ,RC0402FR-072K94L,Yageo,Sprocket:R_0402_1005Metric_387807b4f148,https://www.yageo.com/en/Product/Index/rchip
+R14,1,3.83 kΩ,RC0402FR-073K83L,Yageo,Sprocket:R_0402_1005Metric_ea43ba4c9899,https://www.yageo.com/en/Product/Index/rchip
+R15,1,46.4 kΩ,RC0402FR-0746K4L,Yageo,Sprocket:R_0402_1005Metric_387807b4f148,https://www.yageo.com/en/Product/Index/rchip
+R16,1,2.0 kΩ,RC0402FR-072KL,Yageo,Sprocket:R_0402_1005Metric_387807b4f148,https://www.yageo.com/en/Product/Index/rchip
+R17,1,10 kΩ,RC0402FR-0710KL,Yageo,Sprocket:R_0402_1005Metric_8c22085481f2,https://www.yageo.com/en/Product/Index/rchip
+R19,1,0 Ω,RC0402FR-070RL,Yageo,Sprocket:R_0402_1005Metric_012c2e6e4d3c,https://www.yageo.com/en/Product/Index/rchip
+R20,1,2.2 kΩ,RC0402FR-072K2L,Yageo,Sprocket:R_0402_1005Metric_ea43ba4c9899,https://www.yageo.com/en/Product/Index/rchip
+R21 R22,2,4.7 kΩ,RC0402FR-074K7L,Yageo,Sprocket:R_0402_1005Metric_c12575d0a1b0,https://www.yageo.com/en/Product/Index/rchip
+R23 R24,2,100 kΩ,RC0402FR-07100KL,Yageo,Sprocket:R_0402_1005Metric_012c2e6e4d3c,https://www.yageo.com/en/Product/Index/rchip
+R25,1,1 kΩ,RC0402FR-071KL,Yageo,Sprocket:R_0402_1005Metric_c12575d0a1b0,https://www.yageo.com/en/Product/Index/rchip
+R32,1,33 Ω,RC0402FR-0733RL,Yageo,Sprocket:R_0402_Reference_7dfa1b5439a9,https://www.yageo.com/en/Product/Index/rchip
+R33,1,330 Ω,RC0402FR-07330RL,Yageo,Sprocket:R_0402_1005Metric_012c2e6e4d3c,https://www.yageo.com/en/Product/Index/rchip
+R35 R36,2,100 kΩ,RC0402FR-07100KL,Yageo,Sprocket:R_0402_1005Metric_c12575d0a1b0,https://www.yageo.com/en/Product/Index/rchip
+SW1 SW2 SW3 SW4,4,BOOT_SW; RUN; RADIO_BOOT; RADIO_EN,B3U-1000P,Omron,Sprocket:SW_SPST_B3U-1000P_0467a73a7d37,https://omronfs.omron.com/en_US/ecb/products/pdf/en-b3u.pdf
+U1,1,RP2350A,RP2350A,Raspberry Pi,Sprocket:QFN-60-1EP_7x7mm_P0.4mm_EP3.4x3.4mm_90ff6dc065bf,https://datasheets.raspberrypi.com/rp2350/rp2350-datasheet.pdf
+U2,1,16 MB QSPI,W25Q128JVSIQ,Winbond,Sprocket:SOIC-8_5.3x5.3mm_P1.27mm_e11bfd68aeed,https://www.winbond.com/resource-files/w25q128jv%20revf%2003272018%20plus.pdf
+U3,1,8 MB PSRAM,APS6404L-3SQR-SN,AP Memory,Sprocket:SOIC-8_3.9x4.9mm_P1.27mm_55c97adfff38,https://www.apmemory.com/en/product/iot-ram
+U4,1,BQ24074,BQ24074RGTR,Texas Instruments,Sprocket:VQFN-16-1EP_3x3mm_P0.5mm_EP1.6x1.6mm_6e643c636e65,https://www.ti.com/lit/ds/symlink/bq24074.pdf
+U5,1,3.3 V buck-boost,TPS63001DRCR,Texas Instruments,Sprocket:Texas_DRC0010J_a64bda92039e,https://www.ti.com/lit/ds/symlink/tps63001.pdf
+U6,1,Wi-Fi + BLE,ESP32-C3-WROOM-02-N4,Espressif,Sprocket:ESP32-C3-WROOM-02_dbcdfb5211c9,https://www.espressif.com/sites/default/files/documentation/esp32-c3-wroom-02_datasheet_en.pdf
+Y1,1,12 MHz,ABM8-272-T3,Abracon,Sprocket:Crystal_SMD_3225-4Pin_3.2x2.5mm_3559e2579f46,https://abracon.com/Resonators/ABM8-272-T3.pdf

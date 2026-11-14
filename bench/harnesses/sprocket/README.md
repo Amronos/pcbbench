@@ -1,10 +1,10 @@
 # Sprocket harness
 
-The runs used AMI `ami-0843bb9fd9c9b22da` (us-east-1, since deleted): Ubuntu 24.04 with Sprocket 0.5.0 and the KiCad connector v0.2.0 (KiCad 10.99.0-6344) installed. Its baked login was dead, so every box needed its own sign-in. To rebuild it, see "Rebuilding the AMI" below.
+The runs used Sprocket 0.5.1 and the KiCad connector v0.2.0 (KiCad 10.99.0-6344) on Ubuntu 24.04. The boxes started from the judge image in [../../judge/README.md](../../judge/README.md), with its extra KiCad versions deleted (`sudo rm -rf /opt/kicad-versions`) and Sprocket updated (`sudo npm i -g usesprocket@0.5.1`). Every box needs its own sign-in. To build a clean image instead, see "Rebuilding the AMI" below.
 
 ## Run
 
-Launch a c7i.2xlarge from the AMI, copy the latest `bench/runs.ts`, `bench/prompt.md` and this folder to `~/pcbbench/bench/`, then run the driver inside `tmux` so it survives SSH drops:
+Launch a c7i.2xlarge from the AMI, copy the latest `bench/runs.ts`, `bench/prompt.md` and this folder to `~/pcbbench/bench/`, and run `bun add effect@4.1.2 @effect/platform-bun@4.1.2` there. Then run the driver inside `tmux` so it survives SSH drops:
 
 ```shell
 cd ~/pcbbench/bench/harnesses/sprocket
