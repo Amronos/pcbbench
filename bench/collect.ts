@@ -10,10 +10,10 @@ import { readBudget, readRunKey, spentUsd } from './gateway.ts';
 import {
 	BACKPLANE_CLI,
 	REASONING_EFFORT,
-	RUNS,
 	kicadFullVersion,
 	minutesBetween,
 	parseVersions,
+	runArgument,
 	type Run
 } from './runs.ts';
 import { claudeCodeUsage, codexUsage, type TokenUsage } from './usage.ts';
@@ -298,10 +298,7 @@ const collect = Effect.fn('collect')(function* (run: Run, host: Option.Option<st
 Command.make(
 	'collect',
 	{
-		run: Argument.ChoiceWithValue(
-			'run-id',
-			RUNS.map((run) => [run.id, run] as const)
-		),
+		run: runArgument,
 		host: Argument.String('user@host').pipe(Argument.optional)
 	},
 	({ run, host }) => collect(run, host)

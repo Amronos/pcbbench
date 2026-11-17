@@ -1,5 +1,5 @@
 {
-	"runId": "codex-desktop-texttocad--gpt-6.1-sol",
+	"runId": "rp2350-devboard/codex-desktop-texttocad--gpt-6.1-sol",
 	"harness": "codex-desktop-texttocad",
 	"model": "gpt-6.1-sol",
 	"reasoning": "medium",

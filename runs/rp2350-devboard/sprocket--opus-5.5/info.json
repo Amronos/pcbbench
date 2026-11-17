@@ -1,5 +1,5 @@
 {
-	"runId": "sprocket--opus-5.5",
+	"runId": "rp2350-devboard/sprocket--opus-5.5",
 	"harness": "sprocket",
 	"model": "opus-5.5",
 	"reasoning": "medium",

@@ -2,7 +2,7 @@ import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Console, Effect, Schema } from 'effect';
 import { Command } from 'effect/cli';
 import { readMetrics, readRun, updateMetrics } from './board.ts';
-import { RUNS } from './runs.ts';
+import { RUNS, TASKS, type Run, type TaskId } from './runs.ts';
 import {
 	BOM_LINE_FIX_COST,
 	DRAIN_FULL_UA,
@@ -95,7 +95,7 @@ class UncheckedRunError extends Schema.TaggedError<UncheckedRunError>()('Uncheck
 	cause: Schema.Defect()
 }) {}
 
-const readFractions = Effect.fn('readFractions')(function* (runId: string) {
+const readFractions = Effect.fn('readFractions')(function* ({ id: runId, task }: Run) {
 	const { parts } = yield* readRun(runId);
 
 	const {
@@ -164,6 +164,7 @@ const readFractions = Effect.fn('readFractions')(function* (runId: string) {
 
 	return {
 		id: runId,
+		task,
 		fractions,
 		failedGates: [
 			...Object.entries(features).flatMap(([name, { status }]) =>
@@ -207,12 +208,15 @@ function shiftedItems(from: Group, to: Group): Items {
 
 const command = Command.make('score', {}, () =>
 	Effect.gen(function* () {
-		const runs = yield* Effect.forEach(RUNS, ({ id }) => readFractions(id), {
+		const runs = yield* Effect.forEach(RUNS, readFractions, {
 			concurrency: 'unbounded'
 		});
 
-		const ranking = (items: Items) =>
-			runs.toSorted((a, b) => score(b, items).total - score(a, items).total).map((run) => run.id);
+		const ranking = (task: TaskId, items: Items) =>
+			runs
+				.filter((run) => run.task === task)
+				.toSorted((a, b) => score(b, items).total - score(a, items).total)
+				.map((run) => run.id);
 
 		for (const run of runs) {
 			const { total, groups } = score(run, ITEMS);
@@ -234,19 +238,21 @@ const command = Command.make('score', {}, () =>
 			});
 		}
 
-		const baseline = ranking(ITEMS);
+		for (const task of TASKS) {
+			const baseline = ranking(task, ITEMS);
 
-		yield* Console.log(`Ranking: ${baseline.join(' > ')}`);
+			yield* Console.log(`${task} ranking: ${baseline.join(' > ')}`);
 
-		for (const from of GROUPS) {
-			for (const to of GROUPS.filter((group) => group !== from)) {
-				const moves = ranking(shiftedItems(from, to)).flatMap((id, place) =>
-					place === baseline.indexOf(id) ? [] : [`${id} ${baseline.indexOf(id) + 1}→${place + 1}`]
-				);
+			for (const from of GROUPS) {
+				for (const to of GROUPS.filter((group) => group !== from)) {
+					const moves = ranking(task, shiftedItems(from, to)).flatMap((id, place) =>
+						place === baseline.indexOf(id) ? [] : [`${id} ${baseline.indexOf(id) + 1}→${place + 1}`]
+					);
 
-				yield* Console.log(
-					`${WEIGHT_SHIFT} points ${from} → ${to}: ${moves.length ? moves.join(', ') : 'same ranking'}`
-				);
+					yield* Console.log(
+						`${WEIGHT_SHIFT} points ${from} → ${to}: ${moves.length ? moves.join(', ') : 'same ranking'}`
+					);
+				}
 			}
 		}
 	})

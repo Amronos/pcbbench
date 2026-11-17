@@ -4,7 +4,7 @@ import { Argument, Command } from 'effect/cli';
 import { ChildProcess } from 'effect/process';
 import { readRun, RENDER_SIZE, RENDERS, updateMetrics } from '../board.ts';
 import { run } from '../command.ts';
-import { type ModelId, runIdArgument } from '../runs.ts';
+import { type ModelId, type Run, runArgument, taskDirectory } from '../runs.ts';
 import { buildPackage } from './package.ts';
 import { judgeStateDirectory, writeReasoning } from './reasoning.ts';
 
@@ -48,10 +48,10 @@ class JudgeError extends Schema.TaggedError<JudgeError>()('JudgeError', {
 }) {}
 
 const judge = Effect.fn('judge')(function* ({
-	runId,
+	run: { id: runId, task },
 	host
 }: {
-	readonly runId: string;
+	readonly run: Run;
 	readonly host: string;
 }) {
 	const fs = yield* FileSystem.FileSystem;
@@ -84,7 +84,7 @@ const judge = Effect.fn('judge')(function* ({
 		`${box}:`
 	);
 
-	yield* rsync(`${import.meta.dir}/prompt.md`, `${box}:.judge-prompt.md`);
+	yield* rsync(`${taskDirectory(task)}/judge-prompt.md`, `${box}:.judge-prompt.md`);
 
 	// Only the run's KiCad stays on the box, at a path that doesn't name the harness.
 	const runVersion = info.versions.kicad.split(' ')[0];
@@ -194,7 +194,7 @@ const judge = Effect.fn('judge')(function* ({
 Command.make(
 	'judge',
 	{
-		runId: runIdArgument,
+		run: runArgument,
 		host: Argument.String('host').pipe(Argument.withDescription('Judge box address'))
 	},
 	judge

@@ -1,4 +1,12 @@
-import { BACKPLANE_CLI, type Harness, type ModelId } from '@pcbbench/bench/runs';
+import { BACKPLANE_CLI, type Harness, type ModelId, type TaskId } from '@pcbbench/bench/runs';
+
+export const TASK_INFO: Record<TaskId, { name: string; summary: string }> = {
+	'rp2350-devboard': {
+		name: 'RP2350 dev board',
+		summary:
+			'An RP2350 board with USB-C, LiPo charging, Wi-Fi and Bluetooth, microSD, Qwiic and an RGB LED, which PCBWay builds and assembles.'
+	}
+};
 
 type HarnessInfo = { name: string; url: string; about: (model: ModelId) => string };
 

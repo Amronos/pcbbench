@@ -1,6 +1,7 @@
 // Cuts the drop shadow out of each run's KiCad renders and measures where the board sits in
 // the top and bottom views, so the site can draw boards at true scale.
-import { mkdir, readdir } from 'node:fs/promises';
+import { mkdir } from 'node:fs/promises';
+import { RUNS } from '@pcbbench/bench/runs';
 import sharp from 'sharp';
 
 const RUNS_DIR = new URL('../../runs/', import.meta.url);
@@ -121,32 +122,31 @@ async function cutOut(source: URL, target: URL, measureBoard: boolean): Promise<
 	};
 }
 
-await mkdir(OUT_DIR, { recursive: true });
-
-const runIds = (await readdir(RUNS_DIR, { withFileTypes: true }))
-	.filter((entry) => entry.isDirectory())
-	.map((entry) => entry.name);
-
 const renders = Object.fromEntries(
 	await Promise.all(
-		runIds.map(async (runId) => [
-			runId,
-			Object.fromEntries(
-				await Promise.all(
-					VIEWS.map(async (view) => [
-						view,
-						await cutOut(
-							new URL(`${runId}/renders/${view}.png`, RUNS_DIR),
-							new URL(`${runId}-${view}.png`, OUT_DIR),
-							view !== 'iso'
-						)
-					])
+		RUNS.map(async ({ id: runId }) => {
+			const runOut = new URL(`${runId}/`, OUT_DIR);
+			await mkdir(runOut, { recursive: true });
+
+			return [
+				runId,
+				Object.fromEntries(
+					await Promise.all(
+						VIEWS.map(async (view) => [
+							view,
+							await cutOut(
+								new URL(`${runId}/renders/${view}.png`, RUNS_DIR),
+								new URL(`${view}.png`, runOut),
+								view !== 'iso'
+							)
+						])
+					)
 				)
-			)
-		])
+			];
+		})
 	)
 );
 
 await Bun.write(new URL('../renders.json', OUT_DIR), `${JSON.stringify(renders, null, '\t')}\n`);
 
-console.log(`Cut out ${runIds.length * VIEWS.length} renders`);
+console.log(`Cut out ${RUNS.length * VIEWS.length} renders`);

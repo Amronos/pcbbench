@@ -1,5 +1,5 @@
 {
-	"runId": "backplane--gpt-6.1-sol",
+	"runId": "rp2350-devboard/backplane--gpt-6.1-sol",
 	"harness": "backplane",
 	"model": "gpt-6.1-sol",
 	"reasoning": "medium",

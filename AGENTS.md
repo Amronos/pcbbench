@@ -14,5 +14,5 @@
 
 ## Benchmark data
 
-- `runs/<run id>/output` is what each agent delivered. Never edit it.
-- `bench/prompt.md`, `bench/judge/prompt.md`, and the harness `smoke.md` files are sent to models verbatim. Change them only on purpose, since that changes the benchmark.
+- `runs/<task>/<harness>--<model>/output` is what each agent delivered. Never edit it.
+- `bench/tasks/<task>/prompt.md`, `bench/tasks/<task>/judge-prompt.md`, and the harness `smoke.md` files are sent to models verbatim. Change them only on purpose, since that changes the benchmark.

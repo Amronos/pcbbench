@@ -1,5 +1,5 @@
 {
-	"runId": "backplane--fable-5.2",
+	"runId": "rp2350-devboard/backplane--fable-5.2",
 	"harness": "backplane",
 	"model": "fable-5.2",
 	"reasoning": "medium",

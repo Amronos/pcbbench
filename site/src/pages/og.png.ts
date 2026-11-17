@@ -13,7 +13,7 @@ export async function GET() {
 		const { image, pxPerMm } = run.renders.top;
 
 		return {
-			file: `${process.cwd()}/src/generated/renders/${run.id}-top.png`,
+			file: `${process.cwd()}/src/generated/renders/${run.id}/top.png`,
 			widthMm: image.width / pxPerMm,
 			heightMm: image.height / pxPerMm
 		};

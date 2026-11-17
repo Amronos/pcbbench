@@ -1,5 +1,5 @@
 {
-	"runId": "backplane--opus-5.5",
+	"runId": "rp2350-devboard/backplane--opus-5.5",
 	"harness": "backplane",
 	"model": "opus-5.5",
 	"reasoning": "medium",

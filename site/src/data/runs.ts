@@ -1,14 +1,13 @@
 import { readFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
-import { MODELS as MODEL_IDS, RUNS } from '@pcbbench/bench/runs';
+import { MODELS as MODEL_IDS, RUNS, TASKS } from '@pcbbench/bench/runs';
 import { GROUPS, ITEMS } from '@pcbbench/bench/scoring';
 import type { ImageMetadata } from 'astro';
 import { z } from 'astro/zod';
 import type { Box, RenderInfo, View } from '../../scripts/renders';
 import renderInfo from '../generated/renders.json';
-import { HARNESSES, MACHINES, MODELS } from './catalog';
+import { HARNESSES, MACHINES, MODELS, TASK_INFO } from './catalog';
 import { renderMarkdown } from './markdown';
-import { TASKS } from './tasks';
 
 // The build bundles this module elsewhere, so paths start from the site folder it runs in.
 const REPO_ROOT = new URL('../', pathToFileURL(`${process.cwd()}/`));
@@ -214,7 +213,7 @@ export type ScaledRender = {
 	pxPerMm: number;
 };
 
-const renderImages = import.meta.glob<{ default: ImageMetadata }>('../generated/renders/*.png', {
+const renderImages = import.meta.glob<{ default: ImageMetadata }>('../generated/renders/**/*.png', {
 	eager: true
 });
 
@@ -225,7 +224,7 @@ const readText = (path: string) => readFile(new URL(path, REPO_ROOT), 'utf8');
 const readJson = async (path: string) => JSON.parse(await readText(path));
 
 const renderImage = (runId: string, view: View) =>
-	renderImages[`../generated/renders/${runId}-${view}.png`].default;
+	renderImages[`../generated/renders/${runId}/${view}.png`].default;
 
 function scaledRender(
 	runId: string,
@@ -287,8 +286,7 @@ async function loadRun(run: (typeof RUNS)[number]) {
 
 	return {
 		id: run.id,
-		// Every run so far is the one task. When the bench tags runs with a task, read it here.
-		task: TASKS[0].id,
+		task: run.task,
 		model: { id: run.model, ...MODELS[run.model] },
 		harness: { id: run.harness, ...harness, about: harness.about(run.model) },
 		machine: MACHINES[run.machine],
@@ -333,10 +331,11 @@ export const runs: Run[] = (await Promise.all(RUNS.map(loadRun)))
 	}));
 
 export const tasks = await Promise.all(
-	TASKS.map(async (task) => ({
-		...task,
-		prompt: await readText(task.prompt),
-		runs: runs.filter((run) => run.task === task.id)
+	TASKS.map(async (id) => ({
+		id,
+		...TASK_INFO[id],
+		prompt: await readText(`bench/tasks/${id}/prompt.md`),
+		runs: runs.filter((run) => run.task === id)
 	}))
 );
 

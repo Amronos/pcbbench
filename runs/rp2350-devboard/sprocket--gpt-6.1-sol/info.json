@@ -1,5 +1,5 @@
 {
-	"runId": "sprocket--gpt-6.1-sol",
+	"runId": "rp2350-devboard/sprocket--gpt-6.1-sol",
 	"harness": "sprocket",
 	"model": "gpt-6.1-sol",
 	"reasoning": "medium",
