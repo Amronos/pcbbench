@@ -1,11 +1,10 @@
 ---
-import { ITEMS, groupPoints } from '@pcbbench/bench/scoring';
+import { ITEMS } from '@pcbbench/bench/scoring';
 import Leaderboard from '../components/leaderboard/Leaderboard';
 import Base from '../layouts/Base.astro';
 import { lastUpdated, leaderboard } from '../data/leaderboard';
 
 const totalPoints = ITEMS.reduce((total, item) => total + item.points, 0);
-const judgePoints = groupPoints('designReview');
 
 const counts = [
 	['Tasks', leaderboard.tasks.length],
@@ -31,9 +30,8 @@ const updated = new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString('en-GB',
 			<div class="name">
 				<h1>PCBBench</h1>
 				<p>
-					AI agents design PCBs in KiCad from a prompt. Scripts score {totalPoints - judgePoints} of
-					{' '}{totalPoints} points from the board files, and an AI judge reviews the layout for the
-					other {judgePoints}.
+					AI agents design PCBs in KiCad from a prompt. We check each board with scripts, price it and
+					have an AI judge review its layout.
 				</p>
 			</div>
 			<dl class="counts">
