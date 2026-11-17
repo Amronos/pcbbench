@@ -110,6 +110,7 @@ const judge = Effect.fn('judge')(function* ({
 	yield* remote('bash', '~/export-layers.sh', [...copperLayers, ...LAYERS].join(','));
 
 	yield* rsync(`${box}:package/renders`, `${box}:package/layers`, `${state}/package/`);
+	yield* rsync(`${box}:package/layers/`, `${runDir}/renders/layers/`);
 
 	// The judge's copy is made from /root/package, so judges don't find a second copy of the board in their home folder.
 	yield* remote('sudo rm -rf /root/package && sudo mv ~/package /root/package');

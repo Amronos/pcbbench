@@ -4,7 +4,7 @@ import { MODELS as MODEL_IDS, RUNS, TASKS } from '@pcbbench/bench/runs';
 import { GROUPS, ITEMS } from '@pcbbench/bench/scoring';
 import type { ImageMetadata } from 'astro';
 import { z } from 'astro/zod';
-import type { Box, RenderInfo, View } from '../../scripts/renders';
+import type { Box, RenderInfo, RunRenders } from '../../scripts/renders';
 import renderInfo from '../generated/renders.json';
 import { HARNESSES, MACHINES, MODELS, TASK_INFO } from './catalog';
 import { renderMarkdown } from './markdown';
@@ -217,28 +217,27 @@ const renderImages = import.meta.glob<{ default: ImageMetadata }>('../generated/
 	eager: true
 });
 
-const renderEntries: Record<string, Record<View, RenderInfo>> = renderInfo;
+const renderEntries: Record<string, RunRenders> = renderInfo;
 
 const readText = (path: string) => readFile(new URL(path, REPO_ROOT), 'utf8');
 
 const readJson = async (path: string) => JSON.parse(await readText(path));
 
-const renderImage = (runId: string, view: View) =>
-	renderImages[`../generated/renders/${runId}/${view}.png`].default;
+const renderImage = (runId: string, file: string) =>
+	renderImages[`../generated/renders/${runId}/${file}.png`].default;
 
 function scaledRender(
 	runId: string,
-	view: 'top' | 'bottom',
+	file: string,
+	entry: RenderInfo,
 	boardMm: z.infer<typeof Metrics>['boardSizeMm']
 ): ScaledRender {
-	const entry = renderEntries[runId][view];
-
-	if (!entry.board) throw new Error(`${runId} has no board measured in its ${view} render`);
+	if (!entry.board) throw new Error(`${runId} has no board measured in ${file}.png`);
 
 	const { x, y, width, height } = entry.board;
 
 	return {
-		image: renderImage(runId, view),
+		image: renderImage(runId, file),
 		board: {
 			x: x / entry.width,
 			y: y / entry.height,
@@ -283,6 +282,7 @@ async function loadRun(run: (typeof RUNS)[number]) {
 	const { judge } = metrics.review;
 	const harness = HARNESSES[run.harness];
 	const readme = await readText(`${dir}/output/README.md`);
+	const renders = renderEntries[run.id];
 
 	return {
 		id: run.id,
@@ -303,9 +303,13 @@ async function loadRun(run: (typeof RUNS)[number]) {
 		metrics,
 		totalTokens: Object.values(metrics.tokens).reduce((total, count) => total + count, 0),
 		renders: {
-			top: scaledRender(run.id, 'top', metrics.boardSizeMm),
-			bottom: scaledRender(run.id, 'bottom', metrics.boardSizeMm),
-			iso: renderImage(run.id, 'iso')
+			top: scaledRender(run.id, 'top', renders.top, metrics.boardSizeMm),
+			bottom: scaledRender(run.id, 'bottom', renders.bottom, metrics.boardSizeMm),
+			iso: renderImage(run.id, 'iso'),
+			layers: renders.layers.map((layer) => ({
+				name: layer.name,
+				...scaledRender(run.id, `layers/${layer.file}`, layer, metrics.boardSizeMm)
+			}))
 		},
 		review: {
 			judge,

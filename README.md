@@ -217,7 +217,7 @@ bench/                   benchmark code (Bun + TypeScript)
   digikey.ts             looks up Digi-Key stock and part status
 runs/<task>/<harness>--<model>/
   output/                everything the agent left in its work folder
-  renders/               top.png, bottom.png and iso.png from kicad-cli pcb render, with the run's KiCad version
+  renders/               top.png, bottom.png and iso.png from kicad-cli pcb render with the run's KiCad version, and layers/ with the layer images the judge saw
   review/                the judge's review of the board and its reasoning
   info.json              harness, model, machine, tool versions, and the final board, BOM, placement file and order zip
   metrics.json           timing, tokens, AI cost, board size, fixes, board cost and check results

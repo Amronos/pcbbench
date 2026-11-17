@@ -14,17 +14,30 @@ const views = [
 	{ id: 'bottom', label: 'Bottom' },
 	{ id: 'iso', label: '3D' }
 ] as const;
+
+const layers = run.renders.layers.map((layer) => ({ ...layer, id: `layer-${layer.name}` }));
 ---
 
 <div class="viewer" data-viewer>
-	<div class="tabs" role="group" aria-label="Board view">
-		{
-			views.map((view, index) => (
-				<button type="button" data-view={view.id} aria-pressed={index === 0 ? 'true' : 'false'}>
-					{view.label}
-				</button>
-			))
-		}
+	<div class="tab-rows">
+		<div class="tabs" role="group" aria-label="Board view">
+			{
+				views.map((view, index) => (
+					<button type="button" data-view={view.id} aria-pressed={index === 0 ? 'true' : 'false'}>
+						{view.label}
+					</button>
+				))
+			}
+		</div>
+		<div class="tabs" role="group" aria-label="Layer">
+			{
+				layers.map((layer) => (
+					<button type="button" data-view={layer.id} aria-pressed="false">
+						{layer.name}
+					</button>
+				))
+			}
+		</div>
 	</div>
 	<div class="stage">
 		<div data-panel="top">
@@ -55,9 +68,26 @@ const views = [
 				class="iso"
 			/>
 		</div>
+		{
+			layers.map((layer) => (
+				<div data-panel={layer.id} hidden>
+					<a href={layer.image.src} title="Open the full-size image">
+						<ScaledBoard
+							render={layer}
+							widthMm={width}
+							heightMm={height}
+							alt={`${layer.name} layer of ${name}, seen from the top`}
+							maxScale={9}
+						/>
+					</a>
+				</div>
+			))
+		}
 	</div>
 	<p class="caption">
-		Rendered by kicad-cli with the run's own KiCad version. Dimensions in mm.
+		Rendered by kicad-cli with the run's own KiCad version. Dimensions in mm. The layers are the
+		plots the AI judge saw, seen from the top, with their white background made dark. Click one to
+		open it at full size.
 	</p>
 </div>
 
@@ -107,7 +137,13 @@ const views = [
 
 	.tabs {
 		display: flex;
+		flex-wrap: wrap;
 		gap: 0.25rem;
+	}
+
+	.tab-rows {
+		display: grid;
+		gap: 0.5rem;
 	}
 
 	.tabs button {
