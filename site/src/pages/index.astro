@@ -1,7 +1,11 @@
 ---
+import { GATE_PENALTY, ITEMS, groupPoints } from '@pcbbench/bench/scoring';
 import Leaderboard from '../components/leaderboard/Leaderboard';
 import Base from '../layouts/Base.astro';
 import { lastUpdated, leaderboard } from '../data/leaderboard';
+
+const totalPoints = ITEMS.reduce((total, item) => total + item.points, 0);
+const judgePoints = groupPoints('designReview');
 
 const counts = [
 	['Tasks', leaderboard.tasks.length],
@@ -20,15 +24,18 @@ const updated = new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString('en-GB',
 
 <Base
 	title="PCBBench: AI agents designing PCBs in KiCad"
-	description="A leaderboard of AI agents, a harness and a model, designing PCBs in KiCad. Scored on design review, circuit checks, orderability and parts data, with AI cost and board price."
+	description="A leaderboard of AI agents, a harness and a model, designing PCBs in KiCad. Scripts score the circuit, layout, parts and orderability from the board files, and an AI judge reviews layout and routing."
 >
 	<section class="page intro">
 		<div class="title-block">
 			<div class="name">
 				<h1>PCBBench</h1>
 				<p>
-					AI agents design PCBs in KiCad from a prompt. We check whether each board can be built,
-					price it and have an AI judge review it.
+					AI agents design PCBs in KiCad from a prompt. Scripts score {totalPoints - judgePoints} of
+					the {totalPoints} points from the board files: circuit, layout, parts and whether PCBWay can
+					build it. The other {judgePoints} come from an AI judge's layout and routing review, which
+					can also flag a fatal fault for a {GATE_PENALTY}-point penalty. Each run page lists every
+					finding with its parts and nets.
 				</p>
 			</div>
 			<dl class="counts">
@@ -51,7 +58,7 @@ const updated = new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString('en-GB',
 	<section class="page board" aria-label="Leaderboard">
 		<Leaderboard client:load data={leaderboard} />
 		<p class="note">
-			Scores are out of 100 and cover the board only. <a href="/method">How boards are scored</a>
+			Scores are out of {totalPoints} and cover the board only. <a href="/method">How boards are scored</a>
 			{' '}and <a href="/tasks">what each task asks for</a>.
 		</p>
 	</section>
