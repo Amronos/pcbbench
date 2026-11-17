@@ -2,40 +2,26 @@ import type { LeaderboardData } from '../../data/leaderboard';
 import { hours, tokens, usd } from '../../data/format';
 import { isOfficialMix, type Weights } from './score';
 
-export const VIEWS = ['table', 'pareto'] as const;
-
-export type View = (typeof VIEWS)[number];
-
-const wholeUsd = (value: number) => `$${Number(value.toPrecision(2))}`;
-
 export const METRICS = {
 	costUsd: {
 		label: 'AI cost',
 		title: "The run's API cost at market prices, including subagents",
-		format: usd,
-		tick: wholeUsd,
-		ticks: [1, 1.5, 2, 3, 5, 7]
+		format: usd
 	},
 	minutes: {
 		label: 'Time',
 		title: 'Wall-clock time of the run',
-		format: hours,
-		tick: (minutes: number) => (minutes < 60 ? `${minutes} min` : `${minutes / 60} h`),
-		ticks: [15, 30, 60, 120, 180, 240, 360, 480, 720]
+		format: hours
 	},
 	tokens: {
 		label: 'Tokens',
 		title: 'Input, cached and output tokens, including subagents',
-		format: tokens,
-		tick: tokens,
-		ticks: [1, 2, 5]
+		format: tokens
 	},
 	boardUsd: {
 		label: 'Board price',
 		title: 'Price of one assembled board when ordering 5 from PCBWay, without shipping',
-		format: usd,
-		tick: wholeUsd,
-		ticks: [1, 1.5, 2, 3, 5, 7]
+		format: usd
 	}
 } satisfies Record<string, Metric>;
 
@@ -43,9 +29,6 @@ type Metric = {
 	label: string;
 	title: string;
 	format: (value: number) => string;
-	tick: (value: number) => string;
-	// Tick values for a log axis, repeated every decade when they are single digits.
-	ticks: ReadonlyArray<number>;
 };
 
 export type MetricKey = keyof typeof METRICS;
@@ -57,14 +40,6 @@ export const METRIC_KEYS = [
 	'boardUsd'
 ] as const satisfies ReadonlyArray<MetricKey>;
 
-export const X_AXES = [
-	'costUsd',
-	'minutes',
-	'boardUsd'
-] as const satisfies ReadonlyArray<MetricKey>;
-
-export type XAxis = (typeof X_AXES)[number];
-
 export const SORT_KEYS = ['score', 'model', 'harness', 'tasks', ...METRIC_KEYS] as const;
 
 export type SortKey = (typeof SORT_KEYS)[number];
@@ -75,25 +50,21 @@ const DESCENDING_FIRST: ReadonlyArray<SortKey> = ['score', 'tasks'];
 export const descendingFirst = (key: SortKey) => DESCENDING_FIRST.includes(key);
 
 export type State = {
-	view: View;
 	task: string | null;
 	harnesses: ReadonlyArray<string>;
 	models: ReadonlyArray<string>;
 	weights: Weights;
 	sort: SortKey;
 	descending: boolean;
-	x: XAxis;
 };
 
 export const defaultState = (data: LeaderboardData): State => ({
-	view: 'table',
 	task: null,
 	harnesses: [],
 	models: [],
 	weights: data.groups.map((group) => group.points),
 	sort: 'score',
-	descending: true,
-	x: 'costUsd'
+	descending: true
 });
 
 const pick = <T extends string>(options: ReadonlyArray<T>, value: string | null) =>
@@ -132,7 +103,6 @@ export function parseState(search: string, data: LeaderboardData): State {
 	const order = params.get('order');
 
 	return {
-		view: pick(VIEWS, params.get('view')) ?? defaults.view,
 		task: data.tasks.find((task) => task.id === params.get('task'))?.id ?? null,
 		harnesses: known(
 			params.getAll('harness'),
@@ -144,8 +114,7 @@ export function parseState(search: string, data: LeaderboardData): State {
 		),
 		weights: parseWeights(params.get('mix'), data.groups.length) ?? defaults.weights,
 		sort,
-		descending: order ? order === 'desc' : descendingFirst(sort),
-		x: pick(X_AXES, params.get('x')) ?? defaults.x
+		descending: order ? order === 'desc' : descendingFirst(sort)
 	};
 }
 
@@ -153,8 +122,6 @@ export function parseState(search: string, data: LeaderboardData): State {
 export function stateQuery(state: State, data: LeaderboardData) {
 	const defaults = defaultState(data);
 	const params = new URLSearchParams();
-
-	if (state.view !== defaults.view) params.set('view', state.view);
 
 	if (state.task) params.set('task', state.task);
 
@@ -168,8 +135,6 @@ export function stateQuery(state: State, data: LeaderboardData) {
 
 	if (state.descending !== descendingFirst(state.sort))
 		params.set('order', state.descending ? 'desc' : 'asc');
-
-	if (state.x !== defaults.x) params.set('x', state.x);
 
 	return params.toString();
 }

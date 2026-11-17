@@ -2,7 +2,6 @@ import { useEffect, useState } from 'preact/hooks';
 import type { LeaderboardData } from '../../data/leaderboard';
 import styles from './Leaderboard.module.css';
 import Mix from './Mix';
-import Pareto from './Pareto';
 import { configRows, isOfficialMix, ranks } from './score';
 import { defaultState, parseState, stateQuery, type State } from './state';
 import Table from './Table';
@@ -64,22 +63,6 @@ export default function Leaderboard({ data }: { data: LeaderboardData }) {
 	return (
 		<div class={styles.leaderboard}>
 			<div class={styles.toolbar}>
-				<div class={styles.segmented} role="group" aria-label="View">
-					<button
-						type="button"
-						aria-pressed={state.view === 'table'}
-						onClick={() => update({ view: 'table' })}
-					>
-						Table
-					</button>
-					<button
-						type="button"
-						aria-pressed={state.view === 'pareto'}
-						onClick={() => update({ view: 'pareto' })}
-					>
-						Pareto
-					</button>
-				</div>
 				{manyTasks && (
 					<label class={styles.taskSelect}>
 						<span class="visually-hidden">Task</span>
@@ -129,7 +112,7 @@ export default function Leaderboard({ data }: { data: LeaderboardData }) {
 			/>
 
 			{rows.length === 0 && <p class={styles.empty}>No runs match these filters.</p>}
-			{rows.length > 0 && state.view === 'table' && (
+			{rows.length > 0 && (
 				<Table
 					data={data}
 					rows={rows}
@@ -140,9 +123,6 @@ export default function Leaderboard({ data }: { data: LeaderboardData }) {
 					onSort={(sort, descending) => update({ sort, descending })}
 					showTasks={manyTasks && !state.task}
 				/>
-			)}
-			{rows.length > 0 && state.view === 'pareto' && (
-				<Pareto data={data} rows={rows} x={state.x} onX={(x) => update({ x })} />
 			)}
 		</div>
 	);
