@@ -1,5 +1,5 @@
 ---
-import { GATE_PENALTY, ITEMS, groupPoints } from '@pcbbench/bench/scoring';
+import { ITEMS, groupPoints } from '@pcbbench/bench/scoring';
 import Leaderboard from '../components/leaderboard/Leaderboard';
 import Base from '../layouts/Base.astro';
 import { lastUpdated, leaderboard } from '../data/leaderboard';
@@ -32,10 +32,8 @@ const updated = new Date(`${lastUpdated}T00:00:00Z`).toLocaleDateString('en-GB',
 				<h1>PCBBench</h1>
 				<p>
 					AI agents design PCBs in KiCad from a prompt. Scripts score {totalPoints - judgePoints} of
-					the {totalPoints} points from the board files: circuit, layout, parts and whether PCBWay can
-					build it. The other {judgePoints} come from an AI judge's layout and routing review, which
-					can also flag a fatal fault for a {GATE_PENALTY}-point penalty. Each run page lists every
-					finding with its parts and nets.
+					{' '}{totalPoints} points from the board files, and an AI judge reviews the layout for the
+					other {judgePoints}.
 				</p>
 			</div>
 			<dl class="counts">
