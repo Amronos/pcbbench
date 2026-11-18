@@ -152,7 +152,7 @@ const run = Effect.fn('run')(function* ({
 
 	for (const d of [work, home, out]) yield* fs.makeDirectory(d, { recursive: true });
 
-	const prompt = yield* renderPrompt(model, Option.getOrUndefined(promptFile));
+	const prompt = yield* renderPrompt(runId, model, Option.getOrUndefined(promptFile));
 
 	// Deleted once read, so the agent cannot find the key on disk.
 	const key = (yield* fs.readFileString(keyFile)).trim();

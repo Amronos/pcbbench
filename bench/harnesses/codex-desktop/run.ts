@@ -197,7 +197,7 @@ const start = Effect.fn('start')(function* (run: Run, promptFile: string | undef
 	const { runId } = run;
 	const { secret } = yield* readRunKey(runId);
 	yield* fs.makeDirectory(run.resultDir, { recursive: true });
-	const prompt = yield* renderPrompt(run.model, promptFile);
+	const prompt = yield* renderPrompt(runId, run.model, promptFile);
 	yield* fs.writeFileString(`${run.resultDir}/prompt.md`, prompt);
 
 	const config = (yield* fs.readFileString(`${HERE}/config.toml`))

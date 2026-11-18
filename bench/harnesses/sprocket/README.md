@@ -4,14 +4,14 @@ The runs used Sprocket 0.5.1 and the KiCad connector v0.2.0 (KiCad 10.99.0-6344)
 
 ## Run
 
-Launch a c7i.2xlarge from the AMI, copy the latest `bench/runs.ts`, `bench/prompt.md` and this folder to `~/pcbbench/bench/`, and run `bun add effect@4.1.2 @effect/platform-bun@4.1.2` there. Then run the driver inside `tmux` so it survives SSH drops:
+Launch a c7i.2xlarge from the AMI, copy the latest `bench/runs.ts`, `bench/tasks/` and this folder to `~/pcbbench/bench/`, and run `bun add effect@4.1.2 @effect/platform-bun@4.1.2` there. Then run the driver inside `tmux` so it survives SSH drops:
 
 ```shell
 cd ~/pcbbench/bench/harnesses/sprocket
-~/.bun/bin/bun run.ts sprocket--opus-5.5 opus-5.5
+~/.bun/bin/bun run.ts rp2350-devboard/sprocket--opus-5.5 opus-5.5
 ```
 
-The driver renders `bench/prompt.md`, runs `sprocket run` in the empty `~/pcbbench-run` with the `WALL_CLOCK_LIMIT_HOURS` timeout from `runs.ts`, and writes `~/pcbbench-results/<run-id>/`:
+The driver renders the run's `bench/tasks/<task>/prompt.md`, runs `sprocket run` in the empty `~/pcbbench-run` with the `WALL_CLOCK_LIMIT_HOURS` timeout from `runs.ts`, and writes `~/pcbbench-results/<run-id>/`:
 
 - `result.json`: thread id, Sprocket run id, model, timestamps and exit code. The ids are saved as soon as the run starts.
 - `stdout.md`: the agent's final reply.

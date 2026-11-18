@@ -99,7 +99,7 @@ const run = Effect.fn('run')(function* (runId: string, model: ModelId, promptFil
 
 	const renderedPrompt = `${resultDir}/prompt.md`;
 
-	yield* fs.writeFileString(renderedPrompt, yield* renderPrompt(model, promptFile));
+	yield* fs.writeFileString(renderedPrompt, yield* renderPrompt(runId, model, promptFile));
 
 	const result: Result = {
 		runId,

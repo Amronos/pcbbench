@@ -7,8 +7,15 @@ export type ModelId = typeof ModelId.Type;
 
 export type Harness = 'codex-desktop' | 'codex-desktop-texttocad' | 'backplane' | 'sprocket';
 
+export const TaskId = Schema.Literals(['rp2350-devboard']);
+
+export type TaskId = typeof TaskId.Type;
+
+export const TASKS = TaskId.literals;
+
 export type Run = {
 	id: string;
+	task: TaskId;
 	harness: Harness;
 	model: ModelId;
 	machine: 'mac' | 'linux';
@@ -40,10 +47,25 @@ export const COST_LIMIT_USD: Record<ModelId, number> = {
 export const COST_REVOKE_MARGIN_USD = 5;
 export const BATCH_BOARDS = 5;
 
+export const taskDirectory = (task: TaskId) => `${import.meta.dir}/tasks/${task}`;
+
+class PromptError extends Schema.TaggedError<PromptError>()('PromptError', {
+	message: Schema.String
+}) {}
+
 export const renderPrompt = Effect.fn('renderPrompt')(function* (
+	runId: string,
 	model: ModelId,
-	path = `${import.meta.dir}/prompt.md`
+	promptFile: string | undefined
 ) {
+	const task = RUNS.find((run) => run.id === runId)?.task;
+	const path = promptFile ?? (task && `${taskDirectory(task)}/prompt.md`);
+
+	if (!path)
+		return yield* new PromptError({
+			message: `${runId} isn't in runs.ts, so pass a prompt file`
+		});
+
 	const template = yield* (yield* FileSystem.FileSystem).readFileString(path);
 
 	return template.replaceAll('{{MODEL}}', model).replaceAll('{{EFFORT}}', REASONING_EFFORT);
@@ -64,27 +86,30 @@ export const kicadFullVersion = (kicadCli: string) =>
 export const minutesBetween = (startMs: number, endMs: number) =>
 	Math.round((endMs - startMs) / 600) / 100;
 
+const run = (task: TaskId, harness: Harness, model: ModelId, machine: Run['machine']): Run => ({
+	id: `${task}/${harness}--${model}`,
+	task,
+	harness,
+	model,
+	machine
+});
+
 export const RUNS: Run[] = [
-	{
-		id: 'codex-desktop--gpt-6.1-sol',
-		harness: 'codex-desktop',
-		model: 'gpt-6.1-sol',
-		machine: 'mac'
-	},
-	{
-		id: 'codex-desktop-texttocad--gpt-6.1-sol',
-		harness: 'codex-desktop-texttocad',
-		model: 'gpt-6.1-sol',
-		machine: 'mac'
-	},
-	{ id: 'backplane--opus-5.5', harness: 'backplane', model: 'opus-5.5', machine: 'linux' },
-	{ id: 'backplane--gpt-6.1-sol', harness: 'backplane', model: 'gpt-6.1-sol', machine: 'linux' },
-	{ id: 'sprocket--opus-5.5', harness: 'sprocket', model: 'opus-5.5', machine: 'linux' },
-	{ id: 'sprocket--gpt-6.1-sol', harness: 'sprocket', model: 'gpt-6.1-sol', machine: 'linux' },
-	{ id: 'backplane--fable-5.2', harness: 'backplane', model: 'fable-5.2', machine: 'linux' }
+	run('rp2350-devboard', 'codex-desktop', 'gpt-6.1-sol', 'mac'),
+	run('rp2350-devboard', 'codex-desktop-texttocad', 'gpt-6.1-sol', 'mac'),
+	run('rp2350-devboard', 'backplane', 'opus-5.5', 'linux'),
+	run('rp2350-devboard', 'backplane', 'gpt-6.1-sol', 'linux'),
+	run('rp2350-devboard', 'sprocket', 'opus-5.5', 'linux'),
+	run('rp2350-devboard', 'sprocket', 'gpt-6.1-sol', 'linux'),
+	run('rp2350-devboard', 'backplane', 'fable-5.2', 'linux')
 ];
 
 export const runIdArgument = Argument.Literals(
 	'run-id',
 	RUNS.map((run) => run.id)
+);
+
+export const runArgument = Argument.ChoiceWithValue(
+	'run-id',
+	RUNS.map((run) => [run.id, run] as const)
 );

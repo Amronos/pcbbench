@@ -5,9 +5,11 @@
 
 PCBBench compares AI models and agents on PCB design performance across 40+ metrics.
 
+See every board, score and review at [pcbbench-five.vercel.app](https://pcbbench-five.vercel.app).
+
 ## The task
 
-The prompt is [bench/prompt.md](bench/prompt.md).
+The one task so far is `rp2350-devboard`. Its prompt is [bench/tasks/rp2350-devboard/prompt.md](bench/tasks/rp2350-devboard/prompt.md).
 
 ## Results
 
@@ -182,17 +184,19 @@ A board that fails a gate loses 20 points. The gates are a missing prompt featur
 | [`backplane--gpt-6.1-sol`][backplane]                          | 1 / 0                | 9             | 2 / 7                 | 0              | 1     |
 
 - **Judge:** opus-5.5 on high reasoning in the Sprocket CLI with its KiCad connector reviews each board once, on its own machine. It sees only an anonymous copy of the board: the KiCad project, the BOM, and renders and layer images made with the run's KiCad version. It upgrades the project to the connector's KiCad before inspecting it. [bench/judge/README.md](bench/judge/README.md) has the details.
-- **Findings:** the judge lists layout and routing problems, each with its parts, nets and evidence, and rates each one `minor`, `major` or `fatal`. A fatal finding means the assembled board can't work, a part gets damaged or PCBWay can't build it, and it can come from any part of the design. The judge gives no scores. Each area starts at 10 points and loses 1 per minor and 2 per major finding. The rubric is in [bench/judge/prompt.md](bench/judge/prompt.md).
+- **Findings:** the judge lists layout and routing problems, each with its parts, nets and evidence, and rates each one `minor`, `major` or `fatal`. A fatal finding means the assembled board can't work, a part gets damaged or PCBWay can't build it, and it can come from any part of the design. The judge gives no scores. Each area starts at 10 points and loses 1 per minor and 2 per major finding. The rubric is in [bench/tasks/rp2350-devboard/judge-prompt.md](bench/tasks/rp2350-devboard/judge-prompt.md).
 - **Fatal findings:** `backplane--gpt-6.1-sol` fits a unidirectional SMF5.0A TVS on USB VBUS with its cathode on ground, so it conducts across the 5 V input. The microSD socket on `codex-desktop--gpt-6.1-sol` faces into the board, and resistors and capacitors sit where the card would go.
 - Most major findings are power traces too narrow for the charger's current and QSPI, microSD or USB lines that detour with many vias.
 - `runs/<run-id>/review/opus-5.5.json` has the findings, and `opus-5.5.md` has the judge's final message and the reports of the subagents it started.
 
 ## Repo layout
 
+A run id is `<task>/<harness>--<model>`, such as `rp2350-devboard/sprocket--opus-5.5`, and names the run's folder under `runs/`.
+
 ```text
 bench/                   benchmark code (Bun + TypeScript)
-  prompt.md              the task prompt
-  runs.ts                run list, models and time limit
+  tasks/<task>/          prompt.md, the task prompt, and judge-prompt.md, the judge's rubric
+  runs.ts                tasks, run list, models and time limit
   harnesses/<harness>/   machine setup and run driver for each harness, with a README
   collect.ts             copies a finished run's outputs into runs/<run-id>/ and its logs into bench/.state/logs/
   usage.ts               token usage from Claude Code and Codex session logs
@@ -206,14 +210,14 @@ bench/                   benchmark code (Bun + TypeScript)
   inspect.ts             runs DRC and ERC, matches the fab files, checks 3D models and renders the board, with the run's KiCad version
   fab-match.ts           compares the delivered Gerbers and drill files with a fresh export
   board.ts               reads a run's board footprints, pads, tracks, zones and stackup
-  judge/                 the design review: anonymous board packages, the judge's rubric and the driver, with a README
+  judge/                 the design review: anonymous board packages and the driver, with a README
   score.ts               the board score, and how the ranking changes when weights shift
   bom.ts                 reads a run's BOM CSV
   lcsc.ts                looks up LCSC parts
   digikey.ts             looks up Digi-Key stock and part status
-runs/<run-id>/
+runs/<task>/<harness>--<model>/
   output/                everything the agent left in its work folder
-  renders/               top.png, bottom.png and iso.png from kicad-cli pcb render, with the run's KiCad version
+  renders/               top.png, bottom.png and iso.png from kicad-cli pcb render with the run's KiCad version, and layers/ with the layer images the judge saw
   review/                the judge's review of the board and its reasoning
   info.json              harness, model, machine, tool versions, and the final board, BOM, placement file and order zip
   metrics.json           timing, tokens, AI cost, board size, fixes, board cost and check results

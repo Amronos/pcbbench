@@ -12,7 +12,7 @@ ssh ubuntu@<ip> 'umask 077; cat > ~/.pcbbench-key' < <file with the run's API ke
 ssh ubuntu@<ip> 'tmux new -d "~/.bun/bin/bun ~/pcbbench/bench/harnesses/backplane/run.ts --run-id <run-id> --model <model> --key-file ~/.pcbbench-key"'
 ```
 
-The driver deletes the key file once read. It starts a hub on an empty `~/pcbbench-hub`, turns Backplane's ordering and price estimates off, opens `~/pcbbench-run` as the project, sends the rendered `bench/prompt.md` (or `--prompt <file>` for smoke tests) to one thread at `REASONING_EFFORT` and waits until every thread has been idle for 3 minutes, or until `WALL_CLOCK_LIMIT_HOURS`. Then it stops the hub. The driver answers the agent's questions with "decide yourself" and accepts every approval.
+The driver deletes the key file once read. It starts a hub on an empty `~/pcbbench-hub`, turns Backplane's ordering and price estimates off, opens `~/pcbbench-run` as the project, sends the run's rendered `bench/tasks/<task>/prompt.md` (or `--prompt <file>` for smoke tests) to one thread at `REASONING_EFFORT` and waits until every thread has been idle for 3 minutes, or until `WALL_CLOCK_LIMIT_HOURS`. Then it stops the hub. The driver answers the agent's questions with "decide yourself" and accepts every approval.
 
 Collect `~/pcbbench-run` and `~/pcbbench-logs/<run-id>/`:
 

@@ -1,0 +1,109 @@
+---
+import { FEATHER_MM } from '@pcbbench/bench/scoring';
+import { mm, percent } from '../data/format';
+import type { Run } from '../data/runs';
+import CheckHead from './CheckHead.astro';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { thermal, grounding, silkscreen } = run.metrics.layout;
+const { width, height } = run.metrics.boardSizeMm;
+
+const buses = [
+	{ label: 'USB', ...grounding.usb },
+	{ label: 'QSPI', ...grounding.qspi },
+	{ label: 'microSD', ...grounding.microSd }
+];
+
+const busTotal = buses.reduce((total, bus) => total + bus.mm, 0);
+const busGrounded = buses.reduce((total, bus) => total + bus.groundedMm, 0);
+---
+
+<div class="checks">
+	<section>
+		<CheckHead run={run} item="thermal" />
+		<div class="scroll">
+			<table class="data">
+				<thead>
+					<tr>
+						<th scope="col">Exposed pad</th>
+						<th scope="col">Net</th>
+						<th scope="col" class="n">Vias</th>
+						<th scope="col" class="n">Needed</th>
+						<th scope="col">Plane on another layer</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						thermal.pads.map((pad) => (
+							<tr>
+								<td>{pad.ref}</td>
+								<td>{pad.net}</td>
+								<td class:list={['n', pad.vias < pad.minVias && 'fail']}>{pad.vias}</td>
+								<td class="n">{pad.minVias}</td>
+								<td class:list={[pad.planeOnOtherLayer ? 'pass' : 'fail']}>
+									{pad.planeOnOtherLayer ? 'yes' : 'no'}
+								</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section>
+		<CheckHead run={run} item="grounding" />
+		<div class="scroll">
+			<table class="data">
+				<thead>
+					<tr>
+						<th scope="col">Bus</th>
+						<th scope="col" class="n">Over ground</th>
+						<th scope="col" class="n">Track length</th>
+						<th scope="col" class="n">Share</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						buses.map((bus) => (
+							<tr>
+								<td title={bus.nets.join(', ')}>{bus.label}</td>
+								<td class="n">{mm(bus.groundedMm)}</td>
+								<td class="n">{mm(bus.mm)}</td>
+								<td class="n">{percent((bus.groundedMm / bus.mm) * 100)}</td>
+							</tr>
+						))
+					}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th scope="row">All three</th>
+						<td class="n">{mm(busGrounded)}</td>
+						<td class="n">{mm(busTotal)}</td>
+						<td class="n">{percent((busGrounded / busTotal) * 100)}</td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+	</section>
+
+	<section>
+		<CheckHead run={run} item="silkscreen" />
+		<p>
+			{silkscreen.textsBelowMin} of {silkscreen.texts} texts are below PCBWay's {
+				silkscreen.minTextHeightMm
+			} mm minimum. The smallest is {mm(silkscreen.smallestTextMm)}.
+		</p>
+	</section>
+
+	<section>
+		<CheckHead run={run} item="boardSize" />
+		<p>
+			{width} × {height} mm, {Math.round(width * height)} mm². The Feather RP2350 is {
+				FEATHER_MM.width
+			} × {FEATHER_MM.height} mm.
+		</p>
+	</section>
+</div>

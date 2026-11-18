@@ -12,7 +12,7 @@ The display is 1024x768, the most the EC2 Mac virtual display offers.
 
 ## Run
 
-From `bench/`, in `tmux`, for each run id in turn (`codex-desktop--gpt-6.1-sol`, then `codex-desktop-texttocad--gpt-6.1-sol`):
+From `bench/`, in `tmux`, for each run id in turn (`rp2350-devboard/codex-desktop--gpt-6.1-sol`, then `rp2350-devboard/codex-desktop-texttocad--gpt-6.1-sol`):
 
 ```shell
 bun harnesses/codex-desktop/run.ts reset
@@ -32,7 +32,7 @@ bun harnesses/codex-desktop/run.ts start <run-id>
 
 The results folder also holds `prompt.md`, `result.json` (versions, rollout path, timestamps, outcome), `texttocad-install.log`, and the `filled.png`, `started.png` and `finished.png` screenshots. If the driver dies, `run.ts wait <run-id>` picks the run up again, and `run.ts collect <run-id>` copies the files on demand.
 
-To check the machine, run `start codex-desktop-texttocad--gpt-6.1-sol--smoke harnesses/codex-desktop/smoke.md` with the run's API key saved under that id, then `reset`.
+To check the machine, run `start rp2350-devboard/codex-desktop-texttocad--gpt-6.1-sol--smoke harnesses/codex-desktop/smoke.md` with the run's API key saved under that id, then `reset`.
 
 ## During a run
 

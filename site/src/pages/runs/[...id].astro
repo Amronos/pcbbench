@@ -1,0 +1,447 @@
+---
+import { GATE_PENALTY } from '@pcbbench/bench/scoring';
+import BoardViewer from '../../components/BoardViewer.astro';
+import CircuitChecks from '../../components/CircuitChecks.astro';
+import Gates from '../../components/Gates.astro';
+import GroupHeading from '../../components/GroupHeading.astro';
+import LayoutChecks from '../../components/LayoutChecks.astro';
+import Ordering from '../../components/Ordering.astro';
+import Parts from '../../components/Parts.astro';
+import Review from '../../components/Review.astro';
+import ScoreBreakdown from '../../components/ScoreBreakdown.astro';
+import Base from '../../layouts/Base.astro';
+import { hours, points, tokens, usd } from '../../data/format';
+import { runs, tasks, type Run } from '../../data/runs';
+
+export function getStaticPaths() {
+	return runs.map((run) => ({ params: { id: run.id }, props: { run } }));
+}
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { metrics } = run;
+const task = tasks.find((candidate) => candidate.id === run.task);
+
+if (!task) throw new Error(`${run.id} has no task ${run.task}`);
+
+const previous = task.runs[run.rank - 2];
+const next = task.runs[run.rank];
+const title = `${run.model.name} in ${run.harness.name}`;
+const { oneBoard, fiveBoards } = metrics.boardCost;
+
+const facts = [
+	{ label: 'AI cost', value: usd(metrics.costUsd) },
+	{ label: 'Time', value: hours(metrics.minutes) },
+	{ label: 'Tokens, incl. cache reads', value: tokens(run.totalTokens) },
+	{ label: '1 board', value: usd(oneBoard.totalUsd) },
+	{ label: '5 boards, per board', value: usd(fiveBoards.perBoardUsd) },
+	{ label: 'Board size', value: `${metrics.boardSizeMm.width} × ${metrics.boardSizeMm.height} mm` }
+];
+---
+
+<Base
+	title={`${title} · PCBBench`}
+	description={`The ${task.name} ${run.model.name} designed in ${run.harness.name}. Score ${metrics.score.total} of 100, rank ${run.rank} of ${task.runs.length}.`}
+>
+	<article class="page run">
+		<header class="head">
+			<div>
+				<p class="rank">
+					Rank {run.rank} of {task.runs.length} in <a href={`/tasks/${task.id}`}>{task.name}</a>
+				</p>
+				<h1>
+					{run.model.name}{' '}
+					<span class="in">in {run.harness.name}</span>
+				</h1>
+				<p class="about">
+					{run.model.maker}'s {run.model.name} on {run.reasoning} reasoning, in{' '}
+					<a href={run.harness.url}>{run.harness.about}</a>.
+				</p>
+			</div>
+			<p class="score">
+				<span class="big">{points(metrics.score.total)}</span>{' '}
+				<span class="of">of 100</span>
+				{
+					metrics.score.failedGates.length > 0 && (
+						<a class="penalty" href="#score">
+							−{GATE_PENALTY} for a failed gate
+						</a>
+					)
+				}
+			</p>
+		</header>
+
+		<div class="overview">
+			<BoardViewer run={run} />
+
+			<div class="side">
+				<dl class="facts">
+					{
+						facts.map((fact) => (
+							<div>
+								<dt>{fact.label}</dt>
+								<dd>{fact.value}</dd>
+							</div>
+						))
+					}
+				</dl>
+				<dl class="versions">
+					<div>
+						<dt>Machine</dt>
+						<dd>{run.machine}</dd>
+					</div>
+					{
+						Object.entries(run.versions).map(([tool, version]) => (
+							<div>
+								<dt>{tool}</dt>
+								<dd>{version}</dd>
+							</div>
+						))
+					}
+				</dl>
+			</div>
+		</div>
+
+		<section class="section" id="score">
+			<h2>Score</h2>
+			<ScoreBreakdown run={run} />
+		</section>
+
+		<section class="section">
+			<h2>Gates</h2>
+			<p class="lede">
+				A board that fails a gate loses {GATE_PENALTY} points. The gates are the three checks below, every
+				prompt feature, and any fatal review finding.
+			</p>
+			<Gates run={run} />
+		</section>
+
+		<section class="section">
+			<GroupHeading run={run} group="designReview" />
+			<Review run={run} />
+		</section>
+
+		<section class="section">
+			<GroupHeading run={run} group="circuitChecks" />
+			<CircuitChecks run={run} />
+		</section>
+
+		<section class="section">
+			<GroupHeading run={run} group="layoutChecks" />
+			<LayoutChecks run={run} />
+		</section>
+
+		<section class="section">
+			<GroupHeading run={run} group="orderable" />
+			<Ordering run={run} />
+		</section>
+
+		<section class="section">
+			<GroupHeading run={run} group="partsData" />
+			<Parts run={run} />
+		</section>
+
+		<section class="section">
+			<h2>Files</h2>
+			<ul class="files">
+				<li><a href={run.files.output}>Work folder</a></li>
+				<li><a href={run.files.board}>KiCad board</a></li>
+				<li><a href={run.files.bom}>BOM</a></li>
+				<li><a href={run.files.placement}>Placement file</a></li>
+				<li><a href={run.files.fabZip}>Gerber and drill zip</a></li>
+				<li><a href={run.files.metrics}>metrics.json</a></li>
+			</ul>
+			<details class="readme">
+				<summary>The agent's README</summary>
+				<div class="prose" set:html={run.readme} />
+			</details>
+		</section>
+
+		<nav class="pager" aria-label={`Other runs in ${task.name}`}>
+			{
+				previous && (
+					<a href={`/runs/${previous.id}`} rel="prev">
+						<span class="dir">Rank {previous.rank}</span>
+						<span>
+							{previous.model.name} in {previous.harness.name}
+						</span>
+					</a>
+				)
+			}
+			{
+				next && (
+					<a href={`/runs/${next.id}`} rel="next" class="next">
+						<span class="dir">Rank {next.rank}</span>
+						<span>
+							{next.model.name} in {next.harness.name}
+						</span>
+					</a>
+				)
+			}
+		</nav>
+	</article>
+</Base>
+
+<style>
+	.head {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: end;
+		justify-content: space-between;
+		gap: 1rem 3rem;
+		padding-block: 1.5rem 2rem;
+	}
+
+	.head > div {
+		display: grid;
+		gap: 0.6rem;
+	}
+
+	.rank,
+	.about {
+		color: var(--dim);
+	}
+
+	h1 {
+		font-size: var(--step-4);
+	}
+
+	.in {
+		color: var(--dim);
+	}
+
+	.score {
+		display: grid;
+		grid-template-columns: auto auto;
+		align-items: baseline;
+		justify-content: start;
+		column-gap: 0.5rem;
+	}
+
+	.big {
+		font-family: var(--font-iso);
+		font-size: var(--step-4);
+		line-height: 1;
+	}
+
+	.of {
+		color: var(--dim);
+		font-size: var(--step--1);
+		font-family: var(--font-body);
+	}
+
+	.penalty {
+		grid-column: 1 / -1;
+		color: var(--fail);
+		font-size: var(--step--1);
+	}
+
+	.overview {
+		display: grid;
+		gap: 2rem 3rem;
+	}
+
+	@media (min-width: 64rem) {
+		.overview {
+			grid-template-columns: minmax(0, 1fr) 19rem;
+		}
+
+		.side {
+			padding-top: 3.2rem;
+		}
+	}
+
+	.side {
+		display: grid;
+		gap: 1.25rem;
+		align-content: start;
+		min-width: 0;
+	}
+
+	.facts {
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+		gap: 1.25rem 2rem;
+		border-top: 1px solid var(--rule);
+		padding-top: 1.25rem;
+	}
+
+	.facts dt {
+		font-size: var(--step--1);
+		color: var(--dim);
+	}
+
+	.facts dd {
+		margin: 0;
+		font-size: var(--step-1);
+	}
+
+	.versions {
+		margin: 0;
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 0.2rem 1rem;
+		font-size: var(--step--1);
+		border-top: 1px solid var(--rule);
+		padding-top: 1rem;
+	}
+
+	.versions div {
+		display: contents;
+	}
+
+	.versions dt {
+		color: var(--dim);
+	}
+
+	.versions dd {
+		margin: 0;
+		overflow-wrap: anywhere;
+	}
+
+	.files {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.75rem;
+	}
+
+	.readme {
+		border-top: 1px solid var(--rule);
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.readme summary {
+		cursor: pointer;
+		padding: 0.9rem 0;
+		font-family: var(--font-iso);
+		font-size: var(--step-1);
+	}
+
+	.readme .prose {
+		padding-bottom: 2rem;
+	}
+
+	.pager {
+		display: flex;
+		justify-content: space-between;
+		gap: 2rem;
+		margin-top: 4rem;
+	}
+
+	.pager a {
+		display: grid;
+		text-decoration: none;
+	}
+
+	.pager .next {
+		margin-left: auto;
+		text-align: right;
+	}
+
+	.dir {
+		font-size: var(--step--1);
+		color: var(--dim);
+	}
+
+	/* Shared by the check components below, whose content is rendered into this page. */
+	.run :global(.scroll) {
+		overflow-x: auto;
+	}
+
+	.run :global(table.data) {
+		width: 100%;
+		font-size: var(--step--1);
+	}
+
+	.run :global(.data caption) {
+		text-align: left;
+		padding-bottom: 0.4rem;
+		font-weight: 600;
+	}
+
+	.run :global(.data th),
+	.run :global(.data td) {
+		text-align: left;
+		vertical-align: top;
+		font-weight: normal;
+		padding: 0.45rem 1rem 0.45rem 0;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.run :global(.data thead th) {
+		color: var(--dim);
+		white-space: nowrap;
+	}
+
+	.run :global(.data tfoot th),
+	.run :global(.data tfoot td) {
+		font-weight: 600;
+		border-bottom: 0;
+	}
+
+	.run :global(.data .n) {
+		text-align: right;
+		white-space: nowrap;
+	}
+
+	.run :global(.pass) {
+		color: var(--pass);
+	}
+
+	.run :global(.fail) {
+		color: var(--fail);
+	}
+
+	.run :global(.dim) {
+		color: var(--dim);
+	}
+
+	.run :global(.checks) {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+		gap: 2.5rem 3rem;
+		align-items: start;
+	}
+
+	.run :global(.checks > section) {
+		display: grid;
+		gap: 0.75rem;
+		min-width: 0;
+	}
+
+	.run :global(.checks h3) {
+		font-size: var(--step-1);
+	}
+
+	.run :global(.checks h4) {
+		margin: 0.5rem 0 0;
+		font-size: var(--step-0);
+		font-weight: 600;
+	}
+
+	.run :global(.checks dl) {
+		margin: 0;
+		display: grid;
+		grid-template-columns: minmax(8rem, auto) 1fr;
+		gap: 0.4rem 1.25rem;
+		font-size: var(--step--1);
+	}
+
+	.run :global(.checks dl > div) {
+		display: contents;
+	}
+
+	.run :global(.checks dt) {
+		color: var(--dim);
+	}
+
+	.run :global(.checks dd) {
+		margin: 0;
+		overflow-wrap: anywhere;
+	}
+</style>

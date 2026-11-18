@@ -1,0 +1,223 @@
+/* Colors follow KiCad's default PCB editor theme: its canvas, copper and silkscreen layers.
+   Light mode prints them darker on paper. */
+:root {
+	color-scheme: light dark;
+
+	--canvas: light-dark(#f5f7fa, #061423);
+	--raised: light-dark(#e8edf3, #0b1e33);
+	--ink: light-dark(#0a1626, #e6e4da);
+	--dim: light-dark(#4d5d70, #93a3b6);
+	--rule: light-dark(#cdd6e1, #1d3552);
+	--accent: light-dark(#2456a6, #f2eda1);
+	--fcu: light-dark(#b42f2f, #e05a5a);
+	--bcu: light-dark(#2a5ea8, #5f93e0);
+	--in1: light-dark(#2f7d3a, #7fc87f);
+	--in2: light-dark(#a35a14, #ce7d2c);
+	--silk: light-dark(#7b7350, #f2eda1);
+
+	--designReview: var(--fcu);
+	--circuitChecks: var(--bcu);
+	--layoutChecks: var(--in2);
+	--orderable: var(--in1);
+	--partsData: var(--silk);
+
+	--pass: var(--in1);
+	--fail: var(--fcu);
+	--warn: var(--in2);
+
+	--step--1: 0.875rem;
+	--step-0: 1.0625rem;
+	--step-1: 1.3125rem;
+	--step-2: 1.75rem;
+	--step-3: 2.5rem;
+	--step-4: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+
+	--gutter: clamp(1.25rem, 4vw, 3.5rem);
+	--measure: 68ch;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--canvas);
+	color: var(--ink);
+	font-family: var(--font-body);
+	font-size: 100%;
+	line-height: 1.55;
+	font-variant-numeric: tabular-nums;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+body {
+	margin: 0;
+	font-size: var(--step-0);
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-iso);
+	font-weight: normal;
+	line-height: 1.1;
+	margin: 0;
+	text-wrap: balance;
+}
+
+h2 {
+	font-size: var(--step-3);
+}
+
+h3 {
+	font-size: var(--step-2);
+}
+
+p {
+	margin: 0;
+	max-width: var(--measure);
+	text-wrap: pretty;
+}
+
+a {
+	color: inherit;
+	text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+	text-underline-offset: 0.18em;
+}
+
+a:hover {
+	color: var(--accent);
+	text-decoration-color: currentColor;
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+code {
+	font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+	font-size: 0.88em;
+	background: var(--raised);
+	border-radius: 3px;
+	padding: 0.08em 0.3em;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.page {
+	max-width: 80rem;
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.section {
+	padding-block: clamp(3.5rem, 8vw, 6rem) 0;
+	display: grid;
+	gap: 1.5rem;
+}
+
+.lede {
+	color: var(--dim);
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Rendered Markdown from agents and judges. */
+.prose {
+	max-width: var(--measure);
+	overflow-wrap: break-word;
+}
+
+.prose > * + * {
+	margin-top: 0.9em;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+	font-family: var(--font-iso);
+	font-size: var(--step-1);
+	margin-top: 1.6em;
+}
+
+.prose h1 {
+	font-size: var(--step-2);
+}
+
+.prose ul,
+.prose ol {
+	padding-left: 1.25em;
+}
+
+.prose li + li {
+	margin-top: 0.3em;
+}
+
+.prose pre {
+	background: var(--raised);
+	padding: 0.9rem 1rem;
+	border-radius: 4px;
+	overflow-x: auto;
+	font-size: var(--step--1);
+}
+
+.prose pre code {
+	background: none;
+	padding: 0;
+}
+
+.prose table {
+	display: block;
+	overflow-x: auto;
+	font-size: var(--step--1);
+	max-width: 100%;
+}
+
+.prose th,
+.prose td {
+	border-bottom: 1px solid var(--rule);
+	padding: 0.4rem 0.75rem 0.4rem 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.prose blockquote {
+	margin-left: 0;
+	padding-left: 1rem;
+	border-left: 2px solid var(--rule);
+	color: var(--dim);
+}
+
+.prose img {
+	border-radius: 4px;
+	background: var(--raised);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+	}
+}

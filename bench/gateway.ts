@@ -1,3 +1,4 @@
+import { dirname } from 'node:path';
 import { BunRuntime, BunServices } from '@effect/platform-bun';
 import { Console, DateTime, Effect, FileSystem, Option, Schema } from 'effect';
 import { Command } from 'effect/cli';
@@ -87,7 +88,7 @@ const createRunKey = Effect.fn('createRunKey')(function* (runId: string) {
 		});
 	const key = { runId, keyId, name, secret };
 	const fs = yield* FileSystem.FileSystem;
-	yield* fs.makeDirectory(STATE_DIR, { recursive: true });
+	yield* fs.makeDirectory(dirname(statePath(runId)), { recursive: true });
 	yield* fs.writeFileString(statePath(runId), JSON.stringify(key));
 	yield* fs.chmod(statePath(runId), 0o600);
 

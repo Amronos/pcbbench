@@ -1,0 +1,206 @@
+---
+import { mm, ohms } from '../data/format';
+import type { Run } from '../data/runs';
+import CheckHead from './CheckHead.astro';
+
+type Props = { run: Run };
+
+const { run } = Astro.props;
+const { decoupling, usb, antennaKeepout, battery } = run.metrics.design;
+
+const lines = [
+	{ label: 'D+', nets: usb.dPlusNets, length: usb.dPlusMm },
+	{ label: 'D−', nets: usb.dMinusNets, length: usb.dMinusMm }
+];
+
+const copperInside = ({ copperInside: copper }: (typeof antennaKeepout.keepouts)[number]) => [
+	...Object.entries({ tracks: copper.tracks, vias: copper.vias }).flatMap(([kind, count]) =>
+		count ? [`${count} ${kind}`] : []
+	),
+	...copper.zoneFills.map((fill) => `fill ${fill}`),
+	...copper.pads.map((pad) => `pad ${pad}`)
+];
+
+const unswitchedMicroamps = battery.dividers.reduce(
+	(total, divider) => (divider.switchedBy ? total : total + divider.microampsAtFullCharge),
+	0
+);
+---
+
+<div class="checks">
+	<section>
+		<CheckHead run={run} item="decoupling" />
+		<p>
+			{decoupling.pinsWithin} of {decoupling.powerPins} RP2350 power pins have a capacitor within {
+				decoupling.maxMm
+			} mm.
+		</p>
+		<div class="scroll">
+			<table class="data">
+				<thead>
+					<tr>
+						<th scope="col">Pin</th>
+						<th scope="col">Pad</th>
+						<th scope="col">Net</th>
+						<th scope="col">Nearest capacitor</th>
+						<th scope="col" class="n">Distance</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						decoupling.pins.map((pin) => (
+							<tr>
+								<td>{pin.pin}</td>
+								<td>{pin.pad}</td>
+								<td>{pin.net}</td>
+								<td>{pin.capacitor ?? 'none'}</td>
+								<td
+									class:list={[
+										'n',
+										(pin.mm === null || pin.mm > decoupling.maxMm) && 'fail'
+									]}
+								>
+									{pin.mm === null ? 'none' : mm(pin.mm)}
+								</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</section>
+
+	<section>
+		<CheckHead run={run} item="usbProtection" />
+		<dl class="facts">
+			<div>
+				<dt>ESD parts on D+ and D−</dt>
+				<dd class:list={[!usb.esd.length && 'fail']}>{usb.esd.join(', ') || 'none'}</dd>
+			</div>
+			{
+				lines.map((line) => (
+					<div>
+						<dt>{line.label} nets, connector to RP2350</dt>
+						<dd>
+							{line.nets.join(' → ')}{' '}
+							<span class:list={[line.nets.length > 1 ? 'pass' : 'fail']}>
+								{line.nets.length > 1 ? 'series resistor' : 'no series resistor'}
+							</span>
+						</dd>
+					</div>
+				))
+			}
+		</dl>
+		<h4>Differential pair, not scored</h4>
+		<dl class="facts">
+			<div>
+				<dt>D+ and D− length</dt>
+				<dd>
+					{mm(usb.dPlusMm)} and {mm(usb.dMinusMm)}
+				</dd>
+			</div>
+			<div>
+				<dt>Mismatch</dt>
+				<dd>{mm(usb.mismatchMm)}</dd>
+			</div>
+			<div>
+				<dt>Vias</dt>
+				<dd>{usb.vias}</dd>
+			</div>
+			<div>
+				<dt>Longest coupled stretch</dt>
+				<dd>
+					{mm(usb.pair.lengthMm)} on {usb.pair.layer}, {mm(usb.pair.widthMm)} wide, {
+						mm(usb.pair.gapMm)
+					} gap
+				</dd>
+			</div>
+			<div>
+				<dt>Differential impedance</dt>
+				<dd>{usb.differentialOhms === null ? 'no stackup' : `${usb.differentialOhms} Ω`}</dd>
+			</div>
+		</dl>
+	</section>
+
+	<section>
+		<CheckHead run={run} item="antennaKeepout" />
+		<p>
+			{
+				antennaKeepout.keepouts.length
+					? `${antennaKeepout.keepouts.length} ${antennaKeepout.keepouts.length === 1 ? 'keepout covers' : 'keepouts cover'} the Wi-Fi module ${antennaKeepout.module}.`
+					: `No keepout covers the Wi-Fi module ${antennaKeepout.module}.`
+			}
+		</p>
+		{
+			antennaKeepout.keepouts.length > 0 && (
+				<div class="scroll">
+					<table class="data">
+						<thead>
+							<tr>
+								<th scope="col">Keepout</th>
+								<th scope="col">Layers</th>
+								<th scope="col">Copper inside</th>
+							</tr>
+						</thead>
+						<tbody>
+							{antennaKeepout.keepouts.map((keepout) => {
+								const copper = copperInside(keepout);
+
+								return (
+									<tr>
+										<td>
+											{keepout.owner === 'board' ? 'Board' : `${keepout.owner} footprint`}
+											{keepout.name && <span class="dim">, {keepout.name}</span>}
+										</td>
+										<td>{keepout.layers.join(', ')}</td>
+										<td class:list={[copper.length ? 'fail' : 'pass']}>
+											{copper.join(', ') || 'none'}
+										</td>
+									</tr>
+								);
+							})}
+						</tbody>
+					</table>
+				</div>
+			)
+		}
+	</section>
+
+	<section>
+		<CheckHead run={run} item="batteryDrain" />
+		<p>
+			Unswitched dividers draw {Number(unswitchedMicroamps.toFixed(2))} µA from a full battery, even
+			when the board is off.{
+				battery.fuelGauges.length > 0 && ` Fuel gauges: ${battery.fuelGauges.join(', ')}.`
+			}
+		</p>
+		<div class="scroll">
+			<table class="data">
+				<thead>
+					<tr>
+						<th scope="col">Divider</th>
+						<th scope="col">Buffered by</th>
+						<th scope="col">Switched by</th>
+						<th scope="col" class="n">At 4.2 V</th>
+					</tr>
+				</thead>
+				<tbody>
+					{
+						battery.dividers.map((divider) => (
+							<tr>
+								<td>
+									{`${divider.top} ${ohms(divider.topOhms)} / ${divider.bottom} ${ohms(divider.bottomOhms)}`}
+								</td>
+								<td>{divider.bufferedBy ?? 'none'}</td>
+								<td class:list={[divider.switchedBy && 'pass']}>
+									{divider.switchedBy ?? 'none'}
+								</td>
+								<td class="n">{divider.microampsAtFullCharge} µA</td>
+							</tr>
+						))
+					}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</div>
