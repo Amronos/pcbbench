@@ -5,7 +5,7 @@
 
 PCBBench compares AI models and agents on PCB design performance across 40+ metrics.
 
-See every board, score and review at [pcbbench-five.vercel.app](https://pcbbench-five.vercel.app).
+See every board, score and review at [pcb-bench.vercel.app](https://pcb-bench.vercel.app).
 
 ## The task
 
